@@ -6,7 +6,7 @@
 name: Kevin Urban
 
 # Short bio or description (displayed in the header)
-description: Don't quote me on this, but... \<insert whole blog here\>
+description: Don't quote me on this, but... `<insert whole blog here>`
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
 avatar: images/krbn.gif
