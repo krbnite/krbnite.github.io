@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-02-26T18:32:22-05:00</updated><id>http://localhost:4000/</id><title type="html">Kevin Urban</title><subtitle>Don't quote me on this, but... &amp;lt;beginBlog&gt;</subtitle><entry><title type="html">Hello World! (Want your own GitHub blog?)</title><link href="http://localhost:4000/Hello-World/" rel="alternate" type="text/html" title="Hello World! (Want your own GitHub blog?)" /><published>2017-02-26T00:00:00-05:00</published><updated>2017-02-26T00:00:00-05:00</updated><id>http://localhost:4000/Hello-World</id><content type="html" xml:base="http://localhost:4000/Hello-World/">&lt;p&gt;Want to host your blog on GitHub? I got up and running by following this 
+&lt;a href=&quot;https://www.smashingmagazine.com/2014/08/build-blog-jekyll-github-pages/&quot;&gt;how-to guide&lt;/a&gt;
+from &lt;a href=&quot;https://www.smashingmagazine.com&quot;&gt;SmashingMagazine&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-quick-one-two-3-4-5-6-7&quot;&gt;The Quick One-Two (3, 4, 5, 6, 7)&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;Fork &lt;a href=&quot;https://github.com/barryclark/jekyll-now&quot;&gt;https://github.com/barryclark/jekyll-now&lt;/a&gt;, 
+which is a GitHub blog starter kit.&lt;/li&gt;
+  &lt;li&gt;Change the starter kit’s repository name to yourUserName.github.io, which lets GitHub know
+this is the repository you want to host your site in.&lt;/li&gt;
+  &lt;li&gt;Get a local copy of your site: git clone https://github.com/yourUserName/yourUserName.github.io&lt;/li&gt;
+  &lt;li&gt;Edit the _config.yaml (e.g., change website name, bio pic, etc)&lt;/li&gt;
+  &lt;li&gt;Stage (git add *), commit (git commit *), and push (git push)&lt;/li&gt;
+  &lt;li&gt;Make first blog entry by editing the provided MarkDown file in _posts/, and 
+referencing this 
+&lt;a href=&quot;https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet&quot;&gt;MarkDown cheatsheet&lt;/a&gt;,
+if your eyes start crossing funny.&lt;/li&gt;
+  &lt;li&gt;Learn more about customizing the YAML options for your blog entries (e.g., how to use
+tags, categories, and more): 
+&lt;a href=&quot;http://jekyllrb.com/docs/frontmatter/&quot;&gt;http://jekyllrb.com/docs/frontmatter/&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;finishing-moves&quot;&gt;Finishing Moves&lt;/h2&gt;
+&lt;p&gt;Do yourself a favor and install Jekyll.  Otherwise, there’s going to be a
+lot of stage-commit-push.
+&lt;a href=&quot;http://jekyll.tips/jekyll-casts/install-jekyll-on-os-x/&quot;&gt;Get jekyll&lt;/a&gt; immediately!&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;sudo gem install github-pages&lt;/li&gt;
+  &lt;li&gt;sudo gem install jekyll&lt;/li&gt;
+  &lt;li&gt;cd path/to/local/copy/of/yourUserName.github.io&lt;/li&gt;
+  &lt;li&gt;jekyll watch –server&lt;/li&gt;
+  &lt;li&gt;open http://0.0.0.0:4000/&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;more-info&quot;&gt;More Info&lt;/h2&gt;
+&lt;p&gt;The &lt;a href=&quot;https://www.smashingmagazine.com/2014/08/build-blog-jekyll-github-pages/&quot;&gt;SmashingMagazine&lt;/a&gt;
+article is much more detailed, including info on how to 
+use your own domain name, how to import blog posts from WordPress, how to change
+your blog’s template/theme, and more. So check it out!&lt;/p&gt;</content><author><name></name></author><summary type="html">Want to host your blog on GitHub? I got up and running by following this how-to guide from SmashingMagazine.</summary></entry></feed>

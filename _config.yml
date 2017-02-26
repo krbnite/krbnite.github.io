@@ -6,10 +6,10 @@
 name: Kevin Urban
 
 # Short bio or description (displayed in the header)
-description: Don't quote me on this, but... &lt; insert whole blog here>
+description: Don't quote me on this, but... &lt;beginBlog>
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
-avatar: images/krbn.gif
+avatar: https://raw.githubusercontent.com/krbnite/krbnite.github.io/master/images/krbn.gif
 
 #
 # Flags below are optional
@@ -23,7 +23,7 @@ footer-links:
   flickr:
   github: krbnite
   instagram:
-  linkedin: https://www.linkedin.com/in/drkrbn/
+  linkedin: drkrbn
   pinterest:
   rss: # just type anything here for a working RSS icon
   twitter: 
