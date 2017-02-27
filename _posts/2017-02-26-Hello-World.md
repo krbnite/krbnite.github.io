@@ -34,6 +34,13 @@ lot of stage-commit-push.
 4. jekyll watch --server
 5. open http://0.0.0.0:4000/
 
+Disqus: Want comments? Set up a [disqus account](https://disqus.com/). 
+When logged in to your
+Disqus account, click on Settings > Add disqus to site.  The site will
+help you figure it all out.  Update your _config.yml file with your
+Disqus short-name.  (Follow the Disqus directions and you will
+know what that means.)
+
 
 ## More Info
 The [SmashingMagazine](https://www.smashingmagazine.com/2014/08/build-blog-jekyll-github-pages/)
