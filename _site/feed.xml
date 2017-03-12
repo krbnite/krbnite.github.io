@@ -1,4 +1,361 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-02-26T20:53:22-05:00</updated><id>http://localhost:4000/</id><title type="html">Kevin Urban</title><subtitle>Don't quote me on this, but... &amp;lt;beginBlog&gt;</subtitle><entry><title type="html">Hello World! (Want your own GitHub blog?)</title><link href="http://localhost:4000/Hello-World/" rel="alternate" type="text/html" title="Hello World! (Want your own GitHub blog?)" /><published>2017-02-26T00:00:00-05:00</published><updated>2017-02-26T00:00:00-05:00</updated><id>http://localhost:4000/Hello-World</id><content type="html" xml:base="http://localhost:4000/Hello-World/">&lt;p&gt;Want to host your blog on GitHub? I got up and running by following this 
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-03-12T00:58:16-05:00</updated><id>http://localhost:4000/</id><title type="html">Kevin Urban</title><subtitle>Don't quote me on this, but... &amp;lt;beginBlog&gt;</subtitle><entry><title type="html">My Mac From Scratch</title><link href="http://localhost:4000/My-Mac-From-Scratch/" rel="alternate" type="text/html" title="My Mac From Scratch" /><published>2017-03-11T00:00:00-05:00</published><updated>2017-03-11T00:00:00-05:00</updated><id>http://localhost:4000/My-Mac-From-Scratch</id><content type="html" xml:base="http://localhost:4000/My-Mac-From-Scratch/">&lt;p&gt;I’ve spent nearly a decade honing my .bash_profile, .vimrc, and other
+startup files on my personal laptop. But can’t say that I think about them too much. 
+It’s set-and-forget for long periods of time. To be clear, taking things for granted goes far beyond
+startup files: XCode, HomeBrew and hordes of brew-installed software, 
+R and Python libraries, general preferences and customizations all around!&lt;/p&gt;
+
+&lt;p&gt;In this post, I attempt to lay out how to build my old MacBook Pro from scratch. 
+It’s really for me, but hey–it could be for you too! Also, be warned: I make
+no claims that any of this represents the best way to do anything!  So if you 
+know a better way, please let me know in the comments.&lt;/p&gt;
+
+&lt;h2 id=&quot;starter-moves&quot;&gt;Starter Moves&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+  &lt;li&gt;Update OS X&lt;/li&gt;
+  &lt;li&gt;Get XCode
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo xcode-select --install 
+sudo xcodebuild -license
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Get HomeBrew
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/usr/bin/ruby -e &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Also get Brew Cask (manage software other than CLI stuff)&lt;/span&gt;
+brew tap caskroom/cask
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Set up Git (brush up on your Git w/ this &lt;a href=&quot;http://kbroman.org/github_tutorial/&quot;&gt;tutorial&lt;/a&gt;,
+or this &lt;a href=&quot;http://rogerdudler.github.io/git-guide/&quot;&gt;no-deep-git guide&lt;/a&gt;)
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew install git
+&lt;span class=&quot;c&quot;&gt;# Optional Stuff: Not necessary if you already have a &lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#   ~/.gitconfig file on your old Mac (see next section &lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#   on startup files)&lt;/span&gt;
+git config --global user.name &lt;span class=&quot;s2&quot;&gt;&quot;Your Name&quot;&lt;/span&gt;
+git config --global user.email &lt;span class=&quot;s2&quot;&gt;&quot;yourEmail&quot;&lt;/span&gt;
+git config --global color.ui &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;# Colored Output&lt;/span&gt;
+git config --global core.editor vim &lt;span class=&quot;c&quot;&gt;# For cool people&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Bash Completions!
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; brew install bash-completions 
+ brew tap homebrew/completions
+ &lt;span class=&quot;c&quot;&gt;#  Make sure this is in your .bash_profile (see next section)&lt;/span&gt;
+ &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; -f /usr/local/etc/bash_completion &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; .  /usr/local/etc/bash_completion
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+    &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;startup-files&quot;&gt;Startup Files&lt;/h2&gt;
+&lt;hr /&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Round up all your startup files on your old Mac into new directory:
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~
+mkdir .startupfiles
+cp .bash_profile .startupfiles/
+cp .vimrc .startupfiles/
+cp .tmux.conf .startupfiles/
+cp .gitconfig .startupfiles/
+&lt;span class=&quot;c&quot;&gt;# ...and so on. &lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Make ~/.startupfiles a Git repository:
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; .startupfiles/
+git init
+git add .
+git commit . -m &lt;span class=&quot;s2&quot;&gt;&quot;Startup files on my old Mac as of yyyy-mm-dd.&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Create a new GitHub repository called .startupfiles&lt;/li&gt;
+  &lt;li&gt;Push ~/.startupfiles/ to GitHub’s .startupfiles:
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git remote add origin https://github.com/userName/.startupfiles
+git push -u origin master
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Clone .startupfiles onto new Mac
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://github.com/userName/.startupfiles
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Optional/Convenient: Create .update bash function in .bash_profile 
+to easily update startup files in home directory with latest versions in .startupfiles, 
+e.g., something like:
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;.update&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  cp &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;ls -lrtF -d -1 .startupfiles/&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;,.&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; | grep &lt;span class=&quot;s2&quot;&gt;&quot;[a-z]$&quot;&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt; ~
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Optional/Helpful: design your .bash_profile such that each computer can
+have customizations.
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;hostname&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'yourHostNameForComp1'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
+  &lt;span class=&quot;c&quot;&gt;# custom stuff;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Beware:  On my work computer, the hostname is different when 
+I’m actually at work vs when I’m remotely logged in through a VPN.&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;r&quot;&gt;R&lt;/h2&gt;
+&lt;hr /&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;First, we want to brew install R, and related software that R depends on.
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew install Caskroom/cask/xquarts 
+brew cask install java 
+brew tap homebrew/science 
+brew install R 
+brew cask install mactex 
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;If you have an R environment on the old computer that you already like, 
+then take it with you. First, make sure R and Java are friends:
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; R CMD javareconf
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+    &lt;p&gt;This is important! Otherwise, the installation of the rJava package will fail, followed by all
+other that depend on it, e.g., RPostgreSQL.  Now let’s go ahead and get a record of your beloved
+R environment on your old Mac:&lt;/p&gt;
+    &lt;div class=&quot;language-r highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r.pkgs&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+   &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;installed.packages&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()[&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;is.na&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;installed.packages&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Priority&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]),&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;save&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r.pkgs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;r-pkgs.Rdata&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+    &lt;p&gt;Then get r-pkgs.Rdata on your new Mac, start an R session, and create your 
+library:&lt;/p&gt;
+    &lt;div class=&quot;language-r highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;load&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;r-pkgs.Rdata&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;install.packages&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r.pkgs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Get RStudio
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; brew install Caskroom/cask/rstudio 
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;RStudio Settings:&lt;br /&gt;
+I wanted to figure out a cool command line way of doing this, but couldn’t 
+figure it out. Two important directories on my Mac seemed important, but amounted in
+no discovery of the “preference file” I was looking for:
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; ~/.rstudio-desktop 
+ /Applications/RStudio.app/Contents
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+    &lt;p&gt;Ultimately, I just had to set my preferences manually:&lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;RStudio &amp;gt; Preferences &amp;gt; Code &amp;gt; Keybindings &amp;gt; Vim&lt;/li&gt;
+      &lt;li&gt;RStudio &amp;gt; Preferences &amp;gt; Appearance &amp;gt; Editor Theme &amp;gt; Material&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;python&quot;&gt;Python&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+  &lt;li&gt;Get Anaconda
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; brew cask install Caskroom/cask/anaconda
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+    &lt;p&gt;Homebrew will advise you to put this in .bash_profile:&lt;/p&gt;
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;~/anaconda3/bin:&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+    &lt;p&gt;You might already have that taken care of though since we 
+transferred over all the startup files from the old Mac.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Make conda environment files from your environments on the old Mac. 
+Use them to create those environments on the new Mac.  At the very least,
+make sure to have matplotlib, pandas, numpy, sklearn, tensorflow, etc.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;postgresql--amazon-redshift&quot;&gt;PostgreSQL / Amazon Redshift&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+  &lt;li&gt;TO ACCESS FROM TERMINAL:
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;c&quot;&gt;# Make sure you have psql&lt;/span&gt;
+ brew install postgres
+ &lt;span class=&quot;c&quot;&gt;# If first time, create your user db&lt;/span&gt;
+ brew services start postgres
+ createdb &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;whoami&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+ psql  &lt;span class=&quot;c&quot;&gt;# log in w/ user account&lt;/span&gt;
+ brew services stop postgres
+ &lt;span class=&quot;c&quot;&gt;# Head to Redshift!&lt;/span&gt;
+ psql &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+   --host&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;lt;DB instance endpoint&amp;gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+   --port&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;lt;port&amp;gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+   --username &amp;lt;master user name&amp;gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+   --password &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+   --dbname&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;lt;database name&amp;gt; 
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;TO ACCESS IN R:
+    &lt;div class=&quot;language-r highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;library&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RPostgreSQL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;drv&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dbDriver&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;PostgreSQL&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;host&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'yourRedShiftInstance.redshift.amazonaws.com'&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;con&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dbConnect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;drv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;host&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;host_production&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+        &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'5439'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dbname&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'dbName'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+        &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'yourUserName'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+        &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'yourPassword'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dbExecute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;con&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query_to_affect_something&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dbGetQuery&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;con&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query_something_to_return_results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;TO ACCESS IN PYTHON:
+    &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sqlalchemy&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;create_engine&lt;/span&gt;
+ &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pandas&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pd&lt;/span&gt;
+ &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pandas&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;read_sql_query&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;
+ &lt;span class=&quot;n&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'dbName'&lt;/span&gt;
+ &lt;span class=&quot;n&quot;&gt;host&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'yourRedShiftInstance.redshift.amazonaws.com'&lt;/span&gt;
+ &lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'yourUserName'&lt;/span&gt;
+ &lt;span class=&quot;n&quot;&gt;psswd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'yourPassword'&lt;/span&gt;
+ &lt;span class=&quot;n&quot;&gt;conStr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'postgresql://'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;':'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;psswd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'@'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;host&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;':5439/'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;db&lt;/span&gt;
+ &lt;span class=&quot;n&quot;&gt;con&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;create_engine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;conStr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+ &lt;span class=&quot;n&quot;&gt;df&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query_whatever&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;con&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;vim&quot;&gt;VIM:&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+  &lt;li&gt;Install Tim Pope’s Pathogen (basically a Vim package manager)
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; mkdir -p ~/.vim/autoload ~/.vim/bundle &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+ curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+ &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;execute pathogen#infect()&quot;&lt;/span&gt; &amp;gt;&amp;gt; ~/.vimrc
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+    &lt;p&gt;Go to the bundle directory and start git cloning the not-so-bare essentials!&lt;/p&gt;
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~/.vim/bundle
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;SENSIBLE: If you don’t have a .vimrc file already, you can kick off with
+Tim Pope’s  (note2self: I should go through his file and see if I’ve
+missed anyting in my .vimrc)
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; git clone git://github.com/tpope/vim-sensible.git
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+    &lt;p&gt;Alternatively, you might go with &lt;a href=&quot;https://github.com/kensodev/dotvim&quot;&gt;The Ultimate Vim Configuration&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;NERDTree: Make Vim more IDE-Like w/ Directory Tree sidebar
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;TEX-9: Simple, vimmy LaTeX functionality
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; git clone https://github.com/vim-scripts/TeX-9
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;And so on: Surround, Syntastic, &amp;lt;whatever&amp;gt;…&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Include VimPlugIns help in Vim environment:
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;:helptags ~/.vim/bundle/vim-surround
+:helptags ~/.vim/bundle/nerdtree
+:helptags ~/.vim/bundle/syntastic
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+    &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;jekyll-github-blog&quot;&gt;Jekyll (GitHub Blog)&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+  &lt;li&gt;Ruby: OS X already has it, but for some reason it sucks. Brew it!
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; brew install ruby &lt;span class=&quot;c&quot;&gt;# neccessary, despite OS X having ruby.. otherwise, errors&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Get Github Pages and Jekyll
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; sudo gem install github-pages
+ sudo gem install jekyll
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;How to Use It:
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;path/to/local/copy/of/youUserName.github.io
+ jekyll serve
+ open http://0.0.0.0:4000/
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+    &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;misc-homebrew-installations&quot;&gt;Misc HomeBrew Installations&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;p&gt;Other stuff I use from time to time.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew install imagemagick
+brew install ffmpeg
+brew install tmux
+brew install wget
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;default-printer&quot;&gt;Default printer&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;p&gt;I noticed this file on my work computer, so I’m assuming
+if you wanted to set a default printer, this is how you do it.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mkdir .cups
+echo &quot;Default printer_name&quot; &amp;gt; .cups/lpopoptions
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;make-keyboard-less-annoying&quot;&gt;Make Keyboard Less Annoying&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+  &lt;li&gt;When I hold on j in RStudio vim mode, I just want the cursor to 
+move left and keep on doing so… Unfortunately, by default, Mac
+has a special key palette come up.&lt;br /&gt;
+&lt;a href=&quot;Source: http://osxdaily.com/2011/08/04/enable-key-repeat-mac-os-x-lion/&quot;&gt;This is how you fix that&lt;/a&gt;:
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; defaults write -g ApplePressAndHoldEnabled -bool &lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+    &lt;p&gt;If you ever wanted to undo this (don’t know why)&lt;/p&gt;
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; defaults write -g ApplePressAndHoldEnabled -bool &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;SPEED
+    &lt;ul&gt;
+      &lt;li&gt;Apple &amp;gt; System Preferences &amp;gt; Keyboard &amp;gt; Key Repeat (Fast)&lt;/li&gt;
+      &lt;li&gt;Apple &amp;gt; System Preferences &amp;gt; Keyboard &amp;gt; Delay Until Repeat (Short)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">I’ve spent nearly a decade honing my .bash_profile, .vimrc, and other startup files on my personal laptop. But can’t say that I think about them too much. It’s set-and-forget for long periods of time. To be clear, taking things for granted goes far beyond startup files: XCode, HomeBrew and hordes of brew-installed software, R and Python libraries, general preferences and customizations all around!</summary></entry><entry><title type="html">Hello World! (Want your own GitHub blog?)</title><link href="http://localhost:4000/Hello-World/" rel="alternate" type="text/html" title="Hello World! (Want your own GitHub blog?)" /><published>2017-02-26T00:00:00-05:00</published><updated>2017-02-26T00:00:00-05:00</updated><id>http://localhost:4000/Hello-World</id><content type="html" xml:base="http://localhost:4000/Hello-World/">&lt;p&gt;Want to host your blog on GitHub? I got up and running by following this 
 &lt;a href=&quot;https://www.smashingmagazine.com/2014/08/build-blog-jekyll-github-pages/&quot;&gt;how-to guide&lt;/a&gt;
 from &lt;a href=&quot;https://www.smashingmagazine.com&quot;&gt;SmashingMagazine&lt;/a&gt;.&lt;/p&gt;
 
@@ -22,16 +379,28 @@ tags, categories, and more):
 
 &lt;h2 id=&quot;finishing-moves&quot;&gt;Finishing Moves&lt;/h2&gt;
 &lt;p&gt;Do yourself a favor and install Jekyll.  Otherwise, there’s going to be a
-lot of stage-commit-push.
-&lt;a href=&quot;http://jekyll.tips/jekyll-casts/install-jekyll-on-os-x/&quot;&gt;Get jekyll&lt;/a&gt; immediately!&lt;/p&gt;
+lot of stage-commit-push for minor edits that crop up.
+&lt;a href=&quot;http://jekyll.tips/jekyll-casts/install-jekyll-on-os-x/&quot;&gt;Get jekyll&lt;/a&gt; immediately! 
+As the page notes, I found that the native copy of ruby on OS X will lead you
+to failure here.  The HomeBrew’d ruby is what you need. Might as well have the HomeBrew’d 
+version of Git too.&lt;/p&gt;
 
 &lt;ol&gt;
+  &lt;li&gt;brew install git&lt;/li&gt;
+  &lt;li&gt;brew install ruby&lt;/li&gt;
   &lt;li&gt;sudo gem install github-pages&lt;/li&gt;
   &lt;li&gt;sudo gem install jekyll&lt;/li&gt;
   &lt;li&gt;cd path/to/local/copy/of/yourUserName.github.io&lt;/li&gt;
-  &lt;li&gt;jekyll watch –server&lt;/li&gt;
+  &lt;li&gt;jekyll serve    # used to be jekyll watch --server&lt;/li&gt;
   &lt;li&gt;open http://0.0.0.0:4000/&lt;/li&gt;
 &lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Want comments?&lt;/strong&gt; Set up a &lt;a href=&quot;https://disqus.com/&quot;&gt;Disqus account&lt;/a&gt;. 
+When logged in to your
+Disqus account, click on Settings &amp;gt; Add disqus to site.  The site will
+help you figure it all out.  Update your _config.yml file with your
+Disqus short-name.  (Follow the Disqus directions and you will
+know what that means.)&lt;/p&gt;
 
 &lt;h2 id=&quot;more-info&quot;&gt;More Info&lt;/h2&gt;
 &lt;p&gt;The &lt;a href=&quot;https://www.smashingmagazine.com/2014/08/build-blog-jekyll-github-pages/&quot;&gt;SmashingMagazine&lt;/a&gt;

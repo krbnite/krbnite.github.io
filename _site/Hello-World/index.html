@@ -85,16 +85,28 @@ tags, categories, and more):
 
 <h2 id="finishing-moves">Finishing Moves</h2>
 <p>Do yourself a favor and install Jekyll.  Otherwise, there’s going to be a
-lot of stage-commit-push.
-<a href="http://jekyll.tips/jekyll-casts/install-jekyll-on-os-x/">Get jekyll</a> immediately!</p>
+lot of stage-commit-push for minor edits that crop up.
+<a href="http://jekyll.tips/jekyll-casts/install-jekyll-on-os-x/">Get jekyll</a> immediately! 
+As the page notes, I found that the native copy of ruby on OS X will lead you
+to failure here.  The HomeBrew’d ruby is what you need. Might as well have the HomeBrew’d 
+version of Git too.</p>
 
 <ol>
+  <li>brew install git</li>
+  <li>brew install ruby</li>
   <li>sudo gem install github-pages</li>
   <li>sudo gem install jekyll</li>
   <li>cd path/to/local/copy/of/yourUserName.github.io</li>
-  <li>jekyll watch –server</li>
+  <li>jekyll serve    # used to be jekyll watch --server</li>
   <li>open http://0.0.0.0:4000/</li>
 </ol>
+
+<p><strong>Want comments?</strong> Set up a <a href="https://disqus.com/">Disqus account</a>. 
+When logged in to your
+Disqus account, click on Settings &gt; Add disqus to site.  The site will
+help you figure it all out.  Update your _config.yml file with your
+Disqus short-name.  (Follow the Disqus directions and you will
+know what that means.)</p>
 
 <h2 id="more-info">More Info</h2>
 <p>The <a href="https://www.smashingmagazine.com/2014/08/build-blog-jekyll-github-pages/">SmashingMagazine</a>

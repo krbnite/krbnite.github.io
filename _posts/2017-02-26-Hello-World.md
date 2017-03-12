@@ -25,19 +25,24 @@ from [SmashingMagazine](https://www.smashingmagazine.com).
 
 ## Finishing Moves
 Do yourself a favor and install Jekyll.  Otherwise, there's going to be a
-lot of stage-commit-push.
-[Get jekyll](http://jekyll.tips/jekyll-casts/install-jekyll-on-os-x/) immediately!
+lot of stage-commit-push for minor edits that crop up.
+[Get jekyll](http://jekyll.tips/jekyll-casts/install-jekyll-on-os-x/) immediately! 
+As the page notes, I found that the native copy of ruby on OS X will lead you
+to failure here.  The HomeBrew'd ruby is what you need. Might as well have the HomeBrew'd 
+version of Git too.
 
-1. sudo gem install github-pages
-2. sudo gem install jekyll
-3. cd path/to/local/copy/of/yourUserName.github.io
-4. jekyll watch --server
-5. open http://0.0.0.0:4000/
+1. brew install git 
+2. brew install ruby 
+3. sudo gem install github-pages
+4. sudo gem install jekyll
+5. cd path/to/local/copy/of/yourUserName.github.io
+6. jekyll serve &nbsp;&nbsp;&nbsp;\# used to be jekyll watch \-\-server
+7. open http://0.0.0.0:4000/
 
-Disqus: Want comments? Set up a [disqus account](https://disqus.com/). 
+**Want comments?** Set up a [Disqus account](https://disqus.com/). 
 When logged in to your
 Disqus account, click on Settings > Add disqus to site.  The site will
-help you figure it all out.  Update your _config.yml file with your
+help you figure it all out.  Update your \_config.yml file with your
 Disqus short-name.  (Follow the Disqus directions and you will
 know what that means.)
 
