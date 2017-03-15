@@ -291,6 +291,8 @@ Other stuff I use from time to time.
     brew install ffmpeg
     brew install tmux
     brew install wget
+    brew install pandoc
+    brew install Caskroom/cask/rodeo
 
 <br/>
 
