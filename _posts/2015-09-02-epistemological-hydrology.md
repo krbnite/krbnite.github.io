@@ -25,7 +25,9 @@ The accuracy of a broken clock illustrates at least part of the article&#8217;s 
 
 Lessons Learned: If the modeler is careful not to use the clock at times departing too far from 4:40, then this broken clock is a great model for the time of day!
 
-[<img class="size-medium wp-image-101 alignright" src="http://kevin-urban.com/blog/wp-content/uploads/2015/09/broken-clock-300x193.png" alt="broken-clock" width="300" height="193" srcset="http://kevin-urban.com/blog/wp-content/uploads/2015/09/broken-clock-300x193.png 300w, http://kevin-urban.com/blog/wp-content/uploads/2015/09/broken-clock.png 517w" sizes="(max-width: 300px) 100vw, 300px" />](http://kevin-urban.com/blog/wp-content/uploads/2015/09/broken-clock.png)
+<figure>
+<img src="/images/broken-clock.png" alt="broken-clock" width="500vw" align="middle"/>
+</figure>
 
 The point is, oftentimes misplaced faith is put into mathematical models describing some physical phenomenon. It might be that the model is only good for one type of condition (&#8220;late afternoon&#8221;), yet it is used to say things about other types of conditions (&#8220;early morning&#8221;).
 
@@ -47,7 +49,8 @@ From what I gather, hydrologists largely use two classes of models: lumped-param
 
 A lumped parameter model is like a circuit diagram: in reality you have a voltage applied across a copper wire made up of jazillions of atoms and used to power a light bulb (another jazillion atoms, heat, photons, and the works!), but in the lumped-parameter model you have a 1-dimensional loop that has a few symbols representing macroscopic, emergent features like resistance and a continuous current.<figure id="attachment_110" style="width: 300px" class="wp-caption alignleft">
 
-[<img class="size-medium wp-image-110" src="http://kevin-urban.com/blog/wp-content/uploads/2015/09/lumped-parameter-model-300x187.png" alt="How do you usefully trivialize the existence of a jazillion atoms? Lumped parameters, baby!" width="300" height="187" srcset="http://kevin-urban.com/blog/wp-content/uploads/2015/09/lumped-parameter-model-300x187.png 300w, http://kevin-urban.com/blog/wp-content/uploads/2015/09/lumped-parameter-model.png 426w" sizes="(max-width: 300px) 100vw, 300px" />](http://kevin-urban.com/blog/wp-content/uploads/2015/09/lumped-parameter-model.png)<figcaption class="wp-caption-text">How do you usefully trivialize the existence of a jazillion atoms? Lumped parameters, baby!</figcaption></figure> 
+<figure>
+<img src="/images/lumped-parameter-model.png" alt="How do you usefully trivialize the existence of a jazillion atoms? Lumped parameters, baby!" width="500vw" align="middle" /><figcaption>How do you usefully trivialize the existence of a jazillion atoms? Lumped parameters, baby!</figcaption></figure>
 
 Lumped-parameter models like circuit diagrams are obviously useful, but they operate on a low-resolution scale.
 

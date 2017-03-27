@@ -8,7 +8,7 @@ guid: http://kevin-urban.com/blog/?p=121
 permalink: /index.php/2015/09/03/the-telescopic-anti-myopic-biopic-topic/
 categories:
   - astronomy
-  - Uncategorized
+  - autobiographical
 ---
 &#8220;I ain&#8217;t never goin&#8217; back to school!&#8221;
 
