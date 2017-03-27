@@ -10,5 +10,5 @@ I have explored the Earth's ionosphere/magnetosphere system and its interaction 
 
 ### Contact me
 
-[kevin.dd@gmail.com](mailto:kevin.ddu@gmail.com)
+[kevin.ddu@gmail.com](mailto:kevin.ddu@gmail.com)
 
