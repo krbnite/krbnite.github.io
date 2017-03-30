@@ -9,7 +9,15 @@ permalink: /index.php/2015/10/14/the-angle-between-two-data-sets/
 categories:
   - Uncategorized
 ---
-[<img class="size-medium wp-image-462 alignleft" src="http://kevin-urban.com/blog/wp-content/uploads/2015/10/theta1-236x300.png" alt="theta" width="236" height="300" srcset="http://kevin-urban.com/blog/wp-content/uploads/2015/10/theta1-236x300.png 236w, http://kevin-urban.com/blog/wp-content/uploads/2015/10/theta1.png 626w" sizes="(max-width: 236px) 100vw, 236px" />](http://kevin-urban.com/blog/wp-content/uploads/2015/10/theta1.png)Did you know that a correlation is similar to an inner product between two data sets?
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<figure>
+<img align="right" src="/images/theta1.png" alt="theta" width="300vw" />
+</figure>
+
+Did you know that a correlation is similar to an inner product between two data sets?
 
 &#8220;Huh? Never heard of it.&#8221;
 
@@ -17,25 +25,31 @@ Oh Reader! I&#8217;m sure you&#8217;re kidding. But just in case: an inner produ
 
 There might be a lot of terminology here, so an example will help.
 
-[<img class="alignright size-medium wp-image-473" src="http://kevin-urban.com/blog/wp-content/uploads/2015/10/inner-product1-300x115.png" alt="inner-product" width="300" height="115" srcset="http://kevin-urban.com/blog/wp-content/uploads/2015/10/inner-product1-300x115.png 300w, http://kevin-urban.com/blog/wp-content/uploads/2015/10/inner-product1-1024x391.png 1024w, http://kevin-urban.com/blog/wp-content/uploads/2015/10/inner-product1.png 1049w" sizes="(max-width: 300px) 100vw, 300px" />](http://kevin-urban.com/blog/wp-content/uploads/2015/10/inner-product1.png)A typical inner product in the normal Euclidean setting in 2D or 3D space is the dot product. Say you have two 3D vectors, \(A = (A\_{1},A\_{2},A\_{3})\) and \(B=(B\_{1},B\_{2},B\_{3})\). (The results below are applicable to 2D vectors by simply assuming that \(A\_{3}=0\) and \(B\_{3}=0\).) The dot product of these two vectors can be written in two important ways, both of which will give you the same answer. Deciding on which identity you use simply depends on your preference, or possibly how you collected your data: did you measure rectilinear components, magnitudes and angles, or both?<!--more-->
 
-(1) Inner Product (Def1): \(\quad\quad Dot(A,B) = \Sigma\_{i=1}^{3}A\_{i}B\_{i} = A\_{1}B\_{1}+A\_{2}B\_{2}+A\_{3}B_{3}\)
-  
-(2) Inner Product (Def2): \(\quad\quad Dot(A,B) = |A||B|cos(\theta)\)
+A typical inner product in the normal Euclidean setting in 2D or 3D space is the dot product. Say you have two 3D vectors, $$A = (A_{1},A_{2},A_{3})$$ and $$B=(B_{1},B_{2},B_{3})$$. (The results below are applicable to 2D vectors by simply assuming that $$A_{3}=0$$ and $$B_{3}=0$$.) The dot product of these two vectors can be written in two important ways, both of which will give you the same answer. Deciding on which identity you use simply depends on your preference, or possibly how you collected your data: did you measure rectilinear components, magnitudes and angles, or both?<!--more-->
+
+
+<figure>
+<img src="/images/inner-product1.png" alt="inner-product" width="600vw" />
+</figure>
+
+
+* Inner Product (Def1): $$ \quad Dot(A,B) = \Sigma_{i=1}^{3}A_{i}B_{i} = A_{1}B_{1}+A_{2}B_{2}+A_{3}B_{3} $$
+
+* Inner Product (Def2): $$ \quad\quad Dot(A,B) = |A||B|cos(\theta) $$
 
 Here we use the notation |A| to denote the norm (aka the length) of the vector A. The norm is defined as follows:
-
-(3) IP-Induced Norm: \(\quad\quad Norm(A) = \sqrt{Dot(A,A)} = \sqrt{|A|^{2}\cancelto{1}{cos(0)}} = |A| \)
+* IP-Induced Norm: $$\quad\quad Norm(A) = \sqrt{Dot(A,A)} = \sqrt{|A|^{2}\cancelto{1}{cos(0)}} = |A| $$
 
 An important observation here is that the inner product (qualitative mixed measurement of angles and lengths) on the space naturally induces a definition of the norm (length) on that space.
 
 Furthermore, the equality in Eq(2) tells us that if we can define a normalized inner product rather easily:
 
-(4) Normalized Inner Product: \(\quad\quad NormDot(A,B) = \frac{Dot(A,B)}{|A||B|} = cos(\theta)\)
+* Normalized Inner Product: $$\quad\quad NormDot(A,B) = \frac{Dot(A,B)}{|A||B|} = cos(\theta)$$
 
 Having this normalized inner product, we then see that we can quantitatively compute the angle between any two vectors in this space:
 
-(5) Angle: \(\quad\quad \theta =acos\left(\frac{A\cdot B}{|A||B|}\right) \)
+* Angle: $$\quad\quad \theta =acos\left(\frac{A\cdot B}{|A||B|}\right) $$
 
 The important take-away here is that in these simple vector spaces, the notions of vector components, vector magnitudes, and angles between vectors are all intuitive. In fact, mathematically speaking, the generalized definitions of inner product and norm was motivated by the desire to generalize these geometric notions to other mathematical spaces.
 

@@ -13,17 +13,22 @@ It is rare that a scientist works in isolation, despite the existence of single-
 
 Let me explain.
 
-In high school and for a while afterwards, I was in a band. We went through a series of names, but always had the same four in the core: Damien on drums, John on the bass, Paul with his vocal chords, and yours truly on the guitar.<figure id="attachment_339" style="width: 300px" class="wp-caption alignright">
+In high school and for a while afterwards, I was in a band. We went through a series of names, but always had the same four in the core: Damien on drums, John on the bass, Paul with his vocal chords, and yours truly on the guitar.
 
-[<img class="size-medium wp-image-339" src="http://kevin-urban.com/blog/wp-content/uploads/2015/10/grand-master-workmen-300x225.jpg" alt="Grand Master Workmen (circa 2001)." width="300" height="225" srcset="http://kevin-urban.com/blog/wp-content/uploads/2015/10/grand-master-workmen-300x225.jpg 300w, http://kevin-urban.com/blog/wp-content/uploads/2015/10/grand-master-workmen.jpg 720w" sizes="(max-width: 300px) 100vw, 300px" />](http://kevin-urban.com/blog/wp-content/uploads/2015/10/grand-master-workmen.jpg)<figcaption class="wp-caption-text">Grand Master Workmen (circa 2001).</figcaption></figure> 
+<figure>
+<img src="/images/grand-master-workmen.jpg" alt="Grand Master Workmen (circa 2001)." width="600vw" />]
+<figcaption>Grand Master Workmen (circa 2001).</figcaption></figure> 
 
 In Grand Master Workmen (circa 2000-01), we strived for a funky punk rock vibe. Much of the music came from never-ending jam sessions. Lyrically, we all contributed, be it Paul ad-libbing lines during an improv jam, a line or two borrowed from one our teen-angsty, presumably profound poems, or just something funny of clever one of us said that would get us giddy and inspire a song.<!--more-->
 
 At some point, GMW broke up. The four of us spent some time apart. Paul was off at college, John and I were installing carpet and pushing carts. Damien was still in high school. Eventually though (circa 2003-ish), we reunited.
 
-We were no longer the Grand Master Workmen. We were Elsewhere. This name was cool for various reasons: for one, Elsewhere is the part of spacetime inaccessible to an observer (i.e., elsewhere is outside your [lightcone](https://en.wikipedia.org/wiki/Light_cone)); for two, Elsewhere is the place citizens are &#8220;released&#8221; to in [The Giver](https://en.wikipedia.org/wiki/The_Giver) (i.e., the afterlife!).<figure id="attachment_337" style="width: 300px" class="wp-caption alignleft">
+We were no longer the Grand Master Workmen. We were Elsewhere. This name was cool for various reasons: for one, Elsewhere is the part of spacetime inaccessible to an observer (i.e., elsewhere is outside your [lightcone](https://en.wikipedia.org/wiki/Light_cone)); for two, Elsewhere is the place citizens are &#8220;released&#8221; to in [The Giver](https://en.wikipedia.org/wiki/The_Giver) (i.e., the afterlife!).
 
-[<img class="size-medium wp-image-337" src="http://kevin-urban.com/blog/wp-content/uploads/2015/10/elsewhere10-300x198.jpg" alt="Elsewhere (circa 2003, I think)" width="300" height="198" srcset="http://kevin-urban.com/blog/wp-content/uploads/2015/10/elsewhere10-300x198.jpg 300w, http://kevin-urban.com/blog/wp-content/uploads/2015/10/elsewhere10.jpg 610w" sizes="(max-width: 300px) 100vw, 300px" />](http://kevin-urban.com/blog/wp-content/uploads/2015/10/elsewhere10.jpg)<figcaption class="wp-caption-text">Elsewhere (circa 2003, I think)</figcaption></figure> 
+<figure>
+<img src="/images/elsewhere10.jpg" alt="Elsewhere (circa 2003, I think)" width="600vw" />
+<figcaption class="wp-caption-text">Elsewhere (circa 2003, I think)
+</figcaption></figure> 
 
 But as we later joked, Elsewhere might also be the place people want to be when they&#8217;re at one of our shows!
 
@@ -35,9 +40,12 @@ _&#8220;Kevin, what the heck is the point of all this nostalgia?_
 
 Patience, Reader. I have a point&#8212;and the point is: in a band, there is no pressing need to drive yourself crazy wondering, &#8220;Who is the author of this song?&#8221;
 
-Writing music in a band is a team effort and the team consists of folks with both overlapping and orthogonal talents.. It&#8217;s not really necessary to decide on an author, or even the ordering from most-to-least important contributor. No one need be relegated to the Acknowledgements Section. Somebody might have written the catchy riff for one song, but someone else wrote the hook in another song. The guitar part is cool, but the walking bass line is what makes it sound great. Maybe the drummer wrote the lyrics and the singer wrote the guitar part. At the show or on the recording, the minutia doesn&#8217;t matter too much: the band is the band, and the band authors the songs.<figure id="attachment_335" style="width: 300px" class="wp-caption alignright">
+Writing music in a band is a team effort and the team consists of folks with both overlapping and orthogonal talents.. It&#8217;s not really necessary to decide on an author, or even the ordering from most-to-least important contributor. No one need be relegated to the Acknowledgements Section. Somebody might have written the catchy riff for one song, but someone else wrote the hook in another song. The guitar part is cool, but the walking bass line is what makes it sound great. Maybe the drummer wrote the lyrics and the singer wrote the guitar part. At the show or on the recording, the minutia doesn&#8217;t matter too much: the band is the band, and the band authors the songs.
 
-[<img class="size-medium wp-image-335" src="http://kevin-urban.com/blog/wp-content/uploads/2015/10/my-current-band-300x153.png" alt="My current band of authors: The Hydromagnetix" width="300" height="153" srcset="http://kevin-urban.com/blog/wp-content/uploads/2015/10/my-current-band-300x153.png 300w, http://kevin-urban.com/blog/wp-content/uploads/2015/10/my-current-band-1024x524.png 1024w" sizes="(max-width: 300px) 100vw, 300px" />](http://kevin-urban.com/blog/wp-content/uploads/2015/10/my-current-band.png)<figcaption class="wp-caption-text">My current band of authors: The Hydromagnetix</figcaption></figure> 
+<figure>
+<img src="/images/my-current-band.png" alt="My current band of authors: The Hydromagnetix" width="600vw" />
+<figcaption>My current band of authors: The Hydromagnetix</figcaption>
+</figure> 
 
 Publishing a paper is a team effort too, but the pesky topic of authorship often distorts this fact. This is because there is only one label: author. This is oversimplified.
 

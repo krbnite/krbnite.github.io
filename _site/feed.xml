@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-03-27T10:21:22-04:00</updated><id>http://localhost:4000/</id><title type="html">Kevin Urban</title><subtitle>Don't quote me on this, but... &amp;lt;beginBlog&gt;</subtitle><entry><title type="html">My Mac From Scratch</title><link href="http://localhost:4000/My-Mac-From-Scratch/" rel="alternate" type="text/html" title="My Mac From Scratch" /><published>2017-03-11T00:00:00-05:00</published><updated>2017-03-11T00:00:00-05:00</updated><id>http://localhost:4000/My-Mac-From-Scratch</id><content type="html" xml:base="http://localhost:4000/My-Mac-From-Scratch/">&lt;p&gt;I’ve spent nearly a decade honing my .bash_profile, .vimrc, and other
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-03-29T23:24:36-04:00</updated><id>http://localhost:4000/</id><title type="html">Kevin Urban</title><subtitle>Don't quote me on this, but... &amp;lt;beginBlog&gt;</subtitle><entry><title type="html">My Mac From Scratch</title><link href="http://localhost:4000/My-Mac-From-Scratch/" rel="alternate" type="text/html" title="My Mac From Scratch" /><published>2017-03-11T00:00:00-05:00</published><updated>2017-03-11T00:00:00-05:00</updated><id>http://localhost:4000/My-Mac-From-Scratch</id><content type="html" xml:base="http://localhost:4000/My-Mac-From-Scratch/">&lt;p&gt;I’ve spent nearly a decade honing my .bash_profile, .vimrc, and other
 startup files on my personal laptop. But can’t say that I think about them too much. 
 It’s set-and-forget for long periods of time. To be clear, taking things for granted goes far beyond
 startup files: XCode, HomeBrew and hordes of brew-installed software, 
@@ -496,7 +496,13 @@ E\_{stored} = E\_{intake} &amp;#8211; \left( E\_{exercise} + E\_{walkDog} + E\_
 
 &lt;p&gt;If this equation is true, it tells us that, in order to lose weight, our restraint must beat out our body’s adaptation! However, the body’s adaptation is likely a function of restraint (caloric restriction), so it is not so straightforward.&lt;/p&gt;
 
-&lt;p&gt;And this equation does not even take into account the type of food you put in your body: 1 nacho calorie is tastier than 1 calorie of kale, but it is also 1000x worse, give or take a factor of 1000. (Reference: &lt;em&gt;Charlie McGee, “Random quips about food that sound like they must be true,” The Journal of Things People Say, Vol. 10, 2015.&lt;/em&gt;)&lt;/p&gt;</content><author><name>ogkubl</name></author><summary type="html">It just so happens that I’ve fattened up quite a bit over the past month.</summary></entry><entry><title type="html">The Angle Between Two Data Sets</title><link href="http://localhost:4000/index.php/2015/10/14/the-angle-between-two-data-sets/" rel="alternate" type="text/html" title="The Angle Between Two Data Sets" /><published>2015-10-14T18:29:18-04:00</published><updated>2015-10-14T18:29:18-04:00</updated><id>http://localhost:4000/index.php/2015/10/14/the-angle-between-two-data-sets</id><content type="html" xml:base="http://localhost:4000/index.php/2015/10/14/the-angle-between-two-data-sets/">&lt;p&gt;&lt;a href=&quot;http://kevin-urban.com/blog/wp-content/uploads/2015/10/theta1.png&quot;&gt;&lt;img class=&quot;size-medium wp-image-462 alignleft&quot; src=&quot;http://kevin-urban.com/blog/wp-content/uploads/2015/10/theta1-236x300.png&quot; alt=&quot;theta&quot; width=&quot;236&quot; height=&quot;300&quot; srcset=&quot;http://kevin-urban.com/blog/wp-content/uploads/2015/10/theta1-236x300.png 236w, http://kevin-urban.com/blog/wp-content/uploads/2015/10/theta1.png 626w&quot; sizes=&quot;(max-width: 236px) 100vw, 236px&quot; /&gt;&lt;/a&gt;Did you know that a correlation is similar to an inner product between two data sets?&lt;/p&gt;
+&lt;p&gt;And this equation does not even take into account the type of food you put in your body: 1 nacho calorie is tastier than 1 calorie of kale, but it is also 1000x worse, give or take a factor of 1000. (Reference: &lt;em&gt;Charlie McGee, “Random quips about food that sound like they must be true,” The Journal of Things People Say, Vol. 10, 2015.&lt;/em&gt;)&lt;/p&gt;</content><author><name>ogkubl</name></author><summary type="html">It just so happens that I’ve fattened up quite a bit over the past month.</summary></entry><entry><title type="html">The Angle Between Two Data Sets</title><link href="http://localhost:4000/index.php/2015/10/14/the-angle-between-two-data-sets/" rel="alternate" type="text/html" title="The Angle Between Two Data Sets" /><published>2015-10-14T18:29:18-04:00</published><updated>2015-10-14T18:29:18-04:00</updated><id>http://localhost:4000/index.php/2015/10/14/the-angle-between-two-data-sets</id><content type="html" xml:base="http://localhost:4000/index.php/2015/10/14/the-angle-between-two-data-sets/">&lt;script type=&quot;text/javascript&quot; src=&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;&gt;&lt;/script&gt;
+
+&lt;figure&gt;
+&lt;img align=&quot;right&quot; src=&quot;/images/theta1.png&quot; alt=&quot;theta&quot; width=&quot;300vw&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Did you know that a correlation is similar to an inner product between two data sets?&lt;/p&gt;
 
 &lt;p&gt;“Huh? Never heard of it.”&lt;/p&gt;
 
@@ -504,21 +510,30 @@ E\_{stored} = E\_{intake} &amp;#8211; \left( E\_{exercise} + E\_{walkDog} + E\_
 
 &lt;p&gt;There might be a lot of terminology here, so an example will help.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;http://kevin-urban.com/blog/wp-content/uploads/2015/10/inner-product1.png&quot;&gt;&lt;img class=&quot;alignright size-medium wp-image-473&quot; src=&quot;http://kevin-urban.com/blog/wp-content/uploads/2015/10/inner-product1-300x115.png&quot; alt=&quot;inner-product&quot; width=&quot;300&quot; height=&quot;115&quot; srcset=&quot;http://kevin-urban.com/blog/wp-content/uploads/2015/10/inner-product1-300x115.png 300w, http://kevin-urban.com/blog/wp-content/uploads/2015/10/inner-product1-1024x391.png 1024w, http://kevin-urban.com/blog/wp-content/uploads/2015/10/inner-product1.png 1049w&quot; sizes=&quot;(max-width: 300px) 100vw, 300px&quot; /&gt;&lt;/a&gt;A typical inner product in the normal Euclidean setting in 2D or 3D space is the dot product. Say you have two 3D vectors, (A = (A_{1},A_{2},A_{3})) and (B=(B_{1},B_{2},B_{3})). (The results below are applicable to 2D vectors by simply assuming that (A_{3}=0) and (B_{3}=0).) The dot product of these two vectors can be written in two important ways, both of which will give you the same answer. Deciding on which identity you use simply depends on your preference, or possibly how you collected your data: did you measure rectilinear components, magnitudes and angles, or both?&lt;!--more--&gt;&lt;/p&gt;
+&lt;p&gt;A typical inner product in the normal Euclidean setting in 2D or 3D space is the dot product. Say you have two 3D vectors, &lt;script type=&quot;math/tex&quot;&gt;A = (A_{1},A_{2},A_{3})&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;B=(B_{1},B_{2},B_{3})&lt;/script&gt;. (The results below are applicable to 2D vectors by simply assuming that &lt;script type=&quot;math/tex&quot;&gt;A_{3}=0&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;B_{3}=0&lt;/script&gt;.) The dot product of these two vectors can be written in two important ways, both of which will give you the same answer. Deciding on which identity you use simply depends on your preference, or possibly how you collected your data: did you measure rectilinear components, magnitudes and angles, or both?&lt;!--more--&gt;&lt;/p&gt;
 
-&lt;p&gt;(1) Inner Product (Def1): (\quad\quad Dot(A,B) = \Sigma_{i=1}^{3}A_{i}B_{i} = A_{1}B_{1}+A_{2}B_{2}+A_{3}B_{3})&lt;/p&gt;
+&lt;figure&gt;
+&lt;img src=&quot;/images/inner-product1.png&quot; alt=&quot;inner-product&quot; width=&quot;600vw&quot; /&gt;
+&lt;/figure&gt;
 
-&lt;table&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;(2) Inner Product (Def2): (\quad\quad Dot(A,B) =&lt;/td&gt;
-      &lt;td&gt;A&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td&gt;B&lt;/td&gt;
-      &lt;td&gt;cos(\theta))&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Inner Product (Def1): &lt;script type=&quot;math/tex&quot;&gt;\quad Dot(A,B) = \Sigma_{i=1}^{3}A_{i}B_{i} = A_{1}B_{1}+A_{2}B_{2}+A_{3}B_{3}&lt;/script&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;table&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;Inner Product (Def2): $$ \quad\quad Dot(A,B) =&lt;/td&gt;
+          &lt;td&gt;A&lt;/td&gt;
+          &lt;td&gt; &lt;/td&gt;
+          &lt;td&gt;B&lt;/td&gt;
+          &lt;td&gt;cos(\theta) $$&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;table&gt;
   &lt;tbody&gt;
@@ -526,18 +541,15 @@ E\_{stored} = E\_{intake} &amp;#8211; \left( E\_{exercise} + E\_{walkDog} + E\_
       &lt;td&gt;Here we use the notation&lt;/td&gt;
       &lt;td&gt;A&lt;/td&gt;
       &lt;td&gt;to denote the norm (aka the length) of the vector A. The norm is defined as follows:&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
     &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;table&gt;
-  &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td&gt;(3) IP-Induced Norm: (\quad\quad Norm(A) = \sqrt{Dot(A,A)} = \sqrt{&lt;/td&gt;
+      &lt;td&gt;* IP-Induced Norm: $$\quad\quad Norm(A) = \sqrt{Dot(A,A)} = \sqrt{&lt;/td&gt;
       &lt;td&gt;A&lt;/td&gt;
       &lt;td&gt;^{2}\cancelto{1}{cos(0)}} =&lt;/td&gt;
       &lt;td&gt;A&lt;/td&gt;
-      &lt;td&gt;)&lt;/td&gt;
+      &lt;td&gt;$$&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
@@ -546,31 +558,39 @@ E\_{stored} = E\_{intake} &amp;#8211; \left( E\_{exercise} + E\_{walkDog} + E\_
 
 &lt;p&gt;Furthermore, the equality in Eq(2) tells us that if we can define a normalized inner product rather easily:&lt;/p&gt;
 
-&lt;table&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;(4) Normalized Inner Product: (\quad\quad NormDot(A,B) = \frac{Dot(A,B)}{&lt;/td&gt;
-      &lt;td&gt;A&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td&gt;B&lt;/td&gt;
-      &lt;td&gt;} = cos(\theta))&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;table&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;Normalized Inner Product: $$\quad\quad NormDot(A,B) = \frac{Dot(A,B)}{&lt;/td&gt;
+          &lt;td&gt;A&lt;/td&gt;
+          &lt;td&gt; &lt;/td&gt;
+          &lt;td&gt;B&lt;/td&gt;
+          &lt;td&gt;} = cos(\theta)$$&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;Having this normalized inner product, we then see that we can quantitatively compute the angle between any two vectors in this space:&lt;/p&gt;
 
-&lt;table&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;(5) Angle: (\quad\quad \theta =acos\left(\frac{A\cdot B}{&lt;/td&gt;
-      &lt;td&gt;A&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td&gt;B&lt;/td&gt;
-      &lt;td&gt;}\right) )&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;table&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;Angle: $$\quad\quad \theta =acos\left(\frac{A\cdot B}{&lt;/td&gt;
+          &lt;td&gt;A&lt;/td&gt;
+          &lt;td&gt; &lt;/td&gt;
+          &lt;td&gt;B&lt;/td&gt;
+          &lt;td&gt;}\right) $$&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;The important take-away here is that in these simple vector spaces, the notions of vector components, vector magnitudes, and angles between vectors are all intuitive. In fact, mathematically speaking, the generalized definitions of inner product and norm was motivated by the desire to generalize these geometric notions to other mathematical spaces.&lt;/p&gt;
 
@@ -756,7 +776,7 @@ E\_{stored} = E\_{intake} &amp;#8211; \left( E\_{exercise} + E\_{walkDog} + E\_
 
 &lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Cross-correlation&quot;&gt;Cross-Correlation on Wikipedia&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;NOTE: this article is a beefed-up version of an answer I provided on StackExchange:  &lt;a class=&quot;question-hyperlink&quot; style=&quot;font-size: 16px; font-weight: 600; line-height: 1.7em;&quot; href=&quot;http://stats.stackexchange.com/questions/134774/non-additive-property-of-correlation-coefficients&quot;&gt;Non-additive property of correlation coefficients&lt;/a&gt;&lt;/p&gt;</content><author><name>ogkubl</name></author><summary type="html">Did you know that a correlation is similar to an inner product between two data sets?</summary></entry><entry><title type="html">The Near-Earth Mass Flux of the Solar Wind: Constant, Capricious, or Both?</title><link href="http://localhost:4000/index.php/2015/10/14/the-near-earth-mass-flux-of-the-solar-wind/" rel="alternate" type="text/html" title="The Near-Earth Mass Flux of the Solar Wind:  Constant, Capricious, or Both?" /><published>2015-10-14T11:50:46-04:00</published><updated>2015-10-14T11:50:46-04:00</updated><id>http://localhost:4000/index.php/2015/10/14/the-near-earth-mass-flux-of-the-solar-wind</id><content type="html" xml:base="http://localhost:4000/index.php/2015/10/14/the-near-earth-mass-flux-of-the-solar-wind/">&lt;p&gt;&lt;a href=&quot;http://kevin-urban.com/blog/wp-content/uploads/2015/10/solar-wind-mass-flux.png&quot;&gt;&lt;img class=&quot;wp-image-464 alignright&quot; src=&quot;http://kevin-urban.com/blog/wp-content/uploads/2015/10/solar-wind-mass-flux-300x109.png&quot; alt=&quot;solar-wind-mass-flux&quot; width=&quot;308&quot; height=&quot;112&quot; srcset=&quot;http://kevin-urban.com/blog/wp-content/uploads/2015/10/solar-wind-mass-flux-300x109.png 300w, http://kevin-urban.com/blog/wp-content/uploads/2015/10/solar-wind-mass-flux-1024x372.png 1024w&quot; sizes=&quot;(max-width: 308px) 100vw, 308px&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;NOTE: this article is a beefed-up version of an answer I provided on StackExchange:  &lt;a class=&quot;question-hyperlink&quot; style=&quot;font-size: 16px; font-weight: 600; line-height: 1.7em;&quot; href=&quot;http://stats.stackexchange.com/questions/134774/non-additive-property-of-correlation-coefficients&quot;&gt;Non-additive property of correlation coefficients&lt;/a&gt;&lt;/p&gt;</content><author><name>ogkubl</name></author><summary type="html"></summary></entry><entry><title type="html">The Near-Earth Mass Flux of the Solar Wind: Constant, Capricious, or Both?</title><link href="http://localhost:4000/index.php/2015/10/14/the-near-earth-mass-flux-of-the-solar-wind/" rel="alternate" type="text/html" title="The Near-Earth Mass Flux of the Solar Wind:  Constant, Capricious, or Both?" /><published>2015-10-14T11:50:46-04:00</published><updated>2015-10-14T11:50:46-04:00</updated><id>http://localhost:4000/index.php/2015/10/14/the-near-earth-mass-flux-of-the-solar-wind</id><content type="html" xml:base="http://localhost:4000/index.php/2015/10/14/the-near-earth-mass-flux-of-the-solar-wind/">&lt;p&gt;&lt;a href=&quot;http://kevin-urban.com/blog/wp-content/uploads/2015/10/solar-wind-mass-flux.png&quot;&gt;&lt;img class=&quot;wp-image-464 alignright&quot; src=&quot;http://kevin-urban.com/blog/wp-content/uploads/2015/10/solar-wind-mass-flux-300x109.png&quot; alt=&quot;solar-wind-mass-flux&quot; width=&quot;308&quot; height=&quot;112&quot; srcset=&quot;http://kevin-urban.com/blog/wp-content/uploads/2015/10/solar-wind-mass-flux-300x109.png 300w, http://kevin-urban.com/blog/wp-content/uploads/2015/10/solar-wind-mass-flux-1024x372.png 1024w&quot; sizes=&quot;(max-width: 308px) 100vw, 308px&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;In a &lt;a href=&quot;http://kevin-urban.com/blog/index.php/2015/09/30/early-characterizations-of-the-mid-latitude-dayside-hydromagnetic-response-to-upstream-solar-wind-conditions-1981-82/#polynomial&quot;&gt;meta-analysis&lt;/a&gt; of early (1980-82) papers by Allan Wolfe (and Co) on the upstream solar wind control of ground-level hydromagnetic [GLHM] activity (a.k.a. ULF waves), I conjectured that the data analysis in &lt;a style=&quot;line-height: 1.7em;&quot; href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/JA085iA11p05977/abstract&quot;&gt;Wolfe1980b&lt;/a&gt;&lt;span style=&quot;line-height: 1.7em;&quot;&gt; indicates that the mass flux of the solar wind might be constant. Wolfe showed that there was a strong relationship between the upstream solar wind speed and density, the scatterplot illustrating that the upstream density to decay nonlinearly as a function of the speed. It occurred to me that the scatterplot of (V_{SW}) vs (N_{p}) looked fairly hyperbolic, as if (N_{p}=\frac{A}{V_{SW}})&lt;/span&gt;&lt;/p&gt;
 
@@ -797,17 +817,22 @@ E\_{stored} = E\_{intake} &amp;#8211; \left( E\_{exercise} + E\_{walkDog} + E\_
 
 &lt;p&gt;Let me explain.&lt;/p&gt;
 
-&lt;p&gt;In high school and for a while afterwards, I was in a band. We went through a series of names, but always had the same four in the core: Damien on drums, John on the bass, Paul with his vocal chords, and yours truly on the guitar.&lt;figure id=&quot;attachment_339&quot; style=&quot;width: 300px&quot; class=&quot;wp-caption alignright&quot;&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;In high school and for a while afterwards, I was in a band. We went through a series of names, but always had the same four in the core: Damien on drums, John on the bass, Paul with his vocal chords, and yours truly on the guitar.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;http://kevin-urban.com/blog/wp-content/uploads/2015/10/grand-master-workmen.jpg&quot;&gt;&lt;img class=&quot;size-medium wp-image-339&quot; src=&quot;http://kevin-urban.com/blog/wp-content/uploads/2015/10/grand-master-workmen-300x225.jpg&quot; alt=&quot;Grand Master Workmen (circa 2001).&quot; width=&quot;300&quot; height=&quot;225&quot; srcset=&quot;http://kevin-urban.com/blog/wp-content/uploads/2015/10/grand-master-workmen-300x225.jpg 300w, http://kevin-urban.com/blog/wp-content/uploads/2015/10/grand-master-workmen.jpg 720w&quot; sizes=&quot;(max-width: 300px) 100vw, 300px&quot; /&gt;&lt;/a&gt;&amp;lt;figcaption class=&quot;wp-caption-text&quot;&amp;gt;Grand Master Workmen (circa 2001).&amp;lt;/figcaption&amp;gt;&amp;lt;/figure&amp;gt;&lt;/p&gt;
+&lt;figure&gt;
+&lt;img src=&quot;/images/grand-master-workmen.jpg&quot; alt=&quot;Grand Master Workmen (circa 2001).&quot; width=&quot;600vw&quot; /&gt;]
+&lt;figcaption&gt;Grand Master Workmen (circa 2001).&lt;/figcaption&gt;&lt;/figure&gt;
 
 &lt;p&gt;In Grand Master Workmen (circa 2000-01), we strived for a funky punk rock vibe. Much of the music came from never-ending jam sessions. Lyrically, we all contributed, be it Paul ad-libbing lines during an improv jam, a line or two borrowed from one our teen-angsty, presumably profound poems, or just something funny of clever one of us said that would get us giddy and inspire a song.&lt;!--more--&gt;&lt;/p&gt;
 
 &lt;p&gt;At some point, GMW broke up. The four of us spent some time apart. Paul was off at college, John and I were installing carpet and pushing carts. Damien was still in high school. Eventually though (circa 2003-ish), we reunited.&lt;/p&gt;
 
-&lt;p&gt;We were no longer the Grand Master Workmen. We were Elsewhere. This name was cool for various reasons: for one, Elsewhere is the part of spacetime inaccessible to an observer (i.e., elsewhere is outside your &lt;a href=&quot;https://en.wikipedia.org/wiki/Light_cone&quot;&gt;lightcone&lt;/a&gt;); for two, Elsewhere is the place citizens are “released” to in &lt;a href=&quot;https://en.wikipedia.org/wiki/The_Giver&quot;&gt;The Giver&lt;/a&gt; (i.e., the afterlife!).&lt;figure id=&quot;attachment_337&quot; style=&quot;width: 300px&quot; class=&quot;wp-caption alignleft&quot;&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;We were no longer the Grand Master Workmen. We were Elsewhere. This name was cool for various reasons: for one, Elsewhere is the part of spacetime inaccessible to an observer (i.e., elsewhere is outside your &lt;a href=&quot;https://en.wikipedia.org/wiki/Light_cone&quot;&gt;lightcone&lt;/a&gt;); for two, Elsewhere is the place citizens are “released” to in &lt;a href=&quot;https://en.wikipedia.org/wiki/The_Giver&quot;&gt;The Giver&lt;/a&gt; (i.e., the afterlife!).&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;http://kevin-urban.com/blog/wp-content/uploads/2015/10/elsewhere10.jpg&quot;&gt;&lt;img class=&quot;size-medium wp-image-337&quot; src=&quot;http://kevin-urban.com/blog/wp-content/uploads/2015/10/elsewhere10-300x198.jpg&quot; alt=&quot;Elsewhere (circa 2003, I think)&quot; width=&quot;300&quot; height=&quot;198&quot; srcset=&quot;http://kevin-urban.com/blog/wp-content/uploads/2015/10/elsewhere10-300x198.jpg 300w, http://kevin-urban.com/blog/wp-content/uploads/2015/10/elsewhere10.jpg 610w&quot; sizes=&quot;(max-width: 300px) 100vw, 300px&quot; /&gt;&lt;/a&gt;&amp;lt;figcaption class=&quot;wp-caption-text&quot;&amp;gt;Elsewhere (circa 2003, I think)&amp;lt;/figcaption&amp;gt;&amp;lt;/figure&amp;gt;&lt;/p&gt;
+&lt;figure&gt;
+&lt;img src=&quot;/images/elsewhere10.jpg&quot; alt=&quot;Elsewhere (circa 2003, I think)&quot; width=&quot;600vw&quot; /&gt;
+&lt;figcaption class=&quot;wp-caption-text&quot;&gt;Elsewhere (circa 2003, I think)
+&lt;/figcaption&gt;&lt;/figure&gt;
 
 &lt;p&gt;But as we later joked, Elsewhere might also be the place people want to be when they’re at one of our shows!&lt;/p&gt;
 
@@ -819,9 +844,12 @@ E\_{stored} = E\_{intake} &amp;#8211; \left( E\_{exercise} + E\_{walkDog} + E\_
 
 &lt;p&gt;Patience, Reader. I have a point—and the point is: in a band, there is no pressing need to drive yourself crazy wondering, “Who is the author of this song?”&lt;/p&gt;
 
-&lt;p&gt;Writing music in a band is a team effort and the team consists of folks with both overlapping and orthogonal talents.. It’s not really necessary to decide on an author, or even the ordering from most-to-least important contributor. No one need be relegated to the Acknowledgements Section. Somebody might have written the catchy riff for one song, but someone else wrote the hook in another song. The guitar part is cool, but the walking bass line is what makes it sound great. Maybe the drummer wrote the lyrics and the singer wrote the guitar part. At the show or on the recording, the minutia doesn’t matter too much: the band is the band, and the band authors the songs.&lt;figure id=&quot;attachment_335&quot; style=&quot;width: 300px&quot; class=&quot;wp-caption alignright&quot;&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;Writing music in a band is a team effort and the team consists of folks with both overlapping and orthogonal talents.. It’s not really necessary to decide on an author, or even the ordering from most-to-least important contributor. No one need be relegated to the Acknowledgements Section. Somebody might have written the catchy riff for one song, but someone else wrote the hook in another song. The guitar part is cool, but the walking bass line is what makes it sound great. Maybe the drummer wrote the lyrics and the singer wrote the guitar part. At the show or on the recording, the minutia doesn’t matter too much: the band is the band, and the band authors the songs.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;http://kevin-urban.com/blog/wp-content/uploads/2015/10/my-current-band.png&quot;&gt;&lt;img class=&quot;size-medium wp-image-335&quot; src=&quot;http://kevin-urban.com/blog/wp-content/uploads/2015/10/my-current-band-300x153.png&quot; alt=&quot;My current band of authors: The Hydromagnetix&quot; width=&quot;300&quot; height=&quot;153&quot; srcset=&quot;http://kevin-urban.com/blog/wp-content/uploads/2015/10/my-current-band-300x153.png 300w, http://kevin-urban.com/blog/wp-content/uploads/2015/10/my-current-band-1024x524.png 1024w&quot; sizes=&quot;(max-width: 300px) 100vw, 300px&quot; /&gt;&lt;/a&gt;&amp;lt;figcaption class=&quot;wp-caption-text&quot;&amp;gt;My current band of authors: The Hydromagnetix&amp;lt;/figcaption&amp;gt;&amp;lt;/figure&amp;gt;&lt;/p&gt;
+&lt;figure&gt;
+&lt;img src=&quot;/images/my-current-band.png&quot; alt=&quot;My current band of authors: The Hydromagnetix&quot; width=&quot;600vw&quot; /&gt;
+&lt;figcaption&gt;My current band of authors: The Hydromagnetix&lt;/figcaption&gt;
+&lt;/figure&gt;
 
 &lt;p&gt;Publishing a paper is a team effort too, but the pesky topic of authorship often distorts this fact. This is because there is only one label: author. This is oversimplified.&lt;/p&gt;
 
@@ -847,85 +875,117 @@ E\_{stored} = E\_{intake} &amp;#8211; \left( E\_{exercise} + E\_{walkDog} + E\_
 
 &lt;p&gt; &lt;/p&gt;
 
-&lt;p&gt; &lt;/p&gt;</content><author><name>ogkubl</name></author><summary type="html">It is rare that a scientist works in isolation, despite the existence of single-author papers. The problem is there is only one label: author. And this fudges with everyone’s heads.</summary></entry><entry><title type="html">Early characterizations of the mid-latitude, dayside hydromagnetic response to upstream solar wind conditions: 1981-82</title><link href="http://localhost:4000/index.php/2015/09/30/early-characterizations-of-the-mid-latitude-dayside-hydromagnetic-response-to-upstream-solar-wind-conditions-1981-82/" rel="alternate" type="text/html" title="Early characterizations of the mid-latitude, dayside hydromagnetic response to upstream solar wind conditions: 1981-82" /><published>2015-09-30T12:04:14-04:00</published><updated>2015-09-30T12:04:14-04:00</updated><id>http://localhost:4000/index.php/2015/09/30/early-characterizations-of-the-mid-latitude-dayside-hydromagnetic-response-to-upstream-solar-wind-conditions-1981-82</id><content type="html" xml:base="http://localhost:4000/index.php/2015/09/30/early-characterizations-of-the-mid-latitude-dayside-hydromagnetic-response-to-upstream-solar-wind-conditions-1981-82/">&lt;p&gt;In my &lt;a href=&quot;/index.php/2015/09/21/early-characterizations-of-the-mid-latitude-dayside-hydromagnetic-response-to-upstream-solar-wind-conditions/&quot;&gt;previous post on this topic&lt;/a&gt;, I covered two 1980 papers published by Allan Wolfe and his colleagues concerning the dependence of ground-level hydromagnetic [GLHM] energy on upstream solar wind [SW] parameters. The velocity and angle effects were both confirmed as important controllers of GLHM energy at mid-latitudes on the dayside; furthermore, the angle effect was found to be frequency-dependent, its importance diminishing from high to low frequencies. ()&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;</content><author><name>ogkubl</name></author><summary type="html">It is rare that a scientist works in isolation, despite the existence of single-author papers. The problem is there is only one label: author. And this fudges with everyone’s heads.</summary></entry><entry><title type="html">Early characterizations of the mid-latitude, dayside hydromagnetic response to upstream solar wind conditions: 1981-82</title><link href="http://localhost:4000/index.php/2015/09/30/early-characterizations-of-the-mid-latitude-dayside-hydromagnetic-response-to-upstream-solar-wind-conditions-1981-82/" rel="alternate" type="text/html" title="Early characterizations of the mid-latitude, dayside hydromagnetic response to upstream solar wind conditions: 1981-82" /><published>2015-09-30T12:04:14-04:00</published><updated>2015-09-30T12:04:14-04:00</updated><id>http://localhost:4000/index.php/2015/09/30/early-characterizations-of-the-mid-latitude-dayside-hydromagnetic-response-to-upstream-solar-wind-conditions-1981-82</id><content type="html" xml:base="http://localhost:4000/index.php/2015/09/30/early-characterizations-of-the-mid-latitude-dayside-hydromagnetic-response-to-upstream-solar-wind-conditions-1981-82/">&lt;script type=&quot;text/javascript&quot; src=&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;In my &lt;a href=&quot;/index.php/2015/09/21/early-characterizations-of-the-mid-latitude-dayside-hydromagnetic-response-to-upstream-solar-wind-conditions/&quot;&gt;previous post on this topic&lt;/a&gt;, I covered two 1980 papers published by Allan Wolfe and his colleagues concerning the dependence of ground-level hydromagnetic [GLHM] energy on upstream solar wind [SW] parameters. The velocity and angle effects were both confirmed as important controllers of GLHM energy at mid-latitudes on the dayside; furthermore, the angle effect was found to be frequency-dependent, its importance diminishing from high to low frequencies.&lt;/p&gt;
 
 &lt;p&gt;In the two papers I review today [&lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/JA086iA09p07507/abstract&quot;&gt;1&lt;/a&gt;, &lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/JA087iA12p10425/abstract&quot;&gt;2&lt;/a&gt;], Wolfe and his co-authors address a few of the limitations of the previous two studies. Latitude and local time [LT] dependencies are paid attention to, as well as hemispheric effects (conjugacy study), the nightside, and additional upstream solar wind parameters. Internal sources of GLHM energy are even given a nod.&lt;/p&gt;
 
 &lt;h4 id=&quot;tldr&quot;&gt;TLDR&lt;/h4&gt;
 
-&lt;p&gt;In short, as of 1982, the angle effect still comes out as most important for the high-frequency (proxy Pc3) band, while the kinetic energy flux density  $(f_{k}=\frac{1}{2}m_{p}N_{p}V_{SW}^{3})$ stands out as most important for the proxy Pc4 and proxy Pc5 band. The authors conclude that the (f_{k}) effect is likely associated with the excitement of field line resonances [FLRs] due to internal/external pressure balancing [Wu1981]. Solar wind speed ((V_{SW}))—a.k.a. the velocity effect—is still found to be important, especially if not considering (f_{k}) in the same regression. Furthermore, in addition to the angle effect, frequency dependence is found to be a characteristic of both the velocity and (f_{k}) effects as well. For the lower frequency “proxy Pc” bands,  (f_{k}) and (V_{SW}) appear to have the most influence post-noon, towards dusk. Correlations are found to improve slightly when statistics are performed on the (B_{Z}\lt 0) subset of (B_{Z}). Lastly, the Perreault-Akasofu solar wind-magnetosphere coupling parameter, (\epsilon), is found to have no significant correlations with mid-latitude, dayside GLHM energy.&lt;/p&gt;
+&lt;p&gt;In short, as of 1982, the angle effect still comes out as most important for the high-frequency (proxy Pc3) band, while the kinetic energy flux density  &lt;script type=&quot;math/tex&quot;&gt;(f_{k}=\frac{1}{2}m_{p}N_{p}V_{SW}^{3})&lt;/script&gt; stands out as most important for the proxy Pc4 and proxy Pc5 band. The authors conclude that the &lt;script type=&quot;math/tex&quot;&gt;f_{k}&lt;/script&gt; effect is likely associated with the excitement of field line resonances [FLRs] due to internal/external pressure balancing [Wu1981]. Solar wind speed (&lt;script type=&quot;math/tex&quot;&gt;V_{SW}&lt;/script&gt;)—a.k.a. the velocity effect—is still found to be important, especially if not considering &lt;script type=&quot;math/tex&quot;&gt;f_{k}&lt;/script&gt; in the same regression. Furthermore, in addition to the angle effect, frequency dependence is found to be a characteristic of both the velocity and &lt;script type=&quot;math/tex&quot;&gt;f_{k}&lt;/script&gt; effects as well. For the lower frequency “proxy Pc” bands,  &lt;script type=&quot;math/tex&quot;&gt;f_{k}&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;V_{SW}&lt;/script&gt; appear to have the most influence post-noon, towards dusk. Correlations are found to improve slightly when statistics are performed on the &lt;script type=&quot;math/tex&quot;&gt;B_{Z}\lt 0&lt;/script&gt; subset of &lt;script type=&quot;math/tex&quot;&gt;B_{Z}&lt;/script&gt;. Lastly, the Perreault-Akasofu solar wind-magnetosphere coupling parameter, &lt;script type=&quot;math/tex&quot;&gt;\epsilon&lt;/script&gt;, is found to have no significant correlations with mid-latitude, dayside GLHM energy.&lt;/p&gt;
 
 &lt;p&gt;After discussing the papers in a bit more detail below, I provide a few thoughts concerning an alternative interpretation of their results.&lt;!--more--&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;span style=&quot;text-decoration: underline;&quot;&gt;&lt;strong&gt;Terminology Refresher&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;hr /&gt;
 
-&lt;p&gt;&lt;strong&gt;Velocity Effect&lt;/strong&gt;: increases in (V_{SW}) upstream of the bow shock (\rightarrow) increases in (V_{sheath}) downstream of the bow shock, adjacent to the magnetopause (\rightarrow) KHI along the magnetopause (\rightarrow) magnetospheric HM waves&lt;/p&gt;
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Terminology Refresher&lt;/strong&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
-&lt;p style=&quot;text-align: left;&quot;&gt;
-  &lt;strong&gt;Angle effect&lt;/strong&gt;:  decreases in IMF cone angle \(\rightarrow\) more efficient transport of HM waves from the bow shock to the magnetopause \(\rightarrow\) magnetopause transmission of HM waves \(\rightarrow\) magnetospheric HM waves
-&lt;/p&gt;
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Velocity Effect&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;Increases in solar wind speed upstream of the bow shock –&amp;gt; increases in bulk speed in the magnetosheath downstream of the bow shock, adjacent to the magnetopause –&amp;gt; KHI along the magnetopause –&amp;gt; magnetospheric HM waves&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Angle Effect&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; Decreases in IMF cone angle –&amp;gt; more efficient transport of HM waves from the bow shock to the magnetopause –&amp;gt; magnetopause transmission of HM waves –&amp;gt; magnetospheric HM waves&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
-&lt;p style=&quot;text-align: left;&quot;&gt;
-  &lt;strong&gt;Proxy Pc Bands&lt;/strong&gt;: The traditional bands in magnetosphere studies include the Pc3 (10-45 sec), Pc4 (45-150 sec), and Pc5 (150-600 sec) bands. In the series of papers by Wolfe, three related bands are used. I call these the &amp;#8220;proxy Pc bands&amp;#8221; for reasons that should be obvious: Proxy Pc3 (30-60 sec), Proxy Pc4 (60-120 sec), and Proxy Pc5 (120-240 sec).
-&lt;/p&gt;
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Proxy Pc Bands&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;The traditional bands in magnetosphere studies include the Pc3 (10-45 sec), Pc4 (45-150 sec), and Pc5 (150-600 sec) bands. In the series of papers by Wolfe, three related bands are used. I call these the “proxy Pc bands” for reasons that should be obvious: Proxy Pc3 (30-60 sec), Proxy Pc4 (60-120 sec), and Proxy Pc5 (120-240 sec).&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
-&lt;p&gt;&lt;span style=&quot;text-decoration: underline;&quot;&gt;&lt;strong&gt;Expanding the Picture Painted by Previous Studies&lt;br /&gt; &lt;/strong&gt;&lt;/span&gt;Piecing together information on GLHM studies at mid-latitudes thus far (1981-82), and treating all HM bands equally, the two papers describe a statistical pattern of enhanced GLHM energy at the flanks (local dusk and local dawn) with a local minimum of energy near noon, which they note is consistent with the velocity effect (there is likely a &lt;a href=&quot;https://en.wikipedia.org/wiki/Stagnation_point&quot;&gt;stagnation point&lt;/a&gt; at noon along the Sun-Earth line, thus no KHI or KHI-associated HM waves in this region). Polarization analyses before and after local noon also appeared to support this mechanism (Lanzerotti reference).&lt;/p&gt;
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;expanding-the-picture-painted-by-previous-studies&quot;&gt;Expanding the Picture Painted by Previous Studies&lt;/h3&gt;
+&lt;p&gt;Piecing together information on GLHM studies at mid-latitudes thus far (1981-82), and treating all HM bands equally, the two papers describe a statistical pattern of enhanced GLHM energy at the flanks (local dusk and local dawn) with a local minimum of energy near noon, which they note is consistent with the velocity effect (there is likely a &lt;a href=&quot;https://en.wikipedia.org/wiki/Stagnation_point&quot;&gt;stagnation point&lt;/a&gt; at noon along the Sun-Earth line, thus no KHI or KHI-associated HM waves in this region). Polarization analyses before and after local noon also appeared to support this mechanism (Lanzerotti reference).&lt;/p&gt;
 
 &lt;p&gt;In &lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/JA086iA09p07507/abstract&quot;&gt;Wolfe1981&lt;/a&gt;, using a single, mid-latitude (L=3.5) magnetometer site during boreal (northern) summer dates when the IMP J spacecraft was beyond bow shock in the solar wind, the authors look for a clear diurnal pattern in the mid-latitude, GLHM energy in three frequency bands (Wolfe’s proxy Pc3-5 bands), but come up empty-handed, suggesting that the statistical results, while not incorrect, might not accurately characterize any one day in particular. Looking more closely at the dayside variations, they do note that the lower frequency bands (proxy Pc4 and proxy Pc5) co-vary with each other day to day and, in general, tend to increase in power from the morning towards the afternoon, while the highest frequency band (proxy Pc3) varies independently of the lower frequencies and tends to decrease over the dayside hours.&lt;/p&gt;
 
 &lt;p&gt;These observations are in contrast to the  peak-lull-peak picture of GLHM energy as one goes from dawn to noon to dusk. This might be due to the statistics as suggested above (“right on average, but wrong all the time”), or because the peak-lull-peak picture does not take into account that the coherence and amplitude of GLHM energy is frequency-dependent and that, for each frequency band, there might be differing local time [LT] dependencies. The authors therefore emphasize the importance of delineating frequency bands when discussing hydromagnetic energy—that an overall picture cannot be painted by overlaying bits and pieces of information from various frequency bands. (In the coming years, this issue is dealt with using short-time Fourier transform and wavelet analyses.)&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/JA086iA09p07507/abstract&quot;&gt;Wolfe1981&lt;/a&gt; confirms that at any given site, HM spectra follow a power-law dependence on frequency (higher frequencies hold substantially less power than the lower frequencies in the geomagnetic field). Using three nearly-but-not-quite conjugate sites (L=3.5 North, 4.0 South , 4.4 North) during a week of equinox, &lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/JA087iA12p10425/abstract&quot;&gt;Wolfe1982&lt;/a&gt; confirms that the HM spectra at conjugate stations take on similar shapes and slopes, but notes that, in general, GLHM energy is directly dependent on latitude—higher latitudes measure higher levels of energy (in agreement with Surkan and Lanzerotti [1974]). Furthermore, &lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/JA086iA09p07507/abstract&quot;&gt;Wolfe1981&lt;/a&gt; finds that energy levels across all three proxy Pc bands are typically higher on disturbed days than quiet days (as measured by (\Sigma Kp)), but cannot establish a statistically significant relationship between the Kp index and GLHM energy—also in agreement with previous studies. In terms of the HM spectra, this tells us that energy decreases as one goes higher in frequency or lower in latitude, and is likely to decrease with Kp, despite not having a well-defined relationship with Kp.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/JA086iA09p07507/abstract&quot;&gt;Wolfe1981&lt;/a&gt; confirms that at any given site, HM spectra follow a power-law dependence on frequency (higher frequencies hold substantially less power than the lower frequencies in the geomagnetic field). Using three nearly-but-not-quite conjugate sites (L=3.5 North, 4.0 South , 4.4 North) during a week of equinox, &lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/JA087iA12p10425/abstract&quot;&gt;Wolfe1982&lt;/a&gt; confirms that the HM spectra at conjugate stations take on similar shapes and slopes, but notes that, in general, GLHM energy is directly dependent on latitude—higher latitudes measure higher levels of energy (in agreement with Surkan and Lanzerotti [1974]). Furthermore, &lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/JA086iA09p07507/abstract&quot;&gt;Wolfe1981&lt;/a&gt; finds that energy levels across all three proxy Pc bands are typically higher on disturbed days than quiet days (as measured by &lt;script type=&quot;math/tex&quot;&gt;\Sigma Kp&lt;/script&gt;, but cannot establish a statistically significant relationship between the Kp index and GLHM energy—also in agreement with previous studies. In terms of the HM spectra, this tells us that energy decreases as one goes higher in frequency or lower in latitude, and is likely to decrease with Kp, despite not having a well-defined relationship with Kp.&lt;/p&gt;
 
 &lt;p&gt;When investigating the relationship between GLHM energy and upstream solar wind parameters, many previous studies looked primarily into the velocity and angle effects, focusing heavily on the dayside. The velocity effect was found to be important across frequency bands and likely having most control at the dawn/dusk flanks, consistent with reports of GLHM energy. The angle effect had been shown to be a global phenomenon, taking place simultaneously at largely separated stations. This global effect is likely due to the structuring of HM energy via FLRs.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/JA086iA09p07507/abstract&quot;&gt;Wolfe1981&lt;/a&gt; introduces many additional solar wind parameters into the mix, including mass flux ((m_{p}N_{p}V_{SW})), momentum flux ((m_{p}N_{p}V_{SW}^{2})), kinetic energy flux density ((f_{k}=\frac{1}{2}m_{p}N_{p}V_{SW}^{3})), and the Perreault-Akasofu coupling parameter ((\epsilon=L_{0}^{2}V_{SW}sin^{4}\left(\frac{\theta_{clock}}{2}\right))), where (L_{0}^{2}) stands in as an “interaction area” between the solar wind and the magnetosphere and (\theta_{clock}=atan2(B_{Y},B_{X})). However, mass flux and momentum flux are not investigated further than mentioning that they were investigated (more on this below).&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/JA086iA09p07507/abstract&quot;&gt;Wolfe1981&lt;/a&gt; introduces many additional solar wind parameters into the mix, including&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/JA086iA09p07507/abstract&quot;&gt;Wolfe1981&lt;/a&gt; contrasts the solar wind control of GLHM energy between the dayside and nightside by applying single-variable (simple) linear regression to each pairing of solar wind parameter and GLHM frequency band. Higher correlations and significance is found on the dayside for most solar wind parameters. The angle effect is significant for the highest frequency band on the dayside, but is essentially nonexistent and insignificant for the lower frequency bands and all bands on the nightside. (V_{SW}) and (f_{k}) have the highest correlations with GLHM energy and are significant for all bands on both the dayside and nightside, while (\epsilon) is not significant on either side for any band.With this in mind, the authors look no further into the nightside in the current work, noting that geomagnetic tail parameters likely control the nightside GLHM energy.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;mass flux &lt;script type=&quot;math/tex&quot;&gt;(m_{p}N\_{p}V_{SW})&lt;/script&gt;&lt;/li&gt;
+  &lt;li&gt;momentum flux &lt;script type=&quot;math/tex&quot;&gt;(m_{p}N_{p}V_{SW}^{2})&lt;/script&gt;&lt;/li&gt;
+  &lt;li&gt;kinetic energy flux density &lt;script type=&quot;math/tex&quot;&gt;(f_{k}=\frac{1}{2}m_{p}N_{p}V_{SW}^{3})&lt;/script&gt;&lt;/li&gt;
+  &lt;li&gt;Perreault-Akasofu coupling parameter &lt;script type=&quot;math/tex&quot;&gt;(\epsilon=L_{0}^{2}V_{SW}sin^{4}\left(\frac{\theta_{clock}}{2}\right))&lt;/script&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;&lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/JA086iA09p07507/abstract&quot;&gt;Wolfe1981&lt;/a&gt; subsequently performs various permutations of stepwise multiple linear regression [SMLR] analysis, showing support that (f_{k}) is the most important parameter across all bands on the dayside, whereas (V_{SW}) emerges as the most important if one does not include (f_{k}) in the regression. SMLR analyses also strongly support the unimportance of (\epsilon)). Fearing their assessment of (\epsilon) might be wrong (perhaps the days studied in &lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/JA086iA09p07507/abstract&quot;&gt;Wolfe1981&lt;/a&gt; were too quiet, or perhaps the insignificance was an effect local to the magnetometer site), &lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/JA087iA12p10425/abstract&quot;&gt;Wolfe1982&lt;/a&gt; further establishes the importance of (f_{k}) and insignificance of (\epsilon) using SMLR analyses on multiple mid-latitude magnetometers in both hemispheres. They further check if these effects are enhanced when (B_{Z} \lt 0): (f_{k}) is, (\epsilon) is not.&lt;/p&gt;
+&lt;p&gt;In the PA parameter, &lt;script type=&quot;math/tex&quot;&gt;L_{0}^{2}&lt;/script&gt; stands in as an “interaction area” between the solar wind and the magnetosphere and &lt;script type=&quot;math/tex&quot;&gt;\theta_{clock}=atan2(B_{Y},B_{X})&lt;/script&gt;. Mass flux and momentum flux are not further commented upon after mentioning that they were investigated (more on this below).&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/JA086iA09p07507/abstract&quot;&gt;Wolfe1981&lt;/a&gt; contrasts the solar wind control of GLHM energy between the dayside and nightside by applying single-variable (simple) linear regression to each pairing of solar wind parameter and GLHM frequency band. Higher correlations and significance is found on the dayside for most solar wind parameters. The angle effect is significant for the highest frequency band on the dayside, but is essentially nonexistent and insignificant for the lower frequency bands and all bands on the nightside. &lt;script type=&quot;math/tex&quot;&gt;V_{SW}&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;f_{k}&lt;/script&gt; have the highest correlations with GLHM energy and are significant for all bands on both the dayside and nightside, while &lt;script type=&quot;math/tex&quot;&gt;\epsilon&lt;/script&gt; is not significant on either side for any band.With this in mind, the authors look no further into the nightside in the current work, noting that geomagnetic tail parameters likely control the nightside GLHM energy.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/JA086iA09p07507/abstract&quot;&gt;Wolfe1981&lt;/a&gt; subsequently performs various permutations of stepwise multiple linear regression [SMLR] analysis, showing support that &lt;script type=&quot;math/tex&quot;&gt;f_{k}&lt;/script&gt; is the most important parameter across all bands on the dayside, whereas &lt;script type=&quot;math/tex&quot;&gt;V_{SW}&lt;/script&gt; emerges as the most important if one does not include (f_{k}) in the regression. SMLR analyses also strongly support the unimportance of &lt;script type=&quot;math/tex&quot;&gt;\epsilon&lt;/script&gt;). Fearing their assessment of &lt;script type=&quot;math/tex&quot;&gt;\epsilon&lt;/script&gt; might be wrong (perhaps the days studied in &lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/JA086iA09p07507/abstract&quot;&gt;Wolfe1981&lt;/a&gt; were too quiet, or perhaps the insignificance was an effect local to the magnetometer site), &lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/JA087iA12p10425/abstract&quot;&gt;Wolfe1982&lt;/a&gt; further establishes the importance of &lt;script type=&quot;math/tex&quot;&gt;f_{k}&lt;/script&gt; and insignificance of &lt;script type=&quot;math/tex&quot;&gt;\epsilon&lt;/script&gt; using SMLR analyses on multiple mid-latitude magnetometers in both hemispheres. They further check if these effects are enhanced when &lt;script type=&quot;math/tex&quot;&gt;B_{Z} \lt 0&lt;/script&gt;: &lt;script type=&quot;math/tex&quot;&gt;f_{k}&lt;/script&gt; is, &lt;script type=&quot;math/tex&quot;&gt;\epsilon&lt;/script&gt; is not.&lt;/p&gt;
 
 &lt;p&gt;However, despite all evidence pointing towards (\epsilon) having no value as a predictive parameter for GLHM energy, &lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/JA087iA12p10425/abstract&quot;&gt;Wolfe1982&lt;/a&gt; hedges its bets, stating that (\epsilon) might not be significant in this study since previous studies had established that it is important at much higher energies—thus, (\epsilon) might have a step-function-like threshold it must pass before it becomes significant.&lt;/p&gt;
 
-&lt;p&gt;Having the highest correlations, (f_{k}) and (V_{SW}) are further analyzed as a function of local time: the hourly sampled GLHM time series for each band over the 28 days studied in &lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/JA086iA09p07507/abstract&quot;&gt;Wolfe1981&lt;/a&gt; are broken into 3*24 daily-sampled time series at 24 independent bins of local time; the authors, however, only look at the 12 dayside LT time series. Although a mere 28 data points appears to be a small amount of data, given that each data point in one of these time series is separated from its neighbors by 24 hours, the authors argue that there is likely no contamination from autocorrelation and repeated measurements when estimating the confidence levels. In fact, &lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/JA086iA09p07507/abstract&quot;&gt;Wolfe1981&lt;/a&gt; shows afternoon peaks above the 99.9% confidence level in the various frequency bands, suggesting that the solar wind controls the dayside best in the afternoon sector. &lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/JA087iA12p10425/abstract&quot;&gt;Wolfe1982&lt;/a&gt; shows a corresponding bump in afternoon GLHM energy at all three magnetometer sites, thought to be due to an FLR.&lt;/p&gt;
+&lt;p&gt;Having the highest correlations, &lt;script type=&quot;math/tex&quot;&gt;f_{k}&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;V_{SW}&lt;/script&gt; are further analyzed as a function of local time: the hourly sampled GLHM time series for each band over the 28 days studied in &lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/JA086iA09p07507/abstract&quot;&gt;Wolfe1981&lt;/a&gt; are broken into 3*24 daily-sampled time series at 24 independent bins of local time; the authors, however, only look at the 12 dayside LT time series. Although a mere 28 data points appears to be a small amount of data, given that each data point in one of these time series is separated from its neighbors by 24 hours, the authors argue that there is likely no contamination from autocorrelation and repeated measurements when estimating the confidence levels. In fact, &lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/JA086iA09p07507/abstract&quot;&gt;Wolfe1981&lt;/a&gt; shows afternoon peaks above the 99.9% confidence level in the various frequency bands, suggesting that the solar wind controls the dayside best in the afternoon sector. &lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/JA087iA12p10425/abstract&quot;&gt;Wolfe1982&lt;/a&gt; shows a corresponding bump in afternoon GLHM energy at all three magnetometer sites, thought to be due to an FLR.&lt;/p&gt;
 
-&lt;p&gt;The LT correlations between (V_{SW}) and the higher frequency bands sharply drop near noon, suggesting that GLHM energy at noon is not controlled by a KHI mechanism, which is consistent with a stagnation point in the flow near noon. Lastly, the authors find the proxy Pc5 band to better correlate with (f_{k}) than (V_{SW}), while the proxy Pc3 band does just the opposite, pointing towards a frequency dependence in both effects.&lt;/p&gt;
+&lt;p&gt;The LT correlations between &lt;script type=&quot;math/tex&quot;&gt;V\_{SW}&lt;/script&gt; and the higher frequency bands sharply drop near noon, suggesting that GLHM energy at noon is not controlled by a KHI mechanism, which is consistent with a stagnation point in the flow near noon. Lastly, the authors find the proxy Pc5 band to better correlate with &lt;script type=&quot;math/tex&quot;&gt;f_{k}&lt;/script&gt; than &lt;script type=&quot;math/tex&quot;&gt;V_{SW}&lt;/script&gt;, while the proxy Pc3 band does just the opposite, pointing towards a frequency dependence in both effects.&lt;/p&gt;
 
-&lt;p&gt;In addition to external parameters, heretofore, researchers had also looked into internal sources of GLHM energy, such as variations in the ionospheric electrojet. &lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/JA086iA09p07507/abstract&quot;&gt;Wolfe1981&lt;/a&gt; notes that peaks in GLHM energy often correspond with peaks in (f_{k}), but just as often do not, suggesting multiple sources of GLHM energy, including internal or externally-triggered internal sources; however, internal sources were not considered in the various analyses. To lend confidence that the observed correlations were more likely due to external driving of the magnetosphere from upstream solar wind parameter than due to localized sources, &lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/JA087iA12p10425/abstract&quot;&gt;Wolfe1982&lt;/a&gt; looked at multiple conjugate sites in both hemispheres.&lt;/p&gt;
+&lt;p&gt;In addition to external parameters, heretofore, researchers had also looked into internal sources of GLHM energy, such as variations in the ionospheric electrojet. &lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/JA086iA09p07507/abstract&quot;&gt;Wolfe1981&lt;/a&gt; notes that peaks in GLHM energy often correspond with peaks in &lt;script type=&quot;math/tex&quot;&gt;f_{k}&lt;/script&gt;, but just as often do not, suggesting multiple sources of GLHM energy, including internal or externally-triggered internal sources; however, internal sources were not considered in the various analyses. To lend confidence that the observed correlations were more likely due to external driving of the magnetosphere from upstream solar wind parameter than due to localized sources, &lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/JA087iA12p10425/abstract&quot;&gt;Wolfe1982&lt;/a&gt; looked at multiple conjugate sites in both hemispheres.&lt;/p&gt;
 
 &lt;p&gt;&lt;a name=&quot;polynomial&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;u&gt;Solar Wind Speed as the Most Important Parameter: Polynomial Regression&lt;/u&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;solar-wind-speedas-the-most-important-parameterpolynomial-regression&quot;&gt;Solar Wind Speed as the Most Important Parameter: Polynomial Regression&lt;/h3&gt;
 
 &lt;p&gt;In &lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/JA086iA09p07507/abstract&quot;&gt;Wolfe1981&lt;/a&gt;, the authors mention that they looked at scatter plots and correlations of many more upstream parameters than they actually show or decide to go forward with. Some of upstream parameters, like mass flux and momentum flux, peaked my interest, but were not further mentioned or commented on throughout the paper. My assumption is that the authors found these parameters to not have high correlations with GLHM energy, prompting them to look no further—at least for the time being. However, there are some good reasons why I think the paper should have further addressed these variables.&lt;/p&gt;
 
 &lt;p&gt;Consider the following facts identified throughout the four Wolfe papers I’ve now covered:&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;(V_{SW}) is considered an important upstream variable&lt;/li&gt;
-  &lt;li&gt;(N_{p}) is found to be largely unimportant (e.g., &lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/JA087iA12p10425/abstract&quot;&gt;Wolfe1982&lt;/a&gt;)&lt;/li&gt;
-  &lt;li&gt;There is often a high correlation between (V_{SW}) and (N_{p}) (see Wolfe1980)&lt;/li&gt;
-  &lt;li&gt;(f_{k}=\frac{1}{2}m_{p}N_{p}V_{SW}^{3}) is deemed the most important upstream variable (&lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/JA086iA09p07507/abstract&quot;&gt;Wolfe1981&lt;/a&gt;, &lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/JA087iA12p10425/abstract&quot;&gt;Wolfe1982&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;&lt;script type=&quot;math/tex&quot;&gt;V_{SW}&lt;/script&gt; is considered an important upstream variable&lt;/li&gt;
+  &lt;li&gt;&lt;script type=&quot;math/tex&quot;&gt;N_{p}&lt;/script&gt; is found to be largely unimportant (e.g., &lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/JA087iA12p10425/abstract&quot;&gt;Wolfe1982&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;There is often a high correlation between &lt;script type=&quot;math/tex&quot;&gt;V_{SW}&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;N_{p}&lt;/script&gt; (see Wolfe1980)&lt;/li&gt;
+  &lt;li&gt;&lt;script type=&quot;math/tex&quot;&gt;f_{k}=\frac{1}{2}m_{p}N_{p}V_{SW}^{3}&lt;/script&gt; is deemed the most important upstream variable (&lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/JA086iA09p07507/abstract&quot;&gt;Wolfe1981&lt;/a&gt;, &lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/JA087iA12p10425/abstract&quot;&gt;Wolfe1982&lt;/a&gt;)&lt;/li&gt;
   &lt;li&gt;Since mass flux and momentum flux were not scrutinized, I assume the authors found them to have low correlations.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;If (V_{SW}) is important, and (N_{p}) is not important, one might imagine that the importance of mass flux ((m_{p}N_{p}V_{SW})) could go either way—so what makes the mass flux unimportant?&lt;/p&gt;
+&lt;p&gt;If &lt;script type=&quot;math/tex&quot;&gt;V_{SW}&lt;/script&gt; is important, and &lt;script type=&quot;math/tex&quot;&gt;N_{p}&lt;/script&gt; is not important, one might imagine that the importance of mass flux (&lt;script type=&quot;math/tex&quot;&gt;m_{p}N_{p}V_{SW}&lt;/script&gt;) could go either way—so what makes the mass flux unimportant?&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/JA085iA11p05977/abstract&quot;&gt;Wolfe1980b&lt;/a&gt; shows a strong relationship between solar wind speed and density in which density decays nonlinearly as a function of solar wind speed. To my mind, the scatterplot of (V_{SW}) vs (N_{p}) in &lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/JA085iA11p05977/abstract&quot;&gt;Wolfe1980b&lt;/a&gt; looks fairly hyperbolic, as if (N_{p} = \alpha/V_{SW}). In the series of papers, it is repeatedly shown that density by itself is not an important upstream parameter, but that (V_{SW}) is, especially when not also considering the influence of (f_{k}).&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/JA085iA11p05977/abstract&quot;&gt;Wolfe1980b&lt;/a&gt; shows a strong relationship between solar wind speed and density in which density decays nonlinearly as a function of solar wind speed. To my mind, the scatterplot of &lt;script type=&quot;math/tex&quot;&gt;V_{SW}&lt;/script&gt; vs &lt;script type=&quot;math/tex&quot;&gt;N_{p}&lt;/script&gt; in &lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/JA085iA11p05977/abstract&quot;&gt;Wolfe1980b&lt;/a&gt; looks fairly hyperbolic, as if &lt;script type=&quot;math/tex&quot;&gt;N\_{p} = alpha/V_{SW}&lt;/script&gt; In the series of papers, it is repeatedly shown that density by itself is not an important upstream parameter, but that &lt;script type=&quot;math/tex&quot;&gt;V_{SW}&lt;/script&gt; is, especially when not also considering the influence of &lt;script type=&quot;math/tex&quot;&gt;f_{k}&lt;/script&gt;&lt;/p&gt;
 
-&lt;p&gt;Identifying (N_{p}) as (\alpha V_{SW}^{-1}), it shouldn’t be surprising that (N_{p}) does not measure as having a strong linear relationship with GLHM energy. Furthermore, given this relationship between (V_{SW}) and (N_{p}), it is not surprising that the authors deemed mass flux ((m_{p}N_{p}V_{SW})) to be an unimportant upstream parameter in controlling GLHM energy since the relationship suggests that mass flux in the solar wind is roughly constant:&lt;/p&gt;
+&lt;p&gt;Identifying &lt;script type=&quot;math/tex&quot;&gt;N_{p}&lt;/script&gt; as &lt;script type=&quot;math/tex&quot;&gt;\alpha V_{SW}^{-1}&lt;/script&gt; it shouldn’t be surprising that &lt;script type=&quot;math/tex&quot;&gt;N_{p}&lt;/script&gt; does not measure as having a strong linear relationship with GLHM energy. Furthermore, given this relationship between &lt;script type=&quot;math/tex&quot;&gt;V_{SW}&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;N_{p}&lt;/script&gt; it is not surprising that the authors deemed mass flux ( &lt;script type=&quot;math/tex&quot;&gt;m_{p}N_{p}V_{SW}&lt;/script&gt; ) to be an unimportant upstream parameter in controlling GLHM energy since the relationship suggests that mass flux in the solar wind is roughly constant:&lt;/p&gt;
 
-&lt;p style=&quot;text-align: center;&quot;&gt;
-  Mass Flux = \(m_{p}N_{p}V_{SW}\) = \(\alpha m_{p}\) = \(A\)
-&lt;/p&gt;
+&lt;p&gt;Mass Flux = &lt;script type=&quot;math/tex&quot;&gt;m_{p}N_{p}V_{SW} = \alpha m_{p} = A&lt;/script&gt;&lt;/p&gt;
 
-&lt;p&gt;The identified relationship between (N_{p}) and (V_{SW}) tells us something further about (f_{k}): given the roughly constant nature of mass flux in the solar wind, importance is mistakenly ascribed to (f_{k}), which in this circumstance is a stand-in for  (V_{SW}^{2}):&lt;/p&gt;
+&lt;p&gt;The identified relationship between &lt;script type=&quot;math/tex&quot;&gt;N_{p}&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;V_{SW}&lt;/script&gt; tells us something further about &lt;script type=&quot;math/tex&quot;&gt;f_{k}&lt;/script&gt;: given the roughly constant nature of mass flux in the solar wind, importance is mistakenly ascribed to &lt;script type=&quot;math/tex&quot;&gt;f_{k}&lt;/script&gt;, which in this circumstance is a stand-in for  &lt;script type=&quot;math/tex&quot;&gt;V_{SW}^{2}&lt;/script&gt;:&lt;/p&gt;
 
-&lt;p style=&quot;text-align: center;&quot;&gt;
-  \(f_{k}\) = \(\frac{1}{2} m_{p}N_{p}V_{SW}^{3}\)=\(\frac{1}{2}AV_{SW}^{2}\) = \(CV_{SW}^{2}\)
-&lt;/p&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;f_{k} = \frac{1}{2} m_{p}N_{p}V_{SW}^{3}=\frac{1}{2}AV_{SW}^{2} = CV_{SW}^{2}&lt;/script&gt;
 
-&lt;p&gt;If mass flux results in a constant and (f_{k}) is actually just a stand-in for (V_{SW}^{2}), then we should also expect that momentum flux would serve as a stand-in for (V_{SW}) and have nearly the same correlative relationship with GLHM energy that the authors found with (V_{SW}):&lt;/p&gt;
+&lt;p&gt;If mass flux results in a constant and &lt;script type=&quot;math/tex&quot;&gt;f_{k}&lt;/script&gt; is actually just a stand-in for &lt;script type=&quot;math/tex&quot;&gt;V_{SW}^{2}&lt;/script&gt; then we should also expect that momentum flux would serve as a stand-in for &lt;script type=&quot;math/tex&quot;&gt;V_{SW}&lt;/script&gt; and have nearly the same correlative relationship with GLHM energy that the authors found with &lt;script type=&quot;math/tex&quot;&gt;V_{SW}&lt;/script&gt;&lt;/p&gt;
 
 &lt;p style=&quot;text-align: center;&quot;&gt;
   Momentum Flux = \(m_{p}N_{p}V_{SW}^{2}\) = \(m_{p}AV_{SW}\) = \(BV_{SW}\)
@@ -943,13 +1003,13 @@ E\_{stored} = E\_{intake} &amp;#8211; \left( E\_{exercise} + E\_{walkDog} + E\_
   \(\\ log(GLHM)=A+BV_{SW}+CV_{SW}^{2}+DV_{SW}^{3}\)
 &lt;/p&gt;
 
-&lt;p&gt;I leave in (V_{SW}^{3}) as a possibility just in case, although we did find that (V_{SW}) and (V_{SW}^{2}) are the most important upstream variables given the solar wind mass flux is roughly constant.&lt;/p&gt;
+&lt;p&gt;I leave in &lt;script type=&quot;math/tex&quot;&gt;V_{SW}^{3}&lt;/script&gt; as a possibility just in case, although we did find that &lt;script type=&quot;math/tex&quot;&gt;V_{SW}&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;V_{SW}^{2}&lt;/script&gt; are the most important upstream variables given the solar wind mass flux is roughly constant.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;On the Role of Simulation in an Observational Science&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;One last note: a constant mass flux in the solar wind makes it fairly difficult to tell the difference between (f_{k}) and (V_{SW}^{2}) in terms of correlation with GLHM energy and which has more predictive power. This is the exact type of situation where modeling can lend some interesting insights: since geophysical studies like this rely on observation and have limitations on the types of controlled experiments that can be performed, computational modeling can serve as a stand-in for experiments. For example, one can hold density constant as one tweaks the solar wind speed (and vice versa), resulting in a non-constant mass flux and ultimately a way to distinguish between (f_{k}) and (V_{SW}^{2}).&lt;/p&gt;
+&lt;p&gt;One last note: a constant mass flux in the solar wind makes it fairly difficult to tell the difference between &lt;script type=&quot;math/tex&quot;&gt;f_{k}&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;V_{SW}^{2}&lt;/script&gt; in terms of correlation with GLHM energy and which has more predictive power. This is the exact type of situation where modeling can lend some interesting insights: since geophysical studies like this rely on observation and have limitations on the types of controlled experiments that can be performed, computational modeling can serve as a stand-in for experiments. For example, one can hold density constant as one tweaks the solar wind speed (and vice versa), resulting in a non-constant mass flux and ultimately a way to distinguish between &lt;script type=&quot;math/tex&quot;&gt;f_{k}&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;V_{SW}^{2}&lt;/script&gt;&lt;/p&gt;
 
-&lt;p&gt;Seth Claudpierre has some nice papers on this way later in the HM/ULF timeline  (e.g., &lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/2007JA012890/full&quot;&gt;Claudepierre2008&lt;/a&gt;, &lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/2009GL039045/full&quot;&gt;Claudepierre2009&lt;/a&gt;, and &lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/2010JA015399/full&quot;&gt;Claudepierre2010&lt;/a&gt;). ()&lt;/p&gt;</content><author><name>ogkubl</name></author><summary type="html">In my previous post on this topic, I covered two 1980 papers published by Allan Wolfe and his colleagues concerning the dependence of ground-level hydromagnetic [GLHM] energy on upstream solar wind [SW] parameters. The velocity and angle effects were both confirmed as important controllers of GLHM energy at mid-latitudes on the dayside; furthermore, the angle effect was found to be frequency-dependent, its importance diminishing from high to low frequencies. ()</summary></entry><entry><title type="html">Early characterizations of the mid-latitude, dayside hydromagnetic response to upstream solar wind conditions: 1980</title><link href="http://localhost:4000/index.php/2015/09/21/early-characterizations-of-the-mid-latitude-dayside-hydromagnetic-response-to-upstream-solar-wind-conditions/" rel="alternate" type="text/html" title="Early characterizations of the mid-latitude, dayside hydromagnetic response to upstream solar wind conditions: 1980" /><published>2015-09-21T18:27:58-04:00</published><updated>2015-09-21T18:27:58-04:00</updated><id>http://localhost:4000/index.php/2015/09/21/early-characterizations-of-the-mid-latitude-dayside-hydromagnetic-response-to-upstream-solar-wind-conditions</id><content type="html" xml:base="http://localhost:4000/index.php/2015/09/21/early-characterizations-of-the-mid-latitude-dayside-hydromagnetic-response-to-upstream-solar-wind-conditions/">&lt;script type=&quot;text/javascript&quot; src=&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;&gt;&lt;/script&gt;
+&lt;p&gt;Seth Claudpierre has some nice papers on this way later in the HM/ULF timeline  (e.g., &lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/2007JA012890/full&quot;&gt;Claudepierre2008&lt;/a&gt;, &lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/2009GL039045/full&quot;&gt;Claudepierre2009&lt;/a&gt;, and &lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1029/2010JA015399/full&quot;&gt;Claudepierre2010&lt;/a&gt;).&lt;/p&gt;</content><author><name>ogkubl</name></author><summary type="html"></summary></entry><entry><title type="html">Early characterizations of the mid-latitude, dayside hydromagnetic response to upstream solar wind conditions: 1980</title><link href="http://localhost:4000/index.php/2015/09/21/early-characterizations-of-the-mid-latitude-dayside-hydromagnetic-response-to-upstream-solar-wind-conditions/" rel="alternate" type="text/html" title="Early characterizations of the mid-latitude, dayside hydromagnetic response to upstream solar wind conditions: 1980" /><published>2015-09-21T18:27:58-04:00</published><updated>2015-09-21T18:27:58-04:00</updated><id>http://localhost:4000/index.php/2015/09/21/early-characterizations-of-the-mid-latitude-dayside-hydromagnetic-response-to-upstream-solar-wind-conditions</id><content type="html" xml:base="http://localhost:4000/index.php/2015/09/21/early-characterizations-of-the-mid-latitude-dayside-hydromagnetic-response-to-upstream-solar-wind-conditions/">&lt;script type=&quot;text/javascript&quot; src=&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;&gt;&lt;/script&gt;
 
 &lt;p&gt;The solar wind speeds up. It slows down. It blows by Earth at a breath-taking million miles per mile on a lethargic day. Double that when it’s feeling frisky.&lt;/p&gt;
 
