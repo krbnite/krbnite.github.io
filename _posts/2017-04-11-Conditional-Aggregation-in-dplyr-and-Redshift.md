@@ -3,9 +3,7 @@ layout: post
 title: Conditional Aggregation in {dplyr} and Redshift
 ---
 
-The responsibilities of my job and the projects I work on can vary from one day to the next.  
-Turns out that a clever solution to a problem isn't something I necessarily remember 100% when 
-confronted with the same issue several weeks or months down the line.  
+The responsibilities of my job and the projects I work on can vary from one day to the next. Turns out that a clever solution to a problem isn't something I necessarily remember 100% when confronted with the same issue several weeks or months down the line.  
 
 A great example is what you might call "generalized conditional aggregation." 
 In a simple conditional aggregation, you might "aggregate the values in column A for only
@@ -18,7 +16,7 @@ you generally want to group by some variable(s) and aggregate, but have a few
 columns that require specific conditions:  "Aggregate all features in Table T;
 for feature F1, do so only for condition C1; for feature F2, do so only for feature F2; ..."
 
-### "Small Data"
+## "Small Data"
 If you're using R, have your entire data set loaded, and dplyr aggregations are not taking forever,
 then awesome -- here's what you do.  
 
@@ -41,7 +39,7 @@ streaming_info = dbGetQuery(con, "
     ")
 ```
 
-#### Short way: subset variable inside aggregation function
+### Short way: subset variable inside aggregation function
 ```{r}
 agg1 = streaming_info %>% 
   group_by(month, orderStatus, content) %>% 
@@ -52,7 +50,7 @@ agg1 = streaming_info %>%
   arrange(month, orderStatus, content)
 ```
 
-#### Longer, But (Maybe) More Intuitive Way:  Define new variable before aggregation
+### Longer, But (Maybe) More Intuitive Way:  Define new variable before aggregation
 ```{r}
 agg2 = streaming_info %>% 
   mutate(on_demand = ifelse(stream_type=="od", play_time, 0)) %>% 
@@ -67,7 +65,7 @@ agg2 = streaming_info %>%
 Both methods give the same results... Choose whichever you remember at the moment, or like.
 
 
-### "Big Data"
+## "Big Data"
 One thing I learned working with large data sets from the WWE Network is that
 an unplanned, foolish query to Redshift from RStudio on my laptop can make things pretty dang sluggish.  
 
