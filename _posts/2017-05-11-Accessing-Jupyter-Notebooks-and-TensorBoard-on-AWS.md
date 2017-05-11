@@ -1,14 +1,13 @@
 To use a Jupyter Notebook or TensorBoard on AWS is straightforward on a personal account. 
-It's a little trickieryou're using a work account with restricted permissions.
+It's a little trickier if you are using a work account with restricted permissions.
 In this post, I will lay out my experience with both scenarios.
 
 # Personal Account
 
 Richard Feynman is quoted as saying, "Physics is to mathematics like sex is to masturbation." This
-basically is what a GPU is to deep learning. Have you ever trained on a GPU after only ever training on your laptop's CPU?   
-Sure, you will use a CPU afterwards, and it will still be ... nice.  But only when a GPU is not around!
+basically is what a GPU is to deep learning. Have you ever trained on a GPU after only ever training on your laptop's CPU? Sure, you will use a CPU afterwards, and it will still be ... nice.  But only when a GPU is not around!
 
-I've been participating in Udacity's [Deep Learning NanoDegree Foundation](https://www.udacity.com/course/deep-learning-nanodegree-foundation--nd101) since January.  For the first several assignment, I simply used my laptop.  But as the
+I've been participating in Udacity's [Deep Learning NanoDegree Foundation](https://www.udacity.com/course/deep-learning-nanodegree-foundation--nd101) since January.  For the first several assignments, my laptop was good enough.  But as the
 projects got more complex (e.g., convolutional nets) and the data sets got bigger, we were given $100 worth of AWS credits so that we could run our deep neural nets on a GPU.  
 
 It was amazing.
@@ -16,7 +15,7 @@ It was amazing.
 Then I ran out of credits. What to do? I thought about purchasing my own GPU/hardware and all that, 
 but for what I've done so far, it seems unnecessarily expensive: well-planned cloud computing is the best route.
 This seems especially true considering that any hardware I buy is
-likely to become old-fashioned, whereas I suspect I can keep up-to-date in the cloud.
+likely to become old-fashioned pretty quick, whereas I suspect I can keep up-to-date in the cloud.
 
 However, note that "well-planned" is incredibly important.  You must terminate your GPU EC2 instance when you're done. 
 Don't be stupid.  I blew most of my free AWS credits by accidentally leaving it running for several days straight.
@@ -31,8 +30,7 @@ Anyway! Look at me rambling.  That's not why we're here!  Without further ado:
 A quick-and-easy way to get started is to launch a g2.2xlarge instance using Udacity's AMI.  To connect to the instance,
 just note the (public) IP address it was assigned and SSH into it.  Make 
 sure to activate the proper Conda environment (stocked with tensorflow-gpu), then start up your Jupyter Notebook.  
-To actually see your notebook, enter the EC2 instance's public IP and port number in the browser.  
-(If you're not using the Udacity AMI, you might need to copy-and-paste the URL token
+To actually see your notebook, enter the EC2 instance's public IP and port number in the browser. (If you're not using the Udacity AMI, you might need to copy-and-paste the URL token
 provided in the remote shell when called on Jupyter.)
 
 ```{bash}
