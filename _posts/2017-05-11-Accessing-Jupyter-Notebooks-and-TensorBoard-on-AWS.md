@@ -1,29 +1,37 @@
 To use a Jupyter Notebook or TensorBoard on AWS is straightforward on a personal account. 
-It's a little trickier if the AWS account you're using is a work account with restricted permissions, and so on.
-First, I'll just lay out how I've done this on my personal account.  Then, I will go over some of the 
-additional steps that were necessary for my work account.
+It's a little trickieryou're using a work account with restricted permissions.
+In this post, I will lay out my experience with both scenarios.
 
 # Personal Account
-I've been participating in Udacity's [Deep Learning NanoDegree Foundation](https://www.udacity.com/course/deep-learning-nanodegree-foundation--nd101)
-since January.  For extra performance, we were given $100 worth of AWS credits so that we could run our deep neural
-nets on a GPU.  
 
-Have you ever trained on a GPU after only ever training on your laptop's CPU?  Richard Feynman is quoted as saying, 
-"Physics is to mathematics like sex is to masturbation."  Basically, this is what a GPU is to deep learning.  Sure, 
-you will use a CPU afterwards, and it will still be ... nice.  But only when a GPU is not around!
+Richard Feynman is quoted as saying, "Physics is to mathematics like sex is to masturbation." This
+basically is what a GPU is to deep learning. Have you ever trained on a GPU after only ever training on your laptop's CPU?   
+Sure, you will use a CPU afterwards, and it will still be ... nice.  But only when a GPU is not around!
 
-I thought about purchasing my own GPU/hardware and all that, but for what I've done so far, it seems 
-cloud computing is the best route.  This seems especially true considering that any hardware I buy is
+I've been participating in Udacity's [Deep Learning NanoDegree Foundation](https://www.udacity.com/course/deep-learning-nanodegree-foundation--nd101) since January.  For the first several assignment, I simply used my laptop.  But as the
+projects got more complex (e.g., convolutional nets) and the data sets got bigger, we were given $100 worth of AWS credits so that we could run our deep neural nets on a GPU.  
+
+It was amazing.
+
+Then I ran out of credits. What to do? I thought about purchasing my own GPU/hardware and all that, 
+but for what I've done so far, it seems unnecessarily expensive: well-planned cloud computing is the best route.
+This seems especially true considering that any hardware I buy is
 likely to become old-fashioned, whereas I suspect I can keep up-to-date in the cloud.
+
+However, note that "well-planned" is incredibly important.  You must terminate your GPU EC2 instance when you're done. 
+Don't be stupid.  I blew most of my free AWS credits by accidentally leaving it running for several days straight.
+Also, take the time to learn about spot instances, which will dramatically reduce your costs.  However,
+you must know a thing or two about frequently saving model checkpoints since a spot instance can be shut down
+on you mid-run.  
 
 Anyway! Look at me rambling.  That's not why we're here!  Without further ado:
 
 ## How to Access a Jupyter Notebook and TensorBoard from a Python Session Launch on your Personal EC2 Instance
 
-I simply launched a g2.2xlarge instance using Udacity's AMI.  To connect to the instance,
-just note the (public) IP address it was assigned and SSH into it.  If using Udacity's AMI, make 
-sure to get into the proper Conda environment, then start up your Jupyter Notebook.  
-To actually see your notebook, simply enter the IP and port number in the browser.  
+A quick-and-easy way to get started is to launch a g2.2xlarge instance using Udacity's AMI.  To connect to the instance,
+just note the (public) IP address it was assigned and SSH into it.  Make 
+sure to activate the proper Conda environment (stocked with tensorflow-gpu), then start up your Jupyter Notebook.  
+To actually see your notebook, enter the EC2 instance's public IP and port number in the browser.  
 (If you're not using the Udacity AMI, you might need to copy-and-paste the URL token
 provided in the remote shell when called on Jupyter.)
 
@@ -61,20 +69,17 @@ exit
 This was trickier for me.  I first had to convince my boss that the GPU would 
 decrease our model's runtimes by 3-5x, which would allow me to more quickly 
 explore the feature, parameter, and hyperparameter spaces of our models, and
-afford us the time to be more experimental and hypothesis-drive, etc.
+afford us the time to be more experimental and hypothesis-driven, etc.
 
-It was an easy sell, which in regular life would translate into simply logging
-into an AWS account an setting it up.  But not so in corporate life.  Setting up
+Unsurprisingly, it was a fairly easy sell, which in regular life would translate into simply logging
+into an AWS account and setting it up.  But not so in corporate life.  Setting up
 this instance is a series of discussions and negotiations with multiple parties.
 And once set up, it was about why X didn't work, or [why I don't have permission
-to do Y](http://stackoverflow.com/questions/22955682/ec2-instance-on-aws-apt-get-not-working).  
-More discussion.  More waiting.  And so on.
+to do Y](http://stackoverflow.com/questions/22955682/ec2-instance-on-aws-apt-get-not-working).  More discussion.  More waiting.  And so on.
 
 Anyway, as one might expect, the EC2 instance I use at work is not on a public
 IP, but a private IP.  This adds an additional layer or two of complexity to
-setting up your JNB and TensorBoard.  
-On a public IP, you can just type into your browser <public IP>:8888 to bring up the JNB running on your EC2 instance.  
-However, a private IP requires proper SSH authentication, so in this case you must create what's called an 
+setting up your JNB and TensorBoard. On a public IP, you can just type into your browser <public IP>:8888 to bring up the JNB running on your EC2 instance. However, a private IP requires proper SSH authentication, so in this case you must create what's called an 
 "[SSH tunnel](https://coderwall.com/p/ohk6cg/remote-access-to-ipython-notebooks-via-ssh)."
 
 To make things easy on myself, I had requested that the service provider install the Udacity AMI,
@@ -85,8 +90,7 @@ I did eventually figure it out.
 ## How to Access a Jupyter Notebook and TensorBoard from a Python Session Launch on an EC2 Instance with Private IP
 
 Note that this advice directly applies to using Mac OS X, but much of it translates over to a PC.
-(The process will be a little different, e.g., you will use the .ppk instead of the .pem file.  
-Read more about it [here](https://aws.amazon.com/blogs/security/securely-connect-to-linux-instances-running-in-a-private-amazon-vpc/).)
+(The process will be a little different, e.g., you will use the .ppk instead of the .pem file. Read more about it [here](https://aws.amazon.com/blogs/security/securely-connect-to-linux-instances-running-in-a-private-amazon-vpc/).)
 
 ```{bash}
 # In the Shell
@@ -117,9 +121,7 @@ jupyter notebook --no-browser --port=8887 &
 #   --  TB:  Ip.Address:6006
 ```
 ### The JNB Token Number
-When you start up the Jupyter Notebook in the remote window, it will provide you with the token number.  
-This is a security measure.  If you don't include the token number, you will be locked out of the JNB in your browser.  
-(Read more about [token authentication](https://github.com/jupyter/notebook/blob/master/docs/source/security.rst).)
+When you start up the Jupyter Notebook in the remote window, it will provide you with the token number. This is a security measure.  If you don't include the token number, you will be locked out of the JNB in your browser. (Read more about [token authentication](https://github.com/jupyter/notebook/blob/master/docs/source/security.rst).)
 
 ### Wrapping Up Your Work Day
 When you're done working for the day, you should kill the various processes that are running.
