@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-
+---
+layout: post
+title: Hello World! (Want your own GitHub blog?)
+---
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
