@@ -28,8 +28,7 @@ write.csv(yourData, file=con)
 close(con)
 ```
 
-#### 3. Even though you properly exported the data from R to Excel (everything looked as it should), you're not
-guaranteed this luck to persist :-(
+#### 3. Even though you properly exported the data from R to Excel (everything looked as it should), you're not guaranteed this luck to persist :-(
 I don't know why... But Excel suddenly doesn't always "get it" once you modify the file in some way.  This 
 happened to me when I emailed someone the CSV file, then wanted to look at it a couple weeks later and dragged
 the attachment back onto my computer.  Excel was like, "WTF is this?"  I was like, "Dude, what do you mean? 
