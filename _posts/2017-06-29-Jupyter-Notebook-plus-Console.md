@@ -46,8 +46,3 @@ console when messing around with / building a Jupyter Notebook.
 jupyter notebook
 jupyter console --existing
 ```
-
-
-
-
-
