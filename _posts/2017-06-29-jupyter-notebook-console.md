@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Jupyter: Notebook + Console
+title: Jupyter Notebook + Console
 ---
 
 In my previous post, I was trying to figure out how to use Tmux to integrate a remote 
