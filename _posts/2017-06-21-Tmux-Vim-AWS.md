@@ -1,12 +1,9 @@
 ---
 layout: post
-title: Mr. TMux
+title: TMux + Vim + AWS
 ---
 
-Why the name Mr. TMux?  Don't know.  Just came to me first and I had no time to reject it.  
-(However, I do have a moment to write about this gripping experience!)
-
-Anyway, the entire point of this is: TMux is finally useful to me.
+TMux is finally useful to me.
 
 This is great because TMux has interested me for years.  But most times I finagled with it, 
 I couldn't really justify using it other than thinking, "This feels important."
