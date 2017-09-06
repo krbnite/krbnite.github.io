@@ -23,8 +23,10 @@ copy-and-paste.  However, figure it out once, and the job is automated ad infini
 on a bug or unforeseen edge case).
 
 For some sites, this is easy -- you just need the page's source code, possibly some regex, and
-time to munge through the HTML.  For simple projects, this might only require Python's requests library, 
-though it seems one gains a bit more power tinkering with BeautifulSoup as well. 
+time to munge through the HTML.  For simple projects, this might only require Python's 
+[requests](http://requests.readthedocs.io/en/latest/api/) library, 
+though it seems one gains a bit more power tinkering with 
+[BeautifulSoup](https://beautiful-soup-4.readthedocs.io/en/latest/) as well. 
 However, some data is hidden behind a point-and-click action, or a button push. Both of these tools are 
 rendered impotent when it comes to such JavaScript-heavy webpages.
 
@@ -38,5 +40,7 @@ I often still rely on BeautifulSoup; also, selenium is overkill for simple tasks
 In several upcoming installments, I will go over some up-and-running instructions and code chunks.
 
 
+* [Install Selenium](http://selenium-python.readthedocs.io/installation.html)
+* [Getting Started w/ Selenium](http://selenium-python.readthedocs.io/getting-started.html)
 
 
