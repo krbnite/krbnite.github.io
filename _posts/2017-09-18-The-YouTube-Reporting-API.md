@@ -52,7 +52,7 @@ flow = flow_from_clientsecrets(CLIENT_SECRETS_FILE, scope=SCOPE, message=' f off
 storage=Storage('test-oauth2.json')
 credentials = run_flow(flow, storage)
 # If first time, your browser will open up.... Choose account....
-my_build = build(YOUTUBE_REPORTING_API_SERVICE_NAME,  VERSION,  http=credentials.authorize(httplib2.Http()))
+my_build = build(SERVICE_NAME,  VERSION,  http=credentials.authorize(httplib2.Http()))
 
 # List Available Reports
 my_build.reportTypes().list().execute()
@@ -97,6 +97,6 @@ done = False
 while done is False: 
     status, done = downloader.next_chunk() 
     if status: 
-        print "Download %d%%." % int(status.progress() * 100) 
-print "Download Complete!"
+        print("Download %d%%." % int(status.progress() * 100))
+print("Download Complete!")
 ```
