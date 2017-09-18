@@ -37,7 +37,8 @@ your own database, which you can query however you want and bring into your favo
 
 Well, that's basically what the [YouTube Reporting API](https://developers.google.com/youtube/reporting/v1/reports/) 
 is for, at least in terms of your channels' viewership and ad-performance data.  For other types of data, like
-comments, there exist other APIs (e.g., the Data API and the Content ID API).  For now, forget about that shit, lest
+what channels are associated with a given content owner ID, there exist other APIs 
+(e.g., the Data API and the Content ID API).  For now, forget about that shit, lest
 your head explode.  Fact is, figuring out how to use these APIs can be tricky at first, but once you figure out 
 one, learning the others is simple and straightforward.
 
@@ -59,19 +60,37 @@ is just
 > "a collection of settings, credentials, and metadata about the application or applications you're 
 > working on that make use of Google APIs and Google Cloud Platform resources."
 
+To create or select a project, go to console.cloud.google.com.
 
 ### 3. Enable the Reporting API
 We could enable a whole bunch of fun APIs -- BigQuery, Google Cloud SQL, YouTube Analytics, and more!
-For now, all that matters is that you have the YouTube Reporting API enabled.
+For now, all that matters is that you have the YouTube Reporting API enabled. 
+
+1. Go to console.cloud.google.com
+2. Select project
+3. On left-side menu: APIs and services > Library 
+4. Click on YouTube Reporting API
+5. Click "Enable"
+
+See [here](https://support.google.com/cloud/answer/6158841) for more info.
 
 
 ### 4. Collect Your Keys and Secrets
 You'll also need credentials.  Google ain't just lettin' anyone in! 
 
+1. Go to console.cloud.google.com
+2. Select project
+3. On left-side menu: APIs and services > Credentials
+4. Click on "Create credentials"
+5. Choose credential type: API key, OAuth client ID, or Service account key
+
+I create an API key... I also created a client ID and client secret...but can't remember how... (Crap.)
+
 You can find more info in the Google API Client's Python documentation in the 
 [intro](https://developers.google.com/api-client-library/python/start/get_started)  and in the 
 [authentication section](https://developers.google.com/api-client-library/python/guide/aaa_overview).
-
+There's also this Google Console [help page](https://support.google.com/cloud/answer/6158857?hl=en&ref_topic=6262490)
+about credentials, access, security, and identity.  
 
 ### 5. Create a Client Secret File
 There might be a better way to do this... But I found it is good enough to create the following
