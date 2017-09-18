@@ -113,8 +113,13 @@ VERSION = 'v1'
 SCOPE = 'https://www.googleapis.com/auth/yt-analytics.readonly'
 CLIENT_SECRETS_FILE = "client_secrets.json"  # Presuming you made this and in dir w/ it
 flow = flow_from_clientsecrets(CLIENT_SECRETS_FILE, scope=SCOPE, message=' f off ')
-storage=Storage('test-oauth2.json')
-credentials = run_flow(flow, storage)
+
+# 
+credentials_file = 'nameYouGave-OAuth2-file-if-you-made-one' # e.g., test-oauth2.json
+storage = Storage(credentials_file) 
+credentials = storage.get()   # Returns None if the file doesn't exist
+if credentials is None or credentials.invalid:
+    credentials = run_flow(flow, storage)  # This creates the credentials_file
 # If first time, your browser will open up.... Choose account....
 reporting_api = build(SERVICE_NAME,  VERSION,  http=credentials.authorize(httplib2.Http()))
 
