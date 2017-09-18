@@ -3,17 +3,23 @@ layout: post
 title: The YouTube Reporting API
 ---
 
-Scraping is great for views, likes, dislikes, comments and sometimes a few other quantities.  The reason for scraping
-is timeliness: it affords you to get up-to-minute estimates of your content's viewership without waiting for YouTube to
-officially release estimates of valid views in 2-3 days.  Scraping itself might not even be necessary for small players
-in the media game:  one can use YouTube's real-time analytics if they do not frequently release
- too much content (I think it tracks the lateste 20 uploads).  But if you work at a media company that releases
-15-50 videos every day, this option becomes less useful -- thus scraping (which I covered in several previous
-posts).  
+Scraping YouTube is great for getting total views, likes, dislikes, comments and sometimes a few other quantities, especially
+if you want real-time estimates at better-than-daily cadence (e.g., hourly).  In terms of timeliness, scraping YouTube
+for estimates of your content's viewership is better than waiting for YouTube to
+officially release estimates of "valid views" in 2-3 days.  That said, you should understand that such hourly scrapes
+might have some noise from the presence and removal of so-called invalid views, e.g., bots, scrapers, and page refreshes.  
+This is usually a negligible difference, especially if your content generally gets a lot "valid" views (real people eyes!)
+and you don't pay an offshore team to unnaturally inflate your count.
 
-If timeliness is not a factor, scraping might not be the best option since
-you can technically use YouTube analytics and get more info than you can scrape.  That said, you can still 
-"scrape" if selenium is in your arsenal by creating your own API that can sign into your analytics.youtube.com 
+Scraping is great and satisfying to automate, but small players in the media game might be better off using
+YouTube's real-time analytics if they do not frequently release too much content (I think it tracks the lateste 20 uploads)
+and don't already know how to scrape.  YouTube real-time reporting is less useful if you work at a media company that releases
+15-50 videos every day-- thus scraping (which I covered in several previous posts).  
+
+Another thing to consider is whether or not timeliness is a factor: if your project doesn't need the most up-to-date
+data, you can technically use YouTube analytics and get more info than you can scrape.  This is especially true if
+you care about a time sequence of such data for dates gone by long before you've made a scraper.  That said, you can still 
+"scrape" if selenium is in your arsenal by having it sign into your analytics.youtube.com 
 account and scrape around.  
 
 But still, is that the best way? Or just a cool way?
@@ -21,14 +27,12 @@ But still, is that the best way? Or just a cool way?
 For example, YouTube offers the [Analytics API](https://developers.google.com/youtube/analytics/v1/data_model) for 
 targeted queries against viewership and ad performance data.  If you can sign into to the CMS and do some point-and-click
 to find what you seek (or seleniumize that), then you can probably use the Analytics API.  
-
-
-That said, if you want slice-and-dice the data 
-in multiple ways, you might find yourself making programs with all kinds of for-loops to account for different dimensions,
-metrics, and filters. If you have only one YouTube channel, this might still seem ok... But not if you are a content
+However, the Analytics API is limited in what data it can access and how that data must be accessed. 
+You might find yourself making programs with all kinds of for-loops to account for different dimensions,
+metrics, and filters. This can get really nasty if you work for a content
 owner with hordes YouTube channels. 
 
-As a content owner (or data scientist working for one), wouldn't it be nice to just have all of the data in
+Wouldn't it be nice to just have all of the data in
 your own database, which you can query however you want and bring into your favorite programming environment?
 
 Well, that's basically what the [YouTube Reporting API](https://developers.google.com/youtube/reporting/v1/reports/) 
@@ -37,13 +41,17 @@ comments, there exist other APIs (e.g., the Data API and the Content ID API).  F
 your head explode.  Fact is, figuring out how to use these APIs can be tricky at first, but once you figure out 
 one, learning the others is simple and straightforward.
 
+Below, I cover some basics of using the Reporting API. My notes all basically pertain to content reports rather than
+channel reports since my employer own mutliple channels... But the notes should be useful for both.
+
 ---------------------------------------------------------
 
 ## Basic Set-Up
 ### 1. You Need a Google Account
 There's not much to say here.  I have a personal account and a work account.
 My work account has been given "content owner" permissions for my work's YouTube content.
-If you're doing a work project, this is likely the situation you are in too.  
+If you're doing a work project, this is likely the situation you are in too.  Importantly, when you
+use the API, you will have to be using it with the account associated with the content.
 
 ### 2. Create a Project
 It doesn't need to be an app or anything. A [Google Project](https://support.google.com/cloud/answer/6158853)
@@ -81,8 +89,8 @@ pip install --upgrade google-api-python-client
 
 
 
-## Some Code
-
+## Some Code to Whet Your Appetite / Hurt Your Brain
+### Creating Jobs
 What reports are avaialable to you via the Reporting API?  How do you set up a job?
 There is a relevant [code snippet](https://developers.google.com/youtube/reporting/v1/reference/rest/v1/jobs/create) 
 in the Reporting API's documentation that provides a bunch
@@ -131,6 +139,7 @@ reporting_job = reporting_api.jobs().create(
   ).execute()
 ```
 
+### Accessing the Reports Generated by a Job
 To look at what reports have been generated by a given job, I followed along with the code
 snippet available [here](https://developers.google.com/youtube/reporting/v1/reference/rest/v1/jobs/list)
 in the YouTube Reporting API documentation.  Again, what is useful about the code I am providing 
@@ -168,6 +177,11 @@ while done is False:
 print("Download Complete!")
 ```
 
+After finagling with this code for a while and figuring this stuff out, I began looking at the Google Client API
+Python documentation a bit more.  Turns out that's a good idea :-p
+
+In the next installment, I will cover the basics of the Google library, which will then make all this 
+YouTube code look a bit more readable.
 
 ## Further Reading
 * [Getting Started w/ the Google API Client for Python](https://developers.google.com/api-client-library/python/start/get_started)
