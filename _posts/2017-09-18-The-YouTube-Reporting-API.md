@@ -39,6 +39,50 @@ one, learning the others is simple and straightforward.
 
 ---------------------------------------------------------
 
+## Basic Set-Up
+### 1. You Need a Google Account
+There's not much to say here.  I have a personal account and a work account.
+My work account has been given "content owner" permissions for my work's YouTube content.
+If you're doing a work project, this is likely the situation you are in too.  
+
+### 2. Create a Project
+It doesn't need to be an app or anything. A [Google Project](https://support.google.com/cloud/answer/6158853)
+is just
+> "a collection of settings, credentials, and metadata about the application or applications you're 
+> working on that make use of Google APIs and Google Cloud Platform resources."
+
+
+### 3. Enable the Reporting API
+We could enable a whole bunch of fun APIs -- BigQuery, Google Cloud SQL, YouTube Analytics, and more!
+For now, all that matters is that you have the YouTube Reporting API enabled.
+
+
+### 4. Collect Your Keys and Secrets
+You'll also need credentials.  Google ain't just lettin' anyone in! 
+
+You can find more info in the Google API Client's Python documentation in the 
+[intro](https://developers.google.com/api-client-library/python/start/get_started)  and in the 
+[authentication section](https://developers.google.com/api-client-library/python/guide/aaa_overview).
+
+
+### 5. Create a Client Secret File
+There might be a better way to do this... But I found it is good enough to create the following
+JSON file and place it in your project's working directory.
+
+[Client Secrets](https://developers.google.com/api-client-library/python/guide/aaa_client_secrets)
+
+(...show JSON structure...)
+
+### 5. The Google API Client for Python
+```
+pip install --upgrade google-api-python-client
+```
+[More info](https://developers.google.com/api-client-library/python/start/installation).
+
+
+
+## Some Code
+
 What reports are avaialable to you via the Reporting API?  How do you set up a job?
 There is a relevant [code snippet](https://developers.google.com/youtube/reporting/v1/reference/rest/v1/jobs/create) 
 in the Reporting API's documentation that provides a bunch
@@ -64,22 +108,22 @@ flow = flow_from_clientsecrets(CLIENT_SECRETS_FILE, scope=SCOPE, message=' f off
 storage=Storage('test-oauth2.json')
 credentials = run_flow(flow, storage)
 # If first time, your browser will open up.... Choose account....
-my_build = build(SERVICE_NAME,  VERSION,  http=credentials.authorize(httplib2.Http()))
+reporting_api = build(SERVICE_NAME,  VERSION,  http=credentials.authorize(httplib2.Http()))
 
 # List Available Reports
-my_build.reportTypes().list().execute()
+reporting_api.reportTypes().list().execute()
 
 # That’s a 1-word dictionary, where the key is 'reportTypes' and the value is a list of dictionaries
 # that contain info about each report type (keys 'id' and 'name')
-results = my_build.reportTypes().list().execute()
+results = reporting_api.reportTypes().list().execute()
 for reportType in results['reportTypes']:
     print("Report type id: %s\n name: %s\n" % (reportType["id"], reportType["name"]))
 
 # Ok, so let’s create a reporting job!!!!!!!!
-user_activity_id = ‘channel_basic_a2’
-name = ‘User activity’
+user_activity_id = 'channel_basic_a2'
+name = 'User Activity'
 
-reporting_job = my_build.jobs().create(
+reporting_job = reporting_api.jobs().create(
     body=dict(
       reportTypeId=user_activity_id,
       name=name
@@ -96,22 +140,24 @@ before (like me).
 
 ```python
 # You can check what jobs you have:
-my_build.jobs().list().execute()
+reporting_api.jobs().list().execute()
 
 # It take a day or two for reports to begin generating.  Here's how you
 # check whether the job you've created has generated any reports.
 # -- Copy down a job_id
 job_id = '1f8a7491-d66e-473d-xxxxxxxxxx'
-my_build.jobs().reports().list(jobId=job_id).execute()
+reporting_api.jobs().reports().list(jobId=job_id).execute()
 
 # Download Your Data!
 # Each of your reports will have a unique URL associated w/ it
 from apiclient.http import MediaIoBaseDownload
 from io import FileIO
+
 report_url = 'unique_report_URL' # use actual report URL! :-p
-request = my_build.media().download(resourceName="")
+request = reporting_api.media().download(resourceName="")
 request.uri = report_url
 fh = FileIO('report', mode='wb') 
+
 # Stream/download the report in a single request. 
 downloader = MediaIoBaseDownload(fh, request, chunksize=-1)
 done = False 
@@ -121,3 +167,8 @@ while done is False:
         print("Download %d%%." % int(status.progress() * 100))
 print("Download Complete!")
 ```
+
+
+## Further Reading
+* [Getting Started w/ the Google API Client for Python](https://developers.google.com/api-client-library/python/start/get_started)
+
