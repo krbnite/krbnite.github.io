@@ -36,7 +36,8 @@ is for, at least in terms of your channels' viewership and ad-performance data. 
 comments, there exist other APIs (e.g., the Data API and the Content ID API).  For now, forget about that shit, lest
 your head explode.  Fact is, figuring out how to use these APIs can be tricky at first, but once you figure out 
 one, learning the others is simple and straightforward.
-----------------------------------------------------
+
+---------------------------------------------------------
 
 What reports are avaialable to you via the Reporting API?  How do you set up a job?
 There is a relevant [code snippet](https://developers.google.com/youtube/reporting/v1/reference/rest/v1/jobs/create) 
