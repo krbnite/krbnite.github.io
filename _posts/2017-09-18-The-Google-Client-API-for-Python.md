@@ -16,3 +16,15 @@ this library -- BigQuery, Google Analytics, etc.
 
 Good shit -- let's go!
 
+## The Build
+In the previous section, to access the Reporting API, we used the function `build` from 
+`apiclient.discovery`.  This is the essence of accessing any Google service.
+
+```python
+from apiclient.discovery import build
+import httplib2
+SERVICE_NAME = "youtubereporting"
+VERSION = 'v1'
+reporting_api = build(SERVICE_NAME,  VERSION,  http=credentials.authorize(httplib2.Http()))
+```
+
