@@ -16,6 +16,18 @@ this library -- BigQuery, Google Analytics, etc.
 
 Good shit -- let's go!
 
+## Get the API
+```
+pip install --upgrade google-api-python-client
+```
+
+Also:
+```
+pip install --upgrade oauth2client
+```
+...though I just found out it has been [deprecated](https://pypi.python.org/pypi/oauth2client), which
+is delightlful.  Fret not: it still works.  The Reporting and Data API documentation both use it.
+
 ## The Build
 In the previous section, to access the Reporting API, we used the function `build` from 
 `apiclient.discovery`.  This is the essence of accessing any Google service.
