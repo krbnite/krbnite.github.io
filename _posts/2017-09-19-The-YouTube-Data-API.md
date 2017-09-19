@@ -59,7 +59,7 @@ Get some info on your channel's videos
 ```python
 info = data_api.activities().list(part='snippet,contentDetails', mine=True, maxResults=50).execute()
 ```
-<img src=../images/data-api__activities-snippet-contentDetails.pnd>
+<img src=/images/data-api__activities-snippet-contentDetails.pnd>
 
 
 
