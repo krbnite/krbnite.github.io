@@ -53,11 +53,19 @@ data_api = build(DATA_SERVICE, DATA_VERSION, http=credentials.authorize(httplib2
 
 ```
 
-## Data API Resources
-### Channels
+# Data API Resources
+## Activities
+Get some info on your channel's videos
+```python
+info = data_api.activities().list(part='snippet,contentDetails', mine=True, maxResults=50).execute()
+```
+<img src=../images/data-api__activities-snippet-contentDetails.pnd>
+
+
+
+## Channels
 https://developers.google.com/youtube/v3/docs/channels/list
 
-```python
 ### Channel Info
 Channel ID, description, title, and more!
 ```python
@@ -69,15 +77,30 @@ data_api.channels().list(part='snippet', mine=True).execute()
 data_api.channels().list(part='statistics', mine=True).execute()
 ```
 
+### Channel Subscribers
+Get a list of your subscribers, track 'em down, and do some analytics!  (If you have a lot of subscribers, you
+might actually want to occasionally write them to file instead of building an extraordinarily large list.)
 
+Here we see the `.channels` parameters `maxResults` and `pageToken` in use.
+```python
+maxResults = 50
+temp = data_api.channels().list(part='status', mySubscribers=True, maxResults=maxResults).execute()
+user_channel_id = [item['id'] for item in temp['items']]
+nextPageToken = temp['nextPageToken']
+totalSubs = temp['pageInfo']['totalResults']
+numPages = totalSubs // maxResults +1
+for i in range(1,numPages):
+  temp = data_api.channels().list(part='status', mySubscribers=True, maxResults=maxResults, pageToken=nextPageToken).execute()
+  user_channel_id += [item['id'] for item in temp['items']]
+  nextPageToken = temp['nextPageToken']
+```
 
-Arguments:
+Actually, after writing this, I found you get a lot of additional info by also using `part='snippet'`.  Very cool.
+
+### Some Arguments to Be Aware Of:
 * part: list of channel resources to return; if a chosen resource has a child resource, it
 will also be returned
-  - channel resources: contentDetails, 
-* categoryID:  return all channels that match the specified YouTube guide category
 * forUsername: return channel associated with given YouTube username
-* hl: filter out properties that are not in a given language (used for the brandSettings part)
 * id: list of channel IDs for the resources that are being retrieved
 * managedByMe:  set to True if you want to return only channels owned by a given content owner ID 
   - content owner ID must be passed to the onBehalfOfContentOwnwer parameter
@@ -87,12 +110,9 @@ will also be returned
   - not the same as onBehalfOfContentOwner, e.g., if I set this to True, it would return channels owned by my user account not my employer's content ID
 * mySubscribers:  set to True to returns subscribers of authenticated user's channel
 * onBehalfOfContentOwner: set to content owner ID if you have such permissions and have been authenticated to access all associated channels
-* pageToken: identifies a specific page in the result set that should be returned
-  - not currently too sure what this is...
+
   
-```python
-data_api
-```
+Read more about the `.channels()`: https://developers.google.com/youtube/v3/docs/channels/list
 
 
 
@@ -105,7 +125,8 @@ data_api.i18nRegions().list(part='snippet').execute()
 
 
 ### YouTube Category IDs
-YouTube has a classification scheme, which is dependent on region code.  For example, the first five categories
+YouTube has a [classification scheme](https://developers.google.com/youtube/v3/docs/guideCategories), 
+which is dependent on region code.  For example, the first five categories
 (and their IDs) used for the United States are:
 
 * 1 - 'Film & Animation'
