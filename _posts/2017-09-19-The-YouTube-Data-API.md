@@ -55,13 +55,52 @@ data_api = build(DATA_SERVICE, DATA_VERSION, http=credentials.authorize(httplib2
 
 # Data API Resources
 ## Activities
+From the documentation:
+> An activity resource contains information about an action that a particular channel, or user, has taken on YouTube. 
+> The actions reported in activity feeds include rating a video, sharing a video, marking a video as a favorite, uploading a 
+> video, and so forth. Each activity resource identifies the type of action, the channel associated with the action, and 
+> the resource(s) associated with the action, such as the video that was rated or uploaded.
+
 Get some info on your channel's videos
 ```python
 info = data_api.activities().list(part='snippet,contentDetails', mine=True, maxResults=50).execute()
 ```
-<img src=/images/data-api__activities-snippet-contentDetails.png>
+<img src=/images/data-api__activities-snippet-contentDetails.png width=400>
 
+Only look at snippets of a particular channel:
+```python
+import pandas as pd
+rows = pd.DataFrame(columns=['channel_id', 'channel_title', 'playlist_id', 'video_id', 'video_title', 'time_published'])
+temp = data_api.activities().list(part='snippet,contentDetails', maxResults=50, channelId='UCJ5v_MCY6GNUBTO8-D3XoAg').execute()
+there_is_more_data = True
+offset = 0
+while there_is_more_data:
+  for idx,item in enumerate(temp['items']):
+    content = item['contentDetails']
+    snippet = item['snippet']
+    if 'upload' in content.keys():
+      row = [
+        snippet['channelId'], snippet['channelTitle'], None,
+        content['upload']['videoId'], snippet['title'], snippet['publishedAt']
+      ] #endInfo
+    elif 'playlistItem' in content.keys():
+      row = [
+        snippet['channelId'], snippet['channelTitle'], content['playlistItem']['playlistId'],
+        content['playlistItem']['resourceId']['videoId'], snippet['title'], snippet['publishedAt']
+      ] #endInfo
+    rows.loc[idx+offset] = row   
+  try:
+    temp = data_api.activities().list(
+      part='snippet,contentDetails', 
+      maxResults=50, 
+      channelId='UCJ5v_MCY6GNUBTO8-D3XoAg',
+      pageToken = temp['nextPageToken']
+    ).execute()
+    offset += 50
+  except:
+    there_is_more_data = False
 
+```
 
 
 
