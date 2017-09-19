@@ -61,6 +61,7 @@ From the documentation:
 > video, and so forth. Each activity resource identifies the type of action, the channel associated with the action, and 
 > the resource(s) associated with the action, such as the video that was rated or uploaded.
 
+
 Get some info on your channel's videos
 ```python
 info = data_api.activities().list(part='snippet,contentDetails', mine=True, maxResults=50).execute()
@@ -70,38 +71,79 @@ info = data_api.activities().list(part='snippet,contentDetails', mine=True, maxR
 Only look at snippets of a particular channel:
 ```python
 import pandas as pd
-rows = pd.DataFrame(columns=['channel_id', 'channel_title', 'playlist_id', 'video_id', 'video_title', 'time_published'])
-temp = data_api.activities().list(part='snippet,contentDetails', maxResults=50, channelId='UCJ5v_MCY6GNUBTO8-D3XoAg').execute()
-there_is_more_data = True
-offset = 0
-while there_is_more_data:
-  for idx,item in enumerate(temp['items']):
-    content = item['contentDetails']
-    snippet = item['snippet']
-    if 'upload' in content.keys():
-      row = [
-        snippet['channelId'], snippet['channelTitle'], None,
-        content['upload']['videoId'], snippet['title'], snippet['publishedAt']
-      ] #endInfo
-    elif 'playlistItem' in content.keys():
-      row = [
-        snippet['channelId'], snippet['channelTitle'], content['playlistItem']['playlistId'],
-        content['playlistItem']['resourceId']['videoId'], snippet['title'], snippet['publishedAt']
-      ] #endInfo
-    rows.loc[idx+offset] = row   
-  try:
-    temp = data_api.activities().list(
-      part='snippet,contentDetails', 
-      maxResults=50, 
-      channelId='UCJ5v_MCY6GNUBTO8-D3XoAg',
-      pageToken = temp['nextPageToken']
-    ).execute()
-    offset += 50
-  except:
-    there_is_more_data = False
+def get_channel_playlists_and_videos(channelId, publishedAfter=None, publishedBefore=None, regionCode=None):
+  """
+  channelId:  YouTube Channel ID
+  publishedAfter, publishedBefore: YYYY-MM-DDThh:mm:ss.sZ (default: None)
+  regionCode:  ISO 3166-1 alpha-2 country code
+  """
+  rows = pd.DataFrame(columns=['channel_id', 'channel_title', 'playlist_id', 
+    'video_id', 'video_title', 'time_published'])
+  temp = data_api.activities().list(
+    part       = 'snippet,contentDetails', 
+    maxResults = 50, 
+    channelId  = channel_id,
+    publishedAfter = publishedAfter,
+    publishedBefore = publishedBefore
+  ).execute()
+  there_is_more_data = True
+  offset = 0
+  while there_is_more_data:
+    for idx,item in enumerate(temp['items']):
+      content = item['contentDetails']
+      snippet = item['snippet']
+      if 'upload' in content.keys():
+        row = [
+          snippet['channelId'], snippet['channelTitle'], None,
+          content['upload']['videoId'], snippet['title'], snippet['publishedAt']
+        ] #endInfo
+      elif 'playlistItem' in content.keys():
+        row = [
+          snippet['channelId'], snippet['channelTitle'], content['playlistItem']['playlistId'],
+          content['playlistItem']['resourceId']['videoId'], snippet['title'], snippet['publishedAt']
+        ] #endInfo
+      rows.loc[idx+offset] = row   
+    try:
+      temp = data_api.activities().list(
+        part       ='snippet,contentDetails', 
+        maxResults = 50, 
+        channelId  = channel_id,
+        publishedAfter = publishedAfter,
+        publishedBefore = publishedBefore,
+        pageToken  = temp['nextPageToken']
+      ).execute()
+      offset += 50
+    except:
+      there_is_more_data = False
+  return rows
 
+# Get Channel Info
+bella_twins = 'UCIJnHb6meZoOjKF68h35QgQ' 
+df = get_channel_playlists_and_videos(bella_twins)
+wwe = 'UCJ5v_MCY6GNUBTO8-D3XoAg'
 ```
 
+Oddly, this method seems to only be able to extract 256 per channel...?
+
+Maybe a better way to do is this?
+```python
+data_api.search().list(part='snippet',channelId=wwe, type='video').execute()
+```
+
+### Reivew of `.activities` Parameters
+* Required
+  - Part: contentDetails, id, snippet
+* Filters
+  - channelId
+  - mine (boolean)
+* Optional
+  - maxResults
+  - pageToken
+  - publishedAfter
+  - publishedBefore
+  - regionCode
+
+Further Reading:  https://developers.google.com/youtube/v3/docs/activities/list
 
 
 
@@ -157,7 +199,6 @@ will also be returned
 Read more about the `.channels()`: https://developers.google.com/youtube/v3/docs/channels/list
 
 
-
 ### YouTube Region Codes
 An [i18nRegion](https://developers.google.com/youtube/v3/docs/i18nRegions) region code identifies a 
 geographic area that a YouTube user can select as the content region. 
@@ -182,4 +223,28 @@ Find the rest of them using this code:
 us_cat_info = data_api.videoCategories().list(regionCode='US', part='snippet').execute()
 [(item['id'], item['snippet']['title']) for item in us_cat_info['items']]
 ```
+
+
+# Further Experimentation
+## Captions
+https://developers.google.com/youtube/v3/docs/captions
+
+Scopes for captions are different:
+* https://www.googleapis.com/auth/youtube.force-ssl
+* https://www.googleapis.com/auth/youtubepartner
+
+## Channel Banners
+At the moment, I don't really care about [Channel Banners](https://developers.google.com/youtube/v3/docs/channelBanners):
+> "A channelBanner resource contains the URL that you would use to set a newly uploaded image as the banner image for a channel."
+
+## Channel Sections
+https://developers.google.com/youtube/v3/docs/channelSections:
+> A channelSection resource contains information about a set of videos that a channel has chosen to feature. 
+> For example, a section could feature a channel's latest uploads, most popular uploads, or videos from one or 
+> more playlists.
+
+Basically just brings back info about the vertical/horizontal sections of videos: which ones are there, etc.
+Not something I care to explore more at the moment.
+
+
 
