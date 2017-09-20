@@ -152,12 +152,11 @@ if credentials is None or credentials.invalid:
 If it is your first time using the client\_secrets.json file to create the OAuth2 JSON file, 
 your browser will open up to authenticate you.
 
-1. Choose a Google Account
-    - <img src=/images/oauth2-a.png width=350>
-2. Choose an Associated YouTube Channel or Account
-    - <img src=/images/oauth2-b.png width=350>
-3. You should be notified both in the browser and at the command line that you've been authenticated (or not)
-    - <img src=/images/oauth2-c.png width=350>
+| Step | What You Should See | Commentary |
+|-------------------------------------------|
+| Choose a Google Account | <img src=/images/oauth2-a.png width=300> | bla |
+| Choose an Associated YouTube Channel or Account | <img src=/images/oauth2-b.png width=300> | yah |
+| Acceptance or Rejection | <img src=/images/oauth2-c.png width=300> | You should be notified both in the browser and at the command line that you've been authenticated (or not) |
 
 
 
