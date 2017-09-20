@@ -155,19 +155,21 @@ your browser will open up to authenticate you.
 
 #### 1. Choose a Google Account 
 A screen like this should pop up:
-
-<img src=/images/oauth2-a.png width=300> 
+<figure>
+    <img src=/images/oauth2-a.png width=300> 
+</figure>
 
 #### 2. Choose an Associated YouTube Channel or Account 
 The next screen should look like:
-
-<img src=/images/oauth2-b.png width=300> 
+<figure>
+    <img src=/images/oauth2-b.png width=300> 
+</figure>
 
 #### 3. Acceptance or Rejection 
 You should be notified both in the browser and at the command line that you've been authenticated (or not):
-
-<img src=/images/oauth2-c.png width=400> 
-   
+<figure>
+    <img src=/images/oauth2-c.png width=550> 
+</figure>
 
 
 Now that the OAuth2 JSON file has been created, you won't really have to go through this rigamaroo again.
