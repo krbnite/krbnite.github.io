@@ -22,7 +22,7 @@ for a media company that releases
 15-50 videos every day-- thus scraping (which I covered in several previous posts).  
 
 <figure>
-<img src="images/youtube-realtime-report.png" width="400vw">
+<img src="/images/youtube-realtime-report.png" width="400vw">
 </figure>
 
 Moreover, if timeliness and high-frequency estimates are not a factor, 
