@@ -153,22 +153,22 @@ your browser will open up to authenticate you.
 
 
 
-#### 1. Choose a Google Account 
+#### A. Choose a Google Account 
 A screen like this should pop up:
 <figure>
-    <img src=/images/oauth2-a.png width=300> 
+    <img src="/images/oauth2-a.png" width="300vw"> 
 </figure>
 
-#### 2. Choose an Associated YouTube Channel or Account 
+#### B. Choose an Associated YouTube Channel or Account 
 The next screen should look like:
 <figure>
-    <img src=/images/oauth2-b.png width=300> 
+    <img src="/images/oauth2-b.png" width="300vw"> 
 </figure>
 
-#### 3. Acceptance or Rejection 
+#### C. Acceptance or Rejection 
 You should be notified both in the browser and at the command line that you've been authenticated (or not):
 <figure>
-    <img src=/images/oauth2-c.png width=550> 
+<img src="/images/oauth2-c.png" width="550vw"> 
 </figure>
 
 
