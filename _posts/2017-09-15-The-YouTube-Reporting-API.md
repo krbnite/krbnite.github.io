@@ -43,8 +43,11 @@ what channels are associated with a given content owner ID, there exist other AP
 your head explode.  Fact is, figuring out how to use these APIs can be tricky at first, but once you figure out 
 one, learning the others is simple and straightforward.
 
-Below, I cover some basics of using the Reporting API. My notes all basically pertain to content reports rather than
-channel reports since my employer own mutliple channels... But the notes should be useful for both.
+Below, I cover some basics of using the Reporting API. The [documentation](https://developers.google.com/youtube/reporting/v1/reports/) 
+provides some code snippets for Python programs you can run from the bash shell, but these programs can look fairly obtuse.  
+If you are like me, you would like to understand what each piece of the code 
+is doing and in what sequence -- and a great way to do this is to be able to see how the code works procedurally one line at a time.  So
+my goal was to dissect the various functions and do just that.  
 
 ---------------------------------------------------------
 
@@ -68,7 +71,8 @@ is just
 > "a collection of settings, credentials, and metadata about the application or applications you're 
 > working on that make use of Google APIs and Google Cloud Platform resources."
 
-To create or select a project, go to console.cloud.google.com.
+To create a project, go to https://console.cloud.google.com/projectcreate.
+
 
 ### 3. Enable the Reporting API
 We could enable a whole bunch of fun APIs -- BigQuery, Google Cloud SQL, YouTube Analytics, and more!
@@ -79,6 +83,10 @@ For now, all that matters is that you have the YouTube Reporting API enabled.
 3. On left-side menu: APIs and services > Library 
 4. Click on YouTube Reporting API
 5. Click "Enable"
+
+<figure>
+    <img src="/images/google-api-library.png" width="400vw">
+</figure>
 
 See [here](https://support.google.com/cloud/answer/6158841) for more info.
 
@@ -111,19 +119,23 @@ More Info: [Client Secrets](https://developers.google.com/api-client-library/pyt
 ```
 pip install --upgrade google-api-python-client
 ```
+Basically, if this looks confusing to you, then you have to slow down and learn a little Python.
+
 [More info](https://developers.google.com/api-client-library/python/start/installation).
 
 
 
-## Some Code to Whet Your Appetite / Hurt Your Brain
-### Creating Jobs
-What reports are avaialable to you via the Reporting API?  How do you set up a job?
+## Using the Reporting API for the First Time
+What reports are available to you via the Reporting API?  How do you set up a job? 
+How and when do you use all those credentials we generated above?
+
+### Credentials
 There is a relevant [code snippet](https://developers.google.com/youtube/reporting/v1/reference/rest/v1/jobs/create) 
 in the Reporting API's documentation that provides a bunch
 of complicated-looking functions built using the Google API.  You can basically just
-use this code...but wtf does it do?  
+use this code to create jobs...but wtf does it do?  
 
-Having never used Google's python libraries before, it looked like pure alienese, 
+Having never used Google's python libraries before, it looked like pure alienese to me, 
 so I distilled the code into a more procedural format to make the code easier to follow
 and understand what does what (at least for someone new to the API).
 
@@ -148,10 +160,10 @@ if credentials is None or credentials.invalid:
     credentials = run_flow(flow, storage)  # This creates the credentials_file
 
 ```
+
+
 If it is your first time using the client\_secrets.json file to create the OAuth2 JSON file, 
 your browser will open up to authenticate you.
-
-
 
 #### A. Choose a Google Account 
 A screen like this should pop up:
@@ -165,6 +177,16 @@ The next screen should look like:
     <img src="/images/oauth2-b.png" width="300vw"> 
 </figure>
 
+If you need to use this API on the behalf of a content owner, make sure to select the YouTube 
+account that was given those permissions!  In the image above, if I choose a particular channel,
+I am able to generate [channel reports](https://developers.google.com/youtube/reporting/v1/reports/channel_reports) 
+for the selected channel, but not 
+[content owner reports](https://developers.google.com/youtube/reporting/v1/reports/content_owner_reports) that will
+include information about all other channels owned by my employer.  Only when I select my own YouTube account
+can I act on behalf of the content owner and, thus, generate the more desirable content owner reports. (Without 
+the permission to act on behalf of a content owner, you can only generate channel reports.)
+
+
 #### C. Acceptance or Rejection 
 You should be notified both in the browser and at the command line that you've been authenticated (or not):
 <figure>
@@ -175,15 +197,38 @@ You should be notified both in the browser and at the command line that you've b
 Now that the OAuth2 JSON file has been created, you won't really have to go through this rigamaroo again.
 Time to build the connection to the Reporting API!
 
+
+### Build the Reporting API
 ```python
 reporting_api = build(SERVICE_NAME,  VERSION,  http=credentials.authorize(httplib2.Http()))
 ```
+Built!  So... Now what?  What are some things you can do with the Reporting API?
 
-What are some things you can do with the Reporting API?
+
+### List the Reports Provided by the Reporting API 
 ```python
 # List Available Reports
 reporting_api.reportTypes().list().execute()
+```
+You should see a list of JSON objects, or as we call 'em in Pythonese: dictionaries. 
+Since no content owner ID was passed to the `list` method, the API assumes you want
+to know about which reports are available to *you* for the channel associated with
+your selected YouTube account.  
 
+<figure>
+    <img src="/images/reporting-api-report-types.png" width="400vw">
+</figure>
+
+```python
+# List Available Reports
+contentId = 'coNt3nt0wNEr1dxyz'  # Pro Tip: Use your own content owner ID!
+reporting_api.reportTypes().list(onBehalfOfContentOwner=contentId).execute()
+```
+<figure>
+    <img src="/images/reporting-api-report-types-for-content-owner.png" width="400vw">
+</figure>
+
+```python
 # That’s a 1-word dictionary, where the key is 'reportTypes' and the value is a list of dictionaries
 # that contain info about each report type (keys 'id' and 'name')
 results = reporting_api.reportTypes().list().execute()
