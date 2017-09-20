@@ -142,14 +142,31 @@ CLIENT_SECRETS_FILE = "client_secrets.json"  # Presuming you made this and in di
 flow = flow_from_clientsecrets(CLIENT_SECRETS_FILE, scope=SCOPE, message=' f off ')
 
 # 
-credentials_file = 'nameYouGave-OAuth2-file-if-you-made-one' # e.g., test-oauth2.json
+credentials_file = 'name-of-OAuth2-file.json' # e.g., projectName-oauth2.json
 storage = Storage(credentials_file) 
 credentials = storage.get()   # Returns None if the file doesn't exist
 if credentials is None or credentials.invalid:
     credentials = run_flow(flow, storage)  # This creates the credentials_file
-# If first time, your browser will open up.... Choose account....
-reporting_api = build(SERVICE_NAME,  VERSION,  http=credentials.authorize(httplib2.Http()))
 
+```
+If it is your first time using the client\_secrets.json file to create the OAuth2 JSON file, 
+your browser will open up to authenticate you.
+
+1. Choose a Google Account
+    <img src=/images/oauth2-a.png width=350 align="right">
+2. Choose an Associated YouTube Channel or Account
+    <img src=/images/oauth2-b.png width=350 align="right">
+3. You should be notified both in the browser and at the command line that you've been authenticated (or not)
+    <img src=/images/oauth2-c.png width=350 align="right">
+
+
+
+```python
+reporting_api = build(SERVICE_NAME,  VERSION,  http=credentials.authorize(httplib2.Http()))
+```
+
+
+```python
 # List Available Reports
 reporting_api.reportTypes().list().execute()
 
@@ -170,10 +187,6 @@ reporting_job = reporting_api.jobs().create(
     )
   ).execute()
 ```
-
-<img src=/images/oauth2-a.png width=350 align="center">
-<img src=/images/oauth2-b.png width=350 align="center">
-<img src=/images/oauth2-c.png width=350 align="center">
 
 
 
