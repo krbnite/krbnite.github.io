@@ -83,16 +83,16 @@ For now, all that matters is that you have the YouTube Reporting API enabled.
 See [here](https://support.google.com/cloud/answer/6158841) for more info.
 
 
-### 4. Collect Your Keys and Secrets
+### 4. Create Your Keys and Secrets
 You'll also need credentials.  Google ain't just lettin' anyone in! 
 
 1. Go to console.cloud.google.com
 2. Select project
 3. On left-side menu: APIs and services > Credentials
 4. Click on "Create credentials"
-5. Choose credential type: API key, OAuth client ID, or Service account key
-
-I create an API key... I also created a client ID and client secret...but can't remember how... (Crap.)
+5. Choose credential type: 
+    - API key
+    - OAuth client ID
 
 You can find more info in the Google API Client's Python documentation in the 
 [intro](https://developers.google.com/api-client-library/python/start/get_started)  and in the 
@@ -101,12 +101,11 @@ There's also this Google Console [help page](https://support.google.com/cloud/an
 about credentials, access, security, and identity.  
 
 ### 5. Create a Client Secret File
-There might be a better way to do this... But I found it is good enough to create the following
-JSON file and place it in your project's working directory.
+Now that you've created some credentials, you want to download the "client secrets" JSON file:
+<img src=/images/google-api-credentials.png>
 
-[Client Secrets](https://developers.google.com/api-client-library/python/guide/aaa_client_secrets)
+More Info: [Client Secrets](https://developers.google.com/api-client-library/python/guide/aaa_client_secrets)
 
-(...show JSON structure...)
 
 ### 5. The Google API Client for Python
 ```
@@ -152,19 +151,25 @@ if credentials is None or credentials.invalid:
 If it is your first time using the client\_secrets.json file to create the OAuth2 JSON file, 
 your browser will open up to authenticate you.
 
-| Step | What You Should See | Commentary |
-|-------------------------------------------|
-| Choose a Google Account | <img src=/images/oauth2-a.png width=300> | bla |
-| Choose an Associated YouTube Channel or Account | <img src=/images/oauth2-b.png width=300> | yah |
-| Acceptance or Rejection | <img src=/images/oauth2-c.png width=300> | You should be notified both in the browser and at the command line that you've been authenticated (or not) |
 
 
+1. Choose a Google Account 
+    - <img src=/images/oauth2-a.png width=300> 
+2. Choose an Associated YouTube Channel or Account 
+    - <img src=/images/oauth2-b.png width=300> 
+3. Acceptance or Rejection 
+    - <img src=/images/oauth2-c.png width=300> 
+    - You should be notified both in the browser and at the command line that you've been authenticated (or not)
+
+
+Now that the OAuth2 JSON file has been created, you won't really have to go through this rigamaroo again.
+Time to build the connection to the Reporting API!
 
 ```python
 reporting_api = build(SERVICE_NAME,  VERSION,  http=credentials.authorize(httplib2.Http()))
 ```
 
-
+What are some things you can do with the Reporting API?
 ```python
 # List Available Reports
 reporting_api.reportTypes().list().execute()
