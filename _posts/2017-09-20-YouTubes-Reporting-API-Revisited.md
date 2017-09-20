@@ -74,7 +74,7 @@ report.jobs().create(
 
 Oops!  Did you get a 403 Error?  Here's the error I get from Python:
 > HttpError: <HttpError 403 when requesting 
-> https://youtubereporting.googleapis.com/v1/jobs?onBehalfOfContentOwner=9fLKFnqu2JiKrc1iHeNAeA&alt=json 
+> 'ht<span>tps://</span>youtubereporting.googleapis.com/v1/jobs?onBehalfOfContentOwner=topSecretStringOfLettersAndNumbers!=json
 > returned "The caller does not have permission">
 
 From the Reporting API documentation:
