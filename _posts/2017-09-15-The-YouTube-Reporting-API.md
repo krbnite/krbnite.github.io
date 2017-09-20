@@ -153,11 +153,11 @@ If it is your first time using the client\_secrets.json file to create the OAuth
 your browser will open up to authenticate you.
 
 1. Choose a Google Account
-    <img src=/images/oauth2-a.png width=350 align="right">
+    - <img src=/images/oauth2-a.png width=350>
 2. Choose an Associated YouTube Channel or Account
-    <img src=/images/oauth2-b.png width=350 align="right">
+    - <img src=/images/oauth2-b.png width=350>
 3. You should be notified both in the browser and at the command line that you've been authenticated (or not)
-    <img src=/images/oauth2-c.png width=350 align="right">
+    - <img src=/images/oauth2-c.png width=350>
 
 
 
