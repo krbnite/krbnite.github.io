@@ -4,24 +4,33 @@ title: The YouTube Reporting API
 ---
 
 ## Scraping Isn't Enough
-Scraping YouTube is great for getting total views, likes, dislikes, comments and sometimes a few other quantities, especially
-if you want real-time estimates at better-than-daily cadence (e.g., hourly).  In terms of timeliness, scraping YouTube
-for estimates of your content's viewership is better than waiting for YouTube to
-officially release estimates of "valid views" in 2-3 days.  That said, you should understand that such hourly scrapes
-might have some noise from the presence and removal of so-called invalid views, e.g., bots, scrapers, and page refreshes.  
-This is usually a negligible difference, especially if your content generally gets a lot "valid" views (real people eyes!)
-and you don't pay an offshore team to unnaturally inflate your count.
+For most content, YouTube provides daily estimated metrics at a 2-3 day lag. If you are working on a project
+that requires recency or metric estimates at a better-than-daily cadence, scraping is probably the way to go,
+and will allow you to obtain estimates of total views, likes, dislikes, comments, and sometimes even a few other quantities.
 
-Scraping is great and satisfying to automate, but small players in the media game might be better off using
-YouTube's real-time analytics if they do not frequently release too much content (I think it tracks the lateste 20 uploads)
-and don't already know how to scrape.  YouTube real-time reporting is less useful if you work at a media company that releases
+That said, you should understand that such hourly scrapes
+might have some noise from the presence and removal of so-called invalid views, e.g., views associated with 
+bots, scrapers, and page refreshes.  This is usually a negligible difference, especially if your content 
+generally gets a lot "valid" views (real people eyes!) and you don't pay an offshore team to unnaturally inflate your count.
+
+Also, though scraping might be satisfying to automate, small players in the media game 
+that do not frequently release content might be better off just using
+[YouTube's Realtime Report](https://support.google.com/youtube/answer/6096647?hl=en), which
+tracks realtime estimates for the last 25 published videos.  This is solution is especially nice for
+those who don't already know how to scrape.  However, YouTube realtime reporting is less useful 
+for a media company that releases
 15-50 videos every day-- thus scraping (which I covered in several previous posts).  
 
-Another thing to consider is whether or not timeliness is a factor: if your project doesn't need the most up-to-date
-data, you can technically use YouTube analytics and get more info than you can scrape.  This is especially true if
-you care about a time sequence of such data for dates gone by long before you've made a scraper.  That said, you can still 
-"scrape" if selenium is in your arsenal by having it sign into your analytics.youtube.com 
-account and scrape around.  
+<figure>
+    <img src="images/youtube-realtime-report.png" width="400vw">
+</figure>
+
+Moreover, if timeliness and high-frequency estimates are not a factor, 
+you can technically use YouTube Analytics (CMS or API) to get more info than you can scrape (at a daily cadence). 
+And remember: a scraper can't go back in time!  So the Analytics API is necessary 
+if you care about dates gone by without a YouTube scraper crawling around for you.  
+If you really just want to automate something that feels like scraping, you can still 
+use selenium sign into your analytics.youtube.com account and scrape around.  
 
 But still, is that the best way? Or just a cool way?
 
