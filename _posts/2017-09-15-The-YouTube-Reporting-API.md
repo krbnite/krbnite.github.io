@@ -3,15 +3,21 @@ layout: post
 title: The YouTube Reporting API
 ---
 
-## Scraping Isn't Enough
 For most content, YouTube provides daily estimated metrics at a 2-3 day lag. If you are working on a project
 that requires recency or metric estimates at a better-than-daily cadence, scraping is probably the way to go,
 and will allow you to obtain estimates of total views, likes, dislikes, comments, and sometimes even a few other quantities.
 
 That said, you should understand that such hourly scrapes
-might have some noise from the presence and removal of so-called invalid views, e.g., views associated with 
+might have some noise from the presence and/or removal of so-called 
+[invalid views](https://support.google.com/youtube/answer/2991785?hl=en), e.g., views associated with 
 bots, scrapers, and page refreshes.  This is usually a negligible difference, especially if your content 
 generally gets a lot "valid" views (real people eyes!) and you don't pay an offshore team to unnaturally inflate your count.
+If YouTube suspects suspicious activity, it also reserves the right to slow down or freeze the view count
+shown on the watch page until views are validated.  
+
+<figure>
+<img src="/images/youtube-frozen-views.png" width="400vw">
+</figure>
 
 Also, though scraping might be satisfying to automate, small players in the media game 
 that do not frequently release content might be better off just using
@@ -42,15 +48,20 @@ You might find yourself making programs with all kinds of for-loops to account f
 metrics, and filters. This can get really nasty if you work for a content
 owner with hordes YouTube channels. 
 
+## The Reporting API
 Wouldn't it be nice to just have all of the data in
 your own database, which you can query however you want and bring into your favorite programming environment?
 
 Well, that's basically what the [YouTube Reporting API](https://developers.google.com/youtube/reporting/v1/reports/) 
-is for, at least in terms of your channels' viewership and ad-performance data.  For other types of data, like
-what channels are associated with a given content owner ID, there exist other APIs 
-(e.g., the Data API and the Content ID API).  For now, forget about that shit, lest
-your head explode.  Fact is, figuring out how to use these APIs can be tricky at first, but once you figure out 
-one, learning the others is simple and straightforward.
+is for, at least in terms of your channels' viewership and ad-performance data.  
+
+> The YouTube Reporting API supports predefined reports that contain a comprehensive set of YouTube Analytics 
+> data for a [channel](https://developers.google.com/youtube/reporting/v1/reports/channel_reports)
+> or [content owner](https://developers.google.com/youtube/reporting/v1/reports/content_owner_reports). 
+> These reports allow you to download the bulk data sets that you can 
+> query with the [YouTube Analytics API](https://developers.google.com/youtube/analytics/v1/)
+> or in the [Analytics](https://www.youtube.com/analytics) section of the Creator Studio.
+
 
 Below, I cover some basics of using the Reporting API. The [documentation](https://developers.google.com/youtube/reporting/v1/reports/) 
 provides some code snippets for Python programs you can run from the bash shell, but these programs can look fairly obtuse.  
