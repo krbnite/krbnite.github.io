@@ -299,6 +299,9 @@ reporting_api.jobs().reports().list(jobId=job_id).execute()
 ### Download Your Data!
 Each of your reports will have a unique URL associated with it that points at a CSV file.  
 The Google Client API library comes with some functionality to help you get this data.
+(For more info, check out the 
+[code in the documentation](https://developers.google.com/youtube/reporting/v1/code_samples/python#retrieve_reports) 
+from which this was distilled.)
 
 ```python
 from apiclient.http import MediaIoBaseDownload
