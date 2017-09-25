@@ -27,6 +27,8 @@ You should see a screen like this:
 <figure><img src="/images/FB-Graph-API-Explorer.png" width="500"></figure>
 
 ### 2. Get a User Access Token
+Even to request data on yourself, you need an [access token](https://developers.facebook.com/docs/facebook-login/access-tokens).
+
 On the left-hand side of the Explorer, you should see a button that says "Get Token."  When you
 click it, you will have the option to select "Get User Access Token," "Get App Access Token," and "Get Page Access Token."
 Select the User Access Token.  
@@ -35,6 +37,22 @@ You should see a pop-up screen that lists an array of [permissions](https://deve
 that you might want to bestow upon this access token.  
 
 <figure><img src="/images/FB-Graph-API-Access-Tokens.png" width="500"></figure>
+
+#### A Little More on Access Tokens
+The type of User Access Token we generate is called a short-lived token.  It is valid for only an hour or two, then
+you need to generate another one.
+
+From FaceBook's [documentation](https://developers.facebook.com/docs/facebook-login/access-tokens#usertokens):
+> User access tokens come in two forms: short-lived tokens and long-lived tokens. Short-lived tokens usually have a 
+> lifetime of about an hour or two, while long-lived tokens usually have a lifetime of about 60 days. You should not 
+> depend on these lifetimes remaining the same - the lifetime may change without warning or expire early. 
+>
+> Access tokens generated via web login are short-lived tokens, but you can 
+> [convert them to long-lived tokens](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)
+> by making a server-side API call along with your app secret.
+
+We won't be covering this.  Just consider yourself warned.
+
 
 ### 3. Select Some Permissions
 The default permission is access to your public profile -- that is, this will be your default if you do not select any other available 
@@ -82,4 +100,28 @@ arise because you only receive a limited amount of data per request, and to obta
 the API more times using this information.  This is pagination, and we saw in the various YouTube APIs as well.
 
 ### 5. POST Something!
+
+## From the Comfort of Python
+If you're buzzing right along, your access token is probably still valid.  Given it does not expire,
+you can use the same token to obtain FaceBook data from Python.  FaceBook refers to this as "token
+portability":
+
+> One important aspect to understand about access token is that they are portable. Once you have an 
+> access token you can use it to make calls from a mobile client, a web browser, or from your server to Facebook's servers. 
+
+### Python FaceBook Package
+* Install it:  http://facebook-sdk.readthedocs.io/en/latest/install.html
+
+```python
+# This package only seems to support up to version 2.7 (currently on v2.10)
+graph = facebook.GraphAPI(access_token="your_token", version="2.7")
+
+# But! It works for what we need, e.g.:
+my_info = graph.get_object("/me?fields=id,name,feed")
+  
+# Write to File
+import json
+with open('my_json_file.json', 'w') as f:
+  json.dump(my_info, f)
+```
 
