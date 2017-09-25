@@ -23,7 +23,8 @@ Or head  to the [Graph API Explorer](https://developers.facebook.com/tools/explo
 a commutative operation, so both work! 
 
 You should see a screen like this:
-<img src="/images/FB-Graph-API-Explorer.png" width="500">
+
+<figure><img src="/images/FB-Graph-API-Explorer.png" width="500"></figure>
 
 ### 2. Get a User Access Token
 On the left-hand side of the Explorer, you should see a button that says "Get Token."  When you
@@ -32,7 +33,8 @@ Select the User Access Token.
 
 You should see a pop-up screen that lists an array of [permissions](https://developers.facebook.com/docs/facebook-login/permissions/)
 that you might want to bestow upon this access token.  
-<img src="/images/FB-Graph-API-Access-Tokens.png" width="500">
+
+<figure><img src="/images/FB-Graph-API-Access-Tokens.png" width="500"></figure>
 
 ### 3. Select Some Permissions
 The default permission is access to your public profile -- that is, this will be your default if you do not select any other available 
@@ -40,14 +42,16 @@ permission from the list.  If you do not select any other permissions, you will 
 able to pull your own posts!  You also would not be able to pull your own email address, photos, or anything too interesting.  
 
 Moral:  Check off some damn persmissions!  At least a bunch of the ones about your own user data. 
-<img src="/images/FB-Graph-API-Access-Tokens-2.png" width="500">
+
+<figure><img src="/images/FB-Graph-API-Access-Tokens-2.png" width="500"></figure>
 
 Note: my image might look different than yours (e.g., "user\_posts" in bold) because this screen is showing
 me add permissions to a pre-existing access token.
 
 ### 4. GET Something!
 By default, you will see "id" and "name" fields listed in the text box. Try adding "posts" or "photos" and pressing "Submit."
-<img src="/images/FB-Graph-API-First-Query.png" width="500">
+
+<figure><img src="/images/FB-Graph-API-First-Query.png" width="500"></figure>
 
 Very nice!  You've just issued your first GET request to the FaceBook Graph API.
 
@@ -55,7 +59,7 @@ Now, for your next GET request, let the Explorer tool help you.  Notice in the b
 a list of the fields that you most recently requested.  At the bottom of this list is an option to "Search for a
 field."  Click on it!  
 
-<img src="/images/FB-Graph-API-Second-Query.png" width="500">
+<figure><img src="/images/FB-Graph-API-Second-Query.png" width="500"></figure>
 
 
 This can make exploration so much easier when first starting out.  For example, above we selected the user\_about\_me and the
@@ -67,7 +71,15 @@ WRONG!
 The the field corresponding to the user\_about\_me permission is simply "about." Things like this are useful to know,
 and can only come with practice and experimentation.  The Explorer tool definitely helps facilitate this.
 
+You will not be able to look at fields your access token does not have permission for, and
+certain fields will generate limited information based on your privacy settings.  For example, if you
+try to retrieve the field `promotable_events` using the permissions we selected above, you will receive
+an error message:
+> "(#278) Reading advertisements requires an access token with the extended permission ads\_read"
 
+On a last note:  For some requests, you will also notice "before" and "after" fields in the response.  These
+arise because you only receive a limited amount of data per request, and to obtain more data you must ping
+the API more times using this information.  This is pagination, and we saw in the various YouTube APIs as well.
 
 ### 5. POST Something!
 
