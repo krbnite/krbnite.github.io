@@ -66,7 +66,7 @@ Moral:  Check off some damn persmissions!  At least a bunch of the ones about yo
 Note: my image might look different than yours (e.g., "user\_posts" in bold) because this screen is showing
 me add permissions to a pre-existing access token.
 
-### 4. GET Something!
+### 4. GET Something About Yourself!
 By default, you will see "id" and "name" fields listed in the text box. Try adding "posts" or "photos" and pressing "Submit."
 
 <figure><img src="/images/FB-Graph-API-First-Query.png" width="500"></figure>
@@ -99,7 +99,13 @@ On a last note:  For some requests, you will also notice "before" and "after" fi
 arise because you only receive a limited amount of data per request, and to obtain more data you must ping
 the API more times using this information.  This is pagination, and we saw in the various YouTube APIs as well.
 
-### 5. POST Something!
+### 5. GET Something About Someone Else!
+With the permissions selected above, we can't really see much about another person.  That said, 
+here is how you can see some info:
+* Go to your friend's page
+* If they have a custom user name, you will have to view the page source
+* In the page source, search for "fb://profile" and copy the user id that you find
+* In the Explorer, erase "me?fields=..." and replace with the user id
 
 ## From the Comfort of Python
 If you're buzzing right along, your access token is probably still valid.  Given it does not expire,
@@ -123,5 +129,39 @@ my_info = graph.get_object("/me?fields=id,name,feed")
 import json
 with open('my_json_file.json', 'w') as f:
   json.dump(my_info, f)
+
+# Post something
+graph.put_object("me", "feed", 
+  message="Testing FaceBook Graph API from the comfort of Python... 'Like' if it worked! :-p")
+
+# Do a Search
+graph.request("/search?q=wwe&type=event&limit=100")
+
+# Get Info on an Event
+events = graph.request("/search?q=wwe&type=event&limit=100")
+event_0_id = events['data'][0]['id']
+event_info = graph.get_object(id = event_0_id,
+  fields="""attending_count,can_guests_invite,category,cover,declined_count,description,end_time,
+  guest_list_enabled,interested_count,is_canceled,is_page_owned,is_viewer_admin,maybe_count,
+  noreply_count,owner,parent_group,place,ticket_uri,timezone,type,updated_time""")
 ```
 
+You can even go on to get a list of those "attending" the event and those that said "maybe."
+Very helpful if you are the event organizer or marketer! ([More info here](https://medium.com/towards-data-science/how-to-use-facebook-graph-api-and-extract-data-using-python-1839e19d6999).)
+
+
+### The Requests Package
+If you find the FaceBook package limited, then go ahead and create your own
+functions to interact with the FaceBook Graph API.  
+
+[Here](https://www.sitepoint.com/2-cool-things-can-facebook-graph-api/) is a good example.
+
+----------------------
+
+How to generate a token from Python?
+
+-------------------------------
+
+Some more info:
+* https://www.klipfolio.com/blog/facebook-graph-api-explorer
+* https://medium.com/towards-data-science/how-to-use-facebook-graph-api-and-extract-data-using-python-1839e19d6999
