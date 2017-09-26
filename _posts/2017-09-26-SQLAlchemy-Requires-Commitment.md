@@ -34,8 +34,8 @@ dbExecute(con, "GRANT SELECT ON my_cool_table TO PUBLIC")
 
 Done.
 
-For a long while, despite working with SQLAlchemy and Python, I had to use R just to do stuff like that.  
-For some reason, issuing similar GRANT and COPY commands from `con.execute()` do nothing.
+For a long while, despite working with SQLAlchemy and Python, I had to use R just to do 
+stuff like that.  For some reason, issuing similar GRANT and COPY commands from `con.execute()` do nothing.
 
 Finally, I had enough.  Not sure why it took so long -- the [first link](https://groups.google.com/forum/#!topic/sqlalchemy/UHbvTupE4w0)
 that surfaced was a user from 2007 asking about the same thing.  The answer came quickly: for whatever reason, you need to issue
