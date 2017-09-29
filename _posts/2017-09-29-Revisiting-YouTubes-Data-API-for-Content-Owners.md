@@ -104,5 +104,8 @@ while request:
   if request:
     response = request.execute()
     list_of_channels += response['items']
+    
+# Channel Names and IDs
+{item['snippet']['title']: item['id'] for item in list_of_channels}
 ```
 
