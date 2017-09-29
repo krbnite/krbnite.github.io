@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Boto3: the AWS API
+title: Boto3 -- the AWS API
 ---
 
 Holy Foley.  APIs, right? 
