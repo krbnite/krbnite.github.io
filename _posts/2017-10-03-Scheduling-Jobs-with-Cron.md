@@ -80,7 +80,9 @@ If you're learning about this for the first time, chances are the list of jobs i
 
 ## Create a Cron Job
 Each row in the cron tab file represents a job, which is encoded using a specific syntax:
-> min hour dayOfMonth month dayOfWeek commandToBeExecuted
+```
+min hour dayOfMonth month dayOfWeek commandToBeExecuted
+```
 
 The parameters take on the following values:
 * min: 0-59
@@ -95,17 +97,17 @@ two hypen-separated numbers.  An asterisk may be used as a stand-in for "any leg
 
 That may have sounded more complex than it really is, so check out some examples.
 
-### Do something at 530 AM every morning
+### Ex: Do something at 530 AM every morning
 ```
 30 5 * * * /home/ubuntu/usrNm/doSomething.py
 ```
 
-### Take out garbage at 715 PM every Tuesday and Friday night
+### Ex: Take out garbage at 715 PM every Tuesday and Friday night
 ```
 15 19 * * 2,5 /home/ubuntu/familyStuff/takeOutGarbage.py
 ```
 
-### Run a webscraper at the top of the hour 24/7
+### Ex: Run a webscraper at the top of the hour 24/7
 ```
 0 0-23 * * * /home/ubuntu/workStuff/scrapeTheWeb.py
 ```
@@ -124,7 +126,10 @@ timedatectl
 ## Master Class
 In the python code above, I use a try/except statement to avoid a crash.  In the case of a would-be crash,
 the data is saved locally and I am emailed about the failure.  What if something outside the try/except
-statement fails?  What if the cron job itself fails?  
+statement fails?  Well, then the cron job will restart the program at the top of the hour, so no 
+worries.
+
+But what if the cron job itself fails?!
 
 #### 1. Install ssmtp
 On Ubuntu:
@@ -138,11 +143,11 @@ sudo vim /etc/ssmtp/ssmtp.conf
 ```
 
 ```vi
-root=your_email@gmail.com
+root=your.email@gmail.com
 mailhub=smtp.gmail.com:587
 FromLineOverride=YES
 UseSTARTTLS=YES
-AuthUser=your_email@gmail.com
+AuthUser=your.email@gmail.com
 AuthPass=your_password
 TLS_CA_File=~/cert.pem
 ```
@@ -152,6 +157,27 @@ You need this file, and I'll show you how to create it, but to be honest I'm jus
 following along with the advice from a user on [askubuntu.com](https://askubuntu.com/questions/536766/how-to-make-crontab-email-me-with-output),
 so use at your own risk and headache.  (Worked for me!)
 ```
+cd ~  # we pointed TLS_CA_FILE at ~/cert.pem in the config file
 openssl req -x509 -newkey rsa:2048 -keyout key.pem -out cert.pem -days 9999 -nodes
 ```
+
+#### 4. Write an Email
+In a text file:
+```vim
+To: someone.in.the.world@some_website.com
+From: "Kool Aid Man" <your.email@gmail.com>
+Subject: Kudos!
+MIME-Version: 1.0
+Content-Type: text/plain
+
+If you're reading this, I successfully sent you an email from the command line.
+```
+
+#### 5. Test It Out
+```
+sendmail -i -t < test.txt 
+```
+
+Read my [source material](https://askubuntu.com/questions/536766/how-to-make-crontab-email-me-with-output) 
+for more info.
 
