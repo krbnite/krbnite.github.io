@@ -19,17 +19,17 @@ Here it is in a nutshell:
 For TensorFlow, I was able to use conda and get things working again.  But for selenium, I need pip.
 
 
-#### Pip installation fails occurs due to lack of permission
+### Pip installation fails occurs due to lack of permission
 <figure>
 <img src="/images/ec2-selenium-failure.png" width="600">
 </figure>
 
-#### Will sudo help?
+### Will sudo help?
 Not in my case: sudo's success was deceptive. Apparently selenium was installed, yet when
 tried to run some selenium python code, it would fail.
 
-#### WTF is going on?
-Turned out, the **what* had a lot to do with the **which**.  
+### WTF is going on?
+Turned out, the **what** had a lot to do with the **which**.  
 
 1. I ran `sudo pip install selenium` and was told I should probably be using sudo's `-H` flag
 2. So I ran `sudo -H pip install selenium`
@@ -60,7 +60,7 @@ pip install selenium
 ```
 
 Well, no shit -- I just obliterated that pip.  Where did my conda-installed pip wander off to? Oddly, 
-I figured that out by whiching pip again:
+I figured that out by which'ing pip again:
 ```
 which pip  # /home/ubuntu/anaconda/bin/pip
 ```
@@ -70,7 +70,11 @@ So it exists, I know where it is, and I know how to use it:
 /home/ubuntu/anaconda/bin/pip install selenium
 ```
 
-Frackin' worked.  Job done.  Why does which pip correctly point to Anaconda's pip despite the fact that calling `pip`
+Frackin' worked.  Job done.  
+
+Why does which pip correctly point to Anaconda's pip despite the fact that calling `pip`
 directly gives us an error?  This likely has to do with broken links or something.  However, the job is done:  I successfully
-installed selenium, and know how to approach this problem in the future.  So for now, I'm done too!
+installed selenium, and know how to approach this problem in the future.  
+
+So for now, I'm done too!
 
