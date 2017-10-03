@@ -95,7 +95,12 @@ As you can see, the different parameters are space delimited.  Each parameter ca
 its range or a comma-separated list of values from that range, where a value may be a single number or
 two hypen-separated numbers.  An asterisk may be used as a stand-in for "any legal value."
 
-That may have sounded more complex than it really is, so check out some examples.
+That may have sounded more complex than it really is, so check out some examples. 
+
+First things first: To enter a new cron job in the crontab file:
+```
+crontab -e
+```
 
 ### Ex: Do something at 530 AM every morning
 ```
@@ -113,7 +118,6 @@ That may have sounded more complex than it really is, so check out some examples
 ```
 
 
-
 **Pro Tip**: If you are on an AWS EC2 instance (or some other cloud service) the system time may differ than 
 your local time.  If you are scheduling jobs on the EC2 instance, you must convert your local time
 to the time used by the EC2 instance (likely Universal Time). It's easy to check:
@@ -122,3 +126,8 @@ date
 # Or, for more info
 timedatectl
 ```
+
+-----------------------------------------------------
+
+### References / Further Reading
+* http://www.adminschoice.com/crontab-quick-reference
