@@ -14,7 +14,7 @@ No, of course not.  Now my chromedriver was acting all funny -- funny as in, "Wh
 with all these error messages? Why the frack is this frackin' thing not frackin' working?!"
 
 <figure>
-<img src="/images/battlestar-frack-meme.jpg" width="500vw" align="center">
+<img src="/images/battlestar-frack-meme.jpg" width="400vw" align="center">
 </figure>
 
 ## Trigger Warning: Stupid Ahead!
