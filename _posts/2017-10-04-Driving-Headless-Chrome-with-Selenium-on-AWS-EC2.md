@@ -67,7 +67,7 @@ mv chromedriver to/where/ever/you/want
 ```
 
 ## Make Sure Python's Happy
-Just remember where you ChromeDriver so you can access it from Python.  I usually just 
+Just remember where you put ChromeDriver so you can access it from Python.  I usually just 
 install a copy right in my project folder.
 
 ```python
