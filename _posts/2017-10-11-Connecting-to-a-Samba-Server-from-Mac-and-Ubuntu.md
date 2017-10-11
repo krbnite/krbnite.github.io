@@ -56,4 +56,14 @@ Find more information about editing the smb.conf file [here](http://www.linuceum
 ----------------------------------------------------------
 Whoa...... This stuff is starting to take too long....
 
+Maybe this?
+http://www.practicalreason.net/item/31-mounting-network-locations-on-linux-using-samba
 
+```
+sudo apt-get install smbclient
+smbclient -L sambaServerIpOrName -U userName
+```
+
+http://linuxcourse.rutgers.edu/lessons/Samba/smbfs.php
+
+Seems like I'm so close but so faaaaaaaaaaaaaaaaaaaaar...
