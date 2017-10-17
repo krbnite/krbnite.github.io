@@ -56,7 +56,22 @@ by two the Chrome browsers that popped up and did my dirty work for me).
 But is it working as good as it could be?
 
 If you read through that StackOverflow page, or this suggested page on 
-[deciding among subprocess, multiprocessing, and thread in Python](https://stackoverflow.com/questions/2629680/deciding-among-subprocess-multiprocessing-and-thread-in-python), it seems that threading might not be the best option. In a follow-up post, I'll explore threading and these other options in more detail. 
+[deciding among subprocess, multiprocessing, and thread in Python](https://stackoverflow.com/questions/2629680/deciding-among-subprocess-multiprocessing-and-thread-in-python), it seems that threading might not be the best option. In fact, I'll just quote straight from Jim Dennis' comments:
+
+> `threading` is for a fairly narrow range of applications which are I/O bound (don't need to scale across multiple CPU 
+> cores) ... `threading` suffers from two major disadvantages in Python. One, of course, is implementation specific --- mostly 
+> affecting CPython. That's the GIL (Global Interpreter Lock). For the most part, most CPython programs will not benefit 
+> from the availability of more than two CPUs (cores) and often performance will suffer from the GIL locking contention. The larger 
+> issue which is not implementation specific, is that threads share the same memory, signal handlers, file descriptors and certain 
+> other OS resources. Thus the programmer must be extremely careful about object locking, exception handling and other aspects 
+> of their code which are both subtle and which can kill, stall, or deadlock the entire process (suite of threads).
+
+> By comparison the `multiprocessing` model gives each process its own memory, file descriptors, etc. A crash or unhandled 
+> exception in any one of them will only kill that resource and robustly handling the disappearance of a child or sibling 
+> process can be considerably easier than debugging, isolating and fixing or working around similar issues in threads.
+
+Not gonna lie: I wish I understood most of that better.  That said, it's clear that I should probably spend more time
+learning about the `multiprocessing` module than the `threading` module.
 
 
 
