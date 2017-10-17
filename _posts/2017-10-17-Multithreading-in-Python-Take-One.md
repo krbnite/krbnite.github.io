@@ -48,3 +48,16 @@ def fcnMaster():
 fcnMaster()
 ```
 
+This setup is the first bit of advice I found on 
+[StackOverflow](https://stackoverflow.com/questions/2957116/make-2-functions-run-at-the-same-time), and I'm
+happy to say that it seemed to do exactly what I wanted: it ran two instances of my selenium script side-by-side (as evidenced
+by two the Chrome browsers that popped up and did my dirty work for me).
+
+But is it working as good as it could be?
+
+If you read through that StackOverflow page, or this suggested page on 
+[deciding among subprocess, multiprocessing, and thread in Python](https://stackoverflow.com/questions/2629680/deciding-among-subprocess-multiprocessing-and-thread-in-python), it seems that threading might not be the best option. In a follow-up post, I'll explore threading and these other options in more detail. 
+
+
+
+
