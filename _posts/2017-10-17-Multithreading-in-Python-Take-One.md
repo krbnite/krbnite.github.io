@@ -3,6 +3,8 @@ title: Multithreading in Python (Take One)
 layout: post
 ---
 
+Ok.
+
 Here's the situation:
 * I have a selenium script that scrapes and collates data from a javascript-heavy target source
 * There are multiple target sources of interest
