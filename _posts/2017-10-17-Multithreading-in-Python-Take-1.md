@@ -1,6 +1,6 @@
 ---
-title: Multithreading in Python \(Take 1\)
 layout: post
+title: Multithreading in Python (Take 1)
 ---
 
 Here's the situation:
