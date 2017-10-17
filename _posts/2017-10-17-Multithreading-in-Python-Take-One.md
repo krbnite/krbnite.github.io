@@ -3,8 +3,6 @@ title: Multithreading in Python (Take One)
 layout: post
 ---
 
-Ok.
-
 Here's the situation:
 * I have a selenium script that scrapes and collates data from a javascript-heavy target source
 * There are multiple target sources of interest
@@ -24,8 +22,29 @@ Some solutions include:
   - this is getting pretty good!
 * learn how to use multithreading in python
 
+The python/bash/crontab combo is pretty satisfying, but this post is about multithreading in python!
 
+```python
+import threading
+from threading import Thread
+from myTargets import target1, target2
+from myHelperFcns import connect_to_database()
+con2db = connect_to_database()
 
+def fcn1():
+  scrape = scrapeObj(target1, con2db)
+  scrape.get()
+  scrape.write()
 
+def fcn2():
+  scrape = scrapeObj(target2, con2db)
+  scrape.get()
+  scrape.write()
+  
+def fcnMaster():
+  Thread(target = fcn1).start()
+  Thread(target = fcn2).start()
 
-However, the script is used to load "infinitely long", dynamically-generated webpages, and can drain the machine's memory quite a bit, so 
+fcnMaster()
+```
+
