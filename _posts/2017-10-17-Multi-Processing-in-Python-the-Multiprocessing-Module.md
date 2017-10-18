@@ -115,6 +115,18 @@ p.map(square, [10,21,43])
 p.terminate()
 ```
 
+### Bit on Multithreading
+Still want to multithread instead of multiprocessing? Use the same syntax, but like this:
+```
+import multiprocessing.dummy as mt
+```
+
+Learn more about this here: http://chriskiehl.com/article/parallelism-in-one-line/
+
+#### Note to Future Self
+It is Oct 18, and I've run out of time on my current project, so this post is left in a quasi-unfinished state.  If you have
+time, you should definitely come back and edit.
+
 #### Some References
 * http://sebastianraschka.com/Articles/2014_multiprocessing.html
 * https://pymotw.com/2/multiprocessing/basics.html
