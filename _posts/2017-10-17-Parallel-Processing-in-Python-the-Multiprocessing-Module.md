@@ -11,7 +11,7 @@ but no one is happy!
 
 Well, dear Reader -- time to take out the multithreading module and make your computations smile.  
 
-## Multithreading vs Multiprocessing in General
+## Multithreading vs Multiprocessing (in General)
 There are two basic approaches to parallel processing: use multiple threads or use multiple 
 processes.  They have their own strengths and weaknesses.
 
@@ -34,7 +34,25 @@ process.  When one thread does something stupid (e.g., crash!), it brings down s
 stupid (e.g., crash!), the others might not even hear about it, never mind feel any shame (they'll just keep running,
 doing their own thing).
 
-## Multithreading vs Multiprocessing in Python
+To think of it less cartoonishly, let's discuss threads and processes.  Here is a quick summary I put together
+based on [this article](http://www.programmerinterview.com/index.php/operating-systems/thread-vs-process/):
+> * A process is an executing instance of an application
+> * A thread is a component of a process
+>   - or as the article puts it: a thread is a path of execution within a process
+>   - or on [Wikipedia](https://en.wikipedia.org/wiki/Thread_(computing)): a thread of execution is the smallest sequence of programmed instructions that can be managed independently by a scheduler
+> * A process can contain multiple threads
+>   - When a process is started, the primary thread of that process begins
+> * A thread can do anything a process can do, so in a sense can be considered a "lightweight" process
+> * threads within the same process share the same resources / address space, whereas different processes do not
+>   - multi-threading pro: threads can read from and write to the same data structures and variables
+>   - multi-threading con: threads can read from and write to the same data structures and variables (conflicts!)
+>   - multi-processing pro: processes do not generally read from and write to the same data structures and variables (no conflicts!)
+>   - multi-processing con: processes do not generally read from and write to the same data structures and variables (inter-process communication can be difficult and resource-intensive)
+
+
+Communication between processes – also known as IPC, or inter-process communication – is quite difficult and resource-intensive.
+
+## Multithreading vs Multiprocessing (in Python)
 At the risk of sounding like I just learned all this today, the Global Interpreter Lock (GIL) in Python actually 
 reduces any advantages of threading even more.  
 
