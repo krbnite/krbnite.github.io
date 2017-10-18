@@ -52,12 +52,15 @@ based on [this article](http://www.programmerinterview.com/index.php/operating-s
 A process runs on a CPU or core. If there exist multipe CPUs or cores, multiple processes can be run.  Each process
 can be multithreaded.  I think that about wraps it up.
 
-Here are some links:
+#### Some References
 * https://en.wikipedia.org/wiki/Thread_(computing)#Multithreading
 * https://en.wikipedia.org/wiki/Multithreading_(computer_architecture)
 * https://en.wikipedia.org/wiki/Multiprocessing
 * https://en.wikipedia.org/wiki/Parallel_computing
 * http://techdifferences.com/difference-between-multiprocessing-and-multithreading.html
+* http://www.programmerinterview.com/index.php/operating-systems/thread-vs-process/
+* http://www.programmerinterview.com/index.php/operating-systems/monitors-vs-semaphores/
+
 
 ## Multithreading vs Multiprocessing (in Python)
 At the risk of sounding like I just learned all this today, the Global Interpreter Lock (GIL) in Python actually 
@@ -65,6 +68,43 @@ reduces any advantages of threading even more.
 
 
 
+This thing.
+```
+import multiprocessing as mp
+q = mp.Queue()
+def fcn(x,q): q.put(x*x)
+procs = [mp.Process(target=fcn, args=(x,q)) for x in range(5)]
+# Run Processes
+for p in procs: p.start()
+# Exit Completed Processes
+for p in procs: p.join()
+# Get Results
+for p in procs: print(q.get())
+```
+
+But this thing can actually print the results out of order: since processes are independent of each other,
+if one takes a little longer to complete (for whatever reason), it will be put into the queue out of order. To fix
+this, one might include an indexing argument to the fcn, then sort the results:
+
+```
+import multiprocessing as mp
+q = mp.Queue()
+def fcn(x,q): q.put((x, x*x))
+procs = [mp.Process(target=fcn, args=(x,q)) for x in range(5)]
+# Run Processes
+for p in procs: p.start()
+# Exit Completed Processes
+for p in procs: p.join()
+# Get Results
+results = []
+for p in procs: 
+  results.append(q.get())
+results.sort()
+```
+
+Yes... One might do that, or one might just use a `Pool`!
+
+(Edit this for consistency w/ above)
 ```python
 from multiprocessing import Pool
 p = Pool(5)
