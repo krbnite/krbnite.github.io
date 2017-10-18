@@ -1,5 +1,5 @@
 ---
-title: Parallel Processing in Python (the Multiprocessing Module)
+title: Multi-Processing in Python (the Multiprocessing Module)
 layout: post
 ---
 
@@ -49,8 +49,15 @@ based on [this article](http://www.programmerinterview.com/index.php/operating-s
 >   - multi-processing pro: processes do not generally read from and write to the same data structures and variables (no conflicts!)
 >   - multi-processing con: processes do not generally read from and write to the same data structures and variables (inter-process communication can be difficult and resource-intensive)
 
+A process runs on a CPU or core. If there exist multipe CPUs or cores, multiple processes can be run.  Each process
+can be multithreaded.  I think that about wraps it up.
 
-Communication between processes – also known as IPC, or inter-process communication – is quite difficult and resource-intensive.
+Here are some links:
+* https://en.wikipedia.org/wiki/Thread_(computing)#Multithreading
+* https://en.wikipedia.org/wiki/Multithreading_(computer_architecture)
+* https://en.wikipedia.org/wiki/Multiprocessing
+* https://en.wikipedia.org/wiki/Parallel_computing
+* http://techdifferences.com/difference-between-multiprocessing-and-multithreading.html
 
 ## Multithreading vs Multiprocessing (in Python)
 At the risk of sounding like I just learned all this today, the Global Interpreter Lock (GIL) in Python actually 
@@ -68,4 +75,10 @@ p.map(square, [10,21,43])
 p.terminate()
 ```
 
-I probably should expand on this, eh?
+#### Some References
+* http://sebastianraschka.com/Articles/2014_multiprocessing.html
+* https://pymotw.com/2/multiprocessing/basics.html
+* https://www.blog.pythonlibrary.org/2016/08/02/python-201-a-multiprocessing-tutorial/
+* https://www.blog.pythonlibrary.org/2016/07/28/python-201-a-tutorial-on-threads/
+* http://chriskiehl.com/article/parallelism-in-one-line/
+
