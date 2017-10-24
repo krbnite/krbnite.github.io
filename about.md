@@ -22,6 +22,9 @@ measurements to understand how to forecast and nowcast important
 magnetospheric state variables, generate and test hypotheses, and
 compare with simulations and predictive models.
 
+### More Info
+* [My CV](https://github.com/krbnite/CV/blob/master/Kevin-Urban-Summary-CV.pdf)
+* [Google Scholar](https://scholar.google.com/citations?user=KTLuoQkAAAAJ&hl=en)
 
 ### Contact me
 
