@@ -23,8 +23,9 @@ magnetospheric state variables, generate and test hypotheses, and
 compare with simulations and predictive models.
 
 ### More Info
-* [My CV (Summary)](https://github.com/krbnite/CV/blob/master/Kevin-Urban-Summary-CV.pdf)
-  - does not include info on presentations, posters, courses, etc
+* My CV
+  - [Full Version](https://github.com/krbnite/CV/blob/master/Full%20Version/Kevin-Urban-Full-CV.pdf)
+  - [Short Version](https://github.com/krbnite/CV/blob/master/Kevin-Urban-Summary-CV.pdf) (does not include info on presentations, posters, courses, etc)
 * [Google Scholar](https://scholar.google.com/citations?user=KTLuoQkAAAAJ&hl=en)
 
 ### Contact me
