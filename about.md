@@ -25,7 +25,7 @@ compare with simulations and predictive models.
 ### More Info
 * My CV
   - [Full Version](https://github.com/krbnite/CV/blob/master/Full%20Version/Kevin-Urban-Full-CV.pdf)
-  - [Short Version](https://github.com/krbnite/CV/blob/master/Kevin-Urban-Summary-CV.pdf) (does not include info on presentations, posters, courses, etc)
+  - [Short Version](https://github.com/krbnite/CV/blob/master/Short%20Version/Kevin-Urban-Summary-CV.pdf) (does not include info on presentations, posters, courses, etc)
 * [Google Scholar](https://scholar.google.com/citations?user=KTLuoQkAAAAJ&hl=en)
 
 ### Contact me
