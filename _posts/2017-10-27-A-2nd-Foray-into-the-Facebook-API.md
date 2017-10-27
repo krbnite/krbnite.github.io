@@ -10,7 +10,8 @@ module. Though the `facebook` module made things appear straightforward, it did 
 setbacks (e.g., it only supported up to version 2.7 of the API).
 
 In this post, I continue to explore the Graph API -- with the ultimate goal of being able to 
-mine some FB data using Python.  
+mine some FB data using Python.  The topics are in a semi-random, stream-of-consciousness order. 
+
 -----------------------------------------------------
 
 ## The Requests Package
@@ -22,6 +23,7 @@ This code is just to whet your appetite a bit.
 
 ```python
 import requests
+import json
 
 # 1. Get Token
 token = ''
@@ -40,6 +42,9 @@ def search(q, gtype):
 me_data = requests.get(me)
 friends_data = requests.get(friends)
 search_data = requests.get(search('John Smith', 'user'))
+
+# 5. Look at the data
+json.loads(me_data.text)
 
 ```
 
@@ -65,12 +70,20 @@ curl \
 Yea, you can get fancy with Schmython or Schmurl, but you can also just plug in URLs to your browser!
 
 ```
-https://graph.facebook.com/me?access_token=abcdefghigotagalwearshertoenailslong
+# Get some profile info (will return URL of your profile pic thumbnail)
+https://graph.facebook.com/me?fields=id,name,picture&access_token=abcdefghigotagalwearshertoenailslong
 ```
 
 You can select a specific Graph API version like so:
 ```
-https://graph.facebook.com/v2.5/me?access_token=abcdefghigotagalwearshertoenailslong
+# Get some info on your photos
+https://graph.facebook.com/v2.5/me/photos?access_token=abcdefghigotagalwearshertoenailslong
+```
+
+Fields have methods!
+```
+# Show comments on a photo in reverse chronological order.
+https://graph.facebook.com/{photo-id}?fields=comments.order(reverse_chronological)&access_token=abcdefghigotagalwearshertoenailslong
 ```
 
 --------------------------------------------------------
@@ -142,6 +155,9 @@ their fields:
 * Overview: https://developers.facebook.com/docs/graph-api/overview
 * Using the Graph API: https://developers.facebook.com/docs/graph-api/using-graph-api/
 * Using Facebook Login for your App: https://developers.facebook.com/docs/facebook-login/
+* Permissions Reference: https://developers.facebook.com/docs/facebook-login/permissions/
+* Graph API Reference: https://developers.facebook.com/docs/graph-api/reference/
+* Graph API Explorer: https://developers.facebook.com/tools/explorer
 
 ## Some YouTube References
 * [FaceBook Data Analysis with Python](https://www.youtube.com/watch?v=LmhjVT9gIwk)
