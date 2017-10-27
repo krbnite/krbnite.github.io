@@ -13,7 +13,7 @@ In this post, I continue to explore the Graph API -- with the ultimate goal of b
 mine some FB data using Python.  
 -----------------------------------------------------
 
-## The Requests Oackage
+## The Requests Package
 
 The `requests` Python module is more "bare bones" than the `facebook` module.  Using it gives
 a clearer picture of how to interact with the Graph API programmatically. 
@@ -51,11 +51,34 @@ after. As the Debug Message on the Graph Explorer says:
 Why is this bad news?  I don't know.  Seems like every article I read or video I watch is extremely 
 outdated.  
 
+## cURL the Graph from the Command Line
+The following example is a two-for: it also shows how to issue [simple batch requests](https://developers.facebook.com/docs/graph-api/making-multiple-requests).
+
+```
+curl \
+    -F 'access_token=...' \
+    -F 'batch=[{"method":"GET", "relative_url":"me"},{"method":"GET", "relative_url":"me/friends?limit=50"}]' \
+    https://graph.facebook.com
+```
+
+## Browser Graphing
+Yea, you can get fancy with Schmython or Schmurl, but you can also just plug in URLs to your browser!
+
+```
+https://graph.facebook.com/me?access_token=abcdefghigotagalwearshertoenailslong
+```
+
+You can select a specific Graph API version like so:
+```
+https://graph.facebook.com/v2.5/me?access_token=abcdefghigotagalwearshertoenailslong
+```
+
 --------------------------------------------------------
 
-## Graph Explorer to the Rescue
-Not sure if you knew you needed rescuing or not, but the Graph Explorer knew, and is here to
-guide you through the graph!
+## Interested in Video?
+That has a different endpoint:
+> "Almost all requests are passed to the API at graph.facebook.com - the single exception is video 
+> uploads which use graph-video.facebook.com."
 
 ---------------------------------------------------------------------------------------
 
@@ -93,12 +116,33 @@ With a [page token](https://developers.facebook.com/docs/facebook-login/access-t
 The Page Insights data is something I'd be interested in.
 
 
-
+## Going Dark
+If you want to experiment with the POST aspect of Graph API, you might consider generating an access token
+with the audience set to 'Only Me'.
 
 ---------------------------------------------------------------------------------------
 
+## Other Things to Be Aware Of (Maybe)
+### The Public Feed API
+There is another Facebook API called the [Public Feed API](https://developers.facebook.com/docs/public_feed/),
+which is a continuous stream of public Facebook posts sent to a dedicated server over an HTTPS connection.  Seems
+cool, but definitely something to look into more later on.
+
+### Web Hooks
+The Webhooks feature of the Graph API can provide real-time notifications of changes to a chosen set of topics and 
+their fields:
+> "For example, you could set up a webhook for the User topic and subscribe to its email field and be notified 
+> whenever your users update their email addresses. This prevents you from having to rely on continuous or even 
+> periodic Graph API requests just to check for updates that may or may not have happened. It also helps you avoid 
+> rate limiting."
 
 ------------------------------------------------------------
-Some YouTube References
+
+## Some Textual References
+* Overview: https://developers.facebook.com/docs/graph-api/overview
+* Using the Graph API: https://developers.facebook.com/docs/graph-api/using-graph-api/
+* Using Facebook Login for your App: https://developers.facebook.com/docs/facebook-login/
+
+## Some YouTube References
 * [FaceBook Data Analysis with Python](https://www.youtube.com/watch?v=LmhjVT9gIwk)
 
