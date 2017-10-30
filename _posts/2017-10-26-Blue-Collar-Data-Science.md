@@ -19,6 +19,14 @@ In the beginning of this year, I was enrolled in Udacity's Deep Learning nanodeg
 I'd learn all this cool stuff and have a ton of ideas to play with for the day.  But going from the
 classroom to the workplace, as always, was much more involved than this.  
 
+## The dirty stuff
+It often seems to me that the uglier parts of a data-centric job
+are glossed over by the unlimited numbers of online courses and schools dedicated to data science and/or
+machine learning.  People pay data collection, cleansing, and preprocessing some lip service, but little else.
+
+That's one of the reasons I write these posts: in the data real world, your employer will expect SO MUCH MORE 
+from you.  
+
 For example, 
 * I required access to a GPU, which means 
   - pitching the idea to your direct manager and selling it, 
@@ -29,13 +37,19 @@ For example,
 * Also, I had to set up and maintain my python environment, which involved some intracacies 
   - e.g., getting TensorFlow installed properly
   
-My point is, this was all before
+## More on the Mud
 
-## The dirty stuff
-It often seems to me that the uglier parts of a data-centric job
-are glossed over by the unlimited numbers of online courses and schools dedicated to data science and/or
-machine learning.  People pay data collection, cleansing, and preprocessing some lip service, but little else.
-
-That's one of the reasons I write these posts: in the data real world, your employer will expect SO MUCH MORE 
-from you.  
-
+Things to consider: 
+* are you working at a modern, tech/data-driven company?
+* where is the data? what generates it? do you have to go out and get it? is it all in one place? is there a data dictionary? a map of the company's data assets?
+* will you be requiring data from a different department that is stingy, touchy, and/or apathetic about your access? 
+* do your superiors really want an elegant solution? 
+* do your superiors value your expertise or fear it?
+* if you think a neural network is the best way to go, can you explain why and what business value that approach addes to the one it might replace?
+* do you have the right data to answer the questions your stakeholders are interested in? if not, do you know where to get it, and how?
+* does your stakeholder understand the data? that is, do they interpret it properly? do you interpret it properly? how was it measured? 
+* are you breaking any laws?
+* when you have a solution, is it ready to be put in production? do you need to work with the IT team to scale it? does the data engineering team need to get involved to capture the data at right scale and cadence? etc
+* can you manage expectations? 
+* do you tend to get caught up in self-imposed scope creep?  
+* 
