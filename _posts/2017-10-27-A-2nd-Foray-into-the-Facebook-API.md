@@ -152,12 +152,12 @@ their fields:
 ------------------------------------------------------------
 
 ## Some Textual References
-* Overview: https://developers.facebook.com/docs/graph-api/overview
-* Using the Graph API: https://developers.facebook.com/docs/graph-api/using-graph-api/
-* Using Facebook Login for your App: https://developers.facebook.com/docs/facebook-login/
-* Permissions Reference: https://developers.facebook.com/docs/facebook-login/permissions/
-* Graph API Reference: https://developers.facebook.com/docs/graph-api/reference/
-* Graph API Explorer: https://developers.facebook.com/tools/explorer
+* Overview: [https://developers.facebook.com/docs/graph-api/overview](https://developers.facebook.com/docs/graph-api/overview)
+* Using the Graph API: [https://developers.facebook.com/docs/graph-api/using-graph-api/](https://developers.facebook.com/docs/graph-api/using-graph-api/)
+* Using Facebook Login for your App: [https://developers.facebook.com/docs/facebook-login/](https://developers.facebook.com/docs/facebook-login/)
+* Permissions Reference: [https://developers.facebook.com/docs/facebook-login/permissions/](https://developers.facebook.com/docs/facebook-login/permissions/)
+* Graph API Reference: [https://developers.facebook.com/docs/graph-api/reference/](https://developers.facebook.com/docs/graph-api/reference/)
+* Graph API Explorer: [https://developers.facebook.com/tools/explorer](https://developers.facebook.com/tools/explorer)
 
 ## Some YouTube References
 * [FaceBook Data Analysis with Python](https://www.youtube.com/watch?v=LmhjVT9gIwk)
