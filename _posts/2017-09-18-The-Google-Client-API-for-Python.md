@@ -37,7 +37,8 @@ from apiclient.discovery import build
 import httplib2
 SERVICE_NAME = "youtubereporting"
 VERSION = 'v1'
-reporting_api = build(SERVICE_NAME,  VERSION,  http=credentials.authorize(httplib2.Http()))
+reporting_api = build(SERVICE_NAME,  VERSION,  
+    http=credentials.authorize(httplib2.Http()))
 ```
 
 ## Flow, Credentials, and Client Secrets
