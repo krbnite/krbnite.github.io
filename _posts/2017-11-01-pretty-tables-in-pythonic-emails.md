@@ -74,7 +74,7 @@ df.style.bar().render()
 ```
 
 <figure>
-<img src="/images/pandas_render_with_bar.png" width="500vw">
+<img src="/images/pandas_render_with_bar.png" width="300vw">
 </figure>
 
 
@@ -84,7 +84,7 @@ Everything looked beautiful on my Mac's Outlook... Then I went to show off to a 
 Short story short: The email did not look beautiful on his PC.  
 
 <figure>
-<img src="/images/pandas_render_on_office365_outlook.png" width="500vw">
+<img src="/images/pandas_render_on_office365_outlook.png" width="250vw">
 </figure>
 
 I then began testing on the web version of Office 365 / Outlook... It, too, did not receive the email
@@ -93,7 +93,7 @@ testing on all day.
 
 Here it is on Gmail, where the yucky table looks even ewwwwwww-ier:
 <figure>
-<img src="/images/pandas_render_on_gmail.png" width="500vw">
+<img src="/images/pandas_render_on_gmail.png" width="250vw">
 </figure>
 
 
