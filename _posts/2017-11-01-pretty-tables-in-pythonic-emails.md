@@ -58,34 +58,49 @@ More importantly, `df.style.render()` generalizes quite a bit and gives a lot of
 that the `to_html()` method also has a bit more power if you want it.
 
 
-### Get rid of index 
+### Get rid of index when using `.render()`
+It's a little trickier to get rid of that pesky index when using the `.render()` method, but it's not impossible.
+
 ```python
 styles = [ dict(selector = "th:first-child", props = [('display', 'none')]) ]
 df.style.set_table_styles(styles).render()
 ```
 
 ### Get cool bar plot background
+I'm telling you -- this really started to make my HTML email looks sweet as pie.
+
 ```python
 df.style.bar().render()
 ```
 
-### WTF
+<figure>
+<img src="/images/pandas_render_with_bar.png" width="500vw">
+</figure>
+
+
+### And now: Have Your WTF Moment
 Everything looked beautiful on my Mac's Outlook... Then I went to show off to a co-worker who has a PC.
 
 Short story short: The email did not look beautiful on his PC.  
+
+<figure>
+<img src="/images/pandas_render_on_office365_outlook.png" width="500vw">
+</figure>
 
 I then began testing on the web version of Office 365 / Outlook... It, too, did not receive the email
 in a beautiful state.  Also, add Gmail to the list...and likely any email platform I was not actively
 testing on all day.
 
+Here it is on Gmail, where the yucky table looks even ewwwwwww-ier:
+<figure>
+<img src="/images/pandas_render_on_gmail.png" width="500vw">
+</figure>
+
+
 Where did I go wrong?  Well, it's just like when I used to play with website design: if your only test you website on Chrome,
 it will probably still look OK in Safari, though you should be thinking cross-platform from the get-go).  But without
 a stroke of magic, luck, or both, your site might not even work on Internet Explorer.  Turns out, you need to think
 cross-platform from the get-go when designing HTML emails as well...which makes sense, but is annoying AF.
-
-
-
-
 
 --------------------------------------------------------------------------
 
