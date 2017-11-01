@@ -87,11 +87,13 @@ Short story short: The email did not look beautiful on his PC.
 <img src="/images/pandas_render_on_office365_outlook.png" width="250vw">
 </figure>
 
+Yuck.
+
 I then began testing on the web version of Office 365 / Outlook... It, too, did not receive the email
 in a beautiful state.  Also, add Gmail to the list...and likely any email platform I was not actively
 testing on all day.
 
-Here it is on Gmail, where the yucky table looks even ewwwwwww-ier:
+Here it is on Gmail, where the yucky table looks yucky yet again, but in its own unique way:
 <figure>
 <img src="/images/pandas_render_on_gmail.png" width="250vw">
 </figure>
