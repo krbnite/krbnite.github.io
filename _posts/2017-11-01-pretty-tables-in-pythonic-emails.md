@@ -1,5 +1,7 @@
 ---
 title: Pretty Tables in Pythonic Emails
+layout: post
+---
 
 So you have a pandas DataFrame.  Great!
 
