@@ -106,7 +106,68 @@ Or, in Python, whenever you have an iterator, you always have the .__next__() me
 
 -------------------
 
-### Object-Oriented Programming
+## Object-Oriented Programming
 Design patterns rely heavily on OOP.  Put another way, when people speak about design patterns,
 they are most often talking about OOP best practices.  If you are using a non-OOP language (like
 C) or style (e.g., functional), then it's likely that most design patterns no longer apply.
+
+The basics of OOP:
+* object: represents an entity in the problem or solution domain
+* problem domain: consists of entities and moving parts interacting with your software
+* solution domain: consists of entities and moving parts relevant to your software solution
+* class: a template for a type of object, e.g., Kitty() is an object of type Cat()
+  - attributes: properties and current state of an entity
+  - methods: behaviors of an entity 
+* Inheritance: establishes a relationship between two classes as parent and child
+  - Child Class 
+    * keeps the attributes and methods of its parent
+    * can add new attributes or methods of its own 
+    * can override existing methods of its parent
+  - Example: 
+    * say you have a Pet() class with a speak() method
+    * say that Cat() is a child class of Pet()
+    * automatically, this commits the Cat() class to have a speak() method
+    * from the programmer's perspective, it commits one to making a choice about the speak() method: keep the default or override it
+* Polymorphism
+  - relies on inheritance
+  - allows a child class to be regarded as the same type as its parent
+  - basically, it allows you to pass a parameter to a class at runtime, which determines which subtype it will be
+
+## Pattern Context
+You cannot just employ design patterns willy-nilly.  You must develop a sense of where different design
+patterns work best.  It must become a part of your vocabulary and socialization: most people do not go to the
+beach in a tuxedo or to a wedding in a bathing suit.  From context, we know how to dress and behave.  That's not
+to say that we shouldn't be flexible in our dress and behavior: if you were having your wedding on a beach, you 
+might wear a bathing suit or a tuxedo.
+
+A pattern context consists of:
+* participants
+  - refers to the classes involved to form a design pattern
+  - each of these classes plays its own role in executing the pattern
+* quality attributes (nonfunctional requirements)
+  - usability, modifiability, reliability, performance
+  - these affect the final product and so must be considered (e.g., if a certain design pattern seems to apply, but is known slow things down, you might not want to use it if your application's bread-and-butter come from its speed)
+* forces
+  - various trade-offs to consider
+  - typically manifested in quality attributes (e.g., speed as discussed in previous bullet)
+* Consequences
+  - side effects
+  - e.g., better performance, but worse secruity  (here "performance" and "security" are trade-offs, and "better" and "worse" are consequences of the trade-off)
+  - design patterns can cause more problems than they solve if they are used incorrectly or in the wrong context
+
+## Pattern Language
+A [pattern language](https://en.wikipedia.org/wiki/Pattern_language)  consists of 
+* name
+* context
+* problem
+* solution
+* related patterns
+
+We use a pattern language to discuss the patterns in this course... Once you are familiarized with
+the pattern language, you can use it to define new patterns if you so please.
+
+
+
+
+
+
