@@ -30,7 +30,14 @@ to feel like you're using Hive).
 
 Apparently, Presto is fully ANSI SQL and does not require you move your data outside of Hadoop. 
 
+* Basically, if you want to use Hive, go back to 2012 or before! Facebook released Presto in 2013 and it is
+a much better tool for our needs
+  - https://www.lynda.com/course-tutorials/Welcome/553697/607598-4.html
+
 --------------------------------------------------------------
+
+Presto
+* https://www.lynda.com/course-tutorials/Welcome/553697/607598-4.html
 
 
 Hadoop Basics
