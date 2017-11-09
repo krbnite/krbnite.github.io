@@ -6,21 +6,18 @@ layout: post
 Been cleaning up my work email and found these notes on installing CUDA on an EC2 instance 
 from back in April.  Figured some of it could potentially come in handy one day.
 
-[CUDA GPU Info](http://docs.nvidia.com/cuda/cuda-installation-guide-linux/#axzz4VZnqTJ2A)
-
 These commands should work on Ubuntu, but no promises for a Mac.
 
+### Verify machine has CUDA-capable GPU
 ```
-# Verify machine has CUDA-capable GPU
-#   -- check!
 lspci | grep -i nvidia
 
   00:03.0 VGA compatible controller: NVIDIA Corporation GK104GL [GRID K520] (rev a1)
 ```
- 
+Check!
+
+### Verify that we have supported version of Linux  (should see x86_64 for 64-bit)
 ```
-# Verify that we have supported version of Linux  (should see x86_64 for 64-bit)
-#  -- check!
 uname -m && cat /etc/*release
 
   x86_64
@@ -40,10 +37,10 @@ uname -m && cat /etc/*release
   VERSION_CODENAME=xenial
   UBUNTU_CODENAME=xenial
 ```
+Check!
  
+### Verify system has gcc installed
 ```
-# Verify system has gcc installed
-#  -- check!
 gcc --version
 
   gcc (Ubuntu 5.4.0-6ubuntu1~16.04.4) 5.4.0 20160609
@@ -51,20 +48,22 @@ gcc --version
   This is free software; see the source for copying conditions.  There is NO
   warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 ```
+Check!
 
+## System must have development packages consistent w/ the kernel headers
 ``` 
-# System must have development packages consistent w/ the kernel headers
 uname -r    #  show kernel version on system
 
   4.4.0-75-generic
 ```
 
+### Latest kernel headers and development packages
 ```
 # Maybe this will help
-sudo apt-get install linux-headers-$(uname -r)    # latest kernel headers & dvlpmnt pkgs
+sudo apt-get install linux-headers-$(uname -r)    
 ```
 
-### Environment Variables
+## Environment Variables
 I could not import TensorFlow into Python without error: 
 > ImportError: libcudart.so.8.0: cannot open shared object file: No such file or directory
  
@@ -78,3 +77,40 @@ export LD_LIBRARY_PATH=/usr/local/cuda/lib64
 ```
  
 This fixed the issue.
+
+## More about our installation of CUDA
+### GOAL: check to see if CUDA samples properly installed and if GPU is found
+```
+cd /usr/local/cuda/samples/1_Utilities/deviceQuery
+sudo make       # compiles sample code w/in directory  (sudo gives superuser permissions)
+# -- Run deviceQuery (should see info and Result=PASS)
+./deviceQuery     # below is my output  (OUTCOME:  Cuda Samples installed and GPU found)
+```
+<figure>
+<img src="/images/cuda-deviceQuery.png
+</figure>
+
+### More checks on CUDA installation:  http://xcat-docs.readthedocs.io/en/stable/advanced/gpu/nvidia/verify_cuda_install.html
+```
+cd /usr/local/cuda/samples/1_Utilities/bandwidthTest
+sudo make
+./bandwidthTest   # OUTPUT
+```
+<figure>
+<img src="/images/cuda-bandwidthTest.png
+</figure>
+
+## Some Resources
+* [CUDA GPU Info](http://docs.nvidia.com/cuda/cuda-installation-guide-linux/#axzz4VZnqTJ2A)
+* http://expressionflow.com/2016/10/09/installing-tensorflow-on-an-aws-ec2-p2-gpu-instance/
+* https://github.com/fluxcapacitor/pipeline/wiki/AWS-GPU-Tensorflow-Docker
+* http://xcat-docs.readthedocs.io/en/stable/advanced/gpu/nvidia/verify_cuda_install.html
+* https://livingthing.danmackinlay.name/how_is_amazon_cloud_number_crunching_awful.html
+
+### Some Software Specs of our Linux Instance
+* [Python 3.5.2](https://www.python.org/download/releases/3.5.2/)
+* [TensorFlow 1.0.0](https://pypi.python.org/pypi/tensorflow/1.0.0)
+* [Ubuntu 16.04 (xenial) x86_64](http://releases.ubuntu.com/16.04/)
+* [gcc 5.4.0](https://gcc.gnu.org/gcc-5/)
+* [NVIDIA GK104GL (GRID K520)](http://www.nvidia.com/object/cloud-gaming-gpu-boards.html)
+* [CUDA 8.0](https://developer.nvidia.com/cuda-80-ga2-download-archive)
