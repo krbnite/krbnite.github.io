@@ -14,6 +14,7 @@ These commands should work on Ubuntu, but no promises for a Mac.
 # Verify machine has CUDA-capable GPU
 #   -- check!
 lspci | grep -i nvidia
+  00:03.0 VGA compatible controller: NVIDIA Corporation GK104GL [GRID K520] (rev a1)
 ```
  
 ```
