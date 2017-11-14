@@ -2,6 +2,11 @@
     <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+    
+    <!-- 2017-11-14: Kevin added these while playing w/ FB Open Graph apps -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+    <meta property="og:image"   content="https://raw.githubusercontent.com/krbnite/krbnite.github.io/master/images/krbn.gif" />
 
     {% if page.excerpt %}
     <meta name="description" content="{{ page.excerpt| strip_html }}" />
