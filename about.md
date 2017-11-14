@@ -5,10 +5,9 @@ permalink: /about/
 ---
 
 <head>
-<title>Krbnite Blog</title>
   <meta property="og:title" content="Krbnite Blog" />
   <meta property="og:type" content="Website" />
-  <meta property="og:url" content="https://krbnite.github.io" />
+  <meta property="og:url" content="https://krbnite.github.io/about/" />
   <meta property="og:image"   content="https://raw.githubusercontent.com/krbnite/krbnite.github.io/master/images/krbn.gif" />
   <meta property="og:description" content="Welcome to my blog!" />
 </head>
