@@ -33,7 +33,7 @@ brew install postgres
 You will see a new a directory at `/usr/local/var/postgres/`.
 
 
-### Begin the database service
+### Start the database service
 If you try to run `psql` at this point, you will receive a message:
 > psql: could not connect to server: No such file or directory
 >	Is the server running locally and accepting
@@ -68,4 +68,13 @@ To exit `psql`:
 \q
 ```
 
+### Stop the PostgreSQL Server
+Depends on how you started it...
+
+```
+# Scenario A: Brew Services
+brew services stop postgresql
+# Scenario B: pg_ctl
+pg_ctl -D /usr/local/var/postgres stop
+```
 
