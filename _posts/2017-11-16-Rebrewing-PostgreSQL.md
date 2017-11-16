@@ -50,7 +50,7 @@ pg_ctl -D /usr/local/var/postgres start
 
 ### Create the username database
 Still, if you try to run `psql`, you will receive another message:
-> FATAL:  database "<yourUserName>" does not exist
+> FATAL:  database "\<yourUserName\>" does not exist
 
 Time to make it exist!
 
