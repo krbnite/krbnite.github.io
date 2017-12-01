@@ -13,9 +13,20 @@ The list goes on!
 
 Today I touched on GraphQL.  Figured I'd take some notes and blogify them for future reference.
 
+## Exploring GraphQL on GitHub using GraphiQL
+Facebook's Graph API explorer has been helpful with getting up-and-running in previous posts.  Similarly,
+I have found Github's GraphQL explorer, [GraphiQL](https://developer.github.com/v4/explorer/),to help get my bearings.
 
-Fragments are important for frequently used queries.  Plug something like this into Github's 
-GraphQL explorer, [GraphiQL](https://developer.github.com/v4/explorer/):
+## Recycle, Reduce, Reuse
+How many times have you written the same line of code or SQL query?  Often we like to minimize
+such redundancy (e.g., with functions or, in SQL, with views). This type of philosophy remains true 
+when issuing graph queries! 
+
+In GraphQL, we call a reusable chunk of code a "fragment".  Fragments are reusable graph (sub)queries.  They are important 
+for our sanity, e.g., in reducing the size and apparent complexity of a query.
+
+For example, below a fragment is used to simplify a query requesting the same data from mutiple repositories.
+
 ```graphql
 fragment repoFrag on Repository {
   id
