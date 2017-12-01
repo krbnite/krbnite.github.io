@@ -16,7 +16,7 @@ Today I touched on GraphQL.  Figured I'd take some notes and blogify them for fu
 
 Fragments are important for frequently used queries.  Plug something like this into Github's 
 GraphQL explorer, [GraphiQL](https://developer.github.com/v4/explorer/):
-```
+```graphql
 fragment repoFrag on Repository {
   id
   name
