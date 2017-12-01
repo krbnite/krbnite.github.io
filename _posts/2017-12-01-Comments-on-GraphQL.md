@@ -81,10 +81,12 @@ query myRepos {
 }
 ```
 
-## References
+## References & Further Reading
+* [GraphiQL](https://developer.github.com/v4/explorer/)
 * Lynda's [Learning GraphQL](https://www.lynda.com/JavaScript-tutorials/Learning-GraphQL/574714-2.html)
 * [www.howtographql.com](https://www.howtographql.com)
 * [https://github.com/facebook/graphql](https://github.com/facebook/graphql)
 * [http://graphql.org/](http://graphql.org/)
 * https://code.facebook.com/posts/1691455094417024/graphql-a-data-query-language/
 * [REST APIs are REST-in-Peace APIs. Long Live GraphQL](https://medium.freecodecamp.org/rest-apis-are-rest-in-peace-apis-long-live-graphql-d412e559d8e4)
+* [https://blog.codeship.com/an-introduction-to-graphql-via-the-github-api/](https://blog.codeship.com/an-introduction-to-graphql-via-the-github-api/)
