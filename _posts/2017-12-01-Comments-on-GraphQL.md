@@ -14,4 +14,22 @@ The list goes on!
 Today I touched on GraphQL.  Figured I'd take some notes and blogify them for future reference.
 
 
+Fragments are important for frequently used queries.  Plug something like this into Github's 
+GraphQL explorer, [GraphiQL](https://developer.github.com/v4/explorer/):
+```
+fragment repoFrag on Repository {
+  id
+  name
+  description
+}
+
+query myRepos { 
+  blog: repository(name: "krbnite.github.io", owner: "krbnite") {
+    ...repoFrag
+  }  
+  deepL: repository(name: "deep-learning-nanodegree", owner:"krbnite") {
+    ...repoFrag
+  }
+}
+```
 
