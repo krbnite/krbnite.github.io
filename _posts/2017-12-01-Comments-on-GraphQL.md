@@ -20,7 +20,8 @@ an alternative to the [REST standard](https://www.w3.org/2001/sw/wiki/REST).
 
 Something I thought was interesting is that a GraphQL server exposes only a single endpoint, instead of
 multiple endpoints that return fixed data structures. Given the single endpoint, the client can request
-that data structure needed for a given situation. This simplifies things!
+that data structure needed for a given situation. This simplifies things! (More on this kind of stuff
+in next section.)
 
 Riveting Tidbit: At the time of this writing, the Facebook Graph API is a REST API, not GraphQL!  However, 
 you can use GraphQL-like syntax when querying.  From the [Graph API Docs](https://developers.facebook.com/docs/graph-api/using-graph-api):
@@ -33,12 +34,16 @@ GET graph.facebook.com
 ## Why use GraphQL?
 Also -- Why try to reinvent the explanation? 
 
-Samer Buna deftly explains it at [FreeCodeCamp](https://medium.freecodecamp.org/rest-apis-are-rest-in-peace-apis-long-live-graphql-d412e559d8e4):
+From [graphql.org](http://graphql.org/):
+> * **Ask for what you need, get exactly that**: Send a GraphQL query to your API and get exactly what you need, nothing more and nothing less. GraphQL queries always return predictable results. Apps using GraphQL are fast and stable because they control the data they get, not the server.
+> * **Get many resources in a single request**: GraphQL queries access not just the properties of one resource but also smoothly follow references between them. While typical REST APIs require loading from multiple URLs, GraphQL APIs get all the data your app needs in a single request. Apps using GraphQL can be quick even on slow mobile network connections.
+> * **Describe what's possible with a type system**: GraphQL APIs are organized in terms of types and fields, not endpoints. Access the full capabilities of your data from a single endpoint. GraphQL uses types to ensure Apps only ask for what's possible and provide clear and helpful errors. Apps can use types to avoid writing manual parsing code.
 
-> The 3 most important problems that GraphQL solves beautifully are:
-> * The need to do multiple round trips to fetch data required by a view: With GraphQL, you can always fetch all the initial data required by a view with a single round-trip to the server. To do the same with a REST API, we need to introduce unstructured parameters and conditions that are hard to manage and scale.
-> * Clients dependency on servers: With GraphQL, the client speaks a request language which: 1) eliminates the need for the server to hardcode the shape or size of the data, and 2) decouples clients from servers. This means we can maintain and improve clients separately from servers.
-> * The bad front-end developer experience: With GraphQL, developers express the data requirements of their user interfaces using a declarative language. They express what they need, not how to make it available. There is a tight relationship between what data is needed by the UI and the way a developer can express a description of that data in GraphQL .
+Or, as Samer Buna deftly explains it at [FreeCodeCamp](https://medium.freecodecamp.org/rest-apis-are-rest-in-peace-apis-long-live-graphql-d412e559d8e4):
+> **The 3 most important problems that GraphQL solves beautifully are**:
+> 1. **The need to do multiple round trips to fetch data required by a view**: With GraphQL, you can always fetch all the initial data required by a view with a single round-trip to the server. To do the same with a REST API, we need to introduce unstructured parameters and conditions that are hard to manage and scale.
+> 2. **Clients dependency on servers**: With GraphQL, the client speaks a request language which: 1) eliminates the need for the server to hardcode the shape or size of the data, and 2) decouples clients from servers. This means we can maintain and improve clients separately from servers.
+> 3. **The bad front-end developer experience**: With GraphQL, developers express the data requirements of their user interfaces using a declarative language. They express what they need, not how to make it available. There is a tight relationship between what data is needed by the UI and the way a developer can express a description of that data in GraphQL .
 
 
 
