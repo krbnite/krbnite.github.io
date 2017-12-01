@@ -41,6 +41,12 @@ query myRepos {
   deepL: repository(name: "deep-learning-nanodegree", owner:"krbnite") {
     ...repoFrag
   }
+  mushrooms: repository(name: "FungusAmongus", owner: "krbnite") {
+    ...repoFrag
+  }
 }
 ```
 
+## References
+* Lynda's [Learning GraphQL](https://www.lynda.com/JavaScript-tutorials/Learning-GraphQL/574714-2.html)
+* [www.howtographql.com](https://www.howtographql.com)
