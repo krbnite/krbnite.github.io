@@ -153,3 +153,36 @@ df = get_playlist_videos(channelId)
 ```
 
 **Reason for Success**: Emailed YouTube and said, "Yo, wassup?!"
+
+## The Icing on the Damn-Near, Real-Time Pulse
+In any of these methods, we only returned the video IDs.  Ultimately, the goal is to track the (not-yet-validated-by-YouTube) viewership metrics, such as number of views.  You can do that with the videos.list method.
+
+
+```python
+list_of_info = []
+num_videos = len(list_of_videos)
+num_requests = ceil(num_videos/50)
+for k in range(num_requests):
+    batch = ','.join(videoId[k*50:(k+1)*50])
+    request = dapi.videos().list(part='statistics, snippet', id=batch)
+    response = request.execute()
+    list_of_info += response['items']
+
+# Flatten and Extract!
+df = pd.DataFrame(columns=['videoId', 'title', 'publishedAt', 'commentCount',
+    'dislikeCount', 'favoriteCount', 'likeCount', 'viewCount'])
+for idx in range(num_videos):
+    video = list_of_info[idx]
+    title = video['snippet']['title']
+    videoId = video['id']
+    publishedAt = (video['snippet']['publishedAt'].
+        replace('T',' ').
+        replace('.000Z',''))
+    commentCount = video['statistics']['commentCount']
+    dislikeCount =  video['statistics']['dislikeCount']
+    favoriteCount =  video['statistics']['favoriteCount']
+    likeCount =  video['statistics']['likeCount']
+    viewCount =  video['statistics']['viewCount']
+    df.loc[idx] = [videoId, title, publishedAt, commentCount,
+        dislikeCount, favoriteCount, likeCount, viewCount]
+```
