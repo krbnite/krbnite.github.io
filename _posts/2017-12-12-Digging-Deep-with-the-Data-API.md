@@ -11,7 +11,7 @@ have to wait about two days for it.
 Oh, and don't forget that it only comes at a daily cadence.
 
 <figure>
-<img src="./images/wtf-clint.jpg" width="500vw">
+<img src="/images/wtf-clint.jpg" width="500vw">
 </figure>
 
 What if you work for a media company with 1000s of video assets, and you want to keep a damn near real-time pulse 
