@@ -17,7 +17,7 @@ Oh, and don't forget that it only comes at a daily cadence.
 What if you work for a media company with 1000s of video assets, and you want to keep a damn near real-time pulse 
 on all of them?  
 
-### Attempt #1: Selenium
+## Attempt #1: Selenium
 I first approached this problem with Selenium.  The script was set to run at a regular cadence.  It was good enough,
 but not great.   Sporadically, it simply did not scrape.  Over several months, I patched and duct-taped the code together with 
 `try/except` and `time.sleep()` statements, creating my own little Frankenstein.  
@@ -27,7 +27,7 @@ Still, it would occasionally fail, causing problems for other projects down the 
 During this time I was doing some work with YouTube APIs as well, and gleaned that the Data API is likely able to 
 replace Selenium altogether for this task.  It was just a hunch.  But it required implementation.
 
-### Attempt #2: Data API (Search)
+## Attempt #2: Data API (Search)
 The Data API has a search.list method that you can restrict to a specified channel (by providing the channel ID) and
 object type (which I set to 'video'). For any API call, the maximum results returned is 50.  Clearly, pagination would be
 necessary to obtain tens of thousands of videos. I did everything right...except that only 400-500 videos were being
@@ -57,16 +57,32 @@ videoId = [video['id']['videoId'] for video in list_of_videos]
 **Pro Tip**: A YouTube representative also told me that Search should be avoided whenever possible because it incurs expensive 
 quota costs.  
 
-### Attempt #3: Data API (Playlists + PlaylistItems)
+## Attempt #3: Data API (Playlists + PlaylistItems)
+In this approach, I was aware that (1) the playlists.list method could be used to return all playlist IDs
+associated with a given channel ID, and (2) the playlistItems.list method could be used to return all video
+IDs associated with a given playlist ID. Assuming that all videos were associated with at least one playlist,
+it seemed straightforward that one can obtain all video IDs associated with the given channel ID.
+
+This wasn't a bad assumption given that every channel has an "uploads" playlist that literally includes
+all videos uploaded on the channel.
 
 ```python
+# Get all playlists and their contents from a channel
+def get_channel_playlists_and_videos(channelId):
+    playlists = get_channel_playlists(channelId)
+    num_playlists = len(playlists)
+    df = pd.DataFrame(columns = ['videoId', 'videoTitle', 'publishedAt', 'playlistId'])
+    for k in range(num_playlists):
+        pid = playlists.playlistId[k]
+        df_ = get_playlist_videos(pid)
+        df = df.append(df_)
+        df.reset_index(inplace=True, drop=True)
+    return df
+```
+
+#### The extra bits of code
+```python
 def get_channel_playlists(channelId):
-    """
-    This is the recommended method of getting playlist IDs. I've found
-    that it returns more playlist IDs than using search().  Furthermore,
-    it seems to be a proper superset: any ID found in search() is also found
-    in playlists().
-    """
     list_of_playlists = []
     request = dapi.playlists().list(part='snippet',
         channelId=channelId,
@@ -78,9 +94,8 @@ def get_channel_playlists(channelId):
       request = dapi.playlists().list_next(request,response)
       if request:
         response = request.execute()
-        time.sleep(1)
         list_of_playlists += response['items']
-
+    # Flatten and Extract!
     df = pd.DataFrame(columns = ['playlistId', 'publishedAt',
         'playlistTitle', 'playlistDescription'])
     num_playlists = len(list_of_playlists)
@@ -90,8 +105,6 @@ def get_channel_playlists(channelId):
         publishedAt   = playlist['snippet']['publishedAt']
         playlistTitle = playlist['snippet']['title']
         playlistDescription = playlist['snippet']['description']
-        #defaultthumbnail  = playlist['snippet']['thumbnails']['default']['url']
-        #standardthumbnail = playlist['snippet']['thumbnails']['standard']['url']
         df.loc[idx] = [playlistId, publishedAt, playlistTitle, playlistDescription]
     return df
 ```
@@ -125,17 +138,10 @@ def get_playlist_videos(playlistId):
     return df
 ```
 
-```python
-# Get all playlists and their contents from a channel
-def get_channel_playlists_and_videos(channelId):
-    playlists = get_channel_playlists(channelId)
-    num_playlists = len(playlists)
-    df = pd.DataFrame(columns = ['videoId', 'videoTitle', 'publishedAt', 'playlistId'])
-    for k in range(num_playlists):
-        pid = playlists.playlistId[k]
-        df_ = get_playlist_videos(pid)
-        df = df.append(df_)
-        df.reset_index(inplace=True, drop=True)
-    return df
-```
+**Reason for Failure**:  The playlists.list method does not return the playlist IDs of
+default YouTube playlists, such as the "uploads" playlist.  Therefore, this method is only
+able to return videos associated with the channel's custom playlists.
 
+## Data API Solution: Channels + PlaylistItems
+Turns out, the default YouTube playlist IDs, such as the "uploads" playlist, can be found
+using the channels.list method (part='contentDetails').
