@@ -144,4 +144,12 @@ able to return videos associated with the channel's custom playlists.
 
 ## Data API Solution: Channels + PlaylistItems
 Turns out, the default YouTube playlist IDs, such as the "uploads" playlist, can be found
-using the channels.list method (part='contentDetails').
+using the channels.list method (part='contentDetails').  
+
+```python
+info = dapi.channels().list(id=wwe,part='contentDetails').execute() 
+channelId = info['items'][0]['contentDetails']['relatedPlaylists']['uploads']
+df = get_playlist_videos(channelId)
+```
+
+**Reason for Success**: Emailed YouTube and said, "Yo, wassup?!"
