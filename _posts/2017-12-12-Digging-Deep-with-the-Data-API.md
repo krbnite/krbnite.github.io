@@ -34,15 +34,108 @@ necessary to obtain tens of thousands of videos. I did everything right...except
 returned.  
 
 ```python
-#code
+dapi = connect_to_data_api() 
+list_of_videos = []
+request = dapi.search().list(part='snippet',
+    channelId=channelId,
+    type='video',
+    maxResults=50)
+response = request.execute()
+list_of_videos += response['items']
+while request:
+  request = dapi.search().list_next(request,response)
+  if request:
+    response = request.execute()
+    list_of_videos += response['items']
+# Extract desired info!
+videoId = [video['id']['videoId'] for video in list_of_videos]
 ```
 
-Reason for Failure: I found that limiting the results to ~500 is a built-in feature of Search 
+**Reason for Failure**: I found that limiting the results to ~500 is a built-in feature of Search 
 ([https://issuetracker.google.com/issues/35171641](https://issuetracker.google.com/issues/35171641)).
 
-Pro Tip: A YouTube representative also told me that Search should be avoided whenever possible because it incurs expensive 
+**Pro Tip**: A YouTube representative also told me that Search should be avoided whenever possible because it incurs expensive 
 quota costs.  
 
 ### Attempt #3: Data API (Playlists + PlaylistItems)
 
+```python
+def get_channel_playlists(channelId):
+    """
+    This is the recommended method of getting playlist IDs. I've found
+    that it returns more playlist IDs than using search().  Furthermore,
+    it seems to be a proper superset: any ID found in search() is also found
+    in playlists().
+    """
+    list_of_playlists = []
+    request = dapi.playlists().list(part='snippet',
+        channelId=channelId,
+        maxResults=50)
+    response = request.execute()
+    list_of_playlists += response['items']
+    while request:
+      #request = dapi.channels().list_next(request,response)
+      request = dapi.playlists().list_next(request,response)
+      if request:
+        response = request.execute()
+        time.sleep(1)
+        list_of_playlists += response['items']
+
+    df = pd.DataFrame(columns = ['playlistId', 'publishedAt',
+        'playlistTitle', 'playlistDescription'])
+    num_playlists = len(list_of_playlists)
+    for idx in range(num_playlists):
+        playlist = list_of_playlists[idx]
+        playlistId    = playlist['id']
+        publishedAt   = playlist['snippet']['publishedAt']
+        playlistTitle = playlist['snippet']['title']
+        playlistDescription = playlist['snippet']['description']
+        #defaultthumbnail  = playlist['snippet']['thumbnails']['default']['url']
+        #standardthumbnail = playlist['snippet']['thumbnails']['standard']['url']
+        df.loc[idx] = [playlistId, publishedAt, playlistTitle, playlistDescription]
+    return df
+```
+
+```python
+# Get playlist video IDs through .playlistItems()
+def get_playlist_videos(playlistId):
+    list_of_videos = []
+    request = dapi.playlistItems().list(part='snippet',
+        playlistId = playlistId,
+        maxResults = 50)
+    response = request.execute()
+    list_of_videos += response['items']
+    while request:
+      request = dapi.playlistItems().list_next(request,response)
+      if request:
+        response = request.execute()
+        time.sleep(1)
+        list_of_videos += response['items']
+
+    df = pd.DataFrame(columns = ['videoId', 'videoTitle', 'publishedAt', 'playlistId'])
+    num_playlists = len(list_of_videos)
+    for idx in range(num_playlists):
+        video = list_of_videos[idx]['snippet']
+        videoId = video['resourceId']['videoId']
+        videoTitle = video['title']
+        publishedAt   = (video['publishedAt'].
+            replace('T', ' ').
+            replace('.000Z', ''))
+        df.loc[idx] = [videoId, videoTitle, publishedAt, playlistId]
+    return df
+```
+
+```python
+# Get all playlists and their contents from a channel
+def get_channel_playlists_and_videos(channelId):
+    playlists = get_channel_playlists(channelId)
+    num_playlists = len(playlists)
+    df = pd.DataFrame(columns = ['videoId', 'videoTitle', 'publishedAt', 'playlistId'])
+    for k in range(num_playlists):
+        pid = playlists.playlistId[k]
+        df_ = get_playlist_videos(pid)
+        df = df.append(df_)
+        df.reset_index(inplace=True, drop=True)
+    return df
+```
 
