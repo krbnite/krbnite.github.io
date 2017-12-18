@@ -16,7 +16,7 @@ identify any live broadcasts, obtain their video ID, and track their performance
 import requests
 import json
 fb_graph = 'https://graph.facebook.com'
-response = requests.get(fb_graph + '/me/video_broadcasts?access_token='+token)
+response = requests.get(fb_graph + '/me/video_broadcasts?access_token=' + token)
 video_broadcasts = json.loads(response.text)
 ```
 
@@ -30,14 +30,14 @@ live_videos = [item for item in video_broadcasts['data']
 ```python
 live_ID_0 = live_videos[0]['id']
 response = requests.get('https://graph.facebook.com/v2.10/' +\ 
-    live_ID_0 + '?fields=video&access_token='+token)
+    live_ID_0 + '?fields=video&access_token=' + token)
 video_id = json.loads(response.text)['video']['id']
 ```
 
 ## Get Video Insights
 ```python
-response = requests.get('https://graph.facebook.com/v2.10/' +\
-    video_id+'/video_insights?access_token='+token)
+response = requests.get(fb_graph + '/v2.10/' +\
+    video_id+'/video_insights?access_token=' + token)
 video_insights = json.loads(response.text)
 ```
 
