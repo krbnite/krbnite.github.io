@@ -1,3 +1,8 @@
+---
+title: Keeping the Pulse on Facebook Live with the Graph API
+layout: post
+---
+
 In this post, we cover how to measure the performance of a video posted to a Facebook Page.  We explore how to automatically 
 identify any live broadcasts, obtain their video ID, and track their performance.
 
