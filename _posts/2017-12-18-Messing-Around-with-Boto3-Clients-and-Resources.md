@@ -7,7 +7,7 @@ So you've pip-installed boto3 and want to connect to S3.  Should you create an S
 Googling some code examples you will find both being used.  In this post, let's look at the difference between
 these two basic approaches of interacting with your AWS assets from boto3, and show a few examples of each.
 
-# First and Foremost: WTF?
+## First and Foremost: What's What?
 In short, a Boto3 resource is a high-level abstraction, whereas a client is more granular.
 
 From the [documentation](http://boto3.readthedocs.io/en/latest/guide/resources.html) on resources, we find
@@ -19,7 +19,7 @@ The [docs](http://boto3.readthedocs.io/en/latest/guide/clients.html) on clients 
 > service APIs. All service operations are supported by clients. Clients are generated 
 > from a JSON service definition file.
 
-# Create an S3 Resource and Client
+## Create an S3 Resource and Client
 ```python
 import boto3
 s3r = boto3.resource('s3')
@@ -27,19 +27,19 @@ s3c = boto3.client('s3')
 
 ```
 
-# Print out all bucket names
+## Print out all bucket names
 If you play around with the resource_buckets list, you will see that each item is a Bucket
 object. On the other hand, the client_buckets list contains dictionary representations of 
 the S3 buckets.
 
-## Resource
+### Resource
 ```python
 resource_buckets = list(s3r.buckets.all())
 for bucket in resource_buckets:
     print(bucket.name)
 ```
 
-## Client
+### Client
 ```python
 client_buckets = s3c.list_buckets()['Buckets']
 for item in client_buckets: 
@@ -47,8 +47,8 @@ for item in client_buckets:
 ```
 
 
-# Upload a file to a bucket
-## Resource
+## Upload a file to a bucket
+### Resource
 ```python
 fileName = 'someFile.txt'
 bucketName = 'some-bucket-name'
@@ -56,7 +56,7 @@ with open(fileName, 'rb') as file:
     s3.Bucket(bucketName).put_object(Key=fileName, Body=file)
 ```
 
-## Client
+### Client
 ```python
 # Uploads the given file using a managed uploader, which will split up large
 # files automatically and upload parts in parallel.
@@ -65,7 +65,7 @@ bucketName = 'some-bucket-name'
 s3.upload_file(fileName, bucketName, fileName)
 ```
 
-# References
+## References
 * Krbnite: [Boto3: the AWS API](https://krbnite.github.io/Boto3-the-AWS-API/)
 * StackOverflow: [Are Boto3 Resources and Clients Equivalent](https://stackoverflow.com/questions/38670372/are-boto3-resources-and-clients-equivalent-when-use-one-or-other)
 * OzNetNerd: [Dymystifying AWS Boto3](http://www.oznetnerd.com/python-demystifying-aws-boto3/)
