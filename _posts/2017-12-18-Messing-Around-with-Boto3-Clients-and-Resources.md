@@ -1,5 +1,5 @@
 ---
-title: Messing Around with Boto3\: Clients and Resources
+title: Messing Around with Boto3&#58; Clients and Resources
 layout: post
 ---
 So you've pip-installed boto3 and want to connect to S3.  Should you create an S3 resource or an S3 client?  
