@@ -8,7 +8,9 @@ found at the UC Irvine Machine Learning Repository.
 
 The type of exploration, you ask?
 
-![Treebeard.](/images/Treebeard.jpg)
+<figure>
+<img src="/images/Treebeard.jpg" alt="Treebeard." width="300vw">
+</figure>
 
 Asking sentient trees what they know about poisonous mushrooms, of course.
 
