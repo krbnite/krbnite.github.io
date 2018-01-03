@@ -33,11 +33,16 @@ if __name__ == '__main__':
     etl = args.etl
 
     #-------------------------------------------
-    # Data Collection
+    # Data Collection (Extract, Transform)
     #-------------------------------------------    
     print("\nUsing Data API to get current metrics...")
     data = get_channel_uploads_video_metrics(channelId)
+    
+    #-------------------------------------------
+    # Load Data to SomeWhere 
+    #------------------------------------------- 
     if args.etl[0].lower() == 'r':
+        # Redshift
         if args.not_a_test:
             print("This is NOT a test: inserting data into production table")
             table_name = 'krbn_youtube_daily_video_metrics'
@@ -49,12 +54,17 @@ if __name__ == '__main__':
             print('\nInserting into Redshift')
             dataframe_to_redshift (data, table_name, con)
         except:
-            print('redshift fail')
+            print('Redshift Fail')
     else:
-    data.to_csv(channelId+'.csv', index=False)
-    s3r = boto3.resource('s3')
-    with open(fileName,'rb') as FILE:
-        s3r.Bucket('<default-bucket-name>').put_object(
-                Key='<default-key-path>'+fileName,
-                Body = FILE)
+        # S3
+        data.to_csv(channelId+'.csv', index=False)
+        s3r = boto3.resource('s3')
+        try:
+            with open(fileName,'rb') as FILE:
+                s3r.Bucket('<default-bucket-name>').put_object(
+                    Key='<default-key-path>'+fileName,
+                    Body = FILE)
+        except:
+            print('S3 Fail')
+
 ```
