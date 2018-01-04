@@ -40,7 +40,7 @@ inelegant isn't always bad!)
 
 To be fair, an alternative way to do this is to link the scripts together in bash file...
 
-```vim
+```
 #!/bin/bash
 /path/to/Script1.py
 /path/to/Script2.py
