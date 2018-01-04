@@ -37,3 +37,16 @@ inelegant isn't always bad!)
 ```
 0 3 * * * /path/to/Script1.py && /path/to/Script2.py && ... && /path/to/Script3.py
 ```
+
+To be fair, an alternative way to do this is to link the scripts together in bash file...
+
+```vim
+#!/bin/bash
+/path/to/Script1.py
+/path/to/Script2.py
+```
+
+
+...and just call that file from your crontab job.
+
+Is one better than the other?  I don't know -- you tell me!  
