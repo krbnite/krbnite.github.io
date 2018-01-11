@@ -127,10 +127,6 @@ def send_email(
     text = msg.as_string()
     server.sendmail(sender, recipients, text)
 
-#-----------------------------------------------------------
-def commatize(num):
-    output = "{:,}".format(int(round(num)))
-    return output
 ```
 
 
