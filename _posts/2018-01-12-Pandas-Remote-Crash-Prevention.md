@@ -10,7 +10,7 @@ functionality works just fine... That is, until I import pandas and dare hit the
 its guts out and dies.
 
 <figure>
-<img srg="/images/pandas-makes-ipython-puke-and-die" width="600vw">
+<img src="/images/pandas-makes-ipython-puke-and-die" width="600vw">
 </figure>
 
 Mileage may vary here, so to be clear: this issue occurs when I SSH into a Linux Ubuntu (Xenial) 
@@ -35,7 +35,7 @@ mpl.use('Agg')
 
 That's it!  No more gut puke.
 <figure>
-<img srg="/images/pandas-no-more-gut-puke.png" width="600vw">
+<img src="/images/pandas-no-more-gut-puke.png" width="600vw">
 </figure>
 
 The issue itself that helped me adds one more tidbit that has to do with `mpl.pyplot`.  Looks as if
