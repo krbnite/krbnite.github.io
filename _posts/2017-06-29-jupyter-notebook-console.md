@@ -46,3 +46,7 @@ console when messing around with / building a Jupyter Notebook.
 jupyter notebook
 jupyter console --existing
 ```
+
+### Additional Notes
+I originally documented a lot of this in my "scratch pad" repository (dBuzz):
+* [https://github.com/krbnite/dBuzz/blob/master/python/jupyter-qtconsole-vim-tmux-aws-whaaaat.md](https://github.com/krbnite/dBuzz/blob/master/python/jupyter-qtconsole-vim-tmux-aws-whaaaat.md)
