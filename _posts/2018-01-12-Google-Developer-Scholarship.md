@@ -3,13 +3,13 @@ title: Google Developer Scholarship
 post: layout
 ---
 
-A few months back I saw that Google was offering [scholarships](https://developers.googleblog.com/2017/10/grow-with-google-scholarships.html)
+A few months back I saw that [Google was offering scholarships](https://developers.googleblog.com/2017/10/grow-with-google-scholarships.html)
 for a mobile web development nanodegree they sponsor on Udacity.  Seemed a little outside of my day-to-day,
 but well within my span of interest.  Mostly, it just seemed too cool to pass up, and without
 any real risk. Only the potential for growth and opportunity!
 
 <figure>
-<img src="GrowWithGoogleDeveloperChallengeScholarship.png" width="500vw">
+<img src="/images/GrowWithGoogleDeveloperChallengeScholarship.png" width="500vw">
 </figure>
 
 I was on a time crunch, partly due to cleaning up what I left ignored while training for the NYC
@@ -40,7 +40,11 @@ in this initial 3-month challenge course, as well as your contributions to the s
 questions, answer questions, and engage."
 
 Amusingly enough, being rated on my social performance seems more intimidating than the technical
-component.  That said, I think it's great that they are taking a 360* approach to this, which is relevant
+component.  That said, I think it's great that they are taking a 360\* approach to this, which is relevant
 to any position in the work force!
 
 Anyway, I'll keep ya posted.
+
+### Some Links
+* Udacity: [Grow with Google Scholarship](https://www.udacity.com/legal/grow-with-google-scholarship)
+* Google Blog: [Grow with Google Scholarships](https://developers.googleblog.com/2017/10/grow-with-google-scholarships.html)
