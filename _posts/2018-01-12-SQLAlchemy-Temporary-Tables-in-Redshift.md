@@ -9,7 +9,7 @@ using the hash method:
 CREATE TABLE #temp as (SELECT someStuff FROM someTable);
 ```
 
-However, when using SQLAlchemy, this can be an issue:
+However, when using SQLAlchemy, this can be an issue\*:
 ```python
 ex("CREATE TABLE #temp as (SELECT someStuff FROM someTable);")
 
@@ -38,3 +38,14 @@ The pro here is that whenever I use `qry` post creation, the temporary table is
 clearly marked with '#' in the rest of the code.  However, the con is that
 the CREATE statement itself is made slightly awkward in that the fstring's
 brackets make it un-SQL-y looking.  Oh well!  
+
+---------------------------
+\* Note my two "shortcut functions":
+```python
+# qry
+from pandas import read_sql_query as query
+
+# ex
+con = connect_to_redshift() # however you do it
+ex = con.execute
+```
