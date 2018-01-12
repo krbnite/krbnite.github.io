@@ -149,7 +149,6 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">2017-05-12-The-Perils-of-PCA</h1>
 
 </div>
 
