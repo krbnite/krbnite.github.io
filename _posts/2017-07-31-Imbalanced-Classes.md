@@ -1,4 +1,7 @@
-
+---
+title: Imbalanced Classes
+layout: post
+---
 
 If you haven't heard: accuracy is garbage.
 
