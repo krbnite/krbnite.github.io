@@ -19,16 +19,16 @@ install.packages(c('rJava', 'RPostgreSQL'))
 Finally, to access:
 ```r
 library(RPostgreSQL)
- drv=dbDriver("PostgreSQL")
- host='yourRedShiftInstance.redshift.amazonaws.com'
- con = dbConnect(drv, host=host_production, 
-        port='5439',
-        dbname='dbName', 
-        user='yourUserName', 
-        password='yourPassword')
- dbExecute(con,query_to_affect_something)
- dbGetQuery(con,query_something_to_return_results)
- ```
+drv=dbDriver("PostgreSQL")
+host='yourRedShiftInstance.redshift.amazonaws.com'
+con = dbConnect(drv, host=host_production, 
+    port='5439',
+    dbname='dbName', 
+    user='yourUserName', 
+    password='yourPassword')
+dbExecute(con, query_to_affect_something) # e.g., create a temp table
+dbGetQuery(con, query_something_to_return_results)
+```
 
 ### Some References
 * StackOverflow: [Installing RPostgreSQL on Linux](https://stackoverflow.com/questions/22202141/installing-rpostgresql-on-linux)
