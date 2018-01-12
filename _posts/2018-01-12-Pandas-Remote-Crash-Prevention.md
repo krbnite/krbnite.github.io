@@ -10,7 +10,7 @@ functionality works just fine... That is, until I import pandas and dare hit the
 its guts out and dies.
 
 <figure>
-<img src="/images/pandas-makes-ipython-puke-and-die" width="600vw">
+<img src="/images/pandas-makes-ipython-puke-and-die.png" width="600vw">
 </figure>
 
 Mileage may vary here, so to be clear: this issue occurs when I SSH into a Linux Ubuntu (Xenial) 
