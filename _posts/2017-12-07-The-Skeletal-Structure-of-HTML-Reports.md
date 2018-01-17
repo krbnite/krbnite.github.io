@@ -3,6 +3,10 @@ title: The Skeletal Structure of HTML Reports
 layout: post
 ---
 
+Let's say you want to automate some HTML reports to be emailed daily. The reports should
+have a consistent look, but clearly need to be dynamically generated to take into account
+newly collected data and observations. This little tidbit should get you started!
+
 Start with an email template, or what I call the report's skeletal structure. This can
 be big, long string written out in your Python script, but I find that it's neater and
 more organized to put this in a separate text file. What's important is making sure
