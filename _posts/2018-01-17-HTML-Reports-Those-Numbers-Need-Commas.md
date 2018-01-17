@@ -94,7 +94,9 @@ corresponding HTML...
 ```python
 df.styles.bar().render()
 ```
+ERROR!
 
+### Psht! Just use a list comprehension, bro!
 For a second, you might think, "That's ok. I'll just force commas into the numbers by converting the
 column to a string:
 ```python
@@ -103,15 +105,49 @@ df.myNumbers = ['{:,}'.format(number) for number in df.myNumbers]
 
 Oops! At this point you will find that the `bar()` method will not work.
 
-## Good Enough Solution
+ERROR.
+
+### No dice, bro! But maybe a sleight of hand?! (Bro?)
+You might start to get real clever at this point, realizing that there is an 
+`applymap()` method that you chain in to your stylization before `render()`,
+but after `bar()`:
+```python
+df.styles.\
+  bar().\
+  applymap(lambda x: '{:,}'.format(x), subset=['myCol']).\
+  render()
+```
+
+There's no error here, but Pandas disapproves of your shennanigans. You will receive
+the punishment of impotence: no commas shall be seen!
+
+
+## Good Enough Solution (for Quitters)
 We like the bars, but we need commas -- what to do?!
 
-My solution was to notice that the daily value of the metric is most often in the tens
-to hundreds of thousands, meaning that I could divide the numbers by 1000 and limit
-the need for commas. Just make sure the end user knows that the metric is being reported
-in kilo units. 
+My penultimate solution was simple: the daily value of the metric being reported is most often in the tens
+to hundreds of thousands. That means that dividing the metric values by 1000 would mostly limit
+the need for commas. This got the "Ok, go ahead." 
 
-Side Note: Funnily enough, this only resolved things for like 2 seconds before I was asked,
-"Can you put a k next to each number to emphasize the unit?"  That puts us back in the position
-of having a string column, which will cause `styles.bar()` to throw an error :-p :-/ :-(
+But then a dose of insecurity kicked in: "Kev, just make sure the end user knows that the metric is 
+being reported in kilo units."  Yea, of course. I'll just indicate it in the column header. "Can you 
+just put a k next to each number to emphasize the unit?"
+
+::Sigh:: That puts us back in the position
+of having a string column, which will cause `styles.bar()` to throw an error.
+
+There just has to be a way... I mean, hell, I could regex the hell out of it and brute force
+the solution.  But, c'mon!  You just know someone already did that.  Probably someone on the
+pandas team!
+
+## The Ultimate Solution
+Yes, the pandas team did figure it out, and it's super simple.  Embarassingly so. I finally just
+looked through the various methods available to me from `df.styles`.  One of them happened to 
+be `format()`.  
+
+```python
+df.styles.format('{:,}'.format).bar().render()
+```
+
+Nailed it! 
 
