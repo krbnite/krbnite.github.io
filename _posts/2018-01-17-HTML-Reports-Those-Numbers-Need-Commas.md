@@ -130,10 +130,12 @@ to hundreds of thousands. That means that dividing the metric values by 1000 wou
 the need for commas. This got the "Ok, go ahead." 
 
 But then a dose of insecurity kicked in: "Kev, just make sure the end user knows that the metric is 
-being reported in kilo units."  Yea, of course. I'll just indicate it in the column header. "Can you 
-just put a k next to each number to emphasize the unit?"
+being reported in kilo units."  Yea, of course. I'll just indicate it in the column header. "Actually, can you 
+put a k next to each number to emphasize the unit?"
 
-::Sigh:: That puts us back in the position
+::Sigh:: 
+
+That puts us back in the position
 of having a string column, which will cause `styles.bar()` to throw an error.
 
 There just has to be a way... I mean, hell, I could regex the hell out of it and brute force
@@ -142,7 +144,7 @@ pandas team!
 
 ## The Ultimate Solution
 Yes, the pandas team did figure it out, and it's super simple.  Embarassingly so. I finally just
-looked through the various methods available to me from `df.styles`.  One of them happened to 
+looked through the various methods available from `df.styles`.  One of them happened to 
 be `format()`.  
 
 ```python
