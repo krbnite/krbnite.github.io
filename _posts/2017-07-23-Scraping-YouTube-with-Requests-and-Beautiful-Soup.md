@@ -142,3 +142,6 @@ while True:
         print('...try to initiate scraping again in %d seconds' % rand_num_of_secs)
         time.sleep(rand_num_of_secs)
 ```
+
+If you are running that on a Linux EC2 instance, make sure to do it in a Tmux session.  This way, it will
+continue running whether or not you are logged in, get disconnected, etc.
