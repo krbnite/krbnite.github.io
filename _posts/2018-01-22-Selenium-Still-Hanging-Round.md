@@ -31,7 +31,7 @@ ps -ef  | grep chrome | wc -l
 Yea -- over 75%. Wow.  
 
 The potential cause was obvious: I only have one script that uses chromedriver.  It had run
-for months and months with no issue, but -- Occam's Razor.  
+for months and months with no issue, but -- Murphy's Law + Occam's Razor.  
 
 The first thing I did was reboot the remote Linux system when no automations were 
 running.  The multitude of chrome processes disappered and my other automations resumed
