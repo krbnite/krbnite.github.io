@@ -88,7 +88,14 @@ running the script... Oh, it crashed.  I must've done something wrong.  Tweaked 
 tried again... Crash!  Maybe I'm using the wrong python interpreter: tweak, crash!  
 
 It became clear: at some point, something I did broke this code. It had nothing to do with `driver.close()`,
-but more to do with not making it to `driver.close()` before the crash.  So for a script scheduled to run
-every 2 hours, I was accruing **at least** 12 chrome processes a day.  
+but more to do with not making it to `driver.close()` before the crash.  I checked: yup! There were now
+15 chrome processes lingering for no good reason... So for a script scheduled to run
+every 2 hours, I was accruing **at least** 12 chrome processes a day, but more likely quite a few more
+given my experimentation and observations.  
+
+Some interesting asides: 
+* Python vs iPython: the script usually uses the iPython interpreter, which I found crashes with 7 lingering processes; however, I also tested with a regular python3 interpreter and found that there were no lingering processes afterwards.  There's a lesson in this somewhere! (Likely shouldn't be using the iPython interpreter for an autoamted script, unless necessary.)
+* Zombies Nowhere: If you use the Linux `top` command, the number of zombie processes is listed at the top of the output.  As far as Linux is concerned, the crashes were not generating any zombie processes -- just real, live ones!
+
 
 Currently resolving this matter and will update this article ASAP.
