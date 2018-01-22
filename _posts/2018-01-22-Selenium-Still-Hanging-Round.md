@@ -99,3 +99,9 @@ Some interesting asides:
 
 
 Currently resolving this matter and will update this article ASAP.
+
+------------------------------
+
+### References
+* https://stackoverflow.com/questions/21320837/release-selenium-chromedriver-exe-from-memory
+* https://www.howtogeek.com/119815/htg-explains-what-is-a-zombie-process-on-linux/
