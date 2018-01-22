@@ -1,5 +1,5 @@
 ---
-title: Selenium Still Hanging Round
+title: Selenium Still Hangin' Round!
 layout: post
 ---
 
@@ -98,7 +98,10 @@ Some interesting asides:
 * Zombies Nowhere: If you use the Linux `top` command, the number of zombie processes is listed at the top of the output.  As far as Linux is concerned, the crashes were not generating any zombie processes -- just real, live ones!
 
 
-Currently resolving this matter and will update this article ASAP.
+## Epilogue: Reason for Crashing
+One of the assets being tracked stopped generating new content, which is an obvious edge case in hindsight,
+but was not accounted for in the original code.  Now that it is, the program no longer crashes and (I suspect)
+there will no longer be an issue of too many Chrome processes hangin' round!
 
 ------------------------------
 
