@@ -83,6 +83,10 @@ As stated on their webpage @ [instantarticles.fb.com](https://instantarticles.fb
 * 70% less likely to abandon the article
 * The fast, immersive reading experience inspires people to share Instant Articles 30% more often than mobile web articles on average, amplifying the reach of your stories in News Feed.
 
+<figure>
+  <img src="/images/instant-articles-are-fast-and-responsive.png" width="400">
+</figure>
+
 So Instant Articles don't impact organic reach or get higher in the News Feed, but then again, Instant Articles
 definitely impact organic reach and get higher in the News Feed.  Like, not, but not not-not. Gnomesayin'?
 
