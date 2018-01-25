@@ -16,6 +16,7 @@ in the future we can think of clever types of 'actions' that we want to collect 
 this would have to then be worked out with the product team and so on).  The list of things goes on,
 from the super-userful Graph Explorer, to the Page/Video Insights GUIs, GraphQL, and more!
 
+## Instant Articles
 Recently, I was asked about [Instant Articles](https://developers.facebook.com/docs/instant-articles/). 
 
 My first thought before knowing anything was, "Is there an API?"  One thing I've learned about Facebook
@@ -31,8 +32,8 @@ more useful for my purposes.  There are some
 [GUI features](https://developers.facebook.com/docs/instant-articles/analytics#dashboard) for visual 
 inspection and sanity as well, if needed, which can be found in the "Publisher Tools" section of a
 Facebook Page's admin page (see [Instant Article Analytics](https://developers.facebook.com/docs/instant-articles/analytics)
-for a more complete overview).  If one is interested in website traffic and similar things, then one 
-must use whatever tool they regularly use, e.g., Google Analytics.  However, what about likes and reactions? That's
+for a more complete overview).  If you're interested in website traffic and similar things, then you 
+must use whatever tool you would regularly use, e.g., Google Analytics.  However, what about likes and reactions? That's
 something that was in the request I received...  But not immediately available through the APIs or GUI.
 
 ## What is an Instant Article anyway?
