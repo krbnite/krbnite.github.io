@@ -87,6 +87,10 @@ As stated on their webpage @ [instantarticles.fb.com](https://instantarticles.fb
   <img src="/images/instant-articles-are-fast-and-responsive.png" width="400">
 </figure>
 
+Also, in the "Performance Tool" section at the bottom of the Instant Article Analytics page @ 
+[developers.facebook.com/docs/instant-articles/analytics](https://developers.facebook.com/docs/instant-articles/analytics):
+* In News Feed we rank stories based on how relevant each post is to each individual person; we do not show links higher in people's News Feed because they are Instant Articles. If, based on engagement signals, someone might find an Instant Article more relevant, we may show that link higher in their feed.
+
 So Instant Articles don't impact organic reach or get higher in the News Feed, but then again, Instant Articles
 definitely impact organic reach and get higher in the News Feed.  Like, not, but not not-not. Gnomesayin'?
 
