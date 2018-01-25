@@ -28,6 +28,7 @@ automations.  Fortunately, there are several APIs:
 
 For automated data collection, the [Instant Articles API](https://developers.facebook.com/docs/instant-articles/api)
 itself is not really useful.  That's something for some product engineer or social media manager to leverage.  
+
 The two insights APIs are ultimately more useful for my purposes.  There are some 
 [GUI features](https://developers.facebook.com/docs/instant-articles/analytics#dashboard) for visual 
 inspection and sanity as well, if needed, which can be found in the "Publisher Tools" section of a
@@ -68,6 +69,19 @@ What I have found is that there do appear to be some Instant Article-specific me
 of the associated APIs or the GUI.
 
 ## Instant Article Data
+
+### The Instant Article Performance Tool
+Read about it [here](https://media.fb.com/2017/07/19/new-instant-articles-analytics-tool/). Unfortunately,
+it appears none of the accounts I work on have access to this tool (though I did email Facebook and eagerly
+await their reply!).
+
+## How to Create an Instant Article
+In the simplest sense, an Instant Article is just the content from your webpage with different HTML and XML 
+tags. Similar to the meta tags defined for the Open Graph Protocol, when creating an Instant Articles, there
+are standardized mark-up features that one must use to apply style and interactive functionality to the 
+document. If a brand has a quickly-evolving, high-volume content feed, such mark-up and restructuring of a 
+brand's content can be made automatic, but for smaller operations one might prefer to do it manually.
+
 
 
 ## Some More Noise on Instant Articles
@@ -123,12 +137,6 @@ And it goes on, making sure publishers make no mistake: GoFY!
 Man, I know this post is getting a bit siderailed, but it's just crazy to read about the history of Instant Articles,
 then all of this recent stuff.  
 
-## How to Create an Instant Article
-In the simplest sense, an Instant Article is just the content from your webpage with different HTML and XML 
-tags. Similar to the meta tags defined for the Open Graph Protocol, when creating an Instant Articles, there
-are standardized mark-up features that one must use to apply style and interactive functionality to the 
-document. If a brand has a quickly-evolving, high-volume content feed, such mark-up and restructuring of a 
-brand's content can be made automatic, but for smaller operations one might prefer to do it manually.
 
 
 
