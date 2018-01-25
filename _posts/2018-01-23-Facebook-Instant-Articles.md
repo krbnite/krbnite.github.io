@@ -98,6 +98,30 @@ definitely impact organic reach and get higher in the News Feed.  Like, not, but
   <img src="/images/gnomesayin.gif" width="400">
 </figure>
 
+That said, earlier this month Facebook decided it will be 
+[Bringing People Closer Together](https://newsroom.fb.com/news/2018/01/news-feed-fyi-bringing-people-closer-together/),
+or in other words: deprioritizing publisher content on the newsfeed in favor of personal posts.  
+
+Mark Zuckerberg: "[R]ecently we've gotten feedback from our community that public content -- posts from businesses, brands and media -- is crowding out the personal moments that lead us to connect more with each other. ... The research shows that when we use social media to connect with people we care about, it can be good for our well-being. We can feel more connected and less lonely, and that correlates with long term measures of happiness and health. On the other hand, passively reading articles or watching videos -- even if they're entertaining or informative -- may not be as good. Based on this, we're making a major change to how we build Facebook. ... The first changes you'll see will be in News Feed, where you can expect to see more from your friends, family and groups. As we roll this out, you'll see less public content like posts from businesses, brands, and media."
+
+Basically, if there was any potential for the indirect prioritization of Instant Articles in the News Feed, it's
+now likely offset by the nature of their origin: publishers!  
+
+I mean, wow, this is a huge blow to publisher content -- the article goes on:
+>Today we use signals like how many people react to, comment on or share posts to determine how high they appear in News Feed.
+>
+> With this update, we will also prioritize posts that spark conversations and meaningful interactions between people. To do this, we will predict which posts you might want to interact with your friends about, and show these posts higher in feed. These are posts that inspire back-and-forth discussion in the comments and posts that you might want to share and react to – whether that’s a post from a friend seeking advice, a friend asking for recommendations for a trip, or a news article or video prompting lots of discussion.
+>
+> We will also prioritize posts from friends and family over public content, consistent with our [News Feed values](https://newsroom.fb.com/news/2016/06/building-a-better-news-feed-for-you/).
+>
+> Because space in News Feed is limited, showing more posts from friends and family and updates that spark conversation means we’ll show less public content, including videos and other posts from publishers or businesses.
+
+> As we make these updates, Pages may see their reach, video watch time and referral traffic decrease. 
+
+And it goes on, making sure publishers make no mistake: GoFY!  
+
+Man, I know this post is getting a bit siderailed, but it's just crazy to read about the history of Instant Articles,
+then all of this recent stuff.  
 
 ## How to Create an Instant Article
 In the simplest sense, an Instant Article is just the content from your webpage with different HTML and XML 
