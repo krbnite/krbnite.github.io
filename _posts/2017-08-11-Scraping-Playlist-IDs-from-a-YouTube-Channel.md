@@ -23,6 +23,7 @@ should get you the rest of the way.
 
 ```python
 import pandas as pd
+import time
 import bs4
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
@@ -45,14 +46,17 @@ def get_playlists(
     service.start()
     options = {}
     driver = webdriver.Remote(service.service_url, options)
+    time.sleep(1)
     
     #-------------------------------------------
-    # Browser Set Up
+    # Scrape Channel Playlists
     #-------------------------------------------
     youtube = 'https://www.youtube.com'
     channel_url = youtube+'/channel/'+channel_id+'/playlists'
     driver.get(channel_url)
-    page = bs4.BeautifulSoup(requests.get(channel_url).text,'lxml')
+    time.sleep(1)
+    page_source = driver.page_source # Or: requests.get(channel_url).text
+    page = bs4.BeautifulSoup(page_source,'lxml')
     playlist_html = page.select('h3[class="yt-lockup-title "]')
     channel_name = page.title.text.strip().split("\n")[0]
     playlist = pd.DataFrame(columns=[
