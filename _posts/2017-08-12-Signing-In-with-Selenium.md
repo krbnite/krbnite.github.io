@@ -13,7 +13,7 @@ In this example, I show how to sign into JW Player's analytics dashboard
 and get some data. Notice how specific the scrape is on the dashboard.  The major
 takeaway here should be an idea about how to sign into an online account.
 
-```
+```python
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.phantomjs.service import Service as PhantomService
