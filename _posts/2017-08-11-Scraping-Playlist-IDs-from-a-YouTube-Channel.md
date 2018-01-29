@@ -56,6 +56,10 @@ def get_playlists(
     driver.get(channel_url)
     time.sleep(1)
     page_source = driver.page_source # Or: requests.get(channel_url).text
+    
+    #-------------------------------------------
+    # Extract with BeautifulSoup
+    #-------------------------------------------
     page = bs4.BeautifulSoup(page_source,'lxml')
     playlist_html = page.select('h3[class="yt-lockup-title "]')
     channel_name = page.title.text.strip().split("\n")[0]
