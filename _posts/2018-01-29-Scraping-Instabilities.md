@@ -1,9 +1,9 @@
 ---
-title: Selenium Instabilities
+title: Scraping Instabilities
 layout: post
 ---
 
-Last year I developed a lot Selenium scripts in Python to scrape various social media
+Last year I developed a lot Selenium/BeautifulSoup scripts in Python to scrape various social media
 and data collection platforms.  It was a lot of fun, and certainly impressive (try showing
 someone how your program opens up a web browser, signs in to an account, navigates to various pages, clicks on buttons,
 and scrolls aroun without impressing them!).  
@@ -16,7 +16,7 @@ scraping.  This meant that BeatifulSoup's `select` method began churning out emp
 of the expected data elements.  
 
 For reasons like this, I've changed a lot of automated scripts, preferring available APIs over
-Selenium.  Don't get me wrong: Selenium is a great tool, and excellent way to supplement the various
+Selenium/BeautifulSoup when available.  Don't get me wrong: Selenium is a great tool, and excellent way to supplement the various
 APIs I now use.  But the "stability" of your script is so dependent on little tweaks in the HTML, CSS,
 and JavaScript...  
 
