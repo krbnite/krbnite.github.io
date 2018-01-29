@@ -17,7 +17,6 @@ import re
 
 def get_playlist_videos(
     list_id, 
-    driver_path='/usr/local/share/chromedriver',
     new_only=None, 
     visual=None,
 ):
@@ -25,14 +24,10 @@ def get_playlist_videos(
     #--------------------------
     # Start Browser Service
     #--------------------------
-    service = webdriver.chrome.service.Service(driver_path)
+    driver_path = 'usr/local/share/chromedriver'
+    service = ChromeService(driver_path)
     service.start()
-    if visual == True:
-        options = {}
-    else:
-        options = webdriver.ChromeOptions()
-        options.add_argument('--headless')
-        options = options.to_capabilities()
+    options = {}
     driver = webdriver.Remote(service.service_url, options)
     driver.implicitly_wait(10)
     
@@ -101,4 +96,30 @@ def get_playlist_videos(
     driver.close()
     return playlist
 
+```
+
+But... What if you are running this on a computer without a monitor?  Will the program crash or hang?  Or, 
+maybe more importantly, are you running many other automations throughout the day?  Who needs all the overhead
+of an actual browser?  For this, you can use PhantomJS.  You'll just need to touch up the code
+above.
+
+```python
+# Need the Phantom Service now too
+from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.webdriver.phantomjs.service import Service as PhantomService
+
+#--------------------------
+# Start Browser Service
+#--------------------------
+# need an if statement now (and a "visual" argument in the function)
+if visual == True:
+    driver_path = 'usr/local/share/chromedriver'
+    service = ChromeService(driver_path)
+else:
+    driver_path = '/usr/local/bin/phantomjs'
+    service = PhantomService(driver_path)
+service.start()
+options = {}
+driver = webdriver.Remote(service.service_url, options)
+driver.implicitly_wait(10)
 ```
