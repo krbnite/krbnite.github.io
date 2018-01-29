@@ -1,3 +1,8 @@
+---
+title: Selenium&#58; Swapping Out PhantomJS for Headless Chrome
+layout: post
+---
+
 To run headless browser scripts, I've been using PhantomJS. But all along, all I could think was, "Would
 be nice if Chrome just had its own headless version."  Then as the story usually goes, I finally googled this.
 
