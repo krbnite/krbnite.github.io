@@ -17,7 +17,7 @@ I first installed PyHive and various dependencies... [Write more on this (find t
 
 
 ## Hive
-```pythoh
+```python
 from SQLAlchemy import create_engine
 con = create_engine(
     'hive://'+username+'@'+IP+':10000/'+hiveDbName,
