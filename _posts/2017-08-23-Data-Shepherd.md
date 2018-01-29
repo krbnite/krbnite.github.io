@@ -37,7 +37,7 @@ install selenium and a browser's webdriver), but it's worth it.  The better I ge
 the more I realize is possible and the less I find myself using requests or BeautifulSoup (though honestly,
 I often still rely on BeautifulSoup; also, selenium is overkill for simple tasks).
 
-In several upcoming installments, I will go over some up-and-running instructions and code chunks.
+In several upcoming (and previous) installments, I go over some up-and-running instructions and code chunks. 
 
 
 * [Install Selenium](http://selenium-python.readthedocs.io/installation.html)
