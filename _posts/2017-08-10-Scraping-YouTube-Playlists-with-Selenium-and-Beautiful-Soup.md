@@ -103,6 +103,7 @@ maybe more importantly, are you running many other automations throughout the da
 of an actual browser?  For this, you can use PhantomJS.  You'll just need to touch up the code
 above.
 
+
 ```python
 # Need the Phantom Service now too
 from selenium.webdriver.chrome.service import Service as ChromeService
@@ -124,5 +125,10 @@ driver = webdriver.Remote(service.service_url, options)
 driver.implicitly_wait(10)
 ```
 
-### Note to Self
-Still need to document downloading PhantomJS and getting it to work.
+## How to Install PhantomJS
+If you're on a mac, installing PhantomJS is as easy as:
+```
+brew install phantomjs
+```
+
+(Could beef this section up a bit.)
