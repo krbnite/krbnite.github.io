@@ -112,3 +112,7 @@ page = bs4.BeautifulSoup(driver.page_source, 'lxml')
 ```python
 driver.get_screenshot_as_file('/Users/kurban/Desktop/checkThisOut.png')
 ```
+
+## Last Few Notes (for Now)
+1. For some reason exiting python is a chore after using webdriver... But just wait: it will eventually exit.
+2. When you put your Selenium code into a function, suddenly `time.sleep(x)` will become really important; place after any Selenium command that might take a while.  This becomes even more important if the code is scheduled/automated. 
