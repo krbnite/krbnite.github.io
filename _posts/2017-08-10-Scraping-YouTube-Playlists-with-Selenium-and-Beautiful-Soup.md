@@ -123,3 +123,6 @@ options = {}
 driver = webdriver.Remote(service.service_url, options)
 driver.implicitly_wait(10)
 ```
+
+### Note to Self
+Still need to document downloading PhantomJS and getting it to work.
