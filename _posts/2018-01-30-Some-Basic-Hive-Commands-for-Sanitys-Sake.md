@@ -43,6 +43,24 @@ There are some important hiccups I ran into.
 * there is no datetime data type in Hive
 * I'm actually not mapping the CSV file to a Hive table successfully (some columns are skipped...?)
 
+## Features I need to figure out
+Obviously, the table issue above for starters.  
+
+Also, our file naming scheme has the as\_on\_date in the filename, and I'd love to get this into
+a column in the Hive table. Related to this, I found that every Hive table has a "virutal column" that
+stores what file name/location a row comes from:
+```hive
+SELECT INPUT__FILE__NAME FROM tbl_name
+```
+
+If you know the filename, you can pluck out the date, like so:
+```python
+qry("select substr(INPUT__FILE__NAME,-19,8) from tbl_name limit 5",con)
+```
+
+But, of course, all this I'm doing *after* the table was already created... Not the biggest deal, but still
+kind of annoying.
+
 ## Some References
 * [Hive: How to create a table from CSV files](http://qpleple.com/hive-how-to-create-a-table-from-csv-files/)
 * [HiveQL: Data Definition Language](https://www.safaribooksonline.com/library/view/programming-hive/9781449326944/ch04.html)
