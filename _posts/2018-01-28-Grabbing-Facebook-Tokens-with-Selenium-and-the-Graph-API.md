@@ -99,3 +99,9 @@ def get_page_token(fb_accounts, name=''):
         except:
             return 'Invalid Account Name'
 ```
+
+## Update (2018-01-30): Suspicious Activity!
+When I began running these scripts on my EC2 instance, they were crashing.  So, I decided to
+debug locally with a visual Selenium browser... Turned out that Facebook decided the EC2 instance
+was a bad actor.  Makes sense: its requests are coming from an entirely different geographic 
+region. Anyway, point is: Just log in manually and acknowledge that your EC2 instance is A-OK!
