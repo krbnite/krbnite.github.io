@@ -3,6 +3,9 @@ title: Conda Quick Guide
 layout: post
 ---
 
+We will be using Python in the Deep Learning Nanodegree, specifically the Anaconda
+distribution.  Conda is a package management and virtual environment tool for creating
+and managing various Python environments.
 
 
 ## Create a New Environment
