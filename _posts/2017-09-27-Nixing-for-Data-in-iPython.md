@@ -3,7 +3,7 @@ title: Nixing for Data in iPython
 layout: post
 ---
 
-When using Jupyter Notebooks, I take advantage of the fact that you natively 
+When using Jupyter Notebooks (or iPython/Jupyter console/Qt), I take advantage of the fact that you natively 
 use Unix/Linux commands.
 
 For example, what files are in this directory again?
