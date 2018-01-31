@@ -82,3 +82,12 @@ The relational model is powerful because its language is simple, but expressive 
 --|--   __|     |
   /\     <-------
 ```
+
+## SQL vs Query Language
+<figure>
+  <img src="/images/sql-vs-query-language.png" width="600">
+</figure>
+
+-------------------------------------------------------
+
+Course still in progress...
