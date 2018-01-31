@@ -55,3 +55,6 @@
 
 > Forgiveness releases you from the drain of holding a grudge and sets you free to love and laugh again. It takes less energy to forgive than to resent.
 ~ Ed & Deb Shapiro
+
+> The displacement of the idea that facts and evidence matter by the idea that everything boils down to subjective interests and perspectives is -- second only to American political campaigns -- the most prominent and pernicious manifestation of anti-intellectualism in our time.
+~ Larry Laudan, Science and Relativism (1990) 
