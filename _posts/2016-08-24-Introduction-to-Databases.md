@@ -1,4 +1,4 @@
-Just some notes from StanfordOnline's "Introduction to Databases."
+Mostly notes from StanfordOnline's "Introduction to Databases," but also notes from Googling things.
 
 # Introduction to Databases
 ## Intro
@@ -17,6 +17,20 @@ Databases are designed to be efficient, reliable, convenient, and safe, providin
 * *DB Designer*:  establishes the schema for DB by looking at what data a company has and wants to store and attempting to design an intuitive, efficient structuring of that data
 * *DB Application Developer*:  develops the interfaces and programs that operate on top of the database and called on by the user
 * *DB Administrator*:  loads data into the database, gets everything running and working, and maintains the database, ensuring that it is always operating smoothly and efficiently (very important role at a company and is often highly paid)
+
+
+### What is SQL? 
+Some extra notes (not from course).
+*  SQL is a language that can be divided into 2 major sub-languages:
+  - Data Definition Language (DDL):  used to define tables, indexes, and relationships
+  - Data Manipulation Language (DML):  used to add, query, manipulate, and delete data from tables and datasets
+*  SQL is specifically designed to work w/ relational databases
+*  What is a relational database?
+  - put simply:  a collection of tables 
+  - more technical:  a data store that is capable of representing relationships between different sets of data
+* Some terminology:
+  - in a relational DB, information is said to be represented in columns and rows (rows are often called records)
+  - in the SQL parlance, columns and rows are attributes and tuples
 
 
 ## The Relational Model
