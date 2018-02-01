@@ -1,5 +1,7 @@
 ---
 title: Facebook Graph&#58; The Page Node
+layout: post
+---
 
 First, let's make the code blocks a bit friendlier looking: some definitions! 
 
