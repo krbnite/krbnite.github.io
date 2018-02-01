@@ -22,7 +22,7 @@ kpi_ssa = ssa(kpi)
 plot(s)
 ```
 <figure>
-  <img src="/images/ssa-plot-norms.png">
+  <img src="/images/ssa-plot-norms.png" width="600">
 </figure>
 
 
@@ -30,7 +30,7 @@ plot(s)
 summary(s)
 ```
 <figure>
-  <img src="/images/ssa-summary.png">
+  <img src="/images/ssa-summary.png" width="600">
 </figure>
 
 ## How does this package Work?
@@ -58,7 +58,7 @@ legend("topright",
 )
 ```
 <figure>
-  <img src="/images/ssa-doc-example.png">
+  <img src="/images/ssa-doc-example.png" width="600">
 </figure>
  
  
@@ -79,7 +79,7 @@ lines(dates, custom$g2, col='red', lwd=2)
 lines(dates, custom$g3, col='blue', lwd=3)
 ```
 <figure>
-  <img src="/images/ssa-custom-example.png">
+  <img src="/images/ssa-custom-example.png" width="600">
 </figure>
 
 
@@ -95,14 +95,14 @@ lines(dates, rts$g5, col='blue')
 lines(dates, rts$g6, col='purple')
 ```
 <figure>
-  <img src="/images/ssa-eyeball-inspection.png">
+  <img src="/images/ssa-eyeball-inspection.png" width="600">
 </figure>
 
 From this, it looks like g4 is about a 6-month oscillation, whereas
 g5 is more like a 3.5 month oscillation whose amplitude decays over time. Group g6
 has a similar periodicity to g5, but -- different.  
 
-Side Note: Honestly, there has to be a better way than eyeballin' this, right? I'm used to
+**Side Note**: Honestly, there has to be a better way than eyeballin' this, right? I'm used to
 getting frequency and amplitude estimates using things like the windowed short-time Fourier transform, or
 multitaper method. But for the sake of learning something new (SSA), I'll hang in here for a 
 bit.
@@ -123,10 +123,10 @@ lines(r$fourMnth,col='blue')
 
 # More inspection...
 # Other g's
-plot(r$Yearly,type="l")
-lines(r$g7,col='red')
-lines(r$g8,col='blue')
-lines(r$g9,col='purple')
+plot(r$Yearly, type="l")
+lines(r$g7, col='red')
+lines(r$g8, col='blue')
+lines(r$g9, col='purple')
 
 # Etc, etc, etc
 ```
@@ -150,6 +150,10 @@ one at a time...  I'll spare you the repetitive plots and code, and just tell yo
 * g17 is suddenly a crazy curve... 
 
 
+## Ultimate Solution w/ Some nice plots
+Ultimately, I scrapped this project in favor of other, related projects that
+seemed better suited to our needs.  That said, it was fun to dip my toes into SSA and work
+my way to some kind of ... something.  Hey, at least we got some pretty plots! :-p
 
 ```r
 r = reconstruct(s, 
@@ -161,31 +165,49 @@ r = reconstruct(s,
         oneMnth=c(14:16,18:20),
         crazy=c(17))
 )
-plot(r$Yearly, type="l")
-lines(r$sixMnth, col='red')
-lines(r$twoMnth, col='blue')
-lines(r$oneMnth, col='red')
-```
 
-## Some nice plots
+# Spaghetti.
+plot(dates, r$Yearly, type="l", xlab='Time (Days)', ylab='Spaghetti!!!')
+lines(dates, r$sixMnth, col='red')
+lines(dates, r$twoMnth, col='blue')
+lines(dates, r$oneMnth, col='red')
+```
+<figure>
+  <img src="/images/ssa-spaghetti.png" width="600">
+</figure>
+
 ```r
 # Yearly vs Data
-plot(fp,type="l")
-lines(r$Yearly,col='red')
+plot(dates, kpi, type="l", xlab='Time (Days)', ylab='KPI')
+lines(dates, r$Yearly, col='red')
+legend("bottomright", c('KPI', 'Yearly Component'), title="Time Series Component",
+     fill=c('black','red'), inset=.05, horiz=TRUE, cex=0.6)
 ```
+<figure>
+  <img src="/images/ssa-kpi-vs-annual.png" width="600">
+</figure>
 
 ```r
 # sixMnthly vs Data-Yearly
-plot(fp-r$Yearly,type="l")
-lines(r$sixMnth,col='red')
+plot(dates, fp-r$Yearly, type='l', xlab='Time (Days)', ylab='KPI')
+lines(dates, r$sixMnth, col='red')
+legend("bottomright", c('KPI-Yearly', '6-Month-ish Oscillation'), title="Time Series Component",
+     fill=c('black','red'), inset=.05, horiz=TRUE, cex=0.6)
 ```
+<figure>
+  <img src="/images/ssa-6-month.png" width="600">
+</figure>
 
 ```r
-# bigFourly+sixMnthly vs Data-Yearly
-plot(dates,fp-r$Yearly,type="l")
-lines(dates,r$bigFourly+r$sixMnthly,col='red')
+# specialEvents+sixMnthly vs Data-Yearly
+plot(dates, fp-r$Yearly, type='l', xlab='Time (Days)', ylab='KPI')
+lines(dates, r$specialEvents + r$sixMnthly, col='red')
+legend("bottomright", c('KPI-Yearly', 'SpecialEvent+6Mnth Oscillation'), title="Time Series Component",
+     fill=c('black','red'), inset=.05, horiz=TRUE, cex=0.6)
 ```
-
+<figure>
+  <img src="/images/ssa-special.png" width="600">
+</figure>
 
 ## Some References
 * [SSA on Wikipedia](https://en.wikipedia.org/wiki/Singular_spectrum_analysis)
