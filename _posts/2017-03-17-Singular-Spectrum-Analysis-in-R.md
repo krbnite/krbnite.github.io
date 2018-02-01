@@ -4,8 +4,7 @@ layout: post
 ---
 
 
-fp -> kpi
-s -> kpi_ssa
+Singular spectrum analysis (SSA)......
 
 ```r
 library(lubridate)
@@ -189,4 +188,7 @@ lines(dates,r$bigFourly+r$sixMnthly,col='red')
 
 
 ## Some References
+* [SSA on Wikipedia](https://en.wikipedia.org/wiki/Singular_spectrum_analysis)
+* [Rssa on Cran](https://cran.r-project.org/web/packages/Rssa/index.html)
+* [Rssa on GitHub](https://github.com/asl/rssa)
 * https://www.statmethods.net/advgraphs/axes.html
