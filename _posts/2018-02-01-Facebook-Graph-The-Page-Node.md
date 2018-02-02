@@ -45,13 +45,49 @@ That said, if you're scraping around a bunch of local businesses, some of this c
 A lot of the the Page Node's fields are super specific to what type of page it is, e.g., if you have a band, then
 there a quite a few band-related fields (artists\_we\_like, band\_interests, band\_members, booking\_agent, bio, 
 hometown, influences, press\_contact, record\_label).  You can imagine creating an app that grabs data on
-local bands like this.  Similarly, if a restaurant page has its own string of fields (attire, culinary\_team,
+local bands like this.  Similarly, a restaurant page has its own string of fields (attire, culinary\_team,
 food\_styles, general\_manager, payment\_options, price\_range, public\_transit, restaurant\_services, 
 restaurant\_specialties).  This data is useful for an app that helps a user quickly find some food ("I want 
 some Thai at an upscale restaurant that accepts credit and is near public transit, damn it!")
 
-So the Page Node has data about the thing, not things that interact with thing: that's where Page Insights
-comes into play!
+Other types of Pages include: Film, Vehicle, Person, Company, Team Org, TV Show, and more. 
+
+Importantly, the Page Node has data about the thing, not things that interact with thing: that's where Page Insights
+comes into play!  And that's mostly the type of thing I'm after.  But I'll get to that in another post.
+
+Question to Self: Do I/we care about any of the Page fields to collect on a periodic basis?
+
+* engagement
+  - definition: the social sentence and like count information for this Page; this is the same info used for the like button
+  - only the count is useful to me, e.g., {'engagement': {'count': 38746716, 'social\_sentence': '38M people like this.'}}
+* **fan\_count**
+  - definition: the number of users who like the Page; for Global Pages this is the count for all Pages across the brand
+  - this obviates any need I had for the engagement field
+* new\_like\_count
+  - definition: the number of people who have liked the Page, since the last login; only visible to a page admin
+  - seemed like a contender, but it is fairly subjective
+* featured\_video
+  - definition: Video featured by the Page
+  - could be useful to track how different featured videos generate engagement
+  - that said, for the page I'm currently working on, this field is empty
+* instagram\_business\_account
+  - definition: Instagram account linked to page during Instagram business conversion flow
+  - useful in getting our Instagram account ID, which I might be able to hit with the Graph API
+  - [Instagram Graph API](https://developers.facebook.com/docs/instagram-api)
+* is\_webhooks\_subscribed
+  - definition: Indicates whether the application is subscribed for real time updates from this page
+  - I just want to learn more about webhooks in general
+* overall\_star\_rating
+  - definition: Overall page rating based on rating survey from users on a scale of 1-5; this value is normalized and is not guaranteed to be a strict average of user ratings
+  - seemed cool, but the field came back empty
+* rating\_count
+  - definition: Number of ratings for the page
+  - came back 0, so not useful to me
+* **talking\_about\_count**
+  - definition: The number of people talking about this Page
+  - seems useful
+
+So, basically, fan\_count and talking\_about\_count might be interesting to monitor at a regular cadence.
 
 ### Page Edges
 Ok, admittedly at first glance, a lot of edges seem like they can be fields. One key distinction is that
