@@ -55,7 +55,11 @@ Other types of Pages include: Film, Vehicle, Person, Company, Team Org, TV Show,
 Importantly, the Page Node has data about the thing, not things that interact with thing: that's where Page Insights
 comes into play!  And that's mostly the type of thing I'm after.  But I'll get to that in another post.
 
-Question to Self: Do I/we care about any of the Page fields to collect on a periodic basis?
+Question to Self: Do I/we care about any of the Page fields to collect on a periodic basis?  There are over 100 potential
+fields listed in the documentation, most of which are either irrelevant to the page category or periodic data collection
+in general.
+
+Here is a list of potentially useful fields (for my current purposes):
 
 * engagement
   - definition: the social sentence and like count information for this Page; this is the same info used for the like button
@@ -80,6 +84,7 @@ Question to Self: Do I/we care about any of the Page fields to collect on a peri
 * overall\_star\_rating
   - definition: Overall page rating based on rating survey from users on a scale of 1-5; this value is normalized and is not guaranteed to be a strict average of user ratings
   - seemed cool, but the field came back empty
+  - that said, the me/ratings edge is filled with ratings... 
 * rating\_count
   - definition: Number of ratings for the page
   - came back 0, so not useful to me
@@ -90,13 +95,19 @@ Question to Self: Do I/we care about any of the Page fields to collect on a peri
 So, basically, fan\_count and talking\_about\_count might be interesting to monitor at a regular cadence.
 
 ### Page Edges
-Ok, admittedly at first glance, a lot of edges seem like they can be fields. One key distinction is that
-a field describes something about the page (literally, it is usually a "text field" description), while an
-edge is ... A field says something about the real thing: Who are the band members? What food style is the
-restaurant? Is there nearby public transit available?  The values of a field are not a Facebook objects, but 
-characterizations of a Facebook object (the Page).  
+Ok, admittedly at first glance, a lot of edges seem like they can be fields. 
 
-The values of an edge are Facebook objects related to the Page.
+One key distinction is that
+a field describes something about the page (literally, it is usually a "text field" description). A field 
+provides information about the real thing: Who are the band members? What food style is the
+restaurant? Is there nearby public transit available?  Importantly, the values of a field are not Facebook objects, but 
+characterizations of a Facebook object.  In contrast, the values of an edge are Facebook objects related to the Page.
+
+Or, as [Facebook puts it](https://developers.facebook.com/docs/graph-api/overview):
+> * nodes - basically "things" such as a User, a Photo, a Page, a Comment
+> * edges - the connections between those "things", such as a Page's Photos, or a Photo's Comments
+> * fields - info about those "things", such as a person's birthday, or the name of a Page
+
 
 Big, but nonexhaustive list (needs editing!): Edges that interest me
 
@@ -132,8 +143,23 @@ Then there is the screennames edge that definitely feels like a "field" and also
 edge properties (no parameters...no create/update/delete methods)
 https://developers.facebook.com/docs/graph-api/reference/page/screennames/
 
+### Order, Order!!
+It might be important to return posts or photos or what-have-you in strict `chronological` or
+`reverse_chronological` order.  This is done like:
+```
+/{node}/{edge}?fields=someField.order(reverse_chronological)
+```
 
-(FINISH WRITING/EDITING)
+### Field Expansion / Nesting
+https://developers.facebook.com/docs/graph-api/using-graph-api#fieldexpansion
+
+## What Page Edges are there again?
+```python
+get(fbg+'me?metadata=1)['metadata']['connections'].keys()
+```
+Doing this, I found an edge not listed in the docs: agencies.  So issuing this command every once in
+a while could be good for your health!
+
 
 ## References
 
