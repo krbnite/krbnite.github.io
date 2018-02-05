@@ -37,7 +37,7 @@ the Page ID should be obvious.
 
 ### Page Fields
 If you're someone interested in social, engagement, viewership and/or viewership behavioral data as a function
-of time, then this node by itself might bore you!  Most of its fields represent static, owner-defined bits
+of time, then the fields of the Page node by itself might bore you!  Most of its fields represent static, owner-defined bits
 of information: about, affiliation, awards, bio, birthday, category, contact_address, emails.
 
 That said, if you're scraping around a bunch of local businesses, some of this could be what you're looking for!  
@@ -108,40 +108,170 @@ Or, as [Facebook puts it](https://developers.facebook.com/docs/graph-api/overvie
 > * edges - the connections between those "things", such as a Page's Photos, or a Photo's Comments
 > * fields - info about those "things", such as a person's birthday, or the name of a Page
 
+In an more object-oriented vocabulary, you might refer to a node as a Graph Object, and fields
+at attributes of that object.  Edges are kind of like passive methods: "Get me all photos from 
+this page."   
 
-Big, but nonexhaustive list (needs editing!): Edges that interest me
+```
+# Node
+me
 
-Not that the other edges aren't interesting... But I'm trying to be practical and focused. I've listed
-some ones that might be immediately useful to me or my team.
+# Fields (Attributes)
+me?fields=id,name
 
-* /me/likes: lists names and Page IDs other [Facebook Pages](https://developers.facebook.com/docs/graph-api/reference/page/) liked by this Page 
-* /me/blocked: [Users](https://developers.facebook.com/docs/graph-api/reference/user/) or [Pages](https://developers.facebook.com/docs/graph-api/reference/page/) blocked from this Page
-* /me/checkin_posts: lists [Checkin Posts](https://developers.facebook.com/docs/graph-api/reference/page/checkin_posts/) ("All public posts in which the page has been tagged as the location.")
-* /me/claimed_urls: Claimed URLs for Instant Articles that are associated with this Facebook Page; https://developers.facebook.com/docs/graph-api/reference/page/claimed_urls/
-* /me/crosspost_whitelisted_pages: Pages whitelisted for crossposting; https://developers.facebook.com/docs/graph-api/reference/page/crosspost_whitelisted_pages/
-* /me/featured_videos_collection: https://developers.facebook.com/docs/graph-api/reference/page/featured_videos_collection/
+# Edge (w/ Edge Method)
+me/photos?limit=5
+```
+
+The me/photos endpoint returns a list of photo nodes.  So whereas "me" is a node, "me/photos" is an edge: pathways from 
+one node to other, related nodes. (This guy says it all very well: [Optimizing Request Queries to the Facebook Graph API](https://www.sammyk.me/optimizing-request-queries-to-the-facebook-graph-api)).
+
+### Edges as Fields!
+Fact is, despite their differences, edges and fields can be treated similarly.  This goes by "nested requests" or
+"[field expansion](https://developers.facebook.com/docs/graph-api/using-graph-api#fieldexpansion)," depending on what you're 
+reading.  The idea of field expansion is, if we treat edges like fields syntactically, then
+we can make requests to multiple edges in a single request to the Graph API!  The related idea of "nested requests" is that,
+when using field expansion on edges, you can continue using field expansion on the edge's objects in a nested fashion.
+
+#### Example of Field Expansion
+```
+# Old Way: Two Edges = Two Graph Requests
+/me/photos
+/me/posts
+
+# New Way: Field Expansion
+/me?fields=photos,posts
+```
+
+#### Example of Nested Field Expansion
+```
+# Old Way
+/me/albums?fields=name,link&limit=3
+
+# Nested Way
+/me?fields=albums.limit(3){name,link}
+```
+
+#### Some Words of Warning
+Note that the field expansion technique returns a slightly different JSON architecture than the old-school 
+technique.  In Python:
+```python
+old_way = get('me/posts')
+new_way = get('me?fields=posts')
+old_way['data'] == new_way['posts']['data']
+```
+
+Also, not all edges can be treated as fields.  For example, the page 
+node already has an edge called "likes", but for whatever reason the "likes" edge cannot be treated
+like a field.  Seems like in older versions of the Graph API (until v2.5), `me?fields=likes` would return how many
+people liked the page; this field does not exist for v2.6 onward.  
+
+Example: `promotable_posts` and `ratings` are both Page edges, but only `promotable_posts` can be
+treated with field expansion:
+```
+# Works fine
+/me?fields=promotable_posts.limit(5)
+
+# Error!!!
+/me?fields=ratings.limit(5)
+```
+
+
+### Edges that don't interest me
+The list of Page edges is huge, and not all of them are of immediate interest.  
+
+For example, some of them are fairly "managerial" like many of the Page fields:
+* admin\_notes
+* blocked (user or page profiles blocked from this page)
+* business\_activities (requires VIEW\_BUSINESS\_LOG permission)
+
+Some of the edges go beyond managerial -- these are fieldy-feeling edges! For example,
+there is the [screennames edge](https://developers.facebook.com/docs/graph-api/reference/page/screennames/)
+that definitely feels like a "field" and also has no real
+edge properties (no parameters...no create/update/delete methods).
+
+For many edges, it is difficult to know whether or not it will provide interesting
+user data without looking more into it.  In the next section, I look at the edges that
+caught my attention, and assess whether they will ultimately be useful for my 
+purposes.
+
+### Edges that interest me
+Below, I've tried to
+gather some edges that are important to my current needs, or ones that appear to have potential. It is
+still a big list, and possibly nonexhaustive.
+
+* me/albums
+  - returns a list of [album nodes](https://developers.facebook.com/docs/graph-api/reference/album/)
+  - album nodes have fairly managerial fields: id, can\_upload, count (approximate number of photos in the album), 
+  cover\_photo (id of album's cover photo), created\_time, description, event, name, privacy, etc
+  - using the album id with info from its edges could be useful, e.g., page\_id, album\_id, num\_likes, num\_reactions
+  - album edges: picture (node for cover photo), photos (photo nodes of album's pictures), shared\_posts (stream
+  posts that are shares of this album), likes (people who liked the album), reactions (people who have reacted to
+  the album), comments
+* me/bc\_sponsored\_posts
+  - def: A list of posts where the page is tagged as sponsor in branded content posts, only posts that are marked as 
+  shared with sponsor on creation.
+  - e.g., there is a post by NJ Devils announcing a Devils/WWE night on Nov. 9, 2017
+* me/call\_to\_actions
+  - the call-to-actions (CTAs) created by this Page, returned as [Page CTA nodes](https://developers.facebook.com/docs/graph-api/reference/page-call-to-action/)
+  - I thought maybe the CTA nodes returned by this edge would then have interesting info, like click rate; however, they contain
+  more "managerial" info (e.g., the type of action, the last time it was updated, etc)
+* me/canvases
+  - returns a list of canvas nodes, which represent the page's canvas documents
+  - a canvas node is very managerial, having the fields: id, background\_color, body\_elements, canvas\_link, is\_hidden, is\_published,
+  last\_editor, name, owner, update\_time
+  - doesn't seem to directly provide the type of info I'm looking for
+* /me/checkin\_posts: 
+  - lists [Checkin Posts](https://developers.facebook.com/docs/graph-api/reference/page/checkin_posts/) 
+  - "All public posts in which the page has been tagged as the location."
+
+
+* /me/likes: 
+  - lists names and Page IDs of other [Facebook Pages](https://developers.facebook.com/docs/graph-api/reference/page/) 
+  liked by the "me" Page 
+
+* /me/claimed\_urls: 
+  - Claimed URLs for Instant Articles that are associated with this Facebook Page
+  - [docs](https://developers.facebook.com/docs/graph-api/reference/page/claimed_urls/)
+  - not really too useful: just lists domain names we own that are associated with the Instant Articles we publish
+
+* /me/crosspost\_whitelisted\_pages: Pages whitelisted for crossposting
+  - [docs](https://developers.facebook.com/docs/graph-api/reference/page/crosspost_whitelisted_pages/)
+  - just gives page nodes for pages granted crosspost permissions
+
+* /me/featured\_videos\_collection
+  - [docs](https://developers.facebook.com/docs/graph-api/reference/page/featured_videos_collection/)
 * /me/insights
-* /me/instant_articles
-* /me/instant_articles_insights
-* /me/live_videos
-* /me/media_fingerprints
+* /me/instant\_articles
+* /me/instant\_articles\_insights
+* /me/live\_videos
+* /me/media\_fingerprints
 * /me/photos
 * /me/posts  (same as /me/feed?)
 * /me/ratings
 * /me/tagged
-* /me/video_broadcasts
+* /me/video\_broadcasts
 * /me/videos
-* /me/video_media_copyrights
-* /me/videos_you_can_use  (list of videos page can use for crossposting....)
-* /me/visitor_posts
+* /me/video\_media\_copyrights
+* /me/videos\_you\_can\_use  (list of videos page can use for crossposting....)
+* /me/visitor\_posts
 
-What's weird is that sometimes an edge can be treated like a field...or something... Idk.  
-* e.g.,  /me?fields=promotable_posts.limit(5)
-* but not: /me?fields=ratings.limit(5)  # Error!!!!!!
 
-Then there is the screennames edge that definitely feels like a "field" and also has no real
-edge properties (no parameters...no create/update/delete methods)
-https://developers.facebook.com/docs/graph-api/reference/page/screennames/
+## Miscellaneous
+### The Limit on Limit
+One thing you will notice right away when using the Facebook Graph API is that it, by default,
+returns only a handful of list items on each page.  You can use `limit` to make this amount
+smaller, but importantly: you can use it to make it bigger too!  
+
+The limit was 500 at one point, though more recently it has been 100:
+https://stackoverflow.com/questions/14876105/the-limit-of-facebooks-graph-api-limit-parameter
+
+### Feed vs Posts
+The Page Feed includes everything you might see on the page's feed, including tagged posts and
+checkins... The posts edge is just posts...
+
+https://stackoverflow.com/questions/6214535/what-is-the-difference-between-feed-posts-and-statuses-in-facebook-graph-api
+
 
 ### Order, Order!!
 It might be important to return posts or photos or what-have-you in strict `chronological` or
@@ -150,20 +280,24 @@ It might be important to return posts or photos or what-have-you in strict `chro
 /{node}/{edge}?fields=someField.order(reverse_chronological)
 ```
 
-### Field Expansion / Nesting
-https://developers.facebook.com/docs/graph-api/using-graph-api#fieldexpansion
 
-## What Page Edges are there again?
+## Node Introspection: What Page Edges and Fields are there again?
+One might not want to go back to the docs every time they want to know what fields and
+edges exist for a given node.  For this, once can use a feature called 
+[node instrospection](https://developers.facebook.com/docs/graph-api/using-graph-api#introspection):
+
 ```python
 get(fbg+'me?metadata=1)['metadata']['connections'].keys()
 ```
 Doing this, I found an edge not listed in the docs: agencies.  So issuing this command every once in
-a while could be good for your health!
+a while could be good for your health!  (The docs are not always up to date.)
 
 
 ## References
 
 
-Page Insights 
+* https://www.sammyk.me/optimizing-request-queries-to-the-facebook-graph-api
 * https://developers.facebook.com/docs/platforminsights/page
 * https://developers.facebook.com/docs/pages/access-tokens
+* https://stackoverflow.com/questions/6214535/what-is-the-difference-between-feed-posts-and-statuses-in-facebook-graph-api
+* https://stackoverflow.com/questions/14876105/the-limit-of-facebooks-graph-api-limit-parameter
