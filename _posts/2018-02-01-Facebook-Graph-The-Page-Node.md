@@ -15,9 +15,9 @@ fbg = 'https://graph.facebook.com/'+VERSION+/'
 def get(url, access_token):
   if access_token:
     if url.find('?') > 0:
-      url = url + '&access_token=' + access_token
+      url = fbg + url + '&access_token=' + access_token
     else:
-      url = url + '?access_token=' + access_token
+      url = fbg + url + '?access_token=' + access_token
   return json.loads(requests.get(url).text)
 ```
 I'll be assuming you are using a [page token](https://developers.facebook.com/docs/pages/access-tokens)
@@ -88,6 +88,7 @@ Here is a list of potentially useful fields (for my current purposes):
 * rating\_count
   - definition: Number of ratings for the page
   - came back 0, so not useful to me
+  - just like w/ overall\_star\_rating: this is weird since the me/ratings edge is highly populated
 * **talking\_about\_count**
   - definition: The number of people talking about this Page
   - seems useful
@@ -112,15 +113,15 @@ In an more object-oriented vocabulary, you might refer to a node as a Graph Obje
 at attributes of that object.  Edges are kind of like passive methods: "Get me all photos from 
 this page."   
 
-```
+```python
 # Node
-me
+get('me', page_token)
 
 # Fields (Attributes)
-me?fields=id,name
+get('me?fields=id,name', page_token)
 
 # Edge (w/ Edge Method)
-me/photos?limit=5
+get('me/photos?limit=5', page_token)
 ```
 
 The me/photos endpoint returns a list of photo nodes.  So whereas "me" is a node, "me/photos" is an edge: pathways from 
@@ -134,22 +135,22 @@ we can make requests to multiple edges in a single request to the Graph API!  Th
 when using field expansion on edges, you can continue using field expansion on the edge's objects in a nested fashion.
 
 #### Example of Field Expansion
-```
+```python
 # Old Way: Two Edges = Two Graph Requests
-/me/photos
-/me/posts
+get('me/photos', page_token)
+get('me/posts', page_token)
 
 # New Way: Field Expansion
-/me?fields=photos,posts
+get('/me?fields=photos,posts', page_token)
 ```
 
 #### Example of Nested Field Expansion
-```
+```python
 # Old Way
-/me/albums?fields=name,link&limit=3
+get('/me/albums?fields=name,link&limit=3', page_token)
 
 # Nested Way
-/me?fields=albums.limit(3){name,link}
+get('/me?fields=albums.limit(3){name,link}', page_token)
 ```
 
 #### Some Words of Warning
@@ -165,16 +166,6 @@ Also, not all edges can be treated as fields.  For example, the page
 node already has an edge called "likes", but for whatever reason the "likes" edge cannot be treated
 like a field.  Seems like in older versions of the Graph API (until v2.5), `me?fields=likes` would return how many
 people liked the page; this field does not exist for v2.6 onward.  
-
-Example: `promotable_posts` and `ratings` are both Page edges, but only `promotable_posts` can be
-treated with field expansion:
-```
-# Works fine
-/me?fields=promotable_posts.limit(5)
-
-# Error!!!
-/me?fields=ratings.limit(5)
-```
 
 
 ### Edges that don't interest me
@@ -200,7 +191,7 @@ Below, I've tried to
 gather some edges that are important to my current needs, or ones that appear to have potential. It is
 still a big list, and possibly nonexhaustive.
 
-* me/albums
+* **me/albums**
   - returns a list of [album nodes](https://developers.facebook.com/docs/graph-api/reference/album/)
   - album nodes have fairly managerial fields: id, can\_upload, count (approximate number of photos in the album), 
   cover\_photo (id of album's cover photo), created\_time, description, event, name, privacy, etc
@@ -208,7 +199,7 @@ still a big list, and possibly nonexhaustive.
   - album edges: picture (node for cover photo), photos (photo nodes of album's pictures), shared\_posts (stream
   posts that are shares of this album), likes (people who liked the album), reactions (people who have reacted to
   the album), comments
-* me/bc\_sponsored\_posts
+* **me/bc\_sponsored\_posts**
   - def: A list of posts where the page is tagged as sponsor in branded content posts, only posts that are marked as 
   shared with sponsor on creation.
   - e.g., there is a post by NJ Devils announcing a Devils/WWE night on Nov. 9, 2017
@@ -225,11 +216,6 @@ still a big list, and possibly nonexhaustive.
   - lists [Checkin Posts](https://developers.facebook.com/docs/graph-api/reference/page/checkin_posts/) 
   - "All public posts in which the page has been tagged as the location."
 
-
-* /me/likes: 
-  - lists names and Page IDs of other [Facebook Pages](https://developers.facebook.com/docs/graph-api/reference/page/) 
-  liked by the "me" Page 
-
 * /me/claimed\_urls: 
   - Claimed URLs for Instant Articles that are associated with this Facebook Page
   - [docs](https://developers.facebook.com/docs/graph-api/reference/page/claimed_urls/)
@@ -239,19 +225,62 @@ still a big list, and possibly nonexhaustive.
   - [docs](https://developers.facebook.com/docs/graph-api/reference/page/crosspost_whitelisted_pages/)
   - just gives page nodes for pages granted crosspost permissions
 
+* **/me/events**
+  - [page event docs](https://developers.facebook.com/docs/graph-api/reference/page/events/)
+  - returns a list of [event nodes](https://developers.facebook.com/docs/graph-api/reference/event/)
+  - could be very useful
+  - worth digging deep on (will write a post dedicated to page/events)
+  - fields include: attending\_count, declined\_count, interested\_count
+  - edges include: attending (users attending the event), comments, interested (users interested in the event),
+  maybe (users who replied 'maybe'), feed
+
 * /me/featured\_videos\_collection
   - [docs](https://developers.facebook.com/docs/graph-api/reference/page/featured_videos_collection/)
-* /me/insights
-* /me/instant\_articles
-* /me/instant\_articles\_insights
+  - could be useful, but seems like we do not populate this feature
+  
+* **/me/insights**
+  - Obviously useful (will write whole post dedicated to it)
+  - [docs](https://developers.facebook.com/docs/graph-api/reference/page/insights/)  
+* **/me/instant\_articles**
+  - [docs](https://developers.facebook.com/docs/graph-api/reference/page/instant_articles/)
+  - returns list of InstantArticle nodes (with default fields: id, canonical\_url, and html\_source)
+  - useful for returning object ID of individual instant articles, which can then be used to obtain article-level insights
+* **/me/instant\_articles\_insights**
+  - [docs on page-level insights for Instant Articles](https://developers.facebook.com/docs/graph-api/reference/instant-articles-insights-aggregated)
+  - Provides page-aggregated view on Instant Article metrics
+  - Obviously useful (will write whole post dedicated to it)
+  - this edge requires that the `metric` and period parameters are populated, e.g. `me/instant_articles_insights?metric=all_views&period=day`
+  - metrics have specific cadences they are available at: 
+    * daily: all\_views
+    * weekly: all\_view\_durations, all\_view\_durations\_average, all\_scrolls, all\_scrolls\_average
+    
+* /me/likes: 
+  - [docs](https://developers.facebook.com/docs/graph-api/reference/page/likes/)
+  - this is a weird one: 
+    * in the documentation, it says that it provides the "number of users who like the Page. For Global Pages this is the count for all Pages across the brand."
+    * however, in reality, it lists names and Page IDs of other [Facebook Pages](https://developers.facebook.com/docs/graph-api/reference/page/) liked by the "me" Page 
+    * if you treat the edge like a field, it does not return anything (me?fields=likes)
+    
 * /me/live\_videos
+  - Error Code 10: *To use live-video-api on behalf of people who are not admins, developers and testers of your app, your use of this endpoint must be reviewed and approved by Facebook.  To submit this feature for review please read our documentation on reviewable features: https://developers.facebook.com/apps/review.*
+  - returns a list of [LiveVideo](https://developers.facebook.com/docs/graph-api/reference/live-video/) nodes
+  - this is for people setting up the live streams
+  - I can get live video info from the video\_broadcasts edge
+  
 * /me/media\_fingerprints
+  - Error Code 100: *The page is not qualified to use Media Fingerprint API. Please verify that the page has completed Media Fingerprint API onboarding process.*
+
 * /me/photos
-* /me/posts  (same as /me/feed?)
+  - useful to track photo engagement
+* /me/posts  
+  - this looks the same as me/feed, but is actually a subset of me/feed
 * /me/ratings
+  - could be useful: lists user rating and datetime, which can allow us to track rating dynamics over time
 * /me/tagged
 * /me/video\_broadcasts
+  - this is how I get a list of our live content
 * /me/videos
+  - all videos
 * /me/video\_media\_copyrights
 * /me/videos\_you\_can\_use  (list of videos page can use for crossposting....)
 * /me/visitor\_posts
