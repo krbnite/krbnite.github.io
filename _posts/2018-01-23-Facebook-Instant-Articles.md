@@ -69,6 +69,17 @@ What I have found is that there do appear to be some Instant Article-specific me
 of the associated APIs or the GUI.
 
 ## Instant Article Data
+Unfortunately, I was having problems accessing the data using the Graph API: the error suggested that I did
+not have the `pages_manage_instant_articles` permission.  With this permission, you can access data on a 
+page's instant articles like so (assuming "me" refers to a page token):
+```
+me/instant_articles
+me/instant_articles_insights
+```
+
+* [Instant Articles: Insights](https://developers.facebook.com/docs/graph-api/reference/v2.12/instant-article-insights)
+* [Instant Articles: Aggregated Insights](https://developers.facebook.com/docs/graph-api/reference/v2.12/instant-articles-insights-aggregated)
+
 
 ### The Instant Article Performance Tool
 Read about it [here](https://media.fb.com/2017/07/19/new-instant-articles-analytics-tool/). Unfortunately,
