@@ -61,10 +61,7 @@ CREATE TABLE album_fields (
   description varchar,
   event varchar,
   link varchar,
-  page_story_id varchar,
   place_id varchar,
-  height float,
-  width float,
   privacy_setting varchar,
   created_time datetime,
   updated_time datetime
@@ -96,7 +93,7 @@ If you're keeping track of the available fields, you'll noticed I left several o
 * location
   - Reason for Rejection: the "location" already comes back in the place list, and can be found by mapping the place\_id to the facebook\_places table
   
-Note to Self: Doesn't really seem like the event, page\_story\_id, height and width fields are being populated in most of what I've seen.
+Note to Self: Doesn't really seem like the event field is being populated in most of what I've seen.
 
 ### Some Strategy
 The facebook\_places table is not too important. We could just as simply ingest latitude and longitude into the 
@@ -110,11 +107,75 @@ are released, and the analyst will need to differentiate between a private inven
 # Assume object has been created that allows such behavior
 fields = ','.join([
   'id', 'name', 'type', 'cover_photo',
-  'description', 'event', 'link', 'page_story_id',
-  'place', 'height', 'width', 'privacy', 
-  'created_time', 'updated_time'
+  'description', 'event', 'link', 'place', 
+  'privacy', 'created_time', 'updated_time'
 ])
 token.get('me/albums?fields='+fields)
 ```
 
 ### The Flattening
+
+# The Album/Photo Map
+```sql
+CREATE TABLE album_photo_map (
+  album_id varchar,
+  photo_id varchar
+```
+
+There are Photo Node fields that we could include, but it might be better to just
+have two mapping tables, `album_photo_map` and `page_photo_map`, and a `photo\_fields`
+table. This is important because, ultimately, we will want to track all photos, but 
+not all a page's photos are in albums.  
+
+```sql
+CREATE TABLE page_photo_map (
+  page_id,
+  photo_id
+)
+
+CREATE TABLE photo_fields (
+  photo_id,
+  back_dated_time,
+  back_dated_time_granularity,
+  created_time,
+  event,
+  link,
+  page_story_id,
+  place,
+  height,
+  width,
+  created_time datetime,
+  updated_time datetime
+```
+
+This last table is actually something I should cover in an upcoming post about the 
+[Pages/Photos](https://developers.facebook.com/docs/graph-api/reference/page/photos/) Edge.
+
+# Album Tables
+In addition to the Photos edge, an Albums node has the following edges, all of which
+can be tracked with mapping tables: /sharedposts, /likes, /reactions, /comments.  Again, these mapping
+tables can be used to connect to more data-dense tables, likes a `page\_posts` table, a `page\_likes` tables,
+and so on.  
+
+```sql
+CREATE table album_sharedpost_mapping (
+  album_id,
+  sharedpost_id
+)
+CREATE table album_likes_mapping (
+  album_id,
+  user_id
+)
+-- Etc
+```
+
+In a separate post, I will discuss the Album node and its edges in more detail...
+
+# Wowzas!
+The Facebook Gungle can get pretty complex to track real quick, so it's important to really sit down
+and take the time to map out how you will collect the data, like we're doing right now.
+
+# References
+* https://developers.facebook.com/docs/graph-api/reference/page/
+* https://developers.facebook.com/docs/graph-api/reference/page/albums/
+* https://developers.facebook.com/docs/graph-api/reference/v2.12/album
