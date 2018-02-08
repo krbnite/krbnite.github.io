@@ -3,9 +3,11 @@ title: Crontab Backups
 layout: post
 ---
 
-Let's say you have a server: it's yours and yours only.  You life's work is on 
-it.  Now let's make it interesting: let's say that suddenly other people were given
-the same credentials to log in and out. Imagine the scene: Your automations have been working so well on that Linux server,
+Let's say you have a server: it's yours and yours only.  Your life's work is on 
+it.  Now let's make it interesting: say that, suddenly, other people were given
+the same credentials to log in and out. 
+
+Imagine the scene: Your automations have been working so well on that Linux server,
 and those guys using the Windows server want in.  They've tried to get their automations to work,
 but for whatever reason there are umteen different security measures that are in place on that
 machine, and it the challenge is more than technical: it's social and political!  People are sending emails, holding meetings,
