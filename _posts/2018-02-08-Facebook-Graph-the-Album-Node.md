@@ -40,14 +40,36 @@ fields = ','.join([
   'description', 'event', 'link', 'place', 
   'privacy', 'created_time', 'updated_time'
 ])
-for ID in album_id:
-  album_data += token.get(ID+'?fields='+fields)
+for aid in album_id:
+  album_data += token.get(aid+'?fields='+fields)
 ```
 
+And so we created an album fields table.  Now, if you have tens to hundreds of Facebook Pages, then you likely
+have hundred to thousands of Facebook Albums. In the `album_fields` table in the previous post, you might notice that we
+did not include a column for page\_id.  Does this mean we are to create an `album_fields` table for each
+Facebook Page?!
 
+Answer: No!
 
-and so we created an album fields 
-table.  The two tables were kept separate to avoid
+That's why we have the page\_id/album\_id mapping table:
+```sql
+SELECT *
+FROM album_fields A
+  JOIN page_album_map B
+    ON A.album_id = B.album_id
+  WHERE B.page_id = '9899376497'
+```
+
+The page\_album\_map and album\_fields tables were kept separate because at one point in my life I heard 
+about normalization in relational databases.  In the `page\_album\_map` table, each (page\_id, album\_id)
+pair is written only once.  However, in the `album\_fields` table, an album\_id may be written multiple
+times (one row per album update).  If we included the page\_id field, we would waste space and allow for the
+possibility of error.  This might not seem like a big deal here, but below we will create album engagement
+tables that get updated daily or hourly -- at which point it becomes a slightly bigger deal.
+
+Not gonna lie: we have tables in Redshift that rebel like crazy against normalization, and quite frankly, 
+sometimes it's just simpler that way.  I'm not a database guru, so judge me not if I depart from such
+norms anywhere in here or the annals of this blog!
 
 
 # The Album Engagement Table
