@@ -9,9 +9,9 @@ the same credentials to log in and out.
 
 Imagine the scene: Your automations have been working so well on that Linux server,
 and those guys using the Windows server want in.  They've tried to get their automations to work,
-but for whatever reason there are umteen different security measures that are in place on that
-machine, and it the challenge is more than technical: it's social and political!  People are sending emails, holding meetings,
-negotiating deals with the gatekeepers!  
+but for whatever reason there are umteen different security measures in place on the
+Windows machine, and the challenge is more than technical: it's social and political!  People are sending emails, 
+holding meetings, negotiating deals with the gatekeepers!  
 
 People of all skill levels have reports that need automating, and they're suddenly asking questions
 about your Linux server.  More importantly, their managers and higher-ups are asking questions.  Things
