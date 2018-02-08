@@ -17,7 +17,7 @@ People of all skill levels have reports that need automating, and they're sudden
 about your Linux server.  More importantly, their managers and higher-ups are asking questions.  Things
 are changing, and they might change quick: your lovely days of sole propietorship are coming to an end!
 
-One solution might be to make user accounts for them... But how?  I'm not a... \*ahead\* I mean, in this
+One solution might be to make user accounts for them... But how?  I'm not a... \*ahem\* I mean, in this
 scenario, \*you\* are not a Linux administrator.  Sure, you hack around and you can probably do a 
 quick Google search to figure some things out.  But it still feels icky, and you don't know
 how much time you have!
