@@ -1,8 +1,8 @@
-
 ---
 title: Poking Holes in a Square
 layout: post
 ---
+
 
 ---------------------------------------------
 
