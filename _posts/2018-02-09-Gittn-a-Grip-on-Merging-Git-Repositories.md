@@ -31,7 +31,7 @@ while others would continue to have inefficiencies or duct-taped bug fixes.
 I went through some trial and error for a while, and probably still have a lot to learn.  But in terms of keeping related information
 bundled, related automation projects at work benefit from being in the same repository, simply existing in different 
 subdirectories.  Then, to get project-specific, some conventions can be put in place for Git commits such that one can benefit
-from the more advanced features of Git Log.
+from the more advanced features of Git Log. (Something I should read: [Atlassian -- Comparing Workflows](https://www.atlassian.com/git/tutorials/comparing-workflows))
 
 A newer issue is that, as I work on new projects and generally overextend myself, other people are looking to takeover 
 some of my older projects to add in some requested tweaks. My first reaction is, "I can do it!"  But in reality, I don't have
@@ -56,11 +56,17 @@ Honestly, there are a couple more features I do not fully understand
 Ok, now we have some motivation to merge repositories, and a tool that will help us maintain and track
 the larger, merged repository.  
 
-One strategy I read about on [StackOverflow](https://stackoverflow.com/questions/1425892/how-do-you-merge-two-git-repositories) discusses
-using adding one branch of repository 
+After reading/skimming way too many [StackOverflow](https://stackoverflow.com/questions/1425892/how-do-you-merge-two-git-repositories)
+ideas, arguments, and insights, and just feeling like, "Oh
+funk, I really have no idea about anything in life anymore," I'm just going to focus on reading one guy's 
+article and hope like hell it's what I need.  
+
+That one article is by [Saint Gimp](https://saintgimp.org/2013/01/22/merging-two-git-repositories-into-one-repository-without-losing-file-history/).  Finger's crossed.  Whatever follows is probably a CliffNotes version of Gimp's article...maybe with a few sprinklings
+of...
 
 
 
 # Some References
 * [Merging Two Git Repositories into One Repository Without Losing File History](https://saintgimp.org/2013/01/22/merging-two-git-repositories-into-one-repository-without-losing-file-history/)
-* [Advanced Git Log](https://www.atlassian.com/git/tutorials/git-log)
+* Atlassian: [Advanced Git Log](https://www.atlassian.com/git/tutorials/git-log)
+* Atlassian: [Comparing Workflows](https://www.atlassian.com/git/tutorials/comparing-workflows)
