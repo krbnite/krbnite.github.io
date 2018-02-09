@@ -90,11 +90,27 @@ Go on...
 > "A common issue arises in these scenarios: you want to be able to treat the two projects as separate yet still be able to 
 > use one from within the other."
 
-Ok, yea.  Definitely.  But at the beginning of my article, I was all about just merging two repositories together.  
+Ok, yea.  I've definitely had that issue.  I mean, that's even relevant to my current situation.  There are some python
+libraries I've developed that are used in multiple projects.  This sounds useful.  
+
+So -- submodules, you say? 
+
+> "Submodules allow you to keep a Git repository as a subdirectory of another Git repository. This lets you clone 
+> another repository into your project and keep your commits separate."
+
+This sounds great, but after reading the whole [Git-SCM chapter on Submodules](https://git-scm.com/book/en/v1/Git-Tools-Submodules),
+dealing with them might be more complex than it's worth.  At the least, it seems skippable for now -- onto subtrees!
 
 
 # Subaboreal Gittinese
+Here's the reference: [Subtree Merging](https://git-scm.com/book/en/v1/Git-Tools-Subtree-Merging)
 
+It's basically a better way to do the same thing that submodule are used for... Seems pretty awesome, actually.
+
+# Current State of Affairs
+Ran out of Exploration Time today, and did not pull the trigger on any of this.  When I get back to this, I'm going to look 
+more into [Subtree Merging](https://git-scm.com/book/en/v1/Git-Tools-Subtree-Merging) and 
+[Saint Gimp's Solution](https://saintgimp.org/2013/01/22/merging-two-git-repositories-into-one-repository-without-losing-file-history/)
 
 
 
@@ -103,7 +119,7 @@ Ok, yea.  Definitely.  But at the beginning of my article, I was all about just 
   - [Git Submodules](https://git-scm.com/book/en/v1/Git-Tools-Submodules)
   - [Git Subtree Merging](https://git-scm.com/book/en/v1/Git-Tools-Subtree-Merging)
   - [Advanced Merging](https://git-scm.com/book/en/v2/Git-Tools-Advanced-Merging)
-* Gi
-* [Merging Two Git Repositories into One Repository Without Losing File History](https://saintgimp.org/2013/01/22/merging-two-git-repositories-into-one-repository-without-losing-file-history/)
-* Atlassian: [Advanced Git Log](https://www.atlassian.com/git/tutorials/git-log)
-* Atlassian: [Comparing Workflows](https://www.atlassian.com/git/tutorials/comparing-workflows)
+* Saint Gimp: [Merging Two Git Repositories into One Repository Without Losing File History](https://saintgimp.org/2013/01/22/merging-two-git-repositories-into-one-repository-without-losing-file-history/)
+* Atlassian
+  - [Advanced Git Log](https://www.atlassian.com/git/tutorials/git-log)
+  - [Comparing Workflows](https://www.atlassian.com/git/tutorials/comparing-workflows)
