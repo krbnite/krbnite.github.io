@@ -33,10 +33,28 @@ bundled, related automation projects at work benefit from being in the same repo
 subdirectories.  Then, to get project-specific, some conventions can be put in place for Git commits such that one can benefit
 from the more advanced features of Git Log.
 
-# Git Log
-Git commits are trackable by author (e.g., `git log --author="Kevin"`), by date 
-(e.g., `git log --after="2017-12-25"`), by message content (e.g., `git log --grep="KEviN'S secrET msG" --regexp-ignore-case`, where that
-last flag can actually just be `-i`).
+A newer issue is that, as I work on new projects and generally overextend myself, other people are looking to takeover 
+some of my older projects to add in some requested tweaks. My first reaction is, "I can do it!"  But in reality, I don't have
+the time and my interest has moved on to other things.  However, I do want to clean up my projects a bit and merge 
+related repositories in general.  This will make it easier on the newcomer, and easier on me to occasionally track what's going
+on.  
+
+## Git Log
+Git commits are trackable 
+* by author: `git log --author="Kevin"`
+* by date: `git log --after="2017-12-25" --before"2018-02-02"`
+  - this could also be written: `git log --since="2017-12-25" --until"2018-02-02"`
+* by message content: `git log --grep="KEviN'S secrET msG" --regexp-ignore-case`, where that
+last flag can actually just be `-i`
+* by source code content: `git log -S"def meaningOfLife()"`
+* by file: `git log -- myScript.py`
+
+Honestly, there are a couple more features I do not fully understand 
+(see: [Advanced Git Log](https://www.atlassian.com/git/tutorials/git-log)).
+
+# Git Goin'
+Ok, now we have some motivation to merge repositories, and a tool that will help us maintain and track
+the larger, merged repository.  
 
 One strategy I read about on [StackOverflow](https://stackoverflow.com/questions/1425892/how-do-you-merge-two-git-repositories) discusses
 using adding one branch of repository 
