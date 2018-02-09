@@ -58,15 +58,52 @@ the larger, merged repository.
 
 After reading/skimming way too many [StackOverflow](https://stackoverflow.com/questions/1425892/how-do-you-merge-two-git-repositories)
 ideas, arguments, and insights, and just feeling like, "Oh
-funk, I really have no idea about anything in life anymore," I'm just going to focus on reading one guy's 
-article and hope like hell it's what I need.  
+funk, I really have no idea about anything in life anymore," I want just to focus on reading one guy's 
+article and hope like hell it's what I need 
+([Saint Gimp](https://saintgimp.org/2013/01/22/merging-two-git-repositories-into-one-repository-without-losing-file-history/). Here's 
+a bit of evidence that he was after the same thing that I now seek:
+> "I wanted to glue to repositories together and have them look as though they had always been one repository all along."
 
-That one article is by [Saint Gimp](https://saintgimp.org/2013/01/22/merging-two-git-repositories-into-one-repository-without-losing-file-history/).  Finger's crossed.  Whatever follows is probably a CliffNotes version of Gimp's article...maybe with a few sprinklings
-of...
+For my purposes, Gimp's recipe goes something like:
+1. Add a remote to `side_project` from `team_automations`
+2. Merge `side_project` master to `team_automations` master
+3. Make a subdirectory called side\_project
+4. Move all `side_project` files into this subdirectory
+5. Commit the file moves
+
+### Git Hold Up!
+This solution might work, sure, but more than anything it made me realize I need to learn more about merging, submodules,
+and subtrees:  exactly what I wanted to avoid above, after reading through a long list of potential strategies on 
+StackOverflow.  
+
+So, without further ado: some brief, technical excursions.
+
+# Submodular Gitjitsu
+> "It often happens that while working on one project, you need to use another project from within it."
+
+Actually, yea -- that's true.
+
+> "Perhaps it’s a library that a third party developed or that you’re developing separately and using in multiple parent projects. "
+
+Go on...
+
+> "A common issue arises in these scenarios: you want to be able to treat the two projects as separate yet still be able to 
+> use one from within the other."
+
+Ok, yea.  Definitely.  But at the beginning of my article, I was all about just merging two repositories together.  
+
+
+# Subaboreal Gittinese
+
 
 
 
 # Some References
+* Git-SCM Book ([v1](https://git-scm.com/book/en/v1/), [v2](https://git-scm.com/book/en/v2))
+  - [Git Submodules](https://git-scm.com/book/en/v1/Git-Tools-Submodules)
+  - [Git Subtree Merging](https://git-scm.com/book/en/v1/Git-Tools-Subtree-Merging)
+  - [Advanced Merging](https://git-scm.com/book/en/v2/Git-Tools-Advanced-Merging)
+* Gi
 * [Merging Two Git Repositories into One Repository Without Losing File History](https://saintgimp.org/2013/01/22/merging-two-git-repositories-into-one-repository-without-losing-file-history/)
 * Atlassian: [Advanced Git Log](https://www.atlassian.com/git/tutorials/git-log)
 * Atlassian: [Comparing Workflows](https://www.atlassian.com/git/tutorials/comparing-workflows)
