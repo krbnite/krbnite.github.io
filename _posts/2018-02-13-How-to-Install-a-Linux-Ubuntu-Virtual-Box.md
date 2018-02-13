@@ -12,12 +12,26 @@ So do it anyway: problem solved!
 
 --------------------------------------
 
+Download and install VirtualBox: https://www.virtualbox.org/wiki/Downloads
 <img src="/images/install-virtual-box.png" width="600">
+
+Open up VirtualBox and begin setting up a Linux Ubuntu box. 
 <img src="/images/set-up-linux-ubuntu-box.png" width="600">
+
+You're going to need a copy of Linux Ubuntu: https://www.ubuntu.com/download/desktop
 <img src="/images/download-ubuntu-desktop.png" width="600">
+
+Connect the Linux VirtualBox to the source code.  For simplicity, I downloaded the iso file to the 
+virtual box's directory.
 <img src="/images/connect-linux-box-to-linux-source-code.png" width="600">
+
+Install Linux on your Linux box:
 <img src="/images/install-linux-on-box.png" width="600">
+
+Create your user account:
 <img src="/images/create-credentials.png" width="600">
+
+Have some fun!
 <img src="/images/sign-in-and-check-out-terminal.png" width="600">
 
 
