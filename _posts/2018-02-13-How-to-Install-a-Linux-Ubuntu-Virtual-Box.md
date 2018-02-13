@@ -12,12 +12,12 @@ So do it anyway: problem solved!
 
 --------------------------------------
 
-<img src="images/install-virtual-box.png" width="600">
-<img src="images/set-up-linux-ubuntu-box.png" width="600">
-<img src="images/download-ubuntu-desktop.png" width="600">
-<img src="images/connect-linux-box-to-linux-source-code.png" width="600">
-<img src="images/install-linux-on-box.png" width="600">
-<img src="images/create-credentials.png" width="600">
-<img src="images/sign-in-and-check-out-terminal.png" width="600">
+<img src="/images/install-virtual-box.png" width="600">
+<img src="/images/set-up-linux-ubuntu-box.png" width="600">
+<img src="/images/download-ubuntu-desktop.png" width="600">
+<img src="/images/connect-linux-box-to-linux-source-code.png" width="600">
+<img src="/images/install-linux-on-box.png" width="600">
+<img src="/images/create-credentials.png" width="600">
+<img src="/images/sign-in-and-check-out-terminal.png" width="600">
 
 
