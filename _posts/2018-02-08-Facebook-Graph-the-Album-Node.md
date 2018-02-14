@@ -1,5 +1,5 @@
 ---
-title: Facebook Graph&#58; The Album Node
+title: Facebook Graph&#58; Page/Album Edge Recap
 layout: post
 ---
 
@@ -75,14 +75,6 @@ sometimes it's just simpler that way.  I'm not a database guru, so judge me not 
 norms anywhere in here or the annals of this blog!
 
 
-# The Album Engagement Table
-
-The album node's engagement edges (/comments, /likes, and /reaction) allow one to get 
-a total\_count by setting the summary parameter, `summary=true`. By default, these edges
-return a list of the engaged user nodes.  If you want to cut down on the noise and just return 
-the summary, then set the limit parameter to zero.
-
-```
-token.get(album_id+'/likes?limit=0&summary=true')
-```
+# Next Up
+In the next installment in this Facebook Graph series, I will cover the Album Node itself in more detail.
 
