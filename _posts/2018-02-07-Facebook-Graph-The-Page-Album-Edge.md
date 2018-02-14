@@ -120,6 +120,7 @@ token.get('me/albums?fields='+fields)
 CREATE TABLE album_photo_map (
   album_id varchar,
   photo_id varchar
+);
 ```
 
 There are Photo Node fields that we could include, but it might be better to just
@@ -131,7 +132,7 @@ not all a page's photos are in albums.
 CREATE TABLE page_photo_map (
   page_id,
   photo_id
-)
+);
 
 CREATE TABLE photo_fields (
   photo_id,
@@ -146,6 +147,7 @@ CREATE TABLE photo_fields (
   width,
   created_time datetime,
   updated_time datetime
+);
 ```
 
 This last table is actually something I should cover in an upcoming post about the 
@@ -161,11 +163,13 @@ and so on.
 CREATE table album_sharedpost_mapping (
   album_id,
   sharedpost_id
-)
+);
+
 CREATE table album_likes_mapping (
   album_id,
   user_id
-)
+);
+
 -- Etc
 ```
 
