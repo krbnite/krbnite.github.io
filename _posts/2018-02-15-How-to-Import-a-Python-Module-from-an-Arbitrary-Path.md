@@ -20,7 +20,7 @@ hiveTools, etc.  It would be nice if I could just make a directory at the root o
 keep any and all reusable code in neatly organized modules within that directory.  
 
 Importing from a descending directory is fairly straightforward, e.g.:
-```
+```python
 import subDir.myLib as myLib
 ```
 
@@ -28,7 +28,7 @@ But how do you import Python modules from a parent directory?  Or more generally
 you import a module from an arbitrary path?  
 
 # Method 1
-```
+```python
 from import.machinery import SourceFileLoader
 myLib1 = SourceFileLoader('myLib1', '/path/to/commonLib/myLib1.py').load_module()
 myLib2 = SourceFileLoader('myLib2', '/path/to/commonLib/myLib2.py').load_module()
@@ -69,7 +69,8 @@ Cons:
 * Seems to fail for crontab-scheduled scripts
 * If it did work well with Cron, you have to leave a note for other programmers that "commonLib" must be in the Python PATH variable
 
-S
+(Still need to fully figure this option out; I'm sure the cons are b/c of something I did / didn't do.)
+
 -----------------------------------------
 
 ## Some References
