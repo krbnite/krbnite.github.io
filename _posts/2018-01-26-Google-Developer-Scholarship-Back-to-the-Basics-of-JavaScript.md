@@ -431,13 +431,7 @@ https://github.com/krbnite/GoogleDeveloperScholarship2018/blob/master/Round1/Sup
 
 
 
-
-
-
-
-
-
-
+# Some Misc Code
 ### Change the color of headings...
 ```js
 document.getElementByTagName('h1')[0].style.color = '#ff0000';
