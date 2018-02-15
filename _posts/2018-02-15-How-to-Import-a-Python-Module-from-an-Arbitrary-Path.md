@@ -43,7 +43,7 @@ Cons:
 * really annoying when doing some interactive development within a project's directory (much more code remember and type than `import myLib1`)
 
 # Method 2
-```
+```python
 import sys
 sys.path.insert(len(sys.path), '/path/to/commonLib')
 import myLib1, myLib2
