@@ -63,3 +63,9 @@ Pros:
 Cons:
 * Not many, but you do have to leave a note for other programmers that "commonLib" must be in the Python PATH variable
 
+-----------------------------------------
+
+## Some References
+* https://stackoverflow.com/questions/67631/how-to-import-a-module-given-the-full-path
+* https://askubuntu.com/questions/470982/how-to-add-a-python-module-to-syspath/471168
+
