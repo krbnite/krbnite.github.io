@@ -1,5 +1,5 @@
 ---
-title: Google Developer Scholarship: Back to the Basics of HTML and CSS
+title: Google Developer Scholarship&#58; Back to the Basics of HTML and CSS
 layout: post
 ---
 
