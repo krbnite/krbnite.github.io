@@ -56,13 +56,20 @@ Same basic pros and cons.
 Permanently put the path to commonLib in the Python PATH variable, e.g., have this happen every time the
 bash shell is opened.  
 
+Put this in your .bash\_profile (on Mac) or .bash\_rc (on Ubuntu):
+```bash
+export PYTHONPATH=$PYTHONPATH:/path/to/commonLib
+```
+
 Pros: 
-* It works (like previous methods)
+* It works when testing manually (like previous methods)
 * Chaning the name of "commonLib" or its path only requires one edit
 
 Cons:
-* Not many, but you do have to leave a note for other programmers that "commonLib" must be in the Python PATH variable
+* Seems to fail for crontab-scheduled scripts
+* If it did work well with Cron, you have to leave a note for other programmers that "commonLib" must be in the Python PATH variable
 
+S
 -----------------------------------------
 
 ## Some References
