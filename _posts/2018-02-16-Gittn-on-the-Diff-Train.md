@@ -98,3 +98,8 @@ git diff --staged
 ```bash
 git diff SHA1 SHA2
 ```
+
+-----------------------------------------
+
+## Some Refs
+* [Github/Git Cheatsheet](https://github.com/github/training-kit/blob/master/downloads/github-git-cheat-sheet.pdf)
