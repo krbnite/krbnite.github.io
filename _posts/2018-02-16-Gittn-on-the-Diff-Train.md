@@ -84,7 +84,7 @@ diff -u old.txt new.txt
 This is not for comparing files, but for comparing versions of a file housed in different git commits, the working directory, 
 and/or the staging area.
 
-### Diff All Unstaged Files in Working Directory with Last Commit
+### Diff All Unstaged Changes in Working Directory with Staged Files
 ```bash
 git diff
 ```
