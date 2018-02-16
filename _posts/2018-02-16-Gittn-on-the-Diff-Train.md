@@ -53,6 +53,8 @@ diff -i old.txt new.txt
 If we do not care about uppercase or lower case, then the instructions are much simpler: after line **0** in
 old.txt **a**dd **1** line ("<beginGreeting>") to get to a state equivalent to new.txt (ignoring any differences in case).
 
+### Some Other Flags
+The -w flag tells `diff` to ignore whitespace, which seems pretty dang useful.
 
 # Unified Diff
 This one is popular because it is similar to the output of `git diff`, so even if you like the straight-up
