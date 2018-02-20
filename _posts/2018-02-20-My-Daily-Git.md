@@ -36,7 +36,7 @@ git reset --hard shaNum
 
 * Atlassian: [Git Revert](https://www.atlassian.com/git/tutorials/undoing-changes/git-revert)
 * Atlassian: [Git Reset](https://www.atlassian.com/git/tutorials/undoing-changes/git-reset)
-
+* YouTube: [Resetting and Reverting](https://www.youtube.com/watch?v=u-kAeG4jkMA)
 
 # Notes from Advanced GIT for Developers (Lorna Jane Mitchell)
 ## Watch
