@@ -1,3 +1,8 @@
+---
+title: My Daily Git
+layout: post
+---
+
 Oy vey.  
 
 I did it.  I made a commit that introduced bugs... Easiest solution: just revert the state of my repository
