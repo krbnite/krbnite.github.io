@@ -84,6 +84,11 @@ diff -u old.txt new.txt
 This is not for comparing files, but for comparing versions of a file housed in different git commits, the working directory, 
 and/or the staging area.
 
+### Diff against previous commit
+```bash
+git diff HEAD
+```
+
 ### Diff All Unstaged Changes in Working Directory with Staged Files
 ```bash
 git diff
@@ -97,6 +102,18 @@ git diff --staged
 ### Diff Files in Different Commits
 ```bash
 git diff SHA1 SHA2
+```
+
+# VimDiff
+This is a visual diff tool in Vim:
+```bash
+vimdiff file.txt similarFile.txt
+```
+
+Importantly, you can use vimdiff as a visual difftool in Git:
+```
+git config --global diff.tool vimdiff
+git difftool HEAD
 ```
 
 -----------------------------------------
