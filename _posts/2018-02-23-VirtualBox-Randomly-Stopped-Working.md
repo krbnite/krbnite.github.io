@@ -20,7 +20,7 @@ Hmm, seems like everyone thinks things like this could be a permissions problem.
 my Mac's security settings allow apps from sources other than Apple.  Yes, it does.  Well, let's look
 in Terminal:
 
-```
+```bash
 ls -l | grep VirtualBox
   drwxr-xr-x   3 krbn  someNumber  102 Feb 13 13:19 VirtualBox.app
 ```
@@ -28,7 +28,7 @@ ls -l | grep VirtualBox
 Looks like everyone has permission to read and execute... That group looks a little weird, so maybe that's
 the problem.  
 
-```
+```bash
 # Attempt 1: there is an admin group; try that
 sudo chgrp -R admin VirtualBox.app/
 open VirtualBox.app/
@@ -46,7 +46,7 @@ sudo chgrp -R someNumber VirtualBox.app/
 The other solution to similar issues was to reinstall VirtualBox.  The first time I installed VirtualBox, I
 did so manually...but I wonder if you could just use HomeBrew?  One quick google later: yes, you can.  
 
-```
+```bash
 brew cask install virtualbox
   ==> Satisfying dependencies
   ==> Downloading http://download.virtualbox.org/virtualbox/5.2.6/VirtualBox-5.2.6-120293-OSX.dmg
@@ -63,7 +63,7 @@ brew cask install virtualbox
 
 Nice! Let's take a look.
 
-```
+```bash
 open VirtualBox.app
 ```
 
@@ -71,7 +71,7 @@ Success! And my Ubuntu VirtualBox is still there: double win!
 
 Side Note: I noticed that the user and group are different when installing with HomeBrew.
 
-```
+```bash
 ls -l | grep VirtualBox
   drwxr-xr-x   3 root    admin                 102 Feb 23 09:48 VirtualBox.app
 ```
