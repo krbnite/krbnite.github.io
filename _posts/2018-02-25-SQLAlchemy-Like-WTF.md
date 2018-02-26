@@ -1,5 +1,5 @@
 ---
-title: SQLAlchemy LIKE '%%WTF%%'
+title: SQLAlchemy LIKE &#39;%%WTF%%&#39;
 layout: post
 ---
 
@@ -9,6 +9,6 @@ is special to both SQLAlchemy (escape symbol) and Redshift's LIKE statement (wil
 LIKE statements should look more like this:
 ```python
 con.execute("""
-  SELECT * FROM table WHERE someVar LIKE '%%hello%%'
+  SELECT * FROM table WHERE someVar LIKE '%%wtf%%'
 """)
 ```
