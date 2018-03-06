@@ -6,7 +6,7 @@ layout: post
 After [finishing up](https://github.com/krbnite/GoogleDeveloperScholarship2018/tree/master/Round1/Supplementary-Courses/03__JavaScript-and-the-DOM)
 the course on [JavaScript and the DOM](https://www.udacity.com/course/javascript-and-the-dom--ud117)
 from Udacity, I figured I'd get back on the main track of the web development course.  It was refreshing to
-get a sense of how much I had learned from doing these side course...and yet I still could not understand
+get a sense of how much I had learned from doing these side courses...and yet I still could not understand
 the solution to one of the [service worker]() quizzes. Like, at all.  
 
 Basically, when registering the service
@@ -29,7 +29,7 @@ In the course, we registered for API keys at [Unsplash](https://unsplash.com/) a
 various approaches to Ajax covered in the course (
 [XHR](https://github.com/krbnite/GoogleDeveloperScholarship2018/tree/master/Round1/Supplementary-Courses/04__Asynchronous-JavaScript-Requests/course-ajax/lesson-1-async-w-xhr), 
 [jQuery](https://github.com/krbnite/GoogleDeveloperScholarship2018/tree/master/Round1/Supplementary-Courses/04__Asynchronous-JavaScript-Requests/course-ajax/lesson-2-async-w-jQuery), 
-[Fetch](https://github.com/krbnite/GoogleDeveloperScholarship2018/tree/master/Round1/Supplementary-Courses/04__Asynchronous-JavaScript-Requests/course-ajax/lesson-3-async-w-fetch).  These 
+[Fetch](https://github.com/krbnite/GoogleDeveloperScholarship2018/tree/master/Round1/Supplementary-Courses/04__Asynchronous-JavaScript-Requests/course-ajax/lesson-3-async-w-fetch)).  These 
 apps were essentially the first apps I've ever created, so it was exciting and enlightening.  What I found really intriguing
 is just how simple it is to get off the ground: the app consists of a single HTML file and a single
 JavaScript file, both of which are incredibly short and to the point!
