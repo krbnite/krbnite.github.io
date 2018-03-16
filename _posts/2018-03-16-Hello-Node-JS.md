@@ -3,6 +3,13 @@ title: Hello, Node.js!
 layout: post
 ---
 
+There are no DOM or window objects in Node; no webpage you are working with!  The essence of Node is
+"JavaScript for other things."  Get out of the browser and onto the server!
+
+But why Node?  Why not just rip V8 out of chrome and put it on a server?  Sure, it would be possible to run JavaScript code, 
+but you couldn't do simple print statements, e.g., the intro-level "Hello, World!" script below would not print to screen.  This is 
+b/c, by itself, V8 doesn't do that kind of thing...  It doesn't have a concept of I/O.  What Node does is provide V8 with a 
+non-browser hosting environment.
 
 # Installation
 If you're on Mac, then getting Node is as simple as:
@@ -24,14 +31,6 @@ Your first server side JavaScript script:
 echo 'console.log("Hello, World!");' > hello.js
 node hello.js
 ```
-
-There are no DOM or window objects in Node; no webpage you are working with!  The essence of Node is
-"JavaScript for other things."
-
-But why Node?  Why not just rip V8 out of chrome and put it on a server?  Sure, it would be possible to run JavaScript code, 
-but you couldn't do the simple command above --- the intro-level "Hello, World!" script would not print to screen.  This is 
-b/c, by itself, V8 doesn't do that kind of thing...  It doesn't have a concept of I/O.  What Node does is provide V8 with a 
-non-browser hosting environment.
 
 `console.log` provides niceties.  We could access the stdout and stdin streams more directly in their raw form.
 
