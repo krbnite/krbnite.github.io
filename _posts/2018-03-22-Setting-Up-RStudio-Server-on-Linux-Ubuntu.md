@@ -106,3 +106,4 @@ just signing into our Linux system using this RStudio Server approach.  Not sure
 * https://cran.r-project.org/bin/linux/ubuntu/README.html
 * https://www.rstudio.com/products/rstudio/download-server/
 * https://support.rstudio.com/hc/en-us/articles/200552306-Getting-Started
+* https://www.youtube.com/watch?v=gRFthoaSLIM
