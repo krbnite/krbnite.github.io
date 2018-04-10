@@ -73,24 +73,30 @@ display.stop()
 
 Automating the Facebook component was something I began developing in parallel with a much bigger project:
 figuring out how to use Facebook's Graph API to collect Page, Post, and Video Insights for hundred of 
-Facebook Pages on the daily.  I also looked into Twitter, but didn't have a chance to get around to developing it with
-so many other things going on: in steps my partner in crime.
+Facebook Pages on the daily.  I also began looking into Twitter/Periscope APIs, but there was a lot on
+my plate with the Facebook stuff, in addition to other projects.  My manager encouraged me to 
+delegate. Sure, but how?
 
-An officemate of mine was interested in taking a crack at Selenium, and helping build out this project
-in general.  At first, I really didn't know how to get him involved... I had the vision of how everything
-would fit together, but was lacking the leadership to really be able to share that vision.  However, the
-project needed to completed by the week of WrestleMania.  Starting on Thursday, we had a string of 
+A team member was interested in taking a crack at Selenium, and helping build out this project
+in general.  At first, I didn't know how to get him involved... I had the vision of how everything
+would fit together, but was lacking the leadership experience to really be able to share that vision.  This
+would soon change.
+
+WrestleMania was quickly approaching, and starting on the Thursday prior we had a string of 
 cross-platform live streams the business wanted us to monitor and have analytics available for in 
 near real-time.  By Friday night, we had the Red Carpet event preceding the Hall of Fame, followed by
 various live streams on Saturday, leading up to the preshow event for NXT Takeover.  Sunday followed
 suit, leading up to the kickoff show prior to WrestleMania.
 
 With only 2 weeks on the clock for this project, my mind focused: I wrote out the first draft of the
-main script that would be orchestrating the automated data capture on the various platforms.  It was
-just a skeletal structure really, but just complete enough to be able to share my vision.  I showed my
-sidekick the main script, where I had written in dummy APIs for the platforms I had not yet fully
+main script that would  orchestrate the automated data capture on the various platforms.  It was
+just a skeletal structure really, but  complete enough to be able to share my vision with my new
+sidekick.  In the main script,  I had written in dummy APIs for the platforms I had not yet fully
 implemented or started.  They were blackboxes: I specified what types of variables/information would be
 available for input, and what was expected for output.
 
-It was that simple!  My team doubled in size, and the project's scope felt so much more tractable.
+And -- SNAP!  It was that simple.  The team doubled in size, and the project's scope felt so much 
+more tractable.
+
+...to be continued...
 
