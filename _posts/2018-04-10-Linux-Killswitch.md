@@ -19,7 +19,7 @@ ps -ef | grep chrome | wc -l  # Whoa, way too many!
 ps -ef | grep Xvfb | wc -l    # Not as much, but still too many!
 ```
 
-# Killing things slowly
+# Killing Things, Slow and Stupid
 If you just type `ps` into the command line, you won't really see any processes besides
 those that are directly related to your current shell and username.  At one point, I learned
 to use the 'e' and 'f' flags to get a much more complete list:
@@ -52,6 +52,7 @@ At this point, you can look for some old, long-running Chrome procesess and kill
 kill PID
 ```
 
+# Killing Things, Faster and Smarter
 The problem is that there are so many Chrome-related processes, and many of them depend on each other. If you kill the right one, 
 you might kill like 20 at once. Alternatively, you could end up having to kill all 20 individual processes individually... It would
 be useful to know which processes to kill first!
@@ -68,13 +69,13 @@ I also learned about ps's tree view today:
 ```bash
 ps axjf
 ```
-
 Both approaches allow you to make smarter decisions about which processes to kill first so that
 you kill as many processes as possible with the least amount of work.  That said, JEEZ! Wouldn't it be
 nice to just kill all processes related to some command or program all at once?
 
 The answer, of course, is YES!
 
+# Killing Things with Wild Abandon
 This is where `pgrep` comes in: it returns all process IDs (PIDs) associated with a command.  Try it!
 
 ```bash
