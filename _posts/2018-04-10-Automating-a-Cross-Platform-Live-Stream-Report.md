@@ -35,11 +35,17 @@ the CSV as deterministic as possible, whether the script is running on Windows, 
 Linux Ubuntu, I first needed to figure out how to specify to the ChromeDriver that the
 default download directory should be the calling script's directory.  Also, this script
 needed to run on a server without a display, so to my mind that meant it needed to run
-in headless mode... But wait, wtf?! In Chrome's headless mode, you cannot download files -- apparently
+in headless mode... 
+
+But wait, wtf?! 
+
+In Chrome's headless mode, you cannot download files -- apparently
 it's a safety feature.  It became overly time consuming trying to figure out how to force it
 to do my will!  There had to be another way... And then it occurred to me: what if
 we don't run the Chrome browser in headless mode at all, but in its regular mode on a virtual 
-display?  Yup!  Within seconds of having this though, a Google search turned up solutions
+display?  
+
+Yup!  Within seconds of having this though, a Google search turned up solutions
 doing just that. 
 
 ```python
@@ -65,9 +71,26 @@ driver.quit()
 display.stop()
 ```
 
-This was the second component built for the project, and would
-go on to sit around for several months as other projects were addressed and unanticipated fires
-put out.
+Automating the Facebook component was something I began developing in parallel with a much bigger project:
+figuring out how to use Facebook's Graph API to collect Page, Post, and Video Insights for hundred of 
+Facebook Pages on the daily.  I also looked into Twitter, but didn't have a chance to get around to developing it with
+so many other things going on: in steps my partner in crime.
 
+An officemate of mine was interested in taking a crack at Selenium, and helping build out this project
+in general.  At first, I really didn't know how to get him involved... I had the vision of how everything
+would fit together, but was lacking the leadership to really be able to share that vision.  However, the
+project needed to completed by the week of WrestleMania.  Starting on Thursday, we had a string of 
+cross-platform live streams the business wanted us to monitor and have analytics available for in 
+near real-time.  By Friday night, we had the Red Carpet event preceding the Hall of Fame, followed by
+various live streams on Saturday, leading up to the preshow event for NXT Takeover.  Sunday followed
+suit, leading up to the kickoff show prior to WrestleMania.
 
-...to be continued...
+With only 2 weeks on the clock for this project, my mind focused: I wrote out the first draft of the
+main script that would be orchestrating the automated data capture on the various platforms.  It was
+just a skeletal structure really, but just complete enough to be able to share my vision.  I showed my
+sidekick the main script, where I had written in dummy APIs for the platforms I had not yet fully
+implemented or started.  They were blackboxes: I specified what types of variables/information would be
+available for input, and what was expected for output.
+
+It was that simple!  My team doubled in size, and the project's scope felt so much more tractable.
+
