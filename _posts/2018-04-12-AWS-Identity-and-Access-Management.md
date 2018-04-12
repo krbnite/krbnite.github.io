@@ -138,6 +138,9 @@ of read-only permissions to S3 (and no permissions for any other service):
 }
 ```
 
+<figure>
+  <img src="/images/aws-iam-7.png" width="400">
+</figure>
 
 ## The Policy Simulator
 This is pretty cool: basically, you can choose a policy, then choose services and actions to see what happens: 
