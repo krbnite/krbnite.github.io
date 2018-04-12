@@ -6,7 +6,7 @@ layout: post
 Type "iam" into the AWS services search bar and click on the IAM service.
 
 <figure>
-  <img src="/images/aws-iam-1.png">
+  <img src="/images/aws-iam-1.png" width="400">
 </figure>
 
 To create a user, click on "Users" in the left-hand navigation bar, then on the next page
@@ -15,7 +15,7 @@ click on "Add User", and choose a username and access type:
 * AWS Management Console Access enables a password sign-on for a user
 
 <figure>
-  <img src="/images/aws-iam-2.png">
+  <img src="/images/aws-iam-2.png" width="400">
 </figure>
 
 When you click on "Next: Permissions," you will come to a page where you can add the user to
@@ -25,7 +25,7 @@ group a policy (either customized or preset).  Here, we give our new user full a
 nothing else!).
 
 <figure>
-  <img src="/images/aws-iam-3.png">
+  <img src="/images/aws-iam-3.png" width="400">
 </figure>
 
 After group is created, click on "Next: Review" and then on the next page, "Create User".
@@ -38,7 +38,7 @@ Now that the user is  created, and has been added to the newly-created S3-relate
 Access Key ID and Secret Access Key are available top copy down (or download a CSV).
 
 <figure>
-  <img src="/images/aws-iam-4.png">
+  <img src="/images/aws-iam-4.png" width="400">
 </figure>
 
 
