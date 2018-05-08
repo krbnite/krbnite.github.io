@@ -141,10 +141,36 @@ token.get(f'{carousel_id}/insights?metric=reach,carousel_album_reach')
 ```
 
 ### Carousel Children: No Insights!
+It's important to note that not all Instagram photos and videos are created equal: if
+they are the children of a carousel, they do not have their own insights.
+
+```python
+token.get(f'{carousel_id}/children?fields=insights.metric(engagement)')
+{
+  "error": {
+    "message": "(#100) Field is not available for Carousel children media.",
+    "type": "OAuthException",
+    "code": 100,
+    "fbtrace_id": "AQL7CQTiv+s"
+  }
+}
+```
 
 ## Story Insights
+* exits
+* impressions
+* reach
+* replies
+* taps_forward
+* taps_back
 
+-----------------------------------------------------------------------
 
+## Next Up: Instagraph Data Collection Strategy
+I almost wish I started learning and strategizing Graph API data collection with 
+Instagram: so many fewer node types, fields, edges, and insights!  Very simple to really
+set up in a reasonable way (except possibly for stories since I still have never 
+set up a webhook).
 
 -----------------------------------------------------------------------
 
@@ -168,3 +194,8 @@ duration/length.
 * Carousel Edges: children, comments, insights
 
 
+------------------------------------------------------
+
+## Some References
+* https://developers.facebook.com/docs/instagram-api/reference/user/insights
+* https://developers.facebook.com/docs/instagram-api/reference/media/insights
