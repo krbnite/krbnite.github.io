@@ -35,6 +35,24 @@ It's those dang insights: if you request an metric not supported by a node, an e
 -----------------------------------------------------
 
 ## Some References
+### Previous Instagram Graph-Related Posts
+* IG1: https://krbnite.github.io/Investigating-the-Instagram-Graph/
+* IG2: https://krbnite.github.io/Metrics-on-the-Instagraph/
+
+### Previous Facebook Graph-Related Posts
+* FB01: https://krbnite.github.io/First-Foray-Into-the-FaceBook-API/
+* FB02: https://krbnite.github.io/A-2nd-Foray-into-the-Facebook-API/
+* FB03: https://krbnite.github.io/Comments-on-GraphQL/
+* FB04: https://krbnite.github.io/Keeping-the-Pulse-on-Facebook-Live-with-the-Graph-API/
+* FB05: https://krbnite.github.io/Weighing-in-on-Facebook-Watch/
+* FB06: https://krbnite.github.io/Facebook-Instant-Articles/
+* FB07: https://krbnite.github.io/Grabbing-Facebook-Tokens-with-Selenium-and-the-Graph-API/
+* FB08: https://krbnite.github.io/Facebook-Graph-The-Page-Node/
+* FB09: https://krbnite.github.io/Facebook-Graph-The-Page-Album-Edge/
+* FB10: https://krbnite.github.io/Facebook-Graph-Page-Album-Edge-Recap/
+* FB11: https://krbnite.github.io/Facebook-Graph-Data-Collection-Strategy-and-Miscellaneous-Updates/
+
+### Some Documentation
 * https://developers.facebook.com/docs/instagram-api/reference/media/
 * https://developers.facebook.com/docs/instagram-api/reference/media/children
 * https://developers.facebook.com/docs/graph-api/using-graph-api
