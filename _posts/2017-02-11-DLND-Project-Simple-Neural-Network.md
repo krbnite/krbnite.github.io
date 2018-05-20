@@ -1,5 +1,5 @@
 ---
-title: DLND Project&#58; Simple Neural Network
+title: Deep Learning Project&#58; Simple Neural Network
 layout: post
 ---
 
