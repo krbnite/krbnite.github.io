@@ -1,5 +1,5 @@
 ---
-title: DLND Project&#58; Face Generation
+title: Deep Learning Project&#58; Face Generation
 layout: post
 ---
 
