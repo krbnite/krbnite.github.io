@@ -4,7 +4,7 @@ layout: post
 ---
 
 Find the code and notes in my DLND repo:
-* [Project 4: Language Translation]
+* [Project 4: Language Translation](https://github.com/krbnite/deep-learning-nanodegree/tree/master/Project4-Language-Translation)
 
 Other Projects:
 * [Project 1: Simple Neural Network](https://github.com/krbnite/deep-learning-nanodegree/tree/master/Project1-Simple-Neural-Network)
