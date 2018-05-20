@@ -1,5 +1,5 @@
 ---
-title: DLND Project&#58; Language Translation
+title: Deep Learning Project&#58; Language Translation
 layout: post
 ---
 
