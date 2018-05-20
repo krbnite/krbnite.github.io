@@ -1,3 +1,8 @@
+---
+title: DLND Project&#58; Simple Neural Network
+layout: post
+---
+
 Just the basics on this one.
 
 Find the project in my DLND repo:
