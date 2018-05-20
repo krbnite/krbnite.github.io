@@ -1,5 +1,5 @@
 ---
-title: DLND Project&#58; TV Script Generation
+title: Deep Learning Project&#58; TV Script Generation
 layout: post
 ---
 
