@@ -1,5 +1,5 @@
 ---
-title: Deep Learning Nanodegree&#58; Exploring and Exploiting Markovia (Notes on Reinforcement Learning)
+title: Exploring and Exploiting Markovia (Notes on Reinforcement Learning)
 layout: post
 ---
 
