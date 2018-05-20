@@ -1,5 +1,5 @@
 ---
-title: DLND Project&#58; Image Classification
+title: Deep Learning Project&#58; Image Classification
 layout: post
 ---
 
