@@ -1,3 +1,6 @@
+> "You will always miss 100% of the shots you never take." If it interests you, apply. Make them say no to you; don't say no to yourself.
+~ Possibly Multi-Anon (Had this saved in my work email; not sure where it came from, but worth saving!)
+
 
 > I ain't afraid of hard work, and I'll out-work every mothafucka that there is to get where I wanna go.
 ~ Stone Cold Steve Austin
