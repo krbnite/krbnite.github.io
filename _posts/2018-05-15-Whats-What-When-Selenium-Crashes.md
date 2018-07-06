@@ -59,13 +59,13 @@ Not saying that it can't be done, but I solved it another way before figuring it
 simpler solution: virtual displays.  Simply googling "selenium virtual display" brought up the necessary confirmation and 
 code snippet.  
 
-```
+```python
 from pyvirtualdisplay import Display
 vdisplay = Display(visible=0, size=(800,600))
 ```
 
 Just had to make sure we had Xvfb available to all users on the server:
-```
+```bash
 sudo apt-get install Xvfb
 ```
 
@@ -114,10 +114,12 @@ Nope.  Still broken.  Seriously: wtf?
 At this point, there was no other choice: debug line by line in the virtual display on the server.  For each line, 
 it is helpful to save a screenshot and to download the file locally for viewing:
 
-```
+```python
 # In python on Server
 browser.save_screenshot('debugging.png')
+```
 
+```bash
 # In SFTP shell to Server
 get debugging.png
 
