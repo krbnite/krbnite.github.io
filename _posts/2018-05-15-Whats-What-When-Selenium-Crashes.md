@@ -115,10 +115,10 @@ At this point, there was no other choice: debug line by line in the virtual disp
 it is helpful to save a screenshot and to download the file locally for viewing:
 
 ```
-# In python on DA05
+# In python on Server
 browser.save_screenshot('debugging.png')
 
-# In SFTP shell to DA05
+# In SFTP shell to Server
 get debugging.png
 
 # On local terminal
@@ -160,10 +160,21 @@ You might also wonder: "But wait, why did the virtual display method originally 
 screen size was too small?"  To this I say: don't know.  I just know that on the Linux server, it was an issue -- and that 
 issue was fixed by using a larger virtual screen size.  
 
-Anyway, moral of the story: make sure your virtual display is wide enough!  You'll probably find 
-`Display(visible=0, size=(800,600))` lurking in some other scripts / blog posts b/c I used that code snippet quite a 
-bit.  If a script is failing, try changing that to `Display(visible=0)` since the default screen size is bigger 
-(or manually specify huge screen size!).  
+Anyway, moral of the story: make sure your virtual display is wide enough!  
+
+You'll probably find this code snippet lurking in some other scripts / blog posts b/c I've used it quite a 
+bit:
+
+```python
+Display(visible=0, size=(800,600))
+```
+
+If your script has that snippet and is failing, one thing you can immediately do is try changing that it to
+the default screen size since it is bigger:
+
+```python
+Display(visible=0) # or manually specify huge screen size
+``` 
 
 This bug was the result of Facebook changing how their page is laid out on a device, so fits in the category of 
 "website evolution," but it was the bug was an indirect result, whereas usually we've uncovered bugs directly due a 
