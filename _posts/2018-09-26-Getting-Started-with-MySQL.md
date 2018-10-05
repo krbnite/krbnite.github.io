@@ -34,9 +34,25 @@ keeping in mind both a relational and graph model.
 Ok, enough context!  The point of this blog is to lightly document downloading and setting up MySQL Server,
 MySQL Workbench, and MySQL command line tools.
 
-
+First, a simple list:
+* I DL'd MySQL Server (community edition), and chose a password for the root account
+* I DL'd MySQL Workbench, and used root account to do some stuff 
+  - made a new schema
+  - made a new database
+  - played w/ ER diagrams
+* Brew-installed MySQL command line tools
+* Ran a security feature that HomeBrew recommended, which had me secure MySQL...
 
 <img src="/images/getting-started-with-mysql.png" width="500">
 
 
 <img src="/images/create-new-mysql-schema.png" width="500">
+
+<img src="/images/mysql-command-line.png" width="500">
+
+NEXT UP: 
+* entity relationship diagrams (ERDs)
+* pros and cons of relational databases
+* pros and cons of graph databases
+* mapping ERD to graph data model
+
