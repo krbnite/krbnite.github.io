@@ -1,4 +1,7 @@
-
+---
+title: Getting Started with MySQL
+layout: post
+---
 
 At work, we have data assets -- both potential and in-hand -- and a set of business interests and use
 cases for these assets.  How complex is this data?  How much of it do we have, or will we potentially
