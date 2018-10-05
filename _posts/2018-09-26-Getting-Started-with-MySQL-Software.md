@@ -50,9 +50,12 @@ First, a simple list:
 
 <img src="/images/mysql-command-line.png" width="500">
 
-NEXT UP: 
+UPCOMING TOPICS: 
 * entity relationship diagrams (ERDs)
 * pros and cons of relational databases
 * pros and cons of graph databases
 * mapping ERD to graph data model
+* NoSQL document data modeling
+* NoSQL columnar data modeling
+* JavaScript as a query language (CouchDB)
 
