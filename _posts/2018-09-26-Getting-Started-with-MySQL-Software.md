@@ -1,5 +1,5 @@
 ---
-title: Getting Started with MySQL
+title: Getting Started with MySQL Software
 layout: post
 ---
 
