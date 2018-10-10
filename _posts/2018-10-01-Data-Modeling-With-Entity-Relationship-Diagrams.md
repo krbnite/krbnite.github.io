@@ -91,12 +91,50 @@ we are interested in specific "signatures" inherent in those variations.  The "s
 "travelling convection vortex" or "fluxtube transfer event" or "open field lines."  These signatures are things that
 are extracted from the instrument data via some algorithm.
 
+Here's the info a bit more distilled:
+* Instrument produces raw data stream
+* Raw data stream is processed by some algorithm to produce some derived data signature stream (e.g., sequence
+of 0's and 1's for a specific event; e.g., time-frequency sequence; whatever)
+* The derived data signature/stream maps to some phenomenon of interest
+
+After a lot of back and forth in my own head, I've momentarily decided that an instrument and its "raw data stream"
+should technically be considered the same entity.  The "raw data stream" can also be considered a
+"derived data stream" if it helpful... That said, the only phenomenon this raw data stream maps to is the exact
+entity that the instrument measures (e.g., a raw data stream of "magnetic field variations" maps to "magnetic field
+variations" by the "identity algorithm").  More generally, we are looking to process the raw data stream in
+some way and extract a "data signature" or "pattern" that we argue is associated with (or caused by)
+some not-directly-measured phenomenon.
+
+Here is one possibility:
+
+<img src="/images/ago-db-erd-3.jpg" width="500">
+
+As I've done 1000x now, I questioned this mapping... One instrument can indeed produce many data
+streams (e.g., here are three: x -> x, x^2, sqrt{x}).  However, in the pic above, I conflated
+two of the concepts in my head:
+* that a data signature might be independently given by multiple instruments
+* that a data signature is composed of data streams from one or multiple instruments
+
+So...we have:
+* an instrument's raw data stream is associated with many data stream derivations
+* one-or-many data streams from one-or-many instruments compose a data signature
+* a data signature is indicative of some phenomenon
+
+And so, another way we might map instruments to data signatures to phenomena is:
+
+<img src="/images/ago-db-erd-4.jpg" width="500">
+
+
+
+
+
 Resolving many-to-many relationships
 * AGO dictionary table
 * Instrument dictionary table
 * AGO_Instrument table
 * Phenomenon dictionary table
 * Instrument_Phenomenon table
+
 
 
 
