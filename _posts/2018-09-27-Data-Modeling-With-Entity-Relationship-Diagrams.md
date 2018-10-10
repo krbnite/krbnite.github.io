@@ -16,7 +16,8 @@ stream is provided instead of, or in addition to, the raw data streams.
 
 A knowledge base like this can become quite complex, and we need a good knowledge map lest we get lost!  Entity
 relationship diagrams (ERDs) are a way to do this.  What's nice is that, following a few simple rules, one
-can use ERDs to construct fully functional, normalized databases.
+can use ERDs to construct fully functional, normalized databases. (You might ask: What is a normalized database? 
+And I might say: that's a good question -- hold it for later.)
 
 # An Example: Automated Geophysical Observatories
 To avoid going into too much work detail, let's take an example from a past life -- let's model the instrumentation
@@ -36,7 +37,7 @@ during what **times** those instruments have typically have data (e.g., all year
 etc), and what **phenomena** (physical processes and events) the instrument can monitor via its 
 **raw data stream** and/or **derivations** from that data.
 
-Candidate entity list
+From this, we can extract a candidate entity list:
 * instruments
 * AGOs
 * times
@@ -44,7 +45,51 @@ Candidate entity list
 * raw data stream
 * derived data streams / data products
 
-//// PICTURE OF RELATIONSHIPS /////
+The keyword here is "candidate" -- these might be our entities of interest, or maybe only
+a few them will be.  Importantly, our juices are flowing (ew!).  This will be an iterative 
+process.  The next step is to draw some boxes on a piece of paper and decide whether
+the relationships between these things are one-to-one (one human has one soul), one-to-many
+(one human has many souls), many-to-one (many humans share one soul), or many-to-many 
+(many humans share many souls).  Depending on your metaphysical philosophy, one of those
+choices might be the "correct" data model.  Back in real life, we have AGOs, instruments, and
+physical phenomena -- let's start drawing!
+
+<img src="/images/ago-db-erd-1.jpg" width="500">
+
+Wow, that's messy! And purposely so: you need to get your hands dirty as quickly and as
+often as possible.  The above diagram does not even fully follow ERD principles... I've included
+little (\*) symbols intersecting association lines, which means nothing more than, "I need to
+include this relationship somehow, but can't figure it out at the moment."  And that's fine!  If you
+don't feel overwhelmed a little bit at first, then ... want to help me do some data modeling?!
+
+One of the principles of ERD modeling is to resolve any one-to-one or many-to-many relationships.  
+
+The idea is, any one-to-one relationship can be a part of the same table.  An exception might be when we want
+to secure certain data -- e.g., we might keep a social security number in its own restricted-access table, and
+map to it with a less sensitive ID.
+
+As for many-to-many, the ERDs will eventually
+be mapped into actual RDBMS tables, and many-to-many relationships will not make for a normalized database. (Again,
+you might ask: what is a normalized database? Great question! Ask me again later.) 
+
+We see a one-to-one relationship between "instrument subclass" and "instrument class."  Basically, these tables
+are trying to reflect that the specific searchcoil magnetometer onboard an AGO is of subclass "searchcoil magnetomter,"
+which is of class "magnetometer."  It might have been better to word it as "class" and "category."  The point is,
+each specific instrument maps to one "category" (imaging riometer), which maps to one class (riometer).  
+
+As for the many-to-many relationships, some are easily resolvable with a "join table," which I usually like to call
+a "bridge table" or "relationship table" in my head.  I like to think in terms of dictionaries: we want an AGO dictionary,
+which uniquely identifies the AGOs; we want an instrument dictionary, which uniquely identifies what instruments might be
+onboard an AGO; and we want an "interaction table" (that's another term I like to use) that records how the entities in
+these dictionaries interact (or relate to each other, thus "relationship table").  
+
+<img src="/images/ago-db-erd-2.jpg" width="500">
+
+Upon iteration, I think that (maybe) the "instrument" table shouldn't map directly to the "phenomena" table.  For
+example, the fluxgate magnetometer passively records magnetic field variations -- which, yes, is a phenomenon -- but
+we are interested in specific "signatures" inherent in those variations.  The "signatures" will map to things like
+"travelling convection vortex" or "fluxtube transfer event" or "open field lines."  These signatures are things that
+are extracted from the instrument data via some algorithm.
 
 Resolving many-to-many relationships
 * AGO dictionary table
