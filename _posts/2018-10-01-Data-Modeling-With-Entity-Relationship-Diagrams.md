@@ -153,3 +153,9 @@ Resolving many-to-many relationships
 * [Constructing a Data Model for a Parking Lot Management System](http://www.vertabelo.com/blog/technical-articles/constructing-a-data-model-for-a-parking-lot-management-system)
 * [Summer Is Here: A Travel Agency Data Model](http://www.vertabelo.com/blog/technical-articles/summer-is-here-a-travel-agency-data-model)
 * [A Marketing Agency Data Model](http://www.vertabelo.com/blog/technical-articles/a-marketing-agency-data-model)
+
+## Automated Geophysical Observatories
+* http://www.polar.umd.edu/ago.html
+* http://www.polar.umd.edu/instruments.html
+* http://nova.stanford.edu/~vlf/Antarctica/AGO/ago.html
+* https://web.njit.edu/~gerrard/Projects.html
