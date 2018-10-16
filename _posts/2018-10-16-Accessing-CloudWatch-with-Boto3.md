@@ -31,7 +31,7 @@ import boto3
 boto3.setup_default_session(region_name = YOUR_REGION) # e.g., 'us-east-1'
 client = boto3.client(
   'logs',
-  aws_access_key = YOUR_AWS_ACCESS_KEY,
+  aws_access_key_id = YOUR_AWS_ACCESS_KEY,
   aws_secret_access_key = YOUR_SECRET_ACCESS_KEY
 )
 ```
@@ -48,9 +48,26 @@ response = client.describe_log_groups()
 
 
 ### Look at Some Logs
-With the group name in hand, we can request a bunch of logs -- if there are many, you will have to 
-paginate.
+With the group name in hand, we can request a bunch of logs.
 
 ```python
-client.filter_log_events(logGroupName = YOUR_LOG_GROUP_NAME)
+logs = client.filter_log_events(logGroupName = YOUR_LOG_GROUP_NAME)
+logs.keys()
+  dict_keys(['events', 'searchedLogStreams', 'nextToken', 'ResponseMetadata'])
 ```
+
+* the  `events` key gives access to all the actual data your request generated
+* the `searchedLogStreams` key houses the names of which particular log streams were searched, and if they were searched completely (True or False) 
+* if there are too many logs (looks like the limit is ~1MB), you will have to paginate by using the value of the `nextToken` key in a subsequent request
+* 'ResponseMetadata' lists some basic things like RequestId, HTTPStatusCode, HTTPHeaders, and RetryAttempts
+
+If you need to paginate, try something like this:
+```
+# pagination code here
+```
+
+One can filter the group's logs by `startTime` and `endTime`, by specified log stream names in an array `logStreamNames`,
+by `logStreamPrefix`, and `filterPattern`.
+
+The `filterPattern` parameter was not straightforward to me, and I had to [scrutinze the documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html). Honestly, reading through
+that can make your eyes cross... Seems like some fouled up Bash-JSON-crazy hybrid syntax...  
