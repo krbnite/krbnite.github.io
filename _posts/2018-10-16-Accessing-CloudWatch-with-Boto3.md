@@ -18,3 +18,39 @@ illuminating visualizations so that problems can be identified and dealt with pr
 
 So here we are: how does one use Boto3 to connect to CloudWatch?
 
+### Credentials
+The plan is, this app is going in a Docker file so that I can easily distribute it to my team mates.  So I
+do not want the app to rely on my AWS credentials...  But maybe it should rely on there being an AWS 
+configuration file: I don't want the team members to have to annoyingly type in their credentials every time
+they spin it up.  Hmm... Will have to figure that out in due time.  For now?  Let's just look at
+some ways of getting CloudWatch logs!
+
+This will work whether or not there is a configuration file set up:
+```python
+import boto3
+boto3.setup_default_session(region_name = YOUR_REGION) # e.g., 'us-east-1'
+client = boto3.client(
+  'logs',
+  aws_access_key = YOUR_AWS_ACCESS_KEY,
+  aws_secret_access_key = YOUR_SECRET_ACCESS_KEY
+)
+```
+
+### Log Groups 
+To sift through logs, you will need to know the Log Group's name that you are interested in.  One way 
+to do this is to go to the CloudWatch portion of the AWS Console, click on "Logs" and look at the various group names.
+
+Another way to look through the log group names is through Boto3:
+```python
+response = client.describe_log_groups()
+[item['logGroupName' for item in response['logGroups']]
+```
+
+
+### Look at Some Logs
+With the group name in hand, we can request a bunch of logs -- if there are many, you will have to 
+paginate.
+
+```python
+client.filter_log_events(logGroupName = YOUR_LOG_GROUP_NAME)
+```
