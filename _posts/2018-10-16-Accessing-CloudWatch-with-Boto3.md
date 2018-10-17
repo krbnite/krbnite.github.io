@@ -66,8 +66,8 @@ If you need to paginate, try something like this:
 # pagination code here
 ```
 
-One can filter the group's logs by `startTime` and `endTime`, by specified log stream names in an array `logStreamNames`,
-by `logStreamPrefix`, and `filterPattern`.
+One can filter the group's logs by `startTime` and `endTime` (in Unix time), by specified log stream names in an 
+array `logStreamNames`, by `logStreamPrefix`, and `filterPattern`.
 
 The `filterPattern` parameter was not straightforward to me, and I had to [scrutinze the documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html). Honestly, reading through
 that can make your eyes cross... Seems like some fouled up Bash-JSON-crazy hybrid syntax...  
