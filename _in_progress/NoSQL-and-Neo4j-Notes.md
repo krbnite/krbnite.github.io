@@ -51,3 +51,79 @@ For what I'm working on, we don't necessarily need transactions... If anything, 
 data set.  But then again, the data set itself or the queries don't necessarily qualify as "heavy analytical workloads." Also,
 not sure too many users will be querying at the same time.  So maybe this doesn't matter.
 
+
+------------------------------------------------------
+
+A traversal is **how** you query and navigate through a graph, following some logic or set of rules.  Using Gremlin
+in Neo4j, you can be fairly specific.  Using Cypher, you can be declarative -- "Show me all X that has Y."
+
+A path is how you get from Node1 to Node2. 
+* This path has length 1:  N1 - N2
+* This path has length 0: N1
+* This path has length 1: N1 - N1 (self-related)
+
+Neo4j Schema:  Though Neo4j is schema optional, you can gain performance and modeling benefits by 
+specifying graph schema.  
+
+Neo4j also supports indexing (use for repetitive queries to gain speed) and constraints (use to control your 
+data).
+
+## Download Neo4j Desktop
+* Go here: https://neo4j.com/download/
+* Fill out form and DL disk image (on Mac)
+* You can play for 30 days, but they want you to register... Can do via Gmail, or Github, etc
+  - I used my Github acct
+* If first time, choose to create a new database ("New Graph") -> "Create a Local Graph" (other option is to connect to a remote graph)
+  - make a password for this new graph (e.g., th1sIsN0tAP2ssW0rd)
+* Click on "start"
+* After it starts, open the Neo4j Browser
+
+
+------------------------------------------------
+
+From the "learning" section linked to in Neo4j browser
+* Nodes are the name for data records in a graph
+* Data is stored as Properties
+* Properties are simple name/value pairs
+* Nodes can have zero or more labels
+  - Labels allow you to group nodes together (similar to how a table groups together rows)
+* Labels do not have any properties (similar to how a table has a name)
+  - strings, numbers, booleans
+* Nodes may have relationships between each other
+  - a relationship always has a direction and a type
+  - I think Neo4j does allow for "bidirectional" relationships on the surface (under the hood, probably just two directed relationships)
+* Relationship are also data records in Neo4j
+* Relationships may have properties
+
+Pretty sure this answers my question about the ability to give Nodes a JSON structure... :-(
+
+The Node is flat...
+
+A graph DB can be thought of like a relational DB in some regards.  For example, imagine creating :Person nodes,
+each of which has properties (name, gender, age).  Without any relationships defined, this is really similar
+to just have a Person table with name, gender, and age columns.  However, the graph version allows you to 
+have extra columns when necessary, e.g., one person might have eye_color listed.  Other :Person nodes do not
+need to track the lack of data in this column; it is implied by not having the property (there are no nulls to take up space).  Furthermore, once
+one begins defining relationships, it is like having a join table, but without an actual table.  All data
+is graph-connected and graph-stored on disk... That is, no foreign keys necessary; no need to scan a whole table
+looking for a relationship.  Two nodes are directly linked conceptually and on disk...
+
+RDBMS -> Graph:
+* a row is node
+* a label is a table name
+
+## Cypher
+`:play cypher` in Neo4j browser to learn basics
+
+
+
+
+
+
+
+
+
+
+
+===============================================
+convert(thisisatest)
