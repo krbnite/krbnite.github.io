@@ -98,9 +98,12 @@ From the "learning" section linked to in Neo4j browser
 * Relationship are also data records in Neo4j
 * Relationships may have properties
 
-Pretty sure this answers my question about the ability to give Nodes a JSON structure... :-(
+> " In Neo4j, the keys are strings and the values are the Java string and primitive data types, plus arrays of these types."
 
-The Node is flat...
+> "Nodes can be tagged with one or more labels. Labels group nodes together, and indicate the roles they play within the dataset."
+
+Can't emphasize how cool this property is: a single node can be listed :Animal, :Mammal, :Cat, :Tabby; and
+one can query for any set of lables w/ no friction.  
 
 A graph DB can be thought of like a relational DB in some regards.  For example, imagine creating :Person nodes,
 each of which has properties (name, gender, age).  Without any relationships defined, this is really similar
@@ -181,3 +184,210 @@ but the first operation is proportional only to the number of orders made by cus
 second operatio is proportional to all orders in the datastore.  In a graph database, both operations
 would be computationally simple...
 
+
+### Equivalent Cypher queries
+```
+MATCH (a:Person {name:'Jim'})-[:KNOWS]->(b)-[:KNOWS]->(c),
+ (a)-[:KNOWS]->(c)
+RETURN b, c
+```
+
+```
+MATCH (a:Person)-[:KNOWS]->(b)-[:KNOWS]->(c), (a)-[:KNOWS]->(c)
+WHERE a.name = 'Jim'
+RETURN b, c
+```
+
+
+## Data Modeling
+* Conceptual model
+* Logical model
+* Physical model
+
+In both graph and relational modeling, the conceptual model is a graph that shows the entities and
+relationships in the system being modeled.  In relational modeling, one then captures these details
+more rigorously with entity relationship diagrams (ERDs).  This is often where many-to-many relationships
+are identified and normalized by creating join tables and foreign keys.  In graph modeling, the logical model is often
+nearly the same as the conceptual model -- no join tables or foreign keys necessary.  And to be clear,
+the absence of join tables and foreign keys does not imply the absense of what those things are used for:
+mapping relationships between entities. No, in fact the relationship mapping is stronger, more direct, and obvious,
+to the human and to the computer.  Crazily enough, after all the work of normalizing the database in relational
+modeling, the database engineer often must then consider performance and query patterns, and thoughtfully
+de-normalize the data model (this is b/c fully normalized data models can often be a huge computational burder
+and no suitable for quick, online system needs).  
+
+
+> "In the early stages of analysis, the work required of us is similar to the relational
+> approach: using lo-fi methods, such as whiteboard sketches, we describe and agree
+> upon the domain. After that, however, the methodologies diverge. Instead of trans‐
+> forming a domain model’s graph-like representation into tables, we enrich it, with the
+> aim of producing an accurate representation of the parts of the domain relevant to
+> our application goals. That is, for each entity in our domain, we ensure that we’ve
+> captured its relevant roles as labels, its attributes as properties, and its connections to
+> neighboring entities as relationships. ... No tables, no normalization, no denormaliza‐
+> tion. Once we have an accurate representation of our domain model, moving it into
+> the database is trivial."
+
+### Data Model Checks
+* "...check that the graph reads well. We pick a start node, and then follow relationships
+to other nodes, reading each node’s labels and each relationship’s name as we go.
+Doing so should create sensible sentences. "
+* "... adopt a design-for-queryability mindset. To validate that the graph
+supports the kinds of queries we expect to run on it, we must describe those queries."
+
+Craft specific questions, and write out their Cypher statements.
+
+
+### Variable Length Queries
+One thing we need to do:
+* Which devices map to this phenomenon?
+  - Since this can be a variable-length path of transformations, we need a query that can support that
+  
+This query allows for a path length up to 5 relationshps without regard to the type of intervening
+nodes or relationships... Depending how connected our graph is, this may or may
+not be a great query, but it shows that variable path length queries are possible.
+```
+MATCH (p:Phenomenon)-[*1..5]-(device:Device)
+WHERE p.name = 'PTSD'
+RETURN DISTINCT device
+```
+
+### Ways to search
+* use labels to produce meaningful sets
+* use variable length searches when necessary
+* constrain searches by specifying path elements, e.g., incoming vs outgoing relationships
+
+## Cross-Domain Modeling
+Neo4j book uses different line types for relationships from different domains, e.g., dotted vs solid lines.
+
+
+"...[use] relationship names and node labels ... to structure the graph and estab‐
+lish the semantic context for each node."
+
+"Relationships help both partition a graph into separate domains and connect those
+domains. As we can see from our Shakespeare example, the property graph model
+makes it easy to unite different domains—each with its own particular entities, labels,
+properties, and relationships—in a way that not only makes each domain accessible,
+but also generates insight from the connections between domains."
+
+
+Important to note that the property graph model not only promotes relationships to
+first-class citizenry, but also "table names" (labels):
+> "Labels are first class citizens of the property graph model. Besides indicating the roles
+> different nodes play in our domain, labels also allow us to associate metadata with
+> nodes to which those labels are attached. We can, for example, index all nodes with a
+> User label, or require that all nodes with a Customer label have a unique email property value."
+
+## Creating the database
+Example:
+```
+CREATE (shakespeare:Author {firstname:'William', lastname:'Shakespeare'}),
+ (juliusCaesar:Play {title:'Julius Caesar'}),
+ (shakespeare)-[:WROTE_PLAY {year:1599}]->(juliusCaesar),
+ (theTempest:Play {title:'The Tempest'}),
+ (shakespeare)-[:WROTE_PLAY {year:1610}]->(theTempest),
+ (rsc:Company {name:'RSC'}),
+ (production1:Production {name:'Julius Caesar'}),
+ .
+ .
+ .
+```
+
+This code creates nodes and their properties, and then maps relationships (and their properties)
+between the nodes.
+
+**We should document all our CREATE statements in a Bitbucket repo... This way, the DB (since it is
+relatively small) can be recreated from scratch, if/when necessary.**
+
+What is crazy about Cypher and the property graph model is that, when inputting new data that
+spans the database, you just have to create the corresponding nodes (from your "node dictionary") 
+and connect them with the appropriate relationships (see your "relationship directory").  In other words,
+you do not have deal with join tables and foreign keys, etc... 
+
+> "We can modify the graph at a later point in time in two different ways. We can, of
+> course, continue using CREATE statements to simply add to the graph. But we can also
+> use MERGE, which has the semantics of ensuring that a particular subgraph structure of
+> nodes and relationships—some of which may already exist, some of which may be
+> missing—is in place once the command has executed. In practice, we tend to use
+> CREATE when we’re adding to the graph and don’t mind duplication, and MERGE when
+> duplication is not permitted by the domain."
+
+-------------------
+
+## INDEXES
+Traversal start from somewhere -- a starting point called a "bound" or "anchored" node. You
+can set up one-or-many anchored nodes at the beginning of a Cypher query.  For example, if you
+know the starting and ending nodes you want, and want to explore pathways between them.
+
+```
+-- starting point(s) in graph
+MATCH (ago5:AGO {name: 5}),
+    (cme:Phenomenon {name: 'CME'})
+```
+
+Though the traversals implemented underneath the Cypher hood might be optimized, the initial
+search for the starting node might not be: this is why you create indexes.
+
+Indexes can be created on label(property1, ...) combinations.
+
+```
+CREATE INDEX ON :AGO(name)
+```
+
+To be clear, lookups like `MATCH (ago5:AGO {name: 5})` do not require indexes, but performance is
+greatly improved with indexes.
+
+## CONSTRAINTS
+We probably want some properties to be unique, like primary keys in relational tables.  We
+can get this property on nodes by creating a constraint:
+```
+CREATE CONSTRAINT ON (a:AGO) ASSERT a.name IS UNIQUE
+```
+
+One can "promise" to keep a property unique, or code it at the application layer, etc, but
+creating a "constraint" actually enforces it at the database level: you simply will not be able
+to break the rule! (This is a good thing.)
+
+
+
+```
+MATCH (ago5:AGO {name: 5}),
+    (cme:Phenomenon {name: 'CME'}),
+    (ago5)-[:Provides|Feeds_Into|Spits_Out*1..3]->(:DataStream)
+      -[:Contains]->(sig:DataSignature)-[:Indicative_Of*1..10]->(cme)
+RETURN DISTINCT sig.name as signature
+```
+
+
+## Aggregating, Ordering, Filtering, and Limiting
+It's all there:
+```
+MATCH (theater:Venue {name:'Theatre Royal'}),
+ (newcastle:City {name:'Newcastle'}),
+ (bard:Author {lastname:'Shakespeare'}),
+ (newcastle)<-[:STREET|CITY*1..2]-(theater)
+ <-[:VENUE]-()-[p:PERFORMANCE_OF]->()
+ -[:PRODUCTION_OF]->(play)<-[:WROTE_PLAY]-(bard)
+RETURN play.title AS play, COUNT(p) AS performance_count
+ORDER BY performance_count DESC
+```
+
+
+## With Piping
+
+> "Sometimes it’s just not practical (or possible) to do
+> everything you want in a single MATCH. The WITH clause allows us to chain together
+> several matches, with the results of the previous query part being piped into the next."
+
+Simple example:
+```
+MATCH (bard:Author {lastname:'Shakespeare'})-[w:WROTE_PLAY]->(play)
+WITH play
+ORDER BY w.year DESC
+RETURN collect(play.title) AS plays
+```
+
+> "WITH helps divide and conquer complex queries by allowing us to
+> break a single complex query into several simpler patterns."
+
+LEFT OFF ON P 63 (ID'ing nodes and relationships)
