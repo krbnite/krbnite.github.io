@@ -79,6 +79,9 @@ data).
 * After it starts, open the Neo4j Browser
 
 
+Lots of good info here:
+https://neo4j.com/download-thanks-desktop/?edition=desktop&flavour=osx&release=1.1.10&offline=true
+
 ------------------------------------------------
 
 From the "learning" section linked to in Neo4j browser
@@ -123,7 +126,58 @@ RDBMS -> Graph:
 
 
 
-
-
 ===============================================
+
 convert(thisisatest)
+
+-----------------------------------------
+
+From Oreilly Graph Database book:
+
+Performance is roughly invariant to the size of the data set:
+> "One compelling reason, then, for choosing a graph database is the sheer performance
+> increase when dealing with connected data versus relational databases and NOSQL
+> stores. In contrast to relational databases, where join-intensive query performance
+> deteriorates as the dataset gets bigger, with a graph database performance tends to
+> remain relatively constant, even as the dataset grows. This is because queries are
+> localized to a portion of the graph. As a result, the execution time for each query is
+> proportional only to the size of the part of the graph traversed to satisfy that query,
+> rather than the size of the overall graph."
+
+Flexibility.  Sometimes you want a table to perform two duties, but you would have to replicate the
+table, create a view, or whatever...  In Neo4j, you can just use a second label.  For example, a :Person
+node might also be an :Actor node.  Or in my case, a :Phenomenon node might also be a :Motif node.
+> "Graphs are naturally additive, meaning we can add new kinds of relationships, new
+> nodes, new labels, and new subgraphs to an existing structure without disturbing
+> existing queries and application functionality."
+
+
+I tend to like how the Neo4j folk frequently say, "Relational databases lack relationships." :-p
+
+> "Relationships do exist in the vernacular of relational databases, but only at modeling
+> time, as a means of joining tables. ...we often need to disambiguate the semantics of the relation‐
+> ships that connect entities, as well as qualify their weight or strength. Relational rela‐
+> tions do nothing of the sort. Worse still, as outlier data multiplies, and the overall
+> structure of the dataset becomes more complex and less uniform, the relational
+> model becomes burdened with large join tables, sparsely populated rows, and lots of
+> null-checking logic. The rise in connectedness translates in the relational world into
+> increased joins, which impede performance and make it difficult for us to evolve an
+> existing database in response to changing business needs."
+
+One might think a document store can be used to make graph-like structures, but be warned: you
+would be responsible for all constraints, relationship integrity and management, etc.  That is,
+you can have customer document and order documents, for example.  Assuming you have assigned unique IDs
+to each order, you can "link" a customer document to and order document by including an ORDERS array
+in the customer document.  If a customer document gets deleted, if you do not make some code at the
+application layer to clean up the associated order documents, you will have "hanging documents" that 
+just add to the overhead in the database.  This is just a best-case example.  Consider product documents:
+you might have unique product IDs, then have a product array in each order document.  So now you might
+be able to quickly query something like "Show me all products purchased by customer X": start at 
+customer X, look up each order in the order array, look up each product in the orders' product arrays,
+and de-dup the list.  However, can you find me all customers that bought product Y?  Yes, but now
+you are dealing with full set scans of orders: look through each order, compile list of associated
+customers with product ID in order, and de-dup the customer list.  It's just as simple to write,
+but the first operation is proportional only to the number of orders made by customer X, while the
+second operatio is proportional to all orders in the datastore.  In a graph database, both operations
+would be computationally simple...
+
