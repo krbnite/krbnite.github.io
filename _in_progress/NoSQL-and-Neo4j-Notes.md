@@ -391,3 +391,99 @@ RETURN collect(play.title) AS plays
 > break a single complex query into several simpler patterns."
 
 LEFT OFF ON P 63 (ID'ing nodes and relationships)
+
+
+-------------------------------------------------------------------------
+
+
+Been working on a movie database, and came up with this nice query that shows a lot of
+what you can do w/ Cypher queries:
+```
+MATCH (p:Person)-[:ACTED_IN]->(m:Movie)
+WITH {name: p.name, num_movies: count(*)} AS temp
+WHERE temp.num_movies > 2
+RETURN temp.name AS name, temp.num_movies AS num_movies
+```
+
+That second line is a nice aggregation step, which allows me to then filter by
+an aggregated variable in the third line.  In the fourth line, we could just
+return the dictionary structure (`RETURN temp`), but I flatten it into a 
+tabular row/col structure.  Lots going on here!  Lots of potential.
+
+
+Constraints:
+```
+CREATE CONSTRAINT ON (movie:Movie) ASSERT movie.title IS UNIQUE
+```
+
+Indexes:
+```
+CREATE INDEX ON :Actor(name)
+```
+
+
+### CSV
+Before loading data, it is important to create indexes and constraints so that
+data is imported in the way you intend.  
+
+Read this:
+* https://neo4j.com/docs/developer-manual/current/get-started/cypher/importing-csv-files-with-cypher/
+
+-------------
+
+Another cool query:
+```
+match p=(p1:Person)-[*]-(p2:Person)
+with nodes(p) as nodes
+return distinct nodes[0].name, nodes[-1].name
+```
+
+This one is asking for any relationships between 2 people... There can be all sorts of
+ACTED_IN, PRODUCED, DIRECTED relationships connecting countless people... We just extract
+the beginning and ending :Person node...  
+
+## Simple CASE Statement
+```
+MATCH (p:Person)
+WITH p,
+  CASE p.eye_color
+    WHEN 'brown' THEN 1
+    WHEN 'blue' THEN 2
+    WHEN 'green' THEN 3
+    ELSE 4
+  END AS result
+RETURN p.name, result
+```
+Note that WITH allows you to pipe results from one clause into another, however you must
+explicitly list which variables get piped.  That is, if we did not list 'p' after WITH,
+we could still do the case statement, but 'p' would not be defined for the RETRUN statement.
+
+
+## Generic CASE Statement
+```
+// This is a comment
+MATCH (m:Movie)
+RETURN m.title,
+  CASE 
+    WHEN m.released < 1983 THEN 'old'
+    WHEN 1983 <= m.released < 2005 THEN 'prime'
+    ELSE 'newfangled'
+  END AS result
+```
+
+
+## What properties does this label have?
+Neo4j is schema-optional... Many times it is schema-free or schema-implied.  Most nodes with 
+the same label have the same basic properties, but some have a few additional properties, while
+a few others might have a few less, etc.  How can you get a grip on what properties exist within
+the entire set of nodes with a given label?
+```
+MATCH (p:Person)
+UNWIND keys(p) AS fields
+RETURN DISTINCT fields
+```
+
+
+
+
+
