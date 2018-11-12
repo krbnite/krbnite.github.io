@@ -484,6 +484,130 @@ RETURN DISTINCT fields
 ```
 
 
+## How to find if the same actor is duplicated across nodes
+In SQL, you can just SELECT actor_name, COUNT(\*) AS cnt FROM tbl GROUP BY actor_name HAVING cnt > 1.
+Easy peasy! 
+
+So how do you do the same in Neo4j?
+
+```
+MATCH (a:Person)
+WITH a.name AS name, collect(a) AS nlist, count(*) AS cnt
+WHERE cnt > 1
+RETURN name, cnt
+```
+
+Aggregations in Neo4j are slightly more implicit in appearance, so it's not always 
+obvious what to do, especially if thinking in terms of SQL...  Basically, that 2nd line
+is the GROUP BY statement: we are collecting all nodes associated with the same name.
+
+## Setting Parameters in Neo4j Browser (environment variables)
+```
+:param kr => 'Keanu Reeves'
+MATCH (a:Person {name: $kr}) RETURN a
+```
+
+
+## DB functions to do some basic tasks
+```
+// list all labels
+CALL db.labels()
+
+// list all indexes
+CALL db.indexes()
+
+// list all relationship types
+CALL db.relationshipTypes()
+
+```
+
+## Check if label L nodes ever have other labels
+```
+// This will return "Person", "otherLabel1", ....
+MATCH (p:Person)
+UNWIND labels(p) AS node_labels
+RETURN DISTINCT node_labels
+
+// Alternatively, this will just return other labels
+MATCH (p:Person)
+UNWIND labels(p) AS node_labels
+WITH node_labels 
+  WHERE node_labels<>"Person"
+RETURN DISTINCT node_labels
+```
+
+For example, :Person nodes might sometimes be labeled with :Actor, :Director, etc.
+
+## Find all property keys associated w/ Label L
+```
+MATCH (p:Person)
+UNWIND keys(p) as person_keys
+RETURN DISTINCT person_keys
+```
+
+## Find all relationship types associated w/ label L
+
+```
+// Any relationships to any node
+MATCH (p:Person)-[r]-()
+RETURN DISTINCT type(r)
+
+// Only outgoing relationships to any node
+MATCH (p:Person)-[r]->()
+RETURN DISTINCT type(r)
+
+// Only incoming relationships to any node
+MATCH (p:Person)<-[r]-()
+RETURN DISTINCT type(r)
+
+// Only incoming relationships to from a specific node type
+MATCH (p:Person)<-[r]-(:Movie)
+RETURN DISTINCT type(r)
+```
+
+
+## Find all relationship types like (a)-[r1]->(b)-[r2]->(a), where r1==r2
+This can be stuff like "IS_TWIN_OF" or "IS_FRIENDS_WITH".  
+```
+MATCH (a)-[r1]->(b)-[r2]->(a)
+WHERE type(r1)=type(r2)
+RETURN DISTINCT type(r1)
+```
+
+## Find any person who is related to a movie in more than one way
+```
+// You might think this will work...
+MATCH (a:Person)-[r1]->(b:Movie), (a)-[r2]->(b)
+WHERE type(r1)<>type(r2)
+RETURN a.name, type(r1), type(r2), b.title
+
+// But that actually has many duplicates (1 row for (r1,r2) and a 2nd row for (r2,r1))
+
+// Here is a better way
+MATCH (a:Person)-[r1]->(b:Movie), (a)-[r2]->(b)
+WHERE type(r1)<>type(r2)
+WITH a.name+': '+b.title AS group, a.name AS name, 
+    b.title as title, collect(distinct type(r1)) as rlns
+RETURN name, rlns, title
+
+// The above will return things like:  
+//     Kevin Urban, [ACTED_IN, DIRECTED], Nothing
+//     Schmevin Schmurban, [ACTED_IN, WROTE, PRODUCED], Something
+// If you only wanted to return people w/ exactly 2 roles, you can add in
+//   a WHERE clause
+MATCH (a:Person)-[r1]->(b:Movie), (a)-[r2]->(b)
+  WHERE type(r1)<>type(r2)
+WITH a.name+': '+b.title AS group, 
+    a.name AS name, 
+    b.title as title, 
+    collect(distinct type(r1)) as rlns, 
+    count(distinct type(r1)) as cnt
+  WHERE cnt =2
+RETURN name, rlns, title
+```
+
+
+
 
 
 
