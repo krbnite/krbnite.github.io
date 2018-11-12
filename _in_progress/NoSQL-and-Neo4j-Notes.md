@@ -604,9 +604,31 @@ WITH a.name+': '+b.title AS group,
     count(distinct type(r1)) as cnt
   WHERE cnt =2
 RETURN name, rlns, title
+
+// Simpler way: use size() fcn in WHERE statement
+MATCH (a:Person)-[r1]->(b:Movie), (a)-[r2]->(b)
+  WHERE type(r1)<>type(r2)
+WITH a.name+': '+b.title AS group, 
+    a.name AS name, 
+    b.title as title, 
+    collect(distinct type(r1)) as rlns 
+  WHERE size(rlns) = 2
+RETURN name, rlns, title
 ```
 
+## List Comprehensions
+These are very similar to list comprehensions in Python except that the syntax is 
+slightly reversed... An example will show what I mean:
 
+Python
+```python
+[x**3 for x in range(0,10) if x % 2 == 0]
+```
+
+Cypher
+```cypher
+[x IN range(0,10) WHERE x % 2 = 0 | x^3]
+```
 
 
 
