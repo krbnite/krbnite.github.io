@@ -3,10 +3,43 @@ title: Printing Pretty Paths in Neo4j
 layout: post
 ---
 
-# Printing Paths Prettily
-So this is my first attempt...  Not very pretty, but it at least prints the label, relationship, label, 
+Neo4j is awesome for working with relationship-heavy data -- things that might be considered JOIN nightmares
+in a relational DB.  For example, say you have designed a knowledge graph that maps lab tests to disease states, 
+where a pathway might look like:
+
+```
+(:LabTest)-[:Collects]->(s1:Specimen)
+    <-[:Is_Extracted_From]-(s2:Specimen)
+    <-[:Is_Extracted_From]-(s3:Specimen)
+    <-[:Analyzes]-(:Device)
+    -[:Gives_Result]->(:Result)
+    -[:Indicative_Of]->(:Disease)
+```
+
+You might have 1000s each of lab tests, specimens, devices, diseases, etc.  You might want to simply
+query things like:
+* Show me what lab tests are used to show evidence of diabetes
+* Show me what diseases lab test A can be used to show evidence for
+* Show me what lab tests can be used to collect specimen B
+
+You can do all this very easily in Neo4j, and what's amazing is that the query will
+literally look like the ASCII art above: you query as you think.  
+
+One of the things that Neo4j can provide is that pathway between two nodes of interest, which
+is returned as a list of triples by default -- something like `[(n1,r1,n2), (n2,r2,n3), ..., (nk,rk,n[k+1])]`.
+
+That's cool and all, but what if you want the print out to look more like the ASCII art for
+a quick viz of the situation?!
+
+After much finagling, I figured it out for the most part using the movie dataset that comes stock
+with Neo4j Desktop.  This blog details my adventures.
+
+
+## My First Attempt
+Not very pretty, but it at least prints the label, relationship, label, 
 relationship... Specifically, this looks for the shortest path between two specified nodes (up to 20 hops
 longest).  
+
 ```
 MATCH path = shortestPath((k:Person {name:"Keanu Reeves"})-[*..20]-(t:Person {name:"Tom Hanks"}))
 WITH extract(node IN nodes(path) | coalesce(labels(node),'')) AS node_labels,
