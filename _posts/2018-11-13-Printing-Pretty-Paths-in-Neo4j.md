@@ -23,7 +23,10 @@ query things like:
 * Show me what lab tests can be used to collect specimen B
 
 You can do all this very easily in Neo4j, and what's amazing is that the query will
-literally look like the ASCII art above: you query as you think.  
+literally look like the ASCII art above: you query as you think.  (Ironically, having said that,
+the queries you will see in this post are actually pretty dang complex, but that's because the goal
+is to squeeze a lot of formatting and shapeshifting out of Neo4j... You'll see.  If this is your
+first time seeing the Cypher query language, turn back now!)
 
 One of the things that Neo4j can provide is that pathway between two nodes of interest, which
 is returned as a list of triples by default -- something like `[(n1,r1,n2), (n2,r2,n3), ..., (nk,rk,n[k+1])]`.
