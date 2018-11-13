@@ -631,5 +631,150 @@ Cypher
 ```
 
 
+## Pattern Comprehensions
 
+```
+// Example
+MATCH (a:Person { name: 'Tom Cruise' })
+RETURN [(a)-->(b) WHERE b:Movie | b.released] AS years
+
+// You could also do this particular query w/o Pattern Comprehension
+MATCH (p:Person {name:"Tom Cruise"})-->(m:Movie)
+RETURN collect(DISTINCT m.released) AS years
+```
+
+The example is simple, so the pattern comprehension might seem unmotivated... However,
+it's another tool in the toolbelt -- just like comprehensions in Python.  
+
+## Map Projects
+Say you want output associated with each actor to be contained wholly in one 
+object.  That is, your output is a "single column of objects", rather than having
+multiple columns with the same info...
+
+```
+MATCH (actor:Person)-[:ACTED_IN]->(movie:Movie)
+RETURN distinct actor
+```
+
+This returns a column of objects (actor maps).  
+
+But what if you want to return some calculated values, say the number of movies that
+actor was in?
+
+You can try a map projection:
+```
+MATCH (actor:Person)-[:ACTED_IN]->(movie:Movie)
+WITH actor, count(movie) AS n_movies, collect(movie.title) as movies
+RETURN actor { .*, n_movies}
+```
+
+Sure, that map can be easily flattened into multi-column rows:
+```
+MATCH (actor:Person)-[:ACTED_IN]->(movie:Movie)
+WITH actor, count(movie) AS n_movies, collect(movie.title) as movies
+RETURN actor.name, actor.born, n_movies
+```
+
+And so you might be wondering: What's the point?  The point is, you have infinte power
+of the gods to emit output in any shape your wee heart desires!
+
+For example, this technique proves valuable when a one-to-one flattening is not the case.  You can 
+return a JSON-like object in general instead of being forced
+to tabularize the output.  This is good for "impedance mismatch" issues.
+
+Here is another example:
+```
+MATCH (actor:Person)-[:ACTED_IN]->(movie:Movie)
+WITH actor, count(movie) AS n_movies, collect(movie.title) as movies
+RETURN actor { .*, n_movies, movies}
+```
+
+Moral of the story: In Neo4j, you can mold and shape the "row, col" structure
+of the output:  It can be like the tables of old with each column supporting atomic values,
+or like a list of JSON objects, or anything in between (e.g., mostly relational looking output
+with a JSON column).
+
+## Shortest Path
+Say we are looking at AGO5: what instrument should we choose to track CMEs?  One way to 
+do this is to figure out what is the shortest path from the AGO5 :AGO node to the 
+CME :Event node, and to note which instrument lies in that path. (This would likely
+entail the instrument with the least amount of data transformations required to map
+out an event stream.)
+
+```
+MATCH (ago:AGO { name: 'AGO5' }), 
+  (event:Event { name: 'CME' }), 
+  p = shortestPath((ago)-[*..15]-(CME))
+RETURN p
+```
+
+There is also an `allShortestPaths()` function...which presumably returns all
+paths of shortest length L.  (If so, then how does `shortestPath()` choose?)
+
+---------------------------------------
+
+## Optional Match
+Optional Match is weird... The Neo4j docs likens it to a SQL outer join.  In a SQL outer join,
+if there is not match between tables, nulls are placed -- e.g., imagine joining a table with customer
+information with a table with info about random people: where your customer matches into the 
+"random person" table, you will acquire more info, and were it doesn't, the extra fields will be filled
+with nulls......   Anyway, an optional match is like that: if a pattern doesn't exist, it will
+be filled with nulls....
+
+-------------------
+
+
+## Return only nodes with (or without) a certain property
+
+```
+// Return only those :Person nodes w/ birth year filled in
+MATCH (p:Person)
+  WHERE exists(m.born)
+RETURN collect(m.name)
+
+// Return :Person nodes where this property hasn't been filled in
+MATCH (p:Person)
+  WHERE NOT exists(m.born)
+RETURN collect(m.name)
+```
+
+
+## Some string stuff
+```
+MATCH (p:Person)
+WHERE p.name STARTS WITH 'K' AND p.name CONTAINS 'ee'
+RETURN collect(p.name)
+
+MATCH (p:Person)
+WHERE p.name ENDS WITH 'S'
+RETURN collect(p.name)
+
+MATCH (p:Person)
+WHERE p.name =~ '.+eanu.+'
+RETURN collect(p.name)
+```
+
+Regular expressions follow Java regular expression rules.
+
+----------------------
+
+Find all devices without an accelerometer.
+```
+MATCH (dev:Device)
+WHERE dev.accelerometer IS NULL
+```
+
+Find all instruments with a PPG, but no GSR:
+```
+MATCH (dev:Instrument)
+WHERE dev.ppg IS NOT NULL AND dev.gsr IS NULL
+```
+
+Give random ordering:
+```
+with [1,2,3,4,5] as ls
+unwind ls as uls
+return uls, toInteger(100*rand()) as r
+order by r
+```
 
