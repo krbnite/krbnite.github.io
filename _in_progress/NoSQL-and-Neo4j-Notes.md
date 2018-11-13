@@ -947,9 +947,8 @@ WITH node_names, rel_types,
   [i in range(0,size(path_edges)-1) | CASE WHEN path_nodes[i] = edge_starts[i] THEN '-->' ELSE '<--' END] as directions
 WITH node_names, rel_types, directions,
   [i IN node_range | [i*2,node_names[i]]] AS nnn, 
-  [j IN rel_range | [j*2+1, rel_types[j]]] AS rrr,
-  [k IN rel_range | [k*2+1, directions[k]]] AS ddd
-UNWIND nnn+rrr+ddd AS uls
+  [j IN rel_range | [j*2+1, rel_types[j]+' '+directions[j]]] AS rrr
+UNWIND nnn+rrr AS uls
 RETURN uls[1]
 ORDER BY uls[0]
 ```
@@ -985,9 +984,8 @@ WITH node_names, rel_types,
   [i in range(0,size(path_edges)-1) | CASE WHEN path_nodes[i] = edge_starts[i] THEN '-->' ELSE '<--' END] as directions
 WITH node_names, rel_types, directions,
   [i IN node_range | [i*2,node_names[i]]] AS nnn, 
-  [j IN rel_range | [j*2+1, rel_types[j]]] AS rrr,
-  [k IN rel_range | [k*2+1, directions[k]]] AS ddd
-UNWIND nnn+rrr+ddd AS uls
+  [j IN rel_range | [j*2+1, rel_types[j]+' '+directions[j]] AS rrr
+UNWIND nnn+rrr AS uls
 WITH uls[1] as ls
 ORDER BY uls[0]
 WITH collect(ls) as cls
@@ -999,3 +997,53 @@ path_string
 "Keanu Reeves ACTED_IN --> The Matrix Revolutions ACTED_IN <-- Hugo Weaving ACTED_IN --> Cloud Atlas ACTED_IN <-- Tom Hanks "
 ```
 
+One thing is for sure: doesn't seem like you need the extract() function.  The list
+comprehensions seem to do the same thing.  This produces the same output:
+
+```
+MATCH path = shortestPath((k:Person {name:"Keanu Reeves"})-[:ACTED_IN|DIRECTED*..20]-(t:Person {name:"Tom Hanks"}))
+WITH relationships(path) AS path_edges, nodes(path) as path_nodes
+WITH path_nodes, path_edges,
+  [r IN path_edges | startnode(r)] AS edge_starts,
+  [node IN path_nodes | coalesce(node.name,node.title)] AS node_names,
+  [rel IN path_edges | type(rel)] AS rel_types  
+WITH node_names, rel_types,
+  range(0,size(node_names)-1) AS node_range, 
+  range(0,size(rel_types)-1) AS rel_range,
+  [i in range(0,size(path_edges)-1) | CASE WHEN path_nodes[i] = edge_starts[i] THEN '-->' ELSE '<--' END] as directions
+WITH node_names, rel_types, directions,
+  [i IN node_range | [i*2,node_names[i]]] AS nnn, 
+  [j IN rel_range | [j*2+1, rel_types[j]+' '+directions[j]]] AS rrr
+UNWIND nnn+rrr AS uls
+WITH uls[1] AS ls
+ORDER BY uls[0]
+WITH collect(ls) AS cls
+RETURN reduce(str='', item in cls | str+item+' ') AS path_string
+```
+
+I think the key is is combining the arrows and rel_types in the CASE statement.  Two of the WITH
+statements can actually be cleaned up and combined into one as well...
+
+```
+MATCH path = shortestPath((k:Person {name:"Keanu Reeves"})-[:ACTED_IN|DIRECTED*..20]-(t:Person {name:"Tom Hanks"}))
+WITH relationships(path) AS path_edges, nodes(path) as path_nodes
+WITH path_nodes, path_edges,
+  [r IN path_edges | startnode(r)] AS edge_starts,
+  [node IN path_nodes | coalesce(node.name,node.title)] AS node_names,
+  [rel IN path_edges | type(rel)] AS rel_types  
+WITH node_names, rel_types,
+  [i IN range(0,size(node_names)-1) | [i*2,node_names[i]]] AS nnn, 
+  [i in range(0,size(path_edges)-1) | CASE 
+    WHEN path_nodes[i] = edge_starts[i] THEN [i*2+1, '-[:'+rel_types[i]+']->']
+    ELSE [i*2+1, '<-[:'+rel_types[i]+']-'] END] as rel_type_directions
+UNWIND nnn+rel_type_directions AS uls
+WITH uls[1] AS ls
+ORDER BY uls[0]
+WITH collect(ls) AS cls
+RETURN reduce(str='', item in cls | str+item+' ') AS path_string
+
+  path_string
+  "Keanu Reeves -[:ACTED_IN]-> The Matrix Revolutions <-[:ACTED_IN]- Hugo Weaving -[:ACTED_IN]-> Cloud Atlas <-[:ACTED_IN]- Tom Hanks "
+```
+
+NICE!!!
