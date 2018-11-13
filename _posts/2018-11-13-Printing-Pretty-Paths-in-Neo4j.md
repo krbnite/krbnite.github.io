@@ -81,11 +81,11 @@ can ditch the index we made:
 ["Person"]
 ```
 
-Some obvious improvements:
-* we don't can't much about the label "Person", but the name of the person
+## Some obvious improvements
+* we don't care much about the label "Person", but the name of the person
 * it would be nice to show the directionality of relationships as well
 
-So, dealing with the first issue was actually kind of easy.  Instead of getting `coalesce(labels(node),'')`,
+Dealing with the first issue was actually kind of easy.  Instead of getting `coalesce(labels(node),'')`,
 we get `coalesce(node.name, node.title)`.  Knowing that we are alternating between :Person nodes and :Movie nodes,
 we can assume that we care either about node.name or node.title, respectively, which the coalesce() function allows
 us to do nicely here.
@@ -136,7 +136,7 @@ This gives us:
 "Tom Hanks"
 ```
 
-
+## Another Few Lightbulbs
 This doesn't do exactly what I want yet, but it gets us closer: it identifies which are the start and end nodes
 of each relationship in the path:
 ```
@@ -157,27 +157,15 @@ WITH path_nodes, path_edges,
   [r IN path_edges | startnode(r)] AS edge_starts
 WITH [i in range(0,size(path_edges)-1) | CASE WHEN path_nodes[i] = edge_starts[i] THEN '-->' ELSE '<--' END] as directions
 RETURN directions
+```
 
-  direction
-  ["-->", "<--", "-->", "<--"]
+This gives:
+```
+direction
+["-->", "<--", "-->", "<--"]
 ```
 
 Now we just need to combine this logic with that we found above...
-
-```
-MATCH path = shortestPath((k:Person {name:"Keanu Reeves"})-[ACTED_IN|DIRECTED*..20]-(t:Person {name:"Tom Hanks"}))
-WITH extract(node IN nodes(path) | coalesce(node.name,node.title)) AS node_names,
-     extract(rel IN relationships(path) | type(rel)) AS rel_types
-WITH node_names, rel_types, 
-  range(0,size(node_names)-1) AS szn, 
-  range(0,size(rel_types)-1) AS szr
-WITH [i IN szn | [i*2,node_names[i]]] AS nnn, 
-  [j IN szr | [j*2+1, rel_types[j]]] AS rrr
-UNWIND nnn+rrr AS uls
-RETURN uls[1]
-ORDER BY uls[0]
-```
-
 
 ```
 MATCH path = shortestPath((k:Person {name:"Keanu Reeves"})-[:ACTED_IN|DIRECTED*..20]-(t:Person {name:"Tom Hanks"}))
@@ -215,7 +203,7 @@ I'm happy to report that we ARE GETTING SOMEWHERE!!!  Here's the output:
 "Tom Hanks"
 ```
 
-This gets a little closer:
+If returning a single string is your goal, this gets a little closer:
 ```
 MATCH path = shortestPath((k:Person {name:"Keanu Reeves"})-[:ACTED_IN|DIRECTED*..20]-(t:Person {name:"Tom Hanks"}))
 WITH relationships(path) AS path_edges, nodes(path) as path_nodes
@@ -242,8 +230,12 @@ path_string
 "Keanu Reeves ACTED_IN --> The Matrix Revolutions ACTED_IN <-- Hugo Weaving ACTED_IN --> Cloud Atlas ACTED_IN <-- Tom Hanks "
 ```
 
-One thing is for sure: doesn't seem like you need the extract() function.  The list
-comprehensions seem to do the same thing.  This produces the same output:
+## Clean-Up Excursion
+One thing is for sure: doesn't seem like you need the extract() function...ever.  The list
+comprehensions seem to do the same thing.  (Please correct me if I'm wrong.)
+
+Below, I replace any instance of `extract()` with the corresponding list comprehension.  It produces
+the same output as above. 
 
 ```
 MATCH path = shortestPath((k:Person {name:"Keanu Reeves"})-[:ACTED_IN|DIRECTED*..20]-(t:Person {name:"Tom Hanks"}))
@@ -266,9 +258,12 @@ WITH collect(ls) AS cls
 RETURN reduce(str='', item in cls | str+item+' ') AS path_string
 ```
 
-I think the key is is combining the arrows and rel_types in the CASE statement.  Two of the WITH
-statements can actually be cleaned up and combined into one as well...
+## Approaching the Finish Line
+I realized the answer was slightly more simple: the key is is combining the arrows and rel_types in the CASE 
+statement.  Also, two of the WITH
+statements can actually be cleaned up and combined into one.  
 
+For outputting a single "ASCII Art" string:
 ```
 MATCH path = shortestPath((k:Person {name:"Keanu Reeves"})-[:ACTED_IN|DIRECTED*..20]-(t:Person {name:"Tom Hanks"}))
 WITH relationships(path) AS path_edges, nodes(path) as path_nodes
@@ -286,14 +281,18 @@ WITH uls[1] AS ls
 ORDER BY uls[0]
 WITH collect(ls) AS cls
 RETURN reduce(str='', item in cls | str+item+' ') AS path_string
+```
 
-  path_string
-  "Keanu Reeves -[:ACTED_IN]-> The Matrix Revolutions <-[:ACTED_IN]- Hugo Weaving -[:ACTED_IN]-> Cloud Atlas <-[:ACTED_IN]- Tom Hanks "
+The output does not disappoint:
+```
+path_string
+"Keanu Reeves -[:ACTED_IN]-> The Matrix Revolutions <-[:ACTED_IN]- Hugo Weaving -[:ACTED_IN]-> Cloud Atlas <-[:ACTED_IN]- Tom Hanks "
 ```
 
 NICE!!!
 
-If you want to return this as a list instead of a single string:
+But, you might just want to return a list so you can format it how you want on the 
+frontend, which is easy enough:
 ```
 MATCH path = shortestPath((k:Person {name:"Keanu Reeves"})-[:ACTED_IN|DIRECTED*..20]-(t:Person {name:"Tom Hanks"}))
 WITH relationships(path) AS path_edges, nodes(path) as path_nodes
@@ -310,13 +309,19 @@ UNWIND nnn+rel_type_directions AS uls
 WITH uls[1] AS ls
 ORDER BY uls[0]
 RETURN collect(ls) AS path_list
+```
 
+The beautiful output:
+```
 path_list
 ["Keanu Reeves", "-[:ACTED_IN]->", "The Matrix Revolutions", "<-[:ACTED_IN]-", "Hugo Weaving", "-[:ACTED_IN]->", "Cloud Atlas", "<-[:ACTED_IN]-", "Tom Hanks"]
 ```
 
-El Fin... Or is it?
+El Fin... 
 
+Or is it?
+
+## Wrapping Up
 To generalize this, there is one weak point: the coalesce function that assumes only two node types
 in the traversal.  What if there are three nodes types, or more?
 
@@ -326,5 +331,3 @@ coalesce(coalesce(node.name, node.kittycat), node.title)
 ```
 
 It ain't beautiful, but it will work!  
-
------------------------------------------------------
