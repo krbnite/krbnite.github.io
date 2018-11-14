@@ -1,5 +1,5 @@
 ---
-title: Data Modeling with Entity Relationship Diagrams
+title: First Foray into Data Modeling with Entity Relationship Diagrams
 layout: post
 ---
 
