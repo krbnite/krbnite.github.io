@@ -1,5 +1,5 @@
 ---
-title: Data Modeling with Graphs
+title: First Foray into Data Modeling with Graphs
 layout: post
 ---
 
