@@ -791,6 +791,10 @@ return res
 
 -----------------------------
 
+
+
+#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!
+
 # Printing Paths Prettily
 So this is my first attempt...  Not very pretty, but it at least prints the label, relationship, label, 
 relationship... Specifically, this looks for the shortest path between two specified nodes (up to 20 hops
@@ -1047,3 +1051,95 @@ RETURN reduce(str='', item in cls | str+item+' ') AS path_string
 ```
 
 NICE!!!
+
+If you want to return this as a list instead of a single string:
+```
+MATCH path = shortestPath((k:Person {name:"Keanu Reeves"})-[:ACTED_IN|DIRECTED*..20]-(t:Person {name:"Tom Hanks"}))
+WITH relationships(path) AS path_edges, nodes(path) as path_nodes
+WITH path_nodes, path_edges,
+  [r IN path_edges | startnode(r)] AS edge_starts,
+  [node IN path_nodes | coalesce(node.name,node.title)] AS node_names,
+  [rel IN path_edges | type(rel)] AS rel_types  
+WITH node_names, rel_types,
+  [i IN range(0,size(node_names)-1) | [i*2,node_names[i]]] AS nnn, 
+  [i in range(0,size(path_edges)-1) | CASE 
+    WHEN path_nodes[i] = edge_starts[i] THEN [i*2+1, '-[:'+rel_types[i]+']->']
+    ELSE [i*2+1, '<-[:'+rel_types[i]+']-'] END] as rel_type_directions
+UNWIND nnn+rel_type_directions AS uls
+WITH uls[1] AS ls
+ORDER BY uls[0]
+RETURN collect(ls) AS path_list
+
+path_list
+["Keanu Reeves", "-[:ACTED_IN]->", "The Matrix Revolutions", "<-[:ACTED_IN]-", "Hugo Weaving", "-[:ACTED_IN]->", "Cloud Atlas", "<-[:ACTED_IN]-", "Tom Hanks"]
+```
+
+El Fin... Or is it?
+
+To generalize this, there is one weak point: the coalesce function that assumes only two node types
+in the traversal.  What if there are three nodes types, or more?
+
+My hack would be to nest coalesce statements:
+```
+coalesce(coalesce(node.name, node.kittycat), node.title)
+```
+
+It ain't beautiful, but it will work!  
+
+#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!
+
+
+Various ways to set/remove things on a node
+```
+MERGE (p:Person {name: "Kevin Suburban"}) // create node if not yet created
+SET p.thirsty = true, p.hungry = false // by .property
+SET p += {thirsty: false, hungry: true, bottles_of_wine: 1} // mutation
+SET p:DataScientist:Physicist:Punk // add labels
+REMOVE p.bottles_of_wine, p:Punk
+RETURN p {.*, labels: labels(p)}
+
+{
+  "name": "Kevin Suburban",
+  "hungry": true,
+  "thirsty": false,
+  "labels": [
+    "Person",
+    "DataScientist",
+    "Physicist"
+  ]
+}
+```
+
+How to set something programmatically on a whole set of labeled nodes:
+```
+MATCH (p:Person)
+WITH p, collect(p) as p_list
+FOREACH (x in p_list | SET x.first_initial = substring(x.name,0,1))
+```
+
+Interesting behavioral note: say you wanted to do that and return a few 
+examples to see if it was working as planned.  Naively, you might do this:
+```
+MATCH (p:Person)
+WITH p, collect(p) as p_list
+FOREACH (x in p_list | SET x.second_initial = substring(split(x.name,' ')[1],0,1))
+RETURN p LIMIT 1
+```
+
+However, unfortunately the (MATCH, RETURN) block has evaluated within the same
+scope (am I using that lingo right here? think so -- moving on!).  What I mean is, Cypher
+tells Neo4j, "Look for all people until you find 1 person, then put that person in a list
+and for each person in that list, set a new property."  
+
+If you must return something when executing this job, then put the RETURN statement into
+a new scope/block using WITH and UNWIND:
+```
+MATCH (p:Person)
+WITH collect(p) as p_list
+FOREACH (x in p_list | SET x.second_initial = substring(split(x.name,' ')[1],0,1))
+WITH p_list UNWIND p_list as p
+RETURN p limit 1
+```
+
+
+
