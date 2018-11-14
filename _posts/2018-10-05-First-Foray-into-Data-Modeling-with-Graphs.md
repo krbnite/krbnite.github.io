@@ -22,6 +22,9 @@ an example here.  ACE is a spacecraft that hangs around the L1 point in the Sun-
 
 <img src="/images/graph-ace-2.jpg" width="500">
 
+WARNING: Never finished writing this.  But the links that are included should be very helpful if
+you're curious.
+
 # References and Further Reading
 
 ## Directly Related to this Post
