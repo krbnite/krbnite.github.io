@@ -1,0 +1,24 @@
+---
+title: Cypher Syntax Highlighting for Vim
+layout: post
+---
+
+Not going to lie to you: this post is not any better than googling "cypher syntax highlighting for vim."  In fact,
+that might be a better thing for you to do!  But since you're already here--
+
+```
+# Assuming you have Pathogen installed...
+cd ~/.vim/bundle
+git clone git://github.com/neo4j-contrib/cypher-vim-syntax.git
+cd ~/YourCypherProject/
+vim hello-world.cypher
+```
+
+Consider your syntax highlighted:
+```cql
+CREATE (hello:World {greeting: "Earthlings!"})
+RETURN 'Aloha '+hello.greeting
+```
+
+Check out the project @ [https://github.com/neo4j-contrib/cypher-vim-syntax](https://github.com/neo4j-contrib/cypher-vim-syntax).
+
