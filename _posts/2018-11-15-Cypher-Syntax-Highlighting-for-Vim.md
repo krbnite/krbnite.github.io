@@ -15,10 +15,16 @@ vim hello-world.cypher
 ```
 
 Consider your syntax highlighted:
-```cql
+```
 CREATE (hello:World {greeting: "Earthlings!"})
 RETURN 'Aloha '+hello.greeting
 ```
 
+...in Vim, but not on GitHub :-(
+
+Oh GitHub, why hast thou forsaken me! (Forsaken me. Forsaken. Me. Oh, I--- cry, when angels deserve to die!)
+
+
+## References
 Check out the project @ [https://github.com/neo4j-contrib/cypher-vim-syntax](https://github.com/neo4j-contrib/cypher-vim-syntax).
 
