@@ -22,7 +22,7 @@ RETURN 'Aloha '+hello.greeting
 
 ...in Vim, but not on GitHub :-(
 
-Oh GitHub, why hast thou forsaken me! (Forsaken me. Forsaken. Me. Oh, I--- cry, when angels deserve to die!)
+Oh GitHub, why hast thou forsaken me!  (Relevant music plays in the background, reminding the world that System of a Down needs to put out a new album already: "Forsaken me. Forsaken me. Forsaken. Me--! Oh, I--- cry--- when angels deserve to die!") 
 
 
 ## References
