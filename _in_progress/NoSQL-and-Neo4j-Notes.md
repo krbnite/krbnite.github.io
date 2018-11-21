@@ -1142,4 +1142,30 @@ RETURN p limit 1
 ```
 
 
+### Need Documents
+What's cool about Neo4j is that you can output the data almost any way you want: you can return 
+nodes (which are basically shallow JSON documents), tables if you want, or full-on JSON document
+structures.  
 
+For example, take the movie data set.  Using projection and aggregation, you can return "actor documents",
+which have an actor at the top level of heirarchy, and a movies key, which stores all movie info and what
+roles they played.  
+
+```
+match (p:Person)-[r:ACTED_IN]->(m:Movie)
+return p { .*,  movies: collect(m { .*, roles: r.roles})}
+```
+
+Better, since this is a graph database, you automatically can invert the relationship and 
+return "movie documents" that list all actors and their roles in that movie.  
+
+```
+match (p:Person)-[r:ACTED_IN]->(m:Movie)
+return m { .*,  actors: collect(p { .*, roles: r.roles})}
+```
+
+The query is almost no different, except in how you aggregate and format the output.
+
+Very cool!
+
+################################################
