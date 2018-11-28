@@ -9,13 +9,13 @@ plans.  The most important piece of advice to extract is: Do not be lazy while w
 
 This means, remove as many ambiguities and guess work from your query as possible:
 * If you know the node's label, include it
-  - Wrong: **`MATCH (p {name: "Romeo"}) RETURN p`**
-  - Right: **`MATCH (p:Person {name: "Romeo"}) RETURN p`**
+  - Wrong: ```MATCH (p {name: "Romeo"}) RETURN p```
+  - Right: ```MATCH (p:Person {name: "Romeo"}) RETURN p```
 * If you know the relationship type, include it
-  - Wrong: **`MATCH (p {name: "Romeo"}) --> (m) RETURN m`**
-  - Right: **`MATCH (p:Person {name: "Romeo"}) -[:LIKES]-> (m:Movie) RETURN m`**
+  - Wrong: ```MATCH (p {name: "Romeo"}) --> (m) RETURN m```
+  - Right: ```MATCH (p:Person {name: "Romeo"}) -[:LIKES]-> (m:Movie) RETURN m```
 * If it's an important, highly-used query -- put an index on it
-  - e.g., **`CREATE INDEX on :Person(name)`**
+  - e.g., ```CREATE INDEX on :Person(name)```
 
 Playing around with Neo4j Browser on a small data set just for fun? Then sure -- it might feel good have a dirty rum 
 martini, get behind the Cypher wheel, and query a bit sloppy (what's a few measly milliseconds anyway?!).  But best ye be 
