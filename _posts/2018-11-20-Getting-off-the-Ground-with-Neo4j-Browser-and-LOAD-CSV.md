@@ -60,7 +60,10 @@ You can then load that file into Neo4j:
 ```
 LOAD CSV WITH HEADERS FROM 'file:///movies1.csv' AS line
 MERGE (p:Person { name: line.actor })
-  -[:ACTED_IN { roles: line.roles }]-> (m:Movie {title: line.movie})
+MERGE (m:Movie { title: line.movie })
+MERGE (p)-[r:ACTED_IN]->(m) 
+  ON CREATE SET r.roles = [line.roles]
+  ON MATCH SET r.roles = r.roles + [line.roles]
 ```
 
 ## Making a CSV file's "shape" a bit more like your graph
