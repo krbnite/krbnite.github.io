@@ -60,11 +60,72 @@ You can then load that file into Neo4j:
 ```
 LOAD CSV WITH HEADERS FROM 'file:///movies1.csv' AS line
 MERGE (p:Person { name: line.actor })
+  -[r:ACTED_IN]->(m:Movie { title: line.movie })
+  ON CREATE SET r.roles = [line.roles]
+  ON MATCH SET r.roles = r.roles + [line.roles]
+```
+
+There are some caveats on this query. Keep reading!
+
+## Better Usage
+The query above
+
+Imagine the following CSV file, movies1.csv:
+```
+actor,movie,roles
+Joe Schmoe,Think a Thought,Knight
+Joe Schmoe,Think a Thought,King
+Joe Schmoe,Think a Thought,Ghostly Figure
+Jimmy John,Tinker Pop,Jedi Ninja
+Jimmy John,Tinker Pop,Surfer Dude
+Kelly Smelly,Life's Like That,Kim Schmim
+Kelly Smelly,Life's Like That Too,Kim Schmim
+Kelly Smelly,Life's Like That Too,Pam Schmam
+```
+
+If you use the above query on this CSV file, it will not do what you think it might be doing... That is,
+it will not be creating just one `Kelly Smelly` node.  Instead, it creates two like so:
+
+```
+MATCH (p:Person {name:"Kelly Smelly"}) -[r]-> (m:Movie)
+RETURN id(p) AS ID, p.name AS Actor, m.title AS Movie, r.roles AS Roles
+
+  ID	Actor	Movie	Roles
+  57	"Kelly Smelly"	"Life's Like That"	["Kim Schmim"]
+  59	"Kelly Smelly"	"Life's Like That Too"	["Kim Schmim", "Pam Schmam"]
+```
+
+That's definitely not what we wanted!  There isn't just one `Kelly Smelly` node: there are two!  Node IDs 57
+and 59.  But why? The problem is in the single `MERGE` statement.  Remember,
+`MERGE` basically means `MATCH OR CREATE`, so if some parts of the graph pattern exist, but not others
+you can get a funky result like this.
+
+Ok, let's try this again.  First, delete the current data:
+```
+MATCH (n) DETACH DELETE n
+```
+
+Then `MERGE` on each of the items separately:  
+```
+LOAD CSV WITH HEADERS FROM 'file:///movies1.csv' AS line
+MERGE (p:Person { name: line.actor })
 MERGE (m:Movie { title: line.movie })
 MERGE (p)-[r:ACTED_IN]->(m) 
   ON CREATE SET r.roles = [line.roles]
   ON MATCH SET r.roles = r.roles + [line.roles]
 ```
+
+Test it again:
+```
+MATCH (p:Person {name:"Kelly Smelly"}) -[r]-> (m:Movie)
+RETURN id(p) AS ID, p.name AS Actor, m.title AS Movie, r.roles AS Roles
+
+  ID	Actor	Movie	Roles
+  52	"Kelly Smelly"	"Life's Like That"	["Kim Schmim"]
+  52	"Kelly Smelly"	"Life's Like That Too"	["Kim Schmim", "Pam Schmam"]
+```
+
+Yay -- just one `Kelly Smelly` node!  
 
 ## Making a CSV file's "shape" a bit more like your graph
 While reading about indexing in the Cypher Manual, I saw that we can structure CSV files in a potentially
@@ -77,15 +138,19 @@ actor,movie,roles
 Joe Schmoe,Think a Thought,Knight;King;Ghostly Figure
 Jimmy John,Tinker Pop,Jedi Ninja;Surfer Dude
 Kelly Smelly,Life's Like That,Kim Schmim
+Kelly Smelly,Life's Like That Too, KimSchim;Pam Schmam
 ```
 
-You can then load that file into Neo4j:
+This is slighly de-normalized now, but not fully: we still need to mind our `MERGE`s.  
 ```
 LOAD CSV WITH HEADERS FROM 'file:///movies2.csv' AS line
 MERGE (p:Person { name: line.actor })
-  -[:ACTED_IN { roles:split(line.roles, ';')}]->(m:Movie {title: line.movie})
+MERGE (m:Movie {title: line.movie})
+MERGE (p) -[:ACTED_IN { roles: split(line.roles, ';')}]-> (m)
 ```
 
+The use and misuse of `MERGE` is nicely covered in 
+[Common Confusion on Cypher (and How to Avoid Them)](https://neo4j.com/blog/common-confusions-cypher/).
 
 
 # Neo4j Browser
@@ -126,3 +191,5 @@ You'll have to remember your password to sign in -- D'oh!
 * Cypher Manual: [LOAD CSV](https://neo4j.com/docs/cypher-manual/current/clauses/load-csv/)
 * StackOverflow: [Unable to find any JVMs matching version 1.7 while starting Neo4j](https://stackoverflow.com/questions/29731193/unable-to-find-any-jvms-matching-version-1-7-while-starting-neo4j)
 * YouTube: [Neo4j Tutorial: Upload CSV File into Neo4j](https://www.youtube.com/watch?v=JhZaCw94r40) 
+* Neo4j Developer: [Understanding How Merge Works](https://neo4j.com/developer/kb/understanding-how-merge-works/)
+* Neo4j Blog: [Common Confusion on Cypher (and How to Avoid Them)](https://neo4j.com/blog/common-confusions-cypher/)
