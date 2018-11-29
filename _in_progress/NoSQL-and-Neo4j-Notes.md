@@ -344,9 +344,42 @@ DO NOT SWITCH TO NoSQL IF:  "If your company has a data set that will remain rel
 
 SOURCE:  https://blog.timescale.com/why-sql-beating-nosql-what-this-means-for-future-of-data-time-series-database-348b777b847a
 
-"And boy did the software developer community eat up NoSQL, embracing it arguably much more broadly than the original Google/Amazon authors intended. It’s easy to understand why: NoSQL was new and shiny; it promised scale and power; it seemed like the fast path to engineering success. But then the problems started appearing."
+> "And boy did the software developer community eat up NoSQL, embracing it arguably much more broadly than the original Google/Amazon authors intended. It’s easy to understand why: NoSQL was new and shiny; it promised scale and power; it seemed like the fast path to engineering success. But then the problems started appearing."
 
 
+
+--------------------------------------------
+
+### Column Stores
+Wikipedia does the best job at describing a column-oriented database, how it differs from a row-oriented data base, etc:
+
+> "A column-oriented DBMS (or columnar database management system) is a database management system (DBMS) that stores data tables by column rather than by row. Practical use of a column store versus a row store differs little in the relational DBMS world. Both columnar and row databases can use traditional database query languages like SQL to load data and perform queries. Both row and columnar databases can become the backbone in a system to serve data for common extract, transform, load (ETL) and data visualization tools. However, by storing data in columns rather than rows, the database can more precisely access the data it needs to answer a query rather than scanning and discarding unwanted data in rows. Query performance is increased for certain workloads."
+
+### Columnar Databses:  
+> "In practice, columnar databases are well-suited for OLAP-like workloads (e.g., data warehouses) which typically involve highly complex queries over all data (possibly petabytes). However, some work must be done to write data into a columnar database. Transactions (INSERTs) must be separated into columns and compressed as they are stored, making it less suited for OLTP workloads."
+
+### Row-Oriented Databases:  
+> "Row-oriented databases are well-suited for OLTP-like workloads which are more heavily loaded with interactive transactions. For example, retrieving all data from a single row is more efficient when that data is located in a single location (minimizing disk seeks), as in row-oriented architectures."
+
+### Columnar OLAP-OLTP Hybrids: 
+> "However, column-oriented systems have been developed as hybrids capable of both OLTP and OLAP operations, with some of the OLTP constraints column-oriented systems face mediated using (amongst other qualities) in-memory data storage. Column-oriented systems suitable for both OLAP and OLTP roles effectively reduce the total data footprint by removing the need for separate systems."
+
+* Column-oriented database is also called a "column store"
+* Regular row-oriented database may also be called a "row store" in this vernacular
+
+----
+
+SOURCE:  https://dzone.com/articles/row-store-and-column-store-databases
+
+> "At a basic level, row stores are great for transaction processing. Column stores are great for highly analytical query models. Row stores have the ability to write data very quickly, whereas a column store is awesome at aggregating large volumes of data for a subset of columns. One of the benefits of a columnar database is its crazy fast query speeds. In some cases, queries that took minutes or hours are completed in seconds. This makes columnar databases a good choice in a query-heavy environment. But you must make sure that the queries you run are really suited to a columnar database."
+
+-------------------------------------------------------------
+
+Column Families
+* https://en.wikipedia.org/wiki/Column_family
+
+Wide Column Stores
+* https://en.wikipedia.org/wiki/Wide_column_store
 
 
 
