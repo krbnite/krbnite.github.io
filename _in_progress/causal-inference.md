@@ -57,3 +57,6 @@ a treatment has been give, each patient has an actual/observed outcome and a set
 idea, ultimately, is that we need a sizable population so that we can estimate all random variables of 
 interest -- the range of potential outcomes -- despite having "missing data" on any one specific subject.
 
+
+
+
