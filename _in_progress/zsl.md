@@ -19,4 +19,12 @@ explains ZSL as just that.
 (Larochelle, Erhan, and Bengio [2007]: [Zero-data Learning of New Tasks](http://www.aaai.org/Papers/AAAI/2008/AAAI08-103.pdf))
 
 
+-------------------------------------------
 
+Can't (easily) get access to the license plate data they used...  So I found a few I might use
+
+* [MNIST](http://yann.lecun.com/exdb/mnist/)
+  - this is the standard dataset used all the time
+* [The Chars74K dataset](http://www.ee.surrey.ac.uk/CVSSP/demos/chars74k/)
+  - this is a "characters out in the wild" data set, so is more advanced than I want for a first project
+  
