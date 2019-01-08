@@ -57,6 +57,85 @@ a treatment has been give, each patient has an actual/observed outcome and a set
 idea, ultimately, is that we need a sizable population so that we can estimate all random variables of 
 interest -- the range of potential outcomes -- despite having "missing data" on any one specific subject.
 
+----------------
+
+## Hypothetical Interventions
+
+https://www.coursera.org/lecture/crash-course-in-causality/hypothetical-interventions-Lgb6O
+
+An intervention variable is a variable that can be manipulated.  Often an intervention variable is just
+called an intervention.  
+
+An intervention is a variable that we can "intervene on," or take an action on.  
+
+We are interested in intervening, or taking action on, a variable in order to reveal causal effects. Intervening
+on a variable is often referred to as manipulating the variable.  
+  
+Holland [1986]: "no causation without manipulation"
+* Point is: if a variable cannot be manipulated, then it is difficult to consider causal effects of that variable
+
+The treatment variables we consider in this course will be interventions: a treatment is a something we can 
+specify/manipulate at random in a hypothetical trial.
+* The amount of drug X can be randomly assigned
+* What race a subject is cannot be randomly assigned
+* Whether or not a placebo is prescribed is a intervention/treatment
+* Prescribing someone to be aged 45yo at random is not possible, so not an intervention/treatment
+
+Things like age and race are not interventions -- they are immutable variables, not manipulable 
+variables.  Immutable variables can still have causal effects, but they cannot be dealt with 
+in the same way as manipulable variables -- e.g., they do not fit cleanly into the potential outcomes
+framework.  To study immutable variables, one often looks for associated manipulable variables, e.g.,
+one's name on a resume instead of race or gender (i.e., you can gain insight into the immutable variables
+of race and gender on hiring practices by using the same resume with different names).
+
+We focus on hypothetical interventions in this course
+* b/c they're well defined
+* b/c they're potentially actionable
+* b/c we have a framework to parse out causal effects
+
+So... What is a causal effect?
+* Treatment A has a causal effect on Outcome Y if Y[a=1] differs from Y[a=0]
+
+### Example: Ibuprofen
+* A: take Ibuprofen (1) or not (0)
+* Y: headache gone in an hour (1) or not (0)
+
+Often you will hear people improperly reasoning about causality: "I took Ibuprofen an hour ago, and
+now my headache is gone. Therefore, Ibuprofen works!"  This is equivalent to saying "Y[a=1]=1" -- it tells us
+nothing about "Y[a=0]" or even the strength of effect between a=1 and Y=1 (how many times does one take
+Ibuprofen and still have a headache in an hour?).
+
+### FPCI:  The Fundamental Problem of Causal Inference
+We can only observe one potential outcome for each person.  This means we cannot necessarily observe 
+causal effects at the individual level, but it doesn't mean that we cannot measure causal effects
+at the population level.  
+
+This is important:  we are not really going to be looking at things at the individual/unit level.
+* Hopeless: What would have happened if I had not taken Ibuprofen an hour ago?
+* Possible: What would the rate of headache remission be if everyone took Ibuprofen when they had a headache
+versus if no one did?
+
+NOTE: an "intervention variable" is not the same thing as an "intervening variable," which is basically
+synonymous with a "mediating variable" ... An "intervention variable" is a "manipulable variable."
+* [Intervening Variable](https://www.statisticshowto.datasciencecentral.com/intervening-variable/)
+* [Manipulable Variable](https://www.statisticshowto.datasciencecentral.com/manipulated-variable/)
+* This is a nice list of various types of variable name in statistical parlance
+  - http://www.indiana.edu/~educy520/sec5982/week_2/variable_types.pdf
+  
+
+----------------------
+
+
+
+------------------------
+
+## Misc Reading
+* https://en.wikipedia.org/wiki/Causal_inference
+* https://en.wikipedia.org/wiki/Rubin_causal_model
+* https://en.wikipedia.org/wiki/Instrumental_variables_estimation
+
+
+
 
 
 
