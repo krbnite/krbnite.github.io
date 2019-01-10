@@ -64,18 +64,22 @@ interest -- the range of potential outcomes -- despite having "missing data" on 
 https://www.coursera.org/lecture/crash-course-in-causality/hypothetical-interventions-Lgb6O
  
 
-We are interested in intervening, or taking action on, a variable in order to reveal causal effects. An 
+We are interested in intervening, or taking action, on a variable in order to reveal causal effects (actually,
+we are interested in hypothetically intervening, or taking action, on a variable). An 
 "intervention variable" (or just intervention) is just that: a variable that we can "intervene on," or take an 
-action on.  Intervening on a variable is often referred to as manipulating the variable, and so this type of
+action on (at least hypothetically - e.g., we gave treatment A=1, but we could have given treatment A=0).  Intervening 
+on a variable is often referred to as manipulating the variable, and so this type of
 variable is also known as a manipulable variable. 
 
 A quote from Holland [1986] states: "no causation without manipulation."  The point is: if a variable cannot 
 be manipulated, then it is difficult to consider causal effects of that variable
+* Holland [1986]: [Statistics and Causal Inference](http://www-stat.wharton.upenn.edu/~hwainer/Readings/Holland_Statistics%20and%20Causal%20Inference.pdf)
+  - read this: from the abstract/intro, it seems very good!
 
 The treatment variables (or treatments) we consider in this course will be interventions: a treatment is a something we can 
 specify/manipulate at random in a hypothetical trial; it is manipulable; it is an intervention:
 * The amount of drug X can be randomly assigned
-* What race a subject is cannot be randomly assigned
+* What gender or race a specific subject is cannot be randomly assigned
 * Whether or not a placebo is prescribed is a intervention/treatment
 * Prescribing someone to be aged 45yo at random is not possible, so not an intervention/treatment
 
@@ -94,7 +98,8 @@ We focus on hypothetical interventions in this course
 * b/c we have a framework to parse out causal effects
 
 So... What is a causal effect?
-* Treatment A has a causal effect on Outcome Y if Y[a=1] differs from Y[a=0]
+* Example: Treatment A has a causal effect on Outcome Y if Y[a=1] differs from Y[a=0]
+
 
 ### Example: Ibuprofen
 * A: take Ibuprofen (1) or not (0)
@@ -128,6 +133,9 @@ synonymous with a "mediating variable" ... An "intervention variable" is a "mani
 ## Causal Effects
 
 https://www.coursera.org/lecture/crash-course-in-causality/causal-effects-Qt0ic
+
+"Correlation does not imply causation, and yet causal conclusions drawn from a carefully designed
+experiment are often valid." - Holland [1986]
 
 We want to more formally defined what we mean by "causal effects."
 * What is an average causal effect?
