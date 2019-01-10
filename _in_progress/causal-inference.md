@@ -227,9 +227,50 @@ Recap 2:
 
 ## Causal Assumptions
 
+https://www.coursera.org/lecture/crash-course-in-causality/causal-assumptions-f5LPB
 
+We want to understand what causal assumptions are necessary to link potential outcomes to actual
+data such that we can identify causal effects. This is known as "identifiability," which basically says that a
+parameter of interest is "identifiable" if it can be estimated from data.  Identifiability genderally requires some 
+condtions to hold -- you might call such conditions "assumptions" or "axioms."  Regardless, the idea is that you
+can estimate some conceptual parameter in a real data set given certain conditions, or assumptions.  
 
+Sometimes in causal inference, these assumptions might be untestable -- in which case they are referred to as
+causal assumptions.  Though untestable, such assumptions are often reasonable enough in various circumstances
+to give confidence to their applicability in those circumstances.  
 
+In causal inferences, often there are the following 4 assumptions in place:
+* SUTVA
+  - Stable Unit Treatment Value Assumption
+  - No interfernece:  
+    * interference is also known as "spillover" or "contagion"
+    * Units do not interfere w/ each other, where a unit is, say, a person from your target 
+    population; this means that treatment assignment is randomized among units -- the treatment assignment of
+    one unit has no impact on the treatment assignment of another unit
+    * example: in a behavioral study, there could be interference/spillover if the patients interact with
+    each other -- the treatment/intervention that one patient got can "spill over" into their interaction and
+    affect the treatment/intervention that another patient gets
+    * more advanced causal methods can hanlde interference, but we will not be covering them in this course
+  - One version of treatment
+    * important for linking potential outcomes to observed data
+    * if there are different versions of treatment, it becomes hard to define what a causal effect means
+  - Relevance:  SUTVA allows us to write the potential outcomes for the ith person in terms of only the ith person's treatments
+    * this is like when modeling volumes of gas and assuming no interactions between particles
+  - In many situations, this is a reasonable assumption  
+* Consistency
+  - Definition: the potential outcome under treatment A=a, Y[a], is equal to the observed outcome if the 
+  actual treatment is A=a
+  - Equation:  Y = Y[a] if A=a for all a
+    * My interpretation (which I'm pretty sure is equivalent):  Y|A=a = Y[a] for all a  (...?)
+* Ignorability
+  - aka the assumption of "no unmeasured confounders"
+* Positivity
+
+These assumptions pertain to the outcome Y, the treatment A, and a set of pre-treatment covariates denoted X.  The
+pre-treatment covariates can be anything that might also have correlation with the treatment or outcome, such as
+age, race, gender, blood pressure, etc.  For example, 
+
+LEFT OFF halfway through...
 
 ------------------------
 
