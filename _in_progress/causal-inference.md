@@ -223,6 +223,10 @@ Recap 2:
   - point is: there are two worlds we are interested in for a binary treatment: the actual and counterfactual worlds
   
 
+--------------------------------
+
+## Causal Assumptions
+
 
 
 
