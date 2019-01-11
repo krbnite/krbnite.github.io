@@ -280,7 +280,13 @@ LEFT OFF halfway through...
 * https://en.wikipedia.org/wiki/Instrumental_variables_estimation
 
 
+http://www.unofficialgoogledatascience.com/2017/01/causality-in-machine-learning.html
 
+https://www.inference.vc/untitled/
 
+http://www.jmlr.org/papers/volume11/spirtes10a/spirtes10a.pdf
 
+https://blog.acolyer.org/2018/09/17/the-seven-tools-of-causal-inference-with-reflections-on-machine-learning/
+
+http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.726.5229&rep=rep1&type=pdf
 
