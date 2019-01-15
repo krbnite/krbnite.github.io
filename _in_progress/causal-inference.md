@@ -239,7 +239,11 @@ Sometimes in causal inference, these assumptions might be untestable -- in which
 causal assumptions.  Though untestable, such assumptions are often reasonable enough in various circumstances
 to give confidence to their applicability in those circumstances.  
 
-In causal inferences, often there are the following 4 assumptions in place:
+In causal inferences, often there are the following 4 assumptions in place.  These assumptions pertain to the 
+outcome Y, the treatment A, and a set of pre-treatment covariates denoted X.  The
+pre-treatment covariates can be anything that might also have correlation with the treatment or outcome, such as
+age, race, gender, blood pressure, etc. 
+
 * SUTVA
   - Stable Unit Treatment Value Assumption
   - No interfernece:  
@@ -264,13 +268,31 @@ In causal inferences, often there are the following 4 assumptions in place:
     * My interpretation (which I'm pretty sure is equivalent):  Y|A=a = Y[a] for all a  (...?)
 * Ignorability
   - aka the assumption of "no unmeasured confounders"
+  - Given pre-treatment covariates X, treatment assignment is independent from the potential outcomes
+    * `Y[A=0], Y[A=1] ∐ A|X`
+    * where ∐ means "independence"
+  - The point here is that treatment A may not be random over entire population of interest, but when accounting
+    for pre-treatment covariates level-by-level it is
+    * Example: say X = binnedAge = {old|young}, and that treatment is frequently given to the "old" by nature of
+    the condition being treated for (e.g., Y={1 if hip fracture, else 0}), and possibly that the outcome is more
+    likely for the "old" (i.e., "old" people are more likely to get a hip fracture independent of treatment), 
+    while treatment is infrequently given to the young;  it would appear that treatment was not
+    independent of potential outcomes over entire population, but not if looking at the two levels separately
+  - the idea is if we have accounted for all pre-treatment covariates, then treatment assignment is ignorable (it is
+  (effectively randomized)
 * Positivity
+  - Idea: everybody has nozero probability of receiving any level of treatment
+  - Eqn: P(A=a|X=x) > 0 ∀ a and x
+  - The idea is that we need to learn from data: we need an actual so we can calculate a counterfactual, etc
+  - At every level X, there is nonzero probabilty of receiving treat A=a
 
-These assumptions pertain to the outcome Y, the treatment A, and a set of pre-treatment covariates denoted X.  The
-pre-treatment covariates can be anything that might also have correlation with the treatment or outcome, such as
-age, race, gender, blood pressure, etc.  For example, 
 
-LEFT OFF halfway through...
+
+LEFT OFF at 16mins...
+
+Derivation from causal assumptions...
+
+
 
 ------------------------
 
@@ -279,6 +301,7 @@ LEFT OFF halfway through...
 * https://en.wikipedia.org/wiki/Rubin_causal_model
 * https://en.wikipedia.org/wiki/Instrumental_variables_estimation
 
+http://mlg.eng.cam.ac.uk/zoubin/SALD/Intro-Causal.pdf
 
 http://www.unofficialgoogledatascience.com/2017/01/causality-in-machine-learning.html
 
@@ -290,3 +313,6 @@ https://blog.acolyer.org/2018/09/17/the-seven-tools-of-causal-inference-with-ref
 
 http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.726.5229&rep=rep1&type=pdf
 
+-----------------------------------
+
+https://www.coursera.org/learn/statistical-inferences
