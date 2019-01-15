@@ -303,8 +303,6 @@ Derivation from causal assumptions...
 
 http://mlg.eng.cam.ac.uk/zoubin/SALD/Intro-Causal.pdf
 
-http://www.unofficialgoogledatascience.com/2017/01/causality-in-machine-learning.html
-
 https://www.inference.vc/untitled/
 
 http://www.jmlr.org/papers/volume11/spirtes10a/spirtes10a.pdf
@@ -313,6 +311,48 @@ https://blog.acolyer.org/2018/09/17/the-seven-tools-of-causal-inference-with-ref
 
 http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.726.5229&rep=rep1&type=pdf
 
+--------------------------------
+
+http://www.unofficialgoogledatascience.com/2017/01/causality-in-machine-learning.html
+
+* Google's R Package:  https://opensource.googleblog.com/2014/09/causalimpact-new-open-source-package.html
+  - Corresponding paper:  https://ai.google/research/pubs/pub41854
+
 -----------------------------------
 
+Susan Athey (ML + CI)
+
+https://github.com/susanathey/causalTree
+
+https://github.com/swager/causalForest
+
 https://www.coursera.org/learn/statistical-inferences
+
+-----------------------------------
+
+Excellent Medium articles on ML/CI
+
+https://medium.com/teconomics-blog/machine-learning-for-decision-making-e776f9f8917e
+
+https://medium.com/teconomics-blog/using-ml-to-resolve-experiments-faster-bd8053ff602e
+
+https://medium.com/teconomics-blog/machine-learning-meets-instrumental-variables-c8eecf5cec95
+
+------------------------------------
+
+
+People working on ML+CI
+
+http://www.mit.edu/~vchern/
+
+https://www.gsb.stanford.edu/faculty-research/faculty/susan-athey
+
+https://www.gsb.stanford.edu/faculty-research/faculty/guido-w-imbens
+
+----------------
+
+Potential models to look into:  
+•	Already looking into:  marginal structural models (MSMs), structural nested models (SNMs), and the g-formula
+•	Can also explore:  discontinuity design, difference-in-differences, fixed effects modeling, and instrumental variables modeling
+
+
