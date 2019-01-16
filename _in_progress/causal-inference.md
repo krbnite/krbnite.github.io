@@ -261,6 +261,9 @@ age, race, gender, blood pressure, etc.
   - Relevance:  SUTVA allows us to write the potential outcomes for the ith person in terms of only the ith person's treatments
     * this is like when modeling volumes of gas and assuming no interactions between particles
   - In many situations, this is a reasonable assumption  
+  - Violation examples ([source](http://patricklam.org/teaching/causal_print.pdf))
+    * Job training for too many people may flood the market with qualified job applicants (interference)
+    * Some patients get extra-strength aspirin (variation in treatment)
 * Consistency
   - Definition: the potential outcome under treatment A=a, Y[a], is equal to the observed outcome if the 
   actual treatment is A=a
@@ -280,6 +283,9 @@ age, race, gender, blood pressure, etc.
     independent of potential outcomes over entire population, but not if looking at the two levels separately
   - the idea is if we have accounted for all pre-treatment covariates, then treatment assignment is ignorable (it is
   (effectively randomized)
+  - More on ignorability:  http://www.fragilefamilieschallenge.org/causal-inference/
+  - Example of violations
+    * Omitted Variable Bias
 * Positivity
   - Idea: everybody has nozero probability of receiving any level of treatment
   - Eqn: P(A=a|X=x) > 0 ∀ a and x
@@ -288,9 +294,28 @@ age, race, gender, blood pressure, etc.
 
 
 
-LEFT OFF at 16mins...
+### Linking observed data and potential outcomes
 
-Derivation from causal assumptions...
+Basically, by using the causal assumptions, we can back out potential outcomes from the observed data.  That is,
+we can estimate counterfactuals and causal effects.  
+
+1. We start with data on the outcome Y, treatment A, and set of pre-treatment covariates X.  
+2. With this data alone, we can compute the expected value of Y for the subpopulation where treatment A=a and pre-treatment 
+covariates X=x:  `E{Y|A=a,X=x}`.  
+  - this is all observed data so far
+  - we have not yet estimated potential outcomes
+3. By the consistency assumption, we can write: `E{Y[a]|A=a,X=x} = E{Y|A=a,X=x}`
+  - that is, we can write an expression for potential outcomes 
+  - consistency says that the outcome we observe when A=a is the same as the potential outcome, Y[a]
+4. By the ignorability assumption, we can simplify this expressions: `E{Y[a]|X=x} = E{Y[a]|A=a,X=x} = E{Y|A=a,X=x}`
+  - ignorability allows us to drop the conditioning on treatment
+5. Finally, to estimate a marginal causal effect, we can average of the pre-treatment covariates X
+
+------------------------------------------
+
+## Stratification
+
+https://www.coursera.org/lecture/crash-course-in-causality/stratification-xEcaf
 
 
 
@@ -311,7 +336,18 @@ https://blog.acolyer.org/2018/09/17/the-seven-tools-of-causal-inference-with-ref
 
 http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.726.5229&rep=rep1&type=pdf
 
+
+Course notes:
+* http://bkenkel.com/psci8357/notes/08-causal.pdf
+  - points out an interesting thing about causal models: in a regression, you do not want to include
+  post-treatment variables, e.g., tar build up in lungs when your treatment is smoking and outcome is lung cancer;
+  this is b/c the tar buildup variable will strongly predict the outcome, pushing the coeff on smoking towards
+  zero, despite smoking being the cause for both tar build up and the outcome... In a ML predictive model you
+  wouldn't care, but in a causal model it matters
+
 --------------------------------
+
+Some Google stuff:
 
 http://www.unofficialgoogledatascience.com/2017/01/causality-in-machine-learning.html
 
