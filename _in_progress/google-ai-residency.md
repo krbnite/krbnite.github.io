@@ -13,3 +13,11 @@
   - [Learning to remember rare events](https://ai.google/research/pubs/pub45801)
   - [A Brief Study of In-Domain Transfer and Learning from Fewer Samples using A Few Simple Priors](https://ai.google/research/pubs/pub46234)
   - [Capacity and Trainability in Recurrent Neural Networks](https://ai.google/research/pubs/pub45932)
+
+
+
+https://ai.google/education/
+
+https://ai.google/tools/datasets/
+
+https://careers.google.com/jobs/results/6137745959092224-google-ai-resident-2019-start-fixed-term-employee/?jlo=en_US&location=New%20York,%20NY,%20USA&q=Google%20AI%20Residency,%202019
