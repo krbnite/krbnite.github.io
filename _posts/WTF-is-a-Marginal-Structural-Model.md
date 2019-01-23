@@ -1,3 +1,8 @@
+---
+title: WTF is a Marginal Structural Model
+layout: post
+---
+
 Machine learning models are great, right?!   
 
 Obviously, that's a set up: the answer is "it depends."  Sure, ML techniques are great if your focus is on  
