@@ -1,27 +1,35 @@
 Machine learning models are great, right?!   
 
-Obviously a set up: the answer is "it depends."  Sure, ML techniques can be superb if your focus is on the 
-attaining highly accurate classification and prediction models.  
+Obviously, that's a set up: the answer is "it depends."  Sure, ML techniques are great if your focus is on  
+attaining highly accurate classification and prediction models.  But that's not always the goal, or at the least -- not
+always the only goal.
 
 Prediction is useful, for example, when wanting 
-to know whether it will rain tomorrow.  If rain is predicted, you'll bring an umbrella to work.  Whether you
-bring an umbrella to work or not will have no effect on if it actually rains.  If the model is a good model,
-it likely will rain, thus further validating that the model makes good predictions.
+to know whether it will rain tomorrow.  If rain is predicted, you'll bring an umbrella to work.  Importantly, whether you
+bring an umbrella to work will have no effect on whether or not it actually rains.  
 
-However, what if you want to predict whether or not your flower garden is going to shrivel an die over 
-the next week, and the weather forecast calls for all hot, dry, sunny days?  In this case, your model
-might warn you that your flowers will die this week, in which case you will likely go out to water them, in
-which case your flowers likely will not shrivel and die...
-
-
-Question:  How to measure success for a model that intends to undo its own predictions?
-
-That is, metrics used on validation and test sets at time of model building will no longer be meaningful once 
-interventions occur.  
+However, maybe you're not interested
+in the weather forecast as an endpoint, but as an input variable: you really want to know the chance that your flower 
+garden shrivels and dies over the next week.  The forecast calls for all hot, dry, sunny days -- and your model says chances
+are high!  With this information, you make sure the sprinklers are working so the flower get watered throughout
+the week, in which case your flowers likely will not shrivel and die... In this case, your goal is still to have a model 
+that makes great predictions, and again those predictions are used to suggest an action or intervention -- but the outcome
+is changed!  Your intervention increases the likelihood that the flowers will live, despite the model's prediction.
 
 
+Question:  How does one measure success for a model that intends to undo its own predictions?  That is, metrics used 
+when training and validating the model will no longer be meaningful once interventions occur.  At least if those 
+interventions are not properly accounted for!
 
-Welcome to marginal structural models!
+Anyway, hopefully I motivated it enough...
+
+Welcome to the world of marginal structural models!
+
+# Marginal structural what?
+Actually, it would have been more accurate to say, "Welcome to the world of causal inference!", but I actually 
+didn't know that until I began exploring MSMs -- and what comes below are some introductory notes I took while doing so.
+
+Let's proceed!
 
 "Marginal structural models are a multi-step estimation procedure designed to control for the effect of confounding 
 variables that change over time, and are affected by previous treatment."
