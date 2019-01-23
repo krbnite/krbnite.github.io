@@ -11,31 +11,38 @@ bring an umbrella to work will have no effect on whether or not it actually rain
 However, maybe you're not interested
 in the weather forecast as an endpoint, but as an input variable: you really want to know the chance that your flower 
 garden shrivels and dies over the next week.  The forecast calls for all hot, dry, sunny days -- and your model says chances
-are high!  With this information, you make sure the sprinklers are working so the flower get watered throughout
-the week, in which case your flowers likely will not shrivel and die... In this case, your goal is still to have a model 
+are high!  With this information, you make sure the sprinklers are working so the flowers get watered throughout
+the week, in which case your flowers likely will not shrivel and die... Here, your goal is still to have a model 
 that makes great predictions, and again those predictions are used to suggest an action or intervention -- but the outcome
 is changed!  Your intervention increases the likelihood that the flowers will live, despite the model's prediction.
 
-
-Question:  How does one measure success for a model that intends to undo its own predictions?  That is, metrics used 
+How does one measure success for a model that intends to undo its own predictions?  That is, metrics used 
 when training and validating the model will no longer be meaningful once interventions occur.  At least if those 
 interventions are not properly accounted for!
+
+Whether or not your model is working isn't your only problem here: you don't even really know if your 
+intervention is doing anything.  Those flowers might have lived if the sprinkler was broken.  
 
 Anyway, hopefully I motivated it enough...
 
 Welcome to the world of marginal structural models!
 
 # Marginal structural what?
-Actually, it would have been more accurate to say, "Welcome to the world of causal inference!", but I actually 
+Actually, it would have been more accurate to say, "Welcome to the world of causal inference!", but I  
 didn't know that until I began exploring MSMs -- and what comes below are some introductory notes I took while doing so.
 
 Let's proceed!
 
-"Marginal structural models are a multi-step estimation procedure designed to control for the effect of confounding 
-variables that change over time, and are affected by previous treatment."
-
 A marginal structural model is a type of statistical model used for causal inference.  The term mostly crops
 up in epidemiology -- you know, the "study (scientific, systematic, and data-driven) of the distribution (frequency, pattern) and determinants (causes, risk factors) of health-related states and events (not just diseases) in specified populations (neighborhood, school, city, state, country, global)." (Source: [Principle of Epidemiology](https://www.cdc.gov/ophss/csels/dsepd/ss1978/index.html))
+
+Said another way:
+> "Marginal structural models are a multi-step estimation procedure designed to control for the effect of 
+> confounding variables that change over time, and are affected by previous treatment." - [Williamson & Ravani [2017]](https://academic.oup.com/ndt/article/32/suppl_2/ii84/2989980).
+
+Said a better way (modified to respect the flower example above):
+> “Ideally, the true causal effect of a treatment (or exposure) would be estimated by comparing what actually happened to a [FLOWER] given [THEY WERE WATERED] with what would have happened to the same [FLOWER] if (contrary to fact) they had [NOT BEEN WATERED]. Since we can rarely observe the same [FLOWERS] under both conditions (even in a crossover randomized controlled trial carry-over effects induce systematic differences), the only way to determine causal effects is to compare two [GARDENS OF FLOWERS] that are identical in every way except that one [GARDED] was [WATERED] and the other was not. Marginal structural models (as other causal models) attempt to fully adjust for measured confounders to enhance group comparability and estimate causal effects in a similar way. While these methods have been found to replicate results of randomized controlled trials when all their assumptions are met, only randomization can ensure comparability of treatment groups by balancing both measured and unmeasured confounding factors.” - [Williamson & Ravani [2017]](https://academic.oup.com/ndt/article/32/suppl_2/ii84/2989980).
+
 
 
 # What is a structural model?   
@@ -79,18 +86,6 @@ MSMs are also considered saturated... What does that mean?
 
 Marginal structural models are considered saturated, because: 
 * "each has two unknown parameters and thus each model places no restriction on the possible values of the two unknown probabilities” pr(Y[a=0] = 1) and pr(Y[a=1] =1)." - [Robins et al [2000]](https://epiresearch.org/wp-content/uploads/2014/07/Robins_EPI_2000_11_550.pdf)
-
-
-
-
-https://academic.oup.com/ndt/article/32/suppl_2/ii84/2989980
-“Ideally, the true causal effect of a treatment (or exposure) would be estimated by comparing what actually happened to a subject given a certain treatment with what would have happened to the same subject if (contrary to fact) they had received the alternative treatment. Since we can rarely observe the same patients under both conditions (even in a crossover randomized controlled trial carry-over effects induce systematic differences), the only way to determine causal effects is to compare two groups that are identical in every way except that one group was treated and the other was not. Marginal structural models (as other causal models) attempt to fully adjust for measured confounders to enhance group comparability and estimate causal effects in a similar way. While these methods have been found to replicate results of randomized controlled trials when all their assumptions are met, only randomization can ensure comparability of treatment groups by balancing both measured and unmeasured confounding factors.”
-
-
-
-
-
-
 
 
 
