@@ -1,5 +1,30 @@
+Machine learning models are great, right?!   
+
+Obviously a set up: the answer is "it depends."  Sure, ML techniques can be superb if your focus is on the 
+attaining highly accurate classification and prediction models.  
+
+Prediction is useful, for example, when wanting 
+to know whether it will rain tomorrow.  If rain is predicted, you'll bring an umbrella to work.  Whether you
+bring an umbrella to work or not will have no effect on if it actually rains.  If the model is a good model,
+it likely will rain, thus further validating that the model makes good predictions.
+
+However, what if you want to predict whether or not your flower garden is going to shrivel an die over 
+the next week, and the weather forecast calls for all hot, dry, sunny days?  In this case, your model
+might warn you that your flowers will die this week, in which case you will likely go out to water them, in
+which case your flowers likely will not shrivel and die...
 
 
+Question:  How to measure success for a model that intends to undo its own predictions?
+
+That is, metrics used on validation and test sets at time of model building will no longer be meaningful once 
+interventions occur.  
+
+
+
+Welcome to marginal structural models!
+
+"Marginal structural models are a multi-step estimation procedure designed to control for the effect of confounding 
+variables that change over time, and are affected by previous treatment."
 
 A marginal structural model is a type of statistical model used for causal inference.  The term mostly crops
 up in epidemiology -- you know, the "study (scientific, systematic, and data-driven) of the distribution (frequency, pattern) and determinants (causes, risk factors) of health-related states and events (not just diseases) in specified populations (neighborhood, school, city, state, country, global)." (Source: [Principle of Epidemiology](https://www.cdc.gov/ophss/csels/dsepd/ss1978/index.html))
