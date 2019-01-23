@@ -1,4 +1,4 @@
-Been reading through:  https://epiresearch.org/serlibrary/serplaylists/introduction-to-marginal-structural-models/
+
 
 
 A marginal structural model is a type of statistical model used for causal inference.  The term mostly crops
@@ -61,18 +61,23 @@ https://academic.oup.com/ndt/article/32/suppl_2/ii84/2989980
 
 
 
-# References
-* Coursera: [Video Lectures on Causal Inference](https://www.coursera.org/learn/crash-course-in-causality)
+# References & Further Reading
+* Advanced reading list: [Introduction to Marginal Structural Models](https://epiresearch.org/serlibrary/serplaylists/introduction-to-marginal-structural-models/)
+  - Robins et al [2000]: [Marginal Structural Models and Causal Inference in
+Epidemiology](https://epiresearch.org/wp-content/uploads/2014/07/Robins_EPI_2000_11_550.pdf)
+    * Note to Self: I want read this one again after having read and watched other sources
+  - Sato & Matsuyam [2003]: [Marginal Structural Models as a Tool for Standardization](https://epiresearch.org/wp-content/uploads/2014/07/Sato_EPI_2003_14_680.pdf)
+    * Haven't read this one yet...
+*	Helpful Dissertation:  Ewings [2012]: [Practical and theoretical considerations of the
+application of marginal structural models to
+estimate causal e§ects of treatment in HIV
+infection](http://discovery.ucl.ac.uk/1346448/1/1346448.pdf)
+  - Note to Self: left off on pg 21 (KEEP READING)
+*	Very nice intro article:  Williamson & Ravani [2017]: [Marginal structural models in clinical research: when and how to use them?](https://academic.oup.com/ndt/article/32/suppl_2/ii84/2989980)
+
+# Courses & Tutorials
+* Coursera: [Crash Course in Causality](https://www.coursera.org/learn/crash-course-in-causality)
   - [Lecture on MSMs](https://www.coursera.org/lecture/crash-course-in-causality/marginal-structural-models-EUpei)
-*	Helpful Dissertation:  http://discovery.ucl.ac.uk/1346448/1/1346448.pdf
-  - left off on pg 21 (KEEP READING)
-*	Very nice intro article:  https://academic.oup.com/ndt/article/32/suppl_2/ii84/2989980
-* Advanced Reading / Deeper Dive: https://epiresearch.org/serlibrary/serplaylists/introduction-to-marginal-structural-models/
-  - https://epiresearch.org/wp-content/uploads/2014/07/Robins_EPI_2000_11_550.pdf
-    * read this one again after having read and watched other sources
-  - https://epiresearch.org/wp-content/uploads/2014/07/Sato_EPI_2003_14_680.pdf
-    * haven't read yet...
-
-
+  - Plan: Take a step back from MSMs and learn more about causal inference in general
 * YouTube Playlist on Causal Inference:  https://www.youtube.com/watch?v=RtBY1zRaE_4&list=PL2yD6frXhFoYSO4MF3utWG_UUv2bhNZj0
   - only a few mins into 1st video (KEEP WATCHING)
