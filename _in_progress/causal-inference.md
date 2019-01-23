@@ -318,6 +318,40 @@ covariates X=x:  `E{Y|A=a,X=x}`.
 https://www.coursera.org/lecture/crash-course-in-causality/stratification-xEcaf
 
 
+Standardization
+  - stratify on important variables, then averaging over...
+  - that is, standardization is a combination of conditioning and marginalizing
+  - conditioning means to stratify (remember: whenever we say "given", we mean "restrict to")
+  - marginalize means to average over
+  
+Previously, we found that we can estimate information on potential outcomes by putting a few 
+assumptions into place.  Namely, by consistency and ignorability, we can link potential outcomes to
+actual data: `E{Y[a]|X=x} = E{Y|A=a,X=x}`.
+
+We needed to condition on X in order to link actual outcomes to potential outcomes, but now to get the 
+marginal causal effect, we will need to average over the distribution of X: 
+* Expected potential outcome for A=a:  `E{Y[a]} = Σ{X} E{Y|A=a,X=x}P(X=x)`
+* Marginal causal effect: 
+
+
+
+
+
+
+==========================
+
+* Module 2: https://www.coursera.org/lecture/crash-course-in-causality/confounding-VT3H4
+  - disjunctive cause criterion can also be called "disconnective criterion" or "simply disconnect criterion"
+  since "disjunctive" means "lacking connection" and the criterion basically says "only worry about
+  disconnecting nearest neighbor nodes that flow directly into A or Y" (btw, doesn't always work, but good rule of thumb)
+
+* Module 3: https://www.coursera.org/lecture/crash-course-in-causality/observational-studies-V6pDQ
+
+* Module 4: https://www.coursera.org/lecture/crash-course-in-causality/intuition-for-inverse-probability-of-treatment-weighting-iptw-nrrCT
+
+* Module 5: https://www.coursera.org/lecture/crash-course-in-causality/introduction-to-instrumental-variables-ueIMD
+
+
 
 ------------------------
 
@@ -391,4 +425,11 @@ Potential models to look into:
 •	Already looking into:  marginal structural models (MSMs), structural nested models (SNMs), and the g-formula
 •	Can also explore:  discontinuity design, difference-in-differences, fixed effects modeling, and instrumental variables modeling
 
+------------------------------------------
 
+Other MOOCs:
+* https://www.coursera.org/learn/causal-inference
+* https://www.coursera.org/learn/causal-effects
+* https://www.coursera.org/learn/probabilistic-graphical-models
+* https://www.edx.org/course/causal-diagrams-draw-assumptions-harvardx-ph559x
+* https://www.coursera.org/learn/designexperiments
