@@ -10,21 +10,36 @@ If you want to know what a "marginal structural model" is, then maybe you want t
 what a "structural model" is.  Basically, "structural" is synonymous with "causal" -- these are models that
 aim to identify causal relationships.
 
-Marginal structural models are called structural models, because:
-* "they model the probabilities of counterfactual variables and in the econometric and social science literature 
+Marginal structural models are causal in that "they model the probabilities of counterfactual variables" ([Robins et al [2000]](https://epiresearch.org/wp-content/uploads/2014/07/Robins_EPI_2000_11_550.pdf)). They are called "marginal
+structural models" instead of "marginal causal models" because -- well, because that's what we call 'em:
+* "in the econometric and social science literature, 
 models for counterfactual variables are often referred to as structural." - [Robins et al [2000]](https://epiresearch.org/wp-content/uploads/2014/07/Robins_EPI_2000_11_550.pdf)
 * "models exploring causal relationships are referred to as structural in the econometric and social sciences 
 literature.” - [Williamson et al [2017]](https://academic.oup.com/ndt/article/32/suppl_2/ii84/2989980)
 
-# What is a marginal model?  
-Ok, so structural means we are looking to infer cause-and-effect relationships from the data.  What
-does "marginal" mean?
 
-They are called marginal models, because: 
+## Counterfactural Excursion 
+You might be asking: WTF is a counterfactual variable?  
+
+Good question!
+
+A counterfactual variable is a variable that exists in a parallel universe: something that is counter to fact, i.e.,
+contrary to observation.  That is, if you took ibuprofen for your headache an hour ago, you did not also "not take
+ibuprofen for your headache an hour ago."  One thing actually happened, and the other thing is counterfactual: a huge
+part of causal inference is asking "what would have happened if...?"
+
+Interestingly, this "counterfactual excursion" was actually an "actual excursion."  Nice!  (Or, counterfactually: not nice!)
+
+
+# What is a marginal model?  
+Ok, so we know that a structural model attempts to infer cause-and-effect relationships from the data.  But ultimately,
+we want to know what marginal structural models do!  What does "marginal" mean? 
+
+MSMs are called marginal models, because: 
 * "they model the marginal distribution of the counterfactual random variables Y[a=1] and Y[a=0] rather than the joint distribution." - [Robins et al [2000]](https://epiresearch.org/wp-content/uploads/2014/07/Robins_EPI_2000_11_550.pdf)
 * "they use the marginal distribution of the treatment (or exposure) variable at any time point to weight its relationship with outcome. Marginal in statistics means ‘unconditional’ —- i.e. not conditional on other variables, like the probabilities of one variable on the margins of a contingency table of two discrete variables." - [Williamson et al [2017]](https://academic.oup.com/ndt/article/32/suppl_2/ii84/2989980)
 
-# What is a counterfactual variable?
+
 
 # What is a saturated model?
 MSMs are also considered saturated... What does that mean?
