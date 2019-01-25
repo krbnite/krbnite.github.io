@@ -351,7 +351,7 @@ marginal causal effect, we will need to average over the distribution of X:
 
 * Module 5: https://www.coursera.org/lecture/crash-course-in-causality/introduction-to-instrumental-variables-ueIMD
   - Ertefaie et al [2017]: [A tutorial on the use of instrumental variables in pharmacoepidemiology](https://www.cceb.med.upenn.edu/sites/default/files/uploads/cter/A%20tutorial%20on%20the%20use%20of%20instrumental_0.pdf)
-
+  - Baiocchi et al [2015]: [Tutorial in Biostatistics: Instrumental Variable Methods for Causal Inference](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4201653/)
 ------------------------
 
 ## Misc Reading
