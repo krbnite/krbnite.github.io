@@ -16,6 +16,8 @@ Healthcare
 * Coursera: [Design and Interpretation of Clinical Trials](https://www.coursera.org/learn/clinical-trials)
 * [Data Management for Clinical Research](https://www.coursera.org/learn/clinical-data-management)
 * [Understanding Clinical Research: Behind the Statistics](https://www.coursera.org/learn/clinical-research)
+* [Healthcare Data Literacy](https://www.coursera.org/learn/healthcare-data-literacy)
+* [Healthcare Data Models](https://www.coursera.org/learn/healthcare-data-models)
 * Coursera: [Systems Science and Obesity](https://www.coursera.org/learn/systems-science-obesity)
 * Coursera: [Systematic Review and Meta-Analysis of Clinical Trials](https://www.coursera.org/learn/systematic-review)
 * [eHealth: More than just an electronic record](https://www.coursera.org/learn/ehealth)
