@@ -4,9 +4,10 @@ Great question.  Even the topnotch doctors can kill with bad penmanship!  This i
 of the inefficiencies in healthcare that has driven policymakers to incentivise the healthcare profession
 to utilize electronic healthcare systems.
 
-
-and they chicken peck at a computer keyboard, muttering about 
-this stupid technology stuff, don't you feel so safe?
+Utilizing better technology has a pro for doctors too: ever see a doctor chicken peck at a computer keyboard, muttering about 
+this stupid technology stuff?  Did it make you feel safe?  No, probably not -- in fact, a survey has shown that
+people generally perceive a doctor's quality by how much technology he uses, and by how well he uses it.  Or something
+along those lines.  
 
 https://www.coursera.org/learn/healthcare-it
 
