@@ -45,14 +45,17 @@ come into the room with targeted questions.
 
 
 ## Patient Portals
-Wouldn't be nice if your healthcare experience felt organized?  It definitely feels piecemeal and unwieldy to me: I have 
+Wouldn't be nice if your healthcare experience felt organized?  It definitely has felt piecemeal and unwieldy 
+to me over the years: I have 
 health records associated with no less than two urgent cares, a couple or so hospitals, and even a slew of primary care
-physicians (took a few tries to find one I liked).  Yes, you can get your records from each place and keep a folder
+physicians (took a few tries before one stuck).  Yes, you can get your records from each place and keep a folder
 at home... But... 
 
 I don't want to!  I can buy and sell stocks on my trading account from my mobile phone in the middle of 
 nowhere, waiting for an Uber to pick me up and bring me to an AirBnB where I'll have some GrubHub delivered -- all
-using Apple Pay.  
+using Apple Pay.  I can view where that Uber is on a map as I wait and order that AirBnB 10 minutes before I 
+arrive.  Each service will provide immediate email confirmation and status updates via text.  
+
 
 You get the point.  I want to manage my healthcare experience in one place online.  I want to see a breakdown 
 of charges, lab tests, and all past diagnoses in one place.  I want to pay my bills there, make an appointment, and 
