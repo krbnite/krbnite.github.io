@@ -4,17 +4,52 @@ Great question.  Even the topnotch doctors can kill with bad penmanship!  This i
 of the inefficiencies in healthcare that has driven policymakers to incentivise the healthcare profession
 to utilize electronic healthcare systems.
 
-Utilizing better technology has a pro for doctors too: ever see a doctor chicken peck at a computer keyboard, muttering about 
+Ever see a doctor chicken peck at a computer keyboard, muttering about 
 this stupid technology stuff?  Did it make you feel safe?  No, probably not -- in fact, a survey has shown that
-people generally perceive a doctor's quality by how much technology he uses, and by how well he uses it.  Or something
-along those lines.  
+technology is associated with perceived quality of care even more than actual quality.
 
-https://www.coursera.org/learn/healthcare-it
+I learned about these things and more watching through the videos found in Mount Sanai's course,
+[Health Care IT: Challenges and Opportunities](https://www.coursera.org/learn/healthcare-it), which I watched
+in my ongoing effort to immerse myself in the culture and milieu of fields related to biotech, digital
+health, and medical technologies.
 
-* Mount Sanai: [Health Care IT: Challenges and Opportunities](https://www.coursera.org/learn/healthcare-it)
-  - watching
-  - from a survey: technology is associated w/ quality even more than quality is associated w/ quality
-  - people find location of healtcare to be important in choice, but also whether they can email their symptoms
+Here's another tidbit: What are some determining factors for a patient's choice in healthcare provider?  Turns
+out that people find location of healtcare to be important, which is no big surprise.  But it was also found that
+healthcare consumers really dig email -- specifically, the ability to email one's symptoms to a doctor.  
+
+Go figure, right?  Healthcare consumers like email?  Next thing you're gonna tell me they like text messaging...  Who
+are these crazy healthcare consumers anyway?!  
+
+That's basically what this course was about:  technology, or the apparent lackthereof, in today's healthcare experience.  
+
+As 
+one instructor put it when juxtaposing contrasting the current state with banking technology:  "I think this is what 
+patients go through... [Patients] go to see one provider, and they provide all their information, and then they're referred 
+to a specialist and they have to provide all the information again. And then they're referred for a procedure and they have 
+to give the information again. At the same time, I can take the card that's in my wallet and go to the other side of 
+this planet, put it in the machine, put in four digits, and get local currency instantly debited to my account 
+within seconds."
+
+The course instructors do generally think healtcare will get there:  "I think in five or ten years ... most of the care 
+will be virtual... The healthcare will come to [the patients], wherever they are. Kind of picking the same analogy of 
+banking, I don't have to go to a bank now to deposit a check. I can use an app, take a picture, and the money gets 
+deposited. I think it's going to be very much the same in healthcare. We already seen the trend. And I believe in a 
+couple of years we'll see telemedicine, secure messaging with doctors, kind of becoming main stream."
+
+I'm going to let you in on a little secret: I've actually never emailed a doctor my symptoms.  Isn't that crazy?  Seems
+like such an obvious and simple efficiency: instead of incoherently blathering on the spot, I could take some time to
+craft an email, ensuring that I communicate all that I wanted to say.  This might be helpful to the doctor too, who can
+come into the room with targeted questions.
+
+
+In a way,
+we are all aware that our healthcare experience doesn't quite fit in with the rest of our tech-savvy lives -- we 
+
+and this
+course will bring it all to the forefront.  
+
+
+* Oh sweet,
     * found this interesting b/c it saves both parties frustration: the patient can take the time to write about their experience and feel heard, while the doc can save on time
 
 I have EHR / patient portal w/ Atlantic Healthcare ... so I think this means everything from Loughlin and Chilton...  since both are Atlantic...  What features does my patient portal have?  How does that stack up?  Can I integrate patient portal w/ my iPhone?  Does it allow virtual/email visits?  Can I email symptoms?  How far back does my history go?  Can I integrate this EHR/portal w/ any others?
@@ -55,10 +90,7 @@ What is an AirBnB for healthcare?  Will a hospital be relevant in 10 years?
 
 "I haven't met anybody below the age of 100 who doesn't like using a phone or a tablet to do Facetime with their grandkids or great grandkids. So it's not the technology."
 
-On healthcare IT vs banking:
-"I think this is what patients go through... [Patients] go to see one provider, and they provide all their information, and then they're referred to a specialist and they have to provide all the information again. And then they're referred for a procedure and they have to give the information again. At the same time, I can take the card that's in my wallet and go to the other side of this planet, put it in the machine, put in four digits, and get local currency instantly debited to my account within seconds."
 
-"I think in five or ten years ... most of the care will be virtual... The healthcare will come to [the patients], wherever they are. Kind of picking the same analogy of banking, I don't have to go to a bank now to deposit a check. I can use an app, take a picture, and the money gets deposited. I think it's going to be very much the same in healthcare. We already seen the trend. And I believe in a couple of years we'll see telemedicine, secure messaging with doctors, kind of becoming main stream."
 
 Early Signal in a nutshell:
 Sudipto Srivastava: "But as you look at what's happening, the noise that's out there, there's a lot of talk about devices that gather data. Gather data about your walking, what you're eating, you know how your blood pressure is doing. How different parameters of your whole body is doing. And right now, there's no real market to figure out. Well, what do you do with all that noise that it be generating? But I do believe that, as things get more sophisticated to analyze these data and more trends come out, we will be able to predict a lot more things much better. We can look at tell tale signs of certain disease conditions that maybe you know an indicator of an onset of something. And maybe hopefully, especially talking about the risk population intervene earlier and be able to do something about it."
