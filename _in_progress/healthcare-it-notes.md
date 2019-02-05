@@ -20,7 +20,9 @@ healthcare consumers really dig email -- specifically, the ability to email one'
 Go figure, right?  Healthcare consumers like email?  Next thing you're gonna tell me they like text messaging...  Who
 are these crazy healthcare consumers anyway?!  
 
-That's basically what this course was about:  technology, or the apparent lackthereof, in today's healthcare experience.  
+That's basically what this course was about:  technology, or the apparent lackthereof, in today's healthcare experience.  In 
+a way, we are all aware that our healthcare experience doesn't quite fit in with the rest of our tech-savvy lives -- and this
+course will bring it all to the forefront.  
 
 As 
 one instructor put it when juxtaposing contrasting the current state with banking technology:  "I think this is what 
@@ -42,31 +44,54 @@ craft an email, ensuring that I communicate all that I wanted to say.  This migh
 come into the room with targeted questions.
 
 
-In a way,
-we are all aware that our healthcare experience doesn't quite fit in with the rest of our tech-savvy lives -- we 
+## Patient Portals
+Wouldn't be nice if your healthcare experience felt organized?  It definitely feels piecemeal and unwieldy to me: I have 
+health records associated with no less than two urgent cares, a couple or so hospitals, and even a slew of primary care
+physicians (took a few tries to find one I liked).  Yes, you can get your records from each place and keep a folder
+at home... But... 
 
-and this
-course will bring it all to the forefront.  
+I don't want to!  I can buy and sell stocks on my trading account from my mobile phone in the middle of 
+nowhere, waiting for an Uber to pick me up and bring me to an AirBnB where I'll have some GrubHub delivered -- all
+using Apple Pay.  
 
+You get the point.  I want to manage my healthcare experience in one place online.  I want to see a breakdown 
+of charges, lab tests, and all past diagnoses in one place.  I want to pay my bills there, make an appointment, and 
+view my data -- all of it: any X-rays, MRIs, ECGs, whatever.  Show it to me -- please!  For the love of love!
 
-* Oh sweet,
-    * found this interesting b/c it saves both parties frustration: the patient can take the time to write about their experience and feel heard, while the doc can save on time
+Some paranoid folks might think this is crazy, but we already do this with our bank accounts and credit cards.  It's
+on about the same level of crazy as that.  
 
-I have EHR / patient portal w/ Atlantic Healthcare ... so I think this means everything from Loughlin and Chilton...  since both are Atlantic...  What features does my patient portal have?  How does that stack up?  Can I integrate patient portal w/ my iPhone?  Does it allow virtual/email visits?  Can I email symptoms?  How far back does my history go?  Can I integrate this EHR/portal w/ any others?
+Definitely some health insurance providers have been doing ok at addressing some of this.  But as my provider
+has changed when changing employers, I know mileage can vary quite a bit here.  
+
+I also happen to go to a doctor and hosptial in the same healthcare network, which provides a patient portal.  This
+seems to be going in the right direction: for example, I've been able to view some clinician notes and renew
+prescriptions.  So that's cool.
+
+### Questions I have about my patient portal
+What features does my patient portal have?  How does that stack up against other patient portals?  Can I integrate 
+patient portal w/ my iPhone?  Does it allow virtual/email visits?  Can I email symptoms?  How far back does my history go?  Can I integrate this EHR/portal w/ any others?
 
 Does my portal:
-* show charges
-* paid/unpaid bills
-* option to DL data
-* option to make an appt
-* ability to see costs prior to care/service (controversial in US b/c of convoluted insurance arrangements w/ various institutions) 
+* show breakdown of charges for each visit
+* show paid/unpaid bills
+* give an option to pay or contest bills
+* provide ability to download my data in chosen format (CSV, JSON, whatever)
+* have the ability to schedule an appointment
+* provide cost estimates prior to care/service 
+   - apparently controversial in US b/c of convoluted insurance arrangements w/ various institutions
 * list accepted insurance providers
 * list my allergies, meds
-* how do I DL data and transfer into another EHR system for other care, if necessary
-* can I integrate w/ mobile or wearable
+* allow me to transfer into another EHR system for other care, if necessary
+* integrate w/ mobile or wearable devices
 
-What is my most crucial thing I need to communicate to a doctor -- and what if I cannot communicate it?
-* bracelets have been best here -- can we do better?  Maybe...maybe not.  Ex: over a decade ago, an implantable chip never took off... Could be better, but could pose more risk than it's worth.
+## Some reasons for lack of technology
+What is the most crucial thing you need to communicate to a doctor -- and what if you cannot communicate it directly?  For
+example, what if you have an allergy to a certain medicine that could kill you, but you are unconscious?
+
+Simple bracelets have been best here.  Nothing fancy.
+
+Can we do better?  Maybe...maybe not.  Ex: over a decade ago, an implantable chip never took off... Could be better, but could pose more risk than it's worth.
 -- smart card (isn't it annoying to have to fill out paperwork every time you show up to a new clinic)
 -- cloud solutions, e.g., MS HealthVault (RIP),  Google Health (also did not catch on) -- why did these technologies fail?  bracelet good enough! also, it was on patients to keep these things up to date... Google refused to partner w/ health institutions, and so their tech could not be a part of the HIPAA chain
 -- EHRs and patient portals were incentivized by federal gov't starting in 2009, which ramped up interest in creating them well (and by this point, are considered...decent)
