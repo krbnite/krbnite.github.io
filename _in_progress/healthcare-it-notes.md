@@ -175,15 +175,19 @@ UK reviews apps (has app store):  https://apps.beta.nhs.uk/
 
 Recommends ResearchKit for making app prototypes for studies...and possibly to eventually turn into validated, verified medical app.
 In asthma study/app, found that sicker individuals stuck with app for longer (which is opposite of having patients come into the office)....
+https://www.apple.com/researchkit/
 
 Wearables... Detect disease before obvious symptoms arise (assess risk, allow for early intervention).  Prevent exacerbations of chronic conditions.  All the data: clearly cool.  But how does one intervene?  What exactly is the value of the data being collected, and how to train doctors, etc....  For every publicized success of something like the Apple Watch, how many people have falsely been panicked and driven to the doctor?  
+* I have many references / reviews for this stuff
 
 Lead time bias:  "Emphasis on early detection presumes earlier interventions are more effective," however, early detection might simply mean "living longer since time-of-diagnosis (by definition)" since some disease might run "its own course, at its own pace, regardless of intervention."
+https://en.wikipedia.org/wiki/Lead_time_bias
 
 Watch out for "technology that is looking for a problem."  Example given: temperature patches for infants.
+https://www.temptraq.com/Home
 
 Jawbone mapped out an earthquake's temporal and spatial fingerprint by noting a disruption in sleep amongst its users...
-
+https://www.forbes.com/sites/dandiamond/2014/08/25/how-an-earthquake-will-mess-up-your-sleep-a-jawbone-chart/#3c1ff1c03b3a
 
 ### Healthcare Kiosks
 Have you ever been to the supermarket and took a moment to take your blood pressure?  That is like a simple 
@@ -195,6 +199,20 @@ It needn't be fully automated: combining this with some basic "virtual visit" ca
 convenient.  Imagine going to CVS or Walgreens, getting a quick kiosk diagnosis, picking up your prescription
 just outside the booth, then grabbing some comfort food and heading home for a bath!
 
+But hey -- sometimes it's not even all that convenient to go to CVS. 
+
+"Outside the healthcare setting, the kiosk’s main function is to replicate the visit to a doctor’s office, offering quick consults in a public setting such as a community center, jail, school, retail store, mall, office building or airport. Inside the pharmacy, hospital or clinic, they most often act as registration stations or patient education terminals. They can even be used as triage stations in an ED."
+
+> "Large employer group customers see kiosks as a key part of their strategy to improve access to healthcare, manage costs and enhance productivity,” says John Jesser, Anthem Vice President and LiveHealth Online General Manager, whose telehealth service is integrated in American Well kiosks in more than 20 locations. “With a kiosk, depending on their health plan benefits, employees can see a doctor covered under their health plan without ever leaving the worksite, for a fraction of the cost involved in a worksite clinic."
+
+https://mhealthintelligence.com/features/potential-for-healthcare-kiosks-in-improving-care-delivery
+
+As cool as these things might be, seems like they've been money sinks for those who have tried to push 'em out. Basically,
+too expensive.  Article says it might help out in the ER.
+
+https://www.meridiankiosks.com/4-ways-digital-kiosks-are-transforming-the-patient-check-in-process/
+
+----------------------------
 
 
 Telemedicine reimbursement -- 2015 in NY (there now exist billing codes, etc);  billing codes for apps and wearables is something new too......
@@ -207,9 +225,10 @@ Why so many forms over and over?
 An EHR system is basically like an OS...but not as useful or convenient... FHIR is probably more important than I originally thought: seems like medical software/tech needs serious paradigm shifts....
 
 MUMPS -- revolutionary for its time... heirarchical database (these are what gave way to relational databases)... Nick joked that HIT often has "paved the way, then stayed there"
+https://en.wikipedia.org/wiki/MUMPS
 
 1970s:  Expert systems (e.g., MYCIN):  knowledge base consisting of 100's of rules; many questions to clinicians on patient parameters; answers determine therapy w/ reasonable degree of confidence;  worked really well for meningitis (better than the experts); .....but these things never really took off.
+https://en.wikipedia.org/wiki/Mycin
 
-context-aware guidance
 
-Is the patient a musician:  example about IBM Watson asking this concerning a certain drug, which causes hearing loss...patient might not want to take it!
+
