@@ -88,14 +88,25 @@ Does my portal:
 * allow me to transfer into another EHR system for other care, if necessary
 * integrate w/ mobile or wearable devices
 
-## Some reasons for lack of technology
-What is the most crucial thing you need to communicate to a doctor -- and what if you cannot communicate it directly?  For
-example, what if you have an allergy to a certain medicine that could kill you, but you are unconscious?
+## Technology is Great (Except When it's Not)
+Some people do not have any critical information they must communicate to their healthcare providers.  Any
+allergies to medication?  No.  On any medications?  No.  Any bizarre diseases?  No.  
 
-Simple bracelets have been best here.  Nothing fancy.
+For others, communicating before any treatment is perform can be crucial.  But what if they are unable to do so? Think: unconscious, in shock, or mental breakdown.  Should we all be chipped and scannable?
 
-Can we do better?  Maybe...maybe not.  Ex: over a decade ago, an implantable chip never took off... Could be better, but could pose more risk than it's worth.
--- smart card (isn't it annoying to have to fill out paperwork every time you show up to a new clinic)
+Over a decade ago, an implantable chip never took off... Sounded crazy then, and still sounds crazy now. Could pose more 
+risk than it's worth.  
+
+Fact is, simple bracelets have been best here.  Technology isn't always necessary.  Still, researcher and engineers 
+tend to wonder: Can we do better?  In some areas of healthcare, we certainly can -- but it's been hard to gain 
+traction.
+
+As anyone who has gone to their general practitioner who recommends an ENT who recommends a neurologist who recommends
+a radiologist knows:  it annoying to have to fill out paperwork every time you show up to a new clinic.  Can't
+you just swipe a card like you do at the ATM?  A "smart card" like this has already been tried, but never picked up.  (Still
+seems somewhat promising to me though.)
+
+
 -- cloud solutions, e.g., MS HealthVault (RIP),  Google Health (also did not catch on) -- why did these technologies fail?  bracelet good enough! also, it was on patients to keep these things up to date... Google refused to partner w/ health institutions, and so their tech could not be a part of the HIPAA chain
 -- EHRs and patient portals were incentivized by federal gov't starting in 2009, which ramped up interest in creating them well (and by this point, are considered...decent)
 
