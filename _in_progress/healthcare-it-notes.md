@@ -141,6 +141,7 @@ Digital medicine: leverage mobile tools that people use everyday (phones, tablet
 - Challenge:  so much of the core IT was developed pre-mobile, and adaptation has been slow
 
 
+### Mobile Apps
 Mentions a cardiologist that said he prescribes more apps than drugs lately... What would it take to ensure apps are vetted and safe, just like the process for drugs?
 
 What can an app help with:
@@ -183,7 +184,18 @@ Watch out for "technology that is looking for a problem."  Example given: temper
 
 Jawbone mapped out an earthquake's temporal and spatial fingerprint by noting a disruption in sleep amongst its users...
 
-Health/dr kiosks at a store (e.g., Walgreens)... pretty cool.
+
+### Healthcare Kiosks
+Have you ever been to the supermarket and took a moment to take your blood pressure?  That is like a simple 
+healthcare kiosk.  What if it could take other measurements: "Say ahh!" a friendly Siri-like voice says
+as a camera images your throat for strep.  Rash? Skin discoloration? Itchy eyes?  Image all that too:
+poison ivy, bruise, pink eye.  Next patient!  
+
+It needn't be fully automated: combining this with some basic "virtual visit" capability could be really
+convenient.  Imagine going to CVS or Walgreens, getting a quick kiosk diagnosis, picking up your prescription
+just outside the booth, then grabbing some comfort food and heading home for a bath!
+
+
 
 Telemedicine reimbursement -- 2015 in NY (there now exist billing codes, etc);  billing codes for apps and wearables is something new too......
 
