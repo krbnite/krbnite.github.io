@@ -33,7 +33,7 @@ Healthcare
 * https://www.coursera.org/learn/leading-change-health-informatics
 * Georgia Tech (Udacity): [Health Informatics in the Cloud](https://www.udacity.com/course/health-informatics-in-the-cloud--ud809)
 * Georgia Tech (Udacity): [Big Data Analytics in Healthcare](https://www.udacity.com/course/big-data-analytics-in-healthcare--ud758)
-
+* U-Mich: [Interprofessional Healthcare Informatics](https://www.coursera.org/learn/health-informatics-professional)
 
 MRI
 * [MRI Fundamentals](https://www.coursera.org/learn/mri-fundamentals)
