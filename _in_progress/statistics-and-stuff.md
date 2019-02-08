@@ -10,7 +10,7 @@
 * https://www.coursera.org/learn/bayesian-methods-in-machine-learning
 * https://www.coursera.org/learn/erasmus-econometrics
 
-Healthcare
+# Healthcare
 * Coursera: [Data Science in Stratified Healthcare and Precision Medicine](https://www.coursera.org/learn/datascimed)
 * Mount Sanai: [Health Care IT: Challenges and Opportunities](https://www.coursera.org/learn/healthcare-it)
   - watched
@@ -29,13 +29,18 @@ Healthcare
 * [Drug Discovery](https://www.coursera.org/learn/drug-discovery)
 * [Drug Development](https://www.coursera.org/learn/drug-development)
 * [Healthcare Data Quality and Governance](https://www.coursera.org/learn/healthcare-data-quality-governance)
-* https://www.coursera.org/learn/the-socio-technical-health-informatics-context
+* Johns Hopkins: [The Social and Technical Context of Health Informatics](https://www.coursera.org/learn/the-socio-technical-health-informatics-context)
 * https://www.coursera.org/learn/leading-change-health-informatics
 * Georgia Tech (Udacity): [Health Informatics in the Cloud](https://www.udacity.com/course/health-informatics-in-the-cloud--ud809)
 * Georgia Tech (Udacity): [Big Data Analytics in Healthcare](https://www.udacity.com/course/big-data-analytics-in-healthcare--ud758)
-* U-Mich: [Interprofessional Healthcare Informatics](https://www.coursera.org/learn/health-informatics-professional)
+* U-Minnesota: [Interprofessional Healthcare Informatics](https://www.coursera.org/learn/health-informatics-professional)
+* U-Minnesota: Healthcare Marketplace Specialization:
+  - [Healthcare Marketplace](https://www.coursera.org/learn/healthcare-marketplace)
+  - [Healthcare Delivery Providers](https://www.coursera.org/learn/healthcare-delivery-providers)
+  - [Pharmaceutical and Medical Device Innovations](https://www.coursera.org/learn/pharma-medical-device-innovations)
+  - [Medical Technology and Evaluation](https://www.coursera.org/learn/healthcare-medical-technology)
 
-MRI
+# MRI
 * [MRI Fundamentals](https://www.coursera.org/learn/mri-fundamentals)
 * Johns Hopkins: [Fundamental Neuroscience for Neuroimaging](https://www.coursera.org/learn/neuroscience-neuroimaging)
 * Johns Hopkins: [Principles of fMRI 1](https://www.coursera.org/learn/functional-mri)
