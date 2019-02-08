@@ -1,24 +1,33 @@
 Is a doctor going to kill you or save your life?
 
-Great question.  Even the topnotch doctors can kill with bad penmanship!  This is no joke: it is just one
-of the inefficiencies in healthcare that has driven policymakers to incentivise the healthcare profession
-to utilize electronic healthcare systems.
+Great question.  Even the topnotch doctors can kill with bad penmanship!  This is no joke: "Doctors' sloppy 
+handwriting kills more than 7,000 people annually. It's a shocking statistic, and, according to a July 2006 
+report from the National Academies of Science's Institute of Medicine (IOM), preventable medication mistakes 
+also injure more than 1.5 million Americans annually. Many such errors result from unclear abbreviations and 
+dosage indications and illegible writing on some of the 3.2 billion prescriptions written in the U.S. 
+every year. (2007: [Cause of Death: Sloppy Doctors](http://content.time.com/time/health/article/0,8599,1578074,00.html).)
 
-Ever see a doctor chicken peck at a computer keyboard, muttering about 
+That is just one
+of the inefficiencies in healthcare that has driven policymakers to incentivise the healthcare profession
+to utilize electronic healthcare systems.  But with new technologies come new issues.
+
+Ever see an older doctor chicken peck at a computer keyboard, muttering about 
 this stupid technology stuff?  Did it make you feel safe?  No, probably not -- in fact, a survey has shown that
 technology is associated with perceived quality of care even more than actual quality.
+* https://hitconsultant.net/2015/03/30/40-of-patients-feel-rushed-during-physician-appointments/#.XFzg7c9KjOQ
 
 I learned about these things and more watching through the videos found in Mount Sanai's course,
 [Health Care IT: Challenges and Opportunities](https://www.coursera.org/learn/healthcare-it), which I watched
 in my ongoing effort to immerse myself in the culture and milieu of fields related to biotech, digital
-health, and medical technologies.
+health, and medical technologies. (To ensure I wasn't just repeating gibberish, I often googled for
+references and extra reading -- scattered throughout this post.)
 
 Here's another tidbit: What are some determining factors for a patient's choice in healthcare provider?  Turns
 out that people find location of healtcare to be important, which is no big surprise.  But it was also found that
 healthcare consumers really dig email -- specifically, the ability to email one's symptoms to a doctor.  
 
-Go figure, right?  Healthcare consumers like email?  Next thing you're gonna tell me they like text messaging...  Who
-are these crazy healthcare consumers anyway?!  
+Go figure, right?  Healthcare consumers like email?  Next thing you're gonna tell me they like text messaging, or easily
+scheduling an appointment right from their phone. (They do.) Who are these crazy healthcare consumers anyway?!  
 
 That's basically what this course was about:  technology, or the apparent lackthereof, in today's healthcare experience.  In 
 a way, we are all aware that our healthcare experience doesn't quite fit in with the rest of our tech-savvy lives -- and this
@@ -109,6 +118,22 @@ seems somewhat promising to me though.)
 
 -- cloud solutions, e.g., MS HealthVault (RIP),  Google Health (also did not catch on) -- why did these technologies fail?  bracelet good enough! also, it was on patients to keep these things up to date... Google refused to partner w/ health institutions, and so their tech could not be a part of the HIPAA chain
 -- EHRs and patient portals were incentivized by federal gov't starting in 2009, which ramped up interest in creating them well (and by this point, are considered...decent)
+
+Some of the technological and procedural innovation is considered by some to be mere "innovation":
+"Americans pay more and yet have serious access problems in primary care, long-term care, and much specialty care. Wait 
+times to see all kinds of doctors are increasing in most areas of the country. To deal with this, in American primary 
+care patients are guided into undifferentiated, highly transactional forms of service delivery that may be cheaper but 
+are less comprehensive in the services offered and impersonal, involving fast-food care provided through web-based apps, 
+big box stores, and urgent care centers. These sources of care often practice their medicine according to “cookbooks” 
+of standardized clinical guidelines using high-turnover providers, giving us fewer moments of the relational excellence 
+so important in high-quality health care."  (Hoff 2018: [Seeing Value From the Patient’s Perspective](http://thehealthcareblog.com/blog/2018/04/30/seeing-value-more-from-the-patients-perspective/)
+
+Another potential issue with using technologies, such as those associated with telemedicine, is that
+the technology better be damn good -- like, ease-of-Netflix-or-Uber-level good.  It is 2019: people are generally
+becoming more accepting of telemedicine technologies, but not of poor-quality ones!  In fact, a patient's perception
+of the quality of care in this situation is hinged on the technology feeling fluid and easy, as is expected for
+any web service these days (e.g., see: Donahue 2018: [How Penn Medicine looks at telehealth from the patient perspective](https://www.healthcareitnews.com/blog/how-penn-medicine-looks-telehealth-patient-perspective)).
+
 
 Imagine a recommendation engine using EHRs:  your various lab tests and biometrics are most like these other people, who have required surgery X -- ask your doc!  How about just seasonal notifications:  it's spring time, remember to take Zyrtec or you'll start feeling sluggish and weak again!  How about something simple like:  noticed Dr. X prescribed you medicine M and Dr. Y prescribed medicine N -- watch out, there are known interactions among these drugs.  Or that, but more personalized: although X and Y are safe together for most of the population, patients w/ EHRs similar to yours have higher propensity for negative side effects.  How about schedule a visit or send EHR access to another doc?  How about "info nuggets" about everything and anything: your meds, your bills, etc...  Recommended reading/videos/diet based on lab results, diagnoses, etc.
 
