@@ -17,7 +17,7 @@ often googled for references and extra reading -- and sprinkled 'em throughout t
 I take full credit for any horribly inaccurate nonsense or poorly-worded passages provided below.  
 
 One last thing before we begin: I especially loved that Ross from Friends is one of the course's instructors 
-(looking at you, Dr. Nick Genes :-p).
+(close your eyes and listen -- you'll know what I'm talking about).
 
 
 ## Inefficiencies in Healthcare
@@ -25,40 +25,18 @@ Fatal penmanship is just one
 of the inefficiencies in healthcare that has driven policymakers to incentivise the use of
 electronic healthcare systems (EHRs).  There are many more!
 
-As one instructor put it when contrasting the current state with banking technology:  Patients "go to see one provider, 
-and they provide all their information, and then they're referred 
-to a specialist and they have to provide all the information again. And then they're referred for a procedure and they have 
-to give the information again." 
-
-Importantly, it's not just that these inefficiencies exist, but they are anachornistic and incongruent with
-the rest of our tech-laden lives!  The instructor continues:  "At the same time, I can take the card that's in 
-my wallet and go to the other side of 
-this planet, put it in the machine, put in four digits, and get local currency instantly debited to my account 
-within seconds."
-
 As anyone who has gone to their general practitioner who recommends an ENT who recommends a neurologist who recommends
 a radiologist knows:  it annoying to have to fill out paperwork every time you show up to a new clinic.  Can't
-you just swipe a card like you do at the ATM?  A "smart card" like this has already been tried, but never picked up.  (Still
-seems somewhat promising to me though.)
+you just swipe a card like you do at the ATM?  A "smart card" like this has already been tried, but never picked up. 
 
-
-Here's another tidbit: What are some determining factors for a patient's choice in healthcare provider?  Turns
-out that people find location of healtcare to be important, which is no big surprise.  But it was also found that
-healthcare consumers really dig email -- specifically, the ability to email one's symptoms to a doctor.  
-
-Go figure, right?  Healthcare consumers like email?  Next thing you're gonna tell me they like text messaging, or easily
-scheduling an appointment right from their phone. (They do.) Who are these crazy healthcare consumers anyway?!  
-
-That's basically what this course was about:  technology, or the apparent lackthereof, in today's healthcare experience.  In 
-a way, we are all aware that our healthcare experience doesn't quite fit in with the rest of our tech-savvy lives -- and this
-course will bring it all to the forefront.  
-
-I'm going to let you in on a little secret: I've never emailed a doctor my symptoms.  Isn't that crazy?  Seems
-like such an obvious and simple efficiency: instead of incoherently blathering on the spot, I could take some time to
-craft an email, ensuring that I communicate all that I wanted to say.  This might be helpful to the doctor too, who can
-come into the room with targeted questions.
-
-
+One instructor contrasted the current state of healthcare with that of banking:  Patients "go to see one provider, 
+and they provide all their information, and then they're referred 
+to a specialist and they have to provide all the information again. And then they're referred for a procedure and they have 
+to give the information again." Importantly, it's not just that these inefficiencies exist, but they are anachornistic 
+and incongruent with the rest of our tech-laden lives!  The instructor continues:  "At the same time, 
+I can take the card that's in my wallet and go to the other side of 
+this planet, put it in the machine, put in four digits, and get local currency instantly debited to my account 
+within seconds."
 
 The course instructors do generally think healtcare will get there:  "I think in five or ten years ... most of the care 
 will be virtual... The healthcare will come to [the patients], wherever they are. Kind of picking the same analogy of 
@@ -68,13 +46,57 @@ couple of years we'll see telemedicine, secure messaging with doctors, kind of b
 
 
 
+## The Optics Value of Technology Healthcare
+Lack of technology inefficient.  It's anachronistic.  And aesthetically speaking, it's unattractive.
+
+Ever see an older doctor chicken peck at a computer keyboard, muttering about 
+this stupid technology stuff?  Did it make you feel safe?  No, probably not. You could be dealing
+with the best doctor you'll ever meet, but still get the uneasy feeling that this guy is a dumb ass.
+
+You wouldn't be alone: a survey has shown that
+technology is associated with perceived quality of care even more than actual quality.
+
+"Even when making a decision on where to go for less acute illnesses like the flu, consumers value the availability 
+of cutting-edge technology. 71% of respondents prefer a clinic with cutting-edge technology to one with quality 
+scores in the top 10% for their area." (2014: [Advisory Board: What Do Consumers Want from Primary Care?](https://www.advisory.com/Research/Market-Innovation-Center/expert-insights/2014/get-the-primary-care-consumer-choice-survey-results)
+
+In another study, "virtually all patients report they are comfortable with their physician using technology during a consultation and 58 percent believe this technology positively impacts their overall patient experience especially when used collaboratively to educate or explain." (2015: HIT Consultant: [58% of Patients Feel Technology Improves Patient Experience](https://hitconsultant.net/2015/03/30/40-of-patients-feel-rushed-during-physician-appointments), which quotes
+a 2013 study by the RAND Corporation -- [Factors Affecting Physician Professional Satisfaction and Their Implications for Patient Care, Health Systems, and Health Policy](https://www.rand.org/pubs/research_reports/RR439.html).)
+
+The importance of "optics" here cannot be overstated: from the patient perspective, they outweight a doctor's credentials 
+and a healthcare system's brand and reputation.  It may have no actual correlation with quality of care, but
+it is a metric that will either be used for or against a healthcare provider.
+
+
+## Basic Conveniences
+When surveying for the determining factors of a patient's choice in healthcare provider, convenience trumps all. 
+For example, the ability to walk in without an appointment and be seen in under 30 minutes ranked highest out of
+56 attributes (2014: [Advisory Board: What Do Consumers Want from Primary Care?](https://www.advisory.com/Research/Market-Innovation-Center/expert-insights/2014/get-the-primary-care-consumer-choice-survey-results).  Walking in without an appointment and getting service is already quite a convenience, but
+not convenient enough: raising that wait time to 60 minutes plummeted 38 spots in ranking.  Other conveniences include:
+onsite imaging and lab tests, 24/7 hours, and proximity to home.  But none of this is a huge surprise.
+
+The absolutely unimaginable, unearthly finding was that healthcare consumers find email convenient -- and thus, 
+desirable. Specifically, patients -- people like you and me -- prefer radical healthcare providers that utilize
+this bleeding edge technology (again, it's called "email") to replace or enhance appointments.  
+
+Go figure, right?  Healthcare consumers like email?  Next thing you're gonna tell me they like text messaging, or easily
+scheduling an appointment right from their phone. (They do.) Who are these crazy healthcare consumers anyway?!   
+
+I'm going to let you in on a little secret: I've never emailed a doctor my symptoms.  Isn't that crazy?  Seems
+like such an obvious and simple efficiency: instead of incoherently blathering on the spot, I could take some time to
+craft an email, ensuring that I communicate all that I wanted to say.  This might be helpful to the doctor too, who can
+come into the room with targeted questions.
+
+
+
+
+
+
+
 ## Mo' Tech, Mo' Problems
 But with new technologies come new issues.
 
-Ever see an older doctor chicken peck at a computer keyboard, muttering about 
-this stupid technology stuff?  Did it make you feel safe?  No, probably not -- in fact, a survey has shown that
-technology is associated with perceived quality of care even more than actual quality.
-* https://hitconsultant.net/2015/03/30/40-of-patients-feel-rushed-during-physician-appointments/#.XFzg7c9KjOQ
+
 
 ### Technology is Great (Except When it's Not)
 Some people do not have any critical information they must communicate to their healthcare providers.  Any
