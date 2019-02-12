@@ -7,20 +7,40 @@ also injure more than 1.5 million Americans annually. Many such errors result fr
 dosage indications and illegible writing on some of the 3.2 billion prescriptions written in the U.S. 
 every year. (2007: [Cause of Death: Sloppy Doctors](http://content.time.com/time/health/article/0,8599,1578074,00.html).)
 
-That is just one
-of the inefficiencies in healthcare that has driven policymakers to incentivise the healthcare profession
-to utilize electronic healthcare systems.  But with new technologies come new issues.
-
-Ever see an older doctor chicken peck at a computer keyboard, muttering about 
-this stupid technology stuff?  Did it make you feel safe?  No, probably not -- in fact, a survey has shown that
-technology is associated with perceived quality of care even more than actual quality.
-* https://hitconsultant.net/2015/03/30/40-of-patients-feel-rushed-during-physician-appointments/#.XFzg7c9KjOQ
-
 I learned about these things and more watching through the videos found in Mount Sanai's course,
 [Health Care IT: Challenges and Opportunities](https://www.coursera.org/learn/healthcare-it), which I watched
 in my ongoing effort to immerse myself in the culture and milieu of fields related to biotech, digital
-health, and medical technologies. (To ensure I wasn't just repeating gibberish, I often googled for
-references and extra reading -- scattered throughout this post.)
+health, and medical technologies. In this post, I try to make a coherent narrative out of the scattershot
+notes I took and thoughts I had while watching through the videos.  To ensure I wasn't just repeating gibberish, I 
+often googled for references and extra reading -- and sprinkled 'em throughout this post.  
+
+I take full credit for any horribly inaccurate nonsense or poorly-worded passages provided below.  
+
+One last thing before we begin: I especially loved that Ross from Friends is one of the course's instructors 
+(looking at you, Dr. Nick Genes :-p).
+
+
+## Inefficiencies in Healthcare
+Fatal penmanship is just one
+of the inefficiencies in healthcare that has driven policymakers to incentivise the use of
+electronic healthcare systems (EHRs).  There are many more!
+
+As one instructor put it when contrasting the current state with banking technology:  Patients "go to see one provider, 
+and they provide all their information, and then they're referred 
+to a specialist and they have to provide all the information again. And then they're referred for a procedure and they have 
+to give the information again." 
+
+Importantly, it's not just that these inefficiencies exist, but they are anachornistic and incongruent with
+the rest of our tech-laden lives!  The instructor continues:  "At the same time, I can take the card that's in 
+my wallet and go to the other side of 
+this planet, put it in the machine, put in four digits, and get local currency instantly debited to my account 
+within seconds."
+
+As anyone who has gone to their general practitioner who recommends an ENT who recommends a neurologist who recommends
+a radiologist knows:  it annoying to have to fill out paperwork every time you show up to a new clinic.  Can't
+you just swipe a card like you do at the ATM?  A "smart card" like this has already been tried, but never picked up.  (Still
+seems somewhat promising to me though.)
+
 
 Here's another tidbit: What are some determining factors for a patient's choice in healthcare provider?  Turns
 out that people find location of healtcare to be important, which is no big surprise.  But it was also found that
@@ -33,13 +53,12 @@ That's basically what this course was about:  technology, or the apparent lackth
 a way, we are all aware that our healthcare experience doesn't quite fit in with the rest of our tech-savvy lives -- and this
 course will bring it all to the forefront.  
 
-As 
-one instructor put it when juxtaposing contrasting the current state with banking technology:  "I think this is what 
-patients go through... [Patients] go to see one provider, and they provide all their information, and then they're referred 
-to a specialist and they have to provide all the information again. And then they're referred for a procedure and they have 
-to give the information again. At the same time, I can take the card that's in my wallet and go to the other side of 
-this planet, put it in the machine, put in four digits, and get local currency instantly debited to my account 
-within seconds."
+I'm going to let you in on a little secret: I've never emailed a doctor my symptoms.  Isn't that crazy?  Seems
+like such an obvious and simple efficiency: instead of incoherently blathering on the spot, I could take some time to
+craft an email, ensuring that I communicate all that I wanted to say.  This might be helpful to the doctor too, who can
+come into the room with targeted questions.
+
+
 
 The course instructors do generally think healtcare will get there:  "I think in five or ten years ... most of the care 
 will be virtual... The healthcare will come to [the patients], wherever they are. Kind of picking the same analogy of 
@@ -47,10 +66,55 @@ banking, I don't have to go to a bank now to deposit a check. I can use an app, 
 deposited. I think it's going to be very much the same in healthcare. We already seen the trend. And I believe in a 
 couple of years we'll see telemedicine, secure messaging with doctors, kind of becoming main stream."
 
-I'm going to let you in on a little secret: I've actually never emailed a doctor my symptoms.  Isn't that crazy?  Seems
-like such an obvious and simple efficiency: instead of incoherently blathering on the spot, I could take some time to
-craft an email, ensuring that I communicate all that I wanted to say.  This might be helpful to the doctor too, who can
-come into the room with targeted questions.
+
+
+## Mo' Tech, Mo' Problems
+But with new technologies come new issues.
+
+Ever see an older doctor chicken peck at a computer keyboard, muttering about 
+this stupid technology stuff?  Did it make you feel safe?  No, probably not -- in fact, a survey has shown that
+technology is associated with perceived quality of care even more than actual quality.
+* https://hitconsultant.net/2015/03/30/40-of-patients-feel-rushed-during-physician-appointments/#.XFzg7c9KjOQ
+
+### Technology is Great (Except When it's Not)
+Some people do not have any critical information they must communicate to their healthcare providers.  Any
+allergies to medication?  No.  On any medications?  No.  Any bizarre diseases?  No.  
+
+For others, communicating before any treatment is perform can be crucial.  But what if they are unable to do so? Think: unconscious, in shock, or mental breakdown.  Should we all be chipped and scannable?
+
+Over a decade ago, an implantable chip never took off... Sounded crazy then, and still sounds crazy now. Could pose more 
+risk than it's worth.  
+
+Fact is, simple bracelets have been best here.  Technology isn't always necessary.  Still, researcher and engineers 
+tend to wonder: Can we do better?  In some areas of healthcare, we certainly can -- but it's been hard to gain 
+traction.
+
+
+
+
+-- cloud solutions, e.g., MS HealthVault (RIP),  Google Health (also did not catch on) -- why did these technologies fail?  bracelet good enough! also, it was on patients to keep these things up to date... Google refused to partner w/ health institutions, and so their tech could not be a part of the HIPAA chain
+-- EHRs and patient portals were incentivized by federal gov't starting in 2009, which ramped up interest in creating them well (and by this point, are considered...decent)
+
+Some of the technological and procedural innovation is considered by some to be mere "innovation":
+"Americans pay more and yet have serious access problems in primary care, long-term care, and much specialty care. Wait 
+times to see all kinds of doctors are increasing in most areas of the country. To deal with this, in American primary 
+care patients are guided into undifferentiated, highly transactional forms of service delivery that may be cheaper but 
+are less comprehensive in the services offered and impersonal, involving fast-food care provided through web-based apps, 
+big box stores, and urgent care centers. These sources of care often practice their medicine according to “cookbooks” 
+of standardized clinical guidelines using high-turnover providers, giving us fewer moments of the relational excellence 
+so important in high-quality health care."  (Hoff 2018: [Seeing Value From the Patient’s Perspective](http://thehealthcareblog.com/blog/2018/04/30/seeing-value-more-from-the-patients-perspective/)
+
+Another potential issue with using technologies, such as those associated with telemedicine, is that
+the technology better be damn good -- like, ease-of-Netflix-or-Uber-level good.  It is 2019: people are generally
+becoming more accepting of telemedicine technologies, but not of poor-quality ones!  In fact, a patient's perception
+of the quality of care in this situation is hinged on the technology feeling fluid and easy, as is expected for
+any web service these days (e.g., see: Donahue 2018: [How Penn Medicine looks at telehealth from the patient perspective](https://www.healthcareitnews.com/blog/how-penn-medicine-looks-telehealth-patient-perspective)).
+
+
+
+
+
+
 
 
 ## Patient Portals
@@ -97,45 +161,19 @@ Does my portal:
 * allow me to transfer into another EHR system for other care, if necessary
 * integrate w/ mobile or wearable devices
 
-## Technology is Great (Except When it's Not)
-Some people do not have any critical information they must communicate to their healthcare providers.  Any
-allergies to medication?  No.  On any medications?  No.  Any bizarre diseases?  No.  
+# Imagination Time
+Imagine a recommendation engine using EHRs:  your various lab tests and biometrics are most like these other people, who have required surgery X -- ask your doc!  
 
-For others, communicating before any treatment is perform can be crucial.  But what if they are unable to do so? Think: unconscious, in shock, or mental breakdown.  Should we all be chipped and scannable?
+How about just seasonal notifications:  it's spring time, remember to take Zyrtec or you'll start feeling sluggish and weak again!  
 
-Over a decade ago, an implantable chip never took off... Sounded crazy then, and still sounds crazy now. Could pose more 
-risk than it's worth.  
+How about something simple like:  noticed Dr. X prescribed you medicine M and Dr. Y prescribed medicine N -- watch out, there are known interactions among these drugs.  
 
-Fact is, simple bracelets have been best here.  Technology isn't always necessary.  Still, researcher and engineers 
-tend to wonder: Can we do better?  In some areas of healthcare, we certainly can -- but it's been hard to gain 
-traction.
-
-As anyone who has gone to their general practitioner who recommends an ENT who recommends a neurologist who recommends
-a radiologist knows:  it annoying to have to fill out paperwork every time you show up to a new clinic.  Can't
-you just swipe a card like you do at the ATM?  A "smart card" like this has already been tried, but never picked up.  (Still
-seems somewhat promising to me though.)
+Or that, but more personalized: although X and Y are safe together for most of the population, patients w/ EHRs similar to yours have higher propensity for negative side effects.  
 
 
--- cloud solutions, e.g., MS HealthVault (RIP),  Google Health (also did not catch on) -- why did these technologies fail?  bracelet good enough! also, it was on patients to keep these things up to date... Google refused to partner w/ health institutions, and so their tech could not be a part of the HIPAA chain
--- EHRs and patient portals were incentivized by federal gov't starting in 2009, which ramped up interest in creating them well (and by this point, are considered...decent)
+How about schedule a visit or send EHR access to another doc?  
 
-Some of the technological and procedural innovation is considered by some to be mere "innovation":
-"Americans pay more and yet have serious access problems in primary care, long-term care, and much specialty care. Wait 
-times to see all kinds of doctors are increasing in most areas of the country. To deal with this, in American primary 
-care patients are guided into undifferentiated, highly transactional forms of service delivery that may be cheaper but 
-are less comprehensive in the services offered and impersonal, involving fast-food care provided through web-based apps, 
-big box stores, and urgent care centers. These sources of care often practice their medicine according to “cookbooks” 
-of standardized clinical guidelines using high-turnover providers, giving us fewer moments of the relational excellence 
-so important in high-quality health care."  (Hoff 2018: [Seeing Value From the Patient’s Perspective](http://thehealthcareblog.com/blog/2018/04/30/seeing-value-more-from-the-patients-perspective/)
-
-Another potential issue with using technologies, such as those associated with telemedicine, is that
-the technology better be damn good -- like, ease-of-Netflix-or-Uber-level good.  It is 2019: people are generally
-becoming more accepting of telemedicine technologies, but not of poor-quality ones!  In fact, a patient's perception
-of the quality of care in this situation is hinged on the technology feeling fluid and easy, as is expected for
-any web service these days (e.g., see: Donahue 2018: [How Penn Medicine looks at telehealth from the patient perspective](https://www.healthcareitnews.com/blog/how-penn-medicine-looks-telehealth-patient-perspective)).
-
-
-Imagine a recommendation engine using EHRs:  your various lab tests and biometrics are most like these other people, who have required surgery X -- ask your doc!  How about just seasonal notifications:  it's spring time, remember to take Zyrtec or you'll start feeling sluggish and weak again!  How about something simple like:  noticed Dr. X prescribed you medicine M and Dr. Y prescribed medicine N -- watch out, there are known interactions among these drugs.  Or that, but more personalized: although X and Y are safe together for most of the population, patients w/ EHRs similar to yours have higher propensity for negative side effects.  How about schedule a visit or send EHR access to another doc?  How about "info nuggets" about everything and anything: your meds, your bills, etc...  Recommended reading/videos/diet based on lab results, diagnoses, etc.
+How about "info nuggets" about everything and anything: your meds, your bills, etc...  Recommended reading/videos/diet based on lab results, diagnoses, etc.
 
 What is Google for Healthcare?  
 I should be able to find any and all info about my lab tests, diagnoses, etc.  I should be able to ask reasonable questions, and get answers.
@@ -157,7 +195,7 @@ What is an AirBnB for healthcare?  Will a hospital be relevant in 10 years?
 
 
 Early Signal in a nutshell:
-Sudipto Srivastava: "But as you look at what's happening, the noise that's out there, there's a lot of talk about devices that gather data. Gather data about your walking, what you're eating, you know how your blood pressure is doing. How different parameters of your whole body is doing. And right now, there's no real market to figure out. Well, what do you do with all that noise that it be generating? But I do believe that, as things get more sophisticated to analyze these data and more trends come out, we will be able to predict a lot more things much better. We can look at tell tale signs of certain disease conditions that maybe you know an indicator of an onset of something. And maybe hopefully, especially talking about the risk population intervene earlier and be able to do something about it."
+Sudipto Srivastava: "But as you look at what's happening, the noise that's out there, there's a lot of talk about devices that gather data. Gather data about your walking, what you're eating, ... how your blood pressure is doing. How different parameters of your whole body [are] doing... Well, what do you do with all that noise that it be generating? But I do believe that, as things get more sophisticated to analyze these data and more trends come out, we will be able to predict a lot more things much better. We can look at tell tale signs of certain disease conditions that maybe you know an indicator of an onset of something. And maybe hopefully, especially talking about the risk population intervene earlier and be able to do something about it."
 
 Nick Genes: "I think you bring up a great point right now. I'm generating heart rate data and step counts and you don't have the capacity to share it with my doctor. Let alone, would I expect my doctor to be able to interpret that and give me useful feedback about how I'm exercising or sleeping or any number of things. But I think patients are going to start to expect that and healthcare systems should embrace that."
 
