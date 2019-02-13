@@ -26,11 +26,11 @@ Before we start, maybe a brief one-liner about what Emfit is and how it works:
 
 
 # Basic Sleep Session Parameters
-* Sleep Session Start Time
+* **Sleep Session Start Time**
   - beginning of sleep session
-* Sleep Session End Time
+* **Sleep Session End Time**
   - end of sleep session
-* Sleep Session Total Time
+* **Sleep Session Total Time**
   - (duration of time in bed) + (duration of bed exits)
   - Question to Self:  Is this also equal to `end_time - start_time`?
 
