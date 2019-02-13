@@ -251,3 +251,4 @@ used it yet myself, and (ii) I think it was purchased quite a while back.
 * [Heart Rate Variability – How to Analyze ECG Data](https://imotions.com/blog/heart-rate-variability/)
 * 2017: Shaffer and Ginsberg: [An Overview of Heart Rate Variability Metrics and Norms](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5624990/)
 * 2017: Roseberg et al:  [Resolving Ambiguities in the LF/HF Ratio: LF-HF Scatter Plots for the Categorization of Mental and Physical Stress from HRV](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5469891/)
+* [Sleep Apnea Index](https://www.webmd.com/sleep-disorders/sleep-apnea/sleep-apnea-ahi-numbers)
