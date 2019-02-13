@@ -222,6 +222,13 @@ the worse the score is. The maximum value is 100, and values above 80 can be reg
 # Movement (Activity) Quantities
 * **Number of Bed Exits**
 * **Duration of Bed Exits**
+* **Average Activity Measure**
+  - "Avg Activity measures larger movements than those caused by heart beating and respiration, such as twitching leg 
+  or arm or changing position only slightly."
+  - From what I can tell: This takes into account intermediate-level motion in general; movement not quite large enough
+  to be considered a "toss" or "turn" 
+  - this quantitiy is referenced on page 36 of Emfit's user guid ([Installation &
+Operating Instructions](https://images-eu.ssl-images-amazon.com/images/I/B1Mgem5LdiS.pdf))
 * **Tossing and Turning (Activity)**
   - number of tosses and turns throughout the sleep session
   - I refer to this as "restlessness" in my notes, which seems to be congruent with Emfit: "The movement data gives an indication of how **restless** your sleep is."
