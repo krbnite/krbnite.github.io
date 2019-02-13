@@ -149,13 +149,17 @@ the worse the score is. The maximum value is 100, and values above 80 can be reg
   common frequency domain measures of heart rate variability."
 * **High-freqency HRV**
   - AKA: sometimes just referred to as HF or HF HRV
-  - Definition: HF is the area measured in a frequency band of 0.15-0.4 Hz.
+  - Definition: "HF is the area measured in a frequency band of 0.15-0.4 Hz."
+    * this is likely a band-integrated power spectral density of interbeat intervals (aka r-r intervals in ECG data)
+    * cannot find what units Emfit uses, though this quantity is often reported in ms^2 (milliseconds squared)
   - Importance: "It is considered a state indicator of parasympathetic nervous systems."
   - provided as a summary statistic for entire sleep session
   - also provided as a time series of shorter windows (overlapping? not sure)
 * **Low-frequency HRV**
   - AKA: sometimes just referred to as LF or LF HRV
   - Definition: "LF is the area measured in a frequency band of 0.04-0.15 Hz."
+      * this is likely a band-integrated power spectral density of interbeat intervals (aka r-r intervals in ECG data)
+      * cannot find what units Emfit uses, though this quantity is often reported in ms^2 (milliseconds squared)
   - Meaning: "It is considered a state indicator of both sympathetic/parasympathetic nervous systems."
   - provided as a summary statistic for entire sleep session
   - also provided as a time series of shorter windows (overlapping? not sure)
@@ -236,3 +240,7 @@ if they aren't pushing their brand like crazy, is it because it was a flop?  We 
 used it yet myself, and (ii) I think it was purchased quite a while back.  
 
 
+# Further Reading on Things & Stuff
+* [Heart Rate Variability – How to Analyze ECG Data](https://imotions.com/blog/heart-rate-variability/)
+* 2017: Shaffer and Ginsberg: [An Overview of Heart Rate Variability Metrics and Norms](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5624990/)
+* 2017: Roseberg et al:  [Resolving Ambiguities in the LF/HF Ratio: LF-HF Scatter Plots for the Categorization of Mental and Physical Stress from HRV](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5469891/)
