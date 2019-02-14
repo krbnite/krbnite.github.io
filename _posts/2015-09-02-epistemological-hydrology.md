@@ -1,15 +1,9 @@
 ---
-id: 86
 title: 'Hydrologists be Gettin&#8217; all Epistemological'
-date: 2015-09-02T16:47:20+00:00
-author: ogkubl
 layout: post
-guid: http://kevin-urban.com/blog/?p=86
-permalink: /index.php/2015/09/02/epistemological-hydrology/
-categories:
-  - hydrology
-  - modeling
-  - Uncategorized
+tags: hydrology modeling
+date: 2015-09-02T16:47:20+00:00
+author: Kevin Urban
 ---
 The solar wind is constantly crashing into the earth, alternating between times of turbulent cacophony and moments of serenity.
 
