@@ -1,6 +1,7 @@
 ---
 title: The Oil and Water of Website Design
 layout: post
+tags: graduate-school misc
 ---
 
 ----------------------------------------------
