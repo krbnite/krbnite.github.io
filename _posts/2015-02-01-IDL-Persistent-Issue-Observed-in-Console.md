@@ -1,6 +1,7 @@
 ---
 title: IDL 8.2&#58; Persistent com.exelis.lmgrd Issue Observed in Console
 layout: post
+tags: idl
 ---
 
 --------------------------------------------------------
