@@ -1,13 +1,9 @@
 ---
-id: 38
 title: Google Trends
-date: 2015-08-11T19:36:11+00:00
-author: ogkubl
 layout: post
-guid: http://kevin-urban.com/blog/?p=38
-permalink: /index.php/2015/08/11/google-trends/
-categories:
-  - Uncategorized
+tags: misc
+date: 2015-08-11T19:36:11+00:00
+author: Kevin Urban
 ---
 There&#8217;s no way around it: you&#8217;re not going to find the meaning of life in this blog post.
 
