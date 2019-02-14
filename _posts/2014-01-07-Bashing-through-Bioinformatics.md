@@ -1,6 +1,7 @@
 ---
 title: Bashing through Bioinformatics
 layout: post
+tags: bash algorithms bioinformatics
 ---
 
 ----------------------------------------------------------
