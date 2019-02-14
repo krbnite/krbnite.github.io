@@ -1,6 +1,7 @@
 ---
 title: Intro to Vim
 layout: post
+tags: vim
 ---
 
 ----------------------------------------------
