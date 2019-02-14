@@ -16,7 +16,7 @@ avatar: https://raw.githubusercontent.com/krbnite/krbnite.github.io/master/image
 #
 
 #theme # for regularly supported themes
-remote_theme: beautiful-jekyll # for open source themes
+remote_theme: chalk # for open source themes
 
 # Includes an icon in the footer for each username you enter
 footer-links:
