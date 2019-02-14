@@ -1,7 +1,7 @@
 ---
 title: Poking Holes in a Square
 layout: post
-tag: geometry mathematical-analysis
+tag: geometry mathematical-analysis graduate-school
 ---
 
 
