@@ -1,14 +1,9 @@
 ---
-id: 121
 title: 'The Telescopic, Anti-Myopic &#8220;Biopic&#8221; Topic'
-date: 2015-09-03T01:29:44+00:00
-author: ogkubl
 layout: post
-guid: http://kevin-urban.com/blog/?p=121
-permalink: /index.php/2015/09/03/the-telescopic-anti-myopic-biopic-topic/
-categories:
-  - astronomy
-  - autobiographical
+tags: misc
+date: 2015-09-03T01:29:44+00:00
+author: Kevin Urban
 ---
 &#8220;I ain&#8217;t never goin&#8217; back to school!&#8221;
 
