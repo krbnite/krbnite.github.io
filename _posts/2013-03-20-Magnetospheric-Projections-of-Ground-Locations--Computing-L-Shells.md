@@ -1,7 +1,7 @@
 ---
 title: Magnetospheric Projections of Ground Locations&#58; Computing L Shells
 layout: post
-tags: magnetosphere graduate-school
+tags: space-weather graduate-school
 ---
 
 ------------------------------------------------------------------
