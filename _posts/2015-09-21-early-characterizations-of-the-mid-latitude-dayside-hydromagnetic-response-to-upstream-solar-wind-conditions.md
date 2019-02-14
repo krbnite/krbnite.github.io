@@ -1,17 +1,9 @@
 ---
-id: 193
 title: 'Early characterizations of the mid-latitude, dayside hydromagnetic response to upstream solar wind conditions: 1980'
-date: 2015-09-21T22:27:58+00:00
-author: ogkubl
 layout: post
-guid: http://kevin-urban.com/blog/?p=193
-permalink: /index.php/2015/09/21/early-characterizations-of-the-mid-latitude-dayside-hydromagnetic-response-to-upstream-solar-wind-conditions/
-categories:
-  - hydromagnetic
-  - magnetosphere
-  - solar wind
-  - time series
-  - waves
+date: 2015-09-21T22:27:58+00:00
+author: Kevin Urban
+tags: space-weather time-series data-science statistical-modeling
 ---
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
