@@ -1,7 +1,7 @@
 ---
 title: Nothing's Nearly Everything&#58; Constructing an Infinite Set Out of Nothing
 layout: post
-tag: graduate-school abstract-algebra
+tags: graduate-school abstract-algebra
 ---
 
 
