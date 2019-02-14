@@ -1,7 +1,7 @@
 ---
 title: How to Make an Irksomely-Infinite Number of Choices into Plain Ol' "Yes or No" (the Hard Way, of Course)
 layout: post
-tag: graduate-school abstract-algebra
+tags: graduate-school abstract-algebra
 ---
 
 ------------------------------------------------------
