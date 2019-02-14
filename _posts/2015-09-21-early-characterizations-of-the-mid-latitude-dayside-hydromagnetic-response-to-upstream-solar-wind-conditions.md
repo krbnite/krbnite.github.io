@@ -3,7 +3,7 @@ title: 'Early characterizations of the mid-latitude, dayside hydromagnetic respo
 layout: post
 date: 2015-09-21T22:27:58+00:00
 author: Kevin Urban
-tags: space-weather time-series data-science statistical-modeling
+tags: space-weather time-series data-science statistics
 ---
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
