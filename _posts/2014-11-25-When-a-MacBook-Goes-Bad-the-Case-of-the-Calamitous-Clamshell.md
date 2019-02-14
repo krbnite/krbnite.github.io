@@ -1,6 +1,7 @@
 ---
 title: When a MacBook Goes Bad&#58; the Case of the Calamitous Clamshell
 layout: post
+tags: macbook
 ---
 
 ----------------------------------------------------------
