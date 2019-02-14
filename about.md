@@ -23,6 +23,9 @@ measurements to understand how to forecast and nowcast important
 magnetospheric state variables, generate and test hypotheses, and
 compare with simulations and predictive models.
 
+I worked at the WWE for a stint, where I did all kinds of crazy cool things -- and now I'm in digital
+health, where I'm doing even more interesting things.
+
 ### More Info
 * My CV
   - [Full Version](https://github.com/krbnite/CV/blob/master/Full%20Version/Kevin-Urban-Full-CV.pdf)
