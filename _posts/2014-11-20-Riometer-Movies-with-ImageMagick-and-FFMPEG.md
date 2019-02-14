@@ -1,7 +1,7 @@
 ---
 title: Riometer Movies with ImageMagick and FFMPEG
 layout: post
-tags: riometer space-weather graduate-school wget ffmpeg imagemagick
+tags: riometer space-weather graduate-school image-tools unix-tools
 ---
 
 
