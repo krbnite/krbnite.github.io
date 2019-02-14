@@ -1,6 +1,7 @@
 ---
 title: Telling Time (the Hard Way)
 layout: post
+tag: graduate-school abstract-algebra
 ---
 
 --------------------------
