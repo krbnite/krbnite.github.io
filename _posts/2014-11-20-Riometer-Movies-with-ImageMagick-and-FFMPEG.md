@@ -1,6 +1,7 @@
 ---
 title: Riometer Movies with ImageMagick and FFMPEG
 layout: post
+tags: riometer space-weather graduate-school
 ---
 
 
