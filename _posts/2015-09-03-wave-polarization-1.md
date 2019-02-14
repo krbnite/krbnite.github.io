@@ -6,10 +6,7 @@ author: ogkubl
 layout: post
 guid: http://kevin-urban.com/blog/?p=56
 permalink: /index.php/2015/09/03/wave-polarization-1/
-categories:
-  - polarization
-  - Uncategorized
-  - waves
+tags: misc-physics
 ---
   
 In a spatially 3D universe, one encounters two major types of waves: transverse and longitudinal. The waves are categorized into these two groups in response to the question: Does the wave vary parallel or perpendicular to its direction of propagation?
