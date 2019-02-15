@@ -1,6 +1,7 @@
 ---
 title: Getting Started with MySQL Software
 layout: post
+tags: databases mysql
 ---
 
 At work, we have data assets -- both potential and in-hand -- and a set of business interests and use
