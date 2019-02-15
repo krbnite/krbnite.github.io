@@ -1,3 +1,9 @@
+---
+layout: post
+title: Jupyter Jumpstart
+tags: python jupyter
+---
+
 In Udacity's Deep Learning nanodegree, we will be developing deep learning algorithms 
 in Jupyter Notebooks, which promotes literate programming.  These Notebooks are a great way
 to develop how-to's and present the flow of one's data science logic.  They are similar to
