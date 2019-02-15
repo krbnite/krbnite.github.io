@@ -1,6 +1,7 @@
 ---
 title: Conda Quick Guide
 layout: post
+tags: python
 ---
 
 We will be using Python in the Deep Learning Nanodegree, specifically the Anaconda
