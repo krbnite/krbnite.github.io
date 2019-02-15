@@ -1,6 +1,7 @@
 ---
 title: First Foray into Data Modeling with Entity Relationship Diagrams
 layout: post
+tags: databases data-modeling
 ---
 
 There are a lot of options out there for software to design these diagrams in, and I'll get
