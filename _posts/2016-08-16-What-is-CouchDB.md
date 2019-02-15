@@ -1,6 +1,7 @@
 ---
 title: What is CouchDB?
 layout: post
+tags: databases
 ---
 
 When choosing a database, there is MongoDB, Cassandra, MariaDB, PostgreSQL, and on and on.  One question that plagues my mind 
