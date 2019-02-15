@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Connect to Redshift from R with RPosgreSQL
-tags: databases redshift r
+tags: databases redshift r aws
 ---
 
 
