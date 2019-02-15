@@ -1,6 +1,7 @@
 ---
-title: Documents in Neo4j
+title: Data Structures in Neo4j
 layout: post
+tags: databases neo4j
 ---
 
 What's cool about Neo4j is that you can output the data almost any way you want: you can return 
