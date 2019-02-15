@@ -1,6 +1,7 @@
 ---
 title: Cypher Syntax Highlighting for Vim
 layout: post
+tags: neo4j vim
 ---
 
 Not going to lie to you: this post is not any better than googling "cypher syntax highlighting for vim."  In fact,
