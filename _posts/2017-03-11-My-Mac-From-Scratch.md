@@ -1,6 +1,7 @@
 ---
 layout: post
 title: My Mac From Scratch
+tags: macbook misc
 ---
 
 I've spent nearly a decade honing my .bash\_profile, .vimrc, and other
