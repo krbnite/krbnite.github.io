@@ -48,3 +48,10 @@ layout: post
 tags: machine-learning artificial-intelligence monkies
 ---
 ```
+
+Need to keep adding tags to posts... Haven't finished yet.
+
+
+# References and Further Reading
+* http://longqian.me/2017/02/09/github-jekyll-tag/
+* Next Up: Changing Themes:  https://help.github.com/articles/about-jekyll-themes-on-github/
