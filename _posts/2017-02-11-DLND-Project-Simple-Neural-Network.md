@@ -1,6 +1,7 @@
 ---
 title: Deep Learning Project&#58; Simple Neural Network
 layout: post
+tags: deep-learning udacity
 ---
 
 Just the basics on this one.
