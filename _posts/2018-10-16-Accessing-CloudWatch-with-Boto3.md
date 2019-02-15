@@ -1,6 +1,7 @@
 ---
 title: Accessing CloudWatch with Boto3
 layout: post
+tags: aws python
 ---
 
 At my last job, my main cloud was a Linux EC2 instance -- there, I used Python and Cron to automated almost everything
