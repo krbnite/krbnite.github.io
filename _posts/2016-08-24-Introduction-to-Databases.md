@@ -1,3 +1,9 @@
+---
+layout: post
+title: Introduction to Databases (Notes)
+tags: databases
+---
+
 Mostly notes from StanfordOnline's "Introduction to Databases," but also notes from Googling things.
 
 # Introduction to Databases
