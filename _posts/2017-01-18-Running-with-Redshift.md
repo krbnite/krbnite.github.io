@@ -1,6 +1,7 @@
 ---
 title: Running with Redshift
 layout: post
+tags: redshift aws r aws
 ---
 
 While working with some tables in Redshift, I was getting frustrated: "I wish I could just 
