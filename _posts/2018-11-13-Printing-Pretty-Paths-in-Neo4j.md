@@ -1,6 +1,7 @@
 ---
 title: Printing Pretty Paths in Neo4j
 layout: post
+tags: databases neo4j
 ---
 
 Neo4j is awesome for working with relationship-heavy data -- things that might be considered JOIN nightmares
