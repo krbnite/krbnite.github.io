@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Hello World! (Want your own GitHub blog?)
+tags: jekyll
 ---
 
 Want to host your blog on GitHub? I got up and running by following this 
