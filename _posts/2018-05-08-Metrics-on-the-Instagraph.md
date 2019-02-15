@@ -1,6 +1,7 @@
 ---
 title: Metrics on the Instagraph
 layout: post
+tags: facebook-graph wwe
 ---
 
 In the last article on the Instagram graph, I covered some fields and edges on the Instagram
