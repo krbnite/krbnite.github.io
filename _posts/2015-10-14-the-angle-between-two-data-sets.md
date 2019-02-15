@@ -1,13 +1,9 @@
 ---
-id: 382
 title: The Angle Between Two Data Sets
 date: 2015-10-14T22:29:18+00:00
-author: ogkubl
+author: Kevin Urban
 layout: post
-guid: http://kevin-urban.com/blog/?p=382
-permalink: /index.php/2015/10/14/the-angle-between-two-data-sets/
-categories:
-  - Uncategorized
+tags: statistics
 ---
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 Did you know that a correlation is similar to an inner product between two data sets?
