@@ -1,6 +1,7 @@
 ---
 title: Singular Spectrum Analysis in R
 layout: post
+tags: time-series r
 ---
 
 
