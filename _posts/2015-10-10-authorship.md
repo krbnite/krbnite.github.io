@@ -1,13 +1,9 @@
 ---
-id: 327
 title: Authorship
 date: 2015-10-10T02:17:05+00:00
-author: ogkubl
+author: Kevin Urban
 layout: post
-guid: http://kevin-urban.com/blog/?p=327
-permalink: /index.php/2015/10/10/authorship/
-categories:
-  - Uncategorized
+tags: misc
 ---
 It is rare that a scientist works in isolation, despite the existence of single-author papers. The problem is there is only one label: author. And this fudges with everyone&#8217;s heads.
 
