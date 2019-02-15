@@ -1,6 +1,7 @@
 ---
 title: Investigating the Instagram Graph
 layout: post
+tags: facebook-graph wwe
 ---
 
 If you working for a media juggernaut, the Facebook Graph API is helpful in collecting engagement/consumption data on 
