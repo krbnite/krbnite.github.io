@@ -1,3 +1,10 @@
+---
+layout: post
+title:  Connect to Redshift from R with RPosgreSQL
+tags: databases redshift r
+---
+
+
 At work, a lot of people use DBVisualizer on Windows computers... This was ok to get up and running, e.g.,
 learning about the various schemas and tables we have in Redshift.  But at one point, its utility is lacking:
 you can't really do anything with the data without writing it to a CSV file and picking it up in R or Python. So why
