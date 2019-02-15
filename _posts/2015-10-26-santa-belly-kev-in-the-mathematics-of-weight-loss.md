@@ -1,13 +1,9 @@
 ---
-id: 639
 title: 'Santa-Belly Kev in&#8230; The Mathematics of Weight Loss'
 date: 2015-10-26T16:49:50+00:00
-author: ogkubl
+author: Kevin Urban
 layout: post
-guid: http://kevin-urban.com/blog/?p=639
-permalink: /index.php/2015/10/26/santa-belly-kev-in-the-mathematics-of-weight-loss/
-categories:
-  - Uncategorized
+tags: misc misc-mathematics
 ---
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 It just so happens that I&#8217;ve fattened up quite a bit over the past month.
