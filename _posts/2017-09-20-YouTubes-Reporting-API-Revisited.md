@@ -1,6 +1,7 @@
 ---
 layout: post
 title: YouTube's Reporting API Revisited
+tags: youtube python wwe
 ---
 
 ## Reader Beware
