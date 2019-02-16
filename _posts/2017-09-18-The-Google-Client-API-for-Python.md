@@ -1,6 +1,7 @@
 ---
 layout: post
 title: The Google Client API
+tags: youtube python wwe
 ---
 
 Previously, I wrote about how to use the YouTube Reporting API from Python. My hope
