@@ -1,3 +1,9 @@
+---
+layout: post
+title: Character Encoding Craziness
+tags: r
+---
+
 All I have to say is, if all your data is in English, then you haven't yet lived!  Don't you want to live?! 
 
 I deal with a lot of Chinese textual data these days... (Turns out I have more to say.)  
