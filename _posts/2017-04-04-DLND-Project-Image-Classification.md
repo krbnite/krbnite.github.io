@@ -1,6 +1,7 @@
 ---
 title: Deep Learning Project&#58; Image Classification
 layout: post
+tags: deep-learning image-classification
 ---
 
 Find the code and notes in my DLND repo:
