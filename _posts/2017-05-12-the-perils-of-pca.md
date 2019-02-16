@@ -18,7 +18,7 @@ One of the most immediate dangers of applying PCA with wild abandon is accidenta
 
 In the example below, our features consist of a uniform random variable, a normal random variable, and a sinusoid. The target is also a sinusoid; it is a simple linear transformation of the input sinusoid. The point here is that we have foresight: only the sinusoidal feature is important, while the two noisy variables can be discarded. However, a blindly-applied PCA tells us to do the opposite: keep the noise, discard the signal.
 
-````r
+```r
 x = seq(-100,100,1)
 features = data.frame(
     urv = 12*rnorm(x),
@@ -30,7 +30,6 @@ target = 5*features$sig -1 + runif(x)
 pc = prcomp(features)
 pc
 ```
-
 ```
 Standard deviations:
 [1] 12.51706946  2.06053092  0.07782538
