@@ -1,6 +1,7 @@
 ---
 title: Signing in with Selenium
 layout: post
+tags: selenium webscraping python wwe
 ---
 
 There are many services we use that provide data from their website... You 
