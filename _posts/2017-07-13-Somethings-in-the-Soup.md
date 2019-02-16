@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Something's in the Soup!
+tag: python wwe
 ---
 
 Here is a quick 1-2 about [BeautifulSoup](https://beautiful-soup-4.readthedocs.io/en/latest/):
