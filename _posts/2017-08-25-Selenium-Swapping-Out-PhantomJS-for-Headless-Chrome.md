@@ -1,6 +1,7 @@
 ---
 title: Selenium&#58; Swapping Out PhantomJS for Headless Chrome
 layout: post
+tags: selenium webscraping python wwe
 ---
 
 To run headless browser scripts, I've been using PhantomJS. But all along, all I could think was, "Would
