@@ -1,12 +1,10 @@
 ---
-title: 'Better Jupyter Notebook'
+title: Better Jupyter Notebook
 date: 2017-04-20
 author: Kevin Urban
 layout: post
-categories:
-  - python
-  - jupyter notebook
-  - Uncategorized
+tags: python jupyter
+
 ---
 
 At one point, long ago, I was using MatLab for this project, IDL for that project, and R for yet another.  For each language, I 
