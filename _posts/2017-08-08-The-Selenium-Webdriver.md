@@ -1,6 +1,7 @@
 ---
 title: The Selenium Webdriver
 layout: post
+tags: selenium webscraping python wwe
 ---
 
 ## Get selenium package
