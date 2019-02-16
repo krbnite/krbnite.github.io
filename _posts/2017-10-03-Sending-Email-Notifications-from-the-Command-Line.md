@@ -1,4 +1,8 @@
-
+---
+layout: post
+title: Sending Email Notifications from the Command Line
+tags: unix-tools python wwe
+---
 
 
 In a python program, I can use a try/except statement to avoid a crash.  In the case of a would-be crash,
