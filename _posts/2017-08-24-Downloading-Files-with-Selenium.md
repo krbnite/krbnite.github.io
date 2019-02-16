@@ -1,3 +1,10 @@
+---
+layout: post
+title: Downloading Files with Selenium
+tags: selenium webscraping python wwe
+---
+
+
 Many platforms you want to extract data from will provide CSV or Excel files.  Manual download is
 easy, but doing it everyday is laborious.  Furthermore, if you work for a media company, you might have 100's
 of Facebook Pages, YouTube Channels, and so on.  At one point, an automated solution could be beneficial!
