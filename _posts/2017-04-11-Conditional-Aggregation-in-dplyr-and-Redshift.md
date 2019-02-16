@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Conditional Aggregation in {dplyr} and Redshift
+tags: redshift r databases
 ---
 
 The responsibilities of my job and the projects I work on can vary from one day to the next. Turns out that a clever solution to a problem isn't something I necessarily remember 100% when confronted with the same issue several weeks or months down the line.  
