@@ -1,7 +1,7 @@
 ---
 title: Notes on Calling R from Python
 layout: post
-tags: r python
+tags: r python wwe
 ---
 
 Collection of notes on how to call R from Python, with a focus on how to use 
