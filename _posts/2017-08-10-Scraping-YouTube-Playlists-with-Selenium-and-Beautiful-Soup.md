@@ -1,6 +1,7 @@
 ---
 title: Scraping YouTube Playlists with Selenium and Beautiful Soup
 layout: post
+tags: selenium webscraping python wwe
 ---
 
 Let's say you want to monitor your YouTube Playlist on the daily or hourly: keep track of which videos
