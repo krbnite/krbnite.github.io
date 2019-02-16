@@ -1,6 +1,7 @@
 ---
 title: Treebeard and the Fungus Amongus&#58; Exploring Decision Trees in Scikit Learn
 layout: post
+tags: pyton jupyter machine-learning wwe
 ---
 
 The data we explore today (whatever day it is for you) is the [mushroom data](https://archive.ics.uci.edu/ml/machine-learning-databases/mushroom/)
