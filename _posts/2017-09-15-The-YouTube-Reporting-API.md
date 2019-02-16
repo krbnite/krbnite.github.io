@@ -1,6 +1,7 @@
 ---
 layout: post
 title: The YouTube Reporting API
+tags: youtube python wwe
 ---
 
 For most content, YouTube provides daily estimated metrics at a 2-3 day lag. If you are working on a project
