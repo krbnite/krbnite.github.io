@@ -1,4 +1,6 @@
 ----
+layout: post
+title: The Perils of PCA
 tags: r machine-learning
 ---
 
