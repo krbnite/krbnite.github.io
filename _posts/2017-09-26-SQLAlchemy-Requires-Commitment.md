@@ -1,6 +1,7 @@
 ---
 layout: post
 title: SQLAlchemy Requires Commitment (for Granting Public Access)
+tags: python r redshift wwe
 ---
 
 Connecting to Redshift from R is easy:
