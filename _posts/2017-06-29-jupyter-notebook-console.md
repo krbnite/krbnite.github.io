@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Jupyter Notebook + Console
+tags: tmux vim jupyter python aws
 ---
 
 In my previous post, I was trying to figure out how to use Tmux to integrate a remote 
