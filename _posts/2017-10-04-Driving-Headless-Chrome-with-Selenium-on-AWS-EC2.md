@@ -1,6 +1,7 @@
 ---
 title: Driving Headless Chrome with Selenium on AWS EC2
 layout: post
+tags: selenium aws python webscraping wwe
 ---
 
 [Yesterday](https://krbnite.github.io/Which-Pip-is-Right-for-You-on-Corporate-EC2/),
