@@ -1,6 +1,7 @@
 ---
 title: Imbalanced Classes
 layout: post
+tags: machine-learning statistics wwe
 ---
 
 If you haven't heard: accuracy is garbage.
