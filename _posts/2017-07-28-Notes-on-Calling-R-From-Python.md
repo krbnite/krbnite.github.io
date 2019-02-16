@@ -1,3 +1,9 @@
+---
+title: Notes on Calling R from Python
+layout: post
+tags: r python
+---
+
 Collection of notes on how to call R from Python, with a focus on how to use 
 R's {dplyr} package in Python for munging around.
 
