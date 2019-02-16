@@ -1,6 +1,7 @@
 ---
 title: The Beautiful Soup
 layout: post
+tags: python webscraping wwe
 ---
 
 I use this package all the time, but only figure it out as I go along...and I often forget what I did the last 
