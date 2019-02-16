@@ -1,6 +1,7 @@
 ---
 title: Nixing for Data in iPython
 layout: post
+tags: python jupyter wwe
 ---
 
 When using Jupyter Notebooks (or iPython/Jupyter console/Qt), I take advantage of the fact that you natively 
