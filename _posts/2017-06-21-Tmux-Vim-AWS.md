@@ -1,6 +1,7 @@
 ---
 layout: post
 title: TMux + Vim + AWS
+tags: vim aws tmux
 ---
 
 TMux is finally useful to me.
