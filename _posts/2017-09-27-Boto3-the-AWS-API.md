@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Boto3 -- the AWS API
+tags: aws python wwe
 ---
 
 Holy Foley.  APIs, right? 
