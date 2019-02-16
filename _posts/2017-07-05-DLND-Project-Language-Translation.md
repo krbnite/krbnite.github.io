@@ -1,6 +1,7 @@
 ---
 title: Deep Learning Project&#58; Language Translation
 layout: post
+tags: deep-learning nlp udacity
 ---
 
 Find the code and notes in my DLND repo:
