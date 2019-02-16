@@ -1,3 +1,9 @@
+---
+layout: post
+title: Notes on XGBoost
+tag: machine-learning wwe
+---
+
 So you're trying to install XGBoost?
 
 It is not as simple as "sudo pip install xgboost," which gave me an error about a python egg!
