@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Messing Around with OAuth2 and the GMail API
+tags: wwe
 ---
 
 https://developers.google.com/oauthplayground
