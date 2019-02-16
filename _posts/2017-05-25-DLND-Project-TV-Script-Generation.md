@@ -1,6 +1,7 @@
 ---
 title: Deep Learning Project&#58; TV Script Generation
 layout: post
+tags: deep-learning udacity
 ---
 
 Find the code and notes in my DLND repo:
