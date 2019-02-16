@@ -1,6 +1,7 @@
 ---
 title: First Foray into FaceBook's Graph API
 layout: post
+tags: facebook-graph python wwe
 ---
 
 Lots of talk about YouTube lately.  What about the other places on the web a media company might host 
