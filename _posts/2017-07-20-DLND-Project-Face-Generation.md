@@ -1,6 +1,7 @@
 ---
 title: Deep Learning Project&#58; Face Generation
 layout: post
+tags: deep-learning gans udacity
 ---
 
 Find the code and notes in my DLND repo:
