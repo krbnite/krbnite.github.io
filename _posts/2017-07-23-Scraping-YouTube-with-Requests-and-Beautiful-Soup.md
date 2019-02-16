@@ -1,6 +1,7 @@
 ---
 title: Scraping YouTube with Requests and Beautiful Soup
 layout: post
+tags: python webscraping youtube wwe
 ---
 
 > "The first scrape is the hardest, baby, I know."
