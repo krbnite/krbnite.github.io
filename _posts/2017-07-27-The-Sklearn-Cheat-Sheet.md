@@ -1,3 +1,9 @@
+---
+title: The Sklearn Cheat Sheet
+layout: post
+tags: python machine-learning
+---
+
 To be as efficient as possible, just take a look at this cheet sheat to my cheat sheet:
 
 ```python
