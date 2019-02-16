@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Data Shepherd
+tags: webscraping python misc wwe
 ---
 
 Data doesn't always come neatly packaged in a table or streaming through some API.  
