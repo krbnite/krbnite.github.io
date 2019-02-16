@@ -1,6 +1,7 @@
 ---
 title: Scraping Playlist IDs from a YouTube Channel
 layout: post
+tags: selenium webscraping python youtube wwe
 ---
 
 Yesterday, I covered how to scrape videos from a YouTube playlist. Today, imagine you are interested in
