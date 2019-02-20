@@ -7,3 +7,4 @@ title: Wearable-Related Reading
 * https://www.medgadget.com/
 * https://www.imedicalapps.com/
 * https://www.mobihealthnews.com/
+* https://healthitanalytics.com
