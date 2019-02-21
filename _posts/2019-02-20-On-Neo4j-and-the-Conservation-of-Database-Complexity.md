@@ -1,3 +1,8 @@
+---
+layout: post
+title: On Neo4j and the Conservation of Database Complexity
+tags: neo4j databases
+---
 
 There is a lot to love about Neo4j, especially if you are modeling data that has a high relationship density
 and highly heterogenous relationship types, patterns, and structures.  
@@ -73,17 +78,42 @@ keys and constraints, or the lackthereof.
 
 # Are Keys and Constraints More or Less Complex?
 
-In a relational database, it is customary
-to create a unique ID column on a table where nothing is guaranteed to be unique -- that, or the
-more annoying task of creating composite IDs.  Point is, the idea of including IDs to ensure
-unique rows is pretty common...  And consistent.  Normalizing a database, or deciding on a denormalized
-solution, can be daunting if you require too many join tables, but it's a battle that has been
+In a relational database, a table has a primary key -- a unique way of identifying a row,
+which represents some tuple of information representing some object.  Sometimes there is a column
+that naturally lends itself to this, but more often than not (in the databases I've used) an ID column 
+is used to ensure uniqueness.  Other times, a table's primary key is composite.  Point is, the idea of 
+including IDs to ensure unique rows is pretty common...  And consistent.  Normalizing a database, 
+or deciding on a denormalized
+solution, can be daunting if you require hordes of foreign keys and bridge tables, but it's a battle that has been
 fought and won many times over.  It's routine.  The complexity is understood and documented.
 
-In Neo4j, you can get rid of that complexity -- throw away those join tables and extraneous IDs!  You
-replace these things with easier-to-understand relationships.  However, complexity does seep in.  For example,
-it can feel like you're making things up as you go along -- maybe even reinventing the wheel.  Maybe you're
-just doing things wrong.  Maybe not.  It's hard to know...
+*\<SalesmanTone>  With Neo4j, you can develop at the speed of thought: your whiteboard 
+model is your logical model.  No need to deal with all those bridge tables and foreign keys: throw 
+'em away and get rid of that nasty complexity!  In Neo4j, relationships are first-class citizens.
+Need a new relationship between entities?  No worries:  just do it!  No need to create a new bridge 
+table.  In fact, no need to do anything at all: this is schema optional, pedal-to-floor development, 
+baby!\<endSalesmanTone>*
+
+
+It seems so simple, but from this simplicity complexity does seep in.  For example, 
+making things up as you go along is awesome until it's not.  In fact, this is not really even a dig
+at Neo4j: they will be the first ones to tell you that "schema optional" doesn't mean you shouldn't 
+design a great schema.  It's optional, and you should opt to do it!
+
+But because of the flexibility and the lack of constraints, you might find yourself
+reinventing standard features of the relational wheel at the application layer.  For example,
+Neo4j will not ensure that a property of a node (graph version of a column in a table) will always
+be of the same data type, like integer or string.  You have enforce this yourself.  Similarly for
+check constraints:  Neo4j will not enforce any rule about what values a property may take on.  If
+you want this, make sure to put it in at the application layer.  
+
+This is touching on what I mean by conservation of complexity: someone somewhere is going to deal
+with it.  That may be the database administrator, the application designer, or the data scientist
+at the end of the pipeline.  
+
+---------------
+
+......STILL A WORK IN PROGRESS....
 
 What's my point?  I guess I'm getting to it:  there is some complexity hidden in MERGE.  It has to do
 with constaints, IDs, creation, etc.  
