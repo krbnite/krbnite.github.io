@@ -283,9 +283,11 @@ I guess it's true for any language or database technology, but you really have t
 doing.  Using Cypher and Neo4j, you have to ensure many things yourself that you might take for granted in, say, Postgres or 
 MySQL.  In these relational settings, you just have to learn enough to set up the constraints when
 you're building the table schema... Then you basically don't have to worry about it.  In Neo4j, you
-can set up some constraints, but the schema is mostly all in your head!  Sure, you can build an app or script on top 
-that ensures these things, but -- c'mon -- that's
-really not always the case. Bottom line is: You have to promise yourself not fuck it up!
+can set up some constraints, but for the most part the schema is all in your head!  Sure, you can build an app 
+or script on top that ensures constraints, data integrity, and so on...but -- c'mon! -- that's
+really not always the case. 
+
+Bottom line is:  you have to promise yourself to not fuck it up!
 
 
 
