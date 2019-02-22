@@ -163,38 +163,129 @@ can be assured that (i) any article of clothing will be uniquely represented, (i
 represented, and (iii) and clothing/color combo will be uniquely represented.  
 
 ## The Property Graph Storyline
+In a property graph (at least in Neo4j), you will might have label L1 and label L2, each having a property
+that is constrained to be unique (one of the few constraints in Neo4j Community Edition).  If the objects (nodes) 
+labeled L1 have a many-to-many relationship with the objects labeled L2, then we just create all those relationships.
+
+That is, we do not have to **explicitly** create a bridge table. 
+
+Emphasis on explicitly because something akin to a bridge table is implicitly being built each time a new relationship
+is created between an L1 node and an L2 node.  Our graph database still has a "bridge collection," which constitutes
+the set of relationships between labels L1 and L2.  At the storage level, this is not a bridge table (see: index-free
+adjacency).  And at the data retrieval level, this is not a bridge table (index-free adjaceny basically means that
+"bridge table scans" are no longer necessary -- just follow the path).  However, at some fuzzy level of reality,
+we still have a "bridge table" look-alike -- the "bridge collection". 
+
+In fact, the "bridge collection" looks very much like a bridge table when presented tabularly, which I'll show
+in just a moment.
+
+First:  Let's make this less abstract.
+
+Let L1 be a label called :ArticleOfClothing.  And let L2 be a label called :Color.  We know that
+the relationship between the nodes of these labels is many-to-many because (i) "jeans" may come in many
+different colors, and (ii) "blue" might be the color of many different articles of clothing.  However,
+we do not create a bridge table this time:  we just create a relationship called :HAS_COLOR.
+
+In place of primary keys, we create Label(property) uniqueness constraints.
+```
+CREATE CONSTRAINT ON (a:ArticleOfClothing) ASSERT a.name is UNIQUE;
+CREATE CONSTRAINT ON (a:Color) ASSERT a.name is UNIQUE;
+```
+
+Note that there is no bridge table with a unique composite of foreign keys.  There is nothing
+preventing duplicated relationships in the database (that onus lies on you).  So we could
+easily have something like:
+
+```
+(:ArticleOfClothing {name: "Jeans"}) -[:HAS_COLOR]-> (:Color {name: "Red"})
+(:ArticleOfClothing {name: "Jeans"}) -[:HAS_COLOR]-> (:Color {name: "Green"})
+(:ArticleOfClothing {name: "T-Shirt"}) -[:HAS_COLOR]-> (:Color {name: "Green"})
+(:ArticleOfClothing {name: "T-Shirt"}) -[:HAS_COLOR]-> (:Color {name: "Green"})
+(:ArticleOfClothing {name: "T-Shirt"}) -[:HAS_COLOR]-> (:Color {name: "Blue"})
+(:ArticleOfClothing {name: "T-Shirt"}) -[:HAS_COLOR]-> (:Color {name: "Blue"})
+(:ArticleOfClothing {name: "T-Shirt"}) -[:HAS_COLOR]-> (:Color {name: "Blue"})
+(:ArticleOfClothing {name: "Socks"}) -[:HAS_COLOR]-> (:Color {name: "Red"})
+```
+
+Or in a more relational looking form:
+```
+ ____________________       __________________        ________
+| :ArticleOfClothing |     | :HAS_COLOR       |      | :Color |
+|--------------------|     |------------------|      |--------|
+| Jeans              | --- |  Jeans   | Red   | ---> | Red    |
+| T-Shirt            |     |  Jeans   | Green |      | Green  |
+| Socks              |     |  T-Shirt | Green |      | Blue   |
+ --------------------      |  T-Shirt | Green |       --------
+                           |  T-Shirt | Blue  |
+                           |  T-Shirt | Blue  |
+                           |  T-Shirt | Blue  |
+                           |  Socks   | Red   |
+                            ------------------
+```
+
+Though we did not specify any properties for the :HAS_COLOR relationship between any nodes,
+there are always 2 implicit properties: the starting node and the ending node!  In the above :HAS_COLOR "bridge collection",
+we see that there is nothing preventing this spazzy behavior...except for you.
+
+Since you cannot use check constraints in Neo4j, the situation is actually even more dire.  We could
+easily have something like this:
+
+```
+(:ArticleOfClothing {name: "Jeans"}) -[:HAS_COLOR]-> (:Color {name: "Red"})
+(:ArticleOfClothing {name: "Jens"}) -[:HAS_COLOR]-> (:Color {name: "Green"})
+(:ArticleOfClothing {name: "T-Shirt"}) -[:HAS_COLOR]-> (:Color {name: "Green"})
+(:ArticleOfClothing {name: "T-Shirt"}) -[:HAS_COLOR]-> (:Color {name: "gr33n"})
+(:ArticleOfClothing {name: "tshirt"}) -[:HAS_COLOR]-> (:Color {name: "blue"})
+(:ArticleOfClothing {name: "tshirt"}) -[:HAS_COLOR]-> (:Color {name: "blue"})
+(:ArticleOfClothing {name: "tshirt"}) -[:HAS_COLOR]-> (:Color {name: "BLUE"})
+(:ArticleOfClothing {name: "Socks"}) -[:HAS_COLOR]-> (:Color {name: "red"})
+(:ArticleOfClothing {name: "SOCKS"}) -[:HAS_COLOR]-> (:Color {name: "red"})
+```
+
+Or in a more relational looking form:
+```
+ ____________________       __________________        ________
+| :ArticleOfClothing |     | :HAS_COLOR       |      | :Color |
+|--------------------|     |------------------|      |--------|
+| Jeans              | --- |  Jeans   | Red   | ---> | Red    |
+| Jens               |     |  Jens    | Green |      | Green  |
+| T-Shirt            |     |  T-Shirt | Green |      | Blue   |
+| tshirt             |     |  T-Shirt | gr33n |       --------
+| Socks              |     |  tshirt  | blue  |
+| SOCKS              |     |  tshirt  | blue  |
+ --------------------      |  tshirt  | BLUE  |
+                           |  Socks   | red   |
+                           |  SOCKS   | red   |
+                            ------------------
+```
+
+The uniqueness constraints on the labels was not enough to prevent incorrect values to be
+added to the "Label Tables".  The lack of foreign keys in a bridge table prevented unique
+relationships, e.g., (tshirt, blue) comes up twice.  
+
+"Ok, so what?" you may be asking.  "Let's assume you're not an idiot."
+
+Ok, ok -- let's assume that we do not accidentally use incorrect values.  This is an area where really understanding
+MERGE comes into play.  Using it correctly will at least prevent duplicate relationships (to a certain extent).
+
+I've run into another scenario or two where I've scratched my head... Basically, on the importance of really
+knowing your Cypher.  For example, say you want to MATCH something, then update it:
+* If you use MERGE and it doesn't exist, it will be created and updated
+* If you use MERGE and it does exist, it will just be updated
+* If you use MATCH (followed by a SET command) and its exists, it will be updated
+* **But if you use MATCH (followed by a SET command) and it doesn't exist, nothing will be
+updated and you will not be notified.**  There is no error or hiccup of any kind!
+
+I could go on... But I'm getting tired of writing at this point!  So let's move on to a moral already!
+
+# Moral (?)
+I guess it's true for any language or database technology, but you really have to know what you're 
+doing.  Using Cypher and Neo4j, you have to ensure many things yourself that you might take for granted in, say, Postgres or 
+MySQL.  In these relational settings, you just have to learn enough to set up the constraints when
+you're building the table schema... Then you basically don't have to worry about it.  In Neo4j, you
+can set up some constraints, but the schema is mostly all in your head!  Sure, you can build an app or script on top 
+that ensures these things, but -- c'mon -- that's
+really not always the case. Bottom line is: You have to promise yourself not fuck it up!
 
 
----------------
-
-......STILL A WORK IN PROGRESS....
-
-What's my point?  I guess I'm getting to it:  there is some complexity hidden in MERGE.  It has to do
-with constaints, IDs, creation, etc.  
-
-For the moment, I think it makes sense to think of the graph database like a relational database:
-consider nodes of a certain label L1 to be rows in a table called "L1" and other nodes of label L2
-to be rows in a table called "L2".  Say L1 is :Author and L2 is :Book.  Assume an author's name is 
-unique, but a book's title is not -- but that a book's title and the book's author do make a unique 
-combo.  Then the author's name would be a primary key in the "Author" table and a foreign key
-in the "Book" table, which would have composite primary key (author's name and book title).  Point is,
-placing a uniqueness constraint on both tables is easy, straigtforward, and routine.
-
-What about the Neo4j version of this?  Well you can create a uniqueness constraint on the author's name. But
-what about the :Book label nodes?  If you want to create a uniqueness constraint, then you must include
-the author's name -- correctly.  The database won't exactly use a foreign key to ensure this... You have to ensure
-it yourself.  The other possibility, also at your own application layer, is using MERGE...  This will ensure
-that a book title is always associated with an author, and unique for the author.  However, this still isn't the same:
-if you issued a CREATE statement in the relational case, it would get rejected: MERGE will MATCH or CREATE, and 
-on MATCH will update the data as you specify.  It won't get rejected...
-
-
------------------------------
-
-I guess it's true for any language or technology, but you really have to know what you're doing.  
-
-Another example:  say you want to MATCH something, then update it.  If you use MERGE and it doesn't exist,
-it will be created and updated.  If you use Merge and it does exist, it will just be updated.  If use MATCH
-and its exists, again it will be updated.  But if you use MATCH and it doesn't exist, nothing will be
-updated -- but you also won't be notified.  There is no error or hiccup of any kind.  
 
