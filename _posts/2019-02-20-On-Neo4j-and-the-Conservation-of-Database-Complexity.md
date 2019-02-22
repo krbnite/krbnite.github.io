@@ -95,21 +95,75 @@ table.  In fact, no need to do anything at all: this is schema optional, pedal-t
 baby!\<endSalesmanTone>*
 
 
-It seems so simple, but from this simplicity complexity does seep in.  For example, 
+It seems so simple, but from this simplicity, complexity seeps in.  For example, 
 making things up as you go along is awesome until it's not.  In fact, this is not really even a dig
 at Neo4j: they will be the first ones to tell you that "schema optional" doesn't mean you shouldn't 
 design a great schema.  It's optional, and you should opt to do it!
 
-But because of the flexibility and the lack of constraints, you might find yourself
+It is because of the flexibility and the lack of constraints that you might find yourself
 reinventing standard features of the relational wheel at the application layer.  For example,
-Neo4j will not ensure that a property of a node (graph version of a column in a table) will always
-be of the same data type, like integer or string.  You have enforce this yourself.  Similarly for
-check constraints:  Neo4j will not enforce any rule about what values a property may take on.  If
-you want this, make sure to put it in at the application layer.  
+check constraints:  Neo4j will not enforce any rule about what values a property of a node may take on
+(note that a property of a node is the graph version of a column in a table) . In fact, Neo4j will not even 
+ensure that a property of a node will always be of the same data type, like integer or string.  If
+you want these types of constraints, you have enforce them  yourself at the application layer(s).
+  
 
 This is touching on what I mean by conservation of complexity: someone somewhere is going to deal
 with it.  That may be the database administrator, the application designer, or the data scientist
 at the end of the pipeline.  
+
+# More on MERGE and Bridge Tables
+## The Relational Storyline
+In a relational database, you will might have table T1 and table T2, both having their own primary
+key (column with ensured uniqueness).  If the objects (rows) in T1 have a many-to-many relationship
+with the objects in T2, then a bridge table TB must be created such that T1-TB and T2-TB both have
+many-to-one relationships.  The primary key of the bridge table is a composite key of the foreign
+keys from T1 and T2.  
+
+Let's make this less abstract.
+
+Let T1 be a table called ArticleOfClothing.  And let T2 be a table called Color.  We know that
+the relationship between clothes and color is many-to-many because (i) "jeans" may come in many
+different colors, and (ii) "blue" might be the color of many different articles of clothing.
+
+```
+# Many-to-Many Relationship
+ ___________________            _____________
+| ArticleOfClothing |          | Color       |
+|-------------------| \      / |-------------|
+| a1 | Jeans        | - --- -  | c1 | Red    |
+| a2 | T-Shirt      | /      \ | c1 | Green  |
+| a3 | Socks        |          | c1 | Blue   |
+ -------------------            -------------
+```
+
+To set up a relationship between tables, we want to use a foreign key...but we can't.  That is, what
+color key should we put in the a1 row of ArticleOfClothing?  We already said that an article of clothing
+can take on any color, so there is no single choice.  This is where accidental denormalization can 
+occur, i.e., a design choice here can easily break a Normal Form (e.g., using two foreign key columns 
+to represent color choices in the ArticleOfClothing table, or using multiple rows and thus repeating
+the article name).  The proper thing to do here is to resolve the many-to-many relationship by creating
+a bridge table.
+
+```
+ # (One-to-Many) BRIDGE (Many-to-One)
+  ___________________        _____________         _____________
+| ArticleOfClothing |       | AoCHasColor |       | Color       |
+|-------------------| \     |-------------|     / |-------------|
+| a1 | Jeans        | - --- |  a1 | c1    | ----  | c1 | Red    |
+| a2 | T-Shirt      | /     |  a1 | c2    |     \ | c1 | Green  |
+| a3 | Socks        |       |  a2 | c2    |       | c1 | Blue   |
+ -------------------        |  a2 | c3    |        -------------
+                            |  a3 | c1    |
+                             -------------
+```
+
+Now we can maintain a "clothing dictionary", a "color dictionary", and a clothing/color relationship table.  We
+can be assured that (i) any article of clothing will be uniquely represented, (ii) any color will be uniquely
+represented, and (iii) and clothing/color combo will be uniquely represented.  
+
+## The Property Graph Storyline
+
 
 ---------------
 
