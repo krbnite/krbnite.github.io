@@ -22,6 +22,21 @@ of Wack-a-Mole?
 
 **Word of Warning**:  I'm a STEM mutt, not a pure bred DBA.  Tread carefully.
 
+**Note**: I realize it can sound like I'm coming down on Neo4j in this post, but I think it should
+be interpreted as growing pains along the learning curve.  I'm still going forward with Neo4j on
+my project at work, though I am happy about a few things that help make a change of course somewhere down
+the line possible:
+* OpenCypher has open sourced Neo4j's query language, Cypher
+  - other graph databases have already adopted it (e.g., 
+  [AgensGraph](https://github.com/bitnine-oss/agensgraph) and 
+  [RedisGraph](https://oss.redislabs.com/redisgraph/)) 
+* Cypher-to-Gremlin translators exist
+  - Gremlin is the graph language that some other graph databases use (e.g., 
+  [TinkerPop](http://tinkerpop.apache.org/)
+  and [AWS Neptune](https://docs.aws.amazon.com/neptune/latest/userguide/intro.html))
+  - e.g., [Cypher for Gremlin](https://github.com/opencypher/cypher-for-gremlin) not only provides a
+  translator, but generally expands Gremlin to include Cypher
+
 
 # I don't think that query means what you think it means
 Joins get a lot of flak from NoSQL folks.  Well, maybe not the simple joins -- i.e., joins that are just "one join 
