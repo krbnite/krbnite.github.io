@@ -276,7 +276,11 @@ knowing your Cypher.  For example, say you want to MATCH something, then update 
 * **But if you use MATCH (followed by a SET command) and it doesn't exist, nothing will be
 updated and you will not be notified.**  There is no error or hiccup of any kind!
 
-I could go on... But I'm getting tired of writing at this point!  So let's move on to a moral already!
+I could go on... For example, another article entirely might focus on the differences
+between Neo4j Community Edition and Enterprise Edition -- any why you basically need Enterprise
+for anything beyond playing around (e.g., for role-based access control, subgraph access control,
+and better security features).  But I'm getting tired of writing at this point!  So let's move on to 
+a moral already!
 
 # Moral (?)
 I guess it's true for any language or database technology, but you really have to know what you're 
