@@ -1,6 +1,7 @@
 ---
 title: Linux Killswitch
 layout: post
+tags: unix-tools wwe
 ---
 
 Recently, I've been adminstering a Linux server for some folks on the Content
