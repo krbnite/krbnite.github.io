@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Sending Email Notifications from the Command Line
-tags: unix-tools python wwe
+tags: automation unix-tools python wwe
 ---
 
 
