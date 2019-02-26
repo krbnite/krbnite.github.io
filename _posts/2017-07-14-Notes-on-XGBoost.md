@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Notes on XGBoost
-tag: machine-learning wwe
+tag: python machine-learning wwe
 ---
 
 So you're trying to install XGBoost?
