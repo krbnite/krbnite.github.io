@@ -1,6 +1,7 @@
 ---
 title: Facebook Graph&#58; Page/Album Edge Recap
 layout: post
+tags: facebook-graph python automation etl wwe
 ---
 
 In the [previous post](https://krbnite.github.io/Facebook-Graph-The-Page-Album-Edge/), the 
