@@ -1,6 +1,7 @@
 ---
 title: Updating ChromeDriver on Linux Ubuntu EC2 Instance
 layout: post
+tags: selenium unix-tools aws wwe
 ---
 
 About 2 weeks ago I returned to an old Selenium scraping project on my MacBook Pro, only to find errors strewn across
