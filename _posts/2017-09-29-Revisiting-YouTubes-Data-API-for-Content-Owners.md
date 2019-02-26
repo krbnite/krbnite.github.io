@@ -1,7 +1,7 @@
 ---
 title: Revisiting YouTube's Data API for Content Owners
 layout: post
-tags: youtube python wwe
+tags: youtube python etl wwe
 ---
 
 Let's face it: my first post on the Data API is just brain spew and chicken scratch!  
