@@ -1,6 +1,7 @@
 ---
 title: Google Developer Scholarship&#58; JavaScript Promises
 layout: post
+tags: webdev grow-with-google udacity wwe
 ---
 
 To best understand JavaScript promises, one should first understand what a "callback" is,
