@@ -1,6 +1,7 @@
 ---
 title: Trouble, Tributlation, and Triumph&#58; Automating a Cross-Platform Live Stream Report
 layout: post
+tags: python youtube facebook-graph selenium automation webscraping etl wwe
 ---
 
 How many views did our live stream get on Facebook? How about YouTube and Twitter, or on our 
