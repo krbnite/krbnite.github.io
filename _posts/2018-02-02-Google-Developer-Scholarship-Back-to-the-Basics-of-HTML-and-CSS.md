@@ -1,6 +1,7 @@
 ---
 title: Google Developer Scholarship&#58; Back to the Basics of HTML and CSS
 layout: post
+tags: webdev grow-with-google udacity wwe
 ---
 
 I hack together HTML reports and HTML emails, but some parts of the web development class and
