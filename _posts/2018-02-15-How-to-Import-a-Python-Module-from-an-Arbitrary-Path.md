@@ -1,6 +1,7 @@
 ---
 title: How to Import a Python Module from an Arbitrary Path
 layout: post
+tags: python wwe
 ---
 
 Time and again in my various data collection and reporting automations, I use similar functions
