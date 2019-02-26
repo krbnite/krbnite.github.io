@@ -1,6 +1,7 @@
 ---
 title: Facebook Graph&#58; The Page/Album Edge
 layout: post
+tags: facebook-graph python automation etl wwe
 ---
 
 So -- what are some tables I can create based on the user engagement with a 
