@@ -1,7 +1,7 @@
 ---
 title: Connecting to a SAMBA Server from Mac and Ubuntu
 layout: post
-tags: wwe
+tags: unix-tools wwe
 ---
 
 Maybe the IT department already set things up, but mounting a samba shared drive on my 
