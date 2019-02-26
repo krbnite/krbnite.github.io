@@ -1,6 +1,7 @@
 ---
 title: Pretty Tables in Pythonic Emails
 layout: post
+tags: automation python wwe
 ---
 
 So you have a pandas DataFrame.  Great!
