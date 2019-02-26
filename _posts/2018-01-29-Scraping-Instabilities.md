@@ -1,6 +1,7 @@
 ---
 title: Scraping Instabilities
 layout: post
+tags: webscraping python automation etl wwe
 ---
 
 Last year I developed a lot Selenium/BeautifulSoup scripts in Python to scrape various social media
