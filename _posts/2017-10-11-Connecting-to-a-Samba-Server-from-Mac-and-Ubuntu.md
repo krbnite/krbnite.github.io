@@ -1,6 +1,7 @@
 ---
 title: Connecting to a SAMBA Server from Mac and Ubuntu
 layout: post
+tags: wwe
 ---
 
 Maybe the IT department already set things up, but mounting a samba shared drive on my 
@@ -17,7 +18,7 @@ be as simple.
 
 ----------------------------------------------------------------
 
-Currently, I'm following the information provided in this tuturial on 
+Currently, I'm following the information provided in this tutorial on 
 [www.linuceum.com](http://www.linuceum.com/Server/srvSambaInstall.php).  It's been helpful,
 but I still haven't figure things out...
 
