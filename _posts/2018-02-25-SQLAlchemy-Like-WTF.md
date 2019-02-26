@@ -1,6 +1,7 @@
 ---
 title: SQLAlchemy LIKE &#39;%%WTF%%&#39;
 layout: post
+tags: python aws redshift databases wwe
 ---
 
 This is just a public service anouncement.  If you are using SQLAlchemy to connect to Redshift and you
