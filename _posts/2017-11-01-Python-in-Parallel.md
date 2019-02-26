@@ -1,3 +1,9 @@
+---
+layout: post
+title: Python in Parallel
+tags: python wwe
+---
+
 For several days, I've spent my morning watching lynda.com's 
 "[Python Parallel Programming Solutions](https://www.lynda.com/Python-tutorials/Python-Parallel-Programming-Solutions/604237-2.html)" 
 course in an attempt to better understand threading and multiprocessing, and how they are implemented in
