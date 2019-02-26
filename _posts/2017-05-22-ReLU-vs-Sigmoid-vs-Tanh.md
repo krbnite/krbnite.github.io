@@ -1,7 +1,7 @@
 ---
 title: ReLU vs Sigmoid vs Tanh
 layout: post
-tag: deep-learning
+tag: deep-learning machine-learning
 ---
 
  
