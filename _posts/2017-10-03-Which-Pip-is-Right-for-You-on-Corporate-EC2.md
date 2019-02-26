@@ -1,7 +1,7 @@
 ---
 title: Which Pip is Right for You on Corporate EC2?
 layout: post
-tags: aws python wwe
+tags: aws python tensor-flow wwe
 ---
 
 I ran into this annoying issue before while trying to 
