@@ -1,6 +1,7 @@
 ---
 title: Arguments with Python
 layout: post
+tags: python automation etl wwe
 ---
 
 So you use crontab to automate some data collection for one of some big media company's many 
