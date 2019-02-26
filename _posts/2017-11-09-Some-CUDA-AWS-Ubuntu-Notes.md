@@ -89,7 +89,7 @@ sudo make       # compiles sample code w/in directory  (sudo gives superuser per
 ```
 
 <figure>
-<img src="/images/cuda-deviceQuery.png"
+<img src="./images/cuda-deviceQuery.png"
 </figure>
 
 ### More checks on CUDA installation:  http://xcat-docs.readthedocs.io/en/stable/advanced/gpu/nvidia/verify_cuda_install.html
@@ -99,7 +99,7 @@ sudo make
 ./bandwidthTest   # OUTPUT
 ```
 <figure>
-<img src="/images/cuda-bandwidthTest.png"
+<img src="./images/cuda-bandwidthTest.png"
 </figure>
 
 ## Some Resources
