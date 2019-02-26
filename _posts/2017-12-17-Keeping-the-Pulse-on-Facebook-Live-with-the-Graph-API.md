@@ -1,6 +1,7 @@
 ---
 title: Keeping the Pulse on Facebook Live with the Graph API
 layout: post
+tags: facebook-graph python automation etl wwe
 ---
 
 In this post, we cover how to measure the performance of a video posted to a Facebook Page.  We explore how to automatically 
