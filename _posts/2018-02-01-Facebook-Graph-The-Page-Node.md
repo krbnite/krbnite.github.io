@@ -1,6 +1,7 @@
 ---
 title: Facebook Graph&#58; The Page Node
 layout: post
+tags: facebook-graph python automation etl wwe
 ---
 
 First, let's make the code blocks a bit friendlier looking: some definitions! 
