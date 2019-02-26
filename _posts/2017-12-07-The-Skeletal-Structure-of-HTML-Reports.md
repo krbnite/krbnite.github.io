@@ -1,6 +1,7 @@
 ---
 title: The Skeletal Structure of HTML Reports
 layout: post
+tags: python automation html wwe
 ---
 
 Let's say you want to automate some HTML reports to be emailed daily. The reports should
