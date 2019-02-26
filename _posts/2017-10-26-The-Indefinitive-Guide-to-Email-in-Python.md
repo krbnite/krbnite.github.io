@@ -1,6 +1,7 @@
 ---
 title: The Indefinitive Guide to Email in Python
 layout: post
+tags: automation python wwe
 ---
 
 
