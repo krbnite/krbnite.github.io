@@ -1,6 +1,7 @@
 ---
 title: Gittn' a Grip on Merging Git Repositories
 layout: post
+tags: git wwe
 ---
 
 Let's say we have two Git repositories: `team_automations` and `side_project`.  The `team_automations` repository houses many
