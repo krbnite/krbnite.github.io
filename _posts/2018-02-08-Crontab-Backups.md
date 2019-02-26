@@ -1,6 +1,7 @@
 ---
 title: Crontab Backups
 layout: post
+tags: unix-tools wwe
 ---
 
 Let's say you have a server: it's yours and yours only.  Your life's work is on 
