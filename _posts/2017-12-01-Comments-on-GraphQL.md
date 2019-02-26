@@ -1,6 +1,7 @@
 ---
 title: Comments on GraphQL
 post: layout
+tags: graphql facebook-graph wwe
 ---
 
 At work, I'm been diving deep on everything and anything Facebook:
