@@ -1,6 +1,7 @@
 ---
 title: Crontab Script Sequences
 layout: post
+tags: unix-tools automation wwe
 ---
 
 This is a quickie, but a goodie!  Let's say during an ETL process, you only want to run a second 
