@@ -1,6 +1,7 @@
 ---
 title: Pandas Remote Crash Prevention
 layout: post
+tags: python aws wwe
 ---
 
 
