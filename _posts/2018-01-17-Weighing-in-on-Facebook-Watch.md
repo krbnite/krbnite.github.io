@@ -1,6 +1,7 @@
 ---
 title: Weighing in on Facebook Watch
 layout: post
+tags: facebook-graph python automation etl wwe
 ---
 
 Reader beware: this post isn't about whether or not I like consuming content
