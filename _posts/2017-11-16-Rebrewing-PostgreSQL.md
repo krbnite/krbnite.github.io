@@ -1,6 +1,7 @@
 ---
 title: Rebrewing PostgreSQL
 layout: post
+tags: python databases wwe
 ---
 
 I'm currently following along with Lynda's 
