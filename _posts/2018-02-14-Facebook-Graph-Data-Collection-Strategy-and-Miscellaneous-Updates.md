@@ -1,6 +1,7 @@
 ---
 title: Facebook Graph&#58; Data Collection Strategy (and Miscellaneous Updates)
 layout: post
+tags: facebook-graph python automation etl wwe
 ---
 
 Our ultimate goal is to treat the Page Node as the root node of a graph, and to strategize
