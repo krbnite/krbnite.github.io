@@ -1,6 +1,7 @@
 ---
 title: Some Basic Hive Commands for Sanity's Sake
 layout: post
+tags: hive python aws wwe
 ---
 
 ```python
