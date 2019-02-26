@@ -1,7 +1,7 @@
 ---
 title: Scheduling Jobs with Cron
 layout: post
-tags: unix-tools wwe
+tags: automation unix-tools wwe
 ---
 
 So you've built a scraper.  Great!  But now what?  Are you going to run it every hour manually?
