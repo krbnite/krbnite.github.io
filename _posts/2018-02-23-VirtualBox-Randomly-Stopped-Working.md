@@ -1,6 +1,7 @@
 ---
 title: VirtualBox Randomly Stopped Working
 layout: post
+tags: virtual-environments wwe
 ---
 
 I have no idea why, but yesterday when I tried opening VirtualBox to play around, my MacBook Pro
