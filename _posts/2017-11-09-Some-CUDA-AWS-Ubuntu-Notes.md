@@ -1,6 +1,7 @@
 ---
 title: Some CUDA AWS/Ubuntu Notes
 layout: post
+tags: unix-tools tensor-flow wwe
 ---
 
 Been cleaning up my work email and found these notes on installing CUDA on an EC2 instance 
@@ -86,8 +87,9 @@ sudo make       # compiles sample code w/in directory  (sudo gives superuser per
 # -- Run deviceQuery (should see info and Result=PASS)
 ./deviceQuery     # below is my output  (OUTCOME:  Cuda Samples installed and GPU found)
 ```
+
 <figure>
-<img src="/images/cuda-deviceQuery.png
+<img src="/images/cuda-deviceQuery.png"
 </figure>
 
 ### More checks on CUDA installation:  http://xcat-docs.readthedocs.io/en/stable/advanced/gpu/nvidia/verify_cuda_install.html
@@ -97,7 +99,7 @@ sudo make
 ./bandwidthTest   # OUTPUT
 ```
 <figure>
-<img src="/images/cuda-bandwidthTest.png
+<img src="/images/cuda-bandwidthTest.png"
 </figure>
 
 ## Some Resources
