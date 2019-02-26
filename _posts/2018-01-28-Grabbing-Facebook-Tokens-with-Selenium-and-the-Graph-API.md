@@ -1,6 +1,7 @@
 ---
 title: Grabbing Facebook Tokens with Selenium and the Graph API
 layout: post
+tags: facebook-graph python selenium automation etl wwe
 ---
 
 I resisted using Selenium to acquire the user token.  There just has to be a way to
