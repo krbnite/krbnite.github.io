@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Character Encoding Craziness
-tags: r
+tags: r wwe
 ---
 
 All I have to say is, if all your data is in English, then you haven't yet lived!  Don't you want to live?! 
