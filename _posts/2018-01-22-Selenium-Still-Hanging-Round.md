@@ -1,6 +1,7 @@
 ---
 title: Selenium Still Hangin' Round!
 layout: post
+tags: unix-tools python selenium automation etl wwe
 ---
 
 At work, I have a particular python Selenium script that is scheduled in Crontab
