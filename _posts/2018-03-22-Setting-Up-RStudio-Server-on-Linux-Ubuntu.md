@@ -1,6 +1,7 @@
 ---
 title: Setting Up RStudio Server on Linux Ubuntu
 layout: post
+tags: r unix-tools wwe
 ---
 
 First things first: update and upgrade your system software.
