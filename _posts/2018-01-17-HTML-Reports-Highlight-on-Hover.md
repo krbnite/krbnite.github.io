@@ -1,6 +1,7 @@
 ---
 title: HTML Reports&#58; Highlight on Hover
 layout: post
+tags: python webdev automation wwe
 ---
 
 While trying to figure out how to ensure that the HTML report's numeric values
