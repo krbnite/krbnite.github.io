@@ -1,6 +1,7 @@
 ---
 title: My Daily Git
 layout: post
+tags: git unix-tools wwe
 ---
 
 Oy vey.  
