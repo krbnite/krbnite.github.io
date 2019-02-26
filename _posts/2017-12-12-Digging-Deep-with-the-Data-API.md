@@ -1,6 +1,7 @@
 ---
 title: Digging Deep with the Data API
 layout: post
+tags: python youtube automation etl wwe
 ---
 
 If you are a content creator/owner on YouTube, the Reporting API will provide you with a horde of data.  You just 
