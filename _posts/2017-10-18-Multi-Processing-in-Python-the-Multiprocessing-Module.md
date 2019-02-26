@@ -1,6 +1,7 @@
 ---
 title: Multi-Processing in Python (the Multiprocessing Module)
 layout: post
+tags: python wwe
 ---
 
 Here's the gist: by default, the Python interpreter is single-threaded (i.e., a serial processor). This is
