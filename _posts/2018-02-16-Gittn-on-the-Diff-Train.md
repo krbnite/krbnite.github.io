@@ -1,7 +1,7 @@
 ---
 title: Gittn on the Diff Train
 layout: post
-tags: git wwe
+tags: git unix-tools wwe
 ---
 
 I have literally rebelled against using diff and git diff forever.  Thought it all
