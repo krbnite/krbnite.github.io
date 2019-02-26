@@ -1,3 +1,9 @@
+---
+layout: post
+title: AWS/Boto3 Encryption
+tags: aws python automation etl wwe
+---
+
 So you have a personal AWS account, do ya?! And you've used the boto3 python package to transfer files 
 from your laptop to S3, you say?!
 
