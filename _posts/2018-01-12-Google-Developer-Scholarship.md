@@ -1,6 +1,7 @@
 ---
 title: Google Developer Scholarship
-post: layout
+layout: post
+tags: webdev grow-with-google udacity wwe
 ---
 
 A few months back I saw that [Google was offering scholarships](https://developers.googleblog.com/2017/10/grow-with-google-scholarships.html)
