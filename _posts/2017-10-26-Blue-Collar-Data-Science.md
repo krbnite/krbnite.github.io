@@ -1,6 +1,7 @@
 ---
 title: Blue Collar Data Science
 layout: post
+tags: misc wwe
 ---
 
 Automation: it's what I do best.  
