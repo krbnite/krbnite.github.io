@@ -1,6 +1,7 @@
 ---
 title: Multithreading in Python (Take One)
 layout: post
+tags: python wwe
 ---
 
 Here's the situation:
