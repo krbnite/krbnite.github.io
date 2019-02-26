@@ -1,6 +1,7 @@
 ---
 title: Google Developer Scholarship&#58; Back to the Basics of JavaScript
 layout: post
+tags: webdev grow-with-google udacity wwe
 ---
 
 Some of the JavaScript being thrown around in the web development course is actually a little more complex 
