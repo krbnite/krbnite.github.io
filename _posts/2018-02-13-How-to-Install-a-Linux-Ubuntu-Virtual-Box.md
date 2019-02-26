@@ -1,6 +1,7 @@
 ---
 title: How to Install a Linux Ubuntu Virtual Box
 layout: post
+tags: virtual-environments wwe
 ---
 
 What if you work on a Windows machine, but actively develop Python scripts that run on Linux Ubuntu?  Installing 
