@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Solarizing the Terminal
-tags: misc vim macbook
+tags: misc vim macbook wwe
 ---
 
 In RStudio, I use the "Material" color theme, which has a midnight blue background similar to the popular "solarized" theme.
