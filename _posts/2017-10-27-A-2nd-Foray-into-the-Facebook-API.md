@@ -1,6 +1,7 @@
 ---
 title: A 2nd Foray into the FB API
 layout: post
+tags: facebook-graph python wwe
 ---
 
 In a [previous post](https://krbnite.github.io/First-Foray-Into-the-FaceBook-API/), 
