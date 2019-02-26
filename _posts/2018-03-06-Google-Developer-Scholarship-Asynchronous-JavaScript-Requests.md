@@ -1,6 +1,7 @@
 ---
 title: Google Developer Scholarship&#58; Asynchronous JavaScript Requests
 layout: post
+tags: webdev grow-with-google udacity wwe
 ---
 
 After [finishing up](https://github.com/krbnite/GoogleDeveloperScholarship2018/tree/master/Round1/Supplementary-Courses/03__JavaScript-and-the-DOM)
