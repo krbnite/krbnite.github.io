@@ -1,7 +1,7 @@
 ---
 title: Wrapping Up Udacity's Deep Learning Nanodegree
 layout: post
-tags: udacity misc
+tags: udacity misc wwe
 ---
 
 Udacity's Deep Learning nanodegree was such a great experience, and I learned
