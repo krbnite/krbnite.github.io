@@ -1,6 +1,7 @@
 ---
 title: Facebook Instant Articles
 layout: post
+tags: facebook-graph wwe
 ---
 
 Over the past several months, I've been on several reconnaissance missions to uncover
