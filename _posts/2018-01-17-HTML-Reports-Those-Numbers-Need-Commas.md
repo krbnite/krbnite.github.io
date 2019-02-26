@@ -1,6 +1,7 @@
 ---
 title: HTML Reports&#58; Those Numbers Need Commas!
 layout: post
+tags: python webdev automation wwe
 ---
 
 In a [previous post](https://krbnite.github.io/pretty-tables-in-pythonic-emails/), 
