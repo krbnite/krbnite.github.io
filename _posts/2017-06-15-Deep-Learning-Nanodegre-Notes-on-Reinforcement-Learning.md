@@ -1,7 +1,7 @@
 ---
 title: Exploring and Exploiting Markovia (Notes on Reinforcement Learning)
 layout: post
-tags: deep-learning reinforcement-learning udacity
+tags: deep-learning reinforcement-learning machine-learning udacity
 ---
 
 Better know your history, right?  Not if you're Markovian. In Markovia, 
