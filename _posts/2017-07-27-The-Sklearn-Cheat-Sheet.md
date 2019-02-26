@@ -1,7 +1,7 @@
 ---
 title: The Sklearn Cheat Sheet
 layout: post
-tags: python machine-learning
+tags: python machine-learning wwe
 ---
 
 To be as efficient as possible, just take a look at this cheet sheat to my cheat sheet:
