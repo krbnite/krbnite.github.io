@@ -1,6 +1,7 @@
 ---
 title: How to Add a Column to the Middle of a Redshift Table
 layout: post
+tags: databases redshift sql wwe
 ---
 
 Just going to leave this here for future reference! 
