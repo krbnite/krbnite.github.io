@@ -1,6 +1,7 @@
 ---
 title: Querying Hive or Presto Remotely in Python
 layout: post
+tags: python aws hive presto databases wwe
 ---
 
 Using the YouTube Reporting API several months ago, I "turned on" any and every daily
