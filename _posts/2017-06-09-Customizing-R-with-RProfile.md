@@ -1,7 +1,7 @@
 ---
 title: Customing R with .RProfile
 layout: post
-tags: r
+tags: r wwe
 ---
 
 Is there a custom function you always use that is too specific to really create a library around, but that you 
