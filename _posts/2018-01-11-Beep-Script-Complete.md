@@ -1,6 +1,7 @@
 ---
 title: Beep! Script Complete.
 layout: post
+tags: unix-tools wwe
 ---
 
 Sometimes you need to run a script that takes long enough to warrant web surfing, but 
