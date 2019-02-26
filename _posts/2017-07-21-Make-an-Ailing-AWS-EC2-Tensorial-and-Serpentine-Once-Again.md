@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Make an Ailing AWS EC2 Tensorial and Serpentine Once Again
-tags: aws python tensor-flow unix-tools
+tags: aws python tensor-flow unix-tools wwe
 ---
 
 It could happen to any of us: you SSH into your EC2 and, "Wtf?"  Nothing is working right.  
