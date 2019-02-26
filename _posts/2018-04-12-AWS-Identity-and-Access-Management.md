@@ -1,6 +1,7 @@
 ---
 title: AWS&#58; Identity and Access Management
 layout: post
+tags: aws wwe
 ---
 
 Long story short: in Redshift at work, the default when you create a table is that the
