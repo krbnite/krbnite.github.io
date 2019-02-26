@@ -1,7 +1,7 @@
 ---
 title: Notes on Autoencoders (Decoded into English)
 layout: post
-tag: deep-learning autoencoders udacity
+tag: deep-learning autoencoders machine-learning udacity
 ---
 
 An autoencoder is designed to reconstruct its input. In a sense, a perfect autoencoder
