@@ -59,7 +59,8 @@ in both directions, you'll have to issue two sync commands (shown below).
 Also note that it seems that "sync" is just shorthand for "copy everything this one time" (i.e.,
 `cp --recursive`).  The word "sync" to me suggests a DropBox-like functionality, but I haven't 
 found this to be true... And a look at [sync's documentation](https://docs.aws.amazon.com/cli/latest/reference/s3/sync.html)
-seems to confirm this behavior.
+seems to confirm that it is a sophisticated take on this behavior (e.g., only copies new and/or updated
+files instead of everything).
 
 ```
 # Local -> S3 (1-Way Sync)
