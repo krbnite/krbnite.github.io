@@ -436,3 +436,8 @@ Other MOOCs:
 * https://www.coursera.org/learn/probabilistic-graphical-models
 * https://www.edx.org/course/causal-diagrams-draw-assumptions-harvardx-ph559x
 * https://www.coursera.org/learn/designexperiments
+
+Courses:
+* 2019 Columbia Course: http://www.cs.columbia.edu/~blei/seminar/2019-applied-causality/
+  - weekly recommended readings (Pearl, Hernan, Robins, etc)
+  - should go through the readings
