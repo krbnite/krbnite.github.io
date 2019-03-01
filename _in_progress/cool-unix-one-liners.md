@@ -12,3 +12,7 @@ cat data/raw/labels.csv | awk -F',' '{print $6}' | uniq
 ```
 
 
+```
+# Print out header names one per row (instead of a million jammed on one row)
+head -n 1 tons_of_data_fields.csv | tr ',' '\n
+```
