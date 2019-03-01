@@ -55,6 +55,12 @@ aws s3 cp s3://bucket-name . --recursive
 ### Synchronize contents of a bucket w/ a local directory
 Note that the `aws s3 sync` command only creates a 1-way sync.  If you want the sync going
 in both directions, you'll have to issue two sync commands (shown below).
+
+Also note that it seems that "sync" is just shorthand for "copy everything this one time" (i.e.,
+`cp --recursive`).  The word "sync" to me suggests a DropBox-like functionality, but I haven't 
+found this to be true... And a look at [sync's documentation](https://docs.aws.amazon.com/cli/latest/reference/s3/sync.html)
+seems to confirm this behavior.
+
 ```
 # Local -> S3 (1-Way Sync)
 aws s3 sync local/path/to/folder s3://bucket-name/path/to/folder
