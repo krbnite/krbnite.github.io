@@ -37,32 +37,49 @@ around that too).
 
 # Some Basic Commands
 
-Look at your buckets in S3
+### Look at your buckets in S3
 ```
 aws s3 ls
 ```
 
-Look at the contents of a bucket in S3
+### Look at the contents of a bucket in S3
 ```
 aws s3 ls bucketName
 ```
 
-Copy the contents of a bucket to your local working directory
+### Copy the contents of a bucket to your local working directory
 ```
 aws s3 cp s3://bucket-name . --recursive
 ```
 
-Synchronize contents of a bucket w/ a local directory
+### Synchronize contents of a bucket w/ a local directory
+Note that the `aws s3 sync` command only creates a 1-way sync.  If you want the sync going
+in both directions, you'll have to issue two sync commands (shown below).
 ```
-aws s3 sync local/path/to/folder s3://bucket-name/path/to/folder --exclude *.tmp
+# Local -> S3 (1-Way Sync)
+aws s3 sync local/path/to/folder s3://bucket-name/path/to/folder
+
+# S3 -> Local (1-Way Sync)
+aws s3 sync s3://bucket-name/path/to/folder local/path/to/folder 
 ```
 
-Look at your EC2 instance IDs
+Note that when 1-way syncing an S3 bucket to a local directory, if you are
+in the desired directory, then you can leave the 2nd argument blank (i.e., defaults to current
+working directory).
+
+Pro Tip: You don't have to sync everything:
+```
+# 1-Way Sync: Local -> S3 (exclude .tmp files)
+aws s3 sync local/path/to/folder s3://bucket-name/path/to/folder --exclude *.tmp
+
+```
+
+### Look at your EC2 instance IDs
 ```
 aws ec2 describe-instances | grep InstanceId
 ```
 
-List CloudWatch metrics
+### List CloudWatch metrics
 ```
 aws cloudwatch list-metrics
 ```
