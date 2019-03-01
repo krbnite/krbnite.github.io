@@ -370,6 +370,10 @@ https://blog.acolyer.org/2018/09/17/the-seven-tools-of-causal-inference-with-ref
 http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.726.5229&rep=rep1&type=pdf
 
 
+Chen & Pearl [2013]: [Regression and Causation: A Critical Examination of
+Six Econometrics Textbooks](https://ftp.cs.ucla.edu/pub/stat_ser/r395.pdf)
+
+
 Course notes:
 * http://bkenkel.com/psci8357/notes/08-causal.pdf
   - points out an interesting thing about causal models: in a regression, you do not want to include
