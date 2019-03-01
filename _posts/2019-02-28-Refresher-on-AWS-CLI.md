@@ -94,12 +94,17 @@ To be a ninja, you'll want to learn how to use the `--include` and `--exclude` c
 # Dry run on "erase everything, but exclude everything" (should do nothing)
 aws s3 rm s3://bucket/prefix/ --dryrun --recursive --exclude "*" 
 
-# Dry run on "do not erase anything, but those pesky .jpg files"
+# Dry run on "do not erase anything but those pesky .jpg files"
 aws s3 rm s3://bucket/prefix/ --dryrun --recursive --exclude "*" --include "*.jpg"
 
-# Dry run on "do not erase anything, but those pesky .jpg files -- except the cute ones!"
+# Dry run on "do not erase anything but those pesky .jpg files, except the cute ones!"
 aws s3 rm s3://bucket/prefix/ --dryrun --recursive --exclude "*" --include "*.jpg" --exclude "cute/*"
 ```
+
+You could write `cute/*.jpg` to be safe if you want, but it shouldn't be necessary since:
+* you've excluded all files
+* added all \*.jpg files back in the set
+* took out any of those \*.jpg files that had a "cute/" prefix
 
 There is some regex you can do for complicated removals, but I found that stringing together a sequence
 of includes and excludes can sometimes get the job done faster (you know, instead of Googling the 
