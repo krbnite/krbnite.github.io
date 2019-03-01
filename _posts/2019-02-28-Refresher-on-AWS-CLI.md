@@ -81,6 +81,35 @@ aws s3 sync local/path/to/folder s3://bucket-name/path/to/folder --exclude *.tmp
 
 ```
 
+### Remove some S3 files
+
+First of all, most of the time you'll probably want to do a dryrun (you know, to make sure you 
+don't lose your mind or job).
+```
+aws s3 rm s3://bucket/prefix/ --dryrun --recursive 
+```
+
+To be a ninja, you'll want to learn how to use the `--include` and `--exclude` commands well.
+```
+# Dry run on "erase everything, but exclude everything" (should do nothing)
+aws s3 rm s3://bucket/prefix/ --dryrun --recursive --exclude "*" 
+
+# Dry run on "do not erase anything, but those pesky .jpg files"
+aws s3 rm s3://bucket/prefix/ --dryrun --recursive --exclude "*" --include "*.jpg"
+
+# Dry run on "do not erase anything, but those pesky .jpg files -- except the cute ones!"
+aws s3 rm s3://bucket/prefix/ --dryrun --recursive --exclude "*" --include "*.jpg" --exclude "cute/*"
+```
+
+There is some regex you can do for complicated removals, but I found that stringing together a sequence
+of includes and excludes can sometimes get the job done faster (you know, instead of Googling the 
+idiosyncracies of regex and ultimately going down a bunch of interesting-but-not-high-priority 
+rabbit holes!).
+
+Remember, when the dryrun list finally matches what you want removed, then remove the dryrun flag
+(and cross your fingers).
+
+
 ### Look at your EC2 instance IDs
 ```
 aws ec2 describe-instances | grep InstanceId
