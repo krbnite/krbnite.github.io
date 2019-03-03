@@ -370,9 +370,9 @@ https://blog.acolyer.org/2018/09/17/the-seven-tools-of-causal-inference-with-ref
 http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.726.5229&rep=rep1&type=pdf
 
 
-Chen & Pearl [2013]: [Regression and Causation: A Critical Examination of
+* Chen & Pearl [2013]: [Regression and Causation: A Critical Examination of
 Six Econometrics Textbooks](https://ftp.cs.ucla.edu/pub/stat_ser/r395.pdf)
-
+* Saddiki & Balzer [2018]: [A Primer on Causality in Data Science](https://www.researchgate.net/publication/327549882_A_Primer_on_Causality_in_Data_Science)
 
 Course notes:
 * http://bkenkel.com/psci8357/notes/08-causal.pdf
