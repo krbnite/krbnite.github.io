@@ -319,7 +319,7 @@ https://www.coursera.org/lecture/crash-course-in-causality/stratification-xEcaf
 
 
 Standardization
-  - stratify on important variables, then averaging over...
+  - stratify on important variables, then averaging over the distribution of those variables
   - that is, standardization is a combination of conditioning and marginalizing
   - conditioning means to stratify (remember: whenever we say "given", we mean "restrict to")
   - marginalize means to average over
@@ -328,13 +328,28 @@ Previously, we found that we can estimate information on potential outcomes by p
 assumptions into place.  Namely, by consistency and ignorability, we can link potential outcomes to
 actual data: `E{Y[a]|X=x} = E{Y|A=a,X=x}`.
 
-We needed to condition on X in order to link actual outcomes to potential outcomes, but now to get the 
-marginal causal effect, we will need to average over the distribution of X: 
+We needed to condition on X in order to link actual outcomes to potential outcomes.  To get the 
+marginal causal effect, we will then need to average over the distribution of X: 
+* Let X be a single categorical variable
 * Expected potential outcome for A=a:  `E{Y[a]} = Σ{X} E{Y|A=a,X=x}P(X=x)`
-* Marginal causal effect: 
+  - this is standardization (condition/stratify, then marginalize)
+  - the conditional expectation is the conditioning (or stratification) component
+  - the sum is the marginalization 
 
 
+Ultimately the goal is to remove confounding effects -- and the conceptually straightforward
+way to do this is through standardization.  That is, to stratify and marginalize.  Basically, the stratification
+step is how to control for confounding variables, and the marginalization
+step then finds the average effect across strata.  In practice, the stratification step can
+become nigh impossible -- there can be many variables to control for, resulting in highly rarefied
+strata and likely even "empty" strata.  There is also the challenge of knowing what to control for.  The 
+rest of the course looks at ways of simulating/estimating the stratification step (e.g., propensity
+score matching, inverse probability of treatment weighting, etc).
 
+
+### Some Further Reading
+* Gharibzadeh et al [2016]: [Standardization as a Tool for Causal Inference in Medical Research](http://www.ams.ac.ir/AIM/NEWPUB/16/19/9/0011.pdf)
+* Glass et al [2013]: [Causal Inference in Public Health](https://www.annualreviews.org/doi/full/10.1146/annurev-publhealth-031811-124606)
 
 
 
@@ -373,6 +388,7 @@ http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.726.5229&rep=rep1&type=
 * Chen & Pearl [2013]: [Regression and Causation: A Critical Examination of
 Six Econometrics Textbooks](https://ftp.cs.ucla.edu/pub/stat_ser/r395.pdf)
 * Saddiki & Balzer [2018]: [A Primer on Causality in Data Science](https://www.researchgate.net/publication/327549882_A_Primer_on_Causality_in_Data_Science)
+* Mohan & Pearl [2018]: [Graphical Models for Processing Missing Data](https://ftp.cs.ucla.edu/pub/stat_ser/r473-L.pdf)
 
 Course notes:
 * http://bkenkel.com/psci8357/notes/08-causal.pdf
