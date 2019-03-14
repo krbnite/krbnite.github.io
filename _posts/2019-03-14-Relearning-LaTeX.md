@@ -66,6 +66,12 @@ export PATH=$PATH:/Library/TeX/Distributions/.DefaultTeX/Contents/Programs/texbi
 
 Ultimately, my boss likes Word.  I've found that people tend to recommend two methods:
 1. Load the PDF into Word (works reasonably well)
-2. Use pandoc (`pandoc -f latex -t docx file.tex`)
+2. Use pandoc 
+  - if necesssary: `brew install pandoc`
+  - then: `pandoc -f latex -t docx file.tex -o file.docx`
+  
+I tested out the pandoc method: it worked very well!  The formatting was not the same as the PDF, but the overall delivery 
+was excellent.  Certainly good enough to send out for comments.
+
 
 
