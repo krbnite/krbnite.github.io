@@ -8,7 +8,7 @@ tags: deep-learning machine-learning python tensorflow easi
 One: this is called "Part 1 of N" b/c I know I'll be posting more on this, and don't want to have to
 come up w/ crazy, catchy titles for each, and I don't know how many there will be!  Two: on a side note,
 I originally dated this file as 2018 instead of 2019, which I've done for almost every 2019 post so far. It's
-2019, Kev!  Get with it!
+2019, Kev!  Get with it!  Three: it's Pi Day. I love math and physics so much, but Pi Day? Meh.
 
 ---------------------------------------------
 
@@ -418,4 +418,8 @@ To answer these questions, click on the "Runtime" dropdown in your Colab noteboo
 environment, choose what version of Python you want, and even choose whether you want to use
 GPUs or TPUs.   All for free.   Pretty crazy.
 
-
+# Some Refs
+* https://research.google.com/seedbank/
+  - Really want to get to working through a bunch of these, then transforming them into new projects
+* https://www.youtube.com/playlist?list=PLQY2H8rRoyvwLbzbnKJ59NkZvQAW9wLbx
+  - Also want to keep going through this playslist!
