@@ -5,6 +5,13 @@ tags: deep-learning machine-learning python tensorflow easi
 ---
 
 
+One: this is called "Part 1 of N" b/c I know I'll be posting more on this, and don't want to have to
+come up w/ crazy, catchy titles for each, and I don't know how many there will be!  Two: on a side note,
+I originally dated this file as 2018 instead of 2019, which I've done for almost every 2019 post so far. It's
+2019, Kev!  Get with it!
+
+---------------------------------------------
+
 In this video, [Getting Started with TensorFlow in Google Colaboratory](https://www.youtube.com/watch?v=PitcORQSjNM&list=PLQY2H8rRoyvwLbzbnKJ59NkZvQAW9wLbx&index=5),
 we start in Google Drive and create a new Colab JNB.  The instructor pip installs tensorflow...  I thought, "Wait,
 last time I checked, TensorFlow came pre-installed."  So I tested this out: went to Google Drive, created a new
