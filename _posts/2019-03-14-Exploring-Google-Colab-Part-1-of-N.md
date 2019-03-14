@@ -400,7 +400,7 @@ be upgraded and downgraded.  So, be wary.
 
 Isn't TensorFlow on version 2.0?  When I try to update TensorFlow, it basically tells me everything is
 up to date:
-```python
+```
 !pip install tensorflow --upgrade
 ```
 
