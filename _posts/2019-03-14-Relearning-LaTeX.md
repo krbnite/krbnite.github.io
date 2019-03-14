@@ -49,3 +49,18 @@ computer:
 cd ~/.vim/bundle
 git clone https://github.com/vim-scripts/TeX-9
 ```
+
+Oops!  Before compiling, make sure you have the LaTeX tools installed!
+
+```
+# assuming you're working on a mac
+brew cask install mactex
+```
+
+Then make sure to put commands like `pdflatex` and `bibtex` into your PATH:
+```
+# add this line to ~/.bash_profile if you know what's best for ya!
+export PATH=$PATH:/Library/TeX/Distributions/.DefaultTeX/Contents/Programs/texbin/
+```
+
+
