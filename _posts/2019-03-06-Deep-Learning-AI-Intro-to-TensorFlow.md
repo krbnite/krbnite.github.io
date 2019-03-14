@@ -109,9 +109,26 @@ I've been meaning to try out Colab for a while, so I'm grateful I was given the 
 It is much like a regular Jupyter Notebook, but smoother -- everything is set up for you.  You don't even have to
 think about where the computer is or whether tensorflow is installed.  Pretty cool. 
 
+Cooler -- Colab is integrated with Google Drive, so sharing a Jupyter notebook is as simple as sharing a Google Doc.  If
+Google Drive isn't your thing, you can also export the JNB to Github, or download as a local JNB.
+
+Cooler yet -- Colab has a search bar in its margin that allows you to search for visualization code snippets.  
+
 Also, it's free to use... That is, I wasn't just charged for using it.  And it says "free to use" in the 
 [Google Colab FAQs](https://research.google.com/colaboratory/faq.html).  I'll have to push that to its limit...
 
 
-
-
+## Further Refs
+* https://colab.research.google.com/notebooks/welcome.ipynb
+* [Getting Started w/ Google Colab](https://www.youtube.com/watch?time_continue=180&v=inN8seMm7UI)
+* Colab/TensorFlow playlist: [Coding TensorFlow](https://www.youtube.com/playlist?list=PLQY2H8rRoyvwLbzbnKJ59NkZvQAW9wLbx)
+* [Colab's SeedBank](https://research.google.com/seedbank/)
+  - a really cool collection of interactive machine learning examples
+    * [Neural Style Transfer](https://research.google.com/seedbank/seed/neural_style_transfer_with_tfkeras): Use deep learning to transfer style between images.
+    * [EZ NSynth](https://research.google.com/seedbank/seed/ez_nsynth): Synthesize audio with WaveNet auto-encoders.
+    * [Fashion MNIST with Keras and TPUs](https://research.google.com/seedbank/seed/fashion_mnist_with_keras_and_tpus): Classify fashion-related images with deep learning.
+    * [DeepDream](https://research.google.com/seedbank/seed/deepdream): Produce DeepDream images from your own photos.
+    * [Convolutional VAE](https://research.google.com/seedbank/seed/convolutional_vae): Create a generative model of handwritten digits.
+* Build interactive [forms](https://colab.research.google.com/notebooks/forms.ipynb) or 
+[widgets](https://colab.research.google.com/notebooks/widgets.ipynb)
+* Use Colab/TF w/ [GPU](https://colab.research.google.com/notebooks/gpu.ipynb) or [TPU](https://colab.research.google.com/notebooks/tpu.ipynb)
