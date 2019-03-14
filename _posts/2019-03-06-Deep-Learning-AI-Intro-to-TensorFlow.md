@@ -109,8 +109,8 @@ I've been meaning to try out Colab for a while, so I'm grateful I was given the 
 It is much like a regular Jupyter Notebook, but smoother -- everything is set up for you.  You don't even have to
 think about where the computer is or whether tensorflow is installed.  Pretty cool. 
 
-Cooler -- Colab is integrated with Google Drive, so sharing a Jupyter notebook is as simple as sharing a Google Doc.  If
-Google Drive isn't your thing, you can also export the JNB to Github, or download as a local JNB.
+Cooler -- Colab is integrated with Google Drive, so sharing a Jupyter notebook is as simple as sharing a Google Doc.  In
+fact, you can start in Google Drive, click on "New", click on "More", then choose "Colaboratory" (or "Connect more apps" if you do not see it).  If Google Drive isn't your thing, you can also export the JNB to Github, or download as a local JNB.
 
 Cooler yet -- Colab has a search bar in its margin that allows you to search for visualization code snippets.  
 
