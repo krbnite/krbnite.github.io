@@ -64,3 +64,8 @@ export PATH=$PATH:/Library/TeX/Distributions/.DefaultTeX/Contents/Programs/texbi
 ```
 
 
+Ultimately, my boss likes Word.  I've found that people tend to recommend two methods:
+1. Load the PDF into Word (works reasonably well)
+2. Use pandoc (`pandoc -f latex -t docx file.tex`)
+
+
