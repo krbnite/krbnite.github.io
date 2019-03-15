@@ -1,7 +1,7 @@
 ---
 title: Getting off the Ground with Neo4j Browser and LOAD CSV
 layout: post
-tags: databases neo4j
+tags: databases neo4j easi
 ---
 
 Have I ever mentioned that I've given up trying to be creative with post names?  
