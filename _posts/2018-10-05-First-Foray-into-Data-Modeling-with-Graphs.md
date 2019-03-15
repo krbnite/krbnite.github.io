@@ -1,7 +1,7 @@
 ---
 title: First Foray into Data Modeling with Graphs
 layout: post
-tags: databases data-modeling
+tags: databases data-modeling easi
 ---
 
 In a previous post, we used the mighty pen (remember: fuck pencils) and rock-crushing paper to model
