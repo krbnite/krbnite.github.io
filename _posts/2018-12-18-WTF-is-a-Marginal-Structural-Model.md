@@ -1,7 +1,7 @@
 ---
 title: WTF is a Marginal Structural Model
 layout: post
-tags: statistics causal-inference
+tags: statistics causal-inference easi
 ---
 
 Machine learning models are great, right?!   
