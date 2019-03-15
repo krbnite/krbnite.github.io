@@ -1,7 +1,7 @@
 ---
 title: What's What When Selenium Crashes
 layout: post
-tags: selenium webscraping automation python
+tags: selenium webscraping automation python wwe
 ---
 
 Recently, the Selenium component of my Facebook Graph code broke.  This is important b/c we need Facebook data for during 
