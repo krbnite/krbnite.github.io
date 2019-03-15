@@ -1,7 +1,7 @@
 ---
 title: Some CUDA AWS/Ubuntu Notes
 layout: post
-tags: unix-tools tensor-flow wwe
+tags: unix-tools tensorflow wwe
 ---
 
 Been cleaning up my work email and found these notes on installing CUDA on an EC2 instance 
