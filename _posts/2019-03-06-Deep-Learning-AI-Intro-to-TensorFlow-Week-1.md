@@ -1,7 +1,7 @@
 ---
 layout: post
-title: deeplearning.ai's Intro to TensorFlow
-tags: deep-learning machine-learning tensor-flow python coursera
+title: deeplearning.ai's Intro to TensorFlow (Week 1)
+tags: deep-learning machine-learning tensor-flow python coursera easi
 ---
 
 Just started working on a new-to-me TensorFlow-oriented project at work.  The project is
