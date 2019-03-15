@@ -117,6 +117,36 @@ Cooler yet -- Colab has a search bar in its margin that allows you to search for
 Also, it's free to use... That is, I wasn't just charged for using it.  And it says "free to use" in the 
 [Google Colab FAQs](https://research.google.com/colaboratory/faq.html).  I'll have to push that to its limit...
 
+## Some Example Code
+
+Scenario: Imagine that the house pricing formula for Town City was as simple as 50k + 50k per bedroom, e.g., a 1 
+bedroom house costs 100k, a 2 bedroom house costs 150k, and so on.  
+
+Task: Make a prediction model using TensorFlow.
+
+```python
+import tensorflow as tf
+import numpy as np
+from tensorflow import keras
+# Build Model
+model = keras.Sequential()
+model.add(keras.layers.Dense(units=1, input_shape=[1]))
+model.compile(optimizer = 'sgd', loss = 'mean_squared_error')
+# Get Data
+xs = np.array([1.0, 2.0, 3.0, 4.0, 5.0], dtype=float) # Number of Bedrooms
+ys = np.array([1.0, 1.5, 2.0, 2.5, 3.0], dtype=float) # units = 100k$
+# Train Model
+model.fit(xs, ys, epochs = 50)
+# Make Prediction
+print(model.predict([7.0]))
+  [[4.0994635]]
+```
+
+I also tried this with Adam (`optimizer='adam'`).  It sucked.  Bad.  It scored the 7-bedroom house 
+anywhere between 5 to 10, and even -5 once... 
+
+
+
 
 ## Further Refs
 * https://colab.research.google.com/notebooks/welcome.ipynb
