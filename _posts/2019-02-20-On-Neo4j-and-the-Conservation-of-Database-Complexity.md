@@ -1,7 +1,7 @@
 ---
 layout: post
 title: On Neo4j and the Conservation of Database Complexity
-tags: neo4j databases
+tags: neo4j databases easi
 ---
 
 There is a lot to love about Neo4j, especially if you are modeling data that has a high relationship density
