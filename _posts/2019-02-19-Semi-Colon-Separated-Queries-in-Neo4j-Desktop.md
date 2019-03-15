@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Semi-Colon-Separated Queries in Neo4j Desktop
-tags: neo4j 
+tags: neo4j easi
 ---
 
 When I first began working at WWE, my only SQL experience was through online courses, tinkering with SQLite,
