@@ -1,7 +1,7 @@
 ---
 title: Deep Learning Project&#58; Face Generation
 layout: post
-tags: deep-learning gans machine-learning udacity wwe
+tags: deep-learning gans machine-learning tensorflow udacity wwe
 ---
 
 Find the code and notes in my DLND repo:
