@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Relearning LaTeX
-tags: latex research
+tags: latex research easi
 ---
 
 Haven't used LaTeX much since I finished my PhD dissertation. I did try using it when I first
