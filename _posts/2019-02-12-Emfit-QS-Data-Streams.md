@@ -1,7 +1,7 @@
 ---
 title: Emfit QS Data Streams
 layout: post
-tags: digital-health sleep
+tags: digital-health sleep easi
 ---
 
 Learning about a lot of different wearables and home sensors these days.  Notes and links clutter
