@@ -1,7 +1,7 @@
 ---
 title: Laughing Like Hyde
 subtitle: Adding Tags to Github-Hosted Jekyll Pages
-tags: jekyll
+tags: jekyll easi
 ---
 
 I'm in a room filled with impatient, frustrated citizens awaiting
