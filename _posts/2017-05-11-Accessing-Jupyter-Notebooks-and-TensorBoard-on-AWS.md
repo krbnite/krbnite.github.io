@@ -1,7 +1,7 @@
 ---
 title: Accessing Jupyter Notebooks and TensorBoard on AWS
 layout: post
-tags: python jupyter tensor-flow aws unix-tools
+tags: python jupyter tensorflow aws unix-tools
 ---
 
 To use a Jupyter Notebook or TensorBoard on AWS is straightforward on a personal account. 
