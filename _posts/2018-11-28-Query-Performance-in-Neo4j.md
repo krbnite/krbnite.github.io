@@ -1,7 +1,7 @@
 ---
 title: Query Performance in Neo4j
 layout: post
-tags: databases neo4j
+tags: databases neo4j easi
 ---
 
 I was going through the [Cypher Manaul](https://neo4j.com/docs/cypher-manual/current/query-tuning) today, and
