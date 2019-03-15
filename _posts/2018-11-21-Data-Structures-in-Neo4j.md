@@ -1,7 +1,7 @@
 ---
 title: Data Structures in Neo4j
 layout: post
-tags: databases neo4j
+tags: databases neo4j easi
 ---
 
 What's cool about Neo4j is that you can output the data almost any way you want: you can return 
