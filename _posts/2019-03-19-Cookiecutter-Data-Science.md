@@ -88,6 +88,8 @@ remove them or swap them out project by project, or modify the template itself a
 cookiecutter template ([your first cookiecutter](https://cookiecutter.readthedocs.io/en/latest/first_steps.html)).  But 
 at the very least, it's a great first draft for developing your own template.  
 
+
+# Initializing a New Project
 Starting a new project from the cookiecutter-data-science template is easy:
 ```
 # if you haven't used cookiecutter-data-science yet
@@ -109,8 +111,10 @@ You can look at what cookiecutter templates you have:
 ls ~/.cookiecutters
 ```
 
+# Mapping Out the Project Initialization Parameters
 For the data science template, you will go through a series of initialization questions, such
-as choosing the project name.  Here is an example session:
+as choosing the project name.  One question I had is how some of this info was being used within the project. Here 
+is an example session:
 
 * make a new, empty directory (so we can easily see what happens)
   - `mkdir tempDir; cd tempDir`
