@@ -113,11 +113,22 @@ ls ~/.cookiecutters
 
 # Mapping Out the Project Initialization Parameters
 For the data science template, you will go through a series of initialization questions, such
-as choosing the project name.  One question I had is how some of this info was being used within the project. Here 
-is an example session:
+as choosing the project name.  One question I had is how some of this info was being used within the project. 
 
-* make a new, empty directory (so we can easily see what happens)
-  - `mkdir tempDir; cd tempDir`
+Let's first make a new, empty directory so that we can easily see what happens in a reproducible way:
+```
+mkdir tempDir
+cd tempDir
+```
+
+Ok, next -- let's look at an example of initializing a project. 
+
+```
+cookiecutter cookiecutter-data-science
+```
+
+We then go through a series of initialization steps:
+
 * project_name [project_name]:  `greatestProject`
   - this field defaults to `project_name`
   - you will find that the thing in square brackets often represents the default
