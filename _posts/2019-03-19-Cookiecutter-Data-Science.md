@@ -88,9 +88,136 @@ remove them or swap them out project by project, or modify the template itself a
 cookiecutter template ([your first cookiecutter](https://cookiecutter.readthedocs.io/en/latest/first_steps.html)).  But 
 at the very least, it's a great first draft for developing your own template.  
 
+Starting a new project from the cookiecutter-data-science template is easy:
+```
+# if you haven't used cookiecutter-data-science yet
+cookiecutter https://github.com/drivendata/cookiecutter-data-science
+```
+
+After using this command the first time, the template is stored in `~/.cookiecutters`.  If you
+use it again, you will be asked if you want to delete and redownload the template.  That's fine if
+you have not modified the template file (actually, if you do modify the template, it's probably better to 
+just save as a new template).  Mostly this is just an annoying extra step!  
+
+So, for subsequent projects:
+```
+cookiecutter cookiecutter-data-science
+```
+
+You can look at what cookiecutter templates you have:
+```
+ls ~/.cookiecutters
+```
+
+For the data science template, you will go through a series of initialization questions, such
+as choosing the project name.  Here is an example session:
+
+* make a new, empty directory (so we can easily see what happens)
+  - `mkdir tempDir; cd tempDir`
+* project_name [project_name]:  `greatestProject`
+  - this field defaults to `project_name`
+  - you will find that the thing in square brackets often represents the default
+  - to emphasize this, I called the project `greatestProject`, which will be the default for `repo_name` 
+* repo_name [greatestProject]: `greatestProjectTribute`
+  - see the default?!
+  - I call it greatestProjectTribute so that it becomes obvious how these variables are used
+    * for example, the directory that is created will be called `repo_name`, which may be different than `project_name`
+    * `project_name` is used as the project name in the README.md file
+* author_name [Your name (or your organization/company/team)]: `Krbn`
+  - this is used in `setup.py`
+* description [A short description of the project]: `This is not The Greatest Project in the World; no, this is just a tribute.`
+    - this is used in `setup.py`
+* Select open_source_license (1 - MIT; 2 - BSD-3-Clause; 3 - No license file) [1]: 1
+  - this is used in `setup.py`
+  - also, the chosen license is stored in top-level directory
+* s3_bucket [[OPTIONAL] your-bucket-for-syncing-data (do not include 's3://')]: greatestProjectTributeBucket
+  - stored in Makefile: `BUCKET = greatestProjectTributeBucket`
+  - whatever S3 bucket name you specify, a data subdirectory will be assumed: `s3://$(BUCKET)/data/`
+* aws_profile [default]:
+  - if you do not specify a default AWS profile, it will use `~/.aws/config`
+* Select python_interpreter (1 - python3; 2 - python) [1]:
+  - defaults to python3
+
+
+I described a bit where all this information gets stored.  Below, I show it in more detail.
+
+
+#### Project Directory
+```
+# Show that we are still in tempDir (cool one liner)
+pwd | rev | cut -d/ -f1 | rev
+  tempDir
+
+# Show that only one directory was made, called greatestProjectTribute
+#  -- i.e., the project directory was named after the repo_name variable
+ls
+  greatestProjectTribute
+```
+  
+
+#### Makefile
+This is where you'll find the chosen S3 bucket info stored.  Confusingly, the `PROJECT_NAME` variable
+in this file is what we defined as the `repo_name` during set up, which defaults to `project_name`, but
+is not necessarily `project_name`. The `PROFILE` variable below is set to `default`, which tells the make
+file to use the info in `~/.aws/config`.
+
+```
+head -n 12 Makefile 
+
+  .PHONY: clean data lint requirements sync_data_to_s3 sync_data_from_s3
+
+  #################################################################################
+  # GLOBALS                                                                       #
+  #################################################################################
+
+  PROJECT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
+  BUCKET = greatestProjectTributeBucket
+  PROFILE = default
+  PROJECT_NAME = greatestProjectTribute
+  PYTHON_INTERPRETER = python3
+
+```
+
+#### setup.py
+This is where author name and description are stored.
+```
+cat setup.py 
+  from setuptools import find_packages, setup
+
+  setup(
+      name='src',
+      packages=find_packages(),
+      version='0.1.0',
+      description='This is not The Greatest Project in the World; no, this is just a tribute.',
+      author='Krbn',
+      license='MIT',
+  )
+```
+
+#### README.md
+Here, you will find that whatever you specified `project_name` as, independent of what you
+called `repo_name`.  My 2 cents is to always make `repo_name` the same as `project_name`, unless
+for some reason this is not possible... Can't imagine why at the moment, but I'm sure someone somewhere
+would tell me I'm an idiot if I made too strong of a statement :-p
+
+```
+head README.md 
+  greatestProject
+  ==============================
+
+  This is not The Greatest Project in the World; no, this is just a tribute.
+
+  Project Organization
+  ------------
+
+      ├── LICENSE
+      ├── Makefile           <- Makefile with commands like `make data` or `make train`
+```
+
+
 ---------------
 
-# Mix in a Few More Reality Bits
+# Mix in a Few More Reality Bits (Brain Storm)
 Ok, so here is one way I'm using `cookiecutter` with Git.  I work on a highly exploratory partnership with
 another group... In other words, there is nothing set in stone besides "let's try to do something together."  Given
 this, there are ideas that become exploratory projects, which fall to the wayside for newer ideas, and so on.  Some of
@@ -112,8 +239,8 @@ OneDrive/SharePoint, one can quickly come up with a scheme, e.g.:
 * Connect the local git repo to the GitLab repo
   - `git remote add origin https://gitlab.com/{user_name}/{partnership_project}`
 * Create various Cookiecutter directories for each relevant project
-  - If you haven't used cookiecutter-data-science yet:  `cookiecutter https://github.com/drivendata/cookiecutter-data-science`
-  - For subsequent projects: `cookiecutter cookiecutter-data-science`
+  - `cookiecutter cookiecutter-data-science`
+  - fill out project name, etc
 4. Use subproject naming scheme for Git commits (make history search easy)
   - e.g., `git add proj1/; git commit -m "proj1: add proj1"`
 
@@ -131,7 +258,7 @@ The cookiecutter-data-science template has the `references` directory.  We can a
 only is synced with SharePoint.  So, yea, create a way of syncing/linking that directory to SharePoint... Would
 be nice if a 2-way sync was in place.  
 
-Anyway, just wanted to brainstorm this in the form of a blog.  If you stumble on this and have 2 cents, please share.
+Anyway, just wanted to brainstorm this "out loud"...  If you stumble on this and have 2 cents, please share.
 
 
 
