@@ -21,8 +21,17 @@ tags: deep-learning machine-learning tensorflow python coursera easi
 # Identifying Biases in Machine Learning 
 This is a very interesting subfield of machine learning.  
 
-For example, in [Text Embedding Models Contain Bias](https://developers.googleblog.com/2018/04/text-embedding-models-contain-bias.html), the authors references
-several studies that picked out embarrassing-to-alarming features learned by ML models:
+The lectures introduced this concept very quickly and little artificially, noting that by encoding
+labels as numbers, there is no language bias (true, but I thought we do that b/c TF needs numerical data :-p).
+
+At any rate, the meat of this topic was provided in a link to a Google Developer page called
+[Machine Learning Fairness](https://developers.google.com/machine-learning/fairness-overview/), which has an
+interesting [video](https://www.youtube.com/watch?v=59bMh59JQDo) and a list of references for further
+reading.  This linked to a great Google Developer blog article called [Text Embedding Models Contain Bias](https://developers.googleblog.com/2018/04/text-embedding-models-contain-bias.html), which very simply
+details what bias in machine learning models is, and details why and when it matters.  
+
+For example, the authors reference several studies that highlight embarrassing-to-alarming features 
+learned (or not) by ML models:
 * "face classification models may not perform as well for women of color"
   - this bias seems more "embarrassing" than "alarming" in that the training data set should have been better vetted
   - given that it can be upsetting/distressing, one might call it alarming too though
@@ -35,13 +44,15 @@ several studies that picked out embarrassing-to-alarming features learned by ML 
   - this has both elements of "embarrassing" (should have used a more robust training set!) and
   possibly "alarming" too (can be upsetting/distressing)
 
-After trying to decide where some of these examples fit on the scale from "embarrassing" to "alarming," I've
-realized that they all basically contain both embarrassing and alarming elements.  Also, all examples are
+Actually, after trying to decide where these examples fit on a scale from "embarrassing" to "alarming," it
+strikes me this isn't the right scale to use:  they all seem to contain both embarrassing and alarming 
+elements.  Also, all examples are
 "bad for business", period.  For a company like Google, any of these would be bad press.  For a small startup, 
-missteps like these might be the difference between gaining traction or going extinct.
+missteps like these might be the difference between gaining traction or going extinct.  
 
 Some of the ML bias concerns are clearly concerning, however these isssues are very context dependent.  Biases
-identified in a data set are not inherently bad and should not be automatically removed.  
+identified in a data set are not necessarily inherently bad and should not be automatically removed.  Really
+depends on how you will be using the data.
 
 For example, in the beginning of the article, looking at the  ability of 5 different models in
 predicting whether or not a movie review is positive or negative, the authors observe that model C
@@ -63,7 +74,11 @@ The authors of the article actually go into this quite a bit, and more eloquentl
 
 
 
-
+## ML Implicit Bias References
 * [Machine Learning Fairness](https://developers.google.com/machine-learning/fairness-overview/)
-* 
+* [Text Embedding Models Contain Bias. Here's Why That Matters.](https://developers.googleblog.com/2018/04/text-embedding-models-contain-bias.html)
+* [Measuring and Mitigating Unintended Bias in Text Classification](https://github.com/conversationai/unintended-ml-bias-analysis/blob/master/presentations/measuring-mitigating-unintended-bias-paper.pdf)
+* Some Google CoLabs
+  - [Conversation AI's Pinned AUC Unintended Model Bias Demo](https://colab.research.google.com/github/conversationai/unintended-ml-bias-analysis/blob/master/unintended_ml_bias/pinned_auc_demo.ipynb)
+  - [Mitigating Unwanted Biases with Adversarial Learning](https://colab.research.google.com/notebooks/ml_fairness/adversarial_debiasing.ipynb)
 
