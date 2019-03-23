@@ -82,3 +82,99 @@ The authors of the article actually go into this quite a bit, and more eloquentl
   - [Conversation AI's Pinned AUC Unintended Model Bias Demo](https://colab.research.google.com/github/conversationai/unintended-ml-bias-analysis/blob/master/unintended_ml_bias/pinned_auc_demo.ipynb)
   - [Mitigating Unwanted Biases with Adversarial Learning](https://colab.research.google.com/notebooks/ml_fairness/adversarial_debiasing.ipynb)
 
+
+
+# Some Code
+
+```python
+from tensorflow import keras 
+
+# RAW DATA
+mnist = tf.keras.datasets.fashion_mnist
+(training_images, training_labels), (test_images, test_labels) = mnist.load_data()
+
+# NORMALIZE DATA
+training_images, test_images = training_images/255.0, test_images/255.0
+
+# MODEL:  xMRNS = y  
+model = keras.Sequential([
+  keras.layers.Flatten(input_shape=(28,28)),       # 28x28 input to match F-MNIST images, then flattened to 1D
+  keras.layers.Dense(128, activation=tf.nn.relu),  # hidden layer
+  keras.layers.Dense(10, activation=tf.nn.softmax) # 10 neurons to match 10 clothing classes
+])
+
+# OPTIMIZER METHOD & LOSS FCN
+model.compile(optimizer = tf.train.AdamOptimizer(),
+              loss = 'sparse_categorical_crossentropy',
+              metrics=['accuracy'])
+
+# TRAIN MODEL
+model.fit(training_images, training_labels, epochs=5)
+
+# EVALUATE MODEL
+model.evaluate(test_images, test_labels)
+
+# CLASSIFICATIONS 
+#   - vectors representing probability of each FMNIST class for given image
+classifications = model.predict(test_images)
+```
+
+Updating that code to be more flexible w/ a function:
+```python
+
+
+def get_model(
+  dense = [128],
+  activation = tf.nn.relu,
+  optimizer = tf.train.AdamOptimizer(),
+  loss = 'sparse_categorical_crossentropy',
+  metrics = ['accuracy'],
+):
+
+  # DENSE LIST
+  #  -- for single hidden layer designations, like 512
+  if type(dense) is not type(list()): dense = [dense]
+
+  # MODEL:  xMRNS = y  
+  model = keras.Sequential()
+  model.add(tf.keras.layers.Flatten(input_shape=(28,28)))
+  for layer_size in dense: model.add(tf.keras.layers.Dense(layer_size, activation = activation))
+  model.add(keras.layers.Dense(10, activation=tf.nn.softmax))
+
+  # OPTIMIZER METHOD & LOSS FCN
+  model.compile(
+    optimizer = optimizer,
+    loss = loss,
+    metrics = metrics
+  )
+  
+  return model_architecture
+  
+
+def train_model(
+  model,
+  training_images,
+  training_labels,
+  epochs = 5,
+  loss_goal = 0.25,
+):
+  # Add Error Checks: training_images.shape == (28,28), etc
+  
+  # Threshold Callback
+  class myCallback(tf.keras.callbacks.Callback):
+    def on_epoch_end(self, epoch, logs={}):
+      if(logs.get('loss') < loss_goal):
+        print(f"\n\nReached loss goal so cancelling training!\n\n")
+        self.model.stop_training = True
+
+  model.fit(
+    training_images, 
+    training_labels, 
+    epochs = epochs,
+    callbacks = [myCallback()]
+  )
+  
+  return model
+
+```
+
