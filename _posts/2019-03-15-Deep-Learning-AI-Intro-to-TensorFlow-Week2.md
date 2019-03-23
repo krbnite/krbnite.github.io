@@ -4,11 +4,23 @@ title: deeplearning.ai's Intro to TensorFlow (Week 2)
 tags: deep-learning machine-learning tensorflow python coursera easi
 ---
 
-
-
+This week's content got a little more into actual machine learning models, namely
+simple multiperceptron-style networks -- i.e., going from a linear regression to a
+network with hidden layers and non-identity activation functions.  Instead of using
+MNIST as a starting point, the course creators buck that trend and dive into Fashion 
+MNIST.  Very briefly, the fact that implicit biases  may be inherent in a data set is mentioned,
+and it is pointed out that such biases can unknowingly leak into machine learning models
+and cause downstream issues.  However, most of this content was optional: one either explores
+the provided reference and follows down the rabbit hole via references therein, or not.  The
+week's quiz doesn't even mention it.  My 2 cents: take the detour, at least briefly.  
 
 # Fashion MNIST
-
+Fashion MNIST is cool, not just because it is another publicly available, popular
+benchmarking data set, but because the designer of the F-MNIST put in the effort to make
+it a 100% pain-free drop-in for any algorithms already tested on MNIST.  The idea (I think) is
+that even the simplest machine learning models can perform well on MNIST without much
+effort, so it's really not much of a benchmark.  Fashion MNIST provides a little more of a challenge,
+and so a little more of an indication how a technique/architecture ranks.
 
 ## Fashion MNIST References
 * https://github.com/zalandoresearch/fashion-mnist
@@ -121,8 +133,6 @@ classifications = model.predict(test_images)
 
 Updating that code to be more flexible w/ a function:
 ```python
-
-
 def get_model(
   dense = [128],
   activation = tf.nn.relu,
@@ -148,23 +158,30 @@ def get_model(
     metrics = metrics
   )
   
-  return model_architecture
+  return model
   
-
+#---------------------------------------------------------
 def train_model(
   model,
   training_images,
   training_labels,
   epochs = 5,
-  loss_goal = 0.25,
+  loss_goal = 0.2,
+  acc_goal = 0.9
 ):
   # Add Error Checks: training_images.shape == (28,28), etc
   
-  # Threshold Callback
+  # Threshold Callbacks
+  #   -- we inherit from Keras' built-in Callback abstract class
+  #      and override the .on_epoch_end method
+  #   -- other methods could be used too (.on_batch_begin and .on_batch_end)
   class myCallback(tf.keras.callbacks.Callback):
     def on_epoch_end(self, epoch, logs={}):
       if(logs.get('loss') < loss_goal):
         print(f"\n\nReached loss goal so cancelling training!\n\n")
+        self.model.stop_training = True
+      if(logs.get('acc') > acc_goal):
+        print(f"\n\nReached accuracy goal so cancelling training!\n\n")
         self.model.stop_training = True
 
   model.fit(
@@ -176,5 +193,17 @@ def train_model(
   
   return model
 
+#---------------------------------------------------------
+import tensorflow as tf
+from tensorflow import keras
+
+# GET DATA
+fmnist = keras.datasets.fashion_mnist
+
+(x_train, y_train),(x_test, y_test) = fmnist.load_data()
+x_train, x_test = x_train/255., x_test/255.
+
+model = get_model(512)
+model = train_model(model, x_train, y_train, epochs=10, loss_goal=0.2, acc_goal=0.95)
 ```
 
