@@ -120,6 +120,7 @@ see these [excellent lecture notes](http://cs231n.github.io/neural-networks-2/).
 Note on TensorFlow Tensors
 ============================================================
 To use TensorFlow, you need to figure out how to declare your tensors.  
+
 What's a tensor you ask?  Well, [in physics](https://en.wikipedia.org/wiki/Tensor) a
 tensor is a geometrical object that follows a set of covariant and/or 
 contravariant transformation laws, which can be written as a multi-dimensional
@@ -147,14 +148,14 @@ for various sets of unvarying data throughout the training session (e.g., a plac
 batches of varying size).  In these cases, it is necessary to declare your tensor using tf.constant(), tf.Variable(), and 
 tf.placeholder(), respectively.  
 
-Basically, you use tf.Variable instead of tf.constant for any tensor whose value is going to 
+Basically, you use `tf.Variable` instead of `tf.constant` for any tensor whose value is going to 
 be updated throughout the model training session and you know enough about the quantity to 
 initialize it.  For example, when training a neural network, your goal is to
-train the weights and biases, which can be randomly intialized at the start of the session. 
-Thus, weights and biases represent the typical use case of a tf.Variable.  
-However, the training data itself static: though your network might look at different subsets 
-(batches) at different points in time, at no point is the training data itself being updated.  
-It is not initialized at some known or random starting value.  It is merely something you feed 
+train the weights and biases, which can be randomly intialized at the start of the session. Thus, weights 
+and biases represent the typical use case of a `tf.Variable`.  However, the training data itself 
+static: though your network might look at different subsets 
+(batches) at different points in time, at no point is the training data itself being updated.  It is not 
+initialized at some known or random starting value.  It is merely something you feed 
 into your net.  For this, you choose a placeholder, and the specifics (e.g., batch values and 
 size) are then computed at run time.  
 
@@ -242,7 +243,10 @@ sess.close()
 
 ### References
 These notes follow 
-[Deep Learning with TensorFlow](https://www.youtube.com/playlist?list=PL-XeOa5hMEYxNzHM7YLRjIwE1k3VQpqEh) 
-by Big Data University, as well as numerous StackExchange threads, what I've covered in Udacity's Deep
-Learning Nanodegree Foundation, and readings of the TF documentation.
+* [Deep Learning with TensorFlow](https://www.youtube.com/playlist?list=PL-XeOa5hMEYxNzHM7YLRjIwE1k3VQpqEh) 
+by Big Data University
+* numerous StackExchange threads
+* what I've covered in Udacity's Deep Learning Nanodegree Foundation,
+* the TF documentation
+* http://cs231n.github.io/neural-networks-2/
 
