@@ -19,29 +19,29 @@ Let's look at these in more detail!
 
 The Testing Plan (Experimental Design, KPIs, Etc)
 ===================================================
-1.	Formulate a well-defined, testable hypothesis:  Emailing our customers a 20% discount increases 
+1. Formulate a well-defined, testable hypothesis:  Emailing our customers a 20% discount increases 
 likelihood that they will make a purchase within one week
-2.	Control for natural variation over time and customer base by splitting customer base into test 
+2. Control for natural variation over time and customer base by splitting customer base into test 
 and control groups. However, more than one test group is required to properly assess our 
 hypothesis and determine cause and effect.  We must also control for each variable within 
 statement; this includes engaging via email, engaging via an email with discount, and engaging 
 via email specifically having a 20% discount (we hold the one time constraint of one week 
 constant).  For simplicity, split 1M customers evenly into groups of 250k:
-  a.	G1: Do not send email
-  b.	G2: Send an email 
-  c.	G3: Send an email with 10% discount
-  d.	G4: Send an email with 20% discount 
-3.	Individual Measurements:  
-  a.	Did customer open email?
-  b.	Did customer make a purchase within one week?
-  c.	Optional: There are other measurements that can be made, such as, "Did the customer 
+  * G1: Do not send email
+  * G2: Send an email 
+  * G3: Send an email with 10% discount
+  * G4: Send an email with 20% discount 
+3. Individual Measurements:  
+  * Did customer open email?
+  * Did customer make a purchase within one week?
+  * Optional: There are other measurements that can be made, such as, "Did the customer 
 click on link in the email?"  However, the two measurements listed above are directly 
 relevant to our hypothesis and can be used to determine the success or failure of the 
 email campaign. (Actually, as a first cut, we really only need to compare purchase rates 
 between groups.)
-4.	Corresponding Group Statistics:
-  a.	Open rate
-  b.	Purchase rate
+4. Corresponding Group Statistics:
+  * Open rate
+  * Purchase rate
 
 Test Statistics
 ==============================================================
