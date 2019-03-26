@@ -46,6 +46,7 @@ y_data = np.vectorize(lambda y: y + np.random.normal(loc=0.0, scale=0.1))(y_data
 #### Note on variable types
 Be careful, the last op converted y_data to np.float64, which tensorflow will
 have a fit over!
+
 In TensorFlow, you cannot be lazy with variable types.  That is, TF will not
 do any assuming for you.  An example will help here:
 
@@ -96,13 +97,12 @@ only its directionality -- that is, to keep only the information that situates
 the vector on the n-sphere. Or, to get my head out of my ass, it means
 to divide a vector by its length to get a unit vector.  Anyway, the point is,
 in reference to neural networks, "normalization" in general is more akin
-to the linear algebraic definition.  That is, unitizing one's variables
-is essential for NN algorithms to perform properly and quickly.  
-Z-scoring one's data is one way to do this... Note, however, that z-scoring
-no longer refers to standardizing a normal distribution, but only to the
-transformation (Y-mean(Y))/stdDev(Y).   
-There are actually many types of variable normalization that are used in the wild,
-which are better suited for this or that.  For now, z-scoring is good enough.
+to the linear algebraic definition.  That is, unitizing one's variables is essential for NN 
+algorithms to perform properly and quickly.  Z-scoring one's data is one way to do this... Note, 
+however, that z-scoring no longer refers to standardizing a normal distribution, but only 
+to the transformation (Y-mean(Y))/stdDev(Y).   There are actually many types of variable normalization 
+that are used in the wild, which are better suited for this or that.  For now, z-scoring is good 
+enough.
 
 **Important note**: Normalization in general refers to a relocation and rescaling of each feature 
 variable, but as estiamted on the training set only.  To learn more about these types of things, 
@@ -138,8 +138,7 @@ is less restrictively a list of homogeneous lists.
 In TensorFlow, when specifying a tensor, TensorFlow wants to know: will this tensor
 remain constant, be repeatedly updated during training (like weights and biases), or serve as a container
 for various sets of unvarying data throughout the training session (e.g., a placeholder for data 
-batches of varying size).  
-In these cases, it is necessary to declare your tensor using tf.constant(), tf.Variable(), and 
+batches of varying size).  In these cases, it is necessary to declare your tensor using tf.constant(), tf.Variable(), and 
 tf.placeholder(), respectively.  
 
 Basically, you use tf.Variable instead of tf.constant for any tensor whose value is going to 
