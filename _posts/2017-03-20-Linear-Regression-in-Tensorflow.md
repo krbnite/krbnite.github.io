@@ -87,18 +87,24 @@ Feature Normalization
 
 In this particular example, normalization is not essential becase we have 
 only one input feature.  However, it is necessary in almost any other case!
-So might as well get into the habit! In a regular statistical setting,
+So might as well get into the habit! 
+
+In a regular statistical setting,
 normalization might literally mean to put the data into a normal, Gaussian
 form, e.g., for a log-normal distribution, this is done by taking the 
 logarithm of the data.  To compare data sets, one might then standardize
-the data by z-scoring the normalized data.  In the linear algebra setting,
+the data by z-scoring the normalized data.  
+
+In the linear algebra setting,
 normalization refers to discarding a vector's magnitude and maintaining
 only its directionality -- that is, to keep only the information that situates
 the vector on the n-sphere. Or, to get my head out of my ass, it means
-to divide a vector by its length to get a unit vector.  Anyway, the point is,
+to divide a vector by its length to get a unit vector.  
+
+Anyway, the point is,
 in reference to neural networks, "normalization" in general is more akin
 to the linear algebraic definition.  That is, unitizing one's variables is essential for NN 
-algorithms to perform properly and quickly.  Z-scoring one's data is one way to do this... Note, 
+algorithms to perform properly and quickly.  Z-scoring an input feature is one way to do this... Note, 
 however, that z-scoring no longer refers to standardizing a normal distribution, but only 
 to the transformation (Y-mean(Y))/stdDev(Y).   There are actually many types of variable normalization 
 that are used in the wild, which are better suited for this or that.  For now, z-scoring is good 
