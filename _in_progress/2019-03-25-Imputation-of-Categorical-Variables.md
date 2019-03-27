@@ -1,6 +1,6 @@
 
 If you begin to search the web for info imputing categorical variables, you will find a lot of
-great information -- but most of it is not in the context of deploying a real-time prediction model. 
+great information -- but most of it is not in the context of deploying a real-time prediction model<sup>&dagger;</sup>.  
 
 Case in point: complete case analysis (CCA).  The most naive approach to this technique is to blindly throw out
 any row that has a missing value, disregarding the fact that this might alter the population and bias your 
@@ -41,6 +41,11 @@ choose to find meaning in the missingness itself (i.e., leave it as its own valu
 
 Some how, some way -- the model must deal with the missing value without giving up!
 
+<sup>&dagger;</sup><sub>In fact, I found this to be true even if when the topic is about predictive models in 
+particular.  Check out this Quora post, where respondents mostly give the generic advice: [How can I deal with missing values in a predictive model?](https://www.quora.com/How-can-I-deal-with-missing-values-in-a-predictive-model).  Special
+shout out to Claudia Perlich, whose answer really gets at the central theme of this post: how to best deal with missing values 
+for a predictive model that will be used in production / deployment.  Her answer should be highlighted in yellow and
+put to the top of the page.</sub>
 
 # The Scenario
 
@@ -75,25 +80,40 @@ This is where things like A/B testing crop up in marketing: did our email campai
 and if so can we quantify that?  This, in general, is where causal inference comes into play.  
 
 But causal inference is hard, and I'm just trying to write about whether or not we should delete, impute, 
-or preserve missing values in nominal categorical variables.  So, for sanity's sake, let's assume
-no interventions take place for now: we just want to nerd out with the data in hand.  If the model is good on 
-test, we'll be happy to deploy it.  And in deployment, we will make predictions, but do nothing:  
-we'll simply wait to see whether the model is right or wrong.  Assuming conditions haven't changed much,
-it should work nearly as well in deployment as it did on the test set.  
+or preserve missing values in nominal categorical variables.  
 
-Anyway, point is: no interventions.  For this scenario, we just
-care about a model that intelligently deals with missing values in deployment. 
+So, for sanity's sake, let's assume
+no interventions take place for now: we just want to nerd out with the data in hand.  If the model is good on 
+test, we'll be happy to deploy it.  And in deployment, we will make predictions, but do nothing:  we'll 
+simply wait to see whether the model is right or wrong.  Kind of like a weather forecast.  
+
+Ok, let's focus on missing data.
 
 # The Missing Data
-Ok, so we look at the data -- and it's complex.  For example, turns out not everyone fits neatly
-into "completer" or "dropout", but may exit treatment due to death, incarceration, relocation, or "other".  And
-maybe this variable is sometimes not filled out: MISSING/UNKNOWN/NULL.  Also, there is a marriage variable
+## The Predictor Variables
+Also, there is a marriage variable
 with the levels: never married, now married, separated, divorced, MISSING/UNKNOWN/NULL.  
 
 Should we remove any row with missing data?  Should we somehow impute these categorical variables?  If
 so, then how?  
 
 It should be no surprise that this is all context-dependent.  Let's dive in...
+
+
+
+
+## The Target Variable
+The first discrepancy arises: not everyone fits neatly into our universe of completers and dropouts.  Turns out
+that some patients exit treatment for other reasons.  For example, death, incarceration, or relocation. Some
+folks are even more mysterious: they reason for exit is MISSING/NULL.
+
+The last reason is classic missing data.   But what of death, incarceration, or relocation?
+
+Comleted case analysis (CCA) would have us remove the missing data.  But what should we do about the
+available, but not very straightforward data?
+
+
+ 
 
 # Context, Context, Context
 The first question you should ask is: do I even have to worry about imputing this data?
@@ -177,6 +197,9 @@ process..."
 * [Missing Data in Health Research](https://www.jhsph.edu/research/centers-and-institutes/johns-hopkins-center-for-mind-body-research/resources/Brendan_Klick_20Mar07.pdf)
 * https://academic.oup.com/biostatistics/article/15/4/719/267454
 
+
+
+* [How to Handle Missing Data](https://towardsdatascience.com/how-to-handle-missing-data-8646b18db0d4)
 
 
 
