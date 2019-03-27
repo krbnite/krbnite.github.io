@@ -21,6 +21,90 @@ so, then how?
 
 It should be no surprise that this is all context-dependent.  Let's dive in...
 
+# Context, Context, Context
+The first question you should ask is: do I even have to worry about imputing this data?
+
+Well, what's the point of your model?
+
+If you are making a predictive model, it is likely you plan on using it -- not only on the test set,
+but in a real setting (e.g., on a mobile device, or a desktop application used by a clinician, etc).  What
+does deployment look like?  Will the data generating / collection processes remain the same, or will
+your model demand certain standard be adhered to?
+
+If the data collection process remains the same, then there is every reason to expect that you will
+have a similar distribution of NULL values in your data features going forward.  This means you have to build
+a model that deals with this -- some approach to filling missing values in real time so that a result
+can be provided. 
+
+On the other hand, if your model will guide the data collection policy going forward -- e.g., if the enduser 
+must input the necessary data for a result -- well, then you might not really have to deal with NULLs.  If you have
+enough historical data, you might choose to throw out any row with a NULL, assuming that downstream model
+users will necessarily have to input all required data.
+
+Another consideration may be how difficult a variable is to collect.  For example, a variable may have
+high predictive power, but generaly be too expensive to collect for each subject.  As another example,
+a variable might be great, but optional (e.g., having a patient fill out income info, or providing 
+their political affiliation, etc).  If this variable is 80% NaNs, then the popular option is generally
+to keep that info private:  is better or worse to keep this variable around?
+
+The are a few general approaches to data imputation/deletion:
+* drop it - do not impute 
+  - sometimes called "complete case analysis" (CCA)
+  - almost never recommended, though [these guys](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4957845/) seem
+  to show that it works alright....  
+  - usually depends on missing data mechanism (MCAR or MAR, see below)
+  - whether it works or not, it does not come up with a way to deal with missing data in new/deployment data,
+  so it kind of unacceptable for a model that is being built to be used as a tool (i.e., this might work
+  if you are just estimating population statistics and stopping there)
+* keep it - do not impute (good as its own class)
+  - example: questionnaire asks "Are you feeling suicidal?" and the subject can choose "Yes", "No", or skip the question
+  - you might get a sense here that "skipping the question" is correlated with choosing "Yes", and in fact there have been
+  studies that found this to be the case
+  - in this case, a NULL is meaningful, so leave it as its own class
+* impute it globally (e.g., with median/mode impute)
+  - computationally efficient
+* impute it locally (e.g., with nearest neighbor, random forest, etc)
+  - has power to impute less noisily than a constant
+  - also has power to help model overfit...
+
+In the middle, there exist imputation techniques that take into account other information,
+such as that found in the other features and neighboring data points in the N-dimensional feature space.
+
+In these [lecture notes](https://www.jhsph.edu/research/centers-and-institutes/johns-hopkins-center-for-mind-body-research/resources/Brendan_Klick_20Mar07.pdf), the context in framed in categories of missing data:
+* MCAR (missing completely at random)
+* MAR (missing at random)
+* NMAR (not missing at random)
+
+They say it is in your best interest to determine which class a variable's missing data fits into,
+then choose a method of analysis:
+* complete case analysis (CCA)
+  - aka listwise deletion analysis
+  - aka available-case analysis when restricted to a subset of the available variables
+  - can yield biased estimates (will do so for NMAR)
+  - not recommended (e.g., see [What do we do with missing data?](https://www.annualreviews.org/doi/full/10.1146/annurev.publhealth.25.102802.124410))
+* weighting procedures 
+* imputation procedures
+  - multiple imputation (MI)
+* likelihood procedures
+
+
+
+"Often, the analysis of data ... proceeds with an assumption, either implicit or explicit, 
+that the process that caused the missing data can be ignored."  Rubin then asks: "The question
+to be answered here is: when is this the proper procedure?"
+
+"The inescapable conclusion seems to be that when dealing with real data, the practicing 
+statistician should explicitly consider the process that causes missing data far more often
+than he does."  Rubin continues: "However, to do so, \[the statistician] needs models for this
+process..."
+
+* Rubin : http://people.csail.mit.edu/jrennie/trg/papers/rubin-missing-76.pdf
+* [What do we do with missing data?]
+* [Missing Data in Health Research](https://www.jhsph.edu/research/centers-and-institutes/johns-hopkins-center-for-mind-body-research/resources/Brendan_Klick_20Mar07.pdf)
+* https://academic.oup.com/biostatistics/article/15/4/719/267454
+
+
+
 
 # The Target
 We are interested in dropout/retention as an outcome.  Let's say the data set includes a variable,
