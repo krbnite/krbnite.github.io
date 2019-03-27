@@ -7,45 +7,57 @@ any row that has a missing value, disregarding the fact that this might alter th
 results.  This can trim down a data set pretty quickly if there is a column
 that is mostly always NULL.  So a slightly less naive approach might be to first throw out any
 columns that are almost always NULL, then cut down on the rows.  Might be... But also, might not
-be.  For example, what if any time the column had a value, you had near 100% certainty in the outcome?).  
+be.  For example, what if any time the column had a value, you had near 100% certainty in the outcome?  
 
-At this point, a more thoughtful scientist may wonder: "Wait, is CCA a bad move?  What conditions must be 
+At this point, a more slightly more thoughtful scientist may wonder: "Wait, is CCA a bad move?  What conditions must be 
 met to ensure that the CCA subpopulation is a fair representation of the original population?"  For CCA, it 
-is important to ensure the data is missing at random (MAR) or missing completely at random (MCAR).  
+is important to ensure the data is missing completely at random (MCAR), or at least missing at random (MAR).<sup>&Dagger;</sup>   
 
 Ok, fine -- let's say the missing data respects the strongest criterion, MCAR.  Then what?  You throw
 out some rows, train a model on N features, and deploy it in the wild.
 
 What happens?
 
-Well, turns out that CCA completely misses the point here.  Throwing out data might be a valid approach 
+You model crashes!
+
+Turns out that CCA completely misses the point here.  Throwing out data might be a valid approach 
 for exploring data and estimating various population statistics, but is not necessarily acceptable in 
 the context of deploying a prediction model.  
 
 Think about it:  if your model is expected to provide
-the best prediction possible right here, right now, given the available data, then the model cannot just 
-conveniently ignore the request (or crash!) because some feature values are missing.
+the best prediction possible on the fly, given the available data, then the model cannot just 
+conveniently ignore the request (or crash!) because some feature values are missing. 
 
-At minimum, the deployed prediction model needs to provide estimates (and uncertainties in those estimates for bonus points)
-whether or not there is data missing (or, absolute minimum: a message that says, "Not enough data. This models 
-sucks!").  
+At minimum, the deployed prediction model needs to provide estimates
+whether or not there is data missing (and uncertainties in those estimates for bonus points).  At absolute 
+minimum, when encountering missing data, the deployed model needs to output a message that 
+says, "Not enough data. This models sucks!"
 
-Though the model cannot ignore the request (i.e., cannot throw out the "current row of data"), it might be ok
-ignore the features hosting those missing values (e.g., by rerouting to another model trained on less 
-features).   Another approach is to assume the value of the missing values.  With no information other than
+Ok, so we can't do CCA.  But what can we do?
+
+**Multi-Model**:  Though the model cannot ignore the request (i.e., cannot throw out the "current row of 
+data"), it might be ok ignore the features hosting those missing values (e.g., by rerouting to another model 
+trained on less features). This might become unruly if one is dealing with 100's or 1000's of input features.
+
+**Imputation**: Another approach is to assume the value of the missing values.  With no information other than
 population-scale information, this would be the mean, median, or mode -- the best guess you have knowing nothing
 else about the current instance.  You can also acknolwedge that you do have other information about the 
 current instance, e.g., other features that put the current instance into a known cluster, the median, mean, or
-mode of which might be a better fill for the missing value.  And lastly (for this paragraph), the model can 
+mode of which might be a better fill for the missing value.  
+
+**As Is**: And lastly (for this section at least), the model can 
 choose to find meaning in the missingness itself (i.e., leave it as its own value).  
 
-Some how, some way -- the model must deal with the missing value without giving up!
+Some how, some way -- in production, the deployed model must deal with the missing value without simply 
+giving up!
 
 <sup>&dagger;</sup><sub>In fact, I found this to be true even if when the topic is about predictive models in 
 particular.  Check out this Quora post, where respondents mostly give the generic advice: [How can I deal with missing values in a predictive model?](https://www.quora.com/How-can-I-deal-with-missing-values-in-a-predictive-model).  Special
 shout out to Claudia Perlich, whose answer really gets at the central theme of this post: how to best deal with missing values 
 for a predictive model that will be used in production / deployment.  Her answer should be highlighted in yellow and
 put to the top of the page.</sub>
+
+<sup>&Dagger;</sup><sub>Definitions for MAR, MCAR, and MNAR (missing not at random) will be provided below.</sub>
 
 # The Scenario
 
