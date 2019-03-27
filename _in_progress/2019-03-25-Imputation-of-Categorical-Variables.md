@@ -35,27 +35,47 @@ says, "Not enough data. This models sucks!"
 
 Ok, so we can't do CCA.  But what can we do?
 
-**Multi-Model**:  Though the model cannot ignore the request (i.e., cannot throw out the "current row of 
-data"), it might be ok ignore the features hosting those missing values (e.g., by rerouting to another model 
-trained on less features). This might become unruly if one is dealing with 100's or 1000's of input features.
 
-**Imputation**: Another approach is to assume the value of the missing values.  With no information other than
+**Imputation**: Disallowing data deletion, the  go-to approach in many tutorials and papers is to guess at 
+the value of missing values.  With no information other than
 population-scale information, this would be the mean, median, or mode -- the best guess you have knowing nothing
 else about the current instance.  You can also acknolwedge that you do have other information about the 
 current instance, e.g., other features that put the current instance into a known cluster, the median, mean, or
 mode of which might be a better fill for the missing value.  
 
+**Multi-Model**:  Though the model cannot ignore the request (i.e., cannot throw out the "current row of 
+data"), it might be ok ignore the features hosting those missing values (e.g., by rerouting to another model 
+trained on less features). This might become unruly if one is dealing with 100's or 1000's of input features, but
+conceptually it is a great solution.  Why try to bandage up just one model, when you can simply deploy
+the right model?  One thing that struck out to me is the absolute dearth of blogs/tutorials/articles recommending this 
+approach.  Maybe it feels ugly?  Maybe it doesn't strike that "one ring to rule them all", Lord-of-the-Rings 
+vibe.  I don't know... But after some digging around, I found a paper that suggests this approach is way 
+better than imputation 
+(2007: Saar-Tsechansky & Provost: [Handling Missing Values when Applying Classification Models](http://jmlr.csail.mit.edu/papers/volume8/saar-tsechansky07a/saar-tsechansky07a.pdf)). In this paper, they
+refer to the smaller-feature-set models as reduced models.  (Reader: You might do yourself a favor and read 
+this paper!)
+
 **As Is**: And lastly (for this section at least), the model can 
-choose to find meaning in the missingness itself (i.e., leave it as its own value).  
+choose to find meaning in the missingness itself (i.e., leave it as its own value).  This approach is
+often listed for nominal categorical variables, but does not get the same amount of attention ("page space")
+as imputing via clustering or random forests might get.  Probably because it's simpler and easier to say!  But
+this approach might be best.  Data is missing: how likely is that the missingness is not meaningful in some way?  Imputataion
+might best predict the missing value, but does it best predict the outcome variable that we're actually interested
+in?  What we do know is that imputation throws away the information that this value is missing, which might
+be important!  Leaving a missing value "as is" for a nominal variable effectively adds one more level to that
+variable: a binary variable becomes tertiary, a tertiary become quaternary, and so on!  I like this option because
+it feels like a compromise between "imputation" and "multi-model".  
 
 Some how, some way -- in production, the deployed model must deal with the missing value without simply 
 giving up!
 
 <sup>&dagger;</sup><sub>In fact, I found this to be true even if when the topic is about predictive models in 
-particular.  Check out this Quora post, where respondents mostly give the generic advice: [How can I deal with missing values in a predictive model?](https://www.quora.com/How-can-I-deal-with-missing-values-in-a-predictive-model).  Special
+particular.  Check out this Quora post, where respondents mostly give the generic advice, like multiple imputation
+ (fine) and CCA (not fine): [How can I deal with missing values in a predictive model?](https://www.quora.com/How-can-I-deal-with-missing-values-in-a-predictive-model).  Special
 shout out to Claudia Perlich, whose answer really gets at the central theme of this post: how to best deal with missing values 
 for a predictive model that will be used in production / deployment.  Her answer should be highlighted in yellow and
-put to the top of the page.</sub>
+put to the top of the page. Great passage about even the fanciest of imputation methods:  "What about imputation? Simply pretending that something that was missing was recorded as some value (no matter how fancy your method of coming up with it) is almost surely suboptimal. On a philosophical level, you just lost a piece of information. It was missing, but you pretend otherwise (guessing at best). To the model, the fact that it was missing is lost. The truth is, missingness is almost always predictive and you just worked very hard to obscure that fact ..."  Actually, I wouldn't be content until I quoted the
+entire answer.  Great stuff... Goes on to relate this to ordinal/numeric variables as well. </sub>
 
 <sup>&Dagger;</sup><sub>Definitions for MAR, MCAR, and MNAR (missing not at random) will be provided below.</sub>
 
@@ -194,6 +214,9 @@ then choose a method of analysis:
 * likelihood procedures
 
 
+Missing data may represent a loss of information, but imputing the value may
+induce further loss: it deletes the fact that the data is missing.
+
 
 "Often, the analysis of data ... proceeds with an assumption, either implicit or explicit, 
 that the process that caused the missing data can be ignored."  Rubin then asks: "The question
@@ -212,8 +235,8 @@ process..."
 
 
 * [How to Handle Missing Data](https://towardsdatascience.com/how-to-handle-missing-data-8646b18db0d4)
-
-
+* [How can I deal with missing values in a predictive model?](https://www.quora.com/How-can-I-deal-with-missing-values-in-a-predictive-model)
+* [Handling Missing Values when Applying Classification Models](http://jmlr.csail.mit.edu/papers/volume8/saar-tsechansky07a/saar-tsechansky07a.pdf)
 
 # The Target
 We are interested in dropout/retention as an outcome.  Let's say the data set includes a variable,
