@@ -1,6 +1,48 @@
 
+If you begin to search the web for info imputing categorical variables, you will find a lot of
+great information -- but most of it is not in the context of deploying a real-time prediction model. 
+
+Case in point: complete case analysis (CCA).  The most naive approach to this technique is to blindly throw out
+any row that has a missing value, disregarding the fact that this might alter the population and bias your 
+results.  This can trim down a data set pretty quickly if there is a column
+that is mostly always NULL.  So a slightly less naive approach might be to first throw out any
+columns that are almost always NULL, then cut down on the rows.  Might be... But also, might not
+be.  For example, what if any time the column had a value, you had near 100% certainty in the outcome?).  
+
+At this point, a more thoughtful scientist may wonder: "Wait, is CCA a bad move?  What conditions must be 
+met to ensure that the CCA subpopulation is a fair representation of the original population?"  For CCA, it 
+is important to ensure the data is missing at random (MAR) or missing completely at random (MCAR).  
+
+Ok, fine -- let's say the missing data respects the strongest criterion, MCAR.  Then what?  You throw
+out some rows, train a model on N features, and deploy it in the wild.
+
+What happens?
+
+Well, turns out that CCA completely misses the point here.  Throwing out data might be a valid approach 
+for exploring data and estimating various population statistics, but is not necessarily acceptable in 
+the context of deploying a prediction model.  
+
+Think about it:  if your model is expected to provide
+the best prediction possible right here, right now, given the available data, then the model cannot just 
+conveniently ignore the request (or crash!) because some feature values are missing.
+
+At minimum, the deployed prediction model needs to provide estimates (and uncertainties in those estimates for bonus points)
+whether or not there is data missing (or, absolute minimum: a message that says, "Not enough data. This models 
+sucks!").  
+
+Though the model cannot ignore the request (i.e., cannot throw out the "current row of data"), it might be ok
+ignore the features hosting those missing values (e.g., by rerouting to another model trained on less 
+features).   Another approach is to assume the value of the missing values.  With no information other than
+population-scale information, this would be the mean, median, or mode -- the best guess you have knowing nothing
+else about the current instance.  You can also acknolwedge that you do have other information about the 
+current instance, e.g., other features that put the current instance into a known cluster, the median, mean, or
+mode of which might be a better fill for the missing value.  And lastly (for this paragraph), the model can 
+choose to find meaning in the missingness itself (i.e., leave it as its own value).  
+
+Some how, some way -- the model must deal with the missing value without giving up!
 
 
+# The Scenario
 
 Let's say you are working with a data set about depressed subjects.  Maybe you want to estimate
 at intake whether this person will complete treatment, or dropout.  Given the 
