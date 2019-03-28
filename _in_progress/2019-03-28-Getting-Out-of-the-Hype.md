@@ -139,3 +139,17 @@ to opt between the "0 hours on median per day" story and the "2 hours on average
 the latter -- for starters.  Then move into the daily, weekly, and monthly medians when people are ready
 to listen -- and discuss how this is an opportunity:  the company can target resources during optimal 
 times, at the aggregated and individualized levels!
+
+
+# Avoid Stupid Mistakes
+If your model is awesome on the first go, then you've done something wrong -- or at least, you should
+convince yourself of the likelihood that you've done something wrong, then investigate!
+
+The newbiest of newb mistakes is leaving in IDs -- customer ID in marketing, patient ID in healthcare, and
+so on.  If you use a deep learning network with enough parameters, it will simply learn to become
+an ID/outcome dictionary.  
+
+Second up is something like area code or zip code.  Unless you have multiple units/customers/patients per
+area/zip code (say 30+), you are likely going to run into the dictionary principle again.  
+
+
