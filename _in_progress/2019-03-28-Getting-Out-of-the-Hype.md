@@ -74,3 +74,10 @@ Interview's Crony:  (aloud):  "Surely, a hidden layer or two would have made thi
 You:  ...chance to show that you are fully aware of neural networks, hidden layers, activation functions, and whatever...
 
 Interviews:  (aloud):  All good points.
+
+
+# The Sales Pitch
+Do you know when pitching a "deep neural net" works really well?  When you're talking to a bunch
+of data science enthusiasts without jobs or experience is one example.  Another one might be when
+the department head (say 3-4 notches above you on the totem pole) loves buzzwords.  Almost no one else
+will be nearly as excited.  In fact, they'll want you to prove it.
