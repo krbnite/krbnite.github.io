@@ -1,4 +1,5 @@
-
+There will be some overlap in the subsections.  That's ok.  I'm just trying in general to
+come up with some lessons learned over the past ~13 years or so.
 
 # Avoid Playing Catch-Up
 One of my PhD advisors, Dr. Andrew Gerrard (Andy), would always warn against
@@ -77,7 +78,22 @@ Interviews:  (aloud):  All good points.
 
 
 # The Sales Pitch
-Do you know when pitching a "deep neural net" works really well?  When you're talking to a bunch
-of data science enthusiasts without jobs or experience is one example.  Another one might be when
-the department head (say 3-4 notches above you on the totem pole) loves buzzwords.  Almost no one else
-will be nearly as excited.  In fact, they'll want you to prove it.
+Do you know when pitching a "deep neural net" works really well?  
+
+One example is when you're talking to a bunch of data science enthusiasts that are currently
+seeking out their first job.  
+
+Another great place to pitch this might be on Twitter.  
+
+In the business world, it might work when casually discussing new, exciting things with
+the department head (say 3-4 notches above you on the totem pole) who is sincerely interested in all the 
+buzzwords.  Other members on your data science team might also share a lament session with how
+it would be awesome to do X, Y, and Z.  
+
+Almost no one else will be nearly as excited.  That is, the other departments, like marketing, advertising, or legal,
+who you are supposed to work with.  For one, they likely think much less of you and data science than you expect.  For
+example, they might think they know better and do not need your help.  Fact is, pressure is on them to work
+with you and your team, and it might not be their choice to do so... But, the decisions about your work and the quality
+of your work will still be theirs.  Expect to be questioned at every move before you build trust and common 
+language...  Expect them to disbelieve the hype...  Expect to be reasonable, to listen, to understand where
+they are coming from... Expect to not push your own agenda on them!
