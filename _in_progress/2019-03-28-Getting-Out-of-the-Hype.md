@@ -97,3 +97,16 @@ with you and your team, and it might not be their choice to do so... But, the de
 of your work will still be theirs.  Expect to be questioned at every move before you build trust and common 
 language...  Expect them to disbelieve the hype...  Expect to be reasonable, to listen, to understand where
 they are coming from... Expect to not push your own agenda on them!
+
+
+
+
+
+Be aware: you will not have the data required to directly solve the problems these departments are having, and
+you will often have messy data that appears almost nonsensical to you.  Everyone talks about the end of "feature
+engineering", but at the same time you'll hear about how 80% of data science work is feature engineering and
+data clean-up.  The first one is mostly hype; the second one is what matters!  Be the best damn data cleaning,
+feature engineering maniac you can be!  Get comfortable starting with unfamiliar data sets, the reshaping process
+(e.g., transforming categorical variables into dummies), the imputation-or-not process, and so on.  Get comfy
+asking questions and coming up with strategies with the domain experts.  Hell, get them to think everything
+was all their idea.  Leave ego at home.  
