@@ -110,3 +110,32 @@ feature engineering maniac you can be!  Get comfortable starting with unfamiliar
 (e.g., transforming categorical variables into dummies), the imputation-or-not process, and so on.  Get comfy
 asking questions and coming up with strategies with the domain experts.  Hell, get them to think everything
 was all their idea.  Leave ego at home.  
+
+
+Always ask yourself if a metric means what you think it means...  Forget models for a second.  If you 
+are given a data set, the first thing you will do is try to understand it and explain it to
+stakeholderes...  You will inevitably hear someone say something like, "On average, people watch 2
+hours of TV a day."  What does that mean?  I can guarantee there are people in the room who think
+it means that people more-or-less watch 2 hours of TV a day.  But if you look at the data distribution,
+it's not normal -- log-normal at best!  Maybe power-law distributed.  
+
+
+Median is a little bit easier
+to understand: "On median, people watch 0 hours of TV a day."  This means that the bottom 50% of customers
+watch 0 hours a day, and the top 50% watches 0 or more hours a day.  This will run into some problems
+though: (1) the boss won't want to hear it, and (2) be careful about integration time.  Both are kind of
+related: the boss **knows** TV is being watched because the average is 2 hours per day, and so the median
+just sounds wrong to them -- and more importantly, doesn't help tell the story that needs to be told to 
+their manager!  Importantly, what does this tell you: the daily median might be 0, but the weekly
+median might be 1 hour, and the monthly might be 8 hours.  The daily median makes it sound and feel like
+people don't watch TV, but it might be better interpreted that people do not watch every day, but they do
+typically watch at one point every week, and in general have heavier watching at certain points during the month!
+
+Point is, don't fool yourself, don't fool your boss, don't believe the too-good-to-be true metrics, but
+also don't believe the too-negative-to-be-true metrics either...  Metrics help tell a story: your job is to
+look at enough metrics to ensure you are telling the right story.  Or, importantly, you need to help tell
+the a persuasive story that helps your manager and, ultimately, your company.  So, seriously, if you have
+to opt between the "0 hours on median per day" story and the "2 hours on average per day" story, choose 
+the latter -- for starters.  Then move into the daily, weekly, and monthly medians when people are ready
+to listen -- and discuss how this is an opportunity:  the company can target resources during optimal 
+times, at the aggregated and individualized levels!
