@@ -24,7 +24,10 @@ first several authors gave the standard advice, and then came Claudia Perlich's 
 actually answering the question that was asked!!!!!!!!
 
 Anyway, so you can definitely find info on this topic in the KDNuggets community and in sources
-where people actually use predictive modeling... 
+where people actually use predictive modeling...  But also, you'll find a lot of people talking
+about dropping rows and columns...noting that it might not be ideal, but offering it as a possibility
+anyway......and so often without even just noting, "This technique does not inform you how the fuck
+you would use the resulting model on live, incoming data, some of which may have missing values."
 
 2009: Janssen et al: [Dealing with Missing Predictor Values When Applying Clinical Prediction Models](https://pdfs.semanticscholar.org/0c67/97f88f12edef205a314188f936ffd5cc3e88.pdf)
 2014: Wood et al: [The estimation and use of predictions for the assessment of model performance using large samples with multiply imputed data](https://onlinelibrary.wiley.com/doi/pdf/10.1002/bimj.201400004)
