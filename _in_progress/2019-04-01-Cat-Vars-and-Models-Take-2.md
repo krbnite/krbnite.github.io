@@ -62,3 +62,29 @@ The last reason is classic missing data.   But what of death, incarceration, or 
 
 Comleted case analysis (CCA) would have us remove the missing data.  But what should we do about the
 available, but not very straightforward data?
+
+
+
+# The Target
+We are interested in dropout/retention as an outcome.  Let's say the data set includes a variable,
+DISCHARGE_REASON, which has the following levels and percentages:
+* CT - completed treatment (48%)
+* DO - dropped out prior to completing treatment (29%)
+* IN - incarcerated prior to completing treatment (2%)
+* DI - died prior to completing treatment (1%)
+* RT - relocated/transferred to another facility/location prior to completing treatment (17%)
+* UK - UNKNOWN/MISSING/NULL (3%)
+
+What we do has everything to do with our goal: is this patient likely to dropout or complete treatment.  
+
+There are a few approaches we can take: 
+* make this a binary classification problem (CT/DO) and throw out other levels of
+  DISCHARGE_REASON before splitting data set into training/validation/test
+* make this a multiclass classification problem, e.g., DO/CT/OTHER
+* rescope our problem as a completion vs non-completion problem (CT/OTHER)
+
+
+For example, 
+we are not trying to predict death.  Since
+death does not neatly fit into completion or dropout, I think we can remove them.  Think about the
+patient intake process: our goal is to estimate a patient's likelihood of completing treatment.
