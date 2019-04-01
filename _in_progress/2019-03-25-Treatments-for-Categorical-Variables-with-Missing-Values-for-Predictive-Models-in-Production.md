@@ -1,40 +1,74 @@
+---
+title: Treatments for Categorical Variables with Missing Values for Predictive Models in Production
+layout: post
+tags: predictive-modeling statistical-modeling easi
+---
 
 If you begin to search the web for info imputing categorical variables, you will find a lot of
 great information -- but most of it is not in the context of deploying a real-time prediction model<sup>&dagger;</sup>.  
 
-Case in point: complete case analysis (CCA).  The most naive approach to this technique is to blindly throw out
+Case in point: complete case analysis (CCA).  You'll see this mentioned everywhere -- usually just before
+some reason is given for why it could hurt your analysis.  It also goes by the term "listwise deletion."  The 
+most naive approach to this technique is to blindly throw out
 any row that has a missing value, disregarding the fact that this might alter the population and bias your 
-results.  This can trim down a data set pretty quickly if there is a column
-that is mostly always NULL.  So a slightly less naive approach might be to first throw out any
-columns that are almost always NULL, then cut down on the rows.  Might be... But also, might not
-be.  For example, what if any time the column had a value, you had near 100% certainty in the outcome?  
+results.  There are many reasons why this can be bad, but if you are putting a model into production
+and your model is expected to provide
+the best prediction possible on the fly, given the available data, then one reason stands out high
+above the rest:  you cannot just conveniently ignore the request (or crash!) because some feature values are 
+missing. 
 
-At this point, a more slightly more thoughtful scientist may wonder: "Wait, is CCA a bad move?  What conditions must be 
-met to ensure that the CCA subpopulation is a fair representation of the original population?"  For CCA, it 
-is important to ensure the data is missing completely at random (MCAR), or at least missing at random (MAR).<sup>&Dagger;</sup>   
+This post briefly covers some imputation
 
-Ok, fine -- let's say the missing data respects the strongest criterion, MCAR.  Then what?  You throw
-out some rows, train a model on N features, and deploy it in the wild.
 
-What happens?
 
-You model crashes!
 
-Turns out that CCA completely misses the point here.  Throwing out data might be a valid approach 
-for exploring data and estimating various population statistics, but is not necessarily acceptable in 
-the context of deploying a prediction model.  
 
-Think about it:  if your model is expected to provide
-the best prediction possible on the fly, given the available data, then the model cannot just 
-conveniently ignore the request (or crash!) because some feature values are missing. 
 
-At minimum, the deployed prediction model needs to provide estimates
-whether or not there is data missing (and uncertainties in those estimates for bonus points).  At absolute 
-minimum, when encountering missing data, the deployed model needs to output a message that 
-says, "Not enough data. This models sucks!"
+# Data Deletion:  Nope
+As I point out in the intro, deleting data records is not really a choice if one plans on running a model
+in production.  That is, the model must be able to navigate any scenario it runs into, so there is no benefit
+in training a model on an unrealistic scenario.  Furthermore, if data is missing, then missing data is probably an important
+part of the data generating process.  Let's not ignore that!
 
-Ok, so we can't do CCA.  But what can we do?
+But let's take a look at these approaches anyway. 
 
+## Complete Case Analysis
+Clearly, CCA is not applicable for running a predictive model in production.  For example, when 
+deploying a model that must make or guide
+decisions, CCA completely misses the point: throwing out an incoming request is likely unacceptable.  Instead, the 
+user understandably might expect that the deployed prediction model will provide some output 
+whether or not there is data missing -- an estimate, some form of guidance, or at minimum a 404-esque message that
+reads, "Not enough data. This models sucks!"
+
+
+You might ask: "But if CCA is so bad, then why is it always mentioned?"  
+
+I might answer:  In short, throwing out rows of data might be a valid approach 
+when exploring data or estimating various population statistics.
+
+There are some obvious and not-so-obvious pitfalls.
+
+An obvious drawback:  throwing out any row that has at least one missing feature
+can trim down a data set pretty quickly if there is a column that is mostly always NULL.  
+
+An oft-sighted solution:  Sometimes you will see a modeler first throw out any
+columns that are frequently NULL, say 70% of the time or more.  This always gives me pause: what if any 
+time the column had a value, it provided near 100% certainty in the outcome?  
+
+Let's assume a data set does not have too many features with missing values, and for those features
+with missing values, not too many missing values in general.  Then one might ask: What conditions must be 
+met to ensure that the CCA subpopulation is a fair representation of the original population?
+
+
+For CCA, it 
+is important to ensure the data is missing completely at random (MCAR), or at least missing at random (MAR).
+
+
+## Inverse Probability Weighting (IPW)
+
+
+
+# Data Imputation
 
 **Imputation**: Disallowing data deletion, the  go-to approach in many tutorials and papers is to guess at 
 the value of missing values.  With no information other than
@@ -77,7 +111,7 @@ for a predictive model that will be used in production / deployment.  Her answer
 put to the top of the page. Great passage about even the fanciest of imputation methods:  "What about imputation? Simply pretending that something that was missing was recorded as some value (no matter how fancy your method of coming up with it) is almost surely suboptimal. On a philosophical level, you just lost a piece of information. It was missing, but you pretend otherwise (guessing at best). To the model, the fact that it was missing is lost. The truth is, missingness is almost always predictive and you just worked very hard to obscure that fact ..."  Actually, I wouldn't be content until I quoted the
 entire answer.  Great stuff... Goes on to relate this to ordinal/numeric variables as well. </sub>
 
-<sup>&Dagger;</sup><sub>Definitions for MAR, MCAR, and MNAR (missing not at random) will be provided below.</sub>
+
 
 # The Scenario
 
@@ -239,6 +273,7 @@ process..."
 * [Handling Missing Values when Applying Classification Models](http://jmlr.csail.mit.edu/papers/volume8/saar-tsechansky07a/saar-tsechansky07a.pdf)
 
 Complete Case Analysis Stuff
+* StackExchange: [Is Listwise Deletion / Complete Case Analysis biased if data is not MCAR?](https://stats.stackexchange.com/questions/43168/is-listwise-deletion-complete-case-analysis-biased-if-data-are-not-missing-com)
 * 2013: Jonathan Bartlett: [When is complete case analysis unbiased?](http://thestatsgeek.com/2013/07/06/when-is-complete-case-analysis-unbiased/)
  - Short, insightful blog article on when CCA can be used
  - However, the article is not from a deployment perspective: you might develop a great statistical model, achieve
