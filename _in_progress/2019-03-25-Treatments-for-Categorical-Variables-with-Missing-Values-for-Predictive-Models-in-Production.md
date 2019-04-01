@@ -17,9 +17,17 @@ the best prediction possible on the fly, given the available data, then one reas
 above the rest:  you cannot just conveniently ignore the request (or crash!) because some feature values are 
 missing. 
 
-This post briefly outlines how to treat missing values in categorical data, especially
+This post briefly outlines methods used to treat missing values...with an emphasis on categorical data, especially
 when considering using that model in the "real world".  I do not go deeply into anything in particular,
 but plan on some follow-up posts in this vein.  
+
+<sup>&dagger;</sup><sub>In fact, I found this to be true even if when the topic is about predictive models in 
+particular.  Check out this Quora post, where respondents mostly give the generic advice, like multiple imputation
+ (fine) and CCA (not fine): [How can I deal with missing values in a predictive model?](https://www.quora.com/How-can-I-deal-with-missing-values-in-a-predictive-model).  Special
+shout out to Claudia Perlich, whose answer really gets at the central theme of this post: how to best deal with missing values 
+for a predictive model that will be used in production / deployment.  Her answer should be highlighted in yellow and
+put to the top of the page. Great passage about even the fanciest of imputation methods:  "What about imputation? Simply pretending that something that was missing was recorded as some value (no matter how fancy your method of coming up with it) is almost surely suboptimal. On a philosophical level, you just lost a piece of information. It was missing, but you pretend otherwise (guessing at best). To the model, the fact that it was missing is lost. The truth is, missingness is almost always predictive and you just worked very hard to obscure that fact ..."  Actually, I wouldn't be content until I quoted the
+entire answer.  Great stuff... Goes on to relate this to ordinal/numeric variables as well. </sub>
 
 
 # Context, Context, Context
@@ -97,10 +105,10 @@ Let's assume a data set does not have too many features with missing values, and
 with missing values, not too many missing values in general.  Then one might ask: What conditions must be 
 met to ensure that the CCA subpopulation is a fair representation of the original population?
 
-
-For CCA, it 
-is important to ensure the data is missing completely at random (MCAR), or at least missing at random (MAR).
-
+From [Rubin 1976](https://academic.oup.com/biomet/article-abstract/63/3/581/270932):
+> "Often, the analysis of data ... proceeds with an assumption, either implicit or explicit, 
+that the process that caused the missing data can be ignored. ... The question
+to be answered here is: when is this the proper procedure?"
 
 In these [lecture notes](https://www.jhsph.edu/research/centers-and-institutes/johns-hopkins-center-for-mind-body-research/resources/Brendan_Klick_20Mar07.pdf), the context in framed in categories of missing data:
 * MCAR (missing completely at random)
@@ -111,51 +119,11 @@ In these [lecture notes](https://www.jhsph.edu/research/centers-and-institutes/j
 a bunch of great dMCAR, MAR, and MNAR causal diagrams.  Definitely check it out to help build intution for
 these terms.
 
-They say it is in your best interest to determine which class a variable's missing data fits into,
-then choose a method of analysis:
-* complete case analysis (CCA)
-  - aka listwise deletion analysis
-  - aka available-case analysis when restricted to a subset of the available variables
-  - can yield biased estimates (will do so for NMAR)
-  - not recommended (e.g., see [What do we do with missing data?](https://www.annualreviews.org/doi/full/10.1146/annurev.publhealth.25.102802.124410))
-* weighting procedures 
-* imputation procedures
-  - multiple imputation (MI)
-* likelihood procedures
-
-
-
-"Often, the analysis of data ... proceeds with an assumption, either implicit or explicit, 
-that the process that caused the missing data can be ignored."  Rubin then asks: "The question
-to be answered here is: when is this the proper procedure?"
-
-"The inescapable conclusion seems to be that when dealing with real data, the practicing 
-statistician should explicitly consider the process that causes missing data far more often
-than he does."  Rubin continues: "However, to do so, \[the statistician] needs models for this
-process..."
-
-* Rubin : http://people.csail.mit.edu/jrennie/trg/papers/rubin-missing-76.pdf
-* [What do we do with missing data?]
-* [Missing Data in Health Research](https://www.jhsph.edu/research/centers-and-institutes/johns-hopkins-center-for-mind-body-research/resources/Brendan_Klick_20Mar07.pdf)
-* https://academic.oup.com/biostatistics/article/15/4/719/267454
-
-
-
-[these guys](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4957845/) seem
-  to show that it works alright....  
-
-
-
-### Some References
-* StackExchange: [Is Listwise Deletion / Complete Case Analysis biased if data is not MCAR?](https://stats.stackexchange.com/questions/43168/is-listwise-deletion-complete-case-analysis-biased-if-data-are-not-missing-com)
-* 2013: Jonathan Bartlett: [When is complete case analysis unbiased?](http://thestatsgeek.com/2013/07/06/when-is-complete-case-analysis-unbiased/)
- - Short, insightful blog article on when CCA can be used
- - However, the article is not from a deployment perspective: you might develop a great statistical model, achieve
-  heavenly insights, then still not be able to use it live in production
-* 2014: Jonathan Bartlett et al: [Improving upon the efficiency of complete case analysis when covariates are MNAR](https://academic.oup.com/biostatistics/article/15/4/719/267454)
- - An insightful publication about the underappreciated circumstances when CCA is valid, and when it might be more
-   plausible than the assumptions built into multiple imputation (MI) or inverse probability weighting (IPW) methods
-* 2019: Rachael Hughes et al: [Accounting for missing data in statistical analyses: multiple imputation is not always the answer](https://academic.oup.com/ije/advance-article/doi/10.1093/ije/dyz032/5382162)
+Even if you are building a model that will go into production, these things are important to understand.  For
+example, if you are imputing by plucking values at random from a feature's estimated probability distribution:
+how do you estimate that distribution?  Do you do it with all available data for that feature, or do you
+estimate the distribution using only the complete cases?  What if there is a difference?!  The more you know,
+the better -- right?
 
 
 ## Inverse Probability Weighting (IPW)
@@ -166,12 +134,14 @@ Or, as [these guys](https://academic.oup.com/ije/advance-article/doi/10.1093/ije
 > IPW is a "weighted analysis, in which the complete cases are weighted by the inverse of the probability of being a 
 > complete case. The weights are used to try to make the complete cases representative of all cases."
 
+They also give an insightful reason why you might choose IPW over imputation:
+> "Inverse probability weighting is an alternative to MI that can be advantageous when misspecification of 
+> the imputation model is likely."
 
-### Some References
-* [Review of inverse probability weighting for dealing with missing data](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.822.7759&rep=rep1&type=pdf)
-
---------------------------------------------------------------------------------------
-
+When restricting to only complete cases/records/rows, the data may become biased.  IPW is commonly used
+to correct this bias.  However, the data collection process might itself not reflect the true population; in 
+this case, IPW can also be used to adjust/tune the sampling frequencies of certain groups so that the model
+will reflect the actual population.
 
 # Impute It
 In between "delete it" and "keep it", there exist imputation techniques.  These take into account available information,
@@ -185,19 +155,11 @@ current instance, e.g., other features that put the current instance into a know
 mode of which might be a better fill for the missing value.  
 
 ## Multiple Imputation
+Done all the time for statistical modeling... Might not have quick response time in production.  
 
-### Some References
-* [Multiple imputation for missing data in epidemiological and clinical research: potential and pitfalls](https://www.bmj.com/content/338/bmj.b2393.extract)
 
 ## Random Forests
 
-### Some References
-* [Overcoming Missing Values In A Random Forest Classifier](https://medium.com/airbnb-engineering/overcoming-missing-values-in-a-random-forest-classifier-7b1fc1fc03ba)
-* [Imputing Missing Data and Random Forest Variable Importance Scores](http://rnowling.github.io/machine/learning/2015/12/15/imputing-missing-data.html)
-* [Large Scale Decision Forests: Lessons Learned](https://engineering.sift.com/large-scale-decision-forests-lessons-learned/)
-
-
---------------------------------------------------------------------------------------
 
 # Keep It
 Missing data may represent a loss of information, but imputing the value may
@@ -209,6 +171,7 @@ induce further loss: it deletes the fact that the data is missing.
   - you might get a sense here that "skipping the question" is correlated with choosing "Yes", and in fact there have been
   studies that found this to be the case
 
+
 ## Multi Model
 **Multi-Model**:  Though the model cannot ignore the request (i.e., cannot throw out the "current row of 
 data"), it might be ok ignore the features hosting those missing values (e.g., by rerouting to another model 
@@ -216,11 +179,18 @@ trained on less features). This might become unruly if one is dealing with 100's
 conceptually it is a great solution.  Why try to bandage up just one model, when you can simply deploy
 the right model?  One thing that struck out to me is the absolute dearth of blogs/tutorials/articles recommending this 
 approach.  Maybe it feels ugly?  Maybe it doesn't strike that "one ring to rule them all", Lord-of-the-Rings 
-vibe.  I don't know... But after some digging around, I found a paper that suggests this approach is way 
-better than imputation 
-(2007: Saar-Tsechansky & Provost: [Handling Missing Values when Applying Classification Models](http://jmlr.csail.mit.edu/papers/volume8/saar-tsechansky07a/saar-tsechansky07a.pdf)). In this paper, they
-refer to the smaller-feature-set models as reduced models.  (Reader: You might do yourself a favor and read 
-this paper!)
+vibe.  I don't know... 
+
+But after some digging around, I found a paper that suggests this approach is way 
+better than imputation:
+* 2007: Saar-Tsechansky & Provost: [Handling Missing Values when Applying Classification Models](http://jmlr.csail.mit.edu/papers/volume8/saar-tsechansky07a/saar-tsechansky07a.pdf)). 
+
+In this paper, they
+refer to the smaller-feature-set models as reduced models.  
+
+Note to Reader: You might do yourself a favor and read this paper!
+
+Note to Self:  Definitely want to dig deeper into these authors' papers in general.
 
 
 ## As Is, As Is
@@ -235,29 +205,40 @@ be important!  Leaving a missing value "as is" for a nominal variable effectivel
 variable: a binary variable becomes tertiary, a tertiary become quaternary, and so on!  I like this option because
 it feels like a compromise between "imputation" and "multi-model".  
 
---------------------------------------------------------------------------------------
-
-<sup>&dagger;</sup><sub>In fact, I found this to be true even if when the topic is about predictive models in 
-particular.  Check out this Quora post, where respondents mostly give the generic advice, like multiple imputation
- (fine) and CCA (not fine): [How can I deal with missing values in a predictive model?](https://www.quora.com/How-can-I-deal-with-missing-values-in-a-predictive-model).  Special
-shout out to Claudia Perlich, whose answer really gets at the central theme of this post: how to best deal with missing values 
-for a predictive model that will be used in production / deployment.  Her answer should be highlighted in yellow and
-put to the top of the page. Great passage about even the fanciest of imputation methods:  "What about imputation? Simply pretending that something that was missing was recorded as some value (no matter how fancy your method of coming up with it) is almost surely suboptimal. On a philosophical level, you just lost a piece of information. It was missing, but you pretend otherwise (guessing at best). To the model, the fact that it was missing is lost. The truth is, missingness is almost always predictive and you just worked very hard to obscure that fact ..."  Actually, I wouldn't be content until I quoted the
-entire answer.  Great stuff... Goes on to relate this to ordinal/numeric variables as well. </sub>
 
 
 
---------------------------------------------------------------------------------------
+# References
 
- 
-
-
-
-
-
+### Some Generic Stuff
 * [How to Handle Missing Data](https://towardsdatascience.com/how-to-handle-missing-data-8646b18db0d4)
 * [How can I deal with missing values in a predictive model?](https://www.quora.com/How-can-I-deal-with-missing-values-in-a-predictive-model)
-* [Handling Missing Values when Applying Classification Models](http://jmlr.csail.mit.edu/papers/volume8/saar-tsechansky07a/saar-tsechansky07a.pdf)
+  - See Claudia Perlich's response
 
 
+### CCA Stuff
+* StackExchange: [Is Listwise Deletion / Complete Case Analysis biased if data is not MCAR?](https://stats.stackexchange.com/questions/43168/is-listwise-deletion-complete-case-analysis-biased-if-data-are-not-missing-com)
+* 1976: Rubin: [Inference and Missing Data](http://people.csail.mit.edu/jrennie/trg/papers/rubin-missing-76.pdf)
+* 2007: Klick:  [Missing Data in Health Research](https://www.jhsph.edu/research/centers-and-institutes/johns-hopkins-center-for-mind-body-research/resources/Brendan_Klick_20Mar07.pdf)
+* 2013: Jonathan Bartlett: [When is complete case analysis unbiased?](http://thestatsgeek.com/2013/07/06/when-is-complete-case-analysis-unbiased/)
+ - Short, insightful blog article on when CCA can be used
+ - However, the article is not from a deployment perspective: you might develop a great statistical model, achieve
+  heavenly insights, then still not be able to use it live in production
+* 2014: Jonathan Bartlett et al: [Improving upon the efficiency of complete case analysis when covariates are MNAR](https://academic.oup.com/biostatistics/article/15/4/719/267454)
+ - An insightful publication about the underappreciated circumstances when CCA is valid, and when it might be more
+   plausible than the assumptions built into multiple imputation (MI) or inverse probability weighting (IPW) methods
+* 2016: Mukaka et al: [Is using multiple imputation better than complete case analysis for estimating a prevalence (risk) difference in randomized controlled trials when binary outcome observations are missing?](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4957845/)
+* 2019: Rachael Hughes et al: [Accounting for missing data in statistical analyses: multiple imputation is not always the answer](https://academic.oup.com/ije/advance-article/doi/10.1093/ije/dyz032/5382162)
+
+
+### IPW
+* [Review of inverse probability weighting for dealing with missing data](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.822.7759&rep=rep1&type=pdf)
+
+### MI
+* [Multiple imputation for missing data in epidemiological and clinical research: potential and pitfalls](https://www.bmj.com/content/338/bmj.b2393.extract)
+
+### RFs
+* [Overcoming Missing Values In A Random Forest Classifier](https://medium.com/airbnb-engineering/overcoming-missing-values-in-a-random-forest-classifier-7b1fc1fc03ba)
+* [Imputing Missing Data and Random Forest Variable Importance Scores](http://rnowling.github.io/machine/learning/2015/12/15/imputing-missing-data.html)
+* [Large Scale Decision Forests: Lessons Learned](https://engineering.sift.com/large-scale-decision-forests-lessons-learned/)
 
