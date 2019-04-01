@@ -1,4 +1,8 @@
-
+---
+title: Crash Course in Causality (Take 1)
+layout: post
+tags: causal-inference statistical-modeling easi
+---
 
 
 
