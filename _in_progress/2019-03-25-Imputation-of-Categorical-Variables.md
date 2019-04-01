@@ -238,6 +238,22 @@ process..."
 * [How can I deal with missing values in a predictive model?](https://www.quora.com/How-can-I-deal-with-missing-values-in-a-predictive-model)
 * [Handling Missing Values when Applying Classification Models](http://jmlr.csail.mit.edu/papers/volume8/saar-tsechansky07a/saar-tsechansky07a.pdf)
 
+Complete Case Analysis Stuff
+* 2013: Jonathan Bartlett: [When is complete case analysis unbiased?](http://thestatsgeek.com/2013/07/06/when-is-complete-case-analysis-unbiased/)
+ - Short, insightful blog article on when CCA can be used
+ - However, the article is not from a deployment perspective: you might develop a great statistical model, achieve
+  heavenly insights, then still not be able to use it live in production
+2014: Jonathan Bartlett et al: [Improving upon the efficiency of complete case analysis when covariates are MNAR](https://academic.oup.com/biostatistics/article/15/4/719/267454)
+ - An insightful publication about the underappreciated circumstances when CCA is valid, and when it might be more
+   plausible than the assumptions built into multiple imputation (MI) or inverse probability weighting (IPW) methods
+2019: Rachael Hughes et al: [Accounting for missing data in statistical analyses: multiple imputation is not always the answer](https://academic.oup.com/ije/advance-article/doi/10.1093/ije/dyz032/5382162)
+
+Random Forest Stuff
+* [Overcoming Missing Values In A Random Forest Classifier](https://medium.com/airbnb-engineering/overcoming-missing-values-in-a-random-forest-classifier-7b1fc1fc03ba)
+* [Imputing Missing Data and Random Forest Variable Importance Scores](http://rnowling.github.io/machine/learning/2015/12/15/imputing-missing-data.html)
+* [Large Scale Decision Forests: Lessons Learned](https://engineering.sift.com/large-scale-decision-forests-lessons-learned/)
+
+
 # The Target
 We are interested in dropout/retention as an outcome.  Let's say the data set includes a variable,
 DISCHARGE_REASON, which has the following levels and percentages:
