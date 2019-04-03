@@ -71,6 +71,16 @@ null,0,0,0,0,0,40847,some string of info about full set
 "b" "c" "d",0,1,1,1,1,some info about the bcd triplet
 ```
 
+You can see things are not ideal:
+* column names with spaces
+* names with extraneous quotations
+
+These are trivial fixes, but help display some Cypher functionality below.
+
+Columns a, b, c, and d are binary: a value of 1 says to take an intersection with the
+associated set.  For example (a,b,c,d)=(1,0,1,0) is equivalent to `FullSet INTERSECT set(a) INTERSECT set(b)`.
+
+
 The Code 
 =================================================
 
