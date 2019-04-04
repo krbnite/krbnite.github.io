@@ -176,7 +176,7 @@ The Figure
 ================================================
 
 <figure>
-  <img src="images/venn_graph.png">
+  <img src="/images/venn_graph.png">
 </figure>
 
 
