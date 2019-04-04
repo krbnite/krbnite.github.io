@@ -54,21 +54,21 @@ data below is enough!
 
 ```
 head -n 15 file.csv
-Name, a, b, c, d, Set Size, Search Terms
-null,0,0,0,0,0,40847,some string of info about full set
-"a",1,0,0,0,0,11183,some string of info about how to extract set a
-"b",0,1,0,0,0,792,some string of info about how to extract set b
-"c",0,1,0,0,0,27,some string of info about how to extract set c
-"d",0,1,0,0,0,486,some string of info about how to extract set d
-"a" "b",1,1,0,0,144,some info about intersection of a and b
-"a" "c",1,1,0,0,2,some info about intersection of a and c
-"a" "d",1,1,0,0,52,some info about intersection of a and d
-"b" "c",1,1,0,0,3,some info about intersection of b and c
-"b" "d",1,1,0,0,7,some info about intersection of b and d
-"c" "d",1,1,0,0,1,some info about intersection of c and d
-"a" "b" "c",1,1,1,0,0,some info about the abc triplet
-"a" "b" "d",1,1,0,1,2,some info about the abd triplet
-"b" "c" "d",0,1,1,1,1,some info about the bcd triplet
+Name,a,b,c,d,Set Size,Search Terms
+null,0,0,0,0,40847,some string of info about full set
+"""a""",1,0,0,0,11183,some string of info about how to extract set a
+"""b""",0,1,0,0,792,some string of info about how to extract set b
+"""c""",0,1,0,0,27,some string of info about how to extract set c
+"""d""",0,1,0,0,486,some string of info about how to extract set d
+"""a"" ""b""",1,1,0,0,144,some info about intersection of a and b
+"""a"" ""c""",1,1,0,0,2,some info about intersection of a and c
+"""a"" ""d""",1,1,0,0,52,some info about intersection of a and d
+"""b"" ""c""",1,1,0,0,3,some info about intersection of b and c
+"""b"" ""d""",1,1,0,0,7,some info about intersection of b and d
+"""c"" ""d""",1,1,0,0,1,some info about intersection of c and d
+"""a"" ""b"" ""c""",1,1,1,0,0,some info about the abc triplet
+"""a"" ""b"" ""d""",1,1,0,1,2,some info about the abd triplet
+"""b"" ""c"" ""d""",0,1,1,1,1,some info about the bcd triplet
 ```
 
 You can see things are not ideal:
@@ -77,8 +77,27 @@ You can see things are not ideal:
 
 These are trivial fixes, but help display some Cypher functionality below.
 
+# The Graph Schema
+So what is this data anyway?
+
 Columns a, b, c, and d are binary: a value of 1 says to take an intersection with the
 associated set.  For example (a,b,c,d)=(1,0,1,0) is equivalent to `FullSet INTERSECT set(a) INTERSECT set(b)`.
+
+There are likely many ways you can turn this data into labels, nodes, and relationships.  Here
+is what I devised:
+
+```
+(:FullSet) -[:792]-> (:Subset {name, search}) -[:40]-> (:SubsetIntersection {name, search})
+```
+
+Basically, there is a top-level (:FullSet) node, which is related to (:Subset) nodes by
+relationships whose type is the cardinality of the subset.  This means that relationship types
+needed to be named dynamically in the code below, which motivated the use of APOC.  Note that
+dynamic relationship types like this might be horrible for something like production-level code in a 
+social network app, but the main motivator for this project was to get a decent graph visualization
+out of it -- and by naming the relationship types with the subset cardinality, we are ensured that
+this info shows up on the stock visualization in Neo4j Browser.  This is key since this info
+is literally showing the strength of the relationship between the parent and child node.
 
 
 The Code 
@@ -89,8 +108,8 @@ The Code
 MATCH (n) DETACH DELETE n;
 
 // Create Constraints
-CREATE CONSTRAINT ON (singlet:Singlet) ASSERT singlet.name is UNIQUE;
-CREATE CONSTRAINT ON (doublet:Doublet) ASSERT doublet.name is UNIQUE;
+CREATE CONSTRAINT ON (subset:Subset) ASSERT subset.name is UNIQUE;
+CREATE CONSTRAINT ON (intersection:SubsetIntersection) ASSERT intersection.name is UNIQUE;
 
 // [1] Create 
 // -- note that %20 is code for a space, which I have to use b/c directories
@@ -103,56 +122,62 @@ WITH toInteger(LINE.a) AS a,
   toInteger(LINE.b) AS b,
   toInteger(LINE.c) AS c,
   toInteger(LINE.d) AS d,
-  toInteger(LINE.`Set Size`) AS cnt,
+  toInteger(LINE.`Set Size`) AS size,
   LINE.`Search Terms` AS search
 WHERE a+b+c+d = 0
-MERGE (:FullSet {name: "Full Set", search: search});
+MERGE (:FullSet {name: "Full Set", search: search, size: size});
 
-// Create singlet nodes (subsets)
+// Create subset nodes (subsets)
 LOAD CSV WITH HEADERS FROM $filename AS LINE 
 WITH replace(LINE.Name,'"','') as name,
   toInteger(LINE.a) AS a,
   toInteger(LINE.b) AS b,
   toInteger(LINE.c) AS c,
   toInteger(LINE.d) AS d,
-  toInteger(LINE.`Set Size`) AS cnt,
+  LINE.`Set Size` AS size,
   LINE.`Search Terms` AS search
 WHERE a+b+c+d = 1
 MERGE (fullset:FullSet {name: "Full Set"})
-MERGE (singlet:Singlet {name: name, search: search})
-WITH fullSet, singlet, cnt AS rlnshp
-CALL apoc.create.relationship(fullset, rlnshp, {}, singlet) YIELD rel
+MERGE (subset:Subset {name: name, search: search})
+WITH fullset, subset, size AS rlnshp
+CALL apoc.create.relationship(fullset, rlnshp, {}, subset) YIELD rel
 REMOVE rel.null; 
 
-// Create Doublets (subset intersections)
+// Create Subset Intersections
 LOAD CSV WITH HEADERS FROM $filename AS LINE 
 WITH LINE.Name as name,
   toInteger(LINE.a) AS a,
   toInteger(LINE.b) AS b,
   toInteger(LINE.c) AS c,
   toInteger(LINE.d) AS d,
-  toInteger(LINE.`Set Size`) AS cnt,
+  LINE.`Set Size` AS size,
   LINE.`Search Terms` AS search
 WHERE a+b+c+d = 2
-  AND toInteger(cnt) > 0
-WITH cnt, search, 
-  split(replace(name,'" "','"'),'"') AS singlet_list_temp
-WITH cnt, search, 
-  filter(x in singlet_list_temp WHERE x <> '') AS singlet_list 
-WITH cnt, search, 
-  singlet_list[0] AS name0, singlet_list[1] AS name1, 
-  singlet_list[0]+' & '+singlet_list[1] AS dname
-MERGE (doublet:Doublet {name: dname, search: search})
-MERGE (singlet0:Singlet {name: name0})
-MERGE (singlet1:Singlet {name: name1})
-WITH singlet0, singlet1, doublet, cnt as rlnshp
-CALL apoc.create.relationship(singlet0, rlnshp, {}, doublet) YIELD rel as rel0
-CALL apoc.create.relationship(singlet1, rlnshp, {}, doublet) YIELD rel as rel1
+  AND toInteger(size) > 0
+WITH size, search, 
+  split(replace(name,'" "','"'),'"') AS subset_list_temp
+WITH size, search, 
+  filter(x in subset_list_temp WHERE x <> '') AS subset_list 
+WITH size, search, 
+  subset_list[0] AS name0, subset_list[1] AS name1, 
+  subset_list[0]+' & '+subset_list[1] AS dname
+MERGE (intersection:SubsetIntersection {name: dname, search: search})
+MERGE (subset0:Subset {name: name0})
+MERGE (subset1:Subset {name: name1})
+WITH subset0, subset1, intersection, size as rlnshp
+CALL apoc.create.relationship(subset0, rlnshp, {}, intersection) YIELD rel as rel0
+CALL apoc.create.relationship(subset1, rlnshp, {}, intersection) YIELD rel as rel1
 REMOVE rel1.null; 
 
 RETURN "DONE!";
 ```
 
+The Figure
+================================================
+
+<figure>
+  <img src="images/venn_graph.png">
+</figure>
 
 
 The Breakdown
