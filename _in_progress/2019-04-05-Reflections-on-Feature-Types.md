@@ -21,7 +21,13 @@ there a way to exploit that information better than just dummyizing the variable
 # Ratio-Like Ordinal 
 By ratio-like ordinal, I mean an ordinal variable that has a well-defined zero, which is the distinguishing feature
 between ratio and interval variables (in fact, in this parlance, you might consider regular "ordinal" to be 
-called "interval ordinal").
+called "interval ordinal").  
+
+For example, you can have a feature called `number_of_arrests` that is coded like: "none", "one", and "two or more".  With
+the raw, granular data, this would be a ratio variable type.  By binning it, it has become ordinal.  But not just
+ordinal: it still has a well-defined zero.  This is in contrast to a variable like `temperature` that takes on
+the values "super cold", "pretty cold", "meh", "warm", and "hot", which has order, but not necessarily a zero (and
+especially not a well-defined zero).  
 
 Again, does the existence of this well-defined zero have intrinsic value that can be served by using one
 technique over another?  
