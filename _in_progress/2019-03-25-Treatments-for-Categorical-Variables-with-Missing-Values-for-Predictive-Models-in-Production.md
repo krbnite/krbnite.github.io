@@ -242,3 +242,8 @@ it feels like a compromise between "imputation" and "multi-model".
 * [Imputing Missing Data and Random Forest Variable Importance Scores](http://rnowling.github.io/machine/learning/2015/12/15/imputing-missing-data.html)
 * [Large Scale Decision Forests: Lessons Learned](https://engineering.sift.com/large-scale-decision-forests-lessons-learned/)
 
+
+--------------------
+
+Looks like Claudia Perlich turned her Quora answer into a LinkedIn post (or vice versa):
+https://www.linkedin.com/pulse/dealing-missing-values-predictive-models-claudia-perlich/
