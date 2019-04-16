@@ -206,20 +206,23 @@ intuition over your ego... There will be hypes and crazes, and you'll likely fee
 my generic advice here would be to avoid playing catch up, skip the funding fight, and respect the
 law of limiting originality!
 
+(Actually, after reading through them a few times, I would say that this advice is very similar
+and applicable to the more business-oriented discussions above as well.)
+
 ## Avoid Playing Catch-Up
 One of my PhD advisors would always warn against
 working on what's popular -- unless you just so happened to be the original, or in on 
 the topic early enough.  It's inevitably a game of catching up, and trying
-to stand out in a crowd of very homogeneous work.  For space weather related research,
-the popular thing often closely tracked whatever NASA space mission related to the magnetosphere,
-ionosphere, solar wind, or sun that was set to launch in the
-next 2-3 years.  Makes sense, right?  That's where the funding is going to be -- in analyzing
-the mission's data.  
+to stand out in a crowd of very homogeneous work.  There are countless other related
+problems that everyone is ignoring because it's not cool at the moment:  work on them, 
+get all the low-hanging fruit, and if/when the topic suddenly gets caught in a hype
+spotlight, then watch your citation counts sky rocket.  Either way: avoid stagnation or
+a feed frenzy, and move on to something else interesting and ignored.
 
 
-
-# Skip the Funding Fight
-The reason is simple: the currently hot topic is almost certainly overblown, and if not,
+## Skip the Funding Fight
+Another reason to choose interesting over new is pretty straightforward: the currently hot topic 
+is almost certainly overblown, and if not,
 there is almost certainly several research groups focused on the issue and any related issue, 
 and so the funding is difficult to get...  More importantly, because of these hype clusters,
 there is often a huge assortment of interesting problems ignored and unsolved...
@@ -228,11 +231,11 @@ there is often a huge assortment of interesting problems ignored and unsolved...
 In data science circles these days, it's often something to do with
 neural networks.
 
-Andy's advice here would be to run.  
+My advisor's advice here would be to run.  
 
 
 
-# Respect the Law of Limiting Originality
+## Respect the Law of Limiting Originality
 So the latest craze inspires you, and you think you have some great ideas!  Well, be honest
 with yourself: how original are those ideas likely to be?  At least treat yourself to
 a thorough Google search:  how many blog posts or StackExchange comments come dangerously close
