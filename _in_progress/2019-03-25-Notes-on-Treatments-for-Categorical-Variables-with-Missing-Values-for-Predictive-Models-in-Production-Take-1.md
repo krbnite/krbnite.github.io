@@ -8,54 +8,76 @@ If you begin to search the web for info imputing categorical variables, you will
 great information -- but most of it is not in the context of deploying a real-time prediction model<sup>&dagger;</sup>.  
 
 Case in point: complete case analysis (CCA).  You'll see this mentioned everywhere -- usually just before
-some reason is given for why it could hurt your analysis (but not always).  There are many reasons why CCA can be a bad
+some reason is given for why it could hurt your analysis.  There are many reasons why CCA can be a bad
 idea, but one that really stands out when putting a model into production is that missing data is real:
 if your model is expected to provide the best prediction possible on the fly, given the available data, 
 then you cannot just conveniently ignore the request (or crash!) because some feature values are 
 missing. 
 
 After CCA is mentioned (by name or otherwise), you're likely to see something about imputation along the
-lines of "impute with the mean or median for continuous variables, and the mode for categoricals."  Someone
-will mention multiple imputation.  Imputation might be great, but no matter how sophisticated the 
-technique you are still throwing out information: the fact that "missingness" might hold predictive value
-all its own.  Given this, you will often at least find a mention of treating "missing" as its own
-level of a nominal categorical variable.  
+lines of "replace missing values with the mean or median for continuous variables, and the mode 
+for categoricals."  Many will will mention multiple imputation as a more sophisticated method.  For
+categorical variables, the last option usually mentioned is keeping it -- just encode "missing" as
+its own category.  
 
-But what about ordinal categorical variables?  
+"Keeping it" has been my default assumption.  Imputation might be great, but no matter how sophisticated the 
+technique, an imputation still throws out information: the fact that "missingness" might hold predictive value
+all its own.  
 
-Fact is, most blogs and tutorials I came across did not really pay much attention to the missing data 
-problem -- almost none painted a complete picture.  In general, at least for "light" machine learning
-reading, the trend seems to be to mention CCA,
-imputation, and/or keeping "missing" as its own category, but without any real substance -- no significant
-time is spent discussing the implications, or how each technique compares by model, and so on.  
+Ever the contrarian, I decided to not trust my assumption.  At the least, I wanted to find a reference
+that justified it... 
 
+The hits that came up in my initial Google searches were a bunch of fluff.  I was just as likely 
+to stumble upon a blog post or mini-tutorial that advocates
+"keeping it" as I was to find someone who says "keeping it" is a terrible method -- either argument being 
+made without further detail and nuance.  Most blogs and tutorials I came across did not really pay much 
+attention to the missing data problem; ones that did, did not attempt to paint a complete picture.  
+
+Granted, most of these hits were "light" machine learning reading...but the lack of depth and repetitive
+advice was still unsettling:  just delete any row with missing data, or impute it, and/or keeping "missing" as 
+its own category; rinse and repeat!  End of story.
+
+But what are the implications of each choice?  Does a certain technique pair better with a certain 
+model?  And maybe the most unaddressed question: why not just create a model for each combination
+of input variables?  Or, at the least, why not use imputation and missing indicator techniques on variables
+with occasionally missing data, while creating a set of dropped-variable models for more frequent
+offenders?  I did not see these kinds of ideas widely discussed without digging much deeper... Instead,
+the focus is more often on "one model to rule them all" (where "them all" is "all the data").
 
 What makes this dearth of discussion more surprising to me is that most of
 the hits that came up in my initial Google searches discuss predictive models...  To my mind, if
 your goal is prediction, then you probably plan on predicting something on yet-to-be measured
 data.  For example, if you are in digital marketing, this might be data collected on a new potential 
-customer.  Or if you're working with clinical data, this might be a social or demographic variable.  Fact is, 
-if the data set you have came with missing data, then the data you will ultimately make predictions on
-will have missing data too.  If you use CCA, then split the remaining data records into a training 
-and test set -- well, who cares?  That's
-gained you about as artificial an "intelligence" possible :-p
+customer.  Or if you're working with clinical data, this might be a social or demographic variable.  Point is, 
+if the data set you have in hand came with missing data, then you will likely be making predictions on
+data that occasionally has missing data too.  So it's hard to take an article about predictive modeling seriously 
+when it recommends dropping any rows with missing data, then splitting the remaining data records into a training 
+and test set...  You'll get a model, but who cares?  It's
+gained you about as artificial an "intelligence" as possible -- one that will not work when deployed in the real
+world!
 
-One hit on my Google search that really stood is is this Quora post, [How can I deal with missing values in a predictive model?](https://www.quora.com/How-can-I-deal-with-missing-values-in-a-predictive-model).  As elsewhere, I found most
-of the discussion to be fairly (e.g., try CCA or multiple imputation).  However, I want to give an enthusiastic 
+Ok, ok -- all this said, one hit on my Google search really stood out.  It was a response to this Quora post, [How can I deal with missing values in a predictive model?](https://www.quora.com/How-can-I-deal-with-missing-values-in-a-predictive-model).  As elsewhere, I found most of the discussion to have a indiscriminately-copy-and-paste vibe (e.g., try CCA or multiple imputation).  However, one response was actually very thoughtful and, IMO, answered the question being
+asked.  
+
+...drum roll, please...
+
+I want to give an enthusiastic 
 shout out to Claudia Perlich, whose answer really gets at the core of working with with missing values 
 for a predictive model that will be used in production.  Her answer should really be highlighted in yellow at
-the top of the page. 
+the top of the page.  
 
 Great passage about even the fanciest of imputation methods:  "What about imputation? Simply pretending that something that was missing was recorded as some value (no matter how fancy your method of coming up with it) is almost surely suboptimal. On a philosophical level, you just lost a piece of information. It was missing, but you pretend otherwise (guessing at best). To the model, the fact that it was missing is lost. The truth is, missingness is almost always predictive and you just worked very hard to obscure that fact ..."  
 
 Wow -- Great stuff... And it gets better.  Perlich  describes how to maintain this "missingness" information for not
-only nominal variables, but how to generalize to ordinal and numeric variables as well. 
+only nominal variables, but how to generalize to ordinal and numeric variables as well.  
 
+--------------------------------------------------------------------------------------
 
-In what remains of this post, I include some notes that outline methods used to treat missing values...with an emphasis 
-on categorical data, especially
-when considering using that model in the "real world".  I do not go deeply into anything in particular,
-but plan on some follow-up posts in this vein.  
+In what remains of this post, I include some notes that outline methods used to treat missing values... Ultimately,
+my goal is better understanding this in terms of nominal and ordinal data, especially
+when considering using that model in the "real world".  But I include notes about missing data in general,
+and for now I do not go deeply into anything in particular.  (I plan on having some follow-up posts that
+dive deeper.)  
 
 # Context, Context, Context
 The first question you should ask is: do I even have to worry about imputing this data?
