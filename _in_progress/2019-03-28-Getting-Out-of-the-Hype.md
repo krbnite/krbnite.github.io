@@ -158,6 +158,10 @@ do a regex search, and maybe even count with your fingers :-p
 
 
 # Does it mean what you think it means?
+```
+This is where language, understanding, and mathematical representations converge.
+```
+
 Always ask yourself if a metric means what you think it means...  Forget models for a second.  If you 
 are given a data set, the first thing you will do is try to understand it and explain it to
 stakeholderes...  You will inevitably hear someone say something like, "On average, people watch 2
