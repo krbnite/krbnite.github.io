@@ -38,6 +38,41 @@ Applied to Binary Response Data](http://www.jmlr.org/papers/volume11/ding10a/din
 2018: Mercaldo & Blume: [Missing data and prediction: the pattern submodel](https://academic.oup.com/biostatistics/advance-article/doi/10.1093/biostatistics/kxy040/5092384)
 
 
+* https://www.kaggle.com/dansbecker/handling-missing-values
+  - shows that imputation + indication performs best
+
+* https://towardsdatascience.com/6-different-ways-to-compensate-for-missing-values-data-imputation-with-examples-6022d9ca0779
+  - goes beyond the typical "delete rows, delete cols, try imputation"
+* http://r-statistics.co/Missing-Value-Treatment-With-R.html
+  - very similar article to the above
+  
+* https://arxiv.org/abs/1902.06931
+  - paper that addresses that missing data is often studied in the inferential setting,
+    but much less is known about the predictive setting;  for example, it finds that mean
+    imputation isn't so bad in predictive setting as it is considered in inferential setting
+  - no citations yet, and I didn't read yet...so tread carefully
 
 
+* though I created all my own python functions, sci-kit learn comes stock w/ 'em, e.g.:
+  - https://scikit-learn.org/stable/auto_examples/plot_missing_values.html
+  
+* Seems like R package MICE for predictive mean matching gets a lot of attention and callouts, even
+  for articles that are about predictive models
+  - e.g., https://statistical-programming.com/predictive-mean-matching-imputation-method/
+  - so given the imputation+indication often works best for prediction, I want to see if
+    MICE+indication is the best in that class
+  - eBook: https://stefvanbuuren.name/fimd/sec-pmm.html
+  
+* http://people.stern.nyu.edu/jsimonof/jmlr10.pdf
+  - this paper looks at effects of different imputation methods when using a DT-based model and binary outcome
+  - basically, creating a "missing" category works best ... which is opposite to so much "stat analysis" advice
 
+* Learning missingness representation from an embedding
+  - https://proceedings.allerton.csl.illinois.edu/media/files/0202.pdf
+  - haven't read it yet, but is it any different then the idea of encoding "missing" as a level, then
+    doing an embedding?  (that's something I was going to try / figured was done since both the missing indicator
+    and embedding techniques are done with catvars)
+
+* Overall good end-to-end article on building a predictive model in python that deserves a shout out
+  - https://towardsdatascience.com/end-to-end-python-framework-for-predictive-modeling-b8052bb96a78
+  - not necessarily related to my "missing values" mission, but not unrelated
