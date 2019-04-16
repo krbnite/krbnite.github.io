@@ -6,13 +6,14 @@ come up with some lessons learned over the past ~13 years or so.
 
 # The Drone Risk
 ```
-This bit here is applicable to job applications, interviews, and presentations in general.
+This bit here is applicable to job applications, interviews, and 
+presentations in general.
 ```
 
 Let's say you apply for a job that is interested in the "popular craze", and say that have been 
 asked to come present on something you've done that can showcase your skill set.  
 
-The thig with a "popular craze" is that it's like a GPA or GRE scores when applying 
+The thing with a "popular craze" is that it's like a GPA or GRE scores when applying 
 for graduate school: more of a checkbox item than a differentiator.   Yes, a graduate school
 will expect a GPA to be above some threshold, but other than that -- well, you have to actually
 be interesting to get the spot.  That might be something that comes out in your essay or cover
@@ -34,18 +35,25 @@ will wake up the interviewers and their pals in the room.
 
 ```
 Interviewer: (thinking): "Who is this ridiculously crazy,
-rebel bad ass coming into my room and showing me a goddam linear regression!"
+rebel bad ass coming into my room and showing me a goddam 
+linear regression!"
 
 Others in room: (smirking, whispering)
 
-Interviewer:  (aloud):  "Interesting.  Wonder why you chose to do it that way?"
+Interviewer:  (aloud):  "Interesting.  Wonder why you chose 
+to do it that way?"
 
-YOU:  (aloud):  <...excellent explanation about how this worked nearly as well as other methods, is highly interpretable, was easy to explain to the marketing team and help deploy with the engineering team, and helped increase revenue streams, 
-etc, etc... (all the stuff your interviewers truly care about on a day-to-day level)...>
+YOU:  (aloud):  <...excellent explanation about how this worked 
+nearly as well as other methods, is highly interpretable, was easy 
+to explain to the marketing team and help deploy with the engineering 
+team, and helped increase revenue streams, etc, etc... (all the stuff your 
+interviewers truly care about on a day-to-day level)...>
 
-Interview's Crony:  (aloud):  "Surely, a hidden layer or two would have made this better."
+Interview's Crony:  (aloud):  "Surely, a hidden layer or two would 
+have made this better."
 
-You:  <...take opportunity to show that you are fully aware of neural networks, hidden layers, activation functions, 
+You:  <...take opportunity to show that you are fully aware of neural 
+networks, hidden layers, activation functions, 
 and whatever...>
 
 Interviewer:  (aloud):  "All good points."
@@ -55,8 +63,9 @@ Others in room:  (nodding in agreement)
 
 # Avoid the Sales Pitch, Learn to Listen
 ```
-This bit mostly focuses on working with other people, after you've already landed a job, but have
-not yet solidified the scope, strategy, and objectives of a particular project.
+This bit mostly focuses on working with other people, after you've 
+already landed a job, but have not yet solidified the scope, strategy, 
+and objectives of a particular project.
 ```
 
 Do you know when pitching a "deep neural net" works really well?  
@@ -118,9 +127,10 @@ they are coming from... Do not foolishly push your own agenda without good reaso
 
 # Blue Collar Data Science
 ```
-This bit of advice assumes you've developed some working relationships with various departments
-and stakeholders across your company, and that you've defined a project that you will be working
-on (or at the least, got access to some data).  
+This bit of advice assumes you've developed some working 
+relationships with various departments and stakeholders across 
+your company, and that you've defined a project that you will be 
+working on (or at the least, got access to some data).  
 ```
 
 I wrote another blog post a while back called "blue collar data science."  I like the phrase because
@@ -159,7 +169,8 @@ do a regex search, and maybe even count with your fingers :-p
 
 # Does it mean what you think it means?
 ```
-This is where language, understanding, and mathematical representations converge.
+This is where language, understanding, and mathematical 
+representations converge.
 ```
 
 Always ask yourself if a metric means what you think it means...  Forget models for a second.  If you 
