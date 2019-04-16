@@ -5,7 +5,9 @@ come up with some lessons learned over the past ~13 years or so.
 
 
 # The Drone Risk
+```
 This bit here is applicable to job applications, interviews, and presentations in general.
+```
 
 Let's say you apply for a job that is interested in the "popular craze", and say that have been 
 asked to come present on something you've done that can showcase your skill set.  
@@ -18,9 +20,10 @@ letter, or a personality quirk that manifests during the interview.  One thing i
 of other candidates with a high GPA will not get selected.
 
 You bet your ass that in the data science field of the 20-teens, the "popular craze" thing 
-is neural networks.  Like in the example above, your interviewer will certainly want to know that you are aware 
-of it, and even particularly skilled at it, but also seriously wants
-to throw out any potentially false positives!  There are going to be a bunch
+is neural networks.  Like in the example above, your interviewer will certainly expect your familiarity
+with this to be above a threshold:  you should be aware 
+of it, and even particularly skilled at it, but these things won't necessarily differentiate you, and 
+your interviewer also must optimize for throwing out any potentially false positives!  There are going to be a bunch
 of candidates who can do the "neural network" thing enough that it will be hard to differentiate them
 on an application, or even in a short presentation.  If you come in and have 10 minutes to talk, and if
 you choose to talk about the broadstrokes of a neural network project, you are going to sound like
@@ -51,6 +54,11 @@ Others in room:  (nodding in agreement)
 ```
 
 # Avoid the Sales Pitch, Learn to Listen
+```
+This bit mostly focuses on working with other people, after you've already landed a job, but have
+not yet solidified the scope, strategy, and objectives of a particular project.
+```
+
 Do you know when pitching a "deep neural net" works really well?  
 
 One example is when you're talking to a bunch of data science enthusiasts that are currently
@@ -108,10 +116,17 @@ reasonable, humble, to listen, to understand where
 they are coming from... Do not foolishly push your own agenda without good reason!
 
 
-## Blue Collar Data Science
+# Blue Collar Data Science
+```
+This bit of advice assumes you've developed some working relationships with various departments
+and stakeholders across your company, and that you've defined a project that you will be working
+on (or at the least, got access to some data).  
+```
+
 I wrote another blog post a while back called "blue collar data science."  I like the phrase because
 I think it speaks to the reality of a data science job, in contrast to what you might be sold in an
-online course or a hyped up buzz article.  
+online course or a hyped up buzz article.  It's also why I called this post "Data Science Outside the
+White Collar."
 
 Be aware: you will not have the data required to directly solve the problems these departments are having, and
 you will often have messy data that appears almost nonsensical to you.  You're going to get your hands 
@@ -120,11 +135,26 @@ dirty.  Data science is not for the squeamish.
 Everyone talks about the end of "feature
 engineering", but at the same time you'll hear about how 80% of data science work is feature engineering and
 data clean-up.  The end of feature engineering is mostly hype.  What you hear from the trenches is 
-what matters!  So be the best damn data cleaning,
-feature engineering maniac you can be!  Get comfortable starting with unfamiliar data sets, the reshaping process
+what matters!  
+
+So be the best damn data cleaning,
+feature engineering maniac you can be!  
+
+Get comfortable starting on unfamiliar data sets, the reshaping process
 (e.g., transforming categorical variables), the imputation-or-not process, and so on.  Get comfy
 asking questions and coming up with strategies with the domain experts.  Hell, get them to think everything
 was all their idea.  Leave ego at home.  
+
+You might also have find or buy the data.  Scrape it from the web.  Learn some JavaScript.  Fix a database.  Manage
+data in the cloud.  Learn Excel better because those guys from Finance keep asking if you could send your final
+analyses in Excel!  
+
+In real world ("blue collar") data science, you are a renaissance (wo)man!  Yes, you may predict like a prophet, 
+model like a mighty warrior, and even teach machines to learn like a god -- but you'll also have to grep a file,
+do a regex search, and maybe even count with your fingers :-p
+
+
+
 
 
 # Does it mean what you think it means?
