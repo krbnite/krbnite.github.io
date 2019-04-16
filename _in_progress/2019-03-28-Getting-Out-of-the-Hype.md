@@ -5,17 +5,31 @@ come up with some lessons learned over the past ~13 years or so.
 
 
 # The Drone Risk
-You might apply for a job that is interested in the "popular craze", and you might be 
-asked to come present on something you've done that can showcase your skill set.  You bet your ass
-that in the data science field, the "popular craze" thing is neural networks -- and your interviewer
-wants to know that you are aware of it, and even particularly skilled at it, but also seriously wants
-to throw out any potentially false positives!  If you come in and have 10 minutes to talk, and if
+This bit here is applicable to job applications, interviews, and presentations in general.
+
+Let's say you apply for a job that is interested in the "popular craze", and say that have been 
+asked to come present on something you've done that can showcase your skill set.  
+
+The thig with a "popular craze" is that it's like a GPA or GRE scores when applying 
+for graduate school: more of a checkbox item than a differentiator.   Yes, a graduate school
+will expect a GPA to be above some threshold, but other than that -- well, you have to actually
+be interesting to get the spot.  That might be something that comes out in your essay or cover
+letter, or a personality quirk that manifests during the interview.  One thing is for sure: a lot
+of other candidates with a high GPA will not get selected.
+
+You bet your ass that in the data science field of the 20-teens, the "popular craze" thing 
+is neural networks.  Like in the example above, your interviewer will certainly want to know that you are aware 
+of it, and even particularly skilled at it, but also seriously wants
+to throw out any potentially false positives!  There are going to be a bunch
+of candidates who can do the "neural network" thing enough that it will be hard to differentiate them
+on an application, or even in a short presentation.  If you come in and have 10 minutes to talk, and if
 you choose to talk about the broadstrokes of a neural network project, you are going to sound like
 a billion other candidates who came in and did the same.  
 
 You're better off presenting on a linear regression you've done!  At the very least, this 
 will wake up the interviewers and their pals in the room.  
 
+```
 Interviewer: (thinking): "Who is this ridiculously crazy,
 rebel bad ass coming into my room and showing me a goddam linear regression!"
 
@@ -23,15 +37,18 @@ Others in room: (smirking, whispering)
 
 Interviewer:  (aloud):  "Interesting.  Wonder why you chose to do it that way?"
 
-YOU:  (aloud):  ...excellent explanation about how this worked nearly as well as other methods, is highly interpretable, was easy to explain to the marketing team and help deploy with the engineering team, and helped increase revenue streams, 
-etc, etc... (all the stuff your interviewers truly care about on a day-to-day level)
+YOU:  (aloud):  <...excellent explanation about how this worked nearly as well as other methods, is highly interpretable, was easy to explain to the marketing team and help deploy with the engineering team, and helped increase revenue streams, 
+etc, etc... (all the stuff your interviewers truly care about on a day-to-day level)...>
 
 Interview's Crony:  (aloud):  "Surely, a hidden layer or two would have made this better."
 
-You:  ...chance to show that you are fully aware of neural networks, hidden layers, activation functions, and whatever...
+You:  <...take opportunity to show that you are fully aware of neural networks, hidden layers, activation functions, 
+and whatever...>
 
-Interviews:  (aloud):  All good points.
+Interviewer:  (aloud):  "All good points."
 
+Others in room:  (nodding in agreement)
+```
 
 # Avoid the Sales Pitch, Learn to Listen
 Do you know when pitching a "deep neural net" works really well?  
