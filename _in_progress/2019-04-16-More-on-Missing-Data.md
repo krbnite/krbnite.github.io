@@ -1,17 +1,12 @@
 
 
 
-2009: Graham: Annual Reviews of Psychology: [Missing Data Analysis: Making It Work in the Real World](https://www.personal.psu.edu/jxb14/M554/articles/Graham2009.pdf)
+# 2009: Graham: Annual Reviews of Psychology: [Missing Data Analysis: Making It Work in the Real World](https://www.personal.psu.edu/jxb14/M554/articles/Graham2009.pdf)
 
 "My aim here is to encourage researchers to use the missing data
 procedures that are already known to be good ones. ... much
 of the reluctance to adopt these procedures is related to the myths and misconceptions that
 continue to abound about the impact of missing data with and without using these procedures."
-
-Multiple imputation and maximum likelihood "are
-good procedures that are based on strong statistical traditions. They can certainly be improved
-on, but by how much? I would argue that using MI and ML procedures gets us at least 90% of
-the way to the hypothetical ideal..."
 
 "Sometimes the solutions are a bit ad hoc...but the solutions I present are known
 to have minimal harmful impact on **statistical inference**..."
@@ -92,15 +87,60 @@ he does admit that he finds it to be a good, preliminary exploratory data analys
     of the modern procedures, this method is not recommended in general."
   - Basically, this type of procedure imputes data based on the regression equation, i.e., missing data is
     always filled in along the regression curve itself; given enough missing data, this will strongly damper
-    the variable's variance, thus giving poor estimates of the population variance.  This is why multiple
+    the variable's variance, thus giving poor estimates of the population variance.  ("Imputed values from 
+    single imputation always lie right on the regression line. But real data always deviate from the 
+    regression line by some amount.")
+  - The always-on-the-regression-line weakness is why multiple
     imputation was invented: "MI was designed to restore the lost variability found in single imputation, and the MI 
     strategy was designed to yield the correct variability."
 
 ## Modern Methods of Dealing with Missingness
-EM Algorithm:
-* Apparently there are many, so the one described here is EM algorithm that takes in data with 
-  missing values and spits out a maximum-likelihood variance-covariance matrix and vector of
-  means.
+* EM Algorithm:
+  - Apparently there are many, so the one described here is EM algorithm that takes in data with 
+    missing values and spits out a maximum-likelihood variance-covariance matrix and vector of
+    means.
+    * I'll skip the descripton of the EM algorithm here, as it went over several paragraphs
+  - Since EM is a maximum likelihood (ML) method, "the parameter estimates (means,
+    variances, and covariances) from the EM algorithm are excellent. However, the EM algorithm does not 
+    provide standard errors as an automatic part of the process."  However: "One could obtain an estimate of 
+    these standard errors using bootstrap procedures."
+  - "the lack of convenient standard errors means that EM is not particularly good for hypothesis testing," 
+    however, "several important analyses, often preliminary analyses, don’t use standard errors anyway, so the
+    EM estimates are very useful." For example, "it is often desirable to report means, standard deviations, 
+    and sometimes a correlation matrix in one's paper. I would argue that the best estimates for these 
+    quantities are the ML estimates provided by EM."
+  - "The EM covariance matrix is also
+an excellent basis for exploratory factor analysis
+with missing data."
+
+Not sure if it was stated directly...but I've read elsewhere the the EM method is "single imputation"
+similar to regression-based single imputation above.  That said, Graham repeats again and again that the
+EM method provides the best estimates for mean, variance, etc, so it clearly does not bias these
+estimates like the regression-based imputation is said to do.  However, Graham notes several times that
+the EM method will show much smaller standard errors on these parameters then is true in the population.
+
+* Multiple Imputation (MI)
+  - "The key to \[MI\] is to restore the error variance lost from regression-based single
+    imputation. Imputed values from single imputation always lie right on the regression line.
+    But real data always deviate from the regression line by some amount. In order to restore
+    this lost variance, the first part of imputation is to add random error variance (random normal
+    error in this case). The second part of restoring lost variance relates to the fact that each
+    imputed value is based on a single regression equation, because the regression equation, and
+    the underlying covariance matrix, is based on a single draw from the population of interest."
+  - "In order to adjust the lost error completely, one should obtain multiple random draws from
+    the population and impute multiple times, each with a different random draw from the population. Of 
+    course, this is almost never possible; researchers have just a single sample. One option might 
+    be to simulate random draws from the population by using bootstrap procedures (Efron 1982). Another 
+    approach is to simulate random draws from the population using data augmentation (DA; 
+    Tanner & Wong 1987)."
+      * Graham uses software that implements the data augmentation approach
+      * Graham describes DA as a "stochastic (probabilistic) version of EM."
+      * Graham recommends N DA steps, where N is number of steps it would take EM to converge
+
+**Concluding thoughts about MI/ML methods**: Multiple imputation and maximum likelihood "are
+good procedures that are based on strong statistical traditions. They can certainly be improved
+on, but by how much? I would argue that using MI and ML procedures gets us at least 90% of
+the way to the hypothetical ideal..."
 
 
 ## Wrap Up
@@ -124,6 +164,120 @@ and focus on whether or not the missing data introduces a negligible amount of b
 was not on "getting the best predictions" at all... Seems like, independent of that, the MI/ML techniques
 involved would still be best for predictive models...but it's not yet clear to me how these things would
 work at run time (e.g., in terms of speed, or whatever).
+
+Target/Outcome Var:  Don't think I included the quotes above, but I should. Graham goes on about how 
+a lot of people have the wrong impression about including the target var in the MI process -- they're
+usually afraid to, or think it's cheating.  He explains that it's actually wrong not to include it: that
+the analysis actually is incorrect when it's not included!
+
+------------------------------------------------
+
+# 2002: Scheffer: Research Letters in the Information and Mathematical Sciences: [Dealing with Missing Data](https://mro.massey.ac.nz/bitstream/handle/10179/4355/Dealing_with_Missing_Data.pdf)
+
+"Traditional approaches include case
+deletion and mean imputation." During the 90s, interest "centred on Regression
+Imputation, and Imputation of values using the EM (Expectation-Maximisation) algorithm, both of
+which will perform Single Imputation."  The most recent method of interest this paper looks
+at is multiple imputation.  Overall, 8 methods are compared.
+
+Missingness Definitions
+* MCAR: "The term 'Missing Completely at Random' refers to data where the missingness mechanism does not
+depend on the variable of interest, or any other variable, which is observed in the dataset. MCAR is both
+missing at random, and observed at random (This means the data was collected randomly, and does not
+depend on any other variable in the data set). This very stringent condition is required in order for case
+deletion to be valid, and missing data is very rarely MCAR."
+* MAR: "The term 'Missing at Random' is a misnomer, as the missing data is anything but missing at random. The
+intuitive meaning of this term is better suited to the term MCAR. What MAR means is missing, but
+conditional on some other 'X-variable' observed in the data set, although not on the 'Y-variable' of interest."
+* MNAR: "occurs when the Missingness
+mechanism depends on the actual value of the missing data. This is the most difficult condition to model
+for."
+* Ignorability: "MCAR and MAR are ignorable, for likelihood-based imputation methods, NMAR is not."
+
+
+This paper was much less thorough than Graham's above.  It is a fairly simple, short simulation study. But 
+it did have some succinct nuggets:
+* Under 50% MCAR data, most methods produced means within 1% of the population mean, and standard deviations
+  within 5% -- all methods except mean imputation, which had a 30% discrepancy in its standard deviation
+  - MORAL:  Mean estimation sucks very bad, even on MCAR data (at least as far as estimating variance is concerned)
+* However, remember from Graham's paper that almost no missing data is truly MCAR, and it's better to think of
+  missing data as somewhere between pure MAR and pure MNAR, so...
+* How do these methods perform on MAR data:
+  - mean imputation is again the worst (basically never use it)
+  - all methods except listwise deletion and the chosen regression-based imputation are fairly stable up to ~5% MAR data
+    * in both MCAR and MAR plots, the regression and listwise (CCA) methods very consistently overestimate the mean (this
+      is that introduction of bias that you hear about!)
+    * i.e., never use mean imputation, listwise deletion, or regression-based imputation, especially if you
+      care about estimates of population parameters
+  - hot deck imputation makes it to about ~10% MAR data before it falls apart (but if you look at the plot, it's
+    really not doing much better than the group mean method, single imputation EM)
+  - both the frequentist (EM) MI and Bayesian (MCMC) algorithms are fine up until ~25% MAR data
+    * looking at the plots, though EM MI is doing much better at estimating the mean than the other 6 methods, 
+      it's doing fairly worse than MCMC MI; both EM MI and MCMC MI estimate the variance very well though!
+  - only the MCMC MI algorithm safely makes it to 50% MAR data
+    * not just "makes it", but resoundlingly so!
+    * every other method just shits the bed, and there is MCMC MI hanging in there at an awesome estimate of the
+      population mean!
+* How do these methods perform on MNAR data?
+  - tells a similar story to taht of MAR data
+  - basically, EM MI is an "ok" second best to MCMC MI, but only up to ~10% missing data if you care about
+    variance; EM MI holds out for a slightly biased estimate of the mean until ~20-25% MNAR data (not great,
+    but much better than the non-MI methods)
+  - anything more than 25% MNAR data, then you MUST use MCMC MI for unbiased estimates of the mean and variance
+    * if you care about population estimates of the variance, then the plots would suggest to just care
+      about MCMC MI; everything else is some degree of terrible
+    * MCMC MI estimates not just unbiased, but nearly perfect: holy hell this method is good!
+    
+ the author acknolwedges that the particular regresion-based imputation (SPSS MVA REG) was especially bad -- probably
+ worse than other implementations....
+ 
+ "What this really shows is that group means perform the worst of anything when it comes to imputing
+data. Case Deletion is bad; imputing the mean far worse, for it destroys the variance structure within the
+data."
+
+"Deleting the case is also very wrong, in all but MCAR; this confirms what
+is in the literature (Little, 1988; Little, Rubin, 1987). Single Imputation methods can work for MAR, but
+only when less than 10% of the data is missing, if one is interested in the mean. If the variance structures
+in the data are important, then don’t use these methods if the data is more than 5% missing."  Basically,
+use MI -- and, if possible, MCMC MI.
+
+Ending Note:  Again, this paper is exclusively focused on statistical inference (population estimates of
+the mean and variance) rather than on prediction.
+
+-------------------------------------------------------------------------
+
+
+# 2012: Little et al: The New England Journal of Medicine: [The Prevention and Treatment of Missing Data in Clinical Trials](https://www.nejm.org/doi/full/10.1056/NEJMsr1203730)
+
+It's crazy: I've read papers from the 90s saying things like, "Techniques for dealing with missing
+data have been around since the 70s, yet no one know about them  -- and those that do, are reluctant
+to use them because (i) they don't fully understand or trust them, or (ii) they do not use software
+packages that provide the right functionality easily or intuitively."  This paper is from 2012, but
+it basically sings the same song:  "Missing data have seriously compromised inferences from clinical
+trials, yet the topic has received little attention in the clinical-trial community."
+
+Btw, not only is this yet another statistical inference focused paper, it is centered on missing
+outcome data: "Missing data are defined as values that are not available and that would be meaningful for analysis if they were observed. For example, measures of quality of life are usually not meaningful for patients who have died and hence would not be considered as missing data under this definition. We focus on missing outcome data here, though analysis methods have also been developed to handle missing covariates and auxiliary data."
+
+When training a model using supervised learning, we care so much about outcome data -- that's the thing
+we hope to predict.  It is interesting to consider using feature vectors that have no associated outcome... This
+is more aligned with something you were creating a model to fill in / predict... That said, what if you
+have a fairly compromised data set -- lots of missing values, including in the outcome/target variable?  Would it
+be ok to use something like multiple imputation before training?  I don't know... I'd like to do some simulations
+on this to get an idea... In the meanwhile, I'm going to read through this paper with that in mind!
+
+Read another few paragraphs... Seems this paper is really about limiting missing data by improving
+study designs and doing follow-up after treatment discontinuation, etc.  This is likely because the paper
+is focusing on missing outcomes (i.e., missing endpoints).  
+
+They do mention good points:  "An important and relatively neglected design issue is how to account for the loss of power from missing data in statistical inferences such as hypothesis tests or confidence intervals. The most common approach simply inflates the required sample size in the absence of missing data to achieve the same sample size under the anticipated dropout rate, estimated from similar trials. This approach is generally flawed, since inflating the sample size accounts for a reduction in precision of the study from missing data but does not account for bias that results when the missing data differ in substantive ways from the observed data. In the extreme case in which the amount of bias from missing data is similar to or greater than the anticipated size of the treatment effect, detection of the true treatment effect is unlikely, regardless of the sample size, and the study is noninformative. When performing power calculations, one should consider sample-size computations for an intention-to-treat analysis that uses a hypothesized population treatment effect that is attenuated because of the inability of some study participants to adhere to the treatment. Alternatively, one could develop power analyses for statistical procedures that explicitly account for missing data and its associated uncertainty, as discussed below."
+
+
+The paper doesn't really get technical, but does make recommendations (e.g., if you have to impute, do not
+use CCA, mean imputation, last-observation-carried-forward, etc).  That said, it did get me thinking more
+about missing "Y" data.  When I think about missing data -- MCAR, MAR, and MNAR -- I am almost exclusively
+thinking about "X" data -- predictors, inputs, or as the stat guys like to say, "covariates".  
+
 
 
 
