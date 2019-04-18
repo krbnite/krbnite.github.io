@@ -63,6 +63,20 @@ Applied to Binary Response Data](http://www.jmlr.org/papers/volume11/ding10a/din
     MICE+indication is the best in that class
   - eBook: https://stefvanbuuren.name/fimd/sec-pmm.html
   
+  
+* [Towards better clinical prediction models: seven steps for development and an ABCD for validation](https://academic.oup.com/eurheartj/article/35/29/1925/2293109)
+  - excellent article that focuses on risk prediction rather than on inference (like most other articles)
+  - there are actually a bunch of articles that cite this article that might be worth reading too (look
+    at its citations page on G Scholar)
+    
+* [Choosing Prediction Over Explanation in Psychology: Lessons From Machine Learning](https://journals.sagepub.com/doi/abs/10.1177/1745691617693393)
+
+* [Statistical modeling: The two cultures (with comments and a rejoinder by the author)](https://projecteuclid.org/download/pdf_1/euclid.ss/1009213726)
+
+* [Why significant variables aren’t automatically good predictors](https://www.pnas.org/content/112/45/13892.long)
+
+* [Machine Learning: An Applied Econometric Approach](https://pubs.aeaweb.org/doi/pdf/10.1257/jep.31.2.87)
+  
 * http://people.stern.nyu.edu/jsimonof/jmlr10.pdf
   - this paper looks at effects of different imputation methods when using a DT-based model and binary outcome
   - basically, creating a "missing" category works best ... which is opposite to so much "stat analysis" advice
