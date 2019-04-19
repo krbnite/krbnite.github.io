@@ -23,7 +23,7 @@ continue to abound about the impact of missing data with and without using these
 to have minimal harmful impact on **statistical inference**..."
 
 
-## Missingness
+### Missing Value Taxonomy
 "The major three missingness mechanisms are MCAR, MAR, and MNAR. These three kinds
 of missingness should not be thought of as mutually exclusive categories of missingness, 
 despite the fact that they are often misperceived as such. In particular, MCAR, pure MAR, and
@@ -71,7 +71,7 @@ the missingness in longitudinal fashion, thereby increasing one's confidence in 
 the true nature of the missingness."
 
 
-### Excursion:  Missingness in Psychological Data
+#### Excursion:  Missingness in Psychological Data
 A part of the reason I like reading papers from all sorts of fields is the bridge building aspect to 
 it, as this author does here: "Statisticians talk about missingness mechanisms. But what they mean by 
 that term differs from what social and behavioral scientists think
@@ -80,7 +80,7 @@ think of causal mechanisms. What is the reason the data are missing? Statisticia
 hand, often are thinking more along the lines of a description of the missingness."
 
 
-## Old Methods of Dealing with Missingness
+### Old Methods of Dealing with Missingness
 * **CCA**: "can be very useful. One concern ... is that it may yield biased parameter estimates," but
 given the study design and model that might be used, the bias can be minimal.  "However, there 
 will always be some loss of power ... because of the unused partial data ... making this method
@@ -105,7 +105,7 @@ he does admit that he finds it to be a good, preliminary exploratory data analys
     imputation was invented: "MI was designed to restore the lost variability found in single imputation, and the MI 
     strategy was designed to yield the correct variability."
 
-## Modern Methods of Dealing with Missingness
+### Modern Methods of Dealing with Missingness
 * EM Algorithm:
   - Apparently there are many, so the one described here is EM algorithm that takes in data with 
     missing values and spits out a maximum-likelihood variance-covariance matrix and vector of
@@ -154,7 +154,7 @@ on, but by how much? I would argue that using MI and ML procedures gets us at le
 the way to the hypothetical ideal..."
 
 
-## Wrap Up
+### Wrap Up
 Auxillary variables: one basic theme throughout was use all the data for data imputation of missing
 values.  That is, often a statistician will only want to include a few variables of interest in their
 final model, however, that does not mean that one should restrict the variable set during the MI/ML
@@ -191,18 +191,20 @@ Imputation, and Imputation of values using the EM (Expectation-Maximisation) alg
 which will perform Single Imputation."  The most recent method of interest this paper looks
 at is multiple imputation.  Overall, 8 methods are compared.
 
-Missingness Definitions
-* MCAR: "The term 'Missing Completely at Random' refers to data where the missingness mechanism does not
-depend on the variable of interest, or any other variable, which is observed in the dataset. MCAR is both
-missing at random, and observed at random (This means the data was collected randomly, and does not
-depend on any other variable in the data set). This very stringent condition is required in order for case
-deletion to be valid, and missing data is very rarely MCAR."
-* MAR: "The term 'Missing at Random' is a misnomer, as the missing data is anything but missing at random. The
-intuitive meaning of this term is better suited to the term MCAR. What MAR means is missing, but
-conditional on some other 'X-variable' observed in the data set, although not on the 'Y-variable' of interest."
-* MNAR: "occurs when the Missingness
-mechanism depends on the actual value of the missing data. This is the most difficult condition to model
-for."
+### Missing Value Taxonomy
+* MCAR: 
+  - "The term 'Missing Completely at Random' refers to data where the missingness mechanism does not
+    depend on the variable of interest, or any other variable, which is observed in the dataset. MCAR is both
+    missing at random, and observed at random (This means the data was collected randomly, and does not
+    depend on any other variable in the data set). This very stringent condition is required in order for case
+    deletion to be valid, and missing data is very rarely MCAR."
+* MAR: 
+  - "The term 'Missing at Random' is a misnomer, as the missing data is anything but missing at random. The
+    intuitive meaning of this term is better suited to the term MCAR. What MAR means is missing, but
+    conditional on some other 'X-variable' observed in the data set, although not on the 'Y-variable' of interest."
+* MNAR: 
+  - "occurs when the Missingness mechanism depends on the actual value of the missing data. This is the most 
+    difficult condition to model for."
 * Ignorability: "MCAR and MAR are ignorable, for likelihood-based imputation methods, NMAR is not."
 
 
@@ -283,16 +285,32 @@ is focusing on missing outcomes (i.e., missing endpoints).
 
 They do mention good points:  "An important and relatively neglected design issue is how to account for the loss of power from missing data in statistical inferences such as hypothesis tests or confidence intervals. The most common approach simply inflates the required sample size in the absence of missing data to achieve the same sample size under the anticipated dropout rate, estimated from similar trials. This approach is generally flawed, since inflating the sample size accounts for a reduction in precision of the study from missing data but does not account for bias that results when the missing data differ in substantive ways from the observed data. In the extreme case in which the amount of bias from missing data is similar to or greater than the anticipated size of the treatment effect, detection of the true treatment effect is unlikely, regardless of the sample size, and the study is noninformative. When performing power calculations, one should consider sample-size computations for an intention-to-treat analysis that uses a hypothesized population treatment effect that is attenuated because of the inability of some study participants to adhere to the treatment. Alternatively, one could develop power analyses for statistical procedures that explicitly account for missing data and its associated uncertainty, as discussed below."
 
-* MCAR: " In the first scenario, data are missing completely at random, which implies that the missing data are unrelated to the study variables. In particular, the complete cases are representative of all the original cases as randomized."  
-  - In terms of patient dropout: "The assumption that data are missing completely at random presumes that outcomes for those who dropped out would be expected to be similar to outcomes for participants who did not drop out, so the data from dropouts can be ignored without bias."
-  - Unrealistic: "We do not recommend using the complete-case-analysis approach to missing data, since it requires the unrealistic assumption that the data are missing completely at random. "
-* MAR: "In the second scenario, data are missing at random, which implies that recorded characteristics can account for differences in the distribution of missing variables for observed and missing cases."
-  - In terms of patient dropout: "The less stringent assumption that data are missing at random implies that outcomes for participants who dropped out would be expected to be similar to outcomes for participants who did not drop out with similar baseline characteristics and similar intermediate measures up to that time, so missing outcomes can be modeled on the basis of outcomes of similar participants who did not drop out."
-* MNAR: "In the third scenario, data are missing not at random, which implies that recorded characteristics do not account for differences in the distribution of the missing variables for observed and missing cases."
-  - In terms of patient dropout: "Only the assumption that the data are missing not at random allows for the possibility that events that were not observed (e.g., severe toxicity or disease progression occurring since the last visit) may have influenced the decision to drop out, and thus outcomes are likely to be different from those of similar participants who did not drop out."
+### Missing Value Taxonomy
+* MCAR: 
+  - "In the first scenario, data are missing completely at random, which implies that the missing data are unrelated 
+    to the study variables. In particular, the complete cases are representative of all the original cases as randomized."  
+  - In terms of patient dropout: "The assumption that data are missing completely at random presumes that outcomes for 
+    those who dropped out would be expected to be similar to outcomes for participants who did not drop out, so the 
+    data from dropouts can be ignored without bias."
+  - Unrealistic: "We do not recommend using the complete-case-analysis approach to missing data, since it requires 
+    the unrealistic assumption that the data are missing completely at random. "
+* MAR: 
+  - "In the second scenario, data are missing at random, which implies that recorded characteristics can account 
+    for differences in the distribution of missing variables for observed and missing cases."
+  - In terms of patient dropout: "The less stringent assumption that data are missing at random implies that outcomes 
+    for participants who dropped out would be expected to be similar to outcomes for participants who did not drop out 
+    with similar baseline characteristics and similar intermediate measures up to that time, so missing outcomes can 
+    be modeled on the basis of outcomes of similar participants who did not drop out."
+* MNAR: 
+  - "In the third scenario, data are missing not at random, which implies that recorded characteristics do not account 
+    for differences in the distribution of the missing variables for observed and missing cases."
+  - In terms of patient dropout: "Only the assumption that the data are missing not at random allows for the possibility
+    that events that were not observed (e.g., severe toxicity or disease progression occurring since the last visit) may
+    have influenced the decision to drop out, and thus outcomes are likely to be different from those of similar 
+    participants who did not drop out."
 
 
-Imputation Methods
+### Imputation Methods
 * CCA: Not recommended!
   - "We do not recommend using the complete-case-analysis approach to missing data, since it requires the unrealistic 
     assumption that the data are missing completely at random."
@@ -460,7 +478,7 @@ and/or causal modeling as oppposed to predictive modeling).
     data encountered in practice: "it is unlikely that data are MCAR, but rather 
     missingness of data depends (partly) on observed patient characteristics."
     
-* Imputation methods
+* Single/Multiple Imputations
   - Imputation "methods can be applied equally for missing outcomes, missing exposures and missing covariates."
   - Single imputation (multivariable regression): "missing value \[is replaced\] with the most likely value, based 
     on all observed patient characteristics, including the outcome."
@@ -477,7 +495,7 @@ and/or causal modeling as oppposed to predictive modeling).
       of population parameters and associations... "Imputation" is more holistic, while "prediction" is
       more "individualistic"...
 
-* MIM
+* MIM (Missing Indicator Method)
   - For "missing covariate data in nonrandomized studies ... the missing-indicator method ... very likely produce\[s\] 
     biased results. The direction and size of the bias depended on the reason or mechanism of missingness."
   - For "missing baseline covariate data in randomized trials ... the missing-indicator method produce\[s\]
@@ -529,3 +547,88 @@ So, basically, MIM isn't bad for estimating causal parameters (treatment effects
 Yea, I think. Yea? I don't know! :-p)
 
 ------------------------------------------------------------------------------------------
+
+2017: Pedersen et al: Clinical Epidemiology: [Missing data and multiple imputation in
+clinical epidemiological research](http://discovery.ucl.ac.uk/1549966/1/Petersen_clinical-epidemiolog_031517.pdf)
+
+Winner: 1st paper I read in this list to mention how DAGs may help assess whether missing data are MCAR, MAR, or 
+MNAR.  However, they don't really dig into this aspect much.  (Gives me a new Google Scholar search idea...but
+for another day!)
+
+Note: this paper seem very good so far...i.e., one of the ones I'd read again if I had to (there was that
+psychology one above that was really good too). 
+
+Despite this paper being a decent read, I'm definitely reaching limiting returns... It's just more of the same at
+this point: methods like CCA, mean imputation, and MIM are generally not good, especially when the data is
+not MCAR, and they produce biased estimates in one parameter or another (mean, variance, standard error, correlation,
+odds ratio, what-have-you).  In other words, not the greatest idea to employ these methods in the causal inference
+setting, lest thee have great justification.  However, MI -- well, that shit's great!  It works for MAR and MCAR data, and
+can even be adapted for MNAR.  W00t!
+
+"Individuals with missing data may differ from those with complete data in terms of
+the outcome of interest and prognosis in general. For example, those who are healthier
+may be less likely to visit their doctor and hence less likely to have blood pressure
+recorded. Studies on self-reported data show that individuals who have missing data on
+one variable are often likely also to have missing data on other variables. "
+
+* MCAR
+  - "When individuals with missing data are a random subset of the study population, the probability of 
+    being missing is the same for all cases ... under MCAR, missing data do not depend on either 
+    observed data or unobserved data."
+  - Example 1: "when a glass slide with biopsy material from a patient is accidentally broken such that 
+    pathology and histology tests cannot be performed"
+  - Example 2: "when individuals had no blood pressure measured as the equipment was broken"
+* MAR
+  - "when the missingness depends on information we have already observed"
+  - Example 1: "data in a depression survey can be said to be MAR if, given gender, men are less likely 
+    than women to fill out the survey"
+  - Example 2: "in a study of weight, data on weight are less likely to be recorded for younger individuals, 
+  because they do not attend health care facilities as often as older individuals"
+* MNAR
+  - "When the probability that data are missing depends on the unobserved data, such as the value of the 
+  observation itself"
+  - Example 1: "overweight or underweight individuals may be more likely to have their weight measured than 
+  individuals with normal weight, even after age is accounted for"
+  - "when individuals with severe depression, or adverse effects from antidepressant medication, are more or 
+    less likely to complete a survey on depression"
+  - Example 3: "when data on income are missing, and the probability of missingness is related to the level 
+    of income, eg, those with very low or high income refuse to report their income."
+    
+ **Word of Warning**: "Observed data can give us some indication of whether missing data are MCAR, but we are not
+ able, from these data alone or simple test, to evaluate whether missing data are MAR or MNAR.
+ 
+ 
+ * CCA
+  - "the results of such analyses may yield biased estimates of associations, because complete cases are 
+    assumed to be a random sample of the whole population, ie, data are MCAR."
+  - " Another issue with complete-case analysis is that a large proportion of valuable research data are 
+    discarded, which affects the statistical power and precision of the estimates."
+  - CCA may be reasonable "when working with large datasets with few missing observations, because the risk of 
+    bias is minimal and the precision is still good."
+* MIM
+  - "The method is popular because it retains the full dataset where no observations are excluded."
+  - "Even under the MCAR assumption and with very few missing observations, this method is still subject to bias."
+  - "If the method is used for missing data on potential confounder variables, the estimates will be biased due
+    to residual confounding."
+* Single imputation methods (mean imputation, last-observation-carried-forward, regression-based)
+  - "In general, single imputation methods do not account
+for the uncertainty of missing data, and as a result, standard
+errors of the estimates are likely to be too small (thereby
+overestimating the precision of the results). This can potentially lead to Type 1 error (ie, identifying an association when
+none exists)."
+  - "Mean imputation also does not preserve the relationships between variables; it only preserves the mean
+    of the observed data \[but not SE of the mean\]... Since most of the research studies are interested 
+    in the relationship between variables and not just the mean, mean imputation should be avoided in general."
+* Worst/Best Case Sensitivity Analyses
+  - "This method involves the replacement of missing values with the worst or best value in the 
+    observed data," then comparing the results of the two associate regression analyses.
+  - "When both analyses produce similar estimates of an association, it is rather straightforward to draw 
+    conclusions about the effect of missing data. However, analyses yielding opposing results can be difficult 
+    to interpret."
+  - Has been shown to yield biased estimates...
+* Multiple imputation
+  - It's good for inference, so use it.
+  - Cons: if you're stupid, you might do something stupid.  Don't be stupid.
+
+---------------------------------------------------------------------------------
+
