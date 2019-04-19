@@ -1,5 +1,16 @@
 
 
+One thing I can say for sure: no one recommends on complete case analysis.  It is considered to produce
+biased estimates of population parameters and associations, ruling it out for inference and causal modeling. And,
+for predictive modeling, it (i) lowers the amount of data, and (ii) is implausible for using the predictive 
+model on new, out-of-sample, incoming data records.  
+
+Also: no one recommends things like mean replacement.  Single imputation methods are frowned upon too, 
+at least from an inference / causal modeling perspective where multiple imputation methods rule (seriously,
+I saw some simulation studies where they removed 50% of the data and the MCMC MI method still produced unbiased
+estimates of the mean and variance).  
+
+
 
 # 2009: Graham: Annual Reviews of Psychology: [Missing Data Analysis: Making It Work in the Real World](https://www.personal.psu.edu/jxb14/M554/articles/Graham2009.pdf)
 
@@ -272,6 +283,34 @@ is focusing on missing outcomes (i.e., missing endpoints).
 
 They do mention good points:  "An important and relatively neglected design issue is how to account for the loss of power from missing data in statistical inferences such as hypothesis tests or confidence intervals. The most common approach simply inflates the required sample size in the absence of missing data to achieve the same sample size under the anticipated dropout rate, estimated from similar trials. This approach is generally flawed, since inflating the sample size accounts for a reduction in precision of the study from missing data but does not account for bias that results when the missing data differ in substantive ways from the observed data. In the extreme case in which the amount of bias from missing data is similar to or greater than the anticipated size of the treatment effect, detection of the true treatment effect is unlikely, regardless of the sample size, and the study is noninformative. When performing power calculations, one should consider sample-size computations for an intention-to-treat analysis that uses a hypothesized population treatment effect that is attenuated because of the inability of some study participants to adhere to the treatment. Alternatively, one could develop power analyses for statistical procedures that explicitly account for missing data and its associated uncertainty, as discussed below."
 
+* MCAR: " In the first scenario, data are missing completely at random, which implies that the missing data are unrelated to the study variables. In particular, the complete cases are representative of all the original cases as randomized."  
+  - In terms of patient dropout: "The assumption that data are missing completely at random presumes that outcomes for those who dropped out would be expected to be similar to outcomes for participants who did not drop out, so the data from dropouts can be ignored without bias."
+  - Unrealistic: "We do not recommend using the complete-case-analysis approach to missing data, since it requires the unrealistic assumption that the data are missing completely at random. "
+* MAR: "In the second scenario, data are missing at random, which implies that recorded characteristics can account for differences in the distribution of missing variables for observed and missing cases."
+  - In terms of patient dropout: "The less stringent assumption that data are missing at random implies that outcomes for participants who dropped out would be expected to be similar to outcomes for participants who did not drop out with similar baseline characteristics and similar intermediate measures up to that time, so missing outcomes can be modeled on the basis of outcomes of similar participants who did not drop out."
+* MNAR: "In the third scenario, data are missing not at random, which implies that recorded characteristics do not account for differences in the distribution of the missing variables for observed and missing cases."
+  - In terms of patient dropout: "Only the assumption that the data are missing not at random allows for the possibility that events that were not observed (e.g., severe toxicity or disease progression occurring since the last visit) may have influenced the decision to drop out, and thus outcomes are likely to be different from those of similar participants who did not drop out."
+
+
+Imputation Methods
+* CCA: Not recommended!
+  - "We do not recommend using the complete-case-analysis approach to missing data, since it requires the unrealistic 
+    assumption that the data are missing completely at random."
+* Single imputation methods: Not recommended!
+  - "Simple imputation methods such as the last observation carried forward and baseline observation carried forward are 
+    commonly applied, in part because they are simple and easy to understand, but they are overused. We do not recommend 
+    them, since their validity hinges on assumptions that are often unrealistic. For example, the last-observation-carried-
+    forward method makes the assumption that the outcomes of participants do not change after they have dropped out, leading 
+    to biased treatment effects when this assumption is not justified. These methods, like many other methods that impute a 
+    single value for the missing data, do not propagate imputation uncertainty and thus yield inappropriately low estimates 
+    of standard errors and P values. Thus, we recommend that single-imputation methods, such as last observation carried 
+    forward and baseline observation carried forward, should not be used as the primary approach to the treatment of missing 
+    data “unless the assumptions that underlie such methods are scientifically justified.”
+* Two methods recommended, but w/ the addition of sensitivity analysis
+  - Weighted estimation equations
+  - Multiple imputation
+  - Reason for Method: "Weighted estimating equations and multiple-imputation models have an advantage in that they can be used to incorporate auxiliary information about the missing data into the final analysis, and they give standard errors and P values that incorporate missing-data uncertainty."
+  - Reason for Sensitivity Analysis: "Analyses that are performed with such methods often assume that missing data are missing at random, and such an assumption often makes sense for the primary analysis. However, the observed data can never verify whether this assumption is correct... assess the robustness of inferences about treatment effects to various missing-data assumptions by conducting a sensitivity analysis that relates inferences to one or more parameters that capture departures from the primary missing-data assumption, such as the pattern-mixture analysis" or selection models. 
 
 The paper doesn't really get technical, but does make recommendations (e.g., if you have to impute, do not
 use CCA, mean imputation, last-observation-carried-forward, etc).  That said, it did get me thinking more
@@ -279,8 +318,214 @@ about missing "Y" data.  When I think about missing data -- MCAR, MAR, and MNAR 
 thinking about "X" data -- predictors, inputs, or as the stat guys like to say, "covariates".  
 
 
+------------------------------------------------------------
+
+# 2006: Donders et al: Journal of Clinical Epidemiology: [A gentle introduction to imputation of missing values](https://www.jclinepi.com/article/S0895-4356%2806%2900197-1/pdf)
+
+This is another inference/causally focused study interested in achieving unbiased estimates of 
+mean, variance, and variable associations in the face of missing data.
+
+### Imputation Motivation
+* "Imputation techniques are based on the idea that any subject in a study sample can be replaced by a new 
+    randomly chosen subject from the same source population.  In single imputation, only one estimate is used. In 
+    multiple imputation, various estimates are used, reflecting the uncertainty in the estimation of this 
+    distribution."
+* "In the classical (frequentistic) statistical view, conclusions drawn from 
+    any study should not depend 
+    on the sample that is involved in the study. Should the study be repeated with a different sample, nearly 
+    identical results should be obtained. The conclusions do not depend on the given set of subjects in the 
+    sample. This implies that every subject in a randomly chosen sample can be replaced by a new subject that 
+    is randomly chosen from the same source population as the original subject, without compromising the 
+    conclusions. Imputation techniques are also based on this basic principle of replacement."
+
+
+### Missing Data Taxonomy
+* MCAR
+  - "If subjects who have missing data are a random subset of the complete sample of subjects, missing 
+    data are called missing completely at random (MCAR). ... The reason for missingness is completely 
+    random, i.e., the probability that an observation is missing is not related to any other patient 
+    characteristics."
+  - "Typical examples of MCAR are when a tube containing a blood sample of a study subject is broken by 
+    accident (such that the blood parameters can not be measured) or when a questionnaire of a study 
+    subject is accidentally lost."
+* MNAR
+  - "If the probability that an observation is missing depends on information that is not observed, like 
+    the value of the observation itself, missing data are called missing not at random (MNAR)."
+  - Example:  "when asking a subject for his or her income level, it might well be that missing data 
+    are more likely to occur when the income level is relatively high."
+* MAR
+  - The "probability that an observation is missing ... depends on information for that subject that is 
+    present, i.e., reason for missingness is based on other observed patient characteristics."
+  - "Mostly, missing data are neither MCAR nor MNAR."
+    * As other papers have noted, missing data is more of a mix of all these definitions, e.g., there can
+      be a few MCAR data points in a largely MAR populations with a tinge of MNAR.
+    * This is why other authors have noted that it's important to test assumptions, e.g., perform sensitivity
+      analyses.
+   - As most other authors I've read, these folks consider MAR to be a horrible misnomer since the
+     data is not "missing at random" as much as it's "conditionally missing at random," i.e., there is
+     an order to the missingness that one can find and use to isolate the randomness.
+   - Example: "suppose we want to evaluate the predictive value of a particular diagnostic test, and the test 
+     results are known for all diseased subjects but unknown for a random sample of nondiseased subjects. In 
+     this case the missing data would be MAR: conditional on a patient characteristic that is observed (here 
+     the presence or absence of the disease) missing data are random." 
+      * Note that missingness may depends on the outcome variable, other predictor variables, or any
+        combo thereof.
+      * The authors chose outcome-based MAR because it is typical in epidemiological studies.
 
 
 
+### Imputation Methods
+> "Under the general conditions of so-called missing at random (MAR) and missing completely at random 
+> (MCAR), both single and multiple imputations result in unbiased estimates of study associations. But
+> single imputation results in too small estimated standard errors, whereas multiple imputation results 
+> in correctly estimated standard errors and confidence intervals. "
+
+* Complete Case Analysis
+  - "Complete and available case analyses provide inefficient though valid results when missing data are 
+    MCAR, but biased results when missing data are MAR, which is the more common form of missingness in 
+    epidemiological research."
+  - Even if you can assume that the missing data in your data set is MCAR (unlikely), which would mean
+    that the CCA is unbiased, "estimating associations using \[CCA\] remains less efficient (i.e., 
+    imprecise), because part of the data is not used."
+* Missing Indicator Method
+  - Terrible for obtaining unbiased population estimates
+  * Mean Imputation
+  - "Like the indicator method, the overall mean imputation of
+missing values should also be discarded because it will lead
+to biased associations even when missing data are MCAR."
+* Multiple Imputation
+  - Great!
+  - The "multiple imputation approach leads to unbiased results with correct standard errors, in 
+    situations where missing data are MCAR or MAR."
+    
+---------------------------------------------------------------
 
 
+# 2010: Knol et al: Journal of Clinical Epidemiology: [Unpredictable bias when using the missing indicator method or complete case analysis for missing confounder values: an empirical example](https://www.sciencedirect.com/science/article/pii/S0895435610000181)
+
+I did not have access to this paper, but it's title has value all its own:  though the missing indicator method
+seems to be popular and useful for predictive modeling (e.g., in Kaggle competitions), it is considered highly
+improper for those interested in statistical inference and causal modeling.  
+
+**Results**: "When missing values were completely random, MIM gave an overestimation of the odds ratio, whereas CCA and MI gave unbiased results. MIM and CCA gave under- or overestimations when missing values depended on observed values. Magnitude and direction of bias depended on how the missing values were related to exposure and outcome. Bias increased with increasing percentage of missing values."
+
+**Conclusion**: "MIM should not be used in handling missing confounder data because it gives unpredictable bias of the odds ratio even with small percentages of missing values. CCA can be used when missing values are completely random, but it gives loss of statistical power."
+
+
+------------------------------------------------------------------------
+
+
+# 2006: van der Heijden et al: Journal of Clinical Epidemiology: [Imputation of missing values is superior to complete case analysis and the missing-indicator method in multivariable diagnostic research: A clinical example](https://www.jclinepi.com/article/S0895-4356(06)00198-3/pdf)
+
+Same deal as last one: did not have access to, but the title and "front matter" say enough.
+
+The difference is that this one is about diagnostic research and identifying "potential predictors 
+(test results) that independently contribute to the prediction of disease presence or absence."  In other
+words, these guys are leaning into predictive modeling a bit.
+
+However, from the "Results" and "Conclusions" write up, it is clear that they still strongly regard and
+desire interpretability, which places it more closely to the inference / causal modeling concerns.  From what
+I can tell, their issue with CCA and the missing indicator method (MIM) in this case was that the resulting list
+of top predictors for these methods differed from the predictors lists generated by the single and multiple
+imputation (MI) methods they tested out.  However, all methods resulted in predictive models with AUC > 0.75, which
+is pretty good (unfortunately, the front matter doesn't specify which methods resulted in which AUCs).  
+
+**Results**: "The receiver operating characteristic curve area for all diagnostic models was above 0.75. The predictors in the final models based on the complete case analysis, and after using the missing-indicator method, were very different compared to the other models. The models based on MI did not differ much from the models derived after using single conditional and unconditional mean imputation."
+
+**Conclusion**: "In multivariable diagnostic research CCA and the use of the MIM should be avoided, even when data are MCAR. MI methods are known to be superior to single imputation methods. For our example study, the single imputation methods performed equally well, but this was most likely because of the low overall number of missing values."
+
+I agree with not using CCA in a predictive model, but I'm not sure their conclusion about MIM is strictly true.  Seems
+to me there should be a qualifier: "If developing a predictive model where you still care about association
+estimates and interpretability, then the use of MIM should be avoided. However, if you are exclusively interested in
+best predicting outcomes, then use what works -- Kaggle winners often talk about MIM."
+
+NOTE: Much of the same authors for this paper contributed to another paper 6 years later in 2012, where they go over when 
+the MIM is and isn't useful.  I expect this to be a more nuanced look at this, and cover it next.
+
+----------------------------------------------------------------------
+
+# 2012: Groenwold et al: Canadian Medical Association Journal: [Missing covariate data in clinical research: when and when not to use the missing-indicator method for analysis](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3414599/)
+
+In one sentence: the missing indicator method (MIM) obey the intention-to-treat principle and gives unbiased
+estimates of baseline covariates in randomized trials, independent of the missingness mechanism; however, this
+is not true for nonrandomized studies.
+
+This article really deals with biased/unbiased population estimates and interpretability (i.e., inference
+and/or causal modeling as oppposed to predictive modeling).
+
+* CCA
+  - "In addition to reducing statistical power, this approach will often result in biased estimates of the 
+    associations between covariates and outcomes."
+  - Gives unbiased estimates when data are MCAR; however, MCAR data is considered unlikely for most missing 
+    data encountered in practice: "it is unlikely that data are MCAR, but rather 
+    missingness of data depends (partly) on observed patient characteristics."
+    
+* Imputation methods
+  - Imputation "methods can be applied equally for missing outcomes, missing exposures and missing covariates."
+  - Single imputation (multivariable regression): "missing value \[is replaced\] with the most likely value, based 
+    on all observed patient characteristics, including the outcome."
+  - Some thoughts:
+    * Replacing all missing values with the "most likely values" means that values are always obtained
+      from the regression curve itself, which is very uncharacteristic of the actual data -- and this results
+      in distorted estimates (e.g., lower variance and standard error).  
+    * Multiple imputation takes into account that randomly sampling from the population is inherently different
+      than randomly sampling from the regression curve, and fixes this issue.
+    * This goes to show that a "great imputation" is different than a "great prediction" -- both are "missing
+      data" problems in a way, but they serve different purposes and operate in different contexts.  For example,
+      in inference and causal modeling, you may have a lot of missing target/outcome data, but the goal is not 
+      to "predict" that outcome data, it is to impute it properly in order to obtain ubiased, non-distorted estimates
+      of population parameters and associations... "Imputation" is more holistic, while "prediction" is
+      more "individualistic"...
+
+* MIM
+  - For "missing covariate data in nonrandomized studies ... the missing-indicator method ... very likely produce\[s\] 
+    biased results. The direction and size of the bias depended on the reason or mechanism of missingness."
+  - For "missing baseline covariate data in randomized trials ... the missing-indicator method produce\[s\]
+    unbiased estimates of the treatment effect."
+  - "The missing-indicator method was proposed for missing confounder data in etiologic research," which the authors
+    argue it does not work for...
+  - Interestingly, they make a distinction between imputation and MIM: "The missing-indicator method does not impute 
+    missing values. Instead, missing observations are set to a fixed value (usually zero, but other numbers will give 
+    the same results), and an extra indicator or dummy (1/0) variable is added to the analytical (multivariable) model 
+    to indicate whether the value for that variable is missing. Consequently, each participant can still be included in 
+    the analysis to maintain statistical power."
+      * I previously considered any method that dealt with missing data as "imputation", which isn't
+        unreasonable: "mean imputation" is when you replace missing values with the mean, which is
+        really just "lazy, brute force replacement" compared to regression-based single imputation (which is "lazy,
+        but well-intentioned imputation" compared to multiple imputation)...  Here, you are "imputing", but in
+        a vectorial way I guess.  Those are things are "scalar imputation", while MIM imputes by expanding
+        the dimensionality of offending variable.
+  - **When MIM is bad**: 
+    * "When using \[MIM\] to adjust for an incomplete covariate, the estimated association 
+      between the independent variable under study (e.g., treatment, risk factor or predictor) and outcome is 
+      a weighted average of two associations representing
+        - (a) the association between the independent variable and outcome, adjusted for all covariates, among 
+          the participants for whom all data were observed; and 
+        - (b) the association between the independent variable and outcome, adjusted only for complete covariates, 
+          among the participants for whom the covariate was not observed."
+    * "For nonrandomized studies, the second association will typically be biased because it is only 
+      partially adjusted for confounding."
+    * "Furthermore, the first association is based on a complete case 
+      analysis, so this association is unbiased only if missingness is conditionally independent of the 
+      outcome (MAR). But, given the nature of nonrandomized studies, in which covariates are commonly 
+      mutually related, \[MIM\] will almost always give biased results."
+  - **When MIM is good**: 
+    * "In randomized trials, however, randomization implies that baseline covariates are 
+      balanced across treatment groups and therefore not related to the treatment under study. Hence, unadjusted 
+      treatment effects from randomized trials are unbiased. Because of randomization, the distribution of missing 
+      values is likely to be balanced across treatment groups as well. Consequently, both the association between 
+      treatment and outcome among the participants for whom all data were observed, and the association between 
+      treatment and outcome among the participants for whom not all data were observed, will be unbiased. Hence, 
+      both complete case analysis and the missing-indicator method will give unbiased estimates."
+    * "Missingness of baseline covariates in a randomized trial is not necessarily the same as \[MCAR\]. In 
+      a randomized trial on the effects of a certain treatment for depression, participants who are 
+      severely depressed could be more likely to have missing baseline covariates. If the baseline covariate indicates 
+      severity of the depression, however, missingness will likely also depend on the value of the baseline variable 
+      itself \[MNAR\]. But, even if baseline covariate data are \[MNAR\], randomization implies that missingness 
+      is still not related to treatment, so the observed treatment effect will still be unbiased with application 
+      of \[MIM\]."
+
+So, basically, MIM isn't bad for estimating causal parameters (treatment effects) in RCTs.  (Right? Yea. Right?
+Yea, I think. Yea? I don't know! :-p)
+
+------------------------------------------------------------------------------------------
