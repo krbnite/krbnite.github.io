@@ -632,3 +632,27 @@ none exists)."
 
 ---------------------------------------------------------------------------------
 
+https://onlinelibrary.wiley.com/doi/pdf/10.1111/j.1467-842X.2001.tb00294.x
+
+This paper is much more thorough than most of the papers I've read so far.  It certainly covers many
+more methods that I've not seen (or have seen only mentioned in passing): hot deck imputation, cold deck imputation,
+available case analysis (which I think is the same as pairwase deletion, but not sure), Markov-chain imputation,
+raw maximum likelihood methods, and pattern mixture models.
+
+| Method | Bias | Handling of variability | Availability |
+|---------|-------|-----------------------|--------------|
+|Complete case (CC) | Unbiased if MCAR otherwise highly biased | Under-estimates variability in the data set | SAS, SPSS, BMDP |
+| Available case (AC) | Unbiased if MCAR otherwise highly biased | Under-estimates variability in the data set | SAS,SPSS, BMDP |
+| Mean imputation (MnImp) | Unbiased if MCAR otherwise highly biased | Under-estimation of the variance but less than CC and AC | SAS,SPSS, BMDP |
+| Last value carried forward (LVCF) | Unbiased if MCAR otherwise highly biased | Under-estimation of the variance but less than MnImp | User-defined |
+| Regression methods (RM) | Unbiased if MCAR or MAR otherwise highly biased | Under-estimation of variance but can be overcome by using weights | SOLAS or user defined |
+| Hot-deck imputation | Unbiased if MCAR or MAR otherwise highly biased | Under-estimation of variance but less than MnImp, LVCF, and RM | SOLAS or user defined |
+| Cold-deck imputation | Unbiased if MCAR or MAR otherwise highly biased | Under-estimation of variance but depends on quality of external information | User defined
+| Multiple imputation (MI) | Unbiased if MCAR or MAR otherwise highly biased | Produces good estimates of the variability in the dataset| SOLAS, SAS macros available |
+| Markov-Chain imputation | Unbiased under MCAR, MAR, and MNAR conditions | Produces good estimates of the variability in the data set | BUGS |
+| E-M Algorithm | Unbiased if MCAR or MAR otherwise highly biased | Produces good estimates of the variability in the dataset | SAS, SPSS, BMDP |
+| Raw Maximum Likelihood | Unbiased if MCAR or MAR otherwise highly biased. Depends on model fitted being 
+specified correctly. | Produces accurate estimates of the variability in the data set | Some SAS procedures, AMOS, LISREL |
+| Indicator method imputation | Unbiased if MCAR or MAR otherwise highly biased. Bias may vary depending on whether the missing data occurs for a covariate or a confounder | Does under-estimate the variability in the dataset. Under-estimation of similar  magnitude to CC approach. | User defined |
+| Pattern mixture models | Unbiased under MCAR,MAR and NMAR  | Produces good estimates of the variability in the dataset | User defined |
+
