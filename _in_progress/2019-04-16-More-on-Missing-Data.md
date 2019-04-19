@@ -10,6 +10,8 @@ at least from an inference / causal modeling perspective where multiple imputati
 I saw some simulation studies where they removed 50% of the data and the MCMC MI method still produced unbiased
 estimates of the mean and variance).  
 
+Notably, in most (if not all) of these statistical inference heavy works, imputation by decision tree-based
+methods or by k Nearest Neighbors are not even mentioned.  
 
 
 # 2009: Graham: Annual Reviews of Psychology: [Missing Data Analysis: Making It Work in the Real World](https://www.personal.psu.edu/jxb14/M554/articles/Graham2009.pdf)
@@ -630,6 +632,19 @@ none exists)."
   - It's good for inference, so use it.
   - Cons: if you're stupid, you might do something stupid.  Don't be stupid.
 
+
+
+| Methods | Brief description | Assumption to achieve unbiased estimates | Advantages | Limitation(s) |
+|---------|-------------------|------------------------------------------|------------|---------------|
+| Complete-case analysis | Include only individuals with complete information on all variables in the dataset | MCAR | (i) Simplicity; (ii) Comparability across analyses | (i) Data may not be representative. (ii) Reduction of sample size and thereby of statistical power. (iii) Too large standard error (lack of precision of the results).  (iv) Discarding valuable data. |
+| Missing indicator method | For categorical variables, missing values are grouped into a “missing” category. For continuous variables, missing values are set to a fixed value (usually zero), and an extra indicator or dummy (1/0) variable is added to the main analytic model to indicate whether the value for that variable is missing. | None | (i) Uses all available information about missing observation and retains the full dataset. | (i) The magnitude and direction of bias difficult to predict.  (ii) Too small standard error.  (iii) The results may be meaningless since method is not theoretically driven.  (iv) Bias due to residual confounding. |
+| Single value imputation | Replace missing values by a single value (e.g., mean score of the observed values or the most recently observed value for a given variable if data are measured longitudinally) | MCAR, only when estimating mean | (i) Run analyses as if data are complete.  (ii) Retains full dataset. | (i) Too small standard error (overestimation of precision of theresults).  (ii) Potentially biased results.  (iii) Weakens covariance and correlation estimates in the data (ignores relationship between variables). |
+| Sensitivity analyses with worst- and best-case scenarios | Missing data values are replaced with the highest or lowest value observed in the dataset. | MCAR | (i) Simplicity.  (ii) Retains full dataset.  |  (i) Too small standard error and
+thereby overestimation of precision of the results.  (ii) Analyses yielding opposite results may be difficult to interpret. |
+| Multiple imputation | Missing data values are imputed based on the distribution of other variables in the dataset | MAR (but can handle both MCAR and MNAR) | (i) Variability more accurate for each missing value since it considers variability due to sampling and due to imputation (standard error close to that of having full dataset with true values). | (i) Room for error when specifying models. | 
+
+
+
 ---------------------------------------------------------------------------------
 
 https://onlinelibrary.wiley.com/doi/pdf/10.1111/j.1467-842X.2001.tb00294.x
@@ -638,6 +653,61 @@ This paper is much more thorough than most of the papers I've read so far.  It c
 more methods that I've not seen (or have seen only mentioned in passing): hot deck imputation, cold deck imputation,
 available case analysis (which I think is the same as pairwase deletion, but not sure), Markov-chain imputation,
 raw maximum likelihood methods, and pattern mixture models.
+
+As usual, the focus of this paper is on bias and inference.
+
+### Methods
+
+* CCA
+  - Assumes data are MCAR, but "in practice the data are not MCAR and participants with complete data 
+    may be a biased sub-sample of all participants. As a consequence, a complete case analysis would 
+    usually produce biased results. In addition, there is a loss of power due to analysing a smaller 
+    dataset."
+* Available Case Analysis
+  - Description: "This method uses the largest set of available cases for estimating the parameter of interest 
+    (e.g. treatment effect)."
+  - Verdict:  "This approach is reasonable if we have cross-sectional data. However, if the data are longitudinal, 
+    with many time points, different participants will contribute to the data at different time points depending 
+    on the pattern of ‘missingness’. If the data are not MCAR then there is a lack of comparability over time points, 
+    which would lead to highly biased results."
+* Last Value Carried Forward (LVCF)
+  - Description: "  This method is used when we have longitudinal data and data are found to be missing at 
+    a particular ‘visit’ or point in time for some participants. The researcher would then carry the last
+    available value forward (from the last visit or time point) and impute this value for the missing values."
+  - Verdict: "The main problem with this method is that the researcher is assuming that there will be no 
+    change from one visit to the next. If the data are MCAR then this is reasonable. However, if this 
+    is not the case then the results can be seriously biased."
+* Mean Imputation
+  - Verdict: "This approach assumes the data is MCAR but is not recommended as it can lead to under-estimates 
+    of the variance."
+* Regression Methods
+  - Description: "This approach involves developing a regression equation based on the complete subject data 
+    for a given variable, treating it as an ‘outcome’ and using all other relevant variables as predictors. For 
+    participants where the ‘outcome’ is missing, the predicted values from the regression equation are used as 
+    replacements."
+  - Verdict: "This method has similar problems to the mean substitution method but these can be overcome 
+    by adding uncertainty, usually by weighting, to the imputation of ‘outcome’ so that the mean value is 
+    not always imputed. This method assumes that the data are MAR. However, the weights and standard errors 
+    can become extremely complex if the data and incomplete data patterns are not simple."
+* Hot Deck Imputation
+  - Description: "This method involves replacing missing values with values taken from respondents with 
+    matching covariates. The process identifies participants that are similar in terms of data observed."
+  - Verdict: "Hotdeck is useful as it is relatively simple and maintains the proper measurement levels of 
+    the recorded covariates. It is usually less biased than mean imputation or complete case approaches 
+    and assumes that the missing data are MAR. A disadvantage is that complex matching algorithms sometimes 
+    need to be employed in order to match respondents."
+* Cold Deck Imputation
+  - Description: "This method is very similar to hot-deck imputation in its approach except that the strategy 
+    for assessing subject similarity is based on external information or prior knowledge rather than the 
+    information available in the current dataset."
+  - Verdict: A disadvantage is that "this method is dependent on the quality of the available external information."
+* Single Imputation Methods in General
+  - Includes LVCF, Mean Substitution, Regression Methods, Hot Decking, Cold Decking
+  - Verdict: "The disadvantages of all the single imputation methods described above are that they impute the 
+    same missing value every time. Hence, a statistical analysis, which treats imputed values just the same 
+    as observed values, will systematically underestimate the variance, even assuming that the precise reasons 
+    for non-response are known. Single imputation cannot represent any additional variation that arises when the 
+    reasons for non-response are not known."
 
 | Method | Bias | Handling of variability | Availability |
 |---------|-------|-----------------------|--------------|
