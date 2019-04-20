@@ -111,20 +111,21 @@ Fact is, simple bracelets have been best here.  Technology isn't always necessar
 tend to wonder: Can we do better?  In some areas of healthcare, we certainly can -- but it's been hard to gain 
 traction.
 
+Other instances of cold starts include various cloud solutions, such as MS HealthVault (RIP) and Google Health 
+(RIP).  Why did these technologies fail?  The technology and convenience just didn't stack up to forgo classical
+solutions like the bracelet!  For example, the burden of keeping these cloud accounts up to date fell strictly
+on the patient.  Something like this could potentially be mitigated, but for example in Google Health's case, 
+Google refused to partner with the appropriate health institutions, which meant that Google Health 
+could not become a link in the HIPAA chain.
 
-
-
--- cloud solutions, e.g., MS HealthVault (RIP),  Google Health (also did not catch on) -- why did these technologies fail?  bracelet good enough! also, it was on patients to keep these things up to date... Google refused to partner w/ health institutions, and so their tech could not be a part of the HIPAA chain
--- EHRs and patient portals were incentivized by federal gov't starting in 2009, which ramped up interest in creating them well (and by this point, are considered...decent)
-
-Some of the technological and procedural innovation is considered by some to be mere "innovation":
-"Americans pay more and yet have serious access problems in primary care, long-term care, and much specialty care. Wait 
+Technological and procedural innovation in this area has often been expensive and impotent: "Americans pay 
+more and yet have serious access problems in primary care, long-term care, and much specialty care. Wait 
 times to see all kinds of doctors are increasing in most areas of the country. To deal with this, in American primary 
 care patients are guided into undifferentiated, highly transactional forms of service delivery that may be cheaper but 
 are less comprehensive in the services offered and impersonal, involving fast-food care provided through web-based apps, 
-big box stores, and urgent care centers. These sources of care often practice their medicine according to “cookbooks” 
+big box stores, and urgent care centers. These sources of care often practice their medicine according to 'cookbooks' 
 of standardized clinical guidelines using high-turnover providers, giving us fewer moments of the relational excellence 
-so important in high-quality health care."  (Hoff 2018: [Seeing Value From the Patient’s Perspective](http://thehealthcareblog.com/blog/2018/04/30/seeing-value-more-from-the-patients-perspective/)
+so important in high-quality health care."  (Hoff 2018: [Seeing Value From the Patient’s Perspective](http://thehealthcareblog.com/blog/2018/04/30/seeing-value-more-from-the-patients-perspective/))
 
 Another potential issue with using technologies, such as those associated with telemedicine, is that
 the technology better be damn good -- like, ease-of-Netflix-or-Uber-level good.  It is 2019: people are generally
@@ -166,22 +167,16 @@ I also happen to go to a doctor and hosptial in the same healthcare network, whi
 seems to be going in the right direction: for example, I've been able to view some clinician notes and renew
 prescriptions.  So that's cool.
 
-### Questions I have about my patient portal
-What features does my patient portal have?  How does that stack up against other patient portals?  Can I integrate 
-patient portal w/ my iPhone?  Does it allow virtual/email visits?  Can I email symptoms?  How far back does my history go?  Can I integrate this EHR/portal w/ any others?
+In general, some nice-to haves include: virtual/email visits, 
+ability to email doctor current symptoms, exploration of my medical history as far back as I choose, integration 
+of data from multiple patient portals (e.g., integration of a patient portal with iPhone Health app), 
+easy-to-understand breakdown of charges for each office visit (or digital communication), overview of paid 
+and unpaid bills, intuitive process for paying or contesting bills, provision of downloadable medical data
+in chosen format (CSV, JSON, whatever), appointment scheduling, provision of cost estimates prior to care/service 
+(apparently controversial in US b/c of convoluted insurance arrangements w/ various institutions), ability to 
+sync consumer-grade bio/health data recorded from wearables and mobile appls (e.g., Fitbit, Apple Watch, sleep
+apps, etc). 
 
-Does my portal:
-* show breakdown of charges for each visit
-* show paid/unpaid bills
-* give an option to pay or contest bills
-* provide ability to download my data in chosen format (CSV, JSON, whatever)
-* have the ability to schedule an appointment
-* provide cost estimates prior to care/service 
-   - apparently controversial in US b/c of convoluted insurance arrangements w/ various institutions
-* list accepted insurance providers
-* list my allergies, meds
-* allow me to transfer into another EHR system for other care, if necessary
-* integrate w/ mobile or wearable devices
 
 # Imagination Time
 Imagine a recommendation engine using EHRs:  your various lab tests and biometrics are most like these other people, who have required surgery X -- ask your doc!  
@@ -197,12 +192,8 @@ How about schedule a visit or send EHR access to another doc?
 
 How about "info nuggets" about everything and anything: your meds, your bills, etc...  Recommended reading/videos/diet based on lab results, diagnoses, etc.
 
-What is Google for Healthcare?  
-I should be able to find any and all info about my lab tests, diagnoses, etc.  I should be able to ask reasonable questions, and get answers.
-What is FB for Healthcare?
-...
-What is Netflix for Healthcare?
-What is Uber for Healthcare?
+What is Google Search for Healthcare?  I should be able to find any and all info about my lab tests, diagnoses, etc.  I should be able to ask reasonable questions, and get answers.
+
 
 Can I just sign on to my one app and request a video appt?  (You know, instead of looking up my insurance account, the special hotline or website, etc.  One app that syncs my insurance info, health info, etc, etc.)
 
