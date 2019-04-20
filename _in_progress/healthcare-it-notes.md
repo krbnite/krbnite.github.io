@@ -99,6 +99,13 @@ But with new technologies come new issues.
 
 
 ### Technology is Great (Except When it's Not)
+A potential issue with using technologies, such as those associated with telemedicine, is that
+the technology better be damn good -- like, ease-of-Netflix-or-Uber-level good.  It is 2019: people are generally
+becoming more accepting of telemedicine technologies, but not of poor-quality ones!  In fact, a patient's perception
+of the quality of care in this situation is hinged on the technology feeling fluid and easy, as is expected for
+any web service these days (e.g., see: Donahue 2018: [How Penn Medicine looks at telehealth from the patient perspective](https://www.healthcareitnews.com/blog/how-penn-medicine-looks-telehealth-patient-perspective)).
+
+### Bracelets
 Some people do not have any critical information they must communicate to their healthcare providers.  Any
 allergies to medication?  No.  On any medications?  No.  Any bizarre diseases?  No.  
 
@@ -111,6 +118,7 @@ Fact is, simple bracelets have been best here.  Technology isn't always necessar
 tend to wonder: Can we do better?  In some areas of healthcare, we certainly can -- but it's been hard to gain 
 traction.
 
+### Clouds
 Other instances of cold starts include various cloud solutions, such as MS HealthVault (RIP) and Google Health 
 (RIP).  Why did these technologies fail?  The technology and convenience just didn't stack up to forgo classical
 solutions like the bracelet!  For example, the burden of keeping these cloud accounts up to date fell strictly
@@ -118,6 +126,35 @@ on the patient.  Something like this could potentially be mitigated, but for exa
 Google refused to partner with the appropriate health institutions, which meant that Google Health 
 could not become a link in the HIPAA chain.
 
+
+### Kiosks
+Have you ever been to the supermarket and took a moment to take your blood pressure?  That is a simple 
+healthcare kiosk.  Imagine if it could do other things, like leverage modern computer vision technologies 
+to check your throat for strep, assess the probable cause of a rash or skin discoloration, and indicate
+whether a mole is suspiciously cancerous looking.
+
+A kiosk needn't be fully automated though: the diagnostic and prognostic care can come from a remotely 
+located doctor, instead of an algorithm.  What's important is a "box" with sensors (camera, microphone, heart rate
+detection, GSR, etc).  This type of enhanced "virtual visit" capability could be really
+convenient.  Imagine going to CVS or Walgreens, getting a quick kiosk diagnosis, picking up your prescription
+just outside the booth, then grabbing some comfort food and heading home for a bath!
+
+But hey -- sometimes it's not even all that convenient to go to CVS. As cool as these things might be, seems 
+like they've been money sinks for those who have tried to push 'em out. But not all
+is lost: seems that there is a general sentiment that a healthcare kiosk has a definite niche, e.g., in a school,
+private office, or in the ER.
+
+
+> "Outside the healthcare setting, the kiosk’s main function is to replicate the visit to a doctor’s office, offering quick consults in a public setting such as a community center, jail, school, retail store, mall, office building or airport. Inside the pharmacy, hospital or clinic, they most often act as registration stations or patient education terminals. They can even be used as triage stations in an ED."
+
+> "Large employer group customers see kiosks as a key part of their strategy to improve access to healthcare, manage costs and enhance productivity,” says John Jesser, Anthem Vice President and LiveHealth Online General Manager, whose telehealth service is integrated in American Well kiosks in more than 20 locations. “With a kiosk, depending on their health plan benefits, employees can see a doctor covered under their health plan without ever leaving the worksite, for a fraction of the cost involved in a worksite clinic."
+
+References:
+* https://mhealthintelligence.com/features/potential-for-healthcare-kiosks-in-improving-care-delivery
+* https://www.meridiankiosks.com/4-ways-digital-kiosks-are-transforming-the-patient-check-in-process/
+
+
+### Synopsis
 Technological and procedural innovation in this area has often been expensive and impotent: "Americans pay 
 more and yet have serious access problems in primary care, long-term care, and much specialty care. Wait 
 times to see all kinds of doctors are increasing in most areas of the country. To deal with this, in American primary 
@@ -126,14 +163,6 @@ are less comprehensive in the services offered and impersonal, involving fast-fo
 big box stores, and urgent care centers. These sources of care often practice their medicine according to 'cookbooks' 
 of standardized clinical guidelines using high-turnover providers, giving us fewer moments of the relational excellence 
 so important in high-quality health care."  (Hoff 2018: [Seeing Value From the Patient’s Perspective](http://thehealthcareblog.com/blog/2018/04/30/seeing-value-more-from-the-patients-perspective/))
-
-Another potential issue with using technologies, such as those associated with telemedicine, is that
-the technology better be damn good -- like, ease-of-Netflix-or-Uber-level good.  It is 2019: people are generally
-becoming more accepting of telemedicine technologies, but not of poor-quality ones!  In fact, a patient's perception
-of the quality of care in this situation is hinged on the technology feeling fluid and easy, as is expected for
-any web service these days (e.g., see: Donahue 2018: [How Penn Medicine looks at telehealth from the patient perspective](https://www.healthcareitnews.com/blog/how-penn-medicine-looks-telehealth-patient-perspective)).
-
-
 
 
 
@@ -265,28 +294,7 @@ https://www.temptraq.com/Home
 Jawbone mapped out an earthquake's temporal and spatial fingerprint by noting a disruption in sleep amongst its users...
 https://www.forbes.com/sites/dandiamond/2014/08/25/how-an-earthquake-will-mess-up-your-sleep-a-jawbone-chart/#3c1ff1c03b3a
 
-### Healthcare Kiosks
-Have you ever been to the supermarket and took a moment to take your blood pressure?  That is like a simple 
-healthcare kiosk.  What if it could take other measurements: "Say ahh!" a friendly Siri-like voice says
-as a camera images your throat for strep.  Rash? Skin discoloration? Itchy eyes?  Image all that too:
-poison ivy, bruise, pink eye.  Next patient!  
 
-It needn't be fully automated: combining this with some basic "virtual visit" capability could be really
-convenient.  Imagine going to CVS or Walgreens, getting a quick kiosk diagnosis, picking up your prescription
-just outside the booth, then grabbing some comfort food and heading home for a bath!
-
-But hey -- sometimes it's not even all that convenient to go to CVS. 
-
-"Outside the healthcare setting, the kiosk’s main function is to replicate the visit to a doctor’s office, offering quick consults in a public setting such as a community center, jail, school, retail store, mall, office building or airport. Inside the pharmacy, hospital or clinic, they most often act as registration stations or patient education terminals. They can even be used as triage stations in an ED."
-
-> "Large employer group customers see kiosks as a key part of their strategy to improve access to healthcare, manage costs and enhance productivity,” says John Jesser, Anthem Vice President and LiveHealth Online General Manager, whose telehealth service is integrated in American Well kiosks in more than 20 locations. “With a kiosk, depending on their health plan benefits, employees can see a doctor covered under their health plan without ever leaving the worksite, for a fraction of the cost involved in a worksite clinic."
-
-https://mhealthintelligence.com/features/potential-for-healthcare-kiosks-in-improving-care-delivery
-
-As cool as these things might be, seems like they've been money sinks for those who have tried to push 'em out. Basically,
-too expensive.  Article says it might help out in the ER.
-
-https://www.meridiankiosks.com/4-ways-digital-kiosks-are-transforming-the-patient-check-in-process/
 
 ----------------------------
 
@@ -294,17 +302,5 @@ https://www.meridiankiosks.com/4-ways-digital-kiosks-are-transforming-the-patien
 Telemedicine reimbursement -- 2015 in NY (there now exist billing codes, etc);  billing codes for apps and wearables is something new too......
 
 Though there are legitimate reasons how mobile phones and wearables can help healthcare, many doctors are cautious -- and for good reason: false positives, inexperienced determination, misinterpretation, misinformed usage, etc.  In a sense, easily accessible biometric, health-related data is not a panacea for healthcare.......... 
-
-Why so many forms over and over?
-
-
-An EHR system is basically like an OS...but not as useful or convenient... FHIR is probably more important than I originally thought: seems like medical software/tech needs serious paradigm shifts....
-
-MUMPS -- revolutionary for its time... heirarchical database (these are what gave way to relational databases)... Nick joked that HIT often has "paved the way, then stayed there"
-https://en.wikipedia.org/wiki/MUMPS
-
-1970s:  Expert systems (e.g., MYCIN):  knowledge base consisting of 100's of rules; many questions to clinicians on patient parameters; answers determine therapy w/ reasonable degree of confidence;  worked really well for meningitis (better than the experts); .....but these things never really took off.
-https://en.wikipedia.org/wiki/Mycin
-
 
 
