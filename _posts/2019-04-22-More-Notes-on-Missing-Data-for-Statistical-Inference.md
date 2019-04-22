@@ -1,4 +1,20 @@
 
+As I've mentioned in previous posts, many of the references one will encounter when looking
+up methods for dealing with missing values will be oriented towards statistical inference
+and obtaining ubiased estimates of population parameters, such as means, variances, and
+covariances.  The most mentioned of these techniques is multiple imputation.  I saw value in
+digging deeper into this area in general, despite it not being optimized reading for
+developing predictive models -- especially those that might run in real time in an app or at a
+clinic of some sort.  The reason is that, in tandem with developing a great predictive model,
+I generally like to develop corresponding models that focus on interpretability.  This allows me
+to learn from both inferential and predictive approaches, and to deploy the predictive model while
+using the interpretable model to help explain and understand the predictions.  However, once one
+becomes interested in interpretability, one becomes interested in inference -- or, importantly,
+unbiased estimates of population parameters, etc.  That is, I'm actually very interested in
+unbiased estimates of means, variances, and covariances -- but in parallel to prediction, not
+in place of it.
+
+This post is mostly just a lot of notes from various papers I've read on the topic.
 
 One thing I can say for sure: no one recommends on complete case analysis.  It is considered to produce
 biased estimates of population parameters and associations, ruling it out for inference and causal modeling. And,
@@ -11,7 +27,9 @@ I saw some simulation studies where they removed 50% of the data and the MCMC MI
 estimates of the mean and variance).  
 
 Notably, in most (if not all) of these statistical inference heavy works, imputation by decision tree-based
-methods or by k Nearest Neighbors are not even mentioned.  
+methods or by k Nearest Neighbors are not even mentioned.  I do have a collection of papers to get to
+that do focus on some of these things... These will be for a different blog post. 
+
 
 
 # 2009: Graham: Annual Reviews of Psychology: [Missing Data Analysis: Making It Work in the Real World](https://www.personal.psu.edu/jxb14/M554/articles/Graham2009.pdf)
@@ -708,6 +726,14 @@ As usual, the focus of this paper is on bias and inference.
     as observed values, will systematically underestimate the variance, even assuming that the precise reasons 
     for non-response are known. Single imputation cannot represent any additional variation that arises when the 
     reasons for non-response are not known."
+* Other techniques covered (that I'll maybe come back and fill in):
+  - Multiple Imputation
+  - Markov-Chain Imputation
+  - Expectation-Maximization (EM) Approach
+  - Raw Maximum Likelihood Methods 
+  - Missing Indicator Method
+  - Pattern-Mixture Models
+  
 
 | Method | Bias | Handling of variability | Availability |
 |---------|-------|-----------------------|--------------|
@@ -721,8 +747,96 @@ As usual, the focus of this paper is on bias and inference.
 | Multiple imputation (MI) | Unbiased if MCAR or MAR otherwise highly biased | Produces good estimates of the variability in the dataset| SOLAS, SAS macros available |
 | Markov-Chain imputation | Unbiased under MCAR, MAR, and MNAR conditions | Produces good estimates of the variability in the data set | BUGS |
 | E-M Algorithm | Unbiased if MCAR or MAR otherwise highly biased | Produces good estimates of the variability in the dataset | SAS, SPSS, BMDP |
-| Raw Maximum Likelihood | Unbiased if MCAR or MAR otherwise highly biased. Depends on model fitted being 
-specified correctly. | Produces accurate estimates of the variability in the data set | Some SAS procedures, AMOS, LISREL |
+| Raw Maximum Likelihood | Unbiased if MCAR or MAR otherwise highly biased. Depends on model fitted being  specified correctly. | Produces accurate estimates of the variability in the data set | Some SAS procedures, AMOS, LISREL |
 | Indicator method imputation | Unbiased if MCAR or MAR otherwise highly biased. Bias may vary depending on whether the missing data occurs for a covariate or a confounder | Does under-estimate the variability in the dataset. Under-estimation of similar  magnitude to CC approach. | User defined |
 | Pattern mixture models | Unbiased under MCAR,MAR and NMAR  | Produces good estimates of the variability in the dataset | User defined |
+
+# 2004: Raghunathan: Annual Reviews of Public Health: [What Do We Do With Missing Data? (Some Options for Analysis of Incomplete Data)](https://www.annualreviews.org/doi/pdf/10.1146/annurev.publhealth.25.102802.124410)
+
+
+This article denounces CCA and ACA, then goes on to explore 3 more general methods of increasing statistical
+sophistication:  weighting, multiple imputation, and maximum likelihood methods.  It notes that there have
+been papers that have shown CCA to work with MAR data, but stresses that these cases are highly specific, unlikely,
+and that it is best to just consider CCA acceptable for MCAR data only -- and even then, to understand that
+it is still not the best choice because it undermines the statistical power inherent within the data (i.e., it
+throws out good data just because of some associated missing data).  The author notes that the weighting technique
+helps correct the biases that are produced for non-MCAR data under CCA, but does not resolve the issue of
+statistical efficiency (removal of any row with missing data means that one must collect more data in order
+for this technique to have the same statistical power as one like multiple imputation that does not throw
+out data).  The author notes that the maximum likelihood method is the gold standard, but it is not generally
+available in software packages, and that the multiple imputation method is nearly as good and much more
+practical.
+
+Great read, but again -- the primary focus is on statistical inference, not on blackbox predictions (the aim
+is to eliminate bias while maintaining efficiency, not to produce the most accurate predictions possible).
+
+Given how many papers I read before this, I only skimmed much of it, which is unfortuante because from what I
+can tell, it's a much more thorough resource than many of the papers I've read.  Basically, the conclusions is
+like most:  use the multiple imputation approach when your focus is on unbiased estimates of population parameters
+(inference) and you want to maintain as much statistical efficiency as possible.  However, it does seem that
+the author would recommend a maximum likelihood approach such as the EM algorithm if the user is savvy enough
+to produce the software for it, etc.
+
+
+" In a cross-sectional study relying on a survey, subjects may
+refuse to participate entirely or may not answer all the questions in the questionnaire. The former type of missing data is called unit nonresponse, and the latter,
+item nonresponse. In a longitudinal study, subjects may drop out, be unable, or
+refuse to participate in subsequent waves of data collection. The missing data in
+this context may be viewed as unit or item nonresponse. For instance, in a crosssectional analysis of data from a particular wave, drop-outs may be viewed as unit
+nonrespondents, whereas in a longitudinal analysis involving data from all waves,
+missing data due to drop-outs may be viewed as item nonresponse."
+
+"Though most methods rely on a MAR assumption, its lack of applicability is related to the lack of
+variables that can be used to predict the missing values. Because the missing data
+are inevitable, a prudent step, from the design perspective, is to investigate potential
+predictors of variables with missing data and include them in the data-collection
+process. Such auxiliary variables can include administrative data, neighborhoodlevel observations, and interviewer observations. These additional variables can be
+used in the multiple imputation process. It is important that missing data be considered not solely a data analysis problem, but also a design and analysis problem."
+
+
+Multiple Imputation:  "the missing set of values is replaced by more than one plausible set of
+values. Each plausible set of values in conjunction with the observed data results
+in a completed data set. Each completed data set is analyzed separately using the
+standard complete data software, and the resulting point estimates and standard
+errors are combined using a simple formula described later."  Note that "the filled-in
+values for any one subject with missing values should not be considered as microdata for that subject but rather as values that are statistically plausible given other
+information on that subject. These filled-in or completed data sets are plausible
+samples from the population under certain assumptions. Thus, the completed data
+sets should result in inferences (point estimates and confidence intervals, for example) that are within the realm of statistical plausibility of inferences that would
+have been obtained had there been no missing data ... The
+inferential validity based on the multiple imputed data sets is the goal, and any
+imputation procedure should not viewed as a method for recovering the missing
+values for any given individual."
+
+---------------------------------------------------------------------------
+
+I've run out of time, so here are some papers I wanted to more fully read but didn't get a chance to 
+do much more than skim:
+* 2009: Sterne: [Multiple imputation for missing data in epidemiological and clinical research: potential and pitfalls
+](https://www.bmj.com/content/338/bmj.b2393)
+* 2007: Horton & Kleinman: [Much ado about nothing: A comparison of missing data methods and software to fit incomplete data regression models](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1839993/)
+* 2003: Allison: [Missing Data Techniques for Structural Equation Modeling](https://www.researchgate.net/profile/Paul_Allison/publication/8959854_Missing_Data_Techniques_for_Structural_Equation_Modeling/links/02bfe50e5ddd518228000000/Missing-Data-Techniques-for-Structural-Equation-Modeling.pdf)
+
+To come back to...
+* https://bookdown.org/max/FES/imputation-methods.html
+  - This actually references the different needs between inferential and predictive models
+  - In prediction, you do not necessarily care about population estimates at all, but in imputing
+    the most likely value and gaining the best predictions.
+  - That said, kNN can be computationally expensive, and the linear models still give me pause... Yes,
+    multiple imputation cannot be easily "saved and run" at runtime, but wouldn't it be better to 
+    build the linear imputers of a MI'd data set...?
+* https://medium.com/ibm-data-science-experience/missing-data-conundrum-exploration-and-imputation-techniques-9f40abe0fd87
+  - I want to come back to this
+  - It is one of the only source I've read that covers visually investigating missing data patterns (via a nullity
+    matrix, a bar chart, and a heat map of correlations)
+  - It uses a Python package called `missingno`, which I can use for the data sets I'm currently working on
+Some online e-Books I found along the way that are worth getting back to:
+* Stef van Buuren: [Flexible Imputation of Missing Data](https://stefvanbuuren.name/fimd/)
+* Kuhn and Johnson: [Feature Engineering and Selection: A Practical Approach for Predictive Models](https://bookdown.org/max/FES/)
+* 2009: Garcia-Laencina et al: [Pattern Classification with Missing Data: a Review](https://sci2s.ugr.es/keel/pdf/specific/articulo/pattern-classification-with-missin-data-a-review-2009.pdf)
+  - definitely need to start a new post/investigation with this article and others like it, which
+    focus on prediction/classification
+  - this paper covers the general methods used with inference and estimate bias in mind, while keeping
+    an eye towards how those (and other methods) are repurposed for when classification accuracy
+    is most important
 
