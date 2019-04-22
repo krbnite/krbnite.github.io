@@ -575,8 +575,7 @@ Yea, I think. Yea? I don't know! :-p)
 
 ------------------------------------------------------------------------------------------
 
-2017: Pedersen et al: Clinical Epidemiology: [Missing data and multiple imputation in
-clinical epidemiological research](http://discovery.ucl.ac.uk/1549966/1/Petersen_clinical-epidemiolog_031517.pdf)
+# 2017: Pedersen et al: Clinical Epidemiology: [Missing data and multiple imputation in clinical epidemiological research](http://discovery.ucl.ac.uk/1549966/1/Petersen_clinical-epidemiolog_031517.pdf)
 
 Winner: 1st paper I read in this list to mention how DAGs may help assess whether missing data are MCAR, MAR, or 
 MNAR.  However, they don't really dig into this aspect much.  (Gives me a new Google Scholar search idea...but
@@ -664,15 +663,14 @@ none exists)."
 | Complete-case analysis | Include only individuals with complete information on all variables in the dataset | MCAR | (i) Simplicity; (ii) Comparability across analyses | (i) Data may not be representative. (ii) Reduction of sample size and thereby of statistical power. (iii) Too large standard error (lack of precision of the results).  (iv) Discarding valuable data. |
 | Missing indicator method | For categorical variables, missing values are grouped into a “missing” category. For continuous variables, missing values are set to a fixed value (usually zero), and an extra indicator or dummy (1/0) variable is added to the main analytic model to indicate whether the value for that variable is missing. | None | (i) Uses all available information about missing observation and retains the full dataset. | (i) The magnitude and direction of bias difficult to predict.  (ii) Too small standard error.  (iii) The results may be meaningless since method is not theoretically driven.  (iv) Bias due to residual confounding. |
 | Single value imputation | Replace missing values by a single value (e.g., mean score of the observed values or the most recently observed value for a given variable if data are measured longitudinally) | MCAR, only when estimating mean | (i) Run analyses as if data are complete.  (ii) Retains full dataset. | (i) Too small standard error (overestimation of precision of theresults).  (ii) Potentially biased results.  (iii) Weakens covariance and correlation estimates in the data (ignores relationship between variables). |
-| Sensitivity analyses with worst- and best-case scenarios | Missing data values are replaced with the highest or lowest value observed in the dataset. | MCAR | (i) Simplicity.  (ii) Retains full dataset.  |  (i) Too small standard error and
-thereby overestimation of precision of the results.  (ii) Analyses yielding opposite results may be difficult to interpret. |
+| Sensitivity analyses with worst- and best-case scenarios | Missing data values are replaced with the highest or lowest value observed in the dataset. | MCAR | (i) Simplicity.  (ii) Retains full dataset.  |  (i) Too small standard error and thereby overestimation of precision of the results.  (ii) Analyses yielding opposite results may be difficult to interpret. |
 | Multiple imputation | Missing data values are imputed based on the distribution of other variables in the dataset | MAR (but can handle both MCAR and MNAR) | (i) Variability more accurate for each missing value since it considers variability due to sampling and due to imputation (standard error close to that of having full dataset with true values). | (i) Room for error when specifying models. | 
 
 
 
 ---------------------------------------------------------------------------------
 
-2001: Bennett: Australian and New Zealand Journal of Public Health: [How can I deal with missing data in my study?](https://onlinelibrary.wiley.com/doi/pdf/10.1111/j.1467-842X.2001.tb00294.x)
+# 2001: Bennett: Australian and New Zealand Journal of Public Health: [How can I deal with missing data in my study?](https://onlinelibrary.wiley.com/doi/pdf/10.1111/j.1467-842X.2001.tb00294.x)
 
 This paper is much more thorough than most of the papers I've read so far.  It certainly covers many
 more methods that I've not seen (or have seen only mentioned in passing): hot deck imputation, cold deck imputation,
@@ -758,6 +756,9 @@ As usual, the focus of this paper is on bias and inference.
 | Indicator method imputation | Unbiased if MCAR or MAR otherwise highly biased. Bias may vary depending on whether the missing data occurs for a covariate or a confounder | Does under-estimate the variability in the dataset. Under-estimation of similar  magnitude to CC approach. | User defined |
 | Pattern mixture models | Unbiased under MCAR,MAR and NMAR  | Produces good estimates of the variability in the dataset | User defined |
 
+
+--------------------------------------------------------
+
 # 2004: Raghunathan: Annual Reviews of Public Health: [What Do We Do With Missing Data? (Some Options for Analysis of Incomplete Data)](https://www.annualreviews.org/doi/pdf/10.1146/annurev.publhealth.25.102802.124410)
 
 
@@ -815,6 +816,7 @@ inferential validity based on the multiple imputed data sets is the goal, and an
 imputation procedure should not viewed as a method for recovering the missing
 values for any given individual."
 
+---------------------------------------------------------------------------
 ---------------------------------------------------------------------------
 
 I've run out of time, so here are some papers I wanted to more fully read but didn't get a chance to 
