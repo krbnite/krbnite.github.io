@@ -1,3 +1,8 @@
+---
+title: More Notes on Missing Data for Statistical Inference
+layout: post
+tags: statistics inference missing-data easi
+---
 
 As I've mentioned in previous posts, many of the references one will encounter when looking
 up methods for dealing with missing values will be oriented towards statistical inference
@@ -30,6 +35,8 @@ Notably, in most (if not all) of these statistical inference heavy works, imputa
 methods or by k Nearest Neighbors are not even mentioned.  I do have a collection of papers to get to
 that do focus on some of these things... These will be for a different blog post. 
 
+--------------------------------------------------------------
+--------------------------------------------------------------
 
 
 # 2009: Graham: Annual Reviews of Psychology: [Missing Data Analysis: Making It Work in the Real World](https://www.personal.psu.edu/jxb14/M554/articles/Graham2009.pdf)
@@ -665,7 +672,7 @@ thereby overestimation of precision of the results.  (ii) Analyses yielding oppo
 
 ---------------------------------------------------------------------------------
 
-https://onlinelibrary.wiley.com/doi/pdf/10.1111/j.1467-842X.2001.tb00294.x
+2001: Bennett: Australian and New Zealand Journal of Public Health: [How can I deal with missing data in my study?](https://onlinelibrary.wiley.com/doi/pdf/10.1111/j.1467-842X.2001.tb00294.x)
 
 This paper is much more thorough than most of the papers I've read so far.  It certainly covers many
 more methods that I've not seen (or have seen only mentioned in passing): hot deck imputation, cold deck imputation,
