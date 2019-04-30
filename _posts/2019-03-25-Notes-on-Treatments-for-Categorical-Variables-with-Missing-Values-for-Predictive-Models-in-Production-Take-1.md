@@ -47,8 +47,9 @@ offenders?  I did not see these kinds of ideas widely discussed without digging 
 the focus is more often on "one model to rule them all" (where "them all" is "all the data").
 
 What makes this dearth of discussion more surprising to me is that most of
-the hits that came up in my initial Google searches discuss predictive models...  To my mind, if
-your goal is prediction, then you probably plan on predicting something on yet-to-be measured
+the hits that came up in my initial Google searches discuss predictive models, but only by name -- with 
+almost attention to using the model to make predictions in a realistic setting...  To my mind, if your goal 
+is prediction, then you probably plan on predicting something on yet-to-be measured
 data.  For example, if you are in digital marketing, this might be data collected on a new potential 
 customer.  Or if you're working with clinical data, this might be a social or demographic variable.  Point is, 
 if the data set you have in hand came with missing data, then you will likely be making predictions on
@@ -57,6 +58,31 @@ when it recommends dropping any rows with missing data, then splitting the remai
 and test set...  You'll get a model, but who cares?  It's
 gained you about as artificial an "intelligence" as possible -- one that will not work when deployed in the real
 world!
+
+By not paying attention to how a predictive model will be used in practice (even if just as a mental 
+exercise), other issues creep in to various predictive models I've seen, which renders them useless beyond
+an academic exercise.  For example, you will often see a 
+predictive model created where a variable being used wouldn't be available for making predictions, e.g.,
+a variable that is created in hindsight or a variable that is defined up to the moment of 
+the event being predicted. For example, picture having historical data on students with variables like `freshman_gpa`,
+`sophomore_gpa`, `junior_gpa`, `senior_gpa`, `total_days_in_high_school`, and `dropout`.  I've seen models
+akin to predicting `dropout` using all the other variables.  That's crazy useless, right?!  Using all the variables
+means that you are strictly taking a hindsight perspective, and not a predictive one.  To be predictive, one
+would have to instead imagine when the model would be useful, say at the end of freshman year, at which
+point a model running in real time would only have access to `freshman_gpa` (of the variables listed above).  You 
+might be tempted to argue that they would have attendance records too, and so might be tempted to use 
+the `total_days_in_high_school` variable too -- but this would be wrong since this variable in the data spans
+4 years of high school.  In this scenario, a useful technology having access to only the data variables listed
+would be to score dropout risk after freshman year (X = `freshman_gpa`), after sophomore year (X = `freshman_gpa`,
+`sophomore_gpa`), and after junior year (X = `freshman_gpa`, `sophomore_gpa`, `junior_gpa`).  The
+`senior_gpa` and `total_days_in_high_school` variables are not useful.  This is not to say that more
+granular versions of these variables would not be useful, like `senior_gpa_q1` or 
+`total_days_absent_freshman_year`, but we don't have them in our data set.
+
+
+and are simply trying to predict
+whether or not a student was a dropout or not, then this variable just gives you the answer:  only 
+attended high school 100 days 
 
 Ok, ok -- all this said, one hit on my Google search really stood out.  It was a response to this Quora post, [How can I deal with missing values in a predictive model?](https://www.quora.com/How-can-I-deal-with-missing-values-in-a-predictive-model).  As elsewhere, I found most of the discussion to have a indiscriminately-copy-and-paste vibe (e.g., try CCA or multiple imputation).  However, one response was actually very thoughtful and, IMO, answered the question being
 asked.  
