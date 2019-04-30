@@ -17,7 +17,7 @@ missing.
 After CCA is mentioned (by name or otherwise), you're likely to see something about imputation along the
 lines of "replace missing values with the mean or median for continuous variables, and the mode 
 for categoricals."  Many will will mention multiple imputation as a more sophisticated method.  For
-categorical variables, the last option usually mentioned is keeping it -- just encode "missing" as
+categorical variables, another option usually mentioned is to keep it -- just encode "missing" as
 its own category.  
 
 "Keeping it" has been my default assumption.  Imputation might be great, but no matter how sophisticated the 
@@ -31,7 +31,9 @@ The hits that came up in my initial Google searches were a bunch of fluff.  I wa
 to stumble upon a blog post or mini-tutorial that advocates
 "keeping it" as I was to find someone who says "keeping it" is a terrible method -- either argument being 
 made without further detail and nuance.  Most blogs and tutorials I came across did not really pay much 
-attention to the missing data problem; ones that did, did not attempt to paint a complete picture.  
+attention to the missing data problem.  The ones that did, did not attempt to paint a complete picture -- "toss
+out any row with missing data, or impute it, or whatever -- then MACHINE LEARN THAT SHIT!"  (Cue guitar solo
+and flashing lights!)
 
 Granted, most of these hits were "light" machine learning reading...but the lack of depth and repetitive
 advice was still unsettling:  just delete any row with missing data, or impute it, and/or keeping "missing" as 
