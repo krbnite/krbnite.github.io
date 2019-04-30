@@ -64,25 +64,27 @@ exercise), other issues creep in to various predictive models I've seen, which r
 an academic exercise.  For example, you will often see a 
 predictive model created where a variable being used wouldn't be available for making predictions, e.g.,
 a variable that is created in hindsight or a variable that is defined up to the moment of 
-the event being predicted. For example, picture having historical data on students with variables like `freshman_gpa`,
+the event being predicted. 
+
+For example, picture having historical data on students with variables like `freshman_gpa`,
 `sophomore_gpa`, `junior_gpa`, `senior_gpa`, `total_days_in_high_school`, and `dropout`.  I've seen models
-akin to predicting `dropout` using all the other variables.  That's crazy useless, right?!  Using all the variables
-means that you are strictly taking a hindsight perspective, and not a predictive one.  To be predictive, one
+akin to predicting `dropout` using all the other variables.  
+
+That's crazy useless, right?!  
+
+Using all the variables in this example means that you are strictly taking a hindsight 
+perspective, and not a predictive one.  To be predictive, one
 would have to instead imagine when the model would be useful, say at the end of freshman year, at which
 point a model running in real time would only have access to `freshman_gpa` (of the variables listed above).  You 
 might be tempted to argue that they would have attendance records too, and so might be tempted to use 
-the `total_days_in_high_school` variable too -- but this would be wrong since this variable in the data spans
-4 years of high school.  In this scenario, a useful technology having access to only the data variables listed
+the `total_days_in_high_school` variable  -- but this would be wrong since this variable in the data spans all
+4 years of high school.  In this scenario, a useful sequence of models
 would be to score dropout risk after freshman year (X = `freshman_gpa`), after sophomore year (X = `freshman_gpa`,
-`sophomore_gpa`), and after junior year (X = `freshman_gpa`, `sophomore_gpa`, `junior_gpa`).  The
-`senior_gpa` and `total_days_in_high_school` variables are not useful.  This is not to say that more
-granular versions of these variables would not be useful, like `senior_gpa_q1` or 
-`total_days_absent_freshman_year`, but we don't have them in our data set.
+`sophomore_gpa`), and after junior year (X = `freshman_gpa`, `sophomore_gpa`, `junior_gpa`).  Note that the
+`senior_gpa` and `total_days_in_high_school` variables are not useful for predicting `dropout`.  This is 
+not to say that more granular versions of these variables would not be useful, like `senior_gpa_q1` or 
+`total_days_absent_freshman_year`, but we don't have them in the data set described for this scenario.
 
-
-and are simply trying to predict
-whether or not a student was a dropout or not, then this variable just gives you the answer:  only 
-attended high school 100 days 
 
 Ok, ok -- all this said, one hit on my Google search really stood out.  It was a response to this Quora post, [How can I deal with missing values in a predictive model?](https://www.quora.com/How-can-I-deal-with-missing-values-in-a-predictive-model).  As elsewhere, I found most of the discussion to have a indiscriminately-copy-and-paste vibe (e.g., try CCA or multiple imputation).  However, one response was actually very thoughtful and, IMO, answered the question being
 asked.  
@@ -92,7 +94,7 @@ asked.
 I want to give an enthusiastic 
 shout out to Claudia Perlich, whose answer really gets at the core of working with with missing values 
 for a predictive model that will be used in production.  Her answer should really be highlighted in yellow at
-the top of the page.  
+the top of the page.  It is a dose of sanity in a sea of madness!
 
 Great passage about even the fanciest of imputation methods:  "What about imputation? Simply pretending that something that was missing was recorded as some value (no matter how fancy your method of coming up with it) is almost surely suboptimal. On a philosophical level, you just lost a piece of information. It was missing, but you pretend otherwise (guessing at best). To the model, the fact that it was missing is lost. The truth is, missingness is almost always predictive and you just worked very hard to obscure that fact ..."  
 
