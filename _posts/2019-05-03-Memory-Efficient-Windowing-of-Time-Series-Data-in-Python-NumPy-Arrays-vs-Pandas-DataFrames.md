@@ -128,23 +128,43 @@ And so, again I plug NumPy's `as_strided` function found in `numpy.lib.stride_tr
 
 Let's look into it a bit.
 
+
+# Sanity Check: Memory of Magnetometer Array
+Ok, so here I'm going to pretend that pandas doesn't exist in this post. Despite it
+making some things easier, pandas DataFrames might actually confuse you and destroy
+your analysis if using `numpy.lib.stride_tricks.as_strided` naively.  I'll talk about this
+in a [follow-up post](krbnite.github.io).
+
 ```
 import numpy as np
-import pandas as pd
 
 n = 86400 * 30   # 30 days of 1-Hz data
 
-df = pd.DataFrame({
-  'mag1_x': np.random.randn(n), 'mag1_y': np.zeros(n), 'mag1_z': np.ones(n),
-  'mag2_x': np.random.randn(n), 'mag2_y': np.random.gamma(1,1,n),  'mag2_z': np.random.randn(n),
-  'mag3_x': np.random.randn(n), 'mag3_y': np.zeros(n), 'mag3_z': np.ones(n),
-  'mag4_x': np.random.randn(n), 'mag4_y': np.random.gamma(1,1,n),  'mag4_z': np.random.randn(n),
+# Make fake magnetometer data
+mag1_x = np.arange(n).reshape(n,1)
+mag1_y =  np.zeros(n).reshape(n,1)
+mag1_z = np.ones(n).reshape(n,1)
+mag2_x = np.random.randn(n).reshape(n,1)
+mag2_y = np.random.gamma(1,1,n).reshape(n,1)
+mag2_z = np.random.randn(n).reshape(n,1)
+mag3_x = np.random.randn(n).reshape(n,1)
+mag3_y = np.zeros(n).reshape(n,1)
+mag3_z = np.ones(n).reshape(n,1)
+mag4_x = np.random.randn(n).reshape(n,1)
+mag4_y = np.random.gamma(1,1,n).reshape(n,1)
+mag4_z = np.random.randn(n).reshape(n,1)
 
-})
+# Put it all in one array
+mag_data = np.concatenate([
+  mag1_x, mag1_y, mag1_z,
+  mag2_x, mag2_y, mag2_z,
+  mag3_x, mag3_y, mag3_z,
+  mag4_x, mag4_y, mag4_z,
+], axis=1)
 
 # Memory Estimate
-f'{round(df.memory_usage().sum()/1.0e6,2)} MB'
-  248.83 MB
+mag_data.nbytes/1e6 # MB
+  248.832
 ```
 
 "Wow, Kevin -- that is the same that you estimated above!"
@@ -154,5 +174,54 @@ Did you dare question the veracity of my truth, Dear Reader?!
 But seriously, what a great sanity check.  Now let's brute force window this array and
 check the memory.  
 
-..........TO BE CONTINUED............
+```
+# Make a windowing fcn
+def make_windows(
+  arr,
+  win_size,
+  step_size,
+):
+  """
+  arr: any 2D array whose columns are distinct variables and 
+    rows are data records at some timestamp t
+  win_size: size of data window (given in data points)
+  step_size: size of window step (given in data point)
+  
+  Note that step_size is related to window overlap (overlap = win_size - step_size), in 
+  case you think in overlaps.
+  """
+  w_list = list()
+  n_records = arr.shape[0]
+  remainder = (n_records - win_size) % step_size 
+  num_windows = int((n_records - win_size - remainder) / step_size)
+  for k in range(num_windows):
+    w_list.append(arr[k*step_size:win_size-1+k*step_size])
+  return np.array(w_list)
 
+# Make 1-hour windows stepped forward every 10 mins
+win_size = 3600 # 1-hour windows
+step_size = 600 # 10-minute steps
+win_data = make_windows(mag_data, win_size, step_size)
+
+# Memory Estimate
+win_data/1e9 # GB
+  1.490504256
+```
+
+"Wow, Kevin -- that is the same that you estimated above!"
+
+You messin' with me, Dear Reader?  
+
+Well, my computer didn't blow up -- and yours shouldn't have either!  Importantly, we have 
+now seen that our memory estimates were spot on, and that for much larger time series data
+sets, we might not be able to fit such a brute force data structure in memory.
+
+Depending on what your end goal is, you might create a similar function, but one that saves
+summary statistics for each window instead of the window itself, e.g., if you are computing
+a moving average.  This way, you're less likely to bring your computer to a crawl.
+
+Heck, even for a big recurrent neural network, you can make a script that steps through
+the data for each input... But, let's look at a cooler trick: let's create a complicated
+view onto the original array.  That is, let's not be brutes and replicate the data in our
+array unnecessarily!  Instead, let's realize that we can create something similar to the
+output of `make_windows` above, but just by noting where ..............
