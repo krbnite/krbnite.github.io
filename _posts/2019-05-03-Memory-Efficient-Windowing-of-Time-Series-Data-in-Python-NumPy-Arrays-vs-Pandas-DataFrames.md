@@ -1,5 +1,5 @@
 ---
-title: Memory-Efficient Windowing of Time Series Data in Python: 1. Memory Strides in NumPy
+title: Memory-Efficient Windowing of Time Series Data in Python&#58; 1. Memory Strides in NumPy
 layout: post
 tags: time-series pandas numpy python 
 ---
