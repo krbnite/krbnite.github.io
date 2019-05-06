@@ -135,7 +135,7 @@ making some things easier, pandas DataFrames might actually confuse you and dest
 your analysis if using `numpy.lib.stride_tricks.as_strided` naively.  I'll talk about this
 in a [follow-up post](krbnite.github.io).
 
-```
+```python
 import numpy as np
 
 n = 86400 * 30   # 30 days of 1-Hz data
@@ -174,7 +174,7 @@ Did you dare question the veracity of my truth, Dear Reader?!
 But seriously, what a great sanity check.  Now let's brute force window this array and
 check the memory.  
 
-```
+```python
 # Make a windowing fcn
 def make_windows(
   arr,
@@ -193,9 +193,9 @@ def make_windows(
   w_list = list()
   n_records = arr.shape[0]
   remainder = (n_records - win_size) % step_size 
-  num_windows = int((n_records - win_size - remainder) / step_size)
+  num_windows = 1 + int((n_records - win_size - remainder) / step_size)
   for k in range(num_windows):
-    w_list.append(arr[k*step_size:win_size-1+k*step_size])
+    w_list.append(arr[k*step_size:win_size-1+k*step_size+1])
   return np.array(w_list)
 
 # Make 1-hour windows stepped forward every 10 mins
@@ -204,7 +204,7 @@ step_size = 600 # 10-minute steps
 win_data = make_windows(mag_data, win_size, step_size)
 
 # Memory Estimate
-win_data/1e9 # GB
+win_data.nbytes/1e9 # GB
   1.490504256
 ```
 
@@ -221,7 +221,204 @@ summary statistics for each window instead of the window itself, e.g., if you ar
 a moving average.  This way, you're less likely to bring your computer to a crawl.
 
 Heck, even for a big recurrent neural network, you can make a script that steps through
-the data for each input... But, let's look at a cooler trick: let's create a complicated
+the data for each input... But, let's assume you MUST create a data structure that has each
+window...it's certainly nice to have and easy to think about.  So, let's look at a cool 
+trick: let's create a complicated
 view onto the original array.  That is, let's not be brutes and replicate the data in our
-array unnecessarily!  Instead, let's realize that we can create something similar to the
-output of `make_windows` above, but just by noting where ..............
+array unnecessarily!  Instead, let's create a structure that mimics the
+output of `make_windows` above, but without any of the memory overhead.  We can do this by
+noting where each data point is stored in memory, and just view the right "memory windows"
+when required.
+
+# As Strided
+First, get the function like so:
+```python
+import numpy as np
+from numpy.lib.stride_tricks import as_strided
+```
+
+Now, to use `as_strided`, let's briefly describe the 3 major inputs:
+1. The array to be windowed (strided over)
+2. shape: The desired shape of the new data structure (view onto the original array)
+3. strides: How to place data into the desired shape
+
+I'll give some details, but it takes some playing around with to get used to... NumPy arrays
+are made to default to C-like arrays, which means they are "row major" in terms of how they are
+stored in memory.  To understand what this means, first know that the array itself is actually 
+stored in memory as a single contiguous list of elements.  Knowing this, "row major" means that
+row elements are stored right next to each other, while one must leap over many elements to go
+from one column element to the next.  For 64-bit floats, this means one must traverse 8 bytes
+to go from one row element to the next row element.  And if each row has 10 elements, this means one
+must traverse 80 bytes to go from one column element to the next column element.
+
+A simple example will help here.
+
+```python
+a = np.arange(10).reshape(10,1)
+b = np.ones(10).reshape(10,1) 
+c = np.zeros(10).reshape(10,1)  
+d = np.concatenate([a,b,c],axis=1)
+d
+  array([[0., 1., 0.],
+        [1., 1., 0.],
+        [2., 1., 0.],
+        [3., 1., 0.],
+        [4., 1., 0.],
+        [5., 1., 0.],
+        [6., 1., 0.],
+        [7., 1., 0.],
+        [8., 1., 0.],
+        [9., 1., 0.]]) 
+```
+
+Above, we have a very simple 10rx3c array.  Let's say we are doing some kind of running/moving/windowed analysis
+on this array and want to look at 2 records at a time, stepped forward every record, resulting in a 9x2rx3c array. Since
+the array we created is so simple, we know what to expect.  For example, the first and second sub-arrays should look lke:
+
+```python
+# Sub-Array 1
+array([[0., 1., 0.],
+       [1., 1., 0.]])
+# Sub-Array 2
+array([[1., 1., 0.],
+       [2., 1., 0.]])
+```
+
+So, let's create this with `as_strided` if we can:
+
+```python
+win_d = as_strided(
+  d,
+  shape = (9,2,3),
+  strides = (24,24,8)
+)
+# What's it look like?
+win_d
+  array([[[0., 1., 0.],
+          [1., 1., 0.]],
+
+        [[1., 1., 0.],
+          [2., 1., 0.]],
+
+        [[2., 1., 0.],
+          [3., 1., 0.]],
+
+        [[3., 1., 0.],
+          [4., 1., 0.]],
+
+        [[4., 1., 0.],
+          [5., 1., 0.]],
+
+        [[5., 1., 0.],
+          [6., 1., 0.]],
+
+        [[6., 1., 0.],
+          [7., 1., 0.]],
+
+        [[7., 1., 0.],
+          [8., 1., 0.]],
+
+        [[8., 1., 0.],
+          [9., 1., 0.]]])
+```
+
+Wow, that's exactly what we wanted!  Yay!
+
+But you might be wondering more about that `strides` parameter:
+* the first element of `strides` tells us how many bytes to traverse to get from one window to the next
+* the second element says how many bytes to get from one column element to the next (i.e., how to get from one row
+to the next in the same column)
+* the third element say how many bytes to get from one row element to the next (i.e., how to get from one column
+to the next in the same row)
+
+The first and second elements are the same in this example because we have chosen to step the data window
+forward one record at a time -- which is the same byte traversal as going from one row to the next within the
+same column.  To help you better understand, let's look at a 2rx3c window stepped forward every 2 records, i.e.,
+we will create non-overlapping windows.  This will create 5 new windows.
+
+```python
+as_strided(d, shape=(5,2,3), strides=(48,24,8))
+  array([[[0., 1., 0.],
+          [1., 1., 0.]],
+
+        [[2., 1., 0.],
+          [3., 1., 0.]],
+
+        [[4., 1., 0.],
+          [5., 1., 0.]],
+
+        [[6., 1., 0.],
+          [7., 1., 0.]],
+
+        [[8., 1., 0.],
+          [9., 1., 0.]]])
+```
+
+Things should start making sense now:  
+* for the `shape` parameters, we have (num_windows, size_window, original_num_columns)
+* for the `strides` parameter, we have
+  - step_size * original_num_columns * 8
+  - original_num_columns * 8
+  - 1 * 8
+
+For the `strides` parameter, I used variable names that reference how we thought about things
+when brute forcing a new data structure filled with array windows...  `step_size` is the number
+of data points along the record (or time) axis we want to move our window, which is then amplified
+by `original_num_columns * 8` so that the `as_strided` function knows what we mean.  Basically,
+point is that we can make a wrapper function over `as_strided` that makes this all feel much more
+intuitive, like it did when we brute forcing it!
+
+One thing you have to be careful about when using NumPy's `as_strided` is not overstepping
+the data...  That is, if the last window will only be partially filled with data, then `as_strided`
+will mindlessly fill it with a bunch of all nonsense since it is just reporting what is in
+the memory banks requested...  But we already figured out how to ensure all this above in our brute force
+method -- that is, we already know how to compute the number of "full" windows that we be created from
+an array when specifying a desired `window_size` and `step_size`.
+
+```
+def make_views(
+  arr,
+  win_size,
+  step_size,
+  writeable = False,
+):
+  """
+  arr: any 2D array whose columns are distinct variables and 
+    rows are data records at some timestamp t
+  win_size: size of data window (given in data points along record/time axis)
+  step_size: size of window step (given in data point along record/time axis)
+  writable: if True, elements can be modified in new data structure, which will affect
+    original array (defaults to False)
+  
+  Note that step_size is related to window overlap (overlap = win_size - step_size), in 
+  case you think in overlaps.
+  """
+  
+  n_records = arr.shape[0]
+  n_columns = arr.shape[1]
+  remainder = (n_records - win_size) % step_size 
+  num_windows = 1 + int((n_records - win_size - remainder) / step_size)
+  new_view_structure = as_strided(
+    arr,
+    shape = (num_windows, win_size, n_columns),
+    strides = (8 * step_size * n_columns, 8 * n_columns, 8),
+    writeable = False,
+  )
+  return new_view_structure
+
+# Make 1-hour windows stepped forward every 10 mins
+win_size = 3600 # 1-hour windows
+step_size = 600 # 10-minute steps
+view_data = make_views(mag_data, win_size, step_size)
+  
+# And test to see if we have less memory.......
+view_data.nbytes/1e9
+  1.491264
+  
+# WTF?!?!?!
+```
+
+Ok... So clearly my initial understanding of `as_strided` is wrong...  From what I understood,
+this data structure should have had a much smaller memory footprint than the brute forced data
+structure we create above with `make_windows`.
+
