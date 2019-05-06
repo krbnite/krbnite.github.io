@@ -4,7 +4,7 @@ layout: post
 tags: time-series pandas numpy python 
 ---
 
-In the previous post, we ignored the existence of Pandas and did things in pure NumPy.  There was a
+In the [previous post](https://krbnite.github.io/Memory-Efficient-Windowing-of-Time-Series-Data-in-Python-Memory-Strides-in-NumPy/), we ignored the existence of Pandas and did things in pure NumPy.  There was a
 really important reason for this:  Pandas DataFrames are not stored in memory the same as default NumPy
 arrays.
 
@@ -440,6 +440,77 @@ I cannot emphasize this enough: **in general, the default Pandas DataFrame is F-
 default NumPy array is C-like**.  This can impact your data analysis if your algorithm assumes
 C-like arrays and your user (e.g., YOU!) is unknowingly using F-like arrays.
 
+# Using NumPy's `as_strided` Function with DataFrames
+The post references "memory efficiency" and yet we spent most of the post poring over the
+details of how various data structures are stored in memory.  Well, that was all for a really
+good point:  in the [previous post](https://krbnite.github.io/Memory-Efficient-Windowing-of-Time-Series-Data-in-Python-Memory-Strides-in-NumPy/), we developed a lot of great machinery that works splendid
+with default, C-like NumPy arrays, but gives nonsensical results for default, F-like Pandas
+DataFrames.
+
+To show this, let's just do a few experiments.
+
+```python
+# Create lists 
+a = [0,1,2,3,4,5,6,7,8,9]
+b = [1,1,1,1,1,1,1,1,1,1]
+c = [0,0,0,0,0,0,0,0,0,0]
+
+# Create column vectors  &  C-like NumPy array
+vec_a = np.array(a).reshape(10,1)
+vec_b = np.array(b).reshape(10,1)
+vec_c = np.array(c).reshape(10,1)
+arr = np.concatenate([vec_a,vec_b,vec_c], axis=1)
+
+# Create F-like Pandas DataFrame
+df = pd.DataFrame({'a': a, 'b': b, 'c': c})
+
+# Show for yourself that arr and df have same shape and look
+pass
+
+# Run arr and df through the make_views function (created in last post)
+win_size = 2
+step_size = 1
+arr_views = make_views(arr, win_size, step_size)
+df_views = make_views(df.values, win_size, step_size)
+
+# For arr_views, show that things work out like we planned in the last post
+arr_views[0:3]
+   array([[[0, 1, 0],
+         [1, 1, 0]],
+
+         [[1, 1, 0],
+         [2, 1, 0]],
+
+         [[2, 1, 0],
+         [3, 1, 0]]])
+ 
+# For df_views, show that things did not work out like we planned 
+df_views[0:3]
+   array([[[0, 1, 2],
+         [3, 4, 5]],
+
+         [[3, 4, 5],
+         [6, 7, 8]],
+
+         [[6, 7, 8],
+         [9, 1, 1]]])
+```
+
+This is monumental.
+
+I didn't even get an error message.
+
+If I was to have kept this in the processing pipeline, I might have gotten horrible, confusing, or
+misleading results...and I might not have known why.
+
+That said, I immediately identified the discrepancy, thus these posts :-p
+
+Note that this issue is not only important for using Pandas DataFrames, but is even an issue for
+transposed NumPy arrays, etc. 
+
+In my next post on this topic, I will create a function that respects the C-like or F-like nature
+of the incoming array.
+
 
 # One last, off-topic observation
 We have spent most of this post focusing on "how" a NumPy array or Pandas DataFrame is stored 
@@ -449,7 +520,7 @@ the DataFrame has a larger memory footprint than the default NumPy array.
 Without going too deep, I'd just say, "Not really!"  
 
 Below, I leave you off with an example that shows a Pandas DataFrame having the same size as
-a similar NumPy array we created in the previous post.
+a similar NumPy array we created in the [previous post](https://krbnite.github.io/Memory-Efficient-Windowing-of-Time-Series-Data-in-Python-Memory-Strides-in-NumPy/).
 
 
 ```python
