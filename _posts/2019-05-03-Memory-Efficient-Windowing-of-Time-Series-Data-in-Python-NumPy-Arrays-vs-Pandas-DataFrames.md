@@ -473,4 +473,10 @@ Very cool!
 So, we have not blown up our view into a massive-memory array, and we have set `writeable=False` to
 avoid bizarre fiascos.  
 
+Some remaining thoughts might be:
+* What is `.base` on the other arrays, `mag_data` and `win_data`?
+  - Answer: `None`
+* How can we create a general function to always find the actual memory size?
+  - Answer: just `.base` until you reach `None` (further detail is outside the concerns of this post)
+
 I think this a good place to say, "Thanks for reading!"
