@@ -375,7 +375,7 @@ the memory banks requested...  But we already figured out how to ensure all this
 method -- that is, we already know how to compute the number of "full" windows that we be created from
 an array when specifying a desired `window_size` and `step_size`.
 
-```
+```python
 def make_views(
   arr,
   win_size,
@@ -422,3 +422,55 @@ Ok... So clearly my initial understanding of `as_strided` is wrong...  From what
 this data structure should have had a much smaller memory footprint than the brute forced data
 structure we create above with `make_windows`.
 
+Apparently, the view onto the original array is easily blown into a full-fledged, independent array
+(e.g., see some [war stories here](https://stackoverflow.com/questions/52149479/time-series-data-preprocessing-numpy-strides-trick-to-save-memory)).  
+
+But blowing up the view is not my problem!  On another [StackOverflow page](https://stackoverflow.com/questions/34637875/size-of-numpy-strided-array-broadcast-array-in-memory),
+the discussion points out that `arr.nbytes` is a fairly "brute" memory computations because it
+does not take into account the possibility of shared memory, which is what the view is taking advantage
+of:  ".nbytes reports the "theoretical" size of the array, but apparently not the actual size."
+
+In short, to compute the size of an `as_strided` view, you must find the array it is pulling from.  For a 
+simple view where you have an array that is directly based on another array, you could do something like this:
+
+```python
+if arr.base is not None:  arr_sz = arr.base.nbytes
+```
+
+However, the `as_strided` function adds an additional layer -- a `DummyArray`:
+
+```python
+view_data.base.nbytes
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-76-c96e2a606cdb> in <module>
+----> 1 view_data.base.nbytes
+
+AttributeError: 'DummyArray' object has no attribute 'nbytes'
+```
+
+To find the source array, you must descend two bases down:
+
+```python
+view_data.base.base.nbytes
+  248832000
+```
+
+Oh my -- is that what I think it is!
+
+Yes: the actual memory footprint is the same size as the original array.
+
+```python
+view_data.base.base.nbytes/1e6
+248.832
+
+mag_data.nbytes/1e6
+248.832
+```
+
+Very cool!  
+
+So, we have not blown up our view into a massive-memory array, and we have set `writeable=False` to
+avoid bizarre fiascos.  
+
+I think this a good place to say, "Thanks for reading!"
