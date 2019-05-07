@@ -1,7 +1,7 @@
 ---
 title: Memory-Efficient Windowing of Time Series Data in Python&#58; 1. Memory Strides in NumPy
 layout: post
-tags: time-series pandas numpy python 
+tags: time-series pandas numpy python easi
 ---
 
 Let's say you have time series data, and you need to cut it up into small, overlapping
