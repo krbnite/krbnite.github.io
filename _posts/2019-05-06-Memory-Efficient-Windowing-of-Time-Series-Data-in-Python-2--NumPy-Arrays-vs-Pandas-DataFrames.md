@@ -1,7 +1,7 @@
 ---
 title: Memory-Efficient Windowing of Time Series Data in Python&#58; 2. NumPy Arrays vs Pandas DataFrames
 layout: post
-tags: time-series pandas numpy python 
+tags: time-series pandas numpy python easi
 ---
 
 In the [previous post](https://krbnite.github.io/Memory-Efficient-Windowing-of-Time-Series-Data-in-Python-Memory-Strides-in-NumPy/), we ignored the existence of Pandas and did things in pure NumPy.  There was a
