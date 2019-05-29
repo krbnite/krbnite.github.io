@@ -1,7 +1,7 @@
 ---
 title: Karabiner + Kinesis Update
 layout: post
-tags: rsi easi
+tags: macbook rsi easi
 ---
 
 A little [while back](https://krbnite.github.io/Karabiner-for-your-Keyboard/), I bought a new,
