@@ -47,6 +47,11 @@ it's done.  For example, I have "Vi mode [left_control + hjkl]" and "Mouse Keys 
 which I found saved as JSON files 1554824774.json and 1554846562.json, respectively.  Looking through those,
 I learned how to create my own (shown below).
 
+```bash
+ls
+  1554824774.json   1554846562.json
+```
+
 Basically, I had to think, "What key combo do I never use?" Answer: shift + shift.  This is also 
 easy on the hands to perform.  Great!  One thing I found is that in the JSON file, there is
 a primary key and modifier key -- so you can technically make this mapping as "hold on left shift, then
