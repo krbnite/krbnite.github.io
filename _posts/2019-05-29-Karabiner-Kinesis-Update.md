@@ -12,18 +12,18 @@ on the keys all day -- even had the mouse motion and clicks mapped!
 All was good, or so it seemed...
 
 One huge pet peeve I've developed about the Kinesis Freestyle2 is where the left-hand "command"
-button is... I use it frequently, switching through applications (command+tab, command+backtick),
-copying and pasting (command+c, command+v), exiting and creating tabs in Chrome (command+w, command+t),
+button is... I use it frequently, switching through applications (`command+tab`, `command+backtick`),
+copying and pasting (`command+c`, `command+v`), exiting and creating tabs in Chrome (`command+w`, `command+t`),
 and on and on and on!  Unfortunately, the Freestyle2 has a huge left-hand spacebar that I never
-use (right or wrong, this job is pretty exclusive to my right hand).  This makes for some pretty 
+use (right or wrong, this job is pretty exclusive to my right hand); this spacebar real estate means that
+the left-hand `command` button is pushed very far left, making for some pretty 
 awkward left-hand thumb stretches...  I could get used to awkward, but this further unleased
-hell and fury:  my left hand and arm have become weak and unresponsive!  With some experimentation,
-I figured out the biggest culprit was this inconveniently placed left-hand command key.
+hell and fury:  my left hand and arm have become weak and unresponsive!  
 
 Ok, no big deal, right?  This is where Karabiner comes in.  Just map that key somewhere else!
 
 Few things: (1) there is the petulant "but I don't want to" feeling.  Oh well, no choice really.  (2) I've
-already customized my keyboard quite a bit -- where to map it?  
+already customized my keyboard quite a bit -- where is left to map it?  
 
 In my original set up, I had the `escape` key mapped to the `caps_lock` key.  I really liked this...but it
 seemed like the most obvious place to map the left-hand command key to: it's easy to access and I use the left-hand 
