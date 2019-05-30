@@ -111,3 +111,10 @@ to all of it...
 
 We'll see how it goes.  So far, if today serves as a good metric, then things are looking good!  My fingers,
 wrists, and forearms are all feeling fine :-)
+
+### Some RSI References
+Repetitive stress energy [RSI].  It sucks.  Learn more!
+* https://www.osha.gov/SLTC/etools/computerworkstations/checklist.html
+* https://www.amazon.com/Carpal-Syndrome-Therapy-Computer-Professionals/dp/0965510999/ref=sr_1_1?ie=UTF8&s=books&qid=1265169572&sr=8-1
+* https://web.eecs.umich.edu/~cscott/rsi.html
+ 
