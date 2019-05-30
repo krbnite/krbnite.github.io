@@ -36,19 +36,22 @@ directory, we will create the template directory and a JSON file that houses som
 variables.  Inside the template directory, we will house a few standard documents that we use
 every time we call a new potential client.
 
+{% raw %}
 ```
 mkdir newClient
 cd newClient
 mkdir {{cookiecutter.name}}
 ```
+{% endraw %}
 
-Inside the directory, `{{cookiecutter.name}}`, we will put a MSWord file that includes a list 
+Inside the directory, {% raw %}`{{cookiecutter.name}}`{% endraw %}, we will put a MSWord file that includes a list 
 of talking points and questions to ask.  We will also put a CSV file that will collect the relevant
 data to be injected into our client database.  The MSWord file will have a variable name and the CSV
 file will include a bunch of variables, all of which will be instantiated at the time of creation.
 
 Ultimately, the CookieCutter template should look something like this:
 
+{% raw %}
 ```
 tree newClient/
 newClient/
@@ -59,16 +62,19 @@ newClient/
 
 1 directory, 3 files
 ```
+{% endraw %}
 
 The CSV file will look something like this:
+{% raw %}
 ```
 cat newClient/\{\{cookiecutter.name\}\}/client_record.csv 
 name,dob,gender,number,email
 {{cookiecutter.name}},{{cookiecutter.dob}},{{cookiecutter.gender}},{{cookiecutter.number}},{{cookiecutter.email}}
 ```
+{% endraw %}
 
 And the top-level JSON file should look like this:
-```
+```json
 cat cookiecutter.json 
 {
   "name": "",
@@ -87,7 +93,7 @@ mv newClient/ ~/.cookiecutters/
 ```
 
 Adding a new client directory is now as easy as this:
-```
+```bash
 cookiecutter newClient
 name []: Joe Schmoe
 dob []: 2019-02-02
@@ -125,6 +131,7 @@ you can use some simple post-generation hooks to get around this.
 I'll show you the directory tree, cookiecutter.json, and hooks necessary to accomplish this.
 
 First, the tree:
+{% raw %}
 ```
 tree newBlogPost/
 newBlogPost/
@@ -136,9 +143,11 @@ newBlogPost/
 
 2 directories, 3 files
 ```
+{% endraw %}
 
 The JSON file:
-```
+{% raw %}
+```json
 {
   "title": "TITLE",
   "formatted_title": "{{ cookiecutter.title|replace(' ','-') }}",
@@ -147,8 +156,10 @@ The JSON file:
   "tags": ""
 }
 ```
+{% endraw %}
 
 The blog template:
+{% raw %}
 ```
 cat newBlogPost/\{\{cookiecutter.formatted_title\}\}/\{\{cookiecutter.dated_formatted_title\}\}.md 
 ---
@@ -158,6 +169,7 @@ tags: {{cookiecutter.tags}}
 ---
 
 ```
+{% endraw %}
 
 And, finally, the post-generation hooks that remove the directory and leave you with only
 a new file:
@@ -182,3 +194,9 @@ project template to better suit the needs of me and my team.  The approach is si
 * https://cookiecutter.readthedocs.io/en/latest/advanced/templates_in_context.html
 * https://cookiecutter.readthedocs.io/en/latest/advanced/template_extensions.html
 * https://github.com/audreyr/cookiecutter/issues/35
+
+# Addendum: Curly Braces on a Jekyll Blog
+So, apparently all the CookieCutter curly braces lying around upset the Jekyll build operation.  [Thanks to
+the internet](https://github.com/jekyll/jekyll/issues/6217), I quickly found out how to resolve this.
+
+Solution:  have to add some additional Jekyll tags to indicate the braces have to be treated as is (raw).
