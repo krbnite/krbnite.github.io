@@ -29,3 +29,13 @@ Applications include:
 
 Inference = reasoning...
 
+--------------------------
+
+
+Stanford's Course Notes: https://ermongroup.github.io/cs228-notes/
+
+2013: Pearl: [Graphical Models for Probabilistic and Causal Reasoning](https://ftp.cs.ucla.edu/pub/stat_ser/r236-3ed.pdf)
+
+Koller's textbook:  https://github.com/Zhenye-Na/machine-learning-uiuc/blob/master/docs/Probabilistic%20Graphical%20Models%20-%20Principles%20and%20Techniques.pdf
+
+
