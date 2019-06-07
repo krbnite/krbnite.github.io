@@ -39,3 +39,6 @@ Stanford's Course Notes: https://ermongroup.github.io/cs228-notes/
 Koller's textbook:  https://github.com/Zhenye-Na/machine-learning-uiuc/blob/master/docs/Probabilistic%20Graphical%20Models%20-%20Principles%20and%20Techniques.pdf
 
 
+----------------------
+
+For my sanity: [textbook](file:///Users/kevinurban/Downloads/Probabilistic%20Graphical%20Models%20-%20Principles%20and%20Techniques.pdf)
