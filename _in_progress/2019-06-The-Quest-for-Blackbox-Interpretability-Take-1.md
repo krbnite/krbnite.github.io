@@ -109,17 +109,55 @@ to them that is dependent on variable representations.  To keep some interpretab
 the categorical variable (but encode it numerically, if necessary).  A nice side effect here is that the model
 should also perform better in this representation for low-cardinality catvars (`levels < 1k`).
 
-You have been warned!
+# Dependence on Number of CatVar Levels
+One potential setback though: [apparently](https://towardsdatascience.com/explaining-feature-importance-by-example-of-a-random-forest-d9166011959e), high-cardinality catvars also artificially outrank other variables.  
+
+Honestly, this section is going to be short because I am not exactly sure where the "happy medium" exists.  This
+has to do with choosing a representation that is right for your problem.  Sticking with the idea of a geographical
+variable, like zipcode, you might find that it beats out variables that should be more important from a business
+standpoint.  Breaking zipcode up into city and state variables might align things better with expectation...but 
+this fudging can make one uneasy if the original intent is to understand feature importance.
+
+If all of this
+has made you uncomfortable with feature importances from sklearn's RF, then good.  
+
+If not?  Well, you have been warned!
+
+### Side note:  CART & Gini Importance
+Getting more technical, the reason for a lot of this wacky behavior in the feature rankings of sklearn RFs is that 
+(i) the CART algorithm is used to build the trees, and (ii) the Gini criterion is used for splitting.  
+
+In this set up, feature importance is synonymous with "Gini importance."  (This is not always the case: there
+exist other algorithms to determine/estimate variable importance, such as "permutation importance" or "entropy
+importance".)
+
+> The Gini importance "is based on the principle of impurity reduction that is followed in most traditional 
+> classification tree algorithms. However, it has been shown to be biased when predictor variables vary in their 
+> number of categories or scale of measurement, because the underlying Gini gain splitting criterion is a 
+> biased estimator and can be affected by multiple testing effects."  (Source: [Conditional variable importance for random forests](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-9-307))
+
+The Classification and Regression Trees (CART) algorithm "creates a binary tree — each node has exactly two outgoing 
+edges — finding the best numerical or categorical feature to split using an appropriate impurity 
+criterion. For classification, Gini impurity or twoing criterion can be used. For regression, CART 
+introduced variance reduction using least squares (mean square error)." ([source](https://medium.com/@srnghn/the-mathematics-of-decision-trees-random-forest-and-feature-importance-in-scikit-learn-and-spark-f2861df67e3)) 
 
 ### Some References
-* [Are categorical variables getting lost in your random forests?](https://roamanalytics.com/2016/10/28/are-categorical-variables-getting-lost-in-your-random-forests/)
-* [One-Hot Encoding is making your Tree-Based Ensembles worse, here’s why](https://towardsdatascience.com/one-hot-encoding-is-making-your-tree-based-ensembles-worse-heres-why-d64b282b5769)
-* [Visiting: Categorical Features and Encoding in Decision Trees](https://medium.com/data-design/visiting-categorical-features-and-encoding-in-decision-trees-53400fa65931)
-* [Kaggle/Zillow Competition: Why does OHE give worse scores?](https://www.kaggle.com/c/zillow-prize-1/discussion/38793)
+
 
 # Correlated Features
 Another problem with feature importances is that there is some sort of arbitrariness when
 highly correlated variables are in the feature set.  
+
+> Random forest "variable importance measures have recently been suggested as screening tools 
+> for, e.g., gene expression studies. However, these variable importance measures show a bias 
+> towards correlated predictor variables."
+
+> "[C]orrelations between predictor variables ... severely 
+> affect the original random forest variable importance measures, because they can be considered as 
+> measures of marginal importance, even though what is of interest in most applications is the conditional 
+> effect of each variable."
+
+
 
 
 # Noise & Overfitting
@@ -190,7 +228,15 @@ xdf.drop(['x0','x2'], axis=1).columns[np.argsort(rf3.feature_importances_)]
 
 -----------------------------------------------------------
 
-Some References and Further Reading
+# Some References and Further Reading
 * [How Not to Use a Random Forest](https://medium.com/turo-engineering/how-not-to-use-random-forest-265a19a68576)
 * [Beware Default Random Forest Importances](https://explained.ai/rf-importance/)
-
+* [Are categorical variables getting lost in your random forests?](https://roamanalytics.com/2016/10/28/are-categorical-variables-getting-lost-in-your-random-forests/)
+* [One-Hot Encoding is making your Tree-Based Ensembles worse, here’s why](https://towardsdatascience.com/one-hot-encoding-is-making-your-tree-based-ensembles-worse-heres-why-d64b282b5769)
+* [Visiting: Categorical Features and Encoding in Decision Trees](https://medium.com/data-design/visiting-categorical-features-and-encoding-in-decision-trees-53400fa65931)
+* [Kaggle/Zillow Competition: Why does OHE give worse scores?](https://www.kaggle.com/c/zillow-prize-1/discussion/38793)
+* [Explaining Feature Importance by example of a Random Forest](https://towardsdatascience.com/explaining-feature-importance-by-example-of-a-random-forest-d9166011959e)
+* [Selecting good features – Part III: random forests](https://blog.datadive.net/selecting-good-features-part-iii-random-forests/)
+* [Conditional variable importance for random forests](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-9-307)
+* [The Mathematics of Decision Trees, Random Forest and Feature Importance in Scikit-learn and Spark](https://medium.com/@srnghn/the-mathematics-of-decision-trees-random-forest-and-feature-importance-in-scikit-learn-and-spark-f2861df67e3)
+* [Feature Importance Measures for Tree Models — Part I](https://medium.com/the-artificial-impostor/feature-importance-measures-for-tree-models-part-i-47f187c1a2c3)
