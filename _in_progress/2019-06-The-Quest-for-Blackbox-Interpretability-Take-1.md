@@ -32,6 +32,15 @@ talk about LIME, Shapley numbers, and more -- and associated cautionary tales.
 
 Let's get started!
 
+# Random Forests
+I wasn't going to include a part describing what a Random Forest is, but then I read through 
+[this paper](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-9-307) and liked
+their description so much I wanted to save it somewhere.  It serves as a nice recap of these models
+and gives the sections below some more context.
+
+> "In random forests and the related method bagging, an ensemble of classification trees is created by means of drawing several bootstrap samples or subsamples from the original training data and fitting a single classification tree to each sample. Due to the random variation in the samples and the instability of the single classification trees, the ensemble will consist of a diverse set of trees. For prediction, a vote (or average) over the predictions of the single trees is used and has been shown to highly outperform the single trees: By combining the prediction of a diverse set of trees, bagging utilizes the fact that classification trees are instable but on average produce the right prediction. This understanding has been supported by several empirical studies and especially the theoretical results of Bühlmann and Yu, who could show that the improvement in the prediction accuracy of ensembles is achieved by means of smoothing the hard cut decision boundaries created by splitting in single classification trees, which in return reduces the variance of the prediction."
+
+> "In random forests, another source of diversity is introduced when the set of predictor variables to select from is randomly restricted in each split, producing even more diverse trees. In addition to the smoothing of hard decision boundaries, the random selection of splitting variables in random forests allows predictor variables that were otherwise outplayed by their competitors to enter the ensemble. Even though these variables may not be optimal with respect to the current split, their selection may reveal interaction effects with other variables that otherwise would have been missed and thus work towards the global optimality of the ensemble."
 
 # Dependence on Variable Representation
 If you have
@@ -118,10 +127,6 @@ variable, like zipcode, you might find that it beats out variables that should b
 standpoint.  Breaking zipcode up into city and state variables might align things better with expectation...but 
 this fudging can make one uneasy if the original intent is to understand feature importance.
 
-If all of this
-has made you uncomfortable with feature importances from sklearn's RF, then good.  
-
-If not?  Well, you have been warned!
 
 ### Side note:  CART & Gini Importance
 Getting more technical, the reason for a lot of this wacky behavior in the feature rankings of sklearn RFs is that 
@@ -141,10 +146,8 @@ edges — finding the best numerical or categorical feature to split using a
 criterion. For classification, Gini impurity or twoing criterion can be used. For regression, CART 
 introduced variance reduction using least squares (mean square error)." ([source](https://medium.com/@srnghn/the-mathematics-of-decision-trees-random-forest-and-feature-importance-in-scikit-learn-and-spark-f2861df67e3)) 
 
-### Some References
 
-
-# Correlated Features
+# Ambiguity from Correlated Features
 Another problem with feature importances is that there is some sort of arbitrariness when
 highly correlated variables are in the feature set.  
 
@@ -157,10 +160,26 @@ highly correlated variables are in the feature set.
 > measures of marginal importance, even though what is of interest in most applications is the conditional 
 > effect of each variable."
 
+Often, I've seen "permutation importance" as the answer to the problems that arise in "Gini importance," but
+[these authors](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-9-307) show that 
+even permutation importance biases towards correlated predictors
+
+
+# Design Flaws: Noise & Overfitting
+At least one of the reasons that a very high-cardinality catvar can appear to have more
+importance attributed to it than seems reasonable is due to overfitting.  That is, if you are
+not ensuring that the random forest has enough restrictions on it (by changing the defaults on
+parameters like `max_depth`, `min_samples_leaf`, etc), then it turns out that something like 
+zipcode can proxy as a semi-unique ID in the data records.  In highly populated zipcodes, this
+obviously is unlikely to be the case, but when you consider more rarefied regions, it becomes possible
+to only have several customers per zipcode.  
+
+In the same way, a pure noise variable having no correlation with the target can serve as
+an ID variable: the forest can overfit to the noise and decide that the noise is more important
+than it is (say on a holdout set).
 
 
 
-# Noise & Overfitting
 Try this on for size:
 
 ```python
@@ -225,6 +244,21 @@ xdf.drop(['x0','x2'], axis=1).columns[np.argsort(rf3.feature_importances_)]
 
 ```
 
+# Dependence on Random Seed (?!)
+Another thing to worry about is how tightly your results are coupled to the chosen
+random seed parameter...  I leave you with this quote:
+
+> "[I]t should also be noted that any interpretation of random forest variable importance scores can only be 
+> sensible when the number of trees is chosen sufficiently large such that the results produced with different 
+> random seeds do not vary systematically. Only then it is assured that the differences between, e.g., unconditional 
+> and conditional importance are not only due to random variation."
+
+# Last Words
+
+If all of this
+has made you uncomfortable with feature importances from sklearn's RF, then good.  
+
+If not?  Well, you have been warned!
 
 -----------------------------------------------------------
 
