@@ -5,9 +5,7 @@ tags: machine-learning random-forest predictive-modeling model-interpretability 
 ---
 
 So you created a random forest, and it seems like its making great predictions! But now your
-boss wants to know why.  
-
-This is where things can get tricky.  
+boss wants to know why.  This is where things can get tricky.  
 
 The first stab at interpreting your random forest seems simple
 engouh: the RF models in sklearn provide a ranked list of feature importances, right? They
@@ -32,7 +30,7 @@ talk about LIME, Shapley numbers, and more -- and associated cautionary tales.
 
 Let's get started!
 
-# Random Forests
+# Random Forests (the Gist)
 I wasn't going to include a part describing what a Random Forest is, but then I read through 
 [this paper](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-9-307) and liked
 their description so much I wanted to save it somewhere.  It serves as a nice recap of these models
@@ -41,6 +39,55 @@ and gives the sections below some more context.
 > "In random forests and the related method bagging, an ensemble of classification trees is created by means of drawing several bootstrap samples or subsamples from the original training data and fitting a single classification tree to each sample. Due to the random variation in the samples and the instability of the single classification trees, the ensemble will consist of a diverse set of trees. For prediction, a vote (or average) over the predictions of the single trees is used and has been shown to highly outperform the single trees: By combining the prediction of a diverse set of trees, bagging utilizes the fact that classification trees are instable but on average produce the right prediction. This understanding has been supported by several empirical studies and especially the theoretical results of Bühlmann and Yu, who could show that the improvement in the prediction accuracy of ensembles is achieved by means of smoothing the hard cut decision boundaries created by splitting in single classification trees, which in return reduces the variance of the prediction."
 
 > "In random forests, another source of diversity is introduced when the set of predictor variables to select from is randomly restricted in each split, producing even more diverse trees. In addition to the smoothing of hard decision boundaries, the random selection of splitting variables in random forests allows predictor variables that were otherwise outplayed by their competitors to enter the ensemble. Even though these variables may not be optimal with respect to the current split, their selection may reveal interaction effects with other variables that otherwise would have been missed and thus work towards the global optimality of the ensemble."
+
+In the original random forest, each tree grew indefinitely until each leaf had 1-2 data points.  In modern implementations,
+this is often a default, but is something that you can tweak.  For example, you can choose a `max_depth`, which limits
+how many splits can occur along a single pathway through the tree.  Or you might play with `min_samples_leaf`, which
+hedges against overfitting to a noisy variable.  That said, technically, growing out a huge forest should hedge against
+overfitting too.  Quite possibly better, or not as well.  So how to choose?  Fortuantely, 
+using skearn's `RandomSearch` or `GridSearch`, you can optimize these hyperparameters.  You might also have runtime 
+requirements that help guide appropriate design decisions.
+
+Given f features, usually only k features are used at each split in a tree, where is k < f and usually
+defaulted to k = sqrt(f).  I've seen many suggest that this default is good enough for most cases (e.g.,
+here is a great [video lecture](https://www.youtube.com/watch?v=4EOCQJgqAOY) on random forests), but that
+you might find you can squeeze a bit more optimization out of your model by playing around in the neighborhood
+of this default.
+
+
+# Why Random Forests?
+In upcoming articles, I will talk about things like Shapley values and LIME, which are model agnostic.  However,
+I begin with random forests because, as far as predictive models are concerned, these almost work perfectly
+right out of the box!  Moreover, random forests compete with neural networks for "best black box" in terms of performance,
+depending on data set (e.g., Kagglers are never quite raving about neural networks, while computer vision folk
+are rarely heard talking about "recurrent convolutional random forests").  
+
+The out-of-the-box feature is most important though.  Oftentimes, you can run a baseline random forest on
+a data set without no clean-up, scaling, or normalization.  This out-of-the-boxness scares some people -- those
+who have spent years concerend with inference, proper imputation, taking logarithms, using Box-Cox and so on!  It
+can feel a little funny to (i) not care about any of that, and (ii) expect to have any understanding of how 
+the many predictors affect the outcome.  But this is precisely what random forests offer!  If you suffer
+from random forest fear, then I guarantee that getting your hands dirty with this technique will quickly begin
+to allay your anxiety.  
+
+Often, we pit predictive power versus explanatory power, but I think there has been enough research into
+tree-based methods at this point to make that tradeoff less sensitive and severe.  Moreover, there has been
+enough research to show that what we often consider to be "explanatory power" isn't as explanatory as 
+we would like to think (e.g., regression coefficients) and some go as far as advising that the explanatory
+methods for black box models be applied to models that are often not considered as such (namely, things like linear and
+logistics regression).
+
+"Do you have citations to back any of this up?"
+
+Yes! But not on hand.  
+
+Anyway, we will start with random forests as our black box model, and look at the out-of-the-box
+explanatory method in the scikit-learn method, which is known as "Gini importance."  This might not be
+a great place to start in terms of providing a black box model with "explanatory power," since it has
+been shown to be a poor explanatory tool.  However, it is a great place to start in terms of
+drawing a line between what parts of random forests work out of the box (e.g., training them) and 
+what does not (e.g., the default "feature imporatance" rankings provided in the scikit-learn implementation).
+
 
 # Dependence on Variable Representation
 If you have
@@ -274,3 +321,16 @@ If not?  Well, you have been warned!
 * [Conditional variable importance for random forests](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-9-307)
 * [The Mathematics of Decision Trees, Random Forest and Feature Importance in Scikit-learn and Spark](https://medium.com/@srnghn/the-mathematics-of-decision-trees-random-forest-and-feature-importance-in-scikit-learn-and-spark-f2861df67e3)
 * [Feature Importance Measures for Tree Models — Part I](https://medium.com/the-artificial-impostor/feature-importance-measures-for-tree-models-part-i-47f187c1a2c3)
+
+-------------------------------------------------------------------------------
+
+# Next Up
+These notes were mostly focused on the shortcomings of Gini importance, which is the default feature ranking
+algorithm for random forests in scikit-learn.  In upcoming write-ups, I want to focus a bit more on:
+* permutation importance
+    - this [article](https://towardsdatascience.com/explaining-feature-importance-by-example-of-a-random-forest-d9166011959e) has a good description
+* conditional permutation importance
+* the `treeinterpreter` package in Python
+    - e.g., [RF Interpretation - Conditional Feature Contributions](http://blog.datadive.net/random-forest-interpretation-conditional-feature-contributions/)
+* LIME
+* Shapley Values
