@@ -43,16 +43,20 @@ and gives the sections below some more context.
 In the original random forest, each tree grew indefinitely until each leaf had 1-2 data points.  In modern implementations,
 this is often a default, but is something that you can tweak.  For example, you can choose a `max_depth`, which limits
 how many splits can occur along a single pathway through the tree.  Or you might play with `min_samples_leaf`, which
-hedges against overfitting to a noisy variable.  That said, technically, growing out a huge forest should hedge against
+hedges against overfitting to a noisy variable.  The number of features randomly selected at a split is also something
+you can tune.  Often, given f features, the default is split on k randomly selected features, where is k < f and 
+usually defaulted to k = sqrt(f).  This default is considered good enough for most cases (e.g.,
+here is a great [video lecture](https://www.youtube.com/watch?v=4EOCQJgqAOY) on random forests), but 
+you might find you can squeeze a bit more optimization out of your model by playing around in the neighborhood
+of this default.  
+
+
+That said, technically, growing out a huge forest should hedge against
 overfitting too.  Quite possibly better, or not as well.  So how to choose?  Fortuantely, 
 using skearn's `RandomSearch` or `GridSearch`, you can optimize these hyperparameters.  You might also have runtime 
 requirements that help guide appropriate design decisions.
 
-Given f features, usually only k features are used at each split in a tree, where is k < f and usually
-defaulted to k = sqrt(f).  I've seen many suggest that this default is good enough for most cases (e.g.,
-here is a great [video lecture](https://www.youtube.com/watch?v=4EOCQJgqAOY) on random forests), but that
-you might find you can squeeze a bit more optimization out of your model by playing around in the neighborhood
-of this default.
+
 
 
 # Why Random Forests?
@@ -64,7 +68,8 @@ are rarely heard talking about "recurrent convolutional random forests").
 
 The out-of-the-box feature is most important though.  Oftentimes, you can run a baseline random forest on
 a data set without no clean-up, scaling, or normalization.  This out-of-the-boxness scares some people -- those
-who have spent years concerend with inference, proper imputation, taking logarithms, using Box-Cox and so on!  It
+who have spent years concerend with inference, proper imputation, taking logarithms, using Box-Cox and so on!  Even spooky
+to the unspookable: random forests technically do not even require a validation set!  ("Say whaaat?!") It
 can feel a little funny to (i) not care about any of that, and (ii) expect to have any understanding of how 
 the many predictors affect the outcome.  But this is precisely what random forests offer!  If you suffer
 from random forest fear, then I guarantee that getting your hands dirty with this technique will quickly begin
@@ -88,15 +93,28 @@ been shown to be a poor explanatory tool.  However, it is a great place to start
 drawing a line between what parts of random forests work out of the box (e.g., training them) and 
 what does not (e.g., the default "feature imporatance" rankings provided in the scikit-learn implementation).
 
+In the remainder of this post, things will get a bit bleak.  What I'm trying to do is decide on my own
+path to model building, while maintaining useful explanatory power... These are kind of a mish-mash, brainstorm
+of lessons learned first- and second-hand.  We find that "explanatory power" is a bit hard to define, especially
+for categorical variables, which can often take on any number of arbitrary representations at training time.  Personally,
+my conclusion is that there is a bit of craftsmanship and artistry that must go into this: any given 
+representation will not necessarily induce a false picture (in terms of feature importance), but
+might provide a perspective that does not reflect one's intuition at first or second glance.  
+
+You'll see what I mean...  Read on!
+
+-------------------------------------
 
 # Dependence on Variable Representation
 If you have
 an important categorical variable that you've dummied down into 100 binary variables, good luck showing
 that those categories are more important than some weak signal in a continuous variable, or that the
-original categorical variable had immense explanatory power before getting castrated.  Imagine 
+original categorical variable had immense explanatory power before getting castrated.  
+
+Imagine 
 a categorical feature with 100 levels, which explains  90% of any
 given prediction, and a few continuous variables that hold the remaining 10% (say 4 vars at 2.5% 
-each).  Now imagine that 100-level 
+each).  Now picture that the 100-level 
 feature is one-hotted into 100 binary variables, each taking an equal share of the predictive 
 power (i.e., 1% of 90% each, or 0.9%).  All 4 continuous variables will now rank higher than
 any one-hotted portion of the categorical variable.  Worse, some pure noise variables might 
@@ -136,7 +154,7 @@ and neural networks.  Another [author finds](https://towardsdatascience.com/one-
 To be fair, this is why things like LASSO are used in logistic regression, or embeddings for neural networks.  At one
 point, the one-hot representation of a high-cardinal categorical variable becomes a nuisance for any model (at least
 when considering how much data you're willing to collect, or how long you're willing to wait for the model to train,
-etc). Just so happens that tree-based methods seem to suffer from it the worst.  And it kills interpretability
+etc). Just so happens that tree-based methods seem to suffer from it the worst.  And it can kill interpretability
 in the feature importance rankings, so why use it? The author in the last article 
 has an excellent example where he has a high cardinality categorical
 feature which is the ranked as the most important in the model.  After one-hotting this variable, the dimensionality
@@ -168,11 +186,24 @@ should also perform better in this representation for low-cardinality catvars (`
 # Dependence on Number of CatVar Levels
 One potential setback though: [apparently](https://towardsdatascience.com/explaining-feature-importance-by-example-of-a-random-forest-d9166011959e), high-cardinality catvars also artificially outrank other variables.  
 
-Honestly, this section is going to be short because I am not exactly sure where the "happy medium" exists.  This
-has to do with choosing a representation that is right for your problem.  Sticking with the idea of a geographical
+In the last section, we assumed the feature importance of the high-cardinality categorical variable was true and 
+that the one-hot representation obscured this truth.  But the default feature importance algorithm in scikit-learn's
+RFs generally bias towards high-cardinality categorical variables.  
+
+I guess this can hurt in a situation where you have a binary variable that is very important and a 
+high-cardinality variable where each level is not all too important.  The storyline you might expect
+from your data is that the binary variable is ranked higher in importance, but instead you might find
+the high-cardinality catvar on top.  
+
+I think this is less about the feature importance algorithm, though, and more about
+choosing a representation that is right for your problem.  
+
+Sticking with the idea of a geographical
 variable, like zipcode, you might find that it beats out variables that should be more important from a business
-standpoint.  Breaking zipcode up into city and state variables might align things better with expectation...but 
-this fudging can make one uneasy if the original intent is to understand feature importance.
+standpoint.  Breaking zipcode up into city and state variables might align things better with expectation.
+
+That all said: this fudging can make one uneasy if the original intent is to understand feature importance
+in the data "as is".  To this, all I can say is -- toughen up!  :-p
 
 
 ### Side note:  CART & Gini Importance
@@ -211,6 +242,8 @@ Often, I've seen "permutation importance" as the answer to the problems that ari
 [these authors](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-9-307) show that 
 even permutation importance biases towards correlated predictors
 
+Take away:  conditional permutation importance > permutation importance >> Gini importance.
+
 
 # Design Flaws: Noise & Overfitting
 At least one of the reasons that a very high-cardinality catvar can appear to have more
@@ -227,69 +260,6 @@ than it is (say on a holdout set).
 
 
 
-Try this on for size:
-
-```python
-import pandas as pd
-import numpy as np
-from sklearn.ensemble import RandomForestClassifier
-
-# Potential predictors we have collected
-#  -- in practice, we do not know if 1, 2, all, or none of these help predict y
-#  -- in experiment, 
-#         * we know that y directly depends only on x0 and x2
-#         * we also know that x1 is fairly correlated with x1, so should hold some signal
-#         * finally, we know that x3 has nothing to do with the outcome
-x0 = np.random.choice([1,2,3,4,5,6,7,8,9,10],10000) 
-x1 = 3*x0 + 15 + np.random.choice([0,1]) - np.random.choice([0,1])
-x2 = np.random.choice([0,1],10000)
-x3 = 3 * np.random.randn(10000) + 15
-xdf = pd.DataFrame({'x0': x0, 'x1': x1, 'x2': x2, 'x3': x3})
-
-# The Outcome Variable
-#   -- pay attention to the fact that we do not even add any noise
-#   -- this is just a thresholding problem; simple!
-y = x0*x0 - 99*x2 > 0
-
-# Note that y is close to being balanced
-round(100 * y.sum()/len(y), 1)
-    55.0
-
-# Scenario 1
-# We have collected data for x0, x1, x2, x3, and y
-rf1 = RandomForestClassifier(
-  random_state=2, 
-  n_estimators=100, 
-  max_depth=3, 
-  min_samples_leaf=2
-)       
-rf1.fit(xdf,y)
-xdf.columns[np.argsort(rf1.feature_importances_)]
-
-# Scenario 2
-# We collected data for x1, x2, x3, y
-rf2 = RandomForestClassifier(
-  random_state=2, 
-  n_estimators=100, 
-  max_depth=15, 
-  min_samples_leaf=2
-)       
-rf2.fit(xdf.drop('x0', axis=1),y)
-xdf.drop('x0', axis=1).columns[np.argsort(rf2.feature_importances_)]
-
-
-# Scenario 3
-# We collected data for x1, x3, y
-rf3 = RandomForestClassifier(
-  random_state=2, 
-  n_estimators=100, 
-  max_depth=15, 
-  min_samples_leaf=2
-)       
-rf3.fit(xdf.drop(['x0','x2'], axis=1),y)
-xdf.drop(['x0','x2'], axis=1).columns[np.argsort(rf3.feature_importances_)]
-
-```
 
 # Dependence on Random Seed (?!)
 Another thing to worry about is how tightly your results are coupled to the chosen
@@ -301,11 +271,15 @@ random seed parameter...  I leave you with this quote:
 > and conditional importance are not only due to random variation."
 
 # Last Words
+Ultimately, we want to provide explanatory power when using Random Forests.  The major two points of this
+article are: (i) this is possible, but (ii) not out-of-the-box in the scikit-learn version of random forests. 
 
 If all of this
 has made you uncomfortable with feature importances from sklearn's RF, then good.  
 
 If not?  Well, you have been warned!
+
+
 
 -----------------------------------------------------------
 
@@ -321,6 +295,7 @@ If not?  Well, you have been warned!
 * [Conditional variable importance for random forests](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-9-307)
 * [The Mathematics of Decision Trees, Random Forest and Feature Importance in Scikit-learn and Spark](https://medium.com/@srnghn/the-mathematics-of-decision-trees-random-forest-and-feature-importance-in-scikit-learn-and-spark-f2861df67e3)
 * [Feature Importance Measures for Tree Models — Part I](https://medium.com/the-artificial-impostor/feature-importance-measures-for-tree-models-part-i-47f187c1a2c3)
+* [Cornell CS4780: Lecture 31 "Random Forests / Bagging"](https://www.youtube.com/watch?v=4EOCQJgqAOY)
 
 -------------------------------------------------------------------------------
 
