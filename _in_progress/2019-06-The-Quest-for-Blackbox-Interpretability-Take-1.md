@@ -40,6 +40,15 @@ and gives the sections below some more context.
 
 > "In random forests, another source of diversity is introduced when the set of predictor variables to select from is randomly restricted in each split, producing even more diverse trees. In addition to the smoothing of hard decision boundaries, the random selection of splitting variables in random forests allows predictor variables that were otherwise outplayed by their competitors to enter the ensemble. Even though these variables may not be optimal with respect to the current split, their selection may reveal interaction effects with other variables that otherwise would have been missed and thus work towards the global optimality of the ensemble."
 
+I also thought this [article by SydneyF from the Alteryx community](https://community.alteryx.com/t5/Alteryx-Knowledge-Base/Seeing-the-Forest-for-the-Trees-An-Introduction-to-Random-Forest/ta-p/158062) had a very nice breakdown as well -- also worth saving!
+
+> "Creating and then combining the results of a bunch of decisions trees seems pretty basic, however, simply creating multiple trees out of the exact same training data wouldn’t be productive – it would result in a series of strongly correlated trees. All of these trees would sort data in the same way, so there would be no advantage to this method over a single decision tree. This is where the fancy part of random forests starts to come into play. To decorrelate the trees that make up a random forest, a process called bootstrap aggregating (also known as bagging) is conducted. Bagging generates new training data sets from an original data set by sampling the original training data with replacement (bootstrapping). This is repeated for as many decision trees that that will make up the random forest. Each individual bootstrapped data set is then used to construct a tree. This process effectively decreases the variance (error introduced by random noise in the training data, i.e., overfitting) of the model without increasing the bias (underfitting). On its own, bagging the training data to generate multiple trees creates what is known as a bagged trees model."
+
+> "A similar process called the random subspace method (also called attribute bagging or feature bagging) is also implemented to create a random forest model. For each tree, a subset of the possible predictor variables is sampled, resulting in a smaller set of predictor variables to select from for each tree. This further decorrelates the trees by preventing dominant predictor variables from being the first or only variables selected to create splits in each of the individual decision trees. Without implementing the random subspace method, there is a risk that one or two dominant predictor variables would consistently be selected as the first splitting variable for each decision tree, and the resulting trees would be highly correlated. The combination of bagging and the random subspace method result in a random forest model."
+
+> "The aggregating part of bootstrap aggregating comes from combining the predictions of each of these decision trees to determine an overall model prediction. The output of the overall model is then the mode of classes (classification) or the mean prediction (regression) of all the predictions of the individual trees, for each individual record."
+
+
 In the original random forest, each tree grew indefinitely until each leaf had 1-2 data points.  In modern implementations,
 this is often a default, but is something that you can tweak.  For example, you can choose a `max_depth`, which limits
 how many splits can occur along a single pathway through the tree.  Or you might play with `min_samples_leaf`, which
@@ -136,6 +145,34 @@ You'll see what I mean...  Read on!
 
 -------------------------------------
 
+### Gini Importance (aka Mean Decrease in Impurity)
+Note that for random forests in scikit-learn, 
+(i) the CART algorithm is used to build the trees, and (ii) the Gini criterion is used for splitting.  The 
+splitting criterion doesn't necessarily dictate the feature importance algorithm, though it obviously affects
+the outcome in one way or another.  Specifically, one can use the Gini criterion for splitting, but choose
+not to use the Gini importance for ranking feature importances.  (Having said that, the Gini importance
+itself is strictly associated with the Gini splitting criterio.  So, e.g., if you use the `entropy` criterion
+in scikit learn, a similar algorithm can be used to compute the importances, but I'm not sure you would
+call them Gini importances at that point.)
+
+Here, we will talk about the Gini importance.
+
+The most important thing to understand is that "feature importance" is not synonymous with "Gini importance."  That is,
+despite random forests in scikit-learn having a ranked list referred to as `rf.feature_importance_`, the way this
+list is created is but one way to assess the importances of the input features -- and not a great way either. There
+exist other algorithms to determine/estimate variable importance, such as "permutation importance" (aka "mean 
+decrease in accuracy"), which are implemented in complementary packages to scikit-learn, such as `rfpimp`.  
+
+> The Gini importance "is based on the principle of impurity reduction that is followed in most traditional 
+> classification tree algorithms. However, it has been shown to be biased when predictor variables vary in their 
+> number of categories or scale of measurement, because the underlying Gini gain splitting criterion is a 
+> biased estimator and can be affected by multiple testing effects."  (Source: [Conditional variable importance for random forests](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-9-307))
+
+The Classification and Regression Trees (CART) algorithm "creates a binary tree — each node has exactly two outgoing 
+edges — finding the best numerical or categorical feature to split using an appropriate impurity 
+criterion. For classification, Gini impurity or twoing criterion can be used. For regression, CART 
+introduced variance reduction using least squares (mean square error)." ([source](https://medium.com/@srnghn/the-mathematics-of-decision-trees-random-forest-and-feature-importance-in-scikit-learn-and-spark-f2861df67e3)) 
+
 # Dependence on Variable Representation
 If you have
 an important categorical variable that you've dummied down into 100 binary variables, good luck showing
@@ -200,14 +237,22 @@ Admittedly, my own intuition misguides me: thinking about how trees simply look 
 it doesn't matter whether that rule is encoded in one numerically-encoded variable or 1000 dummies...  Clearly
 the latter case has a suboptimal feel to it: more variables probably means more trees and splits are
 required, i.e., there is more paperwork to go through, but the answer is in there somewhere!  But here
-is another article that addresses this:
+is [another article](https://roamanalytics.com/2016/10/28/are-categorical-variables-getting-lost-in-your-random-forests/)
+that addresses this:
 
 > "Whatever you do, at least be aware that, despite theoretical results suggesting the expressive power of random 
 > forests with one-hot encoded features is the same as for categorical variables, the practical results are 
 > very different!"
 
-This last article also addresses how the known most important features do not make it in the top
-rankings of the sklearn RF feature importances (even has a section called "why one-hot encoding is bad bad bad for trees").
+This last article also addresses how a high-cardinality catvar in the H20 framework is assigned 70% of 
+the importance, while its one-hot encoded components in the sklearn framework do not even accumulate
+10% of importance (even has a section called "why one-hot encoding is bad bad bad for 
+trees").  One thing that I did not understand about the article is the line from the TLDR, "Our primary comparison 
+is between H2O (which honors categorical variables) and scikit-learn (which requires them to be one-hot 
+encoded)."  There is nothing stopping you from numerically encoding categorical variables (e.g., with integers)
+and using them in a scikit-learn random forest.  That said, I do see many blogs where folks one-hot encode
+anything and everything by default, so the article serves as a great read for those inclined to one-hot their
+catvars.
 
 Anyway, major take away here is that "feature importances" in sklearn's RF have a certain arbitrariness
 to them that is dependent on variable representations.  To keep some interpretability, do not one-hot encode
@@ -237,23 +282,32 @@ That all said: this fudging can make one uneasy if the original intent is to und
 in the data "as is".  To this, all I can say is -- toughen up!  :-p
 
 
-### Side note:  CART & Gini Importance
-Getting more technical, the reason for a lot of this wacky behavior in the feature rankings of sklearn RFs is that 
-(i) the CART algorithm is used to build the trees, and (ii) the Gini criterion is used for splitting.  
+# Some Explanation
+Turns out that the two sections above are two sides of the same coin: Gini importance biases
+towards continuous and/or high-cardinality categorical variables.  
 
-In this set up, feature importance is synonymous with "Gini importance."  (This is not always the case: there
-exist other algorithms to determine/estimate variable importance, such as "permutation importance" or "entropy
-importance".)
+The author of "[Be Aware of Bias in RF Variable Importance Metrics](https://blog.methodsconsultants.com/posts/be-aware-of-bias-in-rf-variable-importance-metrics/)" offers a nice, succinct explanation.
 
-> The Gini importance "is based on the principle of impurity reduction that is followed in most traditional 
-> classification tree algorithms. However, it has been shown to be biased when predictor variables vary in their 
-> number of categories or scale of measurement, because the underlying Gini gain splitting criterion is a 
-> biased estimator and can be affected by multiple testing effects."  (Source: [Conditional variable importance for random forests](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-9-307))
+Gini importance is biased because:
+> "Each time a break point is selected in a variable, every level of the variable is tested to find the best 
+>  break point. Continuous or high cardinality variables will have many more split points, which results in 
+>  the 'multiple testing' problem. That is, there is a higher probability that by chance that variable happens 
+>  to predict the outcome well, since variables where more splits are tried will appear more often in the tree."
 
-The Classification and Regression Trees (CART) algorithm "creates a binary tree — each node has exactly two outgoing 
-edges — finding the best numerical or categorical feature to split using an appropriate impurity 
-criterion. For classification, Gini impurity or twoing criterion can be used. For regression, CART 
-introduced variance reduction using least squares (mean square error)." ([source](https://medium.com/@srnghn/the-mathematics-of-decision-trees-random-forest-and-feature-importance-in-scikit-learn-and-spark-f2861df67e3)) 
+The author then goes over permuation importance and conditional permutation importance, which solve some 
+of the issues with Gini importance.  At the end of the article, he provides a nice set of rules for when
+to use each type of importance (especially when computational time or resources are limited).  If using
+continuous variables that are not correlated, then Gini importance is ok.  Similarly, if using 
+only categorical variables that are not correlated with each other, the Gini importance is ok, but only
+if those catvars have the same number of levels (or at least, nearly so). 
+
+Once you have categorical variables with vastly different cardinalities, or once you introduce a continuous
+variable, then all bets are off: do not use the Gini importance!  
+
+On this last note, after running a bunch of simulations myself, I would have to wholeheartedly agree.  Just by
+introducing a random, continuous variable that had nothing to do with my target variable, the Gini importances
+immedidately became suspect: seemed no matter how many parameters I tweaked, the noise variable ranked in
+first or second place every time!
 
 
 # Ambiguity from Correlated Features
@@ -292,14 +346,23 @@ than it is (say on a holdout set).
 
 
 
-# Dependence on Random Seed (?!)
+# Dependence on Random Seed / Number of Trees
 Another thing to worry about is how tightly your results are coupled to the chosen
-random seed parameter...  I leave you with this quote:
+random seed parameter...  That is, if you change the random seed, how drastically do your
+feature importances change?  Solution: Add more trees until there is little-to-no change.
 
+I leave you with these quotes...
+
+From ["Conditional variable importance for random forests"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2491635/)
 > "[I]t should also be noted that any interpretation of random forest variable importance scores can only be 
 > sensible when the number of trees is chosen sufficiently large such that the results produced with different 
 > random seeds do not vary systematically. Only then it is assured that the differences between, e.g., unconditional 
 > and conditional importance are not only due to random variation."
+
+From ["Be Aware of Bias in RF Variable Importance Metrics"](https://blog.methodsconsultants.com/posts/be-aware-of-bias-in-rf-variable-importance-metrics/):
+> "Note: Always check whether you get the same results with a different random seed before interpreting 
+>  any importance rankings. If the results change, increase the number of trees with ntree."
+
 
 # Last Words
 Ultimately, we want to provide explanatory power when using Random Forests.  The major two points of this
@@ -322,11 +385,14 @@ If not?  Well, you have been warned!
 * [Visiting: Categorical Features and Encoding in Decision Trees](https://medium.com/data-design/visiting-categorical-features-and-encoding-in-decision-trees-53400fa65931)
 * [Kaggle/Zillow Competition: Why does OHE give worse scores?](https://www.kaggle.com/c/zillow-prize-1/discussion/38793)
 * [Explaining Feature Importance by example of a Random Forest](https://towardsdatascience.com/explaining-feature-importance-by-example-of-a-random-forest-d9166011959e)
+* [Be Aware of Bias in RF Variable Importance Metrics](https://blog.methodsconsultants.com/posts/be-aware-of-bias-in-rf-variable-importance-metrics/)
 * [Selecting good features – Part III: random forests](https://blog.datadive.net/selecting-good-features-part-iii-random-forests/)
 * [Conditional variable importance for random forests](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-9-307)
 * [The Mathematics of Decision Trees, Random Forest and Feature Importance in Scikit-learn and Spark](https://medium.com/@srnghn/the-mathematics-of-decision-trees-random-forest-and-feature-importance-in-scikit-learn-and-spark-f2861df67e3)
 * [Feature Importance Measures for Tree Models — Part I](https://medium.com/the-artificial-impostor/feature-importance-measures-for-tree-models-part-i-47f187c1a2c3)
 * [Cornell CS4780: Lecture 31 "Random Forests / Bagging"](https://www.youtube.com/watch?v=4EOCQJgqAOY)
+* [Seeing the Forest for the Trees: An Introduction to Random Forest](https://community.alteryx.com/t5/Alteryx-Knowledge-Base/Seeing-the-Forest-for-the-Trees-An-Introduction-to-Random-Forest/ta-p/158062)
+
 
 -------------------------------------------------------------------------------
 
