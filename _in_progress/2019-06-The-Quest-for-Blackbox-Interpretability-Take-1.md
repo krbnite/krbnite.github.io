@@ -148,7 +148,12 @@ You'll see what I mean...  Read on!
 ### Gini Importance (aka Mean Decrease in Impurity)
 Note that for random forests in scikit-learn, 
 (i) the CART algorithm is used to build the trees, and (ii) the Gini criterion is used for splitting.  The 
-splitting criterion doesn't necessarily dictate the feature importance algorithm, though it obviously affects
+Classification and Regression Trees (CART) algorithm "creates a binary tree — each node has exactly two outgoing 
+edges — finding the best numerical or categorical feature to split using an appropriate impurity 
+criterion. For classification, Gini impurity or twoing criterion can be used. For regression, CART 
+introduced variance reduction using least squares (mean square error)." ([source](https://medium.com/@srnghn/the-mathematics-of-decision-trees-random-forest-and-feature-importance-in-scikit-learn-and-spark-f2861df67e3)) 
+
+The splitting criterion doesn't necessarily dictate the feature importance algorithm, though it obviously affects
 the outcome in one way or another.  Specifically, one can use the Gini criterion for splitting, but choose
 not to use the Gini importance for ranking feature importances.  (Having said that, the Gini importance
 itself is strictly associated with the Gini splitting criterio.  So, e.g., if you use the `entropy` criterion
@@ -168,10 +173,20 @@ decrease in accuracy"), which are implemented in complementary packages to sciki
 > number of categories or scale of measurement, because the underlying Gini gain splitting criterion is a 
 > biased estimator and can be affected by multiple testing effects."  (Source: [Conditional variable importance for random forests](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-9-307))
 
-The Classification and Regression Trees (CART) algorithm "creates a binary tree — each node has exactly two outgoing 
-edges — finding the best numerical or categorical feature to split using an appropriate impurity 
-criterion. For classification, Gini impurity or twoing criterion can be used. For regression, CART 
-introduced variance reduction using least squares (mean square error)." ([source](https://medium.com/@srnghn/the-mathematics-of-decision-trees-random-forest-and-feature-importance-in-scikit-learn-and-spark-f2861df67e3)) 
+
+
+Scikit-learn's defense of the Gini importance can be found in its documentation.  Not so sure it is a great
+defense all things considered, but worth recording here:
+> "The relative rank (i.e. depth) of a feature used as a decision node in a tree can be used to assess the relative 
+> importance of that feature with respect to the predictability of the target variable. Features used at the top of the tree
+> contribute to the final prediction decision of a larger fraction of the input samples. The expected fraction of 
+> the samples they contribute to can thus be used as an estimate of the relative importance of the features. In 
+> scikit-learn, the fraction of samples a feature contributes to is combined with the decrease in impurity from 
+> splitting them to create a normalized estimate of the predictive power of that feature."
+>
+> "By averaging the estimates of predictive ability over several randomized trees one can reduce the variance 
+> of such an estimate and use it for feature selection. This is known as the mean decrease in impurity, or MDI."
+
 
 # Dependence on Variable Representation
 If you have
@@ -309,6 +324,54 @@ introducing a random, continuous variable that had nothing to do with my target 
 immedidately became suspect: seemed no matter how many parameters I tweaked, the noise variable ranked in
 first or second place every time!
 
+Final note: given the various articles showing that one-hot encoding also diminishes model accuracy 
+(e.g., [this](https://roamanalytics.com/2016/10/28/are-categorical-variables-getting-lost-in-your-random-forests/)),
+I would bias towards keeping high-cardinality categorical variables, but using a better measure of
+feature importance.
+
+# Design Flaws: Noise & Overfitting
+At least one of the reasons that a very high-cardinality catvar can appear to have more
+importance attributed to it than seems reasonable is due to overfitting.  That is, if you are
+not ensuring that the random forest has enough restrictions on it (by changing the defaults on
+parameters like `max_depth`, `min_samples_leaf`, etc), then it turns out that something like 
+zipcode can proxy as a semi-unique ID in the data records.  In highly populated zipcodes, this
+obviously is unlikely to be the case, but when you consider more rarefied regions, it becomes possible
+to only have several customers per zipcode.  Depends on the size of your customer base, or
+number of patients in your trial, etc.
+
+In the same way, a pure noise variable having no correlation with the target can serve as
+an ID variable: the forest can overfit to the noise and decide that the noise is more important
+than it is (say on a holdout set).
+
+In "[How not to use random forest](https://medium.com/turo-engineering/how-not-to-use-random-forest-265a19a68576), the 
+author depicts a simulation that has an target-relevant binary variable, a target-relevant continuous
+variable (Poisson distributed), a random noise binary variable, and a random noise continuous variable (normally 
+distributed).  His intent is to show that using scikit-learn's random forest with default
+parameters runs folks into trouble, especially when one cares about feature importance.  The noisy continuous
+variable is ultimately ranked as most important.  This should send shivers down your spine: in this case,
+we know what variable is just noise, so we know the feature importances are somehow bogus, but in the workplace
+setting, you cannot be so sure what is noise and what is signal (that is, without further investigation, etc).
+
+I've run my own simulations, similar to this article, and have come up with the same: the noisy continuous
+variables always rise to the top!  Very disheartening.  The author in the aforementioned article attributes
+this behavior to both using scikit-learn's default feature importance (Gini importance), default hyperparameters 
+(e.g., `max_depth=None, max_leaf_nodes=None, min_samples_leaf=1, min_samples_split=2`), and the ambiguities that
+can arise (especially when using the Gini importance) when mixing continuous and categorical variables.  This is 
+what allows
+a continuous noise variable, where each element is likely to be unique in the column, to serve as an ID for
+each record in the data set.  That said, I experimented with tweaking the hyperparameters quite a bit and
+was still amazed/horrified to see that the noise variable floated to the top of feature importances.
+
+Question: Should feature importances be defined on the training data?  Probably not, but it appears they are.  So
+what can you do?
+
+Solution: At minimum, look at the out-of-bag (OOB) error.  If it sucks, then there is no reason to trust
+your feature importances.  If you also have an out-of-hand validation set not used in training, then you
+can use that in the same manner.  
+
+Take Away: Feature importances are only worthwhile if the associated model serves as a worthwhile 
+prediction model.  This is an issue of generalizability: do not overfit the model.
+
 
 # Ambiguity from Correlated Features
 Another problem with feature importances is that there is some sort of arbitrariness when
@@ -327,23 +390,18 @@ Often, I've seen "permutation importance" as the answer to the problems that ari
 [these authors](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-9-307) show that 
 even permutation importance biases towards correlated predictors
 
-Take away:  conditional permutation importance > permutation importance >> Gini importance.
+The article, "[Selecting good features – Part III: random forests](http://blog.datadive.net/selecting-good-features-part-iii-random-forests/)," very nicely shows how correlated features impact the interpretaction of the
+Gini importance rankings.  For example, simulating a model where 3 correlated features contribute about the
+same level of importance to the response, the author shows their estimated importance to be all over the place (e.g.,
+one var is shown to be 10x more important than another, despite them having equal importance in reality).
 
+That said, permutation importance is also known to not deal well with correlated predictors either, but for
+a different reason (will talk more about this in an upcoming article).  Generally, permutation importance
+does work better though -- if you have to choose GImp or PImp.
 
-# Design Flaws: Noise & Overfitting
-At least one of the reasons that a very high-cardinality catvar can appear to have more
-importance attributed to it than seems reasonable is due to overfitting.  That is, if you are
-not ensuring that the random forest has enough restrictions on it (by changing the defaults on
-parameters like `max_depth`, `min_samples_leaf`, etc), then it turns out that something like 
-zipcode can proxy as a semi-unique ID in the data records.  In highly populated zipcodes, this
-obviously is unlikely to be the case, but when you consider more rarefied regions, it becomes possible
-to only have several customers per zipcode.  
+Final note:  conditional permutation importance > permutation importance >> Gini importance.
 
-In the same way, a pure noise variable having no correlation with the target can serve as
-an ID variable: the forest can overfit to the noise and decide that the noise is more important
-than it is (say on a holdout set).
-
-
+Next!
 
 
 # Dependence on Random Seed / Number of Trees
@@ -365,15 +423,26 @@ From ["Be Aware of Bias in RF Variable Importance Metrics"](https://blog.methods
 
 
 # Last Words
-Ultimately, we want to provide explanatory power when using Random Forests.  The major two points of this
-article are: (i) this is possible, but (ii) not out-of-the-box in the scikit-learn version of random forests. 
 
 If all of this
-has made you uncomfortable with feature importances from sklearn's RF, then good.  
+has made you uncomfortable with feature importances from scikit-learns's random forests, then good.  If 
+not?  Well, you have been warned!
 
-If not?  Well, you have been warned!
+Ultimately, we want to provide explanatory power when using random forests.  The major two points of this
+article are: (i) this is possible, but (ii) not out-of-the-box in the scikit-learn version of random forests. 
 
+Though to my mind, it seems like one should never use the Gini importance, there apparently circumstances
+when it is ok.  [This author](https://blog.methodsconsultants.com/posts/be-aware-of-bias-in-rf-variable-importance-metrics/) 
+reasons that the Gini importance is just fine (and desirable in terms of computation time) under either of 
+two conditions:
+* all predictors are continuous and not correlated with each other
+* all predictors are categorical, have the same number of levels, and are not correlated with each other
 
+Don't know about you, but I'm thinking those make for some pretty stringent, potentially artificial 
+scenarios.  But good to know nonetheless. 
+
+In the next installment, I'll be talking about more robust feature importance measures, namely
+permutation importance and conditional permutation importance.
 
 -----------------------------------------------------------
 
