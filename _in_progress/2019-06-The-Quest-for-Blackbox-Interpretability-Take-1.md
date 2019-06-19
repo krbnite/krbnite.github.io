@@ -84,7 +84,38 @@ logistics regression).
 
 "Do you have citations to back any of this up?"
 
-Yes! But not on hand.  
+Yes! 
+* 2001: Lipovetsky & Conklin: [Analysis of regression in game theory approach](https://onlinelibrary.wiley.com/doi/abs/10.1002/asmb.446)
+    - Covers Shapley values in multiple regressions suffering from multicollinearity (coefficients are biased)
+* 2007: Strobl et al: [Bias in random forest variable importance measures: Illustrations, sources and a solution](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-8-25)
+* 2008: Strobl et al [Conditional variable importance for random forests](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-9-307)
+    - Introduces the conditional permutation importance, which does not give higher importantance to correlated predictors
+    - Note: the so-called "weakness" of regular ol' permutation importance is not a weakness, if for example, you want
+      to highly weight predictors that are correlated with a known predictor; this is a design question ("What do
+      I consider important?")
+* 2010: Altmann et al: [Permutation importance: a corrected feature importance measure](https://academic.oup.com/bioinformatics/article/26/10/1340/193348)
+    - They call this "permutation importance", but it seems to be a different method than what is 
+      usually referred to as permutation importance (haven't read this one yet, so not sure)
+* 2013: Janitza et al: [An AUC-based permutation variable importance measure for random forests](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-14-119)
+* 2013: Hapfelmeier et al: [A new variable importance measure for random forests
+with missing data](http://www.psychologie.uzh.ch/methpsy/publications/STCO_20120809.pdf)
+    - This one caught my eye b/c it made me distinguish between feature importance for prediction vs inference
+    - In prediction: if I assume the data generating process will remain the same, then missing values
+      hold information in and of themselves, and the associated feature importance reflect what I care about.
+    - In Inference:  if the missing values are an inconvenience (that is, something we wanted to measure, but
+      couldn't and didn't for some reason), then the feature importances do not necessarily rank or measure
+      what we want.  In this case, one might want to use multiple imputation before running the data through
+      the random forest -- or, the method proposed in this paper.
+    - For now, I personally care about "feature importance" as it relates to prediction, but can foresee
+      needing to care about how it relates to inference in the near future (that is, in the data I look at,
+      we definitely have missing values that we would have, should have, could have measured, but didn't
+      due to some inconvenience or another -- and though we consider prediction very important, we also care
+      about explanatory power that is invariant to missing values, if not cause-and-effect)
+* 2016: Ribeiro et al: ["Why Should I Trust You?" Explaining the Predictions of Any Classifier](https://arxiv.org/pdf/1602.04938.pdf?mod=article_inline)
+* 2016: Lundberg & Lee: [An unexpected unity among methods for interpreting model predictions](https://arxiv.org/pdf/1611.07478.pdf)
+    - Covers expectation Shapley (ES) values, which unify various interpretative methods, such as LIME and DeepLift
+* [Learning Important Features Through Propagating Activation Differences](https://arxiv.org/pdf/1704.02685;Learning)
+    - Covers DeepLift
 
 Anyway, we will start with random forests as our black box model, and look at the out-of-the-box
 explanatory method in the scikit-learn method, which is known as "Gini importance."  This might not be
