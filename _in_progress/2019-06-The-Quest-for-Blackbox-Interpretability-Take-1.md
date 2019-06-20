@@ -269,13 +269,15 @@ and using them in a scikit-learn random forest.  That said, I do see many blogs 
 anything and everything by default, so the article serves as a great read for those inclined to one-hot their
 catvars.
 
-Anyway, major take away here is that "feature importances" in sklearn's RF have a certain arbitrariness
-to them that is dependent on variable representations.  To keep some interpretability, do not one-hot encode
-the categorical variable (but encode it numerically, if necessary).  A nice side effect here is that the model
+Anyway, major take away here is that (Gini) feature importances in scikit-learn's RF have a certain arbitrariness
+to them that is dependent on variable representations.  If your only option was Gini importance, then to keep
+the "inherent" Gini importances, do not one-hot encode
+the categorical variable (though encode it numerically, if not already).  A nice side effect here is that the model
 should also perform better in this representation for low-cardinality catvars (`levels < 1k`).
 
 # Dependence on Number of CatVar Levels
-One potential setback though: [apparently](https://towardsdatascience.com/explaining-feature-importance-by-example-of-a-random-forest-d9166011959e), high-cardinality catvars also artificially outrank other variables.  
+One potential setback though: [for Gini importances](https://towardsdatascience.com/explaining-feature-importance-by-example-of-a-random-forest-d9166011959e), high-cardinality catvars can artificially outrank lower-cardinality
+categorical variables.  
 
 In the last section, we assumed the feature importance of the high-cardinality categorical variable was true and 
 that the one-hot representation obscured this truth.  But the default feature importance algorithm in scikit-learn's
@@ -294,7 +296,8 @@ variable, like zipcode, you might find that it beats out variables that should b
 standpoint.  Breaking zipcode up into city and state variables might align things better with expectation.
 
 That all said: this fudging can make one uneasy if the original intent is to understand feature importance
-in the data "as is".  To this, all I can say is -- toughen up!  :-p
+in the data "as is".  Fortunately, there do appear to be feature importance measures that do not accidentally
+bias towards high-cardinality categorical variables (e.g., conditional permutation importance).
 
 
 # Some Explanation
