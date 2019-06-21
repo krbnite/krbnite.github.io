@@ -419,15 +419,28 @@ Solutions:
             - so, if you care mainly about your leaves, you can just use this parameter since it implies 
               min_samples_split -- that is, the smallest a node split can be is 2 * min_samples_leaf, where 
               it is a 50/50 split
+         * max_depth
+            - yet another way to hedge against trees in the forest fitting to random noise variables
+            - limits how many splits can occur along one pathway from root to leaf
+            - defaults to `None`, which means trees will grow until each leaf has 1-2 data points
+            - interesting tip:  first train your RF w/ no constraint, then use the [`rfpimp` package](https://github.com/parrt/random-forest-importances) 
+              to see how deep each of your trees grows (`rfpimp.rfmaxdepths(rf)`)
 * Use other feature importance measures in place of or in additiona to the Gini importance
     - Compute permutation importance using the [`rfpimp` package](https://github.com/parrt/random-forest-importances), like `rfpimp.oob_importances(rf, x_trn, y_trn)`
-    - You can also use the `rfpimp` package to look at the Spearman's correlation matrix of your training data to
-      identify any correlated variables (`rfpimp.plot_corr_heatmapt(x_trn)`), which would suggest that 
+    - You can also use the `rfpimp` package to look at the Spearman's correlation matrix (`rfpimp.plot_corr_heatmapt(x_trn)`) or the feature dependence matrix 
+      (`fdm = rfpimp.feature_dependence_matrix(x_trn); rfpimp.lot_dependence_heatmap(fdm)`) of your training data to
+      identify any correlated variables , which would suggest that 
       permutation importance by itself will have biased
-      estimates of feature importances.  The `rfpimp` package then allows you to group these variables together
-      (e.g., `ftrs = ['ftr1', ['ftr2','ftr5'], ['ftr4','ftr6','ftr7'], 'ftr8']`),
-      so that it can better compute unbiased estimates (`rfpimp.importances(x_val, y_val, features=ftrs)`); note
-      that you use the training set for `rfpimp.oob_importances`, but a validation set if using `rfpimp.importances`.  
+      estimates of feature importances.  Few things you can do:
+        * The `rfpimp` package then allows you to group these variables together
+          (e.g., `ftrs = ['ftr1', ['ftr2','ftr5'], ['ftr4','ftr6','ftr7'], 'ftr8']`),
+          so that it can better compute unbiased estimates (`rfpimp.importances(x_val, y_val, features=ftrs)`); note
+          that you use the training set for `rfpimp.oob_importances`, but a validation set if using `rfpimp.importances`.
+        * Alternatively, as the [package authors put it](https://explained.ai/rf-importance/index.html): "Dependence 
+          numbers close to one indicate that the feature is
+          completely predictable using the other features, which means it could be dropped without affecting 
+          accuracy. (Dropping features is a good idea because it makes it easier to explain models to consumers 
+          and also increases training and testing efficiency/speed.)"
     - The `rfpimp` package also includes an option to compute cross-validated importances and drop-column importances
         * `rfpimp.cv_importances(rf, x_trn, y_trn, k=5)`
         * `rfpimp.dropcol_importances(rf, x_trn, y_trn)`
@@ -560,3 +573,8 @@ algorithm for random forests in scikit-learn.  In upcoming write-ups, I want to 
     - e.g., [RF Interpretation - Conditional Feature Contributions](http://blog.datadive.net/random-forest-interpretation-conditional-feature-contributions/)
 * LIME
 * Shapley Values
+* Extremely Randomized Trees
+    - Apparently these solve a lot of the bias and computational time issues of random forests (yay!)
+    - Original paper:  Geurts et al (2006): [Extremely Randomized Trees](https://link.springer.com/content/pdf/10.1007/s10994-006-6226-1.pdf)
+    - Read about ExtRa Trees in [Epilogue](https://explained.ai/rf-importance/index.html#9) of "Beware 
+      Default Random Forest Importances"
