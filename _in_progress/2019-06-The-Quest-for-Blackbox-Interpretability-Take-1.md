@@ -187,6 +187,26 @@ defense all things considered, but worth recording here:
 > "By averaging the estimates of predictive ability over several randomized trees one can reduce the variance 
 > of such an estimate and use it for feature selection. This is known as the mean decrease in impurity, or MDI."
 
+This is probably a good place to note that Gini importance does not appear to be the variable
+importance measure originally intended for random forests.  [One of Breiman's webpages](https://www.stat.berkeley.edu/~breiman/RandomForests/cc_home.htm) goes over the original
+implementation, where it clearly considers permutation importance to be the preferred variable importance
+measure:
+
+> In every tree grown in the forest, put down the oob cases and count the number of votes cast for the correct class. Now randomly permute the values of variable m in the oob cases and put these cases down the tree. Subtract the number of votes for the correct class in the variable-m-permuted oob data from the number of votes for the correct class in the untouched oob data. The average of this number over all trees in the forest is the raw importance score for variable m.
+>
+> If the values of this score from tree to tree are independent, then the standard error can be computed by a standard computation. The correlations of these scores between trees have been computed for a number of data sets and proved to be quite low, therefore we compute standard errors in the classical way, divide the raw score by its standard error to get a z-score, ands assign a significance level to the z-score assuming normality.
+>
+> If the number of variables is very large, forests can be run once with all the variables, then run again using only the most important variables from the first run.
+>
+> For each case, consider all the trees for which it is oob. Subtract the percentage of votes for the correct class in the variable-m-permuted oob data from the percentage of votes for the correct class in the untouched oob data. This is the local importance score for variable m for this case, and is used in the graphics program RAFT.
+
+
+Breiman mentions Gini importance next, as a computationally fast way of estimating the permutation
+importance, claiming that the two are often consistent with each other:
+
+> Every time a split of a node is made on variable m the gini impurity criterion for the two descendent nodes is less than the parent node. Adding up the gini decreases for each individual variable over all trees in the forest gives a fast variable importance that is often very consistent with the permutation importance measure.
+
+
 
 # Dependence on Variable Representation
 If you have
@@ -279,17 +299,21 @@ should also perform better in this representation for low-cardinality catvars (`
 One potential setback though: [for Gini importances](https://towardsdatascience.com/explaining-feature-importance-by-example-of-a-random-forest-d9166011959e), high-cardinality catvars can artificially outrank lower-cardinality
 categorical variables.  
 
-In the last section, we assumed the feature importance of the high-cardinality categorical variable was true and 
-that the one-hot representation obscured this truth.  But the default feature importance algorithm in scikit-learn's
-RFs generally bias towards high-cardinality categorical variables.  
+In the last section, the vibe was generally, "Leave that categorical variable alone!"  Given that the one-hot 
+representation of a catvar can severely dampen the overall importance of a catvar, it can almost seem like 
+the (Gini) feature importance of the high-cardinality categorical variable is true and 
+that the one-hot representation obscures this truth.  But the Gini importance algorithm used to compute
+feature importances in scikit-learn's RFs generally biases towards high-cardinality categorical variables.  
 
-I guess this can hurt in a situation where you have a binary variable that is very important and a 
+This can hurt in a situation where you have a binary variable that is very important and a 
 high-cardinality variable where each level is not all too important.  The storyline you might expect
 from your data is that the binary variable is ranked higher in importance, but instead you might find
-the high-cardinality catvar on top.  
+the high-cardinality catvar on top.  One data scientist might trust their business intuition and
+investigate further.  Another might think they've stumbled onto some new insight, and sell stakeholders
+on a wild story that seems almost too good to be true!
 
-I think this is less about the feature importance algorithm, though, and more about
-choosing a representation that is right for your problem.  
+Other feature importance measures address this high-cardinality bias, but I think this brings into 
+light something to think about in any analysis of data: choosing a representation that is right for your problem.  
 
 Sticking with the idea of a geographical
 variable, like zipcode, you might find that it beats out variables that should be more important from a business
@@ -365,12 +389,49 @@ a continuous noise variable, where each element is likely to be unique in the co
 each record in the data set.  That said, I experimented with tweaking the hyperparameters quite a bit and
 was still amazed/horrified to see that the noise variable floated to the top of feature importances.
 
-Question: Should feature importances be defined on the training data?  Probably not, but it appears they are.  So
-what can you do?
 
-Solution: At minimum, look at the out-of-bag (OOB) error.  If it sucks, then there is no reason to trust
-your feature importances.  If you also have an out-of-hand validation set not used in training, then you
-can use that in the same manner.  
+
+Solutions: 
+* At minimum, look at the out-of-bag (OOB) error.  If it sucks, then there is no reason to trust
+  your feature importances.  If you also have an out-of-hand validation set not used in training, then you
+  can use that in the same manner.  
+* Tweak the hyperparameter defaults to help prevent overfitting to noise and accidentally considering
+  it an important variable.  
+    - The `RandomForestClassifier` defaults do not necessarily include enough constraints (e.g., trees are defaulted
+   to growing up to single-item leaves, which is true to the original definition of a random forest, but
+   not always the optimal solution, as you might find in a `GridSearch` or `RandomSearch`). 
+   - Try manually tweaking the following parameters (or performing an automated search)
+        * n_estimators
+            - number of trees in the forest
+        * max_features
+            - this is the number of features to consider at each split
+            - defaults to `sqrt(num_features)`
+            - at each split in each tree of the forest, a random subset of full feature set is chosen (in
+              contrast to classical DT, where all features are considered at each split)
+        * min_samples_split
+            - a node must have this many samples to be considered for further splitting
+            - hedges against fine-tuning to noise or outliers
+        * min_samples_leaf
+            - a leaf must have this many samples to exist
+            - that is, if a split is calculated, it only becomes a part of tree if both child nodes have this many
+            - even when using min_samples_split, a resulting leaf might have only a handful of samples, so 
+              this hedges against that
+            - so, if you care mainly about your leaves, you can just use this parameter since it implies 
+              min_samples_split -- that is, the smallest a node split can be is 2 * min_samples_leaf, where 
+              it is a 50/50 split
+* Use other feature importance measures in place of or in additiona to the Gini importance
+    - Compute permutation importance using the [`rfpimp` package](https://github.com/parrt/random-forest-importances), like `rfpimp.oob_importances(rf, x_trn, y_trn)`
+    - You can also use the `rfpimp` package to look at the Spearman's correlation matrix of your training data to
+      identify any correlated variables (`rfpimp.plot_corr_heatmapt(x_trn)`), which would suggest that 
+      permutation importance by itself will have biased
+      estimates of feature importances.  The `rfpimp` package then allows you to group these variables together
+      (e.g., `ftrs = ['ftr1', ['ftr2','ftr5'], ['ftr4','ftr6','ftr7'], 'ftr8']`),
+      so that it can better compute unbiased estimates (`rfpimp.importances(x_val, y_val, features=ftrs)`); note
+      that you use the training set for `rfpimp.oob_importances`, but a validation set if using `rfpimp.importances`.  
+    - The `rfpimp` package also includes an option to compute cross-validated importances and drop-column importances
+        * `rfpimp.cv_importances(rf, x_trn, y_trn, k=5)`
+        * `rfpimp.dropcol_importances(rf, x_trn, y_trn)`
+        
 
 Take Away: Feature importances are only worthwhile if the associated model serves as a worthwhile 
 prediction model.  This is an issue of generalizability: do not overfit the model.
@@ -399,12 +460,24 @@ same level of importance to the response, the author shows their estimated impor
 one var is shown to be 10x more important than another, despite them having equal importance in reality).
 
 That said, permutation importance is also known to not deal well with correlated predictors either, but for
-a different reason (will talk more about this in an upcoming article).  Generally, permutation importance
-does work better though -- if you have to choose GImp or PImp.
+a different reason (will talk more about this in an upcoming article).  The article, "[Feature Correlation and Feature Importance Bias with Random Forests](http://rnowling.github.io/machine/learning/2015/08/11/random-forest-correlation-bias.html)," also
+shows very clear examples of how adding correlated predictors reduces the relative importance
+of each of the correlated predictors.  These simulations were an attempt to recreate the results
+published in "[Permutation importance: a corrected feature importance measure](https://academic.oup.com/bioinformatics/article/26/10/1340/193348)", which claims that both 
+Gini importance and permutation importance are affected by this.  There is a drop-column method as 
+well, which I won't get into in this post, but suffice it
+say (without any actual evidence in hand), it seems to me that it would have the same type of
+bias away from correlated predictors as permutation importance does.  (Update: Oh, nice -- upon further reading
+of "[Beware Default Random Forest Importances](https://explained.ai/rf-importance/index.html)", I find
+that this intuition about drop-column importance is backed by evidence.)
 
-Final note:  conditional permutation importance > permutation importance >> Gini importance.
+Generally speaking, permutation importance does work better in a larger variety of situations
+than Gini importance, so if you have to choose GImp or PImp, choose PImp.  The only downside is that
+it is more computationally expensive -- that translates into a longer wait, which can cut
+into experimentation and creativity.  There also exists a measure called "conditional permutation
+importance," which is even more robust, but also even more time consuming. Unfortunately, this really
+starts to take a toll on a quadcore laptop.  
 
-Next!
 
 
 # Dependence on Random Seed / Number of Trees
@@ -464,7 +537,16 @@ permutation importance and conditional permutation importance.
 * [Feature Importance Measures for Tree Models — Part I](https://medium.com/the-artificial-impostor/feature-importance-measures-for-tree-models-part-i-47f187c1a2c3)
 * [Cornell CS4780: Lecture 31 "Random Forests / Bagging"](https://www.youtube.com/watch?v=4EOCQJgqAOY)
 * [Seeing the Forest for the Trees: An Introduction to Random Forest](https://community.alteryx.com/t5/Alteryx-Knowledge-Base/Seeing-the-Forest-for-the-Trees-An-Introduction-to-Random-Forest/ta-p/158062)
-
+* [Breiman's Page on Random Forests](https://www.stat.berkeley.edu/~breiman/RandomForests/cc_home.htm)
+* [Breiman's original paper, "Random Forests"](https://link.springer.com/content/pdf/10.1023/A:1010933404324.pdf)
+* [Feature Importance Bias with Random Forests](http://rnowling.github.io/machine/learning/2015/08/10/random-forest-bias.html)
+    - Offers slightly different perspective on one-hot encoding categorical variables: if you have only catvars,
+      but of differing cardinality, then one-hot encoding them -- in a way -- puts all categories on an equal 
+      footing.  Without OHE, the author shows the expected bias towards high-cardinality in the feature 
+      importances.  However, as other authors have shown, one-hot encoding can cost your model in prediction
+      accuracy -- so, here is a case of exploratory data analysis versus what you put into production.  Also,
+      other feature importance measures exist, which can hedge against the high-cardinality bias, so it seems
+      like our best bet is to leave catvars in one column and use an approprate measure of feature importance.
 
 -------------------------------------------------------------------------------
 
