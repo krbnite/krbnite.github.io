@@ -1,5 +1,5 @@
 ---
-title: The Quest for Blackbox Interpretability (Take 1)
+title: The Quest for Blackbox Interpretability (Take 1, Random Forests and Feature Importances)
 layout: post
 tags: machine-learning random-forest predictive-modeling model-interpretability easi
 ---
