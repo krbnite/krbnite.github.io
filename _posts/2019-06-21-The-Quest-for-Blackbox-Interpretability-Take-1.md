@@ -425,6 +425,8 @@ Solutions:
             - defaults to `None`, which means trees will grow until each leaf has 1-2 data points
             - interesting tip:  first train your RF w/ no constraint, then use the [`rfpimp` package](https://github.com/parrt/random-forest-importances) 
               to see how deep each of your trees grows (`rfpimp.rfmaxdepths(rf)`)
+    - Beware: these hyperparameters can help prevent overfitting, but also push you quickly into the realm
+      of underfitting; read more about [here](https://medium.com/all-things-ai/in-depth-parameter-tuning-for-random-forest-d67bb7e920d)
 * Use other feature importance measures in place of or in additiona to the Gini importance
     - Compute permutation importance using the [`rfpimp` package](https://github.com/parrt/random-forest-importances), like `rfpimp.oob_importances(rf, x_trn, y_trn)`
     - You can also use the `rfpimp` package to look at the Spearman's correlation matrix (`rfpimp.plot_corr_heatmapt(x_trn)`) or the feature dependence matrix 
