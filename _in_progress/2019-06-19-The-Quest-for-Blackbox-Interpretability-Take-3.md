@@ -14,3 +14,8 @@ tags: machine-learning random-forest predictive-modeling model-interpretability 
   - Shows how he made `treeinterpreter` better / more robust
 * [Model-Agnostic Methods: Local Surrogate (LIME)](https://christophm.github.io/interpretable-ml-book/lime.html)
   - From the online book "[Interpretable Machine Learning](https://christophm.github.io/interpretable-ml-book/)"
+
+Crazily enough, I just got an email from Two Sigma with an article that covers exactly the topics I've reading
+and writing about for the past week or so:
+* https://www.twosigma.com/insights/article/interpretability-methods-in-machine-learning-a-brief-survey
+
