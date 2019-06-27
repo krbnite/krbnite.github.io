@@ -6,6 +6,7 @@
     amount of time they remained in treatment before completing or dropping out
 
 * validation set leakage (ok, if you also have an additional test set for later)
+  - aka tuning leakage
   - happens when one uses validation metrics to guide further model design choices,
     such as what type of model, what variables should be used, hyperparameters, etc
   - this is why it can be wise to use CV on the training set to tune hyperparameters
@@ -30,6 +31,13 @@
     might not realize is that though x2 occurs before y in time, we do not
     have access to that data until after y -- that is, it is unavailable at
     the point of prediction
+  - more concrete example:  in many healthcare data systems, data is manually uploaded
+    by someone; in a retrospective study, it might appear that data is model ready
+    after a doctor's visit, but in reality it might be uploaded at the end of every week;
+    even it is generally uploaded at the end of everyday, this means that the deployment
+    predictions can only be made the day after each patient's visit, etc
+  - from the example, you can tell that this affects the missginess distributions of
+    data from training to deployment
 
 * group leakage
   - this one is sometimes controversial and seems to depend on a few things
@@ -59,6 +67,36 @@
     (or straight-up duplicates) of data in the validation and/or test sets....
 
 
+* external leakage
+  - this is similar "unavailability leakage"
+  - it's when a modeler uses data that should not be included in the model, usually defined by set rules
+    (e.g., in a Kaggle competition) 
+  - example I've seen given:  Titanic competition on Kaggle has top of leaderboard at 100%, where 
+    these folks were able to look up data on who survived/orNot and include it in their model (this is
+    very similar to "unavailability leakage", right?
+  - Kaufmann/Perlich paper talks a lot about winners of competitions doing this; not sure how it applies
+    to industry as a unique form of leakage (i.e., if it is not classified as any of the other types of
+    leakage, then why not use it if it meets all the parameters necessary for deploying the model, etc?)
+ 
+* foresight leakage
+  - the Larsen paper gives an interesting example of when surveying patients, where they
+    already know (or have predetermined) their target status; the example given is about
+    predicting whether or not someone will go to the gym tomorrow based on survey questions, 
+    where asking whether or not the recipient will go to the gym tomorrow is intended to
+    be info on "how the recipient feels about doing it today", but in reality includes info
+    already in the recipient's head, such as "no, they don't go to the gym on Tuesdays" or
+    "yes, it's the only day of the week they get to go," or "no, they are leaving on vacation
+    tomorrow", etc ---
+  - as you can see, this type of leakage is from an illegitimate feature, but the illegitimacy
+    was not obvious to the modelers at first
+  - the predeterminedness of the answers of many of the recipients is similar to including the
+    target variable in the prediction model, so is very likely to give an optimistic accuracy...
+  - that said, one thing I don't fully understand is, if the model was going to be deployed in
+    the way it was designed, wouldn't the idea be that it can only run when asking a gym member
+    if they will come tomorrow?  What I mean is, it's not overly optimistic given that it must
+    be deployed in this way...  Gnomesayn'?
+    
+
 
 
 
@@ -72,7 +110,7 @@
 * [Leakage in Data Mining: Formulation, Detection, and Avoidance](https://www.researchgate.net/profile/Claudia_Perlich/publication/221653692_Leakage_in_Data_Mining_Formulation_Detection_and_Avoidance/links/54418bb80cf2a6a049a5a0ca/Leakage-in-Data-Mining-Formulation-Detection-and-Avoidance.pdf)
 * [Seven Types of Target Leakage in Machine Learning and an Exercise](https://www.researchgate.net/publication/327477467_Chapter_24_Seven_Types_of_Target_Leakage_in_Machine_Learning_and_an_Exercise)
 * YouTube: [Target Leakage in Machine Learning](https://www.youtube.com/watch?v=UOxf2P9WnK8&feature=youtu.be)
-  
+* [Data Leakage in Healthcare Macine Leanring](https://healthcare.ai/data-leakage-in-healthcare-machine-learning/)
 
 * [Stand Up for Best Practices](https://towardsdatascience.com/stand-up-for-best-practices-8a8433d3e0e8)
   - just an interesting read.....
