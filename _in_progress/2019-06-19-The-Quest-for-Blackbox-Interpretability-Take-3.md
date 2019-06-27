@@ -19,3 +19,8 @@ Crazily enough, I just got an email from Two Sigma with an article that covers e
 and writing about for the past week or so:
 * https://www.twosigma.com/insights/article/interpretability-methods-in-machine-learning-a-brief-survey
 
+
+
+Related:  I saw that there is a Kaggle micro-course on model explainability.  I should check it out:
+* https://towardsdatascience.com/why-model-explainability-is-the-next-data-science-superpower-b11b6102a5e0
+* https://www.kaggle.com/learn/machine-learning-explainability?utm_medium=blog&utm_source=medium&utm_campaign=medium-learn-explain
