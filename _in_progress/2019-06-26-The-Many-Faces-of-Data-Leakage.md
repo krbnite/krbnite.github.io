@@ -4,6 +4,7 @@
   - a predictor that would not be available at the time of deployment
   - e.g., predicting if someone will dropout of a treatment program using the
     amount of time they remained in treatment before completing or dropping out
+  - Salesorce folk call this "hindsight bias"
 
 * validation set leakage (ok, if you also have an additional test set for later)
   - aka tuning leakage
@@ -67,7 +68,7 @@
     (or straight-up duplicates) of data in the validation and/or test sets....
 
 
-* external leakage
+* external / disallowed leakage
   - this is similar "unavailability leakage"
   - it's when a modeler uses data that should not be included in the model, usually defined by set rules
     (e.g., in a Kaggle competition) 
@@ -77,6 +78,10 @@
   - Kaufmann/Perlich paper talks a lot about winners of competitions doing this; not sure how it applies
     to industry as a unique form of leakage (i.e., if it is not classified as any of the other types of
     leakage, then why not use it if it meets all the parameters necessary for deploying the model, etc?)
+  - this can essentially be generalized from Kaggle competitions to the real world by realizing it is
+    really "disallowed leakage":  in the real world, we must comply to various data privacy standards,
+    such as HIPAA and GDPR, as well as fairness/unbiasedness standards (e.g., cannot develop model that
+    somehow favors recommending better treatments based only on gender or race)
  
 * foresight leakage
   - the Larsen paper gives an interesting example of when surveying patients, where they
@@ -97,9 +102,24 @@
     be deployed in this way...  Gnomesayn'?
     
 
+* Boosting Leakage
+  - basically, boosted models suffer from leakage
+  - packages like CatBoost address this
 
+* Stacking Leakage
+  - if you train N models on training set T, then using T to train stack(M1,...,MN) will
+    introduce leakage
+  - instead train 1st level models on say 4/5 of T, then use remaining 1/5 of T to train stack(M1,...,MN)
+  - this can actually be done in a proper k-fold CV way:  each time, the 1st level models are trained
+    on the training fold (which itself can be folded for some purpose, like hyperparameter tuning)
+    and the stacked model is trained on the validation fold 
 
-
+* augmentation leakage
+  - this is similar to oversampling leakage
+  - if you use image augmentation (tweaks in coloration, brightness, rotation, scaling) to generate
+    a larger data set, then split the augmented data set into training and test, you have literally injected
+    training images into test (that is, a slightly darker or discolored version, or slightly scaled, etc)
+  - basically, same solution as usual: do it on the training set only
 
 
 
@@ -110,8 +130,14 @@
 * [Leakage in Data Mining: Formulation, Detection, and Avoidance](https://www.researchgate.net/profile/Claudia_Perlich/publication/221653692_Leakage_in_Data_Mining_Formulation_Detection_and_Avoidance/links/54418bb80cf2a6a049a5a0ca/Leakage-in-Data-Mining-Formulation-Detection-and-Avoidance.pdf)
 * [Seven Types of Target Leakage in Machine Learning and an Exercise](https://www.researchgate.net/publication/327477467_Chapter_24_Seven_Types_of_Target_Leakage_in_Machine_Learning_and_an_Exercise)
 * YouTube: [Target Leakage in Machine Learning](https://www.youtube.com/watch?v=UOxf2P9WnK8&feature=youtu.be)
+  - [https://github.com/YuriyGuts/odsc-target-leakage-workshop](https://github.com/YuriyGuts/odsc-target-leakage-workshop)
 * [Data Leakage in Healthcare Macine Leanring](https://healthcare.ai/data-leakage-in-healthcare-machine-learning/)
+* Till Bergmann: Video Lecture: [Hindsight Bias: How to Deal with Label Leakage at Scale](https://www.datacouncil.ai/talks/hindsight-bias-how-to-deal-with-label-leakage-at-scale)
+  - Simlar article (also by Einstein Salesforce): [Back to the Future: Demystifying Hindsight Bias](https://www.infoq.com/articles/data-leakage-hindsight-bias-machine-learning/)
+
+--------------------------------------
 
 * [Stand Up for Best Practices](https://towardsdatascience.com/stand-up-for-best-practices-8a8433d3e0e8)
   - just an interesting read.....
+  - follow-up blog: [Deep Learning, Nature and Data Leakage, Reproducibility and Academic Engineering](https://flavioclesio.com/2019/06/25/deep-learning-nature-and-data-leakage-reproducibility-and-academic-engineering/)
 
