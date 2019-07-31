@@ -40,6 +40,12 @@
   - [Pharmaceutical and Medical Device Innovations](https://www.coursera.org/learn/pharma-medical-device-innovations)
   - [Medical Technology and Evaluation](https://www.coursera.org/learn/healthcare-medical-technology)
 
+Open e-Books
+* [Fundamentals of Clinical Data Science](https://link.springer.com/book/10.1007%2F978-3-319-99713-1)
+* [Secondary Analysis of Electronic Health Records](https://link.springer.com/book/10.1007%2F978-3-319-43742-2)
+* [Clinical Text Mining](https://link.springer.com/book/10.1007/978-3-319-78503-5)
+
+
 # MRI
 * [MRI Fundamentals](https://www.coursera.org/learn/mri-fundamentals)
 * Johns Hopkins: [Fundamental Neuroscience for Neuroimaging](https://www.coursera.org/learn/neuroscience-neuroimaging)
