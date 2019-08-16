@@ -1,5 +1,8 @@
 ---
 title: Accuracy is not so Accurate
+layout: post
+tags: easi
+---
 
 
 Here's a weird thing: I could have sworn I wrote a post about this already, and that I called it the same: "Accuracy is
