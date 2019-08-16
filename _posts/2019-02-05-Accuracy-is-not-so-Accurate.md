@@ -86,7 +86,10 @@ TN = bN = bkP, where 0 <= b <= 1
 ```
 Now we can rewrite accuracy:  
 ```
-A = TP/D + TN/D= a(P/D) + bk(P/D)  = (a+bk)(P/D) = (a+bk) / (1+k)
+A = TP/D + TN/D 
+  = a(P/D) + bk(P/D)  
+  = (a+bk)(P/D) 
+  = (a+bk) / (1+k)
 ```
  
 So, we have:  
@@ -119,7 +122,9 @@ specificity below.
 ```
 Sx = sensitivity = TP / P
 Sy = specificity = TN / N
-A = accuracy = (TP+TN) / (P + N) = TP/D + TN/D 
+A = accuracy 
+  = (TP+TN) / (P + N) 
+  = TP/D + TN/D 
 ```
 
 Rewrite accuracy
