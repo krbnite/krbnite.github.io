@@ -33,4 +33,16 @@ RFs should be Grid/RandomSearched w/ terminal node size as a search parameter (o
 
 Are RFs consistent estimators:  http://www.jmlr.org/papers/volume9/biau08a/biau08a.pdf
 
+
+2015: [Understanding Random Forests: from theory to practice](https://arxiv.org/pdf/1407.7502.pdf)
+
+
+
+* 2005: [Predicting Good Probabilities With Supervised Learning](http://datascienceassn.org/sites/default/files/Predicting%20good%20probabilities%20with%20supervised%20learning.pdf)
+  - "Experiments with eight classification problems suggest that random forests, neural nets
+    and bagged decision trees are the best learning methods for
+    predicting well-calibrated probabilities prior to calibration,
+but after calibration the best methods are boosted trees, random forests and SVMs."
+
+
 RFs can be updated (recalibrated) to new patient populations (either using the Elkan rule, or the Dankowski rule).
