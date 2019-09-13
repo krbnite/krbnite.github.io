@@ -33,10 +33,69 @@ RFs should be Grid/RandomSearched w/ terminal node size as a search parameter (o
 
 Are RFs consistent estimators:  http://www.jmlr.org/papers/volume9/biau08a/biau08a.pdf
 
+----------------------------------------------
+
+
+# Consistency of Random Forests
+
+Gist: many versions of RFs are consistent, some are not.  
+
+Ruling: I'll get back to this stuff at a later date (not super HP to know all details).
+
+
+2004: Breiman: [Consistency for a Simple Model of Random Forests](https://www.stat.berkeley.edu/~breiman/RandomForests/consistencyRFA.pdf)
+
+2008: Biau et al: [Consistency of Random Forests and Other Averaging Classifiers](http://www.jmlr.org/papers/volume9/biau08a/biau08a.pdf)
+
+* What is "consistency"?
+  - https://en.wikipedia.org/wiki/Consistency_(statistics)
+* This paper looks further at "universal consistency"
+
+
+2010: Ishwaran & Kogalur: [Consistency of Random Survival Forests](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2889677/)
+
+2013: Denil et al: [Consistency of Online Random Forests](http://proceedings.mlr.press/v28/denil13.pdf)
+
+2015: Scornet et al: [Consistency of random forests](https://arxiv.org/abs/1405.2881)
+
+2018: Tang et al: [When do random forests fail?](https://papers.nips.cc/paper/7562-when-do-random-forests-fail.pdf)
+
 ---------------------------
 
+# Variable Importance
 
-2009: [Variable Importance Assessment in Regression: Linear Regression versus Random Forest](https://s3.amazonaws.com/academia.edu.documents/30498691/tast_2e2009_2e08199.pdf?response-content-disposition=inline%3B%20filename%3DVariable_importance_assessment_in_regres.pdf&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWOWYYGZ2Y53UL3A%2F20190912%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20190912T183219Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=de287e5f345c31a34b48082fe93eba1cf1e17e804b5120d3b106c0ae76cad6cc)
+
+2007: Ishwaran: [Variable importance in binary regression trees and forests](https://projecteuclid.org/download/pdfview_1/euclid.ejs/1195157166)
+
+* "Averaging over trees [in a random forest], in combination with the randomization used in growing a tree, 
+  enables random forests to approximate a rich class of functions while maintaining low generalization error. This 
+  enables random forests to adapt to the data, automatically fitting higher order interactions and non-linear 
+  effects, while at the same time keeping overfitting in check."
+* PImp:  Historically, in "regression trees, node impurity is measured by mean squared error, whereas in classification 
+  problems, the Gini index is used. The most popular VIMP method to date, however, adopts a prediction error 
+  approach involving 'noising-up' a variable. In random forests, for example, VIMP for a variable x\[v\] is the 
+  difference between prediction error when x\[v\] is noised up by permuting its value randomly, compared to prediction 
+  error under the original predictor."
+* Basically, these guys do not use PImp b/c its too hard to tract theoretically.  They instead use something they
+  think is similar enough to PImp that their theoretical results are insightful.  The VImp they use goes like
+  this: for a given variable x[v], travel down the tree branches until you reach the first split on x[v] or
+  a terminal node; if a split on x[v] is reached, then use random left-right assignment on that split and for
+  every split further down the branch.  Apparently, a reviewer criticised this since other inputs were being
+  modified and could possibly cause a tree to become more informative while also not directly measuring the 
+  importance of x[v], however the authors argued that while true for a single tree, this type of effect should
+  wash out in the forest itself -- and, also, that they're theoretical results are still meaningful given
+  one cares about this VImp score at all.  They said a potential remedy would be to only do the left-right
+  randomization at x[v] splits in the tree, but for some reason this makes theoretical analysis much more
+  intractable.  
+* Paper gets pretty heavy with theorems and proofs going forward.  Shows that for VImp to have certain
+  important properties, certain conditions have to be met (e.g., trees should be rich enough to 
+  approximate f(X) and trees should be orthogonal), and that these are same conditions for RFs to
+  achieve low generalization errors...
+  
+  
+
+
+2009: Grömping: [Variable Importance Assessment in Regression: Linear Regression versus Random Forest](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C31&q=Variable+Importance+Assessment+in+Regression%3A+Linear+Regression+versus+Random+Forest&btnG=)
 
 * "Variable importance in regression is an important topic in applied statistics that keeps coming up in spite of critics who basically claim that the question should not have been asked in the
 first place."
@@ -135,6 +194,61 @@ first place."
   importance can be considered "biased".
   
   
+  
+  
+  
+  
+  
+  
+-----------------------------------------------------------
+
+# Tree Depth
+
+Breiman originally pitched growing trees in a RF to terminal purity (the original CART-RF).  This is sometimes 
+referred to growing trees to maximal depth, growing the largest trees, or just as growing large trees.  The idea and
+motivation behind this is seemingly sound, and at first it empirically rang true.  
+
+I found this cool paper that kind of shows a pivot point in the history of random forests from the
+original CART-RF to more general CART-like RFs.  Basically, all the data in the UCI ML repository at the time
+just so happened to be amenable to CART-RFs.  Namely, the data sets were hard to overfit by the CART-RF method,
+and so there was over-optimism about CART-RF's ability to reduce model bias while leaving model variance relatively
+untouched.  They found that some of the optimism could be restored by including another parameter or two, e.g.,
+"max depth" or "max terminal node size".  
+
+2004: Segal: [Machine Learning Benchmarks and Random Forest Regression](https://escholarship.org/uc/item/35x3v9t4)
+* The individual trees in Breiman's original CART-RF "are all grown to maximal depth. While this helps with regard 
+  bias, there is the familiar tradeoff with variance. However, these variability concerns were potentially obscured 
+  because of an interesting feature of those benchmarking datasets extracted from the UCI machine learning repository 
+  for testing: all these datasets are hard to overfit using tree-structured methods. This raises issues about the scope 
+  of the repository."
+* The authors found that "gains can be realized by additional tuning to regulate tree size via limiting the number 
+  of splits and/or the size of nodes for which splitting is allowed."
+* First, there were ensembles of bagged trees.  These bootstrap the data for each tree, then aggregate
+  by voting or averaging, etc, but they do not randomly subsample the features at each split.
+* From the ensembles of bagged trees, it was found that performance could be improved by better 
+  de-correlating the individual trees.  This observation motivated the original random forests (CART-RFs),
+  which added the random feature subsampling at each split.
+* The paper focuses on regression RFs instead of classification RFs.  Basically, from what I can tell, the
+  loss function in the regression forests is not a huge contributor to overfitting.  However, in 
+  classification forests, overfitting is very sensitive to the choice of loss function.  Furthermore, the
+  authors also noted that classification forests tended to perform poorly on imbalanced class problems 
+  without additional machinery.  Regression forests were the easiest way to show their point independent
+  of other effects.
+* Prediction Error Inequality:  `PE(RF) <= r * PE(Tree)`, where r is the avg correlation between
+  tree residuals in the forest.  This inequality shows that we can improve the RF in two ways: either
+  by improving each individual tree and/or by reducing the correlation between each tree's residuals. For 
+  the original CART-RF, this was accomplished as follows:
+  1. To keep individual tree errors low, each tree is grown to maximal depth.
+  2. To keep tree residual correlation low, randomize:
+    - grow each tree on a bootstrap
+    - choose mtry < p, then at every node of every tree, randomly choose mtry of the 
+      p predictors to guide split decision 
+* The paper's intent is to show that (1) controls the bias, but can generally inflate the variance and, thus,
+  the prediction error.  They argue this was not initially observed because the standard data sets
+  used for testing in the ML community from the UCI ML data repository all happened to work well with the
+  RF method by happenchance.
+* Their main argument is to limit the number of splits per tree, nsplit.  In scikit-learn, there are many
+  other ways to do this as well.
   
 -------------------------------------------------------------
 
