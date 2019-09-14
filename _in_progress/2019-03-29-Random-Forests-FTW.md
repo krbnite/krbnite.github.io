@@ -194,10 +194,23 @@ first place."
   importance can be considered "biased".
   
   
+2011: Nicodemus: [Letter to the Editor: On the stability and ranking of predictors from random forest variable importance measures](https://academic.oup.com/bib/article/12/4/369/241163)
+
   
+2013: Janitza, Strobl, & Boulesteix : [An AUC-based permutation variable importance measure for random forests](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-14-119)
+
+2017: Gregorutti et al: [Correlation and variable importance in random forests](https://arxiv.org/pdf/1310.5726.pdf)
   
+2017: Epifanio: Intervention in prediction measure: a new approach to assessing variable importance for random forests
   
-  
+2018: Nembrini et al: [The revival of the Gini importance?](https://academic.oup.com/bioinformatics/article/34/21/3711/4994791)
+
+
+----------------------------------------------------------------
+
+# Interactions
+
+* 2014: Boulesteix et al: [Letter to the Editor: On the term ‘interaction’ and related phrases in the literature on Random Forests](https://academic.oup.com/bib/article/16/2/338/246566)
   
   
 -----------------------------------------------------------
@@ -252,6 +265,18 @@ untouched.  They found that some of the optimism could be restored by including 
   
 -------------------------------------------------------------
 
+2015: Biau and Scornet: [A Random Forest Guided Tour](https://arxiv.org/pdf/1511.05741.pdf)
+
+*  Howard and Bowles (2012):  "Ensembles of decision trees (often known as 'random forests') have been the most 
+  successful general-purpose algorithm in modern times."
+*  Lin and Jeon (2006):  highlighted an interesting connection between random forests and a particular 
+  class of nearest neighbor predictors
+*  Scornet et al. (2015): show that Breiman’s (2001) forests are consistent in an additive regression framework.
+
+
+-----------------------------------------------------------
+
+
 
 2015: [Understanding Random Forests: from theory to practice](https://arxiv.org/pdf/1407.7502.pdf)
 
@@ -265,3 +290,40 @@ but after calibration the best methods are boosted trees, random forests and SVM
 
 
 RFs can be updated (recalibrated) to new patient populations (either using the Elkan rule, or the Dankowski rule).
+
+--------------------------------------
+
+
+2018: Janitza: [On the overestimation of random forest’s out-of-bag error](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0201904)
+
+
+
+---------------------------------------------
+
+# Time Series
+
+2017: Tyralis & Papacharalampous: [Variable Selection in Time Series Forecasting Using Random Forests](https://www.mdpi.com/1999-4893/10/4/114)
+
+
+--------------------------------------------
+
+# Applications
+
+### Bio
+* 2011: Goldstein et al: [Random Forests for Genetic Association Studies](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3154091/)
+* 2012: Boulesteix et al: [Overview of Random Forest Methodology and Practical Guidance with Emphasis on Computational Biology and Bioinformatics](https://epub.ub.uni-muenchen.de/13766/1/TR.pdf)
+* 2012: Chen & Ishwaran: [Random forests for genomic data analysis](https://www.sciencedirect.com/science/article/pii/S0888754312000626)
+* 2012: Qi: [Random Forest for Bioinformatics](http://www.montefiore.ulg.ac.be/~chaichoompu/CK/userfiles/downloads/2016/GBIO0002/HW2/3Random_Forests_for_Bioinformatics.pdf)
+
+### Physics
+* 2010: Carliles et al: [Random Forests for Photometric Redshifts](http://cis.jhu.edu/~parky/CEP-Publications/CBHSP-AJ2010.pdf)
+
+
+### Ecology
+* 2007: Cutler et al: [Random Forests for Classification in Ecology](https://digitalcommons.usu.edu/cgi/viewcontent.cgi?article=1805&context=wild_facpub)
+
+---------------------------------
+
+# Related Stuff
+
+[Reinforcement Learning Trees](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4760114/)
