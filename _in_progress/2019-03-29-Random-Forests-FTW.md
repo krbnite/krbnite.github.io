@@ -297,6 +297,18 @@ RFs can be updated (recalibrated) to new patient populations (either using the E
 2018: Janitza: [On the overestimation of random forest’s out-of-bag error](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0201904)
 
 
+------------------------------------------
+
+# Missing Values
+
+2010: Rieger et al: [Random Forests with Missing Values in the Covariates](https://epub.ub.uni-muenchen.de/11481/1/techreport.pdf)
+
+
+---------------------------------------------
+
+# Reviews
+
+2015: Biau & Scornet: [A Random Forest Guided Tour](https://arxiv.org/pdf/1511.05741.pdf)
 
 ---------------------------------------------
 
