@@ -224,7 +224,10 @@ first place."
   
 -----------------------------------------------------------
 
-# Tree Depth
+# Model Bias & Model Variance
+
+
+Tree Depth / Number of Slits
 
 Breiman originally pitched growing trees in a RF to terminal purity (the original CART-RF).  This is sometimes 
 referred to growing trees to maximal depth, growing the largest trees, or just as growing large trees.  The idea and
@@ -272,6 +275,9 @@ untouched.  They found that some of the optimism could be restored by including 
 * Their main argument is to limit the number of splits per tree, nsplit.  In scikit-learn, there are many
   other ways to do this as well.
   
+  
+2012: Genuer: Variance reduction in purely random forests (Link: https://hal.inria.fr/hal-01590513/document)
+
 -------------------------------------------------------------
 
 2015: Biau and Scornet: [A Random Forest Guided Tour](https://arxiv.org/pdf/1511.05741.pdf)
