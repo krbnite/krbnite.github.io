@@ -225,6 +225,7 @@ first place."
 2017: Epifanio: Intervention in prediction measure: a new approach to assessing variable importance for random forests
   
 2018: Nembrini et al: [The revival of the Gini importance?](https://academic.oup.com/bioinformatics/article/34/21/3711/4994791)
+2018: Parr et al: [Beware Default Random Forest Importances](https://explained.ai/rf-importance/)
 
 
 [Interpretable ML Book](https://christophm.github.io/interpretable-ml-book)
