@@ -24,8 +24,6 @@ https://www.stat.berkeley.edu/~breiman/RandomForests/cc_home.htm
 
 Updated from 2019-Sep-11:
 
-RFs are good for both classification and prob estimation: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3250568/
-* “Trees should not be grown to purity. In fact, if nodes are pure, the probability estimate is either 0 or 1 in a terminal node.  As a result, a larger number of trees might be required to obtain consistent probability estimates. If trees are too small, probability estimates might be imprecise. Therefore, as a default value, the terminal node size is generally 10% of the total sample size. Alternatively, the optimal terminal node size may be tuned.”
 
 RFs are low bias, low variance:  https://hal.inria.fr/hal-01590513/document
 
@@ -34,6 +32,17 @@ RFs should be Grid/RandomSearched w/ terminal node size as a search parameter (o
 Are RFs consistent estimators:  http://www.jmlr.org/papers/volume9/biau08a/biau08a.pdf
 
 ----------------------------------------------
+
+
+# Probability Estimation
+
+2005: Niculescu-Mizil & Caruana: [Predicting Good Probabilities With Supervised Learning](http://datascienceassn.org/sites/default/files/Predicting%20good%20probabilities%20with%20supervised%20learning.pdf)
+"Experiments with eight classification problems suggest that random forests, neural nets and bagged decision trees are the best learning methods for predicting well-calibrated probabilities prior to calibration, but after calibration the best methods are boosted trees, random forests and SVMs."
+
+
+2011: Malley et al: [Probability Machines: Consistent Probability Estimation Using Nonparametric Learning Machines](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3250568/)
+& RFs are good for both classification and prob estimation
+* “Trees should not be grown to purity. In fact, if nodes are pure, the probability estimate is either 0 or 1 in a terminal node.  As a result, a larger number of trees might be required to obtain consistent probability estimates. If trees are too small, probability estimates might be imprecise. Therefore, as a default value, the terminal node size is generally 10% of the total sample size. Alternatively, the optimal terminal node size may be tuned.”
 
 
 # Consistency of Random Forests
