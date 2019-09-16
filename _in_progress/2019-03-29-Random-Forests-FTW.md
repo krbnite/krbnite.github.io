@@ -69,9 +69,19 @@ Ruling: I'll get back to this stuff at a later date (not super HP to know all de
 
 2018: Tang et al: [When do random forests fail?](https://papers.nips.cc/paper/7562-when-do-random-forests-fail.pdf)
 
+2019: Josse et al: [On the consistency of supervised learning with missing values
+](https://arxiv.org/abs/1902.06931)
+  - paper that addresses that missing data is often studied in the inferential setting, but much less is known about 
+    the predictive setting; for example, it finds that mean imputation isn't so bad in predictive setting as it 
+    is considered in inferential setting
+  
+
+
 ---------------------------
 
-# Variable Importance
+# Model Interpretability
+
+## Variable Importance
 
 
 2007: Ishwaran: [Variable importance in binary regression trees and forests](https://projecteuclid.org/download/pdfview_1/euclid.ejs/1195157166)
@@ -102,7 +112,9 @@ Ruling: I'll get back to this stuff at a later date (not super HP to know all de
   achieve low generalization errors...
   
   
+2007: Strobl et al: [Bias in random forest variable importance measures: Illustrations, sources and a solution](https://link.springer.com/article/10.1186%2F1471-2105-8-25)
 
+2008: Strobl et al: [Conditional variable importance for random forests](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2491635/)
 
 2009: Grömping: [Variable Importance Assessment in Regression: Linear Regression versus Random Forest](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C31&q=Variable+Importance+Assessment+in+Regression%3A+Linear+Regression+versus+Random+Forest&btnG=)
 
@@ -215,6 +227,17 @@ first place."
 2018: Nembrini et al: [The revival of the Gini importance?](https://academic.oup.com/bioinformatics/article/34/21/3711/4994791)
 
 
+[Interpretable ML Book](https://christophm.github.io/interpretable-ml-book)
+
+
+## LIME
+2016: Ribeiro et al: [“Why Should I Trust You?” Explaining the Predictions of Any Classifier](https://arxiv.org/pdf/1602.04938.pdf)
+
+Undated: [Ch 5.7 of Intepretable Machine Learning: Local Surrogate (LIME)](https://christophm.github.io/interpretable-ml-book/lime.html)
+
+Undated: Wright: [Justifying a random forest’s predictions](https://roywright.me/2018/02/09/justifying-random-forest/)
+
+
 ----------------------------------------------------------------
 
 # Interactions
@@ -280,20 +303,7 @@ untouched.  They found that some of the optimism could be restored by including 
 
 -------------------------------------------------------------
 
-2015: Biau and Scornet: [A Random Forest Guided Tour](https://arxiv.org/pdf/1511.05741.pdf)
 
-*  Howard and Bowles (2012):  "Ensembles of decision trees (often known as 'random forests') have been the most 
-  successful general-purpose algorithm in modern times."
-*  Lin and Jeon (2006):  highlighted an interesting connection between random forests and a particular 
-  class of nearest neighbor predictors
-*  Scornet et al. (2015): show that Breiman’s (2001) forests are consistent in an additive regression framework.
-
-
------------------------------------------------------------
-
-
-
-2015: [Understanding Random Forests: from theory to practice](https://arxiv.org/pdf/1407.7502.pdf)
 
 
 
@@ -316,14 +326,102 @@ RFs can be updated (recalibrated) to new patient populations (either using the E
 
 # Missing Values
 
+Undated: Becker: Kaggle: Handling Missing Values (Link: https://www.kaggle.com/dansbecker/handling-missing-values)
+  - Basically, shows the importance of imputation + indication for predictive power
+1998: Sarle: [Prediction with Missing Inputs](https://pdfs.semanticscholar.org/f1f5/d604e31c615d357a7729c1e7d506f3c3528d.pdf)
+2007: Saar-Tsechansky & Provost: [Handling Missing Values when Applying Classification Models](http://jmlr.csail.mit.edu/papers/volume8/saar-tsechansky07a/saar-tsechansky07a.pdf)
+2009: Janssen et al: [Dealing with Missing Predictor Values When Applying Clinical Prediction Models](https://pdfs.semanticscholar.org/0c67/97f88f12edef205a314188f936ffd5cc3e88.pdf)
+  - Not specific to RFs, but important for this kind of work in general
+2009: Garcia-Laencina et al: [Pattern classification with missing data: a review](https://sci2s.ugr.es/keel/pdf/specific/articulo/pattern-classification-with-missin-data-a-review-2009.pdf)
+2010: Ding & Simonoff: [An Investigation of Missing Data Methods for Classification Trees Applied to Binary Response Data](http://www.jmlr.org/papers/volume11/ding10a/ding10a.pdf)
 2010: Rieger et al: [Random Forests with Missing Values in the Covariates](https://epub.ub.uni-muenchen.de/11481/1/techreport.pdf)
+2010: Vergouwe et al: [Development and validation of a prediction model with missing predictor data: a practical approach](https://www.sciencedirect.com/science/article/abs/pii/S0895435609001188)
+2015: Wood et al: [The estimation and use of predictions for the assessment of model performance using large samples with multiply imputed data](https://onlinelibrary.wiley.com/doi/pdf/10.1002/bimj.201400004)
+  - Not specific to RFs, but important for this kind of work in general
+2018: Mercaldo & Bloom: [Missing data and prediction: the pattern submodel](https://academic.oup.com/biostatistics/advance-article/doi/10.1093/biostatistics/kxy040/5092384)
+  - Not about RFs
+  - Instead, this about a multi-tiered modeling approach where a model is developed for every missing data pattern
+  - RFs or any other model can technically be used for each sub-model
 
+2019: Josse et al: [On the consistency of supervised learning with missing values](https://arxiv.org/abs/1902.06931)
+  - paper that addresses that missing data is often studied in the inferential setting, but much less is known about 
+    the predictive setting; for example, it finds that mean imputation isn't so bad in predictive setting as it 
+    is considered in inferential setting
+
+
+-----------------------------------------------
+
+
+# Deployment
+Most of these articles are not necessarily specific to RFs, but are important in general for 
+this type of work.
+
+## Misc
+2008: Guha: [Flexible Web Service Infrastructure for the Development and Deployment of Predictive Models](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.453.7552&rep=rep1&type=pdf)
+2008: Bellazzi & Zupan: [Predictive data mining in clinical medicine: Current issues and guidelines](http://eprints.fri.uni-lj.si/994/1/2008-IJMI-BellazziZupan.pdf)
+2009: Janssen et al: [A simple method to adjust clinical prediction models to local circumstances](https://link.springer.com/article/10.1007/s12630-009-9041-x)
+2011: Vickers et al: [Everything you always wanted to know about evaluating prediction models (but were too afraid to ask)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2997853/)
+2013: Paxton et al: [Developing Predictive Models Using Electronic Medical Records: Challenges and Pitfalls](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3900132/)
+2013: Lin & Ryaboy: [Scaling Big Data Mining Infrastructure: The Twitter Experience](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.728.2&rep=rep1&type=pdf)
+2013: Hendriksen et al: [Diagnostic and prognostic prediction models](https://onlinelibrary.wiley.com/doi/full/10.1111/jth.12262)
+2014: Steyerberg & Vergouwe: [Towards better clinical prediction models: seven steps for development and an ABCD for validation](https://academic.oup.com/eurheartj/article/35/29/1925/2293109)
+  - Not specifically about RFs, but important in general for this work
+2015: Sculley et al: [Hidden Technical Debt in Machine Learning Systems](http://papers.nips.cc/paper/5656-hidden-technical-debt-in-machine-learning-systems.pdf)
+2015: Khalilia et al: [Clinical Predictive Modeling Development and Deployment through FHIR Web Services](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4765683/)
+2016: Breck et al: [What’s your ML Test Score? A rubric for ML production systems](https://storage.googleapis.com/pub-tools-public-publication-data/pdf/45742.pdf)
+2017: Polyzotis et al: [Data Management Challenges in Production Machine Learning](https://dl.acm.org/citation.cfm?id=3054782)
+2018: Google: [Is My Data Any Good? A Pre-ML Checklist (v2)](https://services.google.com/fh/files/blogs/data-prep-checklist-ml-bd-wp-v2.pdf)
+2018: Murphree et al: [Deploying Predictive Models In A Healthcare Environment - An Open Source Approach](https://ieeexplore.ieee.org/abstract/document/8513689)
+2019: Tonekaboni et al: [What Clinicians Want: Contextualizing Explainable Machine Learning for Clinical End Use](https://arxiv.org/pdf/1905.05134.pdf)
+  - Not specifically about RFs, but important in general for this work
+
+## Data Leakage / Illegitimacy
+
+2011: Kaufman et al: [Leakage in Data Mining: Formulation, Detection, and Avoidance](https://www.researchgate.net/publication/221653692_Leakage_in_Data_Mining_Formulation_Detection_and_Avoidance)
+
+Undated: Larsren: [Data leakage in healthcare machine learning](https://healthcare.ai/data-leakage-in-healthcare-machine-learning/)
+
+2018: Bergmann (SalesForce): [Hindsight Bias: How to Deal with Label Leakage at Scale](https://www.datacouncil.ai/talks/hindsight-bias-how-to-deal-with-label-leakage-at-scale)
+
+2018: SalesForce: [Back to the Future: Demystifying Hindsight Bias](https://www.infoq.com/articles/data-leakage-hindsight-bias-machine-learning/)
+
+
+-------------------------------------------------
+
+# Peculiarities of Predictive Models (comparison w/ explanatory/inferential objectives)
+
+2001: Breiman: [Statistical modeling: The two cultures (with comments and a rejoinder by the author)](https://projecteuclid.org/download/pdf_1/euclid.ss/1009213726)
+2010: Schmeli: [To Explain or to Predict?](https://www.stat.berkeley.edu/~aldous/157/Papers/shmueli.pdf)
+2011: Shmueli & Koppius: [Predictive Analytics in Information Systems Research](https://core.ac.uk/download/pdf/18520155.pdf)
+2015: Lo et al: [Why significant variables aren’t automatically good predictors](https://www.pnas.org/content/112/45/13892.long)
+2014: Allison: [Prediction vs. Causation in Regression Analysis](https://statisticalhorizons.com/prediction-vs-causation-in-regression-analysis)
+2017: Yarkoni & Westfall: [Choosing Prediction Over Explanation in Psychology: Lessons From Machine Learning](https://journals.sagepub.com/doi/abs/10.1177/1745691617693393)
+
+2017: Mullainathan & Spiess: [Machine Learning: An Applied Econometric Approach](https://pubs.aeaweb.org/doi/pdf/10.1257/jep.31.2.87)
+
+
+----------------------------------------------
+
+# RF Optimization (Scikit-Learn)
+
+https://towardsdatascience.com/end-to-end-python-framework-for-predictive-modeling-b8052bb96a78
 
 ---------------------------------------------
 
 # Reviews
 
 2015: Biau & Scornet: [A Random Forest Guided Tour](https://arxiv.org/pdf/1511.05741.pdf)
+
+2015: Biau and Scornet: [A Random Forest Guided Tour](https://arxiv.org/pdf/1511.05741.pdf)
+
+*  Howard and Bowles (2012):  "Ensembles of decision trees (often known as 'random forests') have been the most 
+  successful general-purpose algorithm in modern times."
+*  Lin and Jeon (2006):  highlighted an interesting connection between random forests and a particular 
+  class of nearest neighbor predictors
+*  Scornet et al. (2015): show that Breiman’s (2001) forests are consistent in an additive regression framework.
+
+2015: [Understanding Random Forests: from theory to practice](https://arxiv.org/pdf/1407.7502.pdf)
+
 
 ---------------------------------------------
 
