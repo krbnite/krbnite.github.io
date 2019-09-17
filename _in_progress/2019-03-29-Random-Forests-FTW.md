@@ -443,6 +443,9 @@ https://towardsdatascience.com/end-to-end-python-framework-for-predictive-modeli
 
 ### Physics
 * 2010: Carliles et al: [Random Forests for Photometric Redshifts](http://cis.jhu.edu/~parky/CEP-Publications/CBHSP-AJ2010.pdf)
+* 2012: Rodriguez-Galiano et al: [An assessment of the effectiveness of a random forest classifier for land-cover classification](https://s3.amazonaws.com/academia.edu.documents/29631954/Rodriguez_Galiano__etal_2012_Random_forest_land_cover_ISPRS.pdf?response-content-disposition=inline%3B%20filename%3DAn_assessment_of_the_effectiveness_of_a.pdf&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWOWYYGZ2Y53UL3A%2F20190917%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20190917T010957Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=60e22062133bdddd59c3b2a5abfd85a26b3ed29c5d38d4750dadac5aadf5b319)
+* 2016: Belgiu: [Random forest in remote sensing: A review of applications and future directions](https://daneshyari.com/article/preview/555862.pdf)
+* 2016: Pelletier et al: [Assessing the robustness of Random Forests to map land cover with high resolution satellite image time series over large areas](http://recherche.ign.fr/labos/matis/pdf/articles_revues/2016/PVICD16.pdf)
 
 
 ### Ecology
