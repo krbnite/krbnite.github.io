@@ -75,13 +75,25 @@ Ruling: I'll get back to this stuff at a later date (not super HP to know all de
     the predictive setting; for example, it finds that mean imputation isn't so bad in predictive setting as it 
     is considered in inferential setting
   
+  
+--------------------------------
+  
+# Misc Internal Workings and Mathiness of RF
+* 2012: Oshiro & Baranauskas: [Root Attribute Behavior within a Random Forest](https://www.researchgate.net/profile/Jose_Baranauskas/publication/230766592_Root_Attribute_Behavior_within_a_Random_Forest/links/09e415040fc2c75e36000000.pdf)
+* 2019: Lopes: [Estimating the Algorithmic Variance of Randomized Ensembles via the Bootstrap](http://anson.ucdavis.edu/~melopes/info/AOS_2019.pdf)
+* 2019: Lopes et al: [Measuring the Algorithmic Convergence of Randomized Ensembles: The Regression Setting](https://arxiv.org/pdf/1908.01251.pdf)
 
 --------------------------
 
 
 # Model Optimization
 
-2016: Orlandi: [Random Forests Model Selection](https://www.elen.ucl.ac.be/Proceedings/esann/esannpdf/es2016-48.pdf)
+* 2001: Latinne et al: [Limiting the Number of Trees in Random Forests](https://www.researchgate.net/profile/Olivier_Debeir/publication/221093985_Limiting_the_Number_of_Trees_in_Random_Forests/links/0c96053392aa346efb000000/Limiting-the-Number-of-Trees-in-Random-Forests.pdf)
+* 2009: Bernard et al: [On the selection of decision trees in Random Forests](https://hal.archives-ouvertes.fr/file/index/docid/436355/filename/ijcnn09.pdf)
+* 2012: Oshiro et al: [How many trees in a random forest?](https://www.researchgate.net/profile/Jose_Baranauskas/publication/230766603_How_Many_Trees_in_a_Random_Forest/links/0912f5040fb35357a1000000/How-Many-Trees-in-a-Random-Forest.pdf)
+* 2016: Orlandi: [Random Forests Model Selection](https://www.elen.ucl.ac.be/Proceedings/esann/esannpdf/es2016-48.pdf)
+* 2017: Probst & Boulesteix: [To Tune or Not to Tune the Number of Trees in Random Forest](http://www.jmlr.org/papers/volume18/17-269/17-269.pdf)
+* 2019: Probst et al: [Hyperparameters and Tuning Strategies for Random Forest](https://arxiv.org/pdf/1804.03515.pdf)
 
 
 ---------------------------
@@ -413,6 +425,7 @@ this type of work.
 Classification Problems?](http://www.jmlr.org/papers/volume15/delgado14a/delgado14a.pdf)
 * 2016: Wainberg et al: [Are Random Forests Truly the Best Classifiers?](http://www.jmlr.org/papers/volume17/15-374/15-374.pdf)
 * 2016: Mera et al: Comparison of a massive and diverse collection of ensembles and other classifiers for oil spill detection in sar satellite images
+* 2018: Couronne et al: [Random forest versus logistic regression: a large-scale benchmark experiment](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-018-2264-5)
 * Undated: [Neural Networks vs. Random Forests – Does it always have to be Deep Learning](https://blog.frankfurt-school.de/wp-content/uploads/2018/10/Neural-Networks-vs-Random-Forests.pdf)
 
 
@@ -446,6 +459,29 @@ https://www.quora.com/When-should-random-forest-be-used-over-logistic-regression
 ### Quantile Regression Forests
 2006: Meinshausen: [Quantile Regression Forests](http://www.jmlr.org/papers/volume7/meinshausen06a/meinshausen06a.pdf)
 Undated: [Scikit Garden: Quantile Regression Forests](https://scikit-garden.github.io/examples/QuantileRegressionForests/)
+
+### Semi-Supervised Random Forests
+2009: Leistner et al: [Semi-Supervised Random Forests](http://www.ymer.org/papers/files/2009-SemisupervisedRandomForests.pdf)
+
+### Extremely Randomized (ExtRa) Trees 
+
+### Isolation Forest
+2008: Liu et al: [Isolation Forest](https://cs.nju.edu.cn/zhouzh/zhouzh.files/publication/icdm08b.pdf?q=isolation-forest)
+
+### Structured Forests
+* 2013: Dollar et al: [Structured forests for fast edge detection](http://openaccess.thecvf.com/content_iccv_2013/papers/Dollar_Structured_Forests_for_2013_ICCV_paper.pdf)
+* 2014: Dollar et al: [Fast edge detection using structured forests](https://arxiv.org/pdf/1406.5549.pdf)
+
+### Hough Forests
+* 2011: Girshick et al: [Efficient regression of general-activity human poses from depth images](https://ieeexplore.ieee.org/abstract/document/6126270)
+* 2013: Gall & Lempitsky: [Class-Specific Hough Forests for Object Detection](https://www.robots.ox.ac.uk/~vilem/cvpr2009.pdf)
+
+### Alternating Decision Forests
+* 2013: Schulter1 et al: [Alternating Decision Forests](http://openaccess.thecvf.com/content_cvpr_2013/papers/Schulter_Alternating_Decision_Forests_2013_CVPR_paper.pdf)
+
+### Unsupervised Stuff
+2005: Shi & Horvath: Unsupervised Learning With Random Forest Predictors](https://www.researchgate.net/profile/Tao_Shi3/publication/228650239_Unsupervised_Learning_With_Random_Forest_Predictors/links/555bd0e908ae91e75e766bf5.pdf)
+2016: Afanador et al: [Unsupervised random forest: a tutorial with case studies](https://onlinelibrary.wiley.com/doi/abs/10.1002/cem.2790)
 
 
 -------------------------------------------------
@@ -508,6 +544,9 @@ https://towardsdatascience.com/end-to-end-python-framework-for-predictive-modeli
 
 ### Ecology
 * 2007: Cutler et al: [Random Forests for Classification in Ecology](https://digitalcommons.usu.edu/cgi/viewcontent.cgi?article=1805&context=wild_facpub)
+
+### Image Processing
+* 2013: Fanelli et al: [Random Forests for Real Time 3D Face Analysis](http://doc.rero.ch/record/313914/files/11263_2012_Article_549.pdf)
 
 ---------------------------------
 
