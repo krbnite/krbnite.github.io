@@ -1,4 +1,8 @@
-
+---
+title: Design Patterns (Notes)
+layout: post
+tags: python wwe
+---
 
 
 In Lynda's course, 
