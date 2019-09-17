@@ -422,8 +422,31 @@ https://www.quora.com/When-should-random-forest-be-used-over-logistic-regression
 
 # Related Forests
 
+### Rotation Forest
 * 2006: Rodriguez et al: [Rotation Forest: A New Classifier Ensemble Method](https://ieeexplore.ieee.org/abstract/document/1677518)
+
+### Random Rotation Ensembles
 * 2016: Blaser & Fryzlewicz: [Random Rotation Ensembles](http://www.jmlr.org/papers/volume17/blaser16a/blaser16a.pdf)
+
+### Oblique Random Forests
+* 2011: Menze: [On Oblique Random Forests](http://people.csail.mit.edu/menze/papers/menze_11_oblique.pdf)
+* 2016: Poona et al: [Investigating the Utility of Oblique Tree-Based Ensembles for the Classification of Hyperspectral Data](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5134577/)
+* 2018: Agjee et al: [The Impact of Simulated Spectral Noise on Random Forest and Oblique Random Forest Classification Performance](https://www.hindawi.com/journals/jspec/2018/8316918/)
+
+### Deep and Neural Forests
+* [Deep Forest](https://arxiv.org/pdf/1702.08835.pdf)
+* [Neural Random Forests](https://arxiv.org/abs/1604.07143)
+* [Deep Neural Decision Forests](https://www.cv-foundation.org/openaccess/content_iccv_2015/papers/Kontschieder_Deep_Neural_Decision_ICCV_2015_paper.pdf)
+
+### Mondrian Forests
+2014: Lakshminarayanan et al: [Mondrian Forests: Efficient Online Random Forests](https://papers.nips.cc/paper/5234-mondrian-forests-efficient-online-random-forests.pdf)
+2018: Thapliyal: [Mondrian Forests : Making Random Forests better and efficient](https://medium.com/mlrecipies/mondrian-forests-making-random-forests-better-and-efficient-b27814c681e5)
+
+
+### Quantile Regression Forests
+2006: Meinshausen: [Quantile Regression Forests](http://www.jmlr.org/papers/volume7/meinshausen06a/meinshausen06a.pdf)
+Undated: [Scikit Garden: Quantile Regression Forests](https://scikit-garden.github.io/examples/QuantileRegressionForests/)
+
 
 -------------------------------------------------
 
