@@ -245,6 +245,12 @@ Undated: Wright: [Justifying a random forest’s predictions](https://roywright.
 
 * 2014: Boulesteix et al: [Letter to the Editor: On the term ‘interaction’ and related phrases in the literature on Random Forests](https://academic.oup.com/bib/article/16/2/338/246566)
   
+------------------------------------------------------
+
+# Imbalanced Data
+* 2007: Khoshgoftaar et al: [An Empirical Study of Learning from Imbalanced Data Using Random Forest](https://ieeexplore.ieee.org/abstract/document/4410397)
+
+
   
 -----------------------------------------------------------
 
@@ -435,13 +441,14 @@ https://towardsdatascience.com/end-to-end-python-framework-for-predictive-modeli
 
 # Applications
 
-### Bio
+### Bio / Healthcare
 * 2011: Goldstein et al: [Random Forests for Genetic Association Studies](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3154091/)
+* 2011: Dittman: [Random forest: A reliable tool for patient response prediction](https://ieeexplore.ieee.org/abstract/document/6112389)
 * 2012: Boulesteix et al: [Overview of Random Forest Methodology and Practical Guidance with Emphasis on Computational Biology and Bioinformatics](https://epub.ub.uni-muenchen.de/13766/1/TR.pdf)
 * 2012: Chen & Ishwaran: [Random forests for genomic data analysis](https://www.sciencedirect.com/science/article/pii/S0888754312000626)
 * 2012: Qi: [Random Forest for Bioinformatics](http://www.montefiore.ulg.ac.be/~chaichoompu/CK/userfiles/downloads/2016/GBIO0002/HW2/3Random_Forests_for_Bioinformatics.pdf)
 
-### Physics
+### Physics / Remote Sensing
 * 2010: Carliles et al: [Random Forests for Photometric Redshifts](http://cis.jhu.edu/~parky/CEP-Publications/CBHSP-AJ2010.pdf)
 * 2012: Rodriguez-Galiano et al: [An assessment of the effectiveness of a random forest classifier for land-cover classification](https://s3.amazonaws.com/academia.edu.documents/29631954/Rodriguez_Galiano__etal_2012_Random_forest_land_cover_ISPRS.pdf?response-content-disposition=inline%3B%20filename%3DAn_assessment_of_the_effectiveness_of_a.pdf&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWOWYYGZ2Y53UL3A%2F20190917%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20190917T010957Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=60e22062133bdddd59c3b2a5abfd85a26b3ed29c5d38d4750dadac5aadf5b319)
 * 2016: Belgiu: [Random forest in remote sensing: A review of applications and future directions](https://daneshyari.com/article/preview/555862.pdf)
