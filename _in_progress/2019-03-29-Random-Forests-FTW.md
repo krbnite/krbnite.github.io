@@ -448,6 +448,9 @@ https://www.quora.com/When-should-random-forest-be-used-over-logistic-regression
 * [Neural Random Forests](https://arxiv.org/abs/1604.07143)
 * [Deep Neural Decision Forests](https://www.cv-foundation.org/openaccess/content_iccv_2015/papers/Kontschieder_Deep_Neural_Decision_ICCV_2015_paper.pdf)
 
+### Dynamic Random Forests
+2012: Bernard et al: Dynamic Random Forests](https://hal.archives-ouvertes.fr/hal-00710083/file/drf2.pdf)
+
 ### Extremely Randomized (ExtRa) Trees 
 
 ### Forests of Probability Estimation Trees (PETs)
@@ -502,6 +505,8 @@ Undated: [Scikit Garden: Quantile Regression Forests](https://scikit-garden.gith
 2005: Shi & Horvath: Unsupervised Learning With Random Forest Predictors](https://www.researchgate.net/profile/Tao_Shi3/publication/228650239_Unsupervised_Learning_With_Random_Forest_Predictors/links/555bd0e908ae91e75e766bf5.pdf)
 2016: Afanador et al: [Unsupervised random forest: a tutorial with case studies](https://onlinelibrary.wiley.com/doi/abs/10.1002/cem.2790)
 
+### Weighted RFs
+2014: Baumann et al: [Thresholding a Random Forest Classifier](http://www.tnt.uni-hannover.de/papers/data/1055/isvc2014_baumann.pdf)
 
 
 -------------------------------------------------
