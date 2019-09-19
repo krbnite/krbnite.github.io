@@ -75,7 +75,12 @@ Ruling: I'll get back to this stuff at a later date (not super HP to know all de
     the predictive setting; for example, it finds that mean imputation isn't so bad in predictive setting as it 
     is considered in inferential setting
   
-  
+# Calibration
+* 2008: Bostrom: [Calibrating Random Forests](https://people.dsv.su.se/~henke/papers/bostrom08b.pdf)
+* 2016: Dankowski & Ziegler: [Calibrating random forests for probability estimation](https://onlinelibrary.wiley.com/doi/pdf/10.1002/sim.6959)
+
+
+
 --------------------------------
   
 # Misc Internal Workings and Mathiness of RF
@@ -435,53 +440,68 @@ https://www.quora.com/When-should-random-forest-be-used-over-logistic-regression
 
 # Related Forests
 
-### Rotation Forest
-* 2006: Rodriguez et al: [Rotation Forest: A New Classifier Ensemble Method](https://ieeexplore.ieee.org/abstract/document/1677518)
-
-### Random Rotation Ensembles
-* 2016: Blaser & Fryzlewicz: [Random Rotation Ensembles](http://www.jmlr.org/papers/volume17/blaser16a/blaser16a.pdf)
-
-### Oblique Random Forests
-* 2011: Menze: [On Oblique Random Forests](http://people.csail.mit.edu/menze/papers/menze_11_oblique.pdf)
-* 2016: Poona et al: [Investigating the Utility of Oblique Tree-Based Ensembles for the Classification of Hyperspectral Data](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5134577/)
-* 2018: Agjee et al: [The Impact of Simulated Spectral Noise on Random Forest and Oblique Random Forest Classification Performance](https://www.hindawi.com/journals/jspec/2018/8316918/)
+### Alternating Decision Forests
+* 2013: Schulter1 et al: [Alternating Decision Forests](http://openaccess.thecvf.com/content_cvpr_2013/papers/Schulter_Alternating_Decision_Forests_2013_CVPR_paper.pdf)
 
 ### Deep and Neural Forests
 * [Deep Forest](https://arxiv.org/pdf/1702.08835.pdf)
 * [Neural Random Forests](https://arxiv.org/abs/1604.07143)
 * [Deep Neural Decision Forests](https://www.cv-foundation.org/openaccess/content_iccv_2015/papers/Kontschieder_Deep_Neural_Decision_ICCV_2015_paper.pdf)
 
+### Extremely Randomized (ExtRa) Trees 
+
+### Forests of Probability Estimation Trees (PETs)
+* 2012: Bostrom: [Forests of Probability Estimation Trees]
+
+### Fuzzy Forests
+2010: Bonissone et al: Fuzzy Random Forest: Fundamental for Design and Construction
+2010: Bonissone et al: A Fuzzy Random Forest
+
+### Hough Forests
+* 2011: Gall: [Hough Forests for Object Detection, Tracking, and Action Recognition](http://www.ipb.uni-bonn.de/html/projects/MoD/literatur/pdf/p7-2011_Gall_Houghforests.pdf)
+* 2011: Schulter et al: [On-line Hough Forests](https://pdfs.semanticscholar.org/b321/626fb582012d0e5d102ef5eba4db5a151363.pdf)
+* 2011: Girshick et al: [Efficient regression of general-activity human poses from depth images](https://ieeexplore.ieee.org/abstract/document/6126270)
+* 2013: Gall & Lempitsky: [Class-Specific Hough Forests for Object Detection](https://www.robots.ox.ac.uk/~vilem/cvpr2009.pdf)
+
+### Isolation Forest
+2008: Liu et al: [Isolation Forest](https://cs.nju.edu.cn/zhouzh/zhouzh.files/publication/icdm08b.pdf?q=isolation-forest)
+
+### Meta Random Forests
+* 2008: Boinee et al: [Meta Random Forests](https://pdfs.semanticscholar.org/c173/cbe5a681324575742a62fd01b04529582039.pdf)
+
 ### Mondrian Forests
 2014: Lakshminarayanan et al: [Mondrian Forests: Efficient Online Random Forests](https://papers.nips.cc/paper/5234-mondrian-forests-efficient-online-random-forests.pdf)
 2018: Thapliyal: [Mondrian Forests : Making Random Forests better and efficient](https://medium.com/mlrecipies/mondrian-forests-making-random-forests-better-and-efficient-b27814c681e5)
 
+### Oblique Random Forests
+* 2011: Menze: [On Oblique Random Forests](http://people.csail.mit.edu/menze/papers/menze_11_oblique.pdf)
+* 2016: Poona et al: [Investigating the Utility of Oblique Tree-Based Ensembles for the Classification of Hyperspectral Data](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5134577/)
+* 2018: Agjee et al: [The Impact of Simulated Spectral Noise on Random Forest and Oblique Random Forest Classification Performance](https://www.hindawi.com/journals/jspec/2018/8316918/)
 
 ### Quantile Regression Forests
 2006: Meinshausen: [Quantile Regression Forests](http://www.jmlr.org/papers/volume7/meinshausen06a/meinshausen06a.pdf)
 Undated: [Scikit Garden: Quantile Regression Forests](https://scikit-garden.github.io/examples/QuantileRegressionForests/)
 
+### Random Rotation Ensembles
+* 2016: Blaser & Fryzlewicz: [Random Rotation Ensembles](http://www.jmlr.org/papers/volume17/blaser16a/blaser16a.pdf)
+
+### Reinforcement Learning Trees
+[Reinforcement Learning Trees](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4760114/)
+
+### Rotation Forest
+* 2006: Rodriguez et al: [Rotation Forest: A New Classifier Ensemble Method](https://ieeexplore.ieee.org/abstract/document/1677518)
+
 ### Semi-Supervised Random Forests
 2009: Leistner et al: [Semi-Supervised Random Forests](http://www.ymer.org/papers/files/2009-SemisupervisedRandomForests.pdf)
-
-### Extremely Randomized (ExtRa) Trees 
-
-### Isolation Forest
-2008: Liu et al: [Isolation Forest](https://cs.nju.edu.cn/zhouzh/zhouzh.files/publication/icdm08b.pdf?q=isolation-forest)
 
 ### Structured Forests
 * 2013: Dollar et al: [Structured forests for fast edge detection](http://openaccess.thecvf.com/content_iccv_2013/papers/Dollar_Structured_Forests_for_2013_ICCV_paper.pdf)
 * 2014: Dollar et al: [Fast edge detection using structured forests](https://arxiv.org/pdf/1406.5549.pdf)
 
-### Hough Forests
-* 2011: Girshick et al: [Efficient regression of general-activity human poses from depth images](https://ieeexplore.ieee.org/abstract/document/6126270)
-* 2013: Gall & Lempitsky: [Class-Specific Hough Forests for Object Detection](https://www.robots.ox.ac.uk/~vilem/cvpr2009.pdf)
-
-### Alternating Decision Forests
-* 2013: Schulter1 et al: [Alternating Decision Forests](http://openaccess.thecvf.com/content_cvpr_2013/papers/Schulter_Alternating_Decision_Forests_2013_CVPR_paper.pdf)
-
 ### Unsupervised Stuff
 2005: Shi & Horvath: Unsupervised Learning With Random Forest Predictors](https://www.researchgate.net/profile/Tao_Shi3/publication/228650239_Unsupervised_Learning_With_Random_Forest_Predictors/links/555bd0e908ae91e75e766bf5.pdf)
 2016: Afanador et al: [Unsupervised random forest: a tutorial with case studies](https://onlinelibrary.wiley.com/doi/abs/10.1002/cem.2790)
+
 
 
 -------------------------------------------------
@@ -507,6 +527,79 @@ https://towardsdatascience.com/end-to-end-python-framework-for-predictive-modeli
 
 # Reviews
 
+* 2013: Kulkarni & Sinha: [Random Forest Classifiers :A Survey and Future Research Directions](https://pdfs.semanticscholar.org/9ae3/ecab3dc662862ae4009baaf78290ce4e0199.pdf)
+  - a systematic survey of work done on Random Forests
+  - provides a taxonomy of  Random Forest classifiers, and a comparison chart of relevant parameters
+  - relevant findings to consider:
+    * accuracy: there is potential for improvement in accuracy by using different split measures and combining functions
+    * performance: its found that performance can be improved by dynamically pruning a forest and estimating an 
+      optimal subset of the forest
+    * generalizations and/or extensions: there are avenues of research into streaming data, imbalanced data, and
+      semi-supervised learning
+  - their description of a RF: "Random Forest generates multiple decision trees; the randomization is present in 
+    two ways: (1) random sampling of data for bootstrap samples as it is done in bagging and (2) random selection 
+    of input features for generating individual base decision trees."
+  - paths to improvement: "Strength of individual decision tree classifier and correlation among base trees are 
+    key issues which decide generalization error of a Random Forest classifier." In other words, individual 
+    trees should be fairly good on their own, and uncorrelated with each other (for the most part).
+      * You may wonder, "What does correlation between trees actually mean? How is it defined? Are we talking
+        regular ol' correlation?"  
+      * I looked this up, and almost no one gives much more than a hand-wavy description (e.g., it just means
+        the trees should look different).
+      * However, I did find a resource that defines it: [Yi Yang (McGill University): RFs Ch15](http://www.math.mcgill.ca/yyang/resources/doc/randomforest.pdf)
+      * Basically, if RF(x) = (1/N)Sum{T(i,x)}, and we consider the N tree to be i.i.d, all with
+        variance s^2, then the average of the trees would have variance (1/N)s^2. However, the 
+        trees are not i.i.d., they are better approximated as i.d. (identically distributed, but no
+        independent). In this case, the RF variance is rs^2 + (1/N)(1-r)s^2, where r is the average
+        pairwise correlation between trees.  Here we can shrink the 2nd term with more trees (larger N), 
+        but the first term remains. 
+  - "As per Breiman [11], Random Forest runs efficiently on large databases, can handle thousands of
+    input variables without variable deletion, gives estimates of important variables, generates an 
+    internal unbiased estimate of generalization error as forest growing progresses, has effective method 
+    for estimating missing data and maintains accuracy when a large proportion of data are missing, and 
+    has methods for balancing class error in class population unbalanced data sets."
+  - parameters to tweak include: nTrees, mtry, minNodeSize, numNodes, etc
+  - OOB: For each tree in the forest, the bootstrap sample excludes about 1/3rd of the original instances;
+    this is the Out-of-Bag data for that tree.  This allows a forest to have its own self-validation set:
+    each data point should be left out of about 1/3 of the trees, which can be used for validation.
+  - Meta RF: "Meta Random Forest is based on the concept of using random forest themselves as base 
+    classifiers for making ensembles, and the performance of this model is tested and compared with the 
+    existing Random Forest algorithm. Meta Random Forests are generated by both bagging and boosting 
+    approaches i.e. ensemble using Random Forest as base classifier with bagging approach, and ensemble
+    using Random Forest as base classifier with boosting approach. Comparative study of both these techniques 
+    and original Random Forest technique has shown that Bagged Random Forest gives the best results among the 
+    three techniques."
+  - Varying the split fcn by tree (no signif improvement): "Robnik and Sikonja (2004, Improving Random Forests) 
+    experimented with Random Forest using five different attribute measures; each fifth of the trees in the forest 
+    is generated using different split measure (Gini index, Gain ratio, MDL, ReliefF). This helped in decreasing 
+    correlation between the trees while retaining their strengths. The performance increase observed was not 
+    significant."
+  - Varying the number of subsampled features per node (no signif improvement): Bernard et al 
+    pitched Forest Rk, where k is the number of features selected at a node, which is randomized
+    at each node.  They found that a Forest Rk is statistically equivalent a Random Forest, so
+    do not consider k an important hyperparameter.
+  - Weighted Voting Schemes (some improvement):  technique is called Dynamic Integration (Tsymbal et al); has
+    something to do with optimizing trees to be good in local areas of the data space...
+  - nTrees: "Theoretical and empirical results have proved that above a certain number of trees, adding more 
+    trees in the forest does not improve accuracy (Bernard 2009, Trees in Random Forest)." 
+  - Tree Removal (some improvement): You can find the worst performing trees and remove them.  One way to
+    do this is to remove one tree at a time, then compute the change in accuracy; remove the worst 
+    offender(s). Another way: reduce correlation among trees by computing all pairwise correlations; remove
+    one from each pair of worst offender(s).
+  - Imbalanced data --> Ensemble of RFs (improvement):  Basically, for imbalanced data, use RF as a base 
+    learner.  For each RF, use stratified subsampling to produce a smaller, but bootstrap-like balanced subsample
+    of the data.  (2004: Chain et al: Using Random forest to Learn Imbalanced Data.)
+  - "By reviewing all work done related to performance improvement of Random forest there is still an important 
+    issue which is unresolved is: what is the optimal number of base classifiers in Random Forest and how to select 
+    the optimal subset without growing the entire forest."
+  - Online RFs.. Doesn't seem too useful to me at the moment... But basically, it is an answer to when you
+    have so much data streaming in that you cannot save (too much data), but you could save classifications
+    made in real-time...  How do you build the RF on-the-spot w/o having historical data...?  (Something like 
+    that.) "Internet traffic monitoring, Telecommunications billings, etc. produce huge amount of data and it 
+    is practically impossible to store this real-time stream. Also it is not possible to have multiple passes 
+    through this data."
+
+
 * 2015: Biau & Scornet: [A Random Forest Guided Tour](https://arxiv.org/pdf/1511.05741.pdf)
   - Howard and Bowles (2012):  "Ensembles of decision trees (often known as 'random forests') have been the most 
     successful general-purpose algorithm in modern times."
@@ -514,8 +607,13 @@ https://towardsdatascience.com/end-to-end-python-framework-for-predictive-modeli
   class of nearest neighbor predictors
   - Scornet et al. (2015): show that Breiman’s (2001) forests are consistent in an additive regression framework.
 
+
+
+
 * 2015: [Understanding Random Forests: from theory to practice](https://arxiv.org/pdf/1407.7502.pdf)
 
+
+* Good notes:  http://www.math.mcgill.ca/yyang/resources/doc/randomforest.pdf
 
 ---------------------------------------------
 
@@ -550,6 +648,36 @@ https://towardsdatascience.com/end-to-end-python-framework-for-predictive-modeli
 
 ---------------------------------
 
-# Related Stuff
+# Questions
 
-[Reinforcement Learning Trees](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4760114/)
+# Multi-Random Random Forests?
+Is there a name for a random forest that randomizes things even more than usual, e.g.:
+* features are subsampled before even going to a tree (then nodes subsample features from the subsample)
+* different constraints (e.g., a forest of shallow trees combined with a forest of terminal-purity 
+  trees, combined with a forest that uses a different split function, etc)
+
+Potential Yes: In one of the reviews above, I read about Meta RFs, which are bagged, boosted, or 
+bagged-and-boosted RFs.  I say "potential" yes b/c from that description, e.g., it's not clear
+they do any more than boostrap the data before passing it to a base RF.  
+
+An actual yes (for split fcns): see Robnik and Sikonja (2004, Improving Random Forests).  That said,
+their results showed very little improvement (similar to my own experience of just comparing forests
+with different split functions, e.g., a "gini forest" vs an "entropy forest").
+
+# How can I cut out the dead trees?
+There exist quite a few methods to detect underperforming trees in a random forest, and has been
+shown that removing some of them can increase the performance of the RF.  My question is: how do 
+I do this with a sklearn forest?  In other words, is there a method included in the package, or
+do I have write the code myself?  That's all... Want to look into it.  
+
+One idea: rank the OOB errors from the trees and get rid the the worst ones.
+
+Another idea: remove highly correlated trees.  This is more brute force pairwise 
+comparisons...  
+
+Another idea: remove a tree, compute change in accuracy; do for all trees; remove lowest performers. (2009: 
+Zhang: Search for the smallest Random Forest.)
+
+Many of these ideas have been tried out in several papers.  I've read that some of the constraints
+you can put on a forest (e.g., minNodeSize, numNodes, etc) basically serve as a pre-pruning
+strategy (i.e., pruning that occurs before pruning is necessary, making pruning relatively unnecessary).
