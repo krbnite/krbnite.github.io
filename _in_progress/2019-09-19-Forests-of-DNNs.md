@@ -21,3 +21,9 @@ at each node or layer, but there are other randomizations we can do.
    the amount of Guassian noise injected at a layer).
 
 You get the idea!
+
+Here are general ways of creating ensembles:
+1. Combine base classifiers in different ways (e.g., bag some, boost some).
+2. Use different base classifiers (e.g., model stacking).
+3. Use different feature subsets.
+4. Use different data subsets.
