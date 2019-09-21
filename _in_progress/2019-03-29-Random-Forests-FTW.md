@@ -140,119 +140,151 @@ Ruling: I'll get back to this stuff at a later date (not super HP to know all de
 
 2008: Strobl et al: [Conditional variable importance for random forests](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2491635/)
 
-2009: Grömping: [Variable Importance Assessment in Regression: Linear Regression versus Random Forest](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C31&q=Variable+Importance+Assessment+in+Regression%3A+Linear+Regression+versus+Random+Forest&btnG=)
-
-* "Variable importance in regression is an important topic in applied statistics that keeps coming up in spite of critics who basically claim that the question should not have been asked in the
-first place."
-* "Linear regression is a classical parametric method which requires explicit modeling of nonlinearities and 
-  interactions, if necessary. It is known to be reasonably robust, if the number of observations n is distinctly 
-  larger than the number of variables p (n>p). With more variables than observations (p>n or even p>>n), linear regression 
-  breaks down, unless shrinkage methods are used like ridge regression, the lasso, or the elastic net as a 
-  combination of both."
-* "Random forests, on the other hand, are nonparametric and allow nonlinearities and interactions to be learned 
-  from the data without any need to explicitly model them. Also, they have been reported to work well not only 
-  for the n>>p setting but also for data mining inthe p>>n setting."
-* "The splitting approach in CART trees has been known for a long time to be unfair in the presence of regressor 
-  variables of different types, categorical variables with different numbers of categories, or differing numbers 
-  of missing values  (cf., e.g.,Breiman 1984; 
-  [Shih and Tsai 2004](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.435.2346&rep=rep1&type=pdf)). To 
-  avoid this variable selection bias, 
-  [Hothorn, Hornik, and Zeileis (2006b)](https://www.tandfonline.com/doi/abs/10.1198/106186006X133933) proposed 
-  to use multiplicity-adjusted conditional tests rather than maximum impurity reduction as the 
-  splitting criterion."
-  - Wow, this quote would have been helpful a few months ago :-p
-  - Also, note that I don't think their (interesting) p-value procedure at each node is implemented
-    in sklearn (if anywhere (?))
-  - In most places (sklearn included), a variation on what this paper refers to as RF-CART is implemented (true
-    RF-CART grows individual trees to node purity, whereas usually an API allows you to make a few choices about
-    how the trees are grown).  The paper refers to the p-value-split trees as conditional inference (CI) trees, and
-    random forests built up of CI-trees as RF-CI.  RF-CI is the type of RF proposed in 
-    [Strobl 2007a](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-8-25) ("Bias in random 
-    forest variable importance measures: Illustrations, sources and a solution"), which I've read
-    and commented a little on previously. (See also 
-    [Strobl 2007b: Unbiased split selection for classification trees based on the Gini 
-    Index](https://www.ibe.med.uni-muenchen.de/organisation/mitarbeiter/020_professuren/boulesteix/pdf/gini.pdf), which
-    says, "variable selection based on standard impurity measures as the Gini Index is biased. The bias is such 
-    that, e.g., splitting variables with a high amount of missing values —- even if missing completely at random 
-    (MCAR) —- are artificially preferred.")
-* "A random forest is random in two ways: (i) each tree is based on a random subset of the observations, and 
-  (ii) each split within each tree is created based on a random subset of mtry candidate variables. Trees are 
-  quite unstable, so that this randomness creates differences in individual trees’ predictions. The overall 
-  prediction of the forest is the average of predictions from the individual trees—because individual trees 
-  produce multidimensional step functions, their average is again a multidimensional step function that can 
-  nevertheless predict smooth functions because it aggregates a large number of different trees."
-* An important difference between CART-like RFs and CI-RFs is that the first builds new n-sample data sets
-  for each tree by sampling with replacement, while the CI-RFs provide each tree with about 63% of the 
-  n-sample data set by sampling without replacement.  CI-RFs typically grow smaller trees by default, though
-  this is a tweakable parameter (that is, in practice, just like we use CART-like RFs, we customize variants on
-  the original/default CI-RFs). 
-  - NOTE: in a 2008 follow-up paper 
-    ("[Conditional variable importance for random forests](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-9-307)"), 
-    the Strobl group decide that their CI-RFs do not solve all the issues
-    with variable importance, so they also argue that one must
-    use conditional permuation importance as the measure of variable importance; this is also
-    possible to apply to CART-like RFs.
-  - GIST: Know that CI-RFs exist, but do not worry about 'em too much.
-* "Variable importance is not very well defined as a concept. Even in the well-developed linear model and 
-  the standard n>>p situation, there is no theoretically defined variable importance metric in the sense 
-  of a parametric quantity that a variable importance estimator should try to estimate."
-* "In the absence of a clearly agreed true value, ad hoc proposals for empirical assessment of variable 
-  importance have been made, and desirability criteria for these have been formulated, for example, 'decomposition' 
-  of R2 into 'nonnegative contributions attributable to each regressor' has been postulated. Popular approaches 
-  for empirically assessing a variable’s importance include squared correlations (a completely marginal approach) 
-  and squared standardized coefficients (an approach conditional on all other variables in the model)."
-* Given no clear definition of variable importance, and the plethora of choices available to define such a thing,
-  one must be prudent.  "Depending on the research question at hand, the focus of the variable importance
-  assessment in regression can be explanatory or predictive importance or a mixture of both."  What definition
-  best suits your goals?  (Heck, you can use more than one, as long as you clearly know what each measure
-  means and what are its pros and cons.)
-* For an intuition concerning what constitutes an explanatory measure of importance versus a predictive 
-  measure of importance, the authors provide two causal chains: (i) X2 -> X1 -> Y;  (ii) X2 <- X1 -> Y.  Assuming
-  all relationships are linear, the authors discuss that two variable importances often used with linear models
-  (e.g., squares of standardized coefficients) would zero out the importance of X2 for both causal chains since,
-  conditional on X1, X2 does not contribute any additional information to the prediction.  Given this, do you
-  consider this type of importance explanatory or predictive?  It is neither, at least not purely.  It makes
-  sense for predictive purposes, but doesn't tell the whole story (e.g., if one removes X1, then a prediction is
-  still possible as X2 will take X1's place).  For explanatory purposes, it makes sense for causal chain (ii), since
-  we see in that chain that X2 is only correlated with Y since both are driven by X1; thus, X2 should not be considered
-  an important explanatory/causal variable for Y.  However, for causal chain (i), this measure of variable importance
-  is not explanatory: X2 very clearly drives Y, thus should not be considered to have zero explanatory importance!  In
-  practice, a linear model does not actually differentiate which of the two causal chains are at play.  So the variable 
-  importance might be accidentally explanatory in the second causal chain, but not generally explanatory.  It more
-  generally a measure of predictive power, though as mentioned, just one story of predictive power among many.
-* This leads us into variable importances associated with random forests.  For example, the conditional permutation
-  importance advocated by Strobl2008: Is it really "better" than regular permutation importance?  Before reading
-  this paper, I thought the answer was probably "yes," but now I'm not so sure.  Basically, CPImp acts like
-  the conditional importance described above, associated with a linear model:  there is an assumption about the
-  type of causal chain implicit in the method.  We may reduce how many variables we look at and look only
-  at direct relationships, but we have lost the true causal story of chain (i).  We are telling a partial 
-  explanatory story...  With regular PImp, the correlated variables would likely be assigned similar
-  importances.  Here, we wouldn't know anything about a direct relationship, yet we wouldn't be throwing out
-  important variables in the story.  The authors bring up LASSO and ElasticNet for comparison.  Basically,
-  LASSO chooses one representative from a group of correlated predictors and zeros the rest of them out.  This
-  is fine if one's goal is a parsimonious predictive model, but not fine if one wants to understand the explanatory
-  power of each predictor.  ElasticNet was invented to remedy this: it basically forces groups of correlated
-  predictors to share coefficient values (e.g., in group G1, predictors with smaller coefficients are made stronger,
-  while the predictors with larger coefficients are made weaker); now, if one uses an importance measure like
-  standardized, squared coefficients (SSC), all correlated predictors in the same group should share similar 
-  importances (similar to  PImp). In this method, no important variables are thrown out, but the measures of 
-  importance can be considered "biased".
+* 2009: Grömping: [Variable Importance Assessment in Regression: Linear Regression versus Random Forest](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C31&q=Variable+Importance+Assessment+in+Regression%3A+Linear+Regression+versus+Random+Forest&btnG=)
+  - "Variable importance in regression is an important topic in applied statistics that keeps coming up in 
+    spite of critics who basically claim that the question should not have been asked in the first place."
+  - "Linear regression is a classical parametric method which requires explicit modeling of nonlinearities and 
+    interactions, if necessary. It is known to be reasonably robust, if the number of observations n is distinctly 
+    larger than the number of variables p (n>p). With more variables than observations (p>n or even p>>n), linear regression 
+    breaks down, unless shrinkage methods are used like ridge regression, the lasso, or the elastic net as a 
+    combination of both."
+  - "Random forests, on the other hand, are nonparametric and allow nonlinearities and interactions to be learned 
+    from the data without any need to explicitly model them. Also, they have been reported to work well not only 
+    for the n>>p setting but also for data mining inthe p>>n setting."
+  - "The splitting approach in CART trees has been known for a long time to be unfair in the presence of regressor 
+    variables of different types, categorical variables with different numbers of categories, or differing numbers 
+    of missing values  (cf., e.g.,Breiman 1984; 
+    [Shih and Tsai 2004](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.435.2346&rep=rep1&type=pdf)). To 
+    avoid this variable selection bias, 
+    [Hothorn, Hornik, and Zeileis (2006b)](https://www.tandfonline.com/doi/abs/10.1198/106186006X133933) proposed 
+    to use multiplicity-adjusted conditional tests rather than maximum impurity reduction as the 
+    splitting criterion."
+    * Wow, this quote would have been helpful a few months ago :-p
+    * Also, note that I don't think their (interesting) p-value procedure at each node is implemented
+      in sklearn (if anywhere (?))
+    * In most places (sklearn included), a variation on what this paper refers to as RF-CART is implemented (true
+      RF-CART grows individual trees to node purity, whereas usually an API allows you to make a few choices about
+      how the trees are grown).  The paper refers to the p-value-split trees as conditional inference (CI) trees, and
+      random forests built up of CI-trees as RF-CI.  RF-CI is the type of RF proposed in 
+      [Strobl 2007a](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-8-25) ("Bias in random 
+      forest variable importance measures: Illustrations, sources and a solution"), which I've read
+      and commented a little on previously. (See also 
+      [Strobl 2007b: Unbiased split selection for classification trees based on the Gini 
+      Index](https://www.ibe.med.uni-muenchen.de/organisation/mitarbeiter/020_professuren/boulesteix/pdf/gini.pdf), which
+      says, "variable selection based on standard impurity measures as the Gini Index is biased. The bias is such 
+      that, e.g., splitting variables with a high amount of missing values —- even if missing completely at random 
+      (MCAR) —- are artificially preferred.")
+  - "A random forest is random in two ways: (i) each tree is based on a random subset of the observations, and 
+    (ii) each split within each tree is created based on a random subset of mtry candidate variables. Trees are 
+    quite unstable, so that this randomness creates differences in individual trees’ predictions. The overall 
+    prediction of the forest is the average of predictions from the individual trees—because individual trees 
+    produce multidimensional step functions, their average is again a multidimensional step function that can 
+    nevertheless predict smooth functions because it aggregates a large number of different trees."
+  - An important difference between CART-like RFs and CI-RFs is that the first builds new n-sample data sets
+    for each tree by sampling with replacement, while the CI-RFs provide each tree with about 63% of the 
+    n-sample data set by sampling without replacement.  CI-RFs typically grow smaller trees by default, though
+    this is a tweakable parameter (that is, in practice, just like we use CART-like RFs, we customize variants on
+    the original/default CI-RFs). 
+    * NOTE: in a 2008 follow-up paper 
+      ("[Conditional variable importance for random forests](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-9-307)"), 
+      the Strobl group decide that their CI-RFs do not solve all the issues
+      with variable importance, so they also argue that one must
+      use conditional permuation importance as the measure of variable importance; this is also
+      possible to apply to CART-like RFs.
+    * GIST: Know that CI-RFs exist, but do not worry about 'em too much.
+  - "Variable importance is not very well defined as a concept. Even in the well-developed linear model and 
+    the standard n>>p situation, there is no theoretically defined variable importance metric in the sense 
+    of a parametric quantity that a variable importance estimator should try to estimate."
+  - "In the absence of a clearly agreed true value, ad hoc proposals for empirical assessment of variable 
+    importance have been made, and desirability criteria for these have been formulated, for example, 'decomposition' 
+    of R2 into 'nonnegative contributions attributable to each regressor' has been postulated. Popular approaches 
+    for empirically assessing a variable’s importance include squared correlations (a completely marginal approach) 
+    and squared standardized coefficients (an approach conditional on all other variables in the model)."
+  - Given no clear definition of variable importance, and the plethora of choices available to define such a thing,
+    one must be prudent.  "Depending on the research question at hand, the focus of the variable importance
+    assessment in regression can be explanatory or predictive importance or a mixture of both."  What definition
+    best suits your goals?  (Heck, you can use more than one, as long as you clearly know what each measure
+    means and what are its pros and cons.)
+  - For an intuition concerning what constitutes an explanatory measure of importance versus a predictive 
+    measure of importance, the authors provide two causal chains: (i) X2 -> X1 -> Y;  (ii) X2 <- X1 -> Y.  Assuming
+    all relationships are linear, the authors discuss that two variable importances often used with linear models
+    (e.g., squares of standardized coefficients) would zero out the importance of X2 for both causal chains since,
+    conditional on X1, X2 does not contribute any additional information to the prediction.  Given this, do you
+    consider this type of importance explanatory or predictive?  It is neither, at least not purely.  It makes
+    sense for predictive purposes, but doesn't tell the whole story (e.g., if one removes X1, then a prediction is
+    still possible as X2 will take X1's place).  For explanatory purposes, it makes sense for causal chain (ii), since
+    we see in that chain that X2 is only correlated with Y since both are driven by X1; thus, X2 should not be considered
+    an important explanatory/causal variable for Y.  However, for causal chain (i), this measure of variable importance
+    is not explanatory: X2 very clearly drives Y, thus should not be considered to have zero explanatory importance!  In
+    practice, a linear model does not actually differentiate which of the two causal chains are at play.  So the variable 
+    importance might be accidentally explanatory in the second causal chain, but not generally explanatory.  It more
+    generally a measure of predictive power, though as mentioned, just one story of predictive power among many.
+  - This leads us into variable importances associated with random forests.  For example, the conditional permutation
+    importance advocated by Strobl2008: Is it really "better" than regular permutation importance?  Before reading
+    this paper, I thought the answer was probably "yes," but now I'm not so sure.  Basically, CPImp acts like
+    the conditional importance described above, associated with a linear model:  there is an assumption about the
+    type of causal chain implicit in the method.  We may reduce how many variables we look at and look only
+    at direct relationships, but we have lost the true causal story of chain (i).  We are telling a partial 
+    explanatory story...  With regular PImp, the correlated variables would likely be assigned similar
+    importances.  Here, we wouldn't know anything about a direct relationship, yet we wouldn't be throwing out
+    important variables in the story.  The authors bring up LASSO and ElasticNet for comparison.  Basically,
+    LASSO chooses one representative from a group of correlated predictors and zeros the rest of them out.  This
+    is fine if one's goal is a parsimonious predictive model, but not fine if one wants to understand the explanatory
+    power of each predictor.  ElasticNet was invented to remedy this: it basically forces groups of correlated
+    predictors to share coefficient values (e.g., in group G1, predictors with smaller coefficients are made stronger,
+    while the predictors with larger coefficients are made weaker); now, if one uses an importance measure like
+    standardized, squared coefficients (SSC), all correlated predictors in the same group should share similar 
+    importances (similar to  PImp). In this method, no important variables are thrown out, but the measures of 
+    importance can be considered "biased".
   
+* 2010: Calle & Urrea: [Letter to the Editor: Stability of Random Forest importance measures](https://academic.oup.com/bib/article/12/1/86/243935)
   
-2011: Nicodemus: [Letter to the Editor: On the stability and ranking of predictors from random forest variable importance measures](https://academic.oup.com/bib/article/12/4/369/241163)
+* 2011: Nicodemus: [Letter to the Editor: On the stability and ranking of predictors from random forest variable importance measures](https://academic.oup.com/bib/article/12/4/369/241163)
 
   
-2013: Janitza, Strobl, & Boulesteix : [An AUC-based permutation variable importance measure for random forests](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-14-119)
+* 2013: Janitza, Strobl, & Boulesteix : [An AUC-based permutation variable importance measure for random forests](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-14-119)
 
-2017: Gregorutti et al: [Correlation and variable importance in random forests](https://arxiv.org/pdf/1310.5726.pdf)
+* 2017: Gregorutti et al: [Correlation and variable importance in random forests](https://arxiv.org/pdf/1310.5726.pdf)
   
-2017: Epifanio: Intervention in prediction measure: a new approach to assessing variable importance for random forests
+* 2017: Epifanio: Intervention in prediction measure: a new approach to assessing variable importance for random forests
   
-2018: Nembrini et al: [The revival of the Gini importance?](https://academic.oup.com/bioinformatics/article/34/21/3711/4994791)
-2018: Parr et al: [Beware Default Random Forest Importances](https://explained.ai/rf-importance/)
+
+* 2017: Behnamian et al: [A Systematic Approach for Variable Selection With Random Forests: Achieving 
+Stable Variable Importance Values](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8038868)
+  - We've all been there: train your RF, look at the feature importances.  Maybe you want to find the
+    top 10 features to go ahead and make a more computationally efficient model (that also lessens the
+    burden of future data collection needs).  Or maybe you just want to better explain the internal
+    logic of your model to a stakeholder.  Whatever: the results look interesting, but you decide to
+    add more trees and retrain to see if you get better accuracy.  Nice!  You do!  But, wait: 
+    the imporantces changed rankings.  So you add some more trees, train again -- and again a slightly
+    different set of importance rankings.  What's worse: your curiosity gets the best of you and without
+    changing any hyperparameters whatsoever, you retrain and get yet a different ranking. It doesn't 
+    matter if you're using Gini importance (aka mean decrease in impurity) or permutation importance
+    (aka mean decrease in accuracy).  Both  prove to be fairly unstable.  What's the deal here?!
+  - This paper looks at (i) how large a forest must be to produce stable importance estimates, and
+    (ii) how class separability affects this result.
+    * They do find that, for large enough nTree, the importances stabilize
+    * They also find that averaging the rankings over multiple runs with smaller nTrees produces stable estimate
+    * The specifics are driven by the class separability
+  - Interestingly, this paper is about the use of RFs in signal and image processing, where the data is
+    collected at high temporal and/or spatial frequency.  
+    * This motivates the need for stable importance rankings: "Reducing model data load can reduce processing
+      times and storage requirements, and can also be used to inform longterm analyses, as attention can focus 
+      on just the sensors and variables that provide relevant information to a given classification problem."
+    * Furthermore, in this signal/image analysis field, it has been shown that RFs can be improved quite a 
+      bit by finding and removing any noise variables.
+  - Importantly, independent of what VImp measure one uses, "because of the random way in which training data 
+    and variables are selected to determine the split at each node in Random Forests, importance rankings 
+    differ from one model run to another, especially when if only a small ntree are generated."
+      
 
 
-[Interpretable ML Book](https://christophm.github.io/interpretable-ml-book)
+
+* 2018: Nembrini et al: [The revival of the Gini importance?](https://academic.oup.com/bioinformatics/article/34/21/3711/4994791)
+* 2018: Parr et al: [Beware Default Random Forest Importances](https://explained.ai/rf-importance/)
+
+
+* [Interpretable ML Book](https://christophm.github.io/interpretable-ml-book)
 
 
 ## LIME
@@ -632,11 +664,13 @@ https://towardsdatascience.com/end-to-end-python-framework-for-predictive-modeli
 # Applications
 
 ### Bio / Healthcare
+* 2006: Díaz-Uriarte & Andres: [Gene selection and classification of microarray data using random forest](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-7-3)
 * 2011: Goldstein et al: [Random Forests for Genetic Association Studies](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3154091/)
 * 2011: Dittman: [Random forest: A reliable tool for patient response prediction](https://ieeexplore.ieee.org/abstract/document/6112389)
 * 2012: Boulesteix et al: [Overview of Random Forest Methodology and Practical Guidance with Emphasis on Computational Biology and Bioinformatics](https://epub.ub.uni-muenchen.de/13766/1/TR.pdf)
 * 2012: Chen & Ishwaran: [Random forests for genomic data analysis](https://www.sciencedirect.com/science/article/pii/S0888754312000626)
 * 2012: Qi: [Random Forest for Bioinformatics](http://www.montefiore.ulg.ac.be/~chaichoompu/CK/userfiles/downloads/2016/GBIO0002/HW2/3Random_Forests_for_Bioinformatics.pdf)
+
 
 ### Physics / Remote Sensing
 * 2010: Carliles et al: [Random Forests for Photometric Redshifts](http://cis.jhu.edu/~parky/CEP-Publications/CBHSP-AJ2010.pdf)
@@ -650,6 +684,27 @@ https://towardsdatascience.com/end-to-end-python-framework-for-predictive-modeli
 
 ### Image Processing
 * 2013: Fanelli et al: [Random Forests for Real Time 3D Face Analysis](http://doc.rero.ch/record/313914/files/11263_2012_Article_549.pdf)
+
+# Land Surveying
+* 2012: Immitzer et al: [Tree Species Classification with Random Forest Using Very High Spatial Resolution 8-Band WorldView-2 Satellite Data](https://www.researchgate.net/profile/Markus_Immitzer/publication/258710192_Tree_Species_Classification_with_Random_Forest_Using_Very_High_Spatial_Resolution_8-Band_WorldView-2_Satellite_Data/links/0f317532dc7018bcaa000000.pdf)
+* 2013:  Millard & Richardson: [Wetland mapping with LiDAR derivatives, SAR polarimetric decompositions, and LiDAR–SAR fusion using a random forest classifier](https://www.tandfonline.com/doi/abs/10.5589/m13-038)
+  - no pdf
+* 2014: Beijma et al: [Random forest classification of salt marsh vegetation habitats using quad-polarimetric airborne SAR, elevation and optical RS data](https://www.researchgate.net/profile/Sybrand_Van_Beijma2/publication/262019604_Random_forest_classification_of_salt_marsh_vegetation_habitats_using_quad-polarimetric_airborne_SAR_elevation_and_optical_RS_data/links/5b8fd51992851c6b7ec0981d/Random-forest-classification-of-salt-marsh-vegetation-habitats-using-quad-polarimetric-airborne-SAR-elevation-and-optical-RS-data.pdf)
+
+--------------------------------------
+
+# Implementation
+
+In TensorFlow:  
+* https://terrytangyuan.github.io/2016/08/06/tensorflow-not-just-deep-learning/
+* https://github.com/aymericdamien/TensorFlow-Examples/blob/master/examples/2_BasicModels/random_forest.py
+* https://www.kaggle.com/salekali/random-forest-classification-with-tensorflow
+
+### Misc
+TF also has Boosted Trees:  
+* https://www.tensorflow.org/api_docs/python/tf/estimator/BoostedTreesClassifier
+* https://medium.com/tensorflow/how-to-train-boosted-trees-models-in-tensorflow-ca8466a53127
+
 
 ---------------------------------
 
