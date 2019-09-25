@@ -504,6 +504,9 @@ https://www.quora.com/When-should-random-forest-be-used-over-logistic-regression
 ### Forests of Probability Estimation Trees (PETs)
 * 2012: Bostrom: [Forests of Probability Estimation Trees]
 
+### Functional Random Forests
+* 2019: Rahman et al: [Functional random forest with applications in dose-response predictions](https://www.nature.com/articles/s41598-018-38231-w)
+
 ### Fuzzy Forests
 2010: Bonissone et al: Fuzzy Random Forest: Fundamental for Design and Construction
 2010: Bonissone et al: A Fuzzy Random Forest
