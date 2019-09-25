@@ -244,6 +244,7 @@ Ruling: I'll get back to this stuff at a later date (not super HP to know all de
   
 * 2011: Nicodemus: [Letter to the Editor: On the stability and ranking of predictors from random forest variable importance measures](https://academic.oup.com/bib/article/12/4/369/241163)
 
+* 2012: Hapfelmeier et al: [A new variable importance measure for random forests with missing data](http://www.psychologie.uzh.ch/methpsy/publications/STCO_20120809.pdf)
   
 * 2013: Janitza, Strobl, & Boulesteix : [An AUC-based permutation variable importance measure for random forests](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-14-119)
 
@@ -289,6 +290,18 @@ Stable Variable Importance Values](https://ieeexplore.ieee.org/stamp/stamp.jsp?a
 
 * [Interpretable ML Book](https://christophm.github.io/interpretable-ml-book)
 
+
+## Variable Importance Stability
+Some of these are not exclusive to RFs.
+
+* 2005: Kalousis et al: [Stability of Feature Selection Algorithms](https://www.researchgate.net/profile/Alexandros_Kalousis/publication/4207687_Stability_of_feature_selection_algorithms/links/0fcfd50abb62563e08000000/Stability-of-feature-selection-algorithms.pdf)
+* 2007: Kalousis et al: [Stability of feature selection algorithms: a study on high-dimensional spaces](http://doc.rero.ch/record/312354/files/10115_2006_Article_40.pdf)
+* 2008: Saeys et al: [Robust Feature Selection Using Ensemble Feature Selection Techniques](https://link.springer.com/content/pdf/10.1007/978-3-540-87481-2_21.pdf)
+* 2011: Toloşi & Lengauer: [Classification with correlated features: unreliability of feature ranking and solutions](https://academic.oup.com/bioinformatics/article/27/14/1986/194387)
+* 2014: Kursa: [Robustness of Random Forest-based gene selection methods](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-15-8)
+* 2016: Wang et al: [An experimental study of the intrinsic stability of random forest variable importance measures](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-016-0900-5)
+* 2017: Behnamian et al: [A Systematic Approach for Variable Selection With Random Forests: Achieving 
+Stable Variable Importance Values](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8038868)
 
 ## LIME
 2016: Ribeiro et al: [“Why Should I Trust You?” Explaining the Predictions of Any Classifier](https://arxiv.org/pdf/1602.04938.pdf)
