@@ -30,9 +30,6 @@ it is not necessarily interesting to look at a data set with only a few hundred 
 
 
 # Classification Data Sets
-The first data set we will play with is the UCI Mushroom data set.  It's simple and super easy to predict on.
-
-We will also look at various health-related and miscellaneous data sets from the UCI repository.
 
 ## Health- and/or Bio-Related Data Sets
 
