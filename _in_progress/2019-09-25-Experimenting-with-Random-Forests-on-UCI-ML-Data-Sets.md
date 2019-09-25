@@ -34,30 +34,72 @@ The first data set we will play with is the UCI Mushroom data set.  It's simple 
 
 We will also look at various health-related and miscellaneous data sets from the UCI repository.
 
-### Health- and/or Bio-Related Data Sets
+## Health- and/or Bio-Related Data Sets
 
-* [Blood Transfusion Service](https://archive.ics.uci.edu/ml/datasets/Blood+Transfusion+Service+Center)
-  - 4 real-valued features
-  - 1 binary outcome
-* [Acute Inflammations](https://archive.ics.uci.edu/ml/datasets/Acute+Inflammations)
-  - 6 features (categorical, integer)
-  - 2 binary outcomes (e.g., predict on one, the other, or both, or maybe even
-      set up a problem where we use on outcome to help predict another)
-* [p53 Mutants (Cancer Yes/No)](https://archive.ics.uci.edu/ml/datasets/p53+Mutants)
-  - 5408 real-valued features
-  - 1 binary outcome
-  - 16772 records
-  - Missing Values: Yes
-* [Breast Tissue](https://archive.ics.uci.edu/ml/datasets/Breast+Tissue)
-  - 10 real-valued features
-  - 6- or 4-class outcome (depending on how you set up problem)
-  - 106 records
-  - Missing Values: No
+### Parkinson's
+Directly relevant to work stuff.
+
+* [Parkinsons](https://archive.ics.uci.edu/ml/datasets/Parkinsons)
+* [Parkinson Speech Dataset with Multiple Types of Sound Recordings](https://archive.ics.uci.edu/ml/datasets/Parkinson+Speech+Dataset+with++Multiple+Types+of+Sound+Recordings)
+* [Parkinson Disease Spiral Drawings Using Digitized Graphics Tablet](https://archive.ics.uci.edu/ml/datasets/Parkinson+Disease+Spiral+Drawings+Using+Digitized+Graphics+Tablet)
+* [Parkinson's Disease Classification](https://archive.ics.uci.edu/ml/datasets/Parkinson%27s+Disease+Classification)
+* [Parkinson Dataset with replicated acoustic features](https://archive.ics.uci.edu/ml/datasets/Parkinson+Dataset+with+replicated+acoustic+features+)
+
+
+### Autism
+Directly relevant to work stuff.
+
+* [Autistic Spectrum Disorder Screening Data for Children](https://archive.ics.uci.edu/ml/datasets/Autistic+Spectrum+Disorder+Screening+Data+for+Children++)
+* [Autistic Spectrum Disorder Screening Data for Adolescent Data Set](https://archive.ics.uci.edu/ml/datasets/Autistic+Spectrum+Disorder+Screening+Data+for+Adolescent+++)
+* [Autism Screening Adult](https://archive.ics.uci.edu/ml/datasets/Autism+Screening+Adult)
+
+
+
+
+### Heart
+Somewhat relevant to work stuff.
+
+* [Statlog (Heart)](https://archive.ics.uci.edu/ml/datasets/Statlog+%28Heart%29)
 * [Cardiotocography (Fetal Heart Rate, Uterine Contraction)](https://archive.ics.uci.edu/ml/datasets/Cardiotocography)
   - 23 real-valued features
   - 10- or 3-class outcome (depending on what you choose to predict)
   - Missing Values: No
   - 2126 records
+
+
+### Diabetes
+Not a disease we focus on much at work. 
+
+* [Diabetic Retinopathy Debrecen](https://archive.ics.uci.edu/ml/datasets/Diabetic+Retinopathy+Debrecen+Data+Set)
+* [Diabetes 130-US hospitals for years 1999-2008](https://archive.ics.uci.edu/ml/datasets/Diabetes+130-US+hospitals+for+years+1999-2008)
+
+### Cancer
+Somewhat related to work stuff (e.g., brain cancer, ability to mine through genetics data, etc).
+
+* [Cervical cancer (Risk Factors)](https://archive.ics.uci.edu/ml/datasets/Cervical+cancer+%28Risk+Factors%29)
+* [Arcene (Cancer)](https://archive.ics.uci.edu/ml/datasets/Arcene)
+* [Breast Tissue](https://archive.ics.uci.edu/ml/datasets/Breast+Tissue)
+  - 10 real-valued features
+  - 6- or 4-class outcome (depending on how you set up problem)
+  - 106 records
+  - Missing Values: No
+* [p53 Mutants (Cancer Yes/No)](https://archive.ics.uci.edu/ml/datasets/p53+Mutants)
+  - 5408 real-valued features
+  - 1 binary outcome
+  - 16772 records
+  - Missing Values: Yes
+  
+  
+### Misc
+* [Immunotherapy](https://archive.ics.uci.edu/ml/datasets/Immunotherapy+Dataset)
+* [Cryotherapy](https://archive.ics.uci.edu/ml/datasets/Cryotherapy+Dataset+)
+* [Gastrointestinal Lesions in Regular Colonoscopy](https://archive.ics.uci.edu/ml/datasets/Gastrointestinal+Lesions+in+Regular+Colonoscopy)
+* [Chronic Kidney Disease](https://archive.ics.uci.edu/ml/datasets/Chronic_Kidney_Disease)
+* [Quality Assessment of Digital Colposcopies](https://archive.ics.uci.edu/ml/datasets/Quality+Assessment+of+Digital+Colposcopies)
+* [Dorothea (Drug Discovery)](https://archive.ics.uci.edu/ml/datasets/Dorothea)
+* [LSVT Voice Rehabilitation](https://archive.ics.uci.edu/ml/datasets/LSVT+Voice+Rehabilitation)
+* [Thoracic Surgery](https://archive.ics.uci.edu/ml/datasets/Thoracic+Surgery+Data)
+* [Yeast](https://archive.ics.uci.edu/ml/datasets/Yeast)
 * [PubChem Bioassay Data](https://archive.ics.uci.edu/ml/datasets/PubChem+Bioassay+Data)
   - Multiple bioassay data sets (seems like they are not necessarily intended to be mixed together since
     they are bioassays to identify different things)
@@ -78,15 +120,19 @@ We will also look at various health-related and miscellaneous data sets from the
   - 245,057 records
   - Binary or Multi outcome (depends on how you set up the problem: there is a designated 
     decision variable, but one can also choose to try to classify something like race or age)
+* [Blood Transfusion Service](https://archive.ics.uci.edu/ml/datasets/Blood+Transfusion+Service+Center)
+  - 4 real-valued features
+  - 1 binary outcome
+* [Acute Inflammations](https://archive.ics.uci.edu/ml/datasets/Acute+Inflammations)
+  - 6 features (categorical, integer)
+  - 2 binary outcomes (e.g., predict on one, the other, or both, or maybe even
+      set up a problem where we use on outcome to help predict another)
 
-* [Yeast](https://archive.ics.uci.edu/ml/datasets/Yeast)
-* [Statlog (Heart)](https://archive.ics.uci.edu/ml/datasets/Statlog+%28Heart%29)
-* [Arcene (Cancer)](https://archive.ics.uci.edu/ml/datasets/Arcene)
-* [Dorothea (Drug Discovery)](https://archive.ics.uci.edu/ml/datasets/Dorothea)
-* [Parkinsons](https://archive.ics.uci.edu/ml/datasets/Parkinsons)
 
 
-### Wearable / Activity Recognition Data Sets
+### Wearable / Activity Recognition / Home Sensor Data Sets
+This whole section is SUPER relevant to work stuff.
+
 * [EMG Physical Action Data Set](https://archive.ics.uci.edu/ml/datasets/EMG+Physical+Action+Data+Set)
   - 8 real-valued features
   - 20- or 2-class outcome (i.e., predict specific action, or just whether action was aggressive)
@@ -133,12 +179,56 @@ We will also look at various health-related and miscellaneous data sets from the
     user and summing up to 35 days of fully labelled data. Each instance of the dataset is described by
     three text files, namely: description, sensors events (features), activities of the daily living (labels).
     Sensor events were recorded using a wireless sensor network and data were labelled manually."
-
-
-
+* [Weight Lifting Exercises monitored with Inertial Measurement Units](https://archive.ics.uci.edu/ml/datasets/Weight+Lifting+Exercises+monitored+with+Inertial+Measurement+Units)
+  - Description: "Six young health subjects were asked to perform 5 variations of the biceps curl weight lifting exercise. One of the variations is the one predicted by the health professional."
+* [EMG dataset in Lower Limb](https://archive.ics.uci.edu/ml/datasets/EMG+dataset+in+Lower+Limb)
+  - Description: "3 different exercises: sitting, standing and walking in the muscles: biceps femoris, vastus medialis, rectus femoris and semitendinosus addition to goniometry in the exercises."
+* [Dataset for ADL Recognition with Wrist-worn Accelerometer](https://archive.ics.uci.edu/ml/datasets/Dataset+for+ADL+Recognition+with+Wrist-worn+Accelerometer)
+  - Description: "Recordings of 16 volunteers performing 14 Activities of Daily Living (ADL) while carrying a single wrist-worn tri-axial accelerometer."
+* [User Identification From Walking Activity](https://archive.ics.uci.edu/ml/datasets/User+Identification+From+Walking+Activity)
+  - Description: "The dataset collects data from an Android smartphone positioned in the chest pocket from 22 participants walking in the wild over a predefined path."
+* [Activity Recognition from Single Chest-Mounted Accelerometer](https://archive.ics.uci.edu/ml/datasets/Activity+Recognition+from+Single+Chest-Mounted+Accelerometer)
+  - Description: "The dataset collects data from a wearable accelerometer mounted on the chest. The dataset is intended for Activity Recognition research purposes."
+* [Gesture Phase Segmentation](https://archive.ics.uci.edu/ml/datasets/Gesture+Phase+Segmentation)
+  - Description: "The dataset is composed by features extracted from 7 videos with people gesticulating, aiming at studying Gesture Phase Segmentation. It contains 50 attributes divided into two files for each video."
+* [REALDISP Activity Recognition](https://archive.ics.uci.edu/ml/datasets/REALDISP+Activity+Recognition+Dataset)
+  - Description: "The REALDISP dataset is devised to evaluate techniques dealing with the effects of sensor displacement in wearable activity recognition as well as to benchmark general activity recognition algorithms."
+* [sEMG for Basic Hand movements](https://archive.ics.uci.edu/ml/datasets/sEMG+for+Basic+Hand+movements)
+  - Description: "The 'sEMG for Basic Hand movements' includes 2 databases of surface electromyographic signals of 6 hand movements using Delsys' EMG System. Healthy subjects conducted six daily life grasps."
+* [MHEALTH Dataset](https://archive.ics.uci.edu/ml/datasets/MHEALTH+Dataset)
+  - Description: "The MHEALTH (Mobile Health) dataset is devised to benchmark techniques dealing with human behavior analysis based on multimodal body sensing."
+* [Gas sensors for home activity monitoring](https://archive.ics.uci.edu/ml/datasets/Gas+sensors+for+home+activity+monitoring)
+  - Description: "100 recordings of a sensor array under different conditions in a home setting: background, wine and banana presentations. The array includes 8 MOX gas sensors, and humidity and temperature sensors."
+* [Smartphone Dataset for Human Activity Recognition (HAR) in Ambient Assisted Living (AAL)](https://archive.ics.uci.edu/ml/datasets/Smartphone+Dataset+for+Human+Activity+Recognition+%28HAR%29+in+Ambient+Assisted+Living+%28AAL%29)
+  - Description: "This data is an addition to an existing dataset on UCI. We collected more data to improve the accuracy of our human activity recognition algorithms applied in the domain of Ambient Assisted Living."
+* [Activity Recognition system based on Multisensor data fusion (AReM)](https://archive.ics.uci.edu/ml/datasets/Activity+Recognition+system+based+on+Multisensor+data+fusion+%28AReM%29)
+  - Description: "This dataset contains temporal data from a Wireless Sensor Network worn by an actor performing the activities: bending, cycling, lying down, sitting, standing, walking."
+* [MoCap Hand Postures](https://archive.ics.uci.edu/ml/datasets/MoCap+Hand+Postures)
+  - Description: "5 types of hand postures from 12 users were recorded using unlabeled markers attached to fingers of a glove in a motion capture environment. Due to resolution and occlusion, missing values are common."
+* [Motion Capture Hand Postures](https://archive.ics.uci.edu/ml/datasets/Motion+Capture+Hand+Postures)
+  - Description: "5 types of hand postures from 12 users were recorded using unlabeled markers on fingers of a glove in a motion capture environment. Due to resolution and occlusion, missing values are common."
+* [Wireless Indoor Localization](https://archive.ics.uci.edu/ml/datasets/Wireless+Indoor+Localization)
+  - Description: "Collected in indoor space by observing signal strengths of seven WiFi signals visible on a smartphone. The decision variable is one of the four rooms."
+* [Activity recognition with healthy older people using a batteryless wearable sensor](https://archive.ics.uci.edu/ml/datasets/Activity+recognition+with+healthy+older+people+using+a+batteryless+wearable+sensor)
+  - Description: "Sequential motion data from 14 healthy older people aged 66 to 86 years old using a batteryless, wearable sensor on top of their clothing for the recognition of activities in clinical environments."
+* [BLE RSSI Dataset for Indoor localization and Navigation](https://archive.ics.uci.edu/ml/datasets/BLE+RSSI+Dataset+for+Indoor+localization+and+Navigation)
+* [EEG Steady-State Visual Evoked Potential Signals](https://archive.ics.uci.edu/ml/datasets/EEG+Steady-State+Visual+Evoked+Potential+Signals)
+  - Description: "This database consists on 30 subjects performing Brain Computer Interface for Steady State Visual Evoked Potentials (BCI-SSVEP)."
+* [WESAD (Wearable Stress and Affect Detection)](https://archive.ics.uci.edu/ml/datasets/WESAD+%28Wearable+Stress+and+Affect+Detection%29)
+  - Description: "WESAD (Wearable Stress and Affect Detection) contains data of 15 subjects during a stress-affect lab study, while wearing physiological and motion sensors."
+* [BAUM-1](https://archive.ics.uci.edu/ml/datasets/BAUM-1)
+  - Description: "BAUM-1 dataset contains 1184 multimodal facial video clips collected from 31 subjects. The 1184 video clips contain spontaneous facial expressions and speech of 13 emotional and mental states."
+* [BAUM-2](https://archive.ics.uci.edu/ml/datasets/BAUM-2)
+  - Description: "A multilingual audio-visual affective face database consisting of 1047 video clips of 286 subjects."
+* [EMG data for gestures](https://archive.ics.uci.edu/ml/datasets/EMG+data+for+gestures)
+  - Description: "These are files of raw EMG data recorded by MYO Thalmic bracelet."
 
 
 ### Miscellaneous Data Sets
+None of this is really directly related to work stuff, but most of these data sets tend to be easier
+to play with and experiment on.  Many of them are fairly well recognized from appearing in many papers,
+online courses, and blogs, etc.
+
 * [Teacher Assistant Evaluation](https://archive.ics.uci.edu/ml/datasets/Teaching+Assistant+Evaluation)
 * [Tic Tac Toe Endgame](https://archive.ics.uci.edu/ml/datasets/Tic-Tac-Toe+Endgame)
 * [University](https://archive.ics.uci.edu/ml/datasets/University)
@@ -172,6 +262,6 @@ We will also look at various health-related and miscellaneous data sets from the
   - 10 real-value features
   - 100 records
   - Binary outcome
-
+* [Leaf Data Set](https://archive.ics.uci.edu/ml/datasets/Leaf)
   
   
