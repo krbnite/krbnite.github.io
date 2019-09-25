@@ -237,6 +237,9 @@ Ruling: I'll get back to this stuff at a later date (not super HP to know all de
     importances (similar to  PImp). In this method, no important variables are thrown out, but the measures of 
     importance can be considered "biased".
   
+  
+* 2010: Altmann et al: [Permutation importance: a corrected feature importance measure](https://academic.oup.com/bioinformatics/article/26/10/1340/193348)
+
 * 2010: Calle & Urrea: [Letter to the Editor: Stability of Random Forest importance measures](https://academic.oup.com/bib/article/12/1/86/243935)
   
 * 2011: Nicodemus: [Letter to the Editor: On the stability and ranking of predictors from random forest variable importance measures](https://academic.oup.com/bib/article/12/4/369/241163)
