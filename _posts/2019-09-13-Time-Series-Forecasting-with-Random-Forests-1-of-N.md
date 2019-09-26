@@ -1,5 +1,5 @@
 ---
-title: Time Series Forecasting with Random Forest (1 of N)
+title: Time Series Forecasting with a Random Forest (1 of N)
 layout: post
 tags: machine-learning time-series random-forests easi
 ---
