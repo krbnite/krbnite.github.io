@@ -35,8 +35,47 @@ sig = small_sin + med_cos + big_sin + long_saw + err
 ```
 
 <figure>
-<img src="/images/2019-09-13__Time-Series__Simple-Signal.png" alt="inner-product" width="600vw" width="300"/>
+<img src="/images/2019-09-13__Time-Series__Simple-Signal.png" alt="inner-product" width="500vw" />
 </figure>
+
+I started off a bit pessimistic: since my sawtooth was 30 minutes, I figured I'd first try a 30-minute
+window (every 10 minutes is 600 data points at a 1 Hz sampling rate, so this was an 1800-point window).  This
+was likely overkill given I got a R2 score of 99.39%.  The regression looked like a nice smooth over 
+the curve.
+
+<figure>
+<img src="/images/2019-09-13__Time-Series__Simple-Signal-Prediction.png" alt="inner-product" width="500vw" />
+</figure>
+
+Probably only needed 15 minutes (900-point windows), right?  
+
+Wrong: still got an R2 of 99.38%, which means we "only need" less than that:
+* 5-minute window (300 data points): 99.32%
+* 1-minute window (60 data points): 99.14%
+* 30 seconds: 99.12%
+* 10 seconds: 99.15% 
+* 3 seconds: 99.07%
+* 2 seconds: 98.96%
+
+At this point, my mind was temporarily blown...until I realized that this makes perfect sense.  I mean,
+look at that smooth on the figure above for the initial 1800-point window.  You can get that same smooth
+by just averaging a few data points right before the one you want to predict.
+
+
+
+<figure>
+  <img src="/images/2019-09-13__Time-Series__10-Min-Prediction.png" alt="inner-product" width="500vw" />
+  <img src="/images/2019-09-13__Time-Series__Simple-Signal-with-Linear-Trend.png" alt="inner-product" width="500vw" />
+  <img src="/images/2019-09-13__Time-Series__Inability-to_Extrapolate.png" alt="inner-product" width="500vw" />
+</figure>
+
+
+
+# Misc Lessons Learned
+I tried a pretty big forest at first, using sklearn's defaults for the forest's other 
+hyperparameters...but it was taking so long.  
+
+
 
 
 Most of my writing is in the [notebook](https://github.com/krbnite/krbnite.github.io/blob/master/_notebooks/2019-09-13-Next-Point-Forecast-with-RF.ipynb)
