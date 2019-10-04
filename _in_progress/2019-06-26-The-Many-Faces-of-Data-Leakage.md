@@ -5,6 +5,14 @@
   - e.g., predicting if someone will dropout of a treatment program using the
     amount of time they remained in treatment before completing or dropping out
   - Salesorce folk call this "hindsight bias"
+  
+  
+* Rubin's Trajectory Leakage
+  - similar to time-based leakage, but can be sneaky
+  - this is sometimes found in healthcare data, where a linear fit was made to some variable and
+    you are provided the coefficient from that model as a predictor for whatever you're making
+  - e.g., if you are given a coefficient marking how fast someone grows between birth and 20 years old,
+    but you are trying to predict an outcome for 10 year olds...
 
 * validation set leakage (ok, if you also have an additional test set for later)
   - aka tuning leakage
