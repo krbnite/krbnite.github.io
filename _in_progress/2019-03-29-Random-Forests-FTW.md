@@ -45,6 +45,13 @@ Are RFs consistent estimators:  http://www.jmlr.org/papers/volume9/biau08a/biau0
 * “Trees should not be grown to purity. In fact, if nodes are pure, the probability estimate is either 0 or 1 in a terminal node.  As a result, a larger number of trees might be required to obtain consistent probability estimates. If trees are too small, probability estimates might be imprecise. Therefore, as a default value, the terminal node size is generally 10% of the total sample size. Alternatively, the optimal terminal node size may be tuned.”
 
 
+# Prediction / Confidence Intervals
+* 2018: Ishwaran & Lu: [Standard errors and confidence intervals for variable importance in random forest regression, classification, and survival†](https://europepmc.org/articles/pmc6279615)
+* 2018: Roy: [Three Essays on Nonparametric Prediction Intervals and Robust Variable Selection](http://biblos.hec.ca/biblio/theses/2018NO10.pdf#page=23)
+  - Ch1: Prediction Intervals with Random Forests 
+  - Ch2:  Prediction Intervals for Finite Mixture of Regressions Based on Random Forests
+  
+  
 # Consistency of Random Forests
 
 Gist: many versions of RFs are consistent, some are not.  
@@ -80,6 +87,9 @@ Ruling: I'll get back to this stuff at a later date (not super HP to know all de
 * 2016: Dankowski & Ziegler: [Calibrating random forests for probability estimation](https://onlinelibrary.wiley.com/doi/pdf/10.1002/sim.6959)
 
 
+# Categorical Variable Stuff
+* 2019: Wright & Konig: [Splitting on categorical predictors in random forests](https://peerj.com/articles/6339/)
+
 
 --------------------------------
   
@@ -105,7 +115,10 @@ Ruling: I'll get back to this stuff at a later date (not super HP to know all de
 
 # Model Interpretability
 
-## Variable Importance
+## Variable Importance and Selection
+
+* 2005: Diaz-Uriarte & Alvarez de Andres: [Variable selection from random forests: application to gene expression data]
+
 
 
 2007: Ishwaran: [Variable importance in binary regression trees and forests](https://projecteuclid.org/download/pdfview_1/euclid.ejs/1195157166)
@@ -242,6 +255,9 @@ Ruling: I'll get back to this stuff at a later date (not super HP to know all de
 
 * 2010: Calle & Urrea: [Letter to the Editor: Stability of Random Forest importance measures](https://academic.oup.com/bib/article/12/1/86/243935)
   
+* 2010: Genuer et al: [Variable Selection using Random Forests](https://hal.archives-ouvertes.fr/file/index/docid/755489/filename/PRLv4.pdf)
+
+
 * 2011: Nicodemus: [Letter to the Editor: On the stability and ranking of predictors from random forest variable importance measures](https://academic.oup.com/bib/article/12/4/369/241163)
 
 * 2012: Hapfelmeier et al: [A new variable importance measure for random forests with missing data](http://www.psychologie.uzh.ch/methpsy/publications/STCO_20120809.pdf)
@@ -287,6 +303,10 @@ Stable Variable Importance Values](https://ieeexplore.ieee.org/stamp/stamp.jsp?a
 * 2018: Nembrini et al: [The revival of the Gini importance?](https://academic.oup.com/bioinformatics/article/34/21/3711/4994791)
 * 2018: Parr et al: [Beware Default Random Forest Importances](https://explained.ai/rf-importance/)
 
+* 2018: Roy: [Three Essays on Nonparametric Prediction Intervals and Robust Variable Selection](http://biblos.hec.ca/biblio/theses/2018NO10.pdf#page=23)
+  - Ch3: High-Dimensional Variable Screening using a Robust Ensemble Method 
+ 
+* 2019: Fisher et al: [All Models are Wrong, but Many are Useful: Learning a Variable’s Importance by Studying an Entire Class of Prediction Models Simultaneously](https://arxiv.org/pdf/1801.01489.pdf)
 
 * [Interpretable ML Book](https://christophm.github.io/interpretable-ml-book)
 
@@ -302,6 +322,9 @@ Some of these are not exclusive to RFs.
 * 2016: Wang et al: [An experimental study of the intrinsic stability of random forest variable importance measures](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-016-0900-5)
 * 2017: Behnamian et al: [A Systematic Approach for Variable Selection With Random Forests: Achieving 
 Stable Variable Importance Values](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8038868)
+* 2019: Fisher et al: [All Models are Wrong, but Many are Useful: Learning a Variable’s Importance by Studying an Entire Class of Prediction Models Simultaneously](https://arxiv.org/pdf/1801.01489.pdf)
+
+
 
 ## LIME
 2016: Ribeiro et al: [“Why Should I Trust You?” Explaining the Predictions of Any Classifier](https://arxiv.org/pdf/1602.04938.pdf)
@@ -309,6 +332,11 @@ Stable Variable Importance Values](https://ieeexplore.ieee.org/stamp/stamp.jsp?a
 Undated: [Ch 5.7 of Intepretable Machine Learning: Local Surrogate (LIME)](https://christophm.github.io/interpretable-ml-book/lime.html)
 
 Undated: Wright: [Justifying a random forest’s predictions](https://roywright.me/2018/02/09/justifying-random-forest/)
+
+
+## Simplified Global Models
+* 2016: Tan et al: [Tree Space Prototypes: Another Look at Making Tree Ensembles Interpretable](https://arxiv.org/pdf/1611.07115.pdf)
+* 2016: Zhou & Hooker: [Interpreting Models via Single Tree Approximation](https://arxiv.org/pdf/1610.09036.pdf)
 
 
 ----------------------------------------------------------------
@@ -479,6 +507,7 @@ Classification Problems?](http://www.jmlr.org/papers/volume15/delgado14a/delgado
 * 2016: Wainberg et al: [Are Random Forests Truly the Best Classifiers?](http://www.jmlr.org/papers/volume17/15-374/15-374.pdf)
 * 2016: Mera et al: Comparison of a massive and diverse collection of ensembles and other classifiers for oil spill detection in sar satellite images
 * 2018: Couronne et al: [Random forest versus logistic regression: a large-scale benchmark experiment](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-018-2264-5)
+* 2019: Barnard et al: [Cannot see the random forest for the decision trees: selecting predictive models for restoration ecology]
 * Undated: [Neural Networks vs. Random Forests – Does it always have to be Deep Learning](https://blog.frankfurt-school.de/wp-content/uploads/2018/10/Neural-Networks-vs-Random-Forests.pdf)
 
 
@@ -547,6 +576,9 @@ Undated: [Scikit Garden: Quantile Regression Forests](https://scikit-garden.gith
 
 ### Semi-Supervised Random Forests
 2009: Leistner et al: [Semi-Supervised Random Forests](http://www.ymer.org/papers/files/2009-SemisupervisedRandomForests.pdf)
+
+### Spatially-Biased Random Forests
+* 2019: Mitchell & Sheppard: [Spatially Biased Random Forests](https://www.cs.montana.edu/sheppard/pubs/flairs-2019.pdf)
 
 ### Structured Forests
 * 2013: Dollar et al: [Structured forests for fast edge detection](http://openaccess.thecvf.com/content_iccv_2013/papers/Dollar_Structured_Forests_for_2013_ICCV_paper.pdf)
