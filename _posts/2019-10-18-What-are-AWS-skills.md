@@ -14,22 +14,25 @@ EBS volume?
 Uh, what?  They rephrased it: how much storage beyond the default would I need
 on the machine?  Looked into EBS volumes a bit and ultimately went with an addtional 500GB.  My 
 wonderful associate on the data engineering team hooked it all up.  I simply ssh'd in 
-thereafter, got downloaded and installed NVIDIA and CUDA tools, then got to work.  
+thereafter, downloaded and installed NVIDIA and CUDA tools, then got to work.  
 
 Note that in all of this, I did not particularly deep dive into AWS.  I didn't design user
-and group permissions for S3 access -- just simply used S3.  I didn't spec out what
+and group IAM roles for S3 access -- just simply used S3.  I didn't spec out what
 we needed for our Redshift cluster and optimize speed and storage against cost, and whether
 the cluster would grow and shrink as needed within certain limits: I simply created and
 queried data via SQLAlchemy in a Python script or shell, as if it were a regular ol'
 Postgres database.  For the EC2 instance and EBS volume -- same deal!  I could have been
-SSH'ing into anything; it just happened to be an EC2 instane.  The fact that it had
+SSH'ing into anything; it just happened to be an EC2 instance.  The fact that it had
 additional storage attached to it was great, but I had nothing to do with that.
 
-Now, don't get me wrong: during this time, I had a personal AWS account to that I was using
+Now, don't get me wrong: during this time, I had a personal AWS account too, which I was using
 while taking Udacity's Deep Learning Nanodegree.  So, I did have experience setting up
-EC2 instances, choosing the amount of storage, selecting an AMI, etc.  Not "cloud guru"
-level experience, but I was familiar with the AWS Console and some AWS command line 
-stuff, e.g., listing S3 buckets and cheesy stuff like that.  
+EC2 instances, choosing the amount of storage, selecting an AMI, etc.  I was also watching
+and learning from various AWS courses online, getting a feel for some of the tools I wasn't
+using everyday.  User and group roles?  This isn't all much different than setting up user 
+and group permissions on a Linux machine.  So, all in all, I wasn't completely ignorant.  Not 
+"cloud guru" level experience either, but I was familiar with the AWS Console and 
+some AWS command line stuff, e.g., listing S3 buckets and cheesy stuff like that.  
 
 When I got into my current position, suddenly I was exposed to CloudWatch, Lambda, 
 RDS, API Gateway, SNS, and more.  I wasn't necessarily responsible for learning the
@@ -39,19 +42,23 @@ coworker had made CLI access require 2-factor authentication, and he designed a 
 that took in a token from the Google Authenticator app on your phone.  Cool stuff!  Point is,
 here was a whole other level -- nay, dimension -- of AWS and its use cases.  
 
-Things brings us to a question.
+And this brings us to an important question.
 
-Given all this information: what does it mean to put "AWS skills" on your resume?  That's
+Given all these different ways of "knowing" and interacting with AWS products, what does it 
+mean to put "AWS skills" on your resume?  That's
 so vague!  Yet, I see it all the time in my current role, where I am in the process of hiring data 
 scientist.
 
 On these data science resumes, more often than not, listing "AWS"  just means that
 someone has SSH'd into an EC2 instance, connected a Jupyter notebook, and used S3 at
-one point in the process.  Sometimes it means they've only used S3.  Then there are the
-folks who list "AWS," but mean to say that they've designed Lambdas to respond to events 
+one point in the process.  Sometimes it means they've only used S3, period, which I'm not sure
+really counts!  Then there are the
+folks who tersely list "AWS," but mean to say that they've designed Lambdas to respond to events 
 from API Gateway, which pipe the payload data into an S3 bucket, which triggers another Lambda, which 
 writes the data to Redshift, and sends summary emails using SNS every 1000 times this happens. For others, 
 "AWS" means they've set up, optimized, and managed Hadoop clusters on AWS EMR.  
+
+Point is, please be clearly communicate your skills next time you apply for a job!
 
 My advice for data scientists, machine learning engineers, and similar-buzzword-titles is this:
 * If you have a general skills section, break it down into subsections; specifically, include a "cloud" section:
@@ -62,7 +69,7 @@ My advice for data scientists, machine learning engineers, and similar-buzzword-
   - Cloud: AWS (Redshift, S3, EC2), GCP (BigQuery)
 * Finally, in other parts of the resume where you lists jobs, you should list projects -- and for each project,
   you should parenthetically list a few of the skills used, followed by some bullet points about what you did
-  - Data Scients @ Data Company
+  - Data Scientist @ Data Company
     * CoolProjectName1 (python, redshift, S3, keras, deep learning, CNNs, Tableau)
       - Designed python scripts to automatically query any new data landing in Redshift and identify 
         corresponding video files in S3
@@ -74,5 +81,15 @@ If you follow some kind of practice like this, it will be easy for a hiring mana
 understand.  It makes it clear that you are familiar with using the cloud environment, but likely not
 familiar with designing, optimizing, and managing the cloud environment.  This ensures that the hiring 
 manager knows whether or not you have the right type of AWS experience for the job.
+
+Of course, you might want to purposely obfuscate because you are unsure about your level
+of AWS experience, which I get...but why?  For a data scientist position, it's either not expected
+that you are an AWS guru, or it is. In either case, just listing "AWS" doesn't add any points to
+the resume.  In the former case, I don't totally care because I'm weighting other skills more highly,
+but spelling it out more clearly can probably help you gain a few points.  In the latter case, where
+the AWS skills are weighted highly, I actually need to see it listed out in more detail, lest you 
+lose points (and probably the job).  
+
+In summary: "AWS" in the skills section is meaningless.  Be more specific!
 
 
