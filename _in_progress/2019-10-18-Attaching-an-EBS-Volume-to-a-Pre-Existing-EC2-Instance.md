@@ -49,3 +49,5 @@ df -h /usr/bin
   /dev/xvda1       78G   78G     0 100% /
 ```
 
+
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-using-volumes.html
