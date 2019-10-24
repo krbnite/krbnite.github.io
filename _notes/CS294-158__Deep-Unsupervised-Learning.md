@@ -46,9 +46,76 @@ Some UDL approaches:
 
 WaveNet used to generate super realistic sounding voices (e.g., to read text off a webpage).
 
-## Autoregressive Models
+## What is an Autoregressive Model?
 Type of generative model.  
 
+Autoregresive models are used in things like machine translation.
+
+
+### Maximum-Likelihood Estimation
+MLE is about model parameters.
+
+The idea is that you've got a data set, and you've already guessed at or decided on what the
+model looks like -- that is, you've assumed some sort of functional form.  For example, you
+might assume the model should be linear.  Problem is, at this point, if you have D features, 
+then given you've assumed a linear model, you have D+1 parameters to define.  
+
+I purposely say "define" and not "learn" because you cannot learn the parameters (train
+the model) until you've defined a learning strategy.  
+
+MLE is a learning strategy.
+
+The strategy is this: choose the parameters that maximize the probability of having observed
+the training data.  To do this, you maximize the model's likelihood function.  In practice,
+it is easier to work with the log likelihood both theoretically and computationally.  Theoretically,
+the likelihood function is a huge product of probabilities, while the log likelihood is a huge
+sum of log probabilities; this makes differentiation easier, which is necessary to find optima. Computationally,
+it is necessary because a product of many probabilities result in numbers that are generally too 
+small for the computer to properly grapple with.
+
+We said that the likelihood function is a huge product of probabilities, and that we must maximize
+the likelihood function -- so why not refer to the method as "maximum probability estimation."  In
+fact, you will often see the likelihood function written like:
+
+```
+L(q|data) = P(data|q)
+```
+
+Though the terms are equal, the can be interpreted very differently:
+* L(q|data) is asking about the probability of the parameters given the data
+* P(data|q) is asking about the probability of the data given the parameter
+* we have ("been given") the data and want to know the parameters that maximize the probability, which
+  is in line with the first interpretation
+* the word "likelihood" is used to emphasize the first interpretation
+
+So how does this relate to minimizing a loss function, which is what we usually discuss when
+training a model in machine learning?
+
+Basically, in some cases, minimizing your model's loss function is the same thing as maximizing 
+model's corresponding likelihood function.  For example, in linear regression, minimizing the
+mean squared error (MSE) is equivalent to maximizing linear regression's corresponding 
+likelihood function (assuming the errors are normally distributed).  The equivalence
+can be found by noting that both rely on the same parameter set to be optimized, and that
+the two functions are monotonic transformations of each other.
+
+Similarly, minimizing the cross entropy loss for a logistic regression (e.g., in a typical
+binary classification problem) is equivalent to the maximizing the associated likelihood
+function.
+
+Note that these models need not use loss functions that are related to their likelihood
+functions.  Just so happens that, oftentimes, this is the case.
+
+
+
+
+#### MLE References
+* [The real reason you use MSE and cross-entropy loss functions](https://www.expunctis.com/2019/01/27/Loss-functions.html)
+* [Minimizing the Negative Log-Likelihood, in English](http://willwolf.io/2017/05/18/minimizing_the_negative_log_likelihood_in_english/)
+* [Cross-entropy and Maximum Likelihood Estimation](https://medium.com/konvergen/cross-entropy-and-maximum-likelihood-estimation-58942b52517a)
+
+
+
+### Likelihood-Based Models
 Likelihood-based models: estimate p from sample x1, ..., xn
   - a model which is a joint distribution over data
     * in this class, a distribution is simply a function that takes in a data point (say an image)
@@ -61,7 +128,6 @@ Likelihood-based models: estimate p from sample x1, ..., xn
   - also allows sampling x from p(x)
     * generate new data points
 
-Autoregresive models are used in things like machine translation.
 
 Data compression is very related to likelihood-based modeling / generative modeling.  This is
 because you are trying to find a lower-dimensional space that encodes the original data, and
@@ -72,6 +138,7 @@ so points in that lower-dimensional space should be able to predict the correspo
   - the idea of both is "how much do you have to write down (or store) to be able to predict
     the full contents of a sentence/something/signal?"
 
+### Learning a Distribution
 What do we want out of a learned distribution?
 * we want to be able to learn it fast (i.e., it can take exponentially long)
 * we want to the representation/model to be quick itself (i.e., for any data point provided,
@@ -80,7 +147,7 @@ What do we want out of a learned distribution?
   the model to be able to handle data points it has never seen before -- we do not want to have to
   provide every possible data point during the learning/training phase
 
-
+#### The Histogram
 Simplest example of learning a distribution is a 1D histogram
 * say you have k values, {v[1], ..., v[k]}, which can be represented by their index {1, ..., k}
 * and say that you have N data points, {x[1], ..., x[N]}
@@ -90,6 +157,7 @@ Would seem like histograms can be computed for anything, but not when you're con
 with the curse of dimensionality, where counting fails (b/c for extremely large dimensional
 spaces, you'll never have enough training data to fill all of the bins).
 
+#### Function Approximation
 Next best thing: function approximation. Instead of storing each probability, we can
 store a parameterized function, p_{theta}(x).  The learning here is the parameter theta: 
 we find the best theta s.t. `p_{theta}(x) ~= p(x)`.
@@ -99,6 +167,7 @@ problem: `arg min_{theta} loss(theta, {x[1],...,x[N]}) = (1/N)SUM(-log p_{theta}
 * this is equivalent to minimizing the KL divergence between the empirical distribution and the model, e.g.,
   when developing a compression model, this tells you how good the compression is
 
+#### Deep Learning the Function Approximation
 How does DL tie into all of this?  Well, we will leverage DL models as approximations of 
 probability distributions of interest.
 * DL models are highly expressive and have efficient computation (can take in any data point and
@@ -121,7 +190,10 @@ of data points.
 Autoregressive model: "an expressive Bayes net structure with neural network conditional distributions
 yeilds an expressive model for p(x) with tractable maximum likelihood training."
 
-A Toy Autoregressive Model w/ 2 vars
+
+## Examples of Autoregressive Models
+
+### A Toy Autoregressive Model w/ 2 vars
 * vars: x1, x2
 * model: p(x1,x2) = p(x1)p(x2|x1)
   - p(x1) is a histogram
@@ -142,28 +214,28 @@ By tweaking this approach to include parameter sharing, we are back in business,
 There are certain cases where adding more layers will not help!  You will still be missing
 certain statistical dependencies...
 
-MADE
+### MADE: Masked Autoencoder for Distribution Estimation
 * this is an interesting way to estimate conditionals while sharing parameters
 * basically, you start with an autoencoder, then you "mask" (remove) connections
   between various nodes in a way that produces a joint probability distribution
   across the output nodes
 * a pic here would help: [MADE example](https://camo.githubusercontent.com/263f87f23fc1de9563d7083f924bb71540daa8b5/68747470733a2f2f7261772e6769746875622e636f6d2f6b617270617468792f7079746f7263682d6d6164652f6d61737465722f6d6164652e706e67)
 
-Masked Temporal (1D) Convolution 
+### Masked Temporal (1D) Convolution 
 * more info:
   - https://medium.com/the-artificial-impostor/notes-understanding-tensorflow-part-3-7f6633fcc7c7
   - https://github.com/philipperemy/keras-tcn
 * pro: constant parameter count for variable-length distribution
 * con: has limited receptive field (number of sequence points that current prediction is dependent on)
 
-WaveNet
+### WaveNet
 * improves upon TCNs by using dilated convolutions (w/ exponential dilation)
 * results in better expressivity
 * more info
   - https://towardsdatascience.com/how-wavenet-works-12e2420ef386
   - https://www.youtube.com/watch?v=GyQnex_DK2k
 
-PixelCNN
+### PixelCNN
 * images can be flattened into 1D vectors, but are fundamentally 2D
   - we can use a masked version of ConvNet to exploit this
   - first, impose an autoregressive ordering on your 2D images (e.g., a raster scan ordering)
@@ -172,14 +244,14 @@ PixelCNN
 * one issue: PixelCNN has a blind spot in its receptive field
   - by construction, an infinitely deep net couldn't rectify this
   
-Gated PixelCNN
+### Gated PixelCNN
 * fixes receptive field issues by using two streams of convolutions
   - the horizontal stack: 1D convolution ocurring across a row (captures things before point of interest)
   - the vertical stack: a 2D convolution... (captures things above)
 * improved ConvNet architecture:  **Gated ResNet Block**
 
 
-PixelCNN++
+### PixelCNN++
 * Moving away from SoftMax
   - we know pixels near each other are likely to co-occur
   - softmax treats each pixel/bin independently of each other when computing conditional distributions...
