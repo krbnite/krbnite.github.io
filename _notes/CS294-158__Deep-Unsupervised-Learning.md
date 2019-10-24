@@ -53,12 +53,13 @@ Autoregresive models are used in things like machine translation.
 
 
 ### Maximum-Likelihood Estimation
-MLE is about model parameters.
+MLE is about determining model parameters.
 
 The idea is that you've got a data set, and you've already guessed at or decided on what the
 model looks like -- that is, you've assumed some sort of functional form.  For example, you
-might assume the model should be linear.  Problem is, at this point, if you have D features, 
-then given you've assumed a linear model, you have D+1 parameters to define.  
+might assume the model should be linear.  Problem is, at this point, you have an infinite
+number of possible models: you need to somehow select one.  In the linear example, if you have 
+D features, this means you have D+1 parameters to define.  
 
 I purposely say "define" and not "learn" because you cannot learn the parameters (train
 the model) until you've defined a learning strategy.  
@@ -66,9 +67,12 @@ the model) until you've defined a learning strategy.
 MLE is a learning strategy.
 
 The strategy is this: choose the parameters that maximize the probability of having observed
-the training data.  To do this, you maximize the model's likelihood function.  In practice,
+the training data.  To do this, you maximize the model's likelihood function.  
+
+In practice,
 it is easier to work with the log likelihood both theoretically and computationally.  Theoretically,
-the likelihood function is a huge product of probabilities, while the log likelihood is a huge
+the likelihood function is a huge product of probabilities (samples are considered to be randomly 
+selected and i.i.d.), while the log likelihood is a huge
 sum of log probabilities; this makes differentiation easier, which is necessary to find optima. Computationally,
 it is necessary because a product of many probabilities result in numbers that are generally too 
 small for the computer to properly grapple with.
@@ -88,6 +92,10 @@ Though the terms are equal, the can be interpreted very differently:
   is in line with the first interpretation
 * the word "likelihood" is used to emphasize the first interpretation
 
+As Wolfram Mathworld puts it: "Likelihood is the hypothetical probability that an event that has already 
+occurred would yield a specific outcome. The concept differs from that of a probability in that a probability refers 
+to the occurrence of future events, while a likelihood refers to past events with known outcomes."
+
 So how does this relate to minimizing a loss function, which is what we usually discuss when
 training a model in machine learning?
 
@@ -102,8 +110,12 @@ Similarly, minimizing the cross entropy loss for a logistic regression (e.g., in
 binary classification problem) is equivalent to the maximizing the associated likelihood
 function.
 
-Note that these models need not use loss functions that are related to their likelihood
-functions.  Just so happens that, oftentimes, this is the case.
+Note that loss functions need not be related to likelihood functions. Just so happens that, oftentimes, 
+this is the case.  But the loss-likelihood connection is not necessarily special or the best choice
+available.  Furthermore, note that the likelihood estimator itself is not necessarily special or
+the best choice available.  In fact, in some cases (e.g., sample variance) it is an biased estimator,
+and so in some settings not a desriable estimator.  Just some things to think about and be aware of.
+
 
 
 
@@ -112,7 +124,7 @@ functions.  Just so happens that, oftentimes, this is the case.
 * [The real reason you use MSE and cross-entropy loss functions](https://www.expunctis.com/2019/01/27/Loss-functions.html)
 * [Minimizing the Negative Log-Likelihood, in English](http://willwolf.io/2017/05/18/minimizing_the_negative_log_likelihood_in_english/)
 * [Cross-entropy and Maximum Likelihood Estimation](https://medium.com/konvergen/cross-entropy-and-maximum-likelihood-estimation-58942b52517a)
-
+* Penn State STAT 414/415: [Maximum Likelihood Estimation](https://newonlinecourses.science.psu.edu/stat414/node/191/)
 
 
 ### Likelihood-Based Models
