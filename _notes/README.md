@@ -18,3 +18,8 @@ DL/ML courses to possibly look at (in no particular order):
 
 [Introduction to reinforcement learning (2018)](https://www.youtube.com/playlist?list=PLqYmG7hTraZDM-OYHWgPebj2MfCFzFObQ)
 
+[Deep Learning School 2016: Individual Talks](https://www.youtube.com/playlist?list=PLrAXtmErZgOfMuxkACrYnD2fTgbzk2THW)
+
+[Lex Fridman's Deep Learning](https://www.youtube.com/playlist?list=PLrAXtmErZgOeiKm4sgNOknGvNjby9efdf)
+
+[CS231n Winter 2016 (Andrej Karpathy): Convolutional Neural Networks for Visual Recognition](https://www.youtube.com/playlist?list=PLkt2uSq6rBVctENoVBg1TpCC7OQi31AlC)
