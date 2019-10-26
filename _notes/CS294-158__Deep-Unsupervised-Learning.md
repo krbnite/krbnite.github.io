@@ -269,3 +269,9 @@ certain statistical dependencies...
   - softmax treats each pixel/bin independently of each other when computing conditional distributions...
 
 
+
+------------------------------------------------------------
+
+
+# Additional Video Resources
+* Ruslan Salakhutdinov: [Foundations of Unsupervised Deep Learning](https://www.youtube.com/watch?v=rK6bchqeaN8)
