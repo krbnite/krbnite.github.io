@@ -1,6 +1,10 @@
 Course Instructors: Peter Abbeel, Peter Chen, Jonathan Ho, & Aravind Srinivas
 
+Course Website: https://sites.google.com/view/berkeley-cs294-158-sp19/home
 
+Course Reading List:  https://www.dropbox.com/s/f09vfmfjb9thaef/gm_reading_list.zip?dl=0&file_subpath=%2Fgm_reading_list
+
+Course Lectures:
 * [Week 1](https://www.youtube.com/watch?v=zNmvH6OXDpk)
 * [Week 2](https://www.youtube.com/watch?v=mYCLVPRy2nc)
 * [Week 3](https://www.youtube.com/watch?v=NCRzGmM1ywE)
@@ -275,3 +279,4 @@ certain statistical dependencies...
 
 # Additional Video Resources
 * Ruslan Salakhutdinov: [Foundations of Unsupervised Deep Learning](https://www.youtube.com/watch?v=rK6bchqeaN8)
+* 2018: Alex Graves (Google DeepMind) and Marc Aurelio Ranzato (Facebook): [Unsupervised Deep Learning](https://www.youtube.com/watch?v=rjZCjosEFpI)
