@@ -6,7 +6,7 @@ DL/ML courses to possibly look at (in no particular order):
 
 [Deep RL Bootcamp - Berkeley Aug 2017](https://www.youtube.com/playlist?list=PLCJPYIcPhgPAiiBjjVxi5St_lC_cXHFCK)
 
-[AI Institute “Geometry of Deep Learning” 2019](https://www.youtube.com/playlist?list=PLD7HFcN7LXRe30qq36It2XCljxc340O_d)
+Microsoft: [AI Institute “Geometry of Deep Learning” 2019](https://www.youtube.com/playlist?list=PLD7HFcN7LXRe30qq36It2XCljxc340O_d)
 
 
 
@@ -17,7 +17,6 @@ DL/ML courses to possibly look at (in no particular order):
 [Introduction to reinforcement learning (2018)](https://www.youtube.com/playlist?list=PLqYmG7hTraZDM-OYHWgPebj2MfCFzFObQ)
 
 [Deep Learning School 2016: Individual Talks](https://www.youtube.com/playlist?list=PLrAXtmErZgOfMuxkACrYnD2fTgbzk2THW)
-
 
 
 
@@ -34,8 +33,10 @@ DL/ML courses to possibly look at (in no particular order):
 
 
 # UC Berkeley
+* 2013: Pieter Abbeel: [CS188: Intro to AI](https://www.youtube.com/channel/UCshmLD2MsyqAKBx8ctivb5Q/feed)
 * 2016: [CS188: Intro to AI](https://www.youtube.com/playlist?list=PLIeooNSdhQE5kRrB71yu5yP9BRCJCSbMt)
 * 2018: [CS188: Intro to AI](https://www.youtube.com/playlist?list=PL7k0r4t5c108AZRwfW-FhnkZ0sCKBChLH)
+* 2018: [Learning and Reasoning with Bayesian Networks](https://www.youtube.com/playlist?list=PLlDG_zCuBub6ywAIrM1DfJp8xaeVjyvwx)
 * 2019: [Full Stack DL Bootcamp 2019](https://www.youtube.com/playlist?list=PL_Ig1a5kxu5645uORPL8xyvHr91Lg8G1l)
 * 2019: [STAT-157: Deep Learning](https://www.youtube.com/playlist?list=PLZSO_6-bSqHQHBCoGaObUljoXAyyqhpFW)
 
@@ -52,5 +53,9 @@ DL/ML courses to possibly look at (in no particular order):
 * 2016: [Statistical Machine Learning](https://www.youtube.com/playlist?list=PLTB9VQq8WiaCBK2XrtYn5t9uuPdsNm7YE)
 
 
+# U-Toronto
+* 2012: Hinton: [Neural Networks for ML](https://www.youtube.com/playlist?list=PLoRl3Ht4JOcdU872GhiYWf6jwrk_SNhz9)
+
 # Misc Source
+* 2014: U-Washington: [Grad Course in AI](https://www.youtube.com/playlist?list=PLbQ3Aya0VERDoDdbMogU9EASJGWris9qG)
 * 2018: Bloomberg: [Foundation of ML](https://www.youtube.com/playlist?list=PLnZuxOufsXnvftwTB1HL6mel1V32w0ThI)
