@@ -1,16 +1,14 @@
 DL/ML courses to possibly look at (in no particular order):
 
-[Deep Learning UC Berkeley STAT-157 2019](https://www.youtube.com/playlist?list=PLZSO_6-bSqHQHBCoGaObUljoXAyyqhpFW)
 
 [Advanced Deep Learning & Reinforcement Learning](https://www.youtube.com/playlist?list=PLqYmG7hTraZDNJre23vqCGIVpfZ_K2RZs)
 
-[Full Stack DL Bootcamp 2019 | UC Berkeley](https://www.youtube.com/playlist?list=PL_Ig1a5kxu5645uORPL8xyvHr91Lg8G1l)
 
 [Deep RL Bootcamp - Berkeley Aug 2017](https://www.youtube.com/playlist?list=PLCJPYIcPhgPAiiBjjVxi5St_lC_cXHFCK)
 
 [AI Institute “Geometry of Deep Learning” 2019](https://www.youtube.com/playlist?list=PLD7HFcN7LXRe30qq36It2XCljxc340O_d)
 
-[CS224N: Natural Language Processing with Deep Learning | Winter 2019](https://www.youtube.com/playlist?list=PLoROMvodv4rOhcuXMZkNm7j3fVwBBY42z)
+
 
 [CS230: Deep Learning | Autumn 2018](https://www.youtube.com/playlist?list=PLoROMvodv4rOABXSygHTsbvUz4G_YQhOb)
 
@@ -20,6 +18,39 @@ DL/ML courses to possibly look at (in no particular order):
 
 [Deep Learning School 2016: Individual Talks](https://www.youtube.com/playlist?list=PLrAXtmErZgOfMuxkACrYnD2fTgbzk2THW)
 
-[Lex Fridman's Deep Learning](https://www.youtube.com/playlist?list=PLrAXtmErZgOeiKm4sgNOknGvNjby9efdf)
 
-[CS231n Winter 2016 (Andrej Karpathy): Convolutional Neural Networks for Visual Recognition](https://www.youtube.com/playlist?list=PLkt2uSq6rBVctENoVBg1TpCC7OQi31AlC)
+
+
+# MIT
+* Lex Fridman: [Deep Learning](https://www.youtube.com/playlist?list=PLrAXtmErZgOeiKm4sgNOknGvNjby9efdf)
+* Patrick Winston: [Intro to AI/ML](https://www.youtube.com/playlist?list=PLnvKubj2-I2LhIibS8TOGC42xsD3-liux)
+
+# Stanford
+* Andrew Ng: [Machine Learning (Coursera)](https://www.youtube.com/playlist?list=PLLssT5z_DsK-h9vYZkQkYNWcItqhlRJLN)
+* Andrew Ng: [Machine Learning (Classroom Lectures)](https://www.youtube.com/playlist?list=PLA89DCFA6ADACE599)
+* 2019 (Winter): [CS224N: Natural Language Processing with Deep Learning](https://www.youtube.com/playlist?list=PLoROMvodv4rOhcuXMZkNm7j3fVwBBY42z)
+* 2019 (Spring): [CS224 - Natural Language Understanding](https://www.youtube.com/playlist?list=PLoROMvodv4rObpMCir6rNNUlFAn56Js20)
+* 2016 (Winter): Fei Fei Li & Andrej Karpathy: [CS231n: Convolutional Neural Networks for Visual Recognition](https://www.youtube.com/playlist?list=PLkt2uSq6rBVctENoVBg1TpCC7OQi31AlC)
+
+
+# UC Berkeley
+* 2016: [CS188: Intro to AI](https://www.youtube.com/playlist?list=PLIeooNSdhQE5kRrB71yu5yP9BRCJCSbMt)
+* 2018: [CS188: Intro to AI](https://www.youtube.com/playlist?list=PL7k0r4t5c108AZRwfW-FhnkZ0sCKBChLH)
+* 2019: [Full Stack DL Bootcamp 2019](https://www.youtube.com/playlist?list=PL_Ig1a5kxu5645uORPL8xyvHr91Lg8G1l)
+* 2019: [STAT-157: Deep Learning](https://www.youtube.com/playlist?list=PLZSO_6-bSqHQHBCoGaObUljoXAyyqhpFW)
+
+
+# CalTech
+* 2015: [CS156 - Machine Learning](https://www.youtube.com/playlist?list=PLD63A284B7615313A)
+
+
+# Cornell
+* [CS4780: Machine Learning for Intelligent Systems](https://www.youtube.com/playlist?list=PLl8OlHZGYOQ7bkVbuRthEsaLr7bONzbXS)
+
+
+# Carnegie Mellon
+* 2016: [Statistical Machine Learning](https://www.youtube.com/playlist?list=PLTB9VQq8WiaCBK2XrtYn5t9uuPdsNm7YE)
+
+
+# Misc Source
+* 2018: Bloomberg: [Foundation of ML](https://www.youtube.com/playlist?list=PLnZuxOufsXnvftwTB1HL6mel1V32w0ThI)
