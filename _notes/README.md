@@ -55,6 +55,8 @@ Microsoft: [AI Institute “Geometry of Deep Learning” 2019](https://www.youtu
 
 # U-Toronto
 * 2012: Hinton: [Neural Networks for ML](https://www.youtube.com/playlist?list=PLoRl3Ht4JOcdU872GhiYWf6jwrk_SNhz9)
+* [Intro to Self-Driving Cars](https://www.coursera.org/learn/intro-self-driving-cars)
+* [State Estimation and Localization for Self-Driving Cars](https://www.coursera.org/learn/state-estimation-localization-self-driving-cars)
 
 # Misc Source
 * 2014: U-Washington: [Grad Course in AI](https://www.youtube.com/playlist?list=PLbQ3Aya0VERDoDdbMogU9EASJGWris9qG)
