@@ -51,13 +51,21 @@ Microsoft: [AI Institute “Geometry of Deep Learning” 2019](https://www.youtu
 
 # Carnegie Mellon
 * 2016: [Statistical Machine Learning](https://www.youtube.com/playlist?list=PLTB9VQq8WiaCBK2XrtYn5t9uuPdsNm7YE)
-
+* Multiple Years: [Deep Learning](https://www.youtube.com/channel/UC8hYZGEkI2dDO8scT8C5UQA/playlists)
 
 # U-Toronto
 * 2012: Hinton: [Neural Networks for ML](https://www.youtube.com/playlist?list=PLoRl3Ht4JOcdU872GhiYWf6jwrk_SNhz9)
 * [Intro to Self-Driving Cars](https://www.coursera.org/learn/intro-self-driving-cars)
 * [State Estimation and Localization for Self-Driving Cars](https://www.coursera.org/learn/state-estimation-localization-self-driving-cars)
 
+# U-Waterloo
+* 2015: Ali Ghodsi: [Deep Learning](https://www.youtube.com/playlist?list=PLehuLRPyt1Hyi78UOkMPWCGRxGcA9NVOE)
+* 2017: Ali Ghodsi: [Deep Learning](https://www.youtube.com/playlist?list=PLehuLRPyt1HxTolYUWeyyIoxDabDmaOSB)
+* 2015: Ali Ghodsi: [Statistical Learning - Classification](https://www.youtube.com/playlist?list=PLehuLRPyt1Hy-4ObWBK4Ab0xk97s6imfC)
+* 2017: Ali Ghodsi: [Statistical Learning - Classification](https://www.youtube.com/playlist?list=PLehuLRPyt1HzXDemu7K4ETcF0Ld_B5adG)
+
+
 # Misc Source
 * 2014: U-Washington: [Grad Course in AI](https://www.youtube.com/playlist?list=PLbQ3Aya0VERDoDdbMogU9EASJGWris9qG)
 * 2018: Bloomberg: [Foundation of ML](https://www.youtube.com/playlist?list=PLnZuxOufsXnvftwTB1HL6mel1V32w0ThI)
+* 2016: Hugo Larochelle: [Neural Networks](https://www.youtube.com/playlist?list=PL6Xpj9I5qXYEcOhn7TqghAJ6NAPrNmUBH)
