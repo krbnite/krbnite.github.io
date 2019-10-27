@@ -39,7 +39,7 @@ Microsoft: [AI Institute “Geometry of Deep Learning” 2019](https://www.youtu
 * 2018: [Learning and Reasoning with Bayesian Networks](https://www.youtube.com/playlist?list=PLlDG_zCuBub6ywAIrM1DfJp8xaeVjyvwx)
 * 2019: [Full Stack DL Bootcamp 2019](https://www.youtube.com/playlist?list=PL_Ig1a5kxu5645uORPL8xyvHr91Lg8G1l)
 * 2019: [STAT-157: Deep Learning](https://www.youtube.com/playlist?list=PLZSO_6-bSqHQHBCoGaObUljoXAyyqhpFW)
-
+* 2019: [CS285: Deep Reinforcement Learning](https://www.youtube.com/playlist?list=PLkFD6_40KJIwhWJpGazJ9VSj9CFMkb79A)
 
 # CalTech
 * 2015: [CS156 - Machine Learning](https://www.youtube.com/playlist?list=PLD63A284B7615313A)
