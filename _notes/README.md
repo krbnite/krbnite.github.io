@@ -49,7 +49,9 @@ Microsoft: [AI Institute “Geometry of Deep Learning” 2019](https://www.youtu
 * 2019 (Spring): [CS224 - Natural Language Understanding](https://www.youtube.com/playlist?list=PLoROMvodv4rObpMCir6rNNUlFAn56Js20)
 * 2016 (Winter): Fei Fei Li & Andrej Karpathy: [CS231n: Convolutional Neural Networks for Visual Recognition](https://www.youtube.com/playlist?list=PLkt2uSq6rBVctENoVBg1TpCC7OQi31AlC)
 * 2019 (Fall): STATS-385: [Analyses of Deep Learning](https://stats385.github.io/)
-
+  - [2017 Version (w/ David Donohu)](https://www.researchgate.net/project/Theories-of-Deep-Learning)
+  
+  
 # UC Berkeley
 * 2013: Pieter Abbeel: [CS188: Intro to AI](https://www.youtube.com/channel/UCshmLD2MsyqAKBx8ctivb5Q/feed)
 * 2016: [CS188: Intro to AI](https://www.youtube.com/playlist?list=PLIeooNSdhQE5kRrB71yu5yP9BRCJCSbMt)
