@@ -23,6 +23,24 @@ Microsoft: [AI Institute “Geometry of Deep Learning” 2019](https://www.youtu
 # MIT
 * Lex Fridman: [Deep Learning](https://www.youtube.com/playlist?list=PLrAXtmErZgOeiKm4sgNOknGvNjby9efdf)
 * Patrick Winston: [Intro to AI/ML](https://www.youtube.com/playlist?list=PLnvKubj2-I2LhIibS8TOGC42xsD3-liux)
+* Robotics: https://www.youtube.com/playlist?list=PLUl4u3cNGP62Bkdzwe7caTZC7soj7ZYvk
+* AI: https://www.youtube.com/playlist?list=PLUl4u3cNGP63gFHB6xb-kVBiQHYe_4hSi
+* Strang: Matrix methods ML/DL/DSP:  https://www.youtube.com/playlist?list=PLUl4u3cNGP63oMNUHXqIUcrkS2PivhN3k
+* Signal processing on DBs: https://www.youtube.com/playlist?list=PLUl4u3cNGP62DPmPLrVyYfk3-Try_ftJJ
+* Signals and Systems:  https://www.youtube.com/playlist?list=PLUl4u3cNGP61kdPAOC7CzFjJZ8f1eMUxs
+* Prob systems analysis and applied Prob: 
+  - https://www.youtube.com/playlist?list=PLUl4u3cNGP60A3XMwZ5sep719_nh95qOe
+  - https://www.youtube.com/playlist?list=PLUl4u3cNGP61MdtwGTqZA0MreSaDybji8
+* DSP (1975): https://www.youtube.com/playlist?list=PL8157CA8884571BA2
+* Intro to algorithms: https://www.youtube.com/playlist?list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb
+* Advanced Data Structures: https://www.youtube.com/playlist?list=PLUl4u3cNGP61hsJNdULdudlRL493b-XZf
+* Sensory Systems:  https://www.youtube.com/playlist?list=PLUl4u3cNGP63Wy1oqQW2oD2HBdDSY8Ghi
+* StatMech1:  https://www.youtube.com/playlist?list=PLUl4u3cNGP60gl3fdUTKRrt5t_GPx2sRg
+* StatMech2:  https://www.youtube.com/playlist?list=PLUl4u3cNGP63HkEHvYaNJiO0UCUmY0Ts7
+* String Theory:  https://www.youtube.com/playlist?list=PLUl4u3cNGP633VWvZh23bP6dG80gW34SU
+* Effective Fld Thry:  https://www.youtube.com/playlist?list=PLUl4u3cNGP60TvpbO5toEWC8y8w51dtvm
+
+
 
 # Stanford
 * Andrew Ng: [Machine Learning (Coursera)](https://www.youtube.com/playlist?list=PLLssT5z_DsK-h9vYZkQkYNWcItqhlRJLN)
@@ -30,7 +48,7 @@ Microsoft: [AI Institute “Geometry of Deep Learning” 2019](https://www.youtu
 * 2019 (Winter): [CS224N: Natural Language Processing with Deep Learning](https://www.youtube.com/playlist?list=PLoROMvodv4rOhcuXMZkNm7j3fVwBBY42z)
 * 2019 (Spring): [CS224 - Natural Language Understanding](https://www.youtube.com/playlist?list=PLoROMvodv4rObpMCir6rNNUlFAn56Js20)
 * 2016 (Winter): Fei Fei Li & Andrej Karpathy: [CS231n: Convolutional Neural Networks for Visual Recognition](https://www.youtube.com/playlist?list=PLkt2uSq6rBVctENoVBg1TpCC7OQi31AlC)
-
+* 2019 (Fall): STATS-385: [Analyses of Deep Learning](https://stats385.github.io/)
 
 # UC Berkeley
 * 2013: Pieter Abbeel: [CS188: Intro to AI](https://www.youtube.com/channel/UCshmLD2MsyqAKBx8ctivb5Q/feed)
