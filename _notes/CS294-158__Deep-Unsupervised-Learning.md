@@ -280,3 +280,6 @@ certain statistical dependencies...
 # Additional Video Resources
 * Ruslan Salakhutdinov: [Foundations of Unsupervised Deep Learning](https://www.youtube.com/watch?v=rK6bchqeaN8)
 * 2018: Alex Graves (Google DeepMind) and Marc Aurelio Ranzato (Facebook): [Unsupervised Deep Learning](https://www.youtube.com/watch?v=rjZCjosEFpI)
+* 2016: [CS231n Winter 2016: Lecture 14: Videos and Unsupervised Learning](https://www.youtube.com/watch?v=ekyBklxwQMU)
+* 2007: Hinton: [The Next Generation of Neural Networks](https://www.youtube.com/watch?v=AyzOUbkUf3M)
+
