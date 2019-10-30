@@ -246,3 +246,24 @@ in need of improvement.
 How to get good?  Simple: read a lot of papers, replicate results, and get comfortable with all the
 dirty work.  In other words, get serious, set expectations consistent with reality, and put in the time!
 
+
+
+
+# 7.  Deep Reinforcement Learning (John Schulman, OpenAI)
+
+* 2007:  Powell:  Approximate Dynamic Programming: Solving the Curse of Dimensionality:  <<could not find shareable link, so include a later review paper by same author on same topic below>>>
+* 2009:  Daume et al:  Search-Based  Structured Prediction:  https://link.springer.com/content/pdf/10.1007%2Fs10994-009-5106-x.pdf
+* 2009:  Powell:  What you should know about Approximate Dynamic Programming:  https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.150.1854&rep=rep1&type=pdf
+* 2010:  Jie & Abbeel:  On a Connection between Importance Sampling and the Likelihood Ratio Policy Gradient:  http://papers.nips.cc/paper/3922-on-a-connection-between-importance-sampling-and-the-likelihood-ratio-policy-gradient
+* 2011:  Ross et al:  A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning:  http://proceedings.mlr.press/v15/ross11a/ross11a.pdf
+* 2013:  Mnih et al:  Playing Atari with Deep Reinforcement Learning:  https://arxiv.org/abs/1312.5602
+* 2014:  Guo et al:  Deep Learning for Real-Time Atari Game Play Using Offline Monte-Carlo Tree Search Planning:  http://papers.nips.cc/paper/5421-deep-learning-for-real-time-atari-game-play-using-offline-monte-carlo-tree-search-planning
+* 2014:  Mnih et al:  Recurrent Models of Visual Attention:  http://papers.nips.cc/paper/5542-recurrent-models-of-visual-attention
+* 2014:  Silver et al:  Deterministic Policy Gradient Algorithms:  http://proceedings.mlr.press/v32/silver14.pdf
+* 2015:  Heess et al:  Learning Continuous Control Policies by Stochastic Value Gradients:  http://papers.nips.cc/paper/5796-learning-continuous-control-policies-by-stochastic-value-gradients
+* 2015:  Ranzato et al:  Sequence Level Training with Recurrent Neural Networks:  https://arxiv.org/abs/1511.06732
+* 2015:  Schulman et al:  High-Dimensional Continuous Control Using Generalized Advantage Estimation:  https://arxiv.org/abs/1506.02438
+* 2015:  Schulman et al:  Trust Region Policy Optimization:  http://proceedings.mlr.press/v37/schulman15.pdf
+* 2016:  Levine et al:  End-to-End Training of Deep Visuomotor Policies:  http://www.jmlr.org/papers/volume17/15-522/15-522.pdf
+* 2016:  Mnih et al:  Asynchronous Methods for Deep Reinforcement Learning:  http://proceedings.mlr.press/v48/mniha16.pdf
+* 2016:  Silver et al:  Mastering the game of Go with deep neural networks and tree search:  http://web.iitd.ac.in/~sumeet/Silver16.pdf
