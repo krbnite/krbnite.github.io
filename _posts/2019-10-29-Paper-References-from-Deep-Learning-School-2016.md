@@ -143,3 +143,106 @@ NOTE: this video is old and TF has changed A LOT.  Some of the code in Sherry's 
 * 2016:  Salimans et al:  Improved Techniques for Training GANs:  http://papers.nips.cc/paper/6124-improved-techniques-for-training-gans
 * 2016:  van den Oord:  Conditional Image Generation with PixelCNN Decoders:  http://papers.nips.cc/paper/6527-conditional-image-generation-with-pixelcnn-decoders
 * 2016:  van den Oord:  Pixel Recurrent Neural Networks:  https://arxiv.org/abs/1601.06759
+
+
+# 6. Nuts and Bolts of Applying Deep Learning (Andrew Ng)
+[Video Lecture](https://www.youtube.com/watch?v=F1ka6a13S9I&list=PLrAXtmErZgOfMuxkACrYnD2fTgbzk2THW&index=7&t=0s)
+
+Ng talks about a typical, decent ML workflow, but notes one can do a better job at error 
+analysis (i.e., understanding how model bias and model variance are affecting your results).  
+
+```
+          *---------------------------------------------------------------*
+          v                                                               |
+[Training Error High?] ---YES---> [Bigger Model | Train Longer | New Model Architecture]
+          |        ^
+          NO        \_______
+          |                 *------*
+          V                         \
+[Dev Set Error High?] ---YES---> [More Data | Regularization | New Model Architecture ]
+          |
+          NO
+          |
+          V
+         DONE
+```
+
+He actually had the Dev Set change point back to the asking whether the dev set error was 
+high, but I pointed it back to asking whether the training set error was high.  Makes more sense, especially
+if you change the model architecture!
+
+He showed you can do better than this work flow, and in fact it is here I learned a new trick.  Basically,
+in addition to looking and training and dev errors, you should look at the combined set error.  Hopefully
+this next graphic helps that make more sense:
+
+```
+Human Error Rate: 1%
+Training Set Error: 10%        
+Training-Dev Set Error:  10.1%
+Dev Set Error: 10.1%
+Test Set Error: 10.2%
+```
+
+* An intuitive sense of model bias is found by comparing the human error rate to the training
+set error: here, we have large model bias.
+* Model variance can be thought of as the difference in error rate between training and training-dev (or
+  between training and dev, as is usually done).
+* Ng shows Training/Dev mismatch as the difference between error on training-dev and dev...
+* Finally, the difference between dev and test error is a sign of overfitting the dev set
+
+I have to give some of this more thought... But anyway, this analysis then informs Ng's updated
+ML workflow:
+
+```
+# NOTE: oftentimes, a change made anywhere in the workflow indicates to start back
+#   at the beginning (especially if an architectural change is made).
+
+          *---------------------------------------------------------------*
+          v                                                               |
+[Training Error High?] ---YES---> [Bigger Model | Train Longer | New Model Architecture]
+          |        ^
+          NO        \_______
+          |                 *------*
+          V                         \
+[Train-Dev Set Error High?] ---YES---> [More Training Data | Regularization | New Model Architecture]
+          |
+          NO
+          |
+          V
+[Dev Set Error High?] ---YES---> [More Training and Dev Data | Data Synthesis | New Model Architecture]
+          |
+          NO
+          |
+          V
+[Test Set Error High?] ---YES---> [More Dev Data]
+          |
+          NO
+          |
+          V
+         DONE
+```
+
+Ng finds that progress in an area can be rapidly made until the human error rate is 
+surpassed, then things get tricky.  This is in part due to there being an upper bound on
+error rate, called the optimal error rate (or Bayes rate) -- and the fact that humans are
+actually pretty good at many of the tasks we try to automate with ML/DL (i.e., oftentimes, the human
+error rate is already fairly close to the optimal rate).  Also, once you surpass the human
+error rate you can run into some fundamental issues, e.g., are humans the ones labeling your data? 
+
+Ng brings up a toy medical example where he lists the typical human error rate as 3%, the typical
+doctor error rate as 1%, an expert doctor's error rate as 0.7%, and the error rate of 
+a team of expert doctors as 0.5%.  The point is: which one should you consider the "human 
+error rate" for this problem?  Or more importantly: what type of data should you be using?  Disregarding
+data collection costs and complications, the answer should be obvious: you want to train your
+model based on the team of expert doctors.  This is one way to improve model performance: identify
+and/or insist upon high quality data.  
+
+
+If you are looking to make rapdid progress
+on something, Ng's advice is to identify an area in which ML/DL has not yet surpassed the human error
+rate.  This need not be something entirely new: for example, in speech recognition certain accents are
+in need of improvement. 
+
+How to get good?  Simple: read a lot of papers, replicate results, and get comfortable with all the
+dirty work.  In other words, get serious, set expectations consistent with reality, and put in the time!
+
