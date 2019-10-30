@@ -1,4 +1,8 @@
-
+---
+title:  Paper References from "Deep Learning School 2016"
+layout: post
+tags:  deep-learning easi
+---
 
 I've been watching through the video lectures of the "Deep Learning School 2016" playlist on Lex Fridman's YouTube
 account.  While doing so, I found it useful to collect and collate all the references in each lecture (or as many
