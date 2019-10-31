@@ -251,7 +251,12 @@ dirty work.  In other words, get serious, set expectations consistent with reali
 
 # 7.  Deep Reinforcement Learning (John Schulman, OpenAI)
 
+* 1994:  Jaakkola et al:  Convergence of Stochastic Iterative Dynamic Programming Algorithms: http://papers.nips.cc/paper/764-convergence-of-stochastic-iterative-dynamic-programming-algorithms.pdf
+* 2002:  Kakade:  A Natural Policy Gradient:  http://papers.nips.cc/paper/2073-a-natural-policy-gradient.pdf
+* 2003:  Bagnell & Scheider:  Covariant Policy Search:  https://kilthub.cmu.edu/articles/Covariant_Policy_Search/6552458
+* 2005:  Riedmiller:  Neural Fitted Q Iteration - First Experiences with a Data Efficient Neural Reinforcement Learning Method:  https://link.springer.com/content/pdf/10.1007/11564096_32.pdf
 * 2007:  Powell:  Approximate Dynamic Programming: Solving the Curse of Dimensionality:  <<could not find shareable link, so include a later review paper by same author on same topic below>>>
+* 2008:  Peters et al:  Natural Actor Critic:  http://www.cs.cmu.edu/~nickr/nips_workshop/jpeters.abstract.pdf
 * 2009:  Daume et al:  Search-Based  Structured Prediction:  https://link.springer.com/content/pdf/10.1007%2Fs10994-009-5106-x.pdf
 * 2009:  Powell:  What you should know about Approximate Dynamic Programming:  https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.150.1854&rep=rep1&type=pdf
 * 2010:  Jie & Abbeel:  On a Connection between Importance Sampling and the Likelihood Ratio Policy Gradient:  http://papers.nips.cc/paper/3922-on-a-connection-between-importance-sampling-and-the-likelihood-ratio-policy-gradient
@@ -260,10 +265,14 @@ dirty work.  In other words, get serious, set expectations consistent with reali
 * 2014:  Guo et al:  Deep Learning for Real-Time Atari Game Play Using Offline Monte-Carlo Tree Search Planning:  http://papers.nips.cc/paper/5421-deep-learning-for-real-time-atari-game-play-using-offline-monte-carlo-tree-search-planning
 * 2014:  Mnih et al:  Recurrent Models of Visual Attention:  http://papers.nips.cc/paper/5542-recurrent-models-of-visual-attention
 * 2014:  Silver et al:  Deterministic Policy Gradient Algorithms:  http://proceedings.mlr.press/v32/silver14.pdf
+* 2015:  Hausknecht & Stone:  Deep Recurrent Q-Learning for Partially Observable MDPs:  https://www.aaai.org/ocs/index.php/FSS/FSS15/paper/viewPaper/11673
 * 2015:  Heess et al:  Learning Continuous Control Policies by Stochastic Value Gradients:  http://papers.nips.cc/paper/5796-learning-continuous-control-policies-by-stochastic-value-gradients
 * 2015:  Ranzato et al:  Sequence Level Training with Recurrent Neural Networks:  https://arxiv.org/abs/1511.06732
+* 2015:  Schaul et al:  Prioritized Experience Replay:  https://arxiv.org/abs/1511.05952
 * 2015:  Schulman et al:  High-Dimensional Continuous Control Using Generalized Advantage Estimation:  https://arxiv.org/abs/1506.02438
 * 2015:  Schulman et al:  Trust Region Policy Optimization:  http://proceedings.mlr.press/v37/schulman15.pdf
 * 2016:  Levine et al:  End-to-End Training of Deep Visuomotor Policies:  http://www.jmlr.org/papers/volume17/15-522/15-522.pdf
 * 2016:  Mnih et al:  Asynchronous Methods for Deep Reinforcement Learning:  http://proceedings.mlr.press/v48/mniha16.pdf
 * 2016:  Silver et al:  Mastering the game of Go with deep neural networks and tree search:  http://web.iitd.ac.in/~sumeet/Silver16.pdf
+* 2016:  van Hasselt et al:  Deep Reinforcement Learning with Double Q-Learning:  https://www.aaai.org/ocs/index.php/AAAI/AAAI16/paper/viewPaper/12389
+* 2016:  Wang et al:  Dueling Network Architectures for Deep Reinforcement Learning:  https://arxiv.org/abs/1511.06581
