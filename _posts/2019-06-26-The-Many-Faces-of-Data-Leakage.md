@@ -1,3 +1,9 @@
+---
+title: The Many Faces of Data Leakage
+layout: post
+tags: machine-learning easi
+---
+
 Data leakage and illegitimacy can creep up from any number of places along a typical machine learning
 pipeline and/or work flow.  
 
