@@ -276,3 +276,22 @@ dirty work.  In other words, get serious, set expectations consistent with reali
 * 2016:  Silver et al:  Mastering the game of Go with deep neural networks and tree search:  http://web.iitd.ac.in/~sumeet/Silver16.pdf
 * 2016:  van Hasselt et al:  Deep Reinforcement Learning with Double Q-Learning:  https://www.aaai.org/ocs/index.php/AAAI/AAAI16/paper/viewPaper/12389
 * 2016:  Wang et al:  Dueling Network Architectures for Deep Reinforcement Learning:  https://arxiv.org/abs/1511.06581
+
+
+# 8. Theano Tutorial
+Honestly, I already use TensorFlow/Keras, so I don't have any interest in learning Theano at the moment -- SKIP!
+
+# 9. Deep Learning for Speech Recognition (Adam Coates, Baidu)
+
+* [DeepSpeech Starter Code](https://github.com/baidu-research/ba-dls-deepspeech)
+
+* 2006:  Graves et al:  [Connectionist Temporal Classification: Labelling Unsegmented Sequence Data with Recurrent Neural Networks](https://mediatum.ub.tum.de/doc/1292048/file.pdf)
+
+* 2015:  Chan & Lane:  [Deep Recurrent Neural Networks for Acoustic Modelling](https://arxiv.org/abs/1504.01482)
+* 2015:  Chan et al:  [Listen, Attend and Spell](https://arxiv.org/abs/1508.01211)
+* 2015:  Chorowski et al:  [Attention-Based Models for Speech Recognition](http://papers.nips.cc/paper/5847-attention-based-models-for-speech-recognition)
+* 2016:  Bahdanau et al:  [End-to-End Attention-based Large Vocabulary Speech Recognition](https://arxiv.org/abs/1508.04395)
+
+
+
+
