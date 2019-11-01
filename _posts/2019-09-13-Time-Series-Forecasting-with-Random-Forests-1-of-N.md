@@ -62,10 +62,16 @@ look at that smooth on the figure above for the initial 1800-point window.  You 
 by just averaging a few data points right before the one you want to predict.
 
 
+# 10-Minute Forecast
 
 <figure>
   <img src="/images/2019-09-13__Time-Series__10-Min-Prediction.png" alt="inner-product" width="500vw" />
-  <img src="/images/2019-09-13__Time-Series__Simple-Signal-with-Linear-Trend.png" alt="inner-product" width="500vw" />
+</figure>
+
+
+# Inability to Extrapolate
+<figure>
+   <img src="/images/2019-09-13__Time-Series__Simple-Signal-with-Linear-Trend.png" alt="inner-product" width="500vw" />
   <img src="/images/2019-09-13__Time-Series__Inability-to_Extrapolate.png" alt="inner-product" width="500vw" />
 </figure>
 
