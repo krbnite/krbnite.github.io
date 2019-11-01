@@ -1,4 +1,9 @@
+Data leakage and illegitimacy can creep up from any number of places along a typical machine learning
+pipeline and/or work flow.  
 
+This is a list of things to watch out for that I've compiled over time.  
+
+----------------------------------------------
 
 * time-based leakage
   - a predictor that would not be available at the time of deployment
