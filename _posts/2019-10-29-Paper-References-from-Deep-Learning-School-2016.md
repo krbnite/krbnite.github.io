@@ -284,12 +284,22 @@ Honestly, I already use TensorFlow/Keras, so I don't have any interest in learni
 # 9. Deep Learning for Speech Recognition (Adam Coates, Baidu)
 
 * [DeepSpeech Starter Code](https://github.com/baidu-research/ba-dls-deepspeech)
+* Connectionist Temporal Classification (CTC) packages
+  - [Warp CTC](github.com/baidu-research/warp-ctc)
+  - [Stanford CTC](github.com/amaas/stanford-ctc)
+  - [TensorFlow: tf.nn.ctc_loss](https://www.tensorflow.org/api_docs/python/tf/nn/ctc_loss)
+* [LibriSpeech ASR Corpus](http://openslr.org/12/)
+* [KenLM](kheafield.com/code/kenlm)
 
 * 2006:  Graves et al:  [Connectionist Temporal Classification: Labelling Unsegmented Sequence Data with Recurrent Neural Networks](https://mediatum.ub.tum.de/doc/1292048/file.pdf)
-
+* 2009:  Bengio et al: [Curriculum Learning](https://qmro.qmul.ac.uk/xmlui/bitstream/handle/123456789/15972/Bengio%2C%202009%20Curriculum%20Learning.pdf?sequence=1&isAllowed=y)
+* 2014:  Hannun et al:  [Deep Speech: Scaling up end-to-end speech recognition](https://arxiv.org/abs/1412.5567)
 * 2015:  Chan & Lane:  [Deep Recurrent Neural Networks for Acoustic Modelling](https://arxiv.org/abs/1504.01482)
 * 2015:  Chan et al:  [Listen, Attend and Spell](https://arxiv.org/abs/1508.01211)
 * 2015:  Chorowski et al:  [Attention-Based Models for Speech Recognition](http://papers.nips.cc/paper/5847-attention-based-models-for-speech-recognition)
+* 2015:  Loffe & Szegedy:  [Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift](https://arxiv.org/abs/1502.03167)
+* 2015:  Panayotov et al:  [LibriSpeech: An ASR Corpus Based on Public Domain Audio Books](http://bestversionbot.com/storage/app/uploads/public/5b6/fde/b28/5b6fdeb283881733591649.pdf)
+  - * [LibriSpeech ASR Corpus](http://openslr.org/12/)
 * 2016:  Bahdanau et al:  [End-to-End Attention-based Large Vocabulary Speech Recognition](https://arxiv.org/abs/1508.04395)
 
 
