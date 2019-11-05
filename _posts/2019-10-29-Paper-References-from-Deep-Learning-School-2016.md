@@ -303,5 +303,24 @@ Honestly, I already use TensorFlow/Keras, so I don't have any interest in learni
 * 2016:  Bahdanau et al:  [End-to-End Attention-based Large Vocabulary Speech Recognition](https://arxiv.org/abs/1508.04395)
 
 
+# 11. Sequence to Sequence Deep Learning (Quoc Le, Google)
+* Chris Olah's Blog: [Attention and Augmented RNNs](https://distill.pub/2016/augmented-rnns/)
+* Quoc Le's [Tutorial  http://ai.stanford.edu/~quocle/tutorial2.pdf]
+* [Seq2Seq in TensorFlow](https://github.com/google/seq2seq)
+  - See also: [Neural machine translation with attention](https://www.tensorflow.org/tutorials/text/nmt_with_attention)
 
+- - - - -
 
+* 2014:  Graves et al:  [Neural Turing Machines](https://arxiv.org/abs/1410.5401)
+* 2014:  Sutskever et al:  [Sequence to Sequence with Neural Networks](https://arxiv.org/abs/1409.3215)
+* 2015:  Bahdanau et al:  [Neural Machine Translation by Jointly Learning to Align and Translate](https://arxiv.org/abs/1409.0473)
+* 2015:  Bengio et al:  [Scheduled Sampling for Sequence Prediction with Recurrent Neural Networks](http://papers.nips.cc/paper/5956-scheduled-sampling-for-sequence-prediction-with-recurrent-neural-networks)
+* 2015:  Chorowski et al:  [Attention-Based Models for Speech Recognition](http://papers.nips.cc/paper/5847-attention-based-models-for-speech-recognition)
+* 2015:  Joulin & Mikolov:  [Inferring Algorithmic Patterns with Stack-Augmented Recurrent Nets](http://papers.nips.cc/paper/5857-inferring-algorithmic-patterns-with-stack-augmented-recurrent-nets)
+* 2015:  Sordoni et al:  [A Neural Network Approach to Context-Sensitive Generation of Conversational Responses](https://arxiv.org/abs/1506.06714)
+* 2015:  Shang et al:  [Neural Responding Machine for Short-Text Conversation](https://arxiv.org/abs/1503.02364)
+* 2015:  Sukhbaatar et al:  [End-to-End Memory Networks](http://papers.nips.cc/paper/5846-end-to-end-memorynetworks)
+* 2015:  Vinyal & Le:  [A Neural Conversational Model](https://arxiv.org/abs/1506.05869)
+* 2015:  Vinyals et al:  [Grammar as a Foreign Language](http://papers.nips.cc/paper/5635-grammar-as-a-foreign-language)
+* 2015:  Vinyals et al:  [Show and Tell: a Neural Image Caption Generator](https://www.cv-foundation.org/openaccess/content_cvpr_2015/html/Vinyals_Show_and_Tell_2015_CVPR_paper.html)
+* 2016:  Chan et al:  [Listen, Attend, and Spell](https://arxiv.org/abs/1508.01211)
