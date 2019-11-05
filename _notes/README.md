@@ -1,7 +1,7 @@
 DL/ML courses to possibly look at (in no particular order):
 
 
-[Advanced Deep Learning & Reinforcement Learning](https://www.youtube.com/playlist?list=PLqYmG7hTraZDNJre23vqCGIVpfZ_K2RZs)
+* 2018:  [DeepMind: Advanced Deep Learning & Reinforcement Learning](https://www.youtube.com/playlist?list=PLqYmG7hTraZDNJre23vqCGIVpfZ_K2RZs)
 
 
 [Deep RL Bootcamp - Berkeley Aug 2017](https://www.youtube.com/playlist?list=PLCJPYIcPhgPAiiBjjVxi5St_lC_cXHFCK)
@@ -14,13 +14,14 @@ Microsoft: [AI Institute “Geometry of Deep Learning” 2019](https://www.youtu
 
 [Practical Deep Learning for Coders 2019 (Jeremy Howard)](https://www.youtube.com/playlist?list=PLfYUBJiXbdtSIJb-Qd3pw0cqCbkGeS0xn)
 
-[Introduction to reinforcement learning (2018)](https://www.youtube.com/playlist?list=PLqYmG7hTraZDM-OYHWgPebj2MfCFzFObQ)
+* 2018: David Silver: [Introduction to reinforcement learning (2018)](https://www.youtube.com/playlist?list=PLqYmG7hTraZDM-OYHWgPebj2MfCFzFObQ)
 
 [Deep Learning School 2016: Individual Talks](https://www.youtube.com/playlist?list=PLrAXtmErZgOfMuxkACrYnD2fTgbzk2THW)
 
 
 
 # MIT
+* 2019:  [Intro to Deep Learning](https://www.youtube.com/playlist?list=PLtBw6njQRU-rwp5__7C0oIVt26ZgjG9NI)
 * Lex Fridman: [Deep Learning](https://www.youtube.com/playlist?list=PLrAXtmErZgOeiKm4sgNOknGvNjby9efdf)
 * Patrick Winston: [Intro to AI/ML](https://www.youtube.com/playlist?list=PLnvKubj2-I2LhIibS8TOGC42xsD3-liux)
 * Robotics: https://www.youtube.com/playlist?list=PLUl4u3cNGP62Bkdzwe7caTZC7soj7ZYvk
@@ -85,7 +86,21 @@ Microsoft: [AI Institute “Geometry of Deep Learning” 2019](https://www.youtu
 * 2017: Ali Ghodsi: [Statistical Learning - Classification](https://www.youtube.com/playlist?list=PLehuLRPyt1HzXDemu7K4ETcF0Ld_B5adG)
 
 
+
 # Misc Source
+* 2012:  IPAM:  [Deep Learning & Feature Learning](https://www.youtube.com/playlist?list=PLHyI3Fbmv0SdzMHAy0aN59oYnLy5vyyTA)
+* 2013: Max Planck Institute:  [Machine Learning Summer School](https://www.youtube.com/playlist?list=PLqJm7Rc5-EXFv6RXaPZzzlzo93Hl0v91E)
+* 2017: Max Planck Institute:  [Machine Learning Summer School](https://www.youtube.com/playlist?list=PLqJm7Rc5-EXFUOvoYCdKikfck8YeUCnl9)
 * 2014: U-Washington: [Grad Course in AI](https://www.youtube.com/playlist?list=PLbQ3Aya0VERDoDdbMogU9EASJGWris9qG)
 * 2018: Bloomberg: [Foundation of ML](https://www.youtube.com/playlist?list=PLnZuxOufsXnvftwTB1HL6mel1V32w0ThI)
 * 2016: Hugo Larochelle: [Neural Networks](https://www.youtube.com/playlist?list=PL6Xpj9I5qXYEcOhn7TqghAJ6NAPrNmUBH)
+* 2016: Canadian Institute for Advanced Research (CIFAR): [Deep Learning Summer School](https://www.youtube.com/playlist?list=PL5bqIc6XopCbb-FvnHmD1neVlQKwGzQyR)
+
+* 2018:  Deep|Bayes: https://www.youtube.com/playlist?list=PLe5rNUydzV9Q01vWCP9BV7NhJG3j7mz62
+* 2019:  Deep|Bayes: https://www.youtube.com/playlist?list=PLe5rNUydzV9QHe8VDStpU0o8Yp63OecdW
+
+* 2018: IPAM: [New Deep Learning Techniques](https://www.youtube.com/playlist?list=PLHyI3Fbmv0SdM0zXj31HWjG9t9Q0v2xYN)
+
+* 2015:  Sydney: [ML Summer School](https://www.youtube.com/playlist?list=PLiFmGG7h-xufN5FX1MuAMMUD-tsbx-RYS)
+* 2016: Canadian Institute for Advanced Research (CIFAR): [Reinforcement Learning Summer School](https://www.youtube.com/playlist?list=PL5bqIc6XopCa7AlzMb88pIpRFRbsT6Buo)
+* 2019:  Paul G. Allen School:  [Mathematics of Machine Learning Summer School](https://www.youtube.com/playlist?list=PLTPQEx-31JXhguCush5J7OGnEORofoCW9)
