@@ -49,6 +49,7 @@ Microsoft: [AI Institute “Geometry of Deep Learning” 2019](https://www.youtu
 * 2019 (Winter): [CS224N: Natural Language Processing with Deep Learning](https://www.youtube.com/playlist?list=PLoROMvodv4rOhcuXMZkNm7j3fVwBBY42z)
 * 2019 (Spring): [CS224 - Natural Language Understanding](https://www.youtube.com/playlist?list=PLoROMvodv4rObpMCir6rNNUlFAn56Js20)
 * 2016 (Winter): Fei Fei Li & Andrej Karpathy: [CS231n: Convolutional Neural Networks for Visual Recognition](https://www.youtube.com/playlist?list=PLkt2uSq6rBVctENoVBg1TpCC7OQi31AlC)
+* 2017 (Spring): [Convolutional Neural Networks for Visual Recognition](https://www.youtube.com/playlist?list=PL3FW7Lu3i5JvHM8ljYj-zLfQRF3EO8sYv)
 * 2019 (Fall): STATS-385: [Analyses of Deep Learning](https://stats385.github.io/)
   - [2017 Version (w/ David Donohu)](https://www.researchgate.net/project/Theories-of-Deep-Learning)
   
@@ -95,6 +96,10 @@ Microsoft: [AI Institute “Geometry of Deep Learning” 2019](https://www.youtu
 * 2018: Bloomberg: [Foundation of ML](https://www.youtube.com/playlist?list=PLnZuxOufsXnvftwTB1HL6mel1V32w0ThI)
 * 2016: Hugo Larochelle: [Neural Networks](https://www.youtube.com/playlist?list=PL6Xpj9I5qXYEcOhn7TqghAJ6NAPrNmUBH)
 * 2016: Canadian Institute for Advanced Research (CIFAR): [Deep Learning Summer School](https://www.youtube.com/playlist?list=PL5bqIc6XopCbb-FvnHmD1neVlQKwGzQyR)
+* 2018:  Simons Institute:  [Foundations of Machine Learning Boot Camp](https://www.youtube.com/playlist?list=PLgKuh-lKre11GbZWneln-VZDLHyejO7YD)
+
+
+
 
 * 2018:  Deep|Bayes: https://www.youtube.com/playlist?list=PLe5rNUydzV9Q01vWCP9BV7NhJG3j7mz62
 * 2019:  Deep|Bayes: https://www.youtube.com/playlist?list=PLe5rNUydzV9QHe8VDStpU0o8Yp63OecdW
