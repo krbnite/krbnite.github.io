@@ -324,3 +324,23 @@ Honestly, I already use TensorFlow/Keras, so I don't have any interest in learni
 * 2015:  Vinyals et al:  [Grammar as a Foreign Language](http://papers.nips.cc/paper/5635-grammar-as-a-foreign-language)
 * 2015:  Vinyals et al:  [Show and Tell: a Neural Image Caption Generator](https://www.cv-foundation.org/openaccess/content_cvpr_2015/html/Vinyals_Show_and_Tell_2015_CVPR_paper.html)
 * 2016:  Chan et al:  [Listen, Attend, and Spell](https://arxiv.org/abs/1508.01211)
+
+
+
+# 12. Foundations and Challenges of Deep Learning (Yoshua Bengio)
+* 1991:  Hastad & Goldmann:  [On the Power of Small-Depth Threshold Circuits](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.120.7713&rep=rep1&type=pdf)
+* 1994:  Bengio et al:  [Learning Long-Term Dependencies with Gradient Descent is Difficult](http://www.comp.hkbu.edu.hk/~markus/teaching/comp7650/tnn-94-gradient.pdf)
+* 2007:  Bengio & LeCun:  [Scaling Learning Algorithms towards AI](http://www.iro.umontreal.ca/~lisa/bib/pub_subject/language/pointeurs/bengio+lecun-chapter2007.pdf)
+* 2009:  Bengio:  [Learning Deep Architectures for AI](http://ace.cs.ohio.edu/~razvan/courses/dl6890/papers/ftml.pdf)
+* 2011:  Bengio & Delalleau:  [On the Expressive Power of Deep Architectures](http://www.iro.umontreal.ca/~lisa/bib/pub_subject/finance/pointeurs/ALT2011.pdf)
+* 2011:  Delalleau & Bengio:  [Shallow vs. Deep Sum-Product Networks](http://papers.nips.cc/paper/4350-shallow-vs-deep-sum-product-networks)
+* 2013:  Larochelle & Hinton:  [Learning to combine foveal glimpses with a third-order Boltzmann machine](http://papers.nips.cc/paper/4089-learning-to-combine-foveal-glimpses-with-a-third-order-boltzmann-machine)
+* 2013:  Pascanu et al:  [On the number of response regions of deep feed forward networks with piece-wise linear activations](https://arxiv.org/abs/1312.6098)
+* 2014:  Bahdanau et al:  [Neural Machine Translation by Jointly Learning to Align and Translate](https://arxiv.org/abs/1409.0473)
+* 2014:  Dauphin et al:  [Identifying and attacking the saddle point problem in high-dimensional non-convex optimization](http://papers.nips.cc/paper/5486-identifying-and-attacking-the-saddle-point-problem-in-high-dimensional-non-convex-optimization)
+* 2014:  Montufar & Morton:  [When Does a Mixture of Products Contain a Product of Mixtures?](https://arxiv.org/abs/1206.0387)
+* 2014:  Montufar et al:  [On the Number of Linear Regions of Deep Neural Networks](http://papers.nips.cc/paper/5422-on-the-number-of-linear-regions-of)
+* 2014:  Pascanu et al:  [On the saddle point problem for non-convex optimization](https://arxiv.org/abs/1405.4604)
+* 2015:  Choromanska et al:  [Open Problem: The landscape of the loss surfaces of multilayer networks](http://proceedings.mlr.press/v40/Choromanska15.pdf)
+* 2015:  Choromanska et al:  [The Loss Surfaces of Multilayer Networks](http://proceedings.mlr.press/v38/choromanska15.pdf)
+* 2015: Zhou et al:  [Object Detectors Emerge in Deep Scene CNNs](https://arxiv.org/abs/1412.6856)
