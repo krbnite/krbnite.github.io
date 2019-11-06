@@ -8,7 +8,7 @@ DL/ML courses to possibly look at (in no particular order):
 
 Microsoft: [AI Institute “Geometry of Deep Learning” 2019](https://www.youtube.com/playlist?list=PLD7HFcN7LXRe30qq36It2XCljxc340O_d)
 
-
+* Full Stack Deep Learning: https://www.youtube.com/channel/UCVchfoB65aVtQiDITbGq2LQ/playlists
 
 [CS230: Deep Learning | Autumn 2018](https://www.youtube.com/playlist?list=PLoROMvodv4rOABXSygHTsbvUz4G_YQhOb)
 
@@ -16,7 +16,14 @@ Microsoft: [AI Institute “Geometry of Deep Learning” 2019](https://www.youtu
 
 * 2018: David Silver: [Introduction to reinforcement learning (2018)](https://www.youtube.com/playlist?list=PLqYmG7hTraZDM-OYHWgPebj2MfCFzFObQ)
 
-[Deep Learning School 2016: Individual Talks](https://www.youtube.com/playlist?list=PLrAXtmErZgOfMuxkACrYnD2fTgbzk2THW)
+* [Deep Learning School 2016: Individual Talks](https://www.youtube.com/playlist?list=PLrAXtmErZgOfMuxkACrYnD2fTgbzk2THW)
+
+* http://www.deeplearningbook.org/
+  - Goodfellow, Bengio, Courville
+
+* http://deeplearning.net/tutorial/
+  - online book w/ code
+  - Theano code samples...
 
 
 
@@ -86,7 +93,15 @@ Microsoft: [AI Institute “Geometry of Deep Learning” 2019](https://www.youtu
 * 2015: Ali Ghodsi: [Statistical Learning - Classification](https://www.youtube.com/playlist?list=PLehuLRPyt1Hy-4ObWBK4Ab0xk97s6imfC)
 * 2017: Ali Ghodsi: [Statistical Learning - Classification](https://www.youtube.com/playlist?list=PLehuLRPyt1HzXDemu7K4ETcF0Ld_B5adG)
 
+# U-Montreal
+* 2014: Yoshua Bengio: [Deep Learning](https://www.youtube.com/playlist?list=PLrPGelHrmLRQI4OLgHi-Xx0-0VmMPapW4)
 
+# Oxford
+* 2014: Nando de Freitas: [Machine Learning](https://www.cs.ox.ac.uk/people/nando.defreitas/machinelearning/)
+
+# Virginia Tech
+* 2015: [Introduction to Machine Learning](https://filebox.ece.vt.edu/~s15ece5984/)
+* 2015: [Deep Learning for Perception](https://computing.ece.vt.edu/~f15ece6504/)
 
 # Misc Source
 * 2012:  IPAM:  [Deep Learning & Feature Learning](https://www.youtube.com/playlist?list=PLHyI3Fbmv0SdzMHAy0aN59oYnLy5vyyTA)
@@ -97,7 +112,8 @@ Microsoft: [AI Institute “Geometry of Deep Learning” 2019](https://www.youtu
 * 2016: Hugo Larochelle: [Neural Networks](https://www.youtube.com/playlist?list=PL6Xpj9I5qXYEcOhn7TqghAJ6NAPrNmUBH)
 * 2016: Canadian Institute for Advanced Research (CIFAR): [Deep Learning Summer School](https://www.youtube.com/playlist?list=PL5bqIc6XopCbb-FvnHmD1neVlQKwGzQyR)
 * 2018:  Simons Institute:  [Foundations of Machine Learning Boot Camp](https://www.youtube.com/playlist?list=PLgKuh-lKre11GbZWneln-VZDLHyejO7YD)
-
+* 2018 (Spring): Hacettepe University: [CMP784: Deep Learning](https://web.cs.hacettepe.edu.tr/~aykut/classes/spring2018/cmp784/lectures.html)
+  - this course gradually takes you through the Deep Learning book, sprinkling in selected reading and viewing
 
 
 
