@@ -24,6 +24,8 @@ Microsoft: [AI Institute “Geometry of Deep Learning” 2019](https://www.youtu
 * http://deeplearning.net/tutorial/
   - online book w/ code
   - Theano code samples...
+  
+
 
 
 
@@ -114,14 +116,42 @@ Microsoft: [AI Institute “Geometry of Deep Learning” 2019](https://www.youtu
 * 2018:  Simons Institute:  [Foundations of Machine Learning Boot Camp](https://www.youtube.com/playlist?list=PLgKuh-lKre11GbZWneln-VZDLHyejO7YD)
 * 2018 (Spring): Hacettepe University: [CMP784: Deep Learning](https://web.cs.hacettepe.edu.tr/~aykut/classes/spring2018/cmp784/lectures.html)
   - this course gradually takes you through the Deep Learning book, sprinkling in selected reading and viewing
-
-
-
 * 2018:  Deep|Bayes: https://www.youtube.com/playlist?list=PLe5rNUydzV9Q01vWCP9BV7NhJG3j7mz62
 * 2019:  Deep|Bayes: https://www.youtube.com/playlist?list=PLe5rNUydzV9QHe8VDStpU0o8Yp63OecdW
-
 * 2018: IPAM: [New Deep Learning Techniques](https://www.youtube.com/playlist?list=PLHyI3Fbmv0SdM0zXj31HWjG9t9Q0v2xYN)
-
 * 2015:  Sydney: [ML Summer School](https://www.youtube.com/playlist?list=PLiFmGG7h-xufN5FX1MuAMMUD-tsbx-RYS)
 * 2016: Canadian Institute for Advanced Research (CIFAR): [Reinforcement Learning Summer School](https://www.youtube.com/playlist?list=PL5bqIc6XopCa7AlzMb88pIpRFRbsT6Buo)
 * 2019:  Paul G. Allen School:  [Mathematics of Machine Learning Summer School](https://www.youtube.com/playlist?list=PLTPQEx-31JXhguCush5J7OGnEORofoCW9)
+
+# Intel
+* [Machine Learning](https://software.intel.com/en-us/ai/courses/machine-learning)
+* [Deep Learning](https://software.intel.com/en-us/ai/courses/deep-learning)
+* [Applied Deep Learning With TensorFlow](https://software.intel.com/en-us/ai/courses/tensorflow)
+* [Introduction To AI](https://software.intel.com/en-us/ai/courses/artificial-intelligence)
+* [Natural Language Processing](https://software.intel.com/en-us/ai/courses/natural-language-processing)
+* [Time-Series Analysis](https://software.intel.com/en-us/ai/courses/time-series-analysis)
+* [Computer Vision](https://software.intel.com/en-us/ai/courses/computer-vision)
+* [Deep Learning for Robotics](https://software.intel.com/en-us/ai/courses/deep-learning-robotics)
+* [Anomaly Detection](https://software.intel.com/en-us/ai/courses/anomaly-detection)
+* [Deep Learning with BigDL](https://software.intel.com/en-us/ai/courses/bigdl)
+* [Distributed AI with the Ray Framework](https://software.intel.com/en-us/ai/courses/distributed-AI-ray)
+
+# Weights and Biases
+* 2019 (Fall):  Josh Tobin:  [Applied Deep Learning](https://www.youtube.com/playlist?list=PLD80i8An1OEEe2X5KA_uSvMaEMl0lo4jP)
+* 2019 (Spring):  [Introduction to Machine Learning](https://www.youtube.com/playlist?list=PLD80i8An1OEHSai9cf-Ip-QReOVW76PlB)
+* 2019:  [Explore Deep Learning](https://www.youtube.com/playlist?list=PLD80i8An1OEG8LvgREvgakhaqBBXBXfql)
+
+
+
+# EdX
+* IBM: Certificate in DL: 1. [Deep Learning Fundamentals with Keras](https://www.edx.org/course/deep-learning-fundamentals-with-keras-2)
+* IBM: Certificate in DL: 2. [Deep Learning with Python and PyTorch](https://www.edx.org/course/deep-learning-with-python-and-pytorch-2)
+* IBM: Certificate in DL: 3. [Deep Learning with Tensorflow](https://www.edx.org/course/deep-learning-with-tensorflow-2)
+* IBM: Certificate in DL: 4. [Using GPUs to Scale and Speed-up Deep Learning](https://www.edx.org/course/using-gpus-to-scale-and-speed-up-deep-learning)
+* IBM: Certificate in DL: 5. [Applied Deep Learning Capstone Project](https://www.edx.org/course/applied-deep-learning-capstone-project-2)
+* MSFT: AI Certificate:  2. [Deep Learning Explained](https://www.edx.org/course/deep-learning-explained-4)
+* MSFT: AI Certificate:  3. [Introduction to Artificial Intelligence (AI)](https://www.edx.org/course/introduction-to-artificial-intelligence-ai-4)
+* MSFT: AI Certificate:  5. [Natural Language Processing](https://www.edx.org/course/natural-language-processing-nlp-4)
+* MSFT: AI Certificate:  6. [Reinforcement Learning Explained](https://www.edx.org/course/reinforcement-learning-explained-4)
+* MSFT: AI Certificate:  7. [Speech Recognition Systems](https://www.edx.org/course/speech-recognition-systems-4)
+* MSFT: AI Certificate:  9. [Computer Vision and Image Analysis](https://www.edx.org/course/computer-vision-and-image-analysis-4)
