@@ -1,4 +1,5 @@
 
+Full Stack Deep Learning, March 2019: [Official Website](https://fullstackdeeplearning.com/march2019)
 
 # Lecture 1: Introduction to Deep Learning (Pieter Abbeel)
 
@@ -25,6 +26,57 @@
 * 2017:  Esteva et al: [Dermatologist-level classification of skin cancer with deep neural networks](https://www.nature.com/articles/nature21056?TB_iframe=true&width=914.4&height=921.6)
   - paywall
 * 2017:  Rajpurkar et al:  [CheXNet: Radiologist-Level Pneumonia Detection on Chest X-Rays with Deep Learning](https://arxiv.org/abs/1711.05225)
+
+
+
+# Lecture 2: Setting Up Machine Learning Projects (Josh Tobin)
+
+The [Labs on GitHub](https://github.com/full-stack-deep-learning/fsdl-text-recognizer-project) (though
+none of the labs seem to actually exist).
+
+Lifecyle of ML Project 
+* Planning and Project Set Up
+  - Decide on project (e.g., pose estimation)
+  - Determine requirements and goal (e.g., esitmate x,y,z of object center and angles for orientation)
+  - Allocate resources (where will the data come from? how much compute will you require?)
+* Data Collection and Labeling
+  - Pose Estimation example
+    * Collect training objects (e.g., boxes of cereal)
+    * Set up sensors (e.g., cameras)
+    * Capture data (e.g., images of the cereal boxes)
+    * Annotate w/ ground truth (must decide on what that even means)
+  - NOTE: Lifecycle is not a linear flow!  If things seem to complex here, we can go back to the first phase.
+    * e.g., maybe it's too hard to take pictures of cereal boxes, so you decide to estimate pose on images
+      of alien octopus ghosts
+* Training & Debugging
+  - Implement baseline model
+  - Find state-of-the-art model and reproduce
+  - Debug your implementation as much as possible
+  - Fine tune and improve the model for specific task 
+  - NOTE: this phase includes reading, implementing, debugging, ideation, etc
+  - TROUBLESHOOTING
+    * Do we need to collect more data?
+    * Is the data labeling unreliable?  
+    * Do we need to rethink the project scope? 
+    * Do we need to rethink our data collection procedures? 
+* Deploying & Testing
+  - TROUBLESHOOTING
+    * Chosen metric does not affect real world events as planned
+    * Real world performance does not match test set performance 
+* Maintaing and Updating
+  - Maintaining
+    * Keep tabs on performance drift
+    * Develop online updating / retraining strategy
+  - Updating
+    * Keep tabs on state-of-the-art in your domain
+    * Stay current with similar domains and what's possible
+    * Develop an intuition for how to improve and what to try next
+  
+ 
+### References in Lecture
+* 2017:  Xiang et al:  [PoseCNN: A Convolutional Neural Network for 6D Object Pose Estimation in Cluttered Scenes](https://arxiv.org/abs/1711.00199)
+
+
 
 
 
