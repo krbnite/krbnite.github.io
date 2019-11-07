@@ -37,9 +37,15 @@ none of the labs seem to actually exist).
 Lifecyle of ML Project 
 * Planning and Project Set Up
   - Decide on project (e.g., pose estimation)
+    * Define project goals
   - Determine requirements and goal (e.g., esitmate x,y,z of object center and angles for orientation)
+    * Choose metrics
   - Allocate resources (where will the data come from? how much compute will you require?)
+    * Set up codebase
 * Data Collection and Labeling
+  - Develop collection strategy
+  - Implement strategy and ingest
+  - Label collected data
   - Pose Estimation example
     * Collect training objects (e.g., boxes of cereal)
     * Set up sensors (e.g., cameras)
@@ -60,6 +66,11 @@ Lifecyle of ML Project
     * Do we need to rethink the project scope? 
     * Do we need to rethink our data collection procedures? 
 * Deploying & Testing
+  - Testing 
+    * Ensure model works on mission critical data points
+    * Software regression testing (regularly ensure all functions/objects/etc work as intended,
+      especially after any software updates)
+    * Fine-tuned validation metrics, e.g., things like closer attention to individual class accuracies
   - TROUBLESHOOTING
     * Chosen metric does not affect real world events as planned
     * Real world performance does not match test set performance 
@@ -71,11 +82,111 @@ Lifecyle of ML Project
     * Keep tabs on state-of-the-art in your domain
     * Stay current with similar domains and what's possible
     * Develop an intuition for how to improve and what to try next
-  
+
+### Planning and Project Set Up
+How to choose a high-impact project?
+How much will a ML project cost? 
+
+```
+                 Low         High
+             Feasibility  Feasibility
+              ______________________
+ High Impact |          |     X     |
+             |----------|-----------|
+ Low  Impact |__________|___________|
+ ```
+ 
+ Where can you take advantage of cheap prediction?
+ 
+ Where can you automate complicated manual software pipelines?
+ 
+ Karpathy:  "Gradient descent can write code better than you. I'm sorry."
+ * Find points in software pipelines where this might hold true
+ 
+ Cost drivers
+ * Data availability
+  - How hard is it to get?
+  - How expensive is it to label?
+  - How much of it will be needed?
+ * Accuracy requirement
+  - How costly are wrong predictions?
+    * Recommender systems often have low cost (e.g., Netflix recommendations)
+  - How often does the model need to be right to be useful?
+    * Again, recommender systems have low accuracy requirements:  Netflix recommendations
+      only have to be great at a fairly low frequency (thus why there are a million recommendation
+      bars w/ tons of shows that look uninteresting)
+ * Problem difficulty
+  - Is there any good, published work on similar problems?
+    * If not, this means more risk and technical effort
+  - How much compute required for training?
+    * Can transfer learning help reduce this?  (e.g., use model pre-trained on ImageNet)
+  - How much compute required for deployment?
+    * Does it need to run real-time on a smartphone?
+    * Or is it running in the cloud?
+    * How much latency is ok?
+  - What level of automation is necessary?
+    * Automation is often thought of at 6 different levels:
+      - Level 0: No automation
+      - Level 1: Assistance
+      - Level 2: Partial Automation
+      - Level 3: Conditional Automation
+      - Level 4: High Automation
+      - Level 5: Full Automation
+    * It is a good exercise to write out what these things mean for your particular project
+
+One can optimize cost by trade-offs, e.g., Facebook does not automatically tag you in a photo, but
+asks if the person in the photo is you.  This reduces the level of automation, but also reduces
+the risk of failure -- it lowers the accuracy requirement.  It's more acceptable if Facebook incorrectly
+asks if a person in a photo is you than if it automatically assigns it to be you.
+ 
+ 
+Choosing Metrics:
+There is a discrepancy between how Machine Learning systems train and what the real world is really like:
+* The real world is messy and one is often interested in multiple metrics simultaneously
+* However, ML systems work best when optimizing against a scalar
+This means that you need to choose a formula that intelligently combines the metrics you care about, e.g.,
+* a weighted sum
+* n-1 thresholds w/ nth primary metric
+  - e.g., set recall threshold and optimize precision
+* integrations
+  - AUROC
+  - AUPRC (called mean average precision, or MAP, in the video)
+
+NOTE: Blows my mind that this is state-of-the-art machine learning.  I read so much about improving
+neural networks through clever architectural modifications, taking advantage of pre-trained models, etc.  But
+I don't think I ever see much about addressing vectorial loss functions or model metrics (for model metrics,
+we do see passive use of multiple metrics, or a single-primary-multiple-secondary approach, where the primary is
+directly involved in the training process and the secondary metrics passively or indirectly so).  All the big 
+wigs, like Hinton,
+LeCun, and Bengio seem to generate new ideas by considering how the human perceptual system works, or the 
+mechanics of neurons and synapses...but what about the fact that humans are constantly weighing pros and cons, i.e.,
+considering multi-component loss/reward functions and/or mental model metrics...?
+
+
+Creating baselines
+* mean model
+* single-variable model
+* rules-based model
+* linear/logistic regression
+* neural network w/o bells and whistles (no batch norm, no weight norm, no dropout, etc)
+
+Human baselines: Quality/Ease Trade-Off
+* Lowest Quality, Highest Ease:  Random People (e.g.,Amazon Turk)
+* Low Quality, High Ease: Ensemble of Random people
+* Intermediate:  Domain experts (e.g., doctors)
+* High Quality, Low Ease:  the best domain experts (e.g., specialists)
+* Highest Quality, Lowest Ease:  Mixture/Ensemble of experts
+
+How many people should be on a ML team?
+* He says that he has seen the most success with teams of 8-12 people -- a mix of software and ML engineers
+
+
  
 ### References in Lecture
+* 2017:  Karpathy:  [Software 2.0](https://medium.com/@karpathy/software-2-0-a64152b37c35)
+* 2017:  Reinhardt:  [Designing Collaborative AI](https://medium.com/@Ben_Reinhardt/designing-collaborative-ai-5c1e8dbc8810)
 * 2017:  Xiang et al:  [PoseCNN: A Convolutional Neural Network for 6D Object Pose Estimation in Cluttered Scenes](https://arxiv.org/abs/1711.00199)
-
+* 2018:  Agrawal et el:  [Prediction Machines: The Simple Economics of Artificial Intelligence](https://books.google.com/books?id=wJY4DwAAQBAJ&printsec=frontcover&source=gbs_ge_summary_r&cad=0#v=onepage&q&f=false)
 
 
 
