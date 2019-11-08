@@ -8,11 +8,8 @@ DL/ML courses to possibly look at (in no particular order):
 
 Microsoft: [AI Institute “Geometry of Deep Learning” 2019](https://www.youtube.com/playlist?list=PLD7HFcN7LXRe30qq36It2XCljxc340O_d)
 
-* Full Stack Deep Learning: https://www.youtube.com/channel/UCVchfoB65aVtQiDITbGq2LQ/playlists
 
 [CS230: Deep Learning | Autumn 2018](https://www.youtube.com/playlist?list=PLoROMvodv4rOABXSygHTsbvUz4G_YQhOb)
-
-[Practical Deep Learning for Coders 2019 (Jeremy Howard)](https://www.youtube.com/playlist?list=PLfYUBJiXbdtSIJb-Qd3pw0cqCbkGeS0xn)
 
 * 2018: David Silver: [Introduction to reinforcement learning (2018)](https://www.youtube.com/playlist?list=PLqYmG7hTraZDM-OYHWgPebj2MfCFzFObQ)
 
@@ -25,8 +22,15 @@ Microsoft: [AI Institute “Geometry of Deep Learning” 2019](https://www.youtu
   - online book w/ code
   - Theano code samples...
   
+  
 
-
+# Practical/Applied DL Courses
+* 2019 (Fall):  Weights & Biases / Josh Tobin:  [Applied Deep Learning](https://www.youtube.com/playlist?list=PLD80i8An1OEEe2X5KA_uSvMaEMl0lo4jP)
+* 2019: Jeremy Howard: [Practical Deep Learning for Coders 2019](https://www.youtube.com/playlist?list=PLfYUBJiXbdtSIJb-Qd3pw0cqCbkGeS0xn)
+* 2019: Google/TensorFlow: [Coding TensorFlow](https://www.youtube.com/playlist?list=PLQY2H8rRoyvwLbzbnKJ59NkZvQAW9wLbx)
+* 2019: Google/TensorFlow: [Inside TensorFlow](https://www.youtube.com/playlist?list=PLQY2H8rRoyvzIuB8rZXs7pfyjiSUs8Vza)
+* 2017-2019:  DeepLizard: [Keras Tutorials](https://www.youtube.com/playlist?list=PLZbbT5o_s2xrwRnXk_yCPtnqqo4_u2YGL)
+* 2019: Full Stack Deep Learning: [Bootcamp, Spring 2019](https://www.youtube.com/channel/UCVchfoB65aVtQiDITbGq2LQ/playlists)
 
 
 # MIT
@@ -141,6 +145,10 @@ Microsoft: [AI Institute “Geometry of Deep Learning” 2019](https://www.youtu
 * 2019 (Spring):  [Introduction to Machine Learning](https://www.youtube.com/playlist?list=PLD80i8An1OEHSai9cf-Ip-QReOVW76PlB)
 * 2019:  [Explore Deep Learning](https://www.youtube.com/playlist?list=PLD80i8An1OEG8LvgREvgakhaqBBXBXfql)
 
+
+# DeepLizard
+* [Reinforcement Learning - Introducing Goal Oriented Intelligence](https://www.youtube.com/playlist?list=PLZbbT5o_s2xoWNVdDudn51XM8lOuZ_Njv)
+* 2017-2019:  DeepLizard: [Keras Tutorials](https://www.youtube.com/playlist?list=PLZbbT5o_s2xrwRnXk_yCPtnqqo4_u2YGL)
 
 
 # EdX
