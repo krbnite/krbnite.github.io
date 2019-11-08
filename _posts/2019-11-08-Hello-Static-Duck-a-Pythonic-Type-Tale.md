@@ -56,7 +56,7 @@ it wasn't?  It might also be helpful to know what type of output to be expected.
 
 
 # Hello Function Syntax
-``python
+```python
 def morningCoffee(
     code: int,
     name: str = 'Joseph Bean',
