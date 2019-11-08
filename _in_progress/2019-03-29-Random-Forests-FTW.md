@@ -45,13 +45,15 @@ Are RFs consistent estimators:  http://www.jmlr.org/papers/volume9/biau08a/biau0
 * “Trees should not be grown to purity. In fact, if nodes are pure, the probability estimate is either 0 or 1 in a terminal node.  As a result, a larger number of trees might be required to obtain consistent probability estimates. If trees are too small, probability estimates might be imprecise. Therefore, as a default value, the terminal node size is generally 10% of the total sample size. Alternatively, the optimal terminal node size may be tuned.”
 
 
-# Prediction / Confidence Intervals
+# Prediction Intervals / Confidence Intervals
+* 2016:  Mentch & Hooker:  [Quantifying Uncertainty in Random Forests via Confidence Intervals and Hypothesis Tests](http://www.jmlr.org/papers/volume17/14-168/14-168.pdf)
 * 2018: Ishwaran & Lu: [Standard errors and confidence intervals for variable importance in random forest regression, classification, and survival†](https://europepmc.org/articles/pmc6279615)
 * 2018: Roy: [Three Essays on Nonparametric Prediction Intervals and Robust Variable Selection](http://biblos.hec.ca/biblio/theses/2018NO10.pdf#page=23)
   - Ch1: Prediction Intervals with Random Forests 
   - Ch2:  Prediction Intervals for Finite Mixture of Regressions Based on Random Forests
+* 2019: Zhang et al:  [Random Forest Prediction Intervals](https://www.tandfonline.com/doi/abs/10.1080/00031305.2019.1585288)
   
-  
+
 # Consistency of Random Forests
 
 Gist: many versions of RFs are consistent, some are not.  
@@ -91,6 +93,12 @@ Ruling: I'll get back to this stuff at a later date (not super HP to know all de
 * 2019: Wright & Konig: [Splitting on categorical predictors in random forests](https://peerj.com/articles/6339/)
 
 
+# Additivity
+* 2017: Mentch & Hooker: [Formal Hypothesis Tests for Additive Structure in Random Forests](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6428414/)
+
+# Statistical Testing
+* 2019: Hediger et al: [On the Use of Random Forest for Two-Sample Testing](https://arxiv.org/pdf/1903.06287.pdf)
+
 --------------------------------
   
 # Misc Internal Workings and Mathiness of RF
@@ -104,11 +112,22 @@ Ruling: I'll get back to this stuff at a later date (not super HP to know all de
 # Model Optimization
 
 * 2001: Latinne et al: [Limiting the Number of Trees in Random Forests](https://www.researchgate.net/profile/Olivier_Debeir/publication/221093985_Limiting_the_Number_of_Trees_in_Random_Forests/links/0c96053392aa346efb000000/Limiting-the-Number-of-Trees-in-Random-Forests.pdf)
+* 2009: Bernard et al: [Influence of Hyperparameters on Random Forest Accuracy](https://hal.archives-ouvertes.fr/hal-00436358/file/mcs09.pdf)
 * 2009: Bernard et al: [On the selection of decision trees in Random Forests](https://hal.archives-ouvertes.fr/file/index/docid/436355/filename/ijcnn09.pdf)
+* 2009: Bernard et al: [Towards a Better Understanding of Random Forests Through the Study of Strength and Correlation](https://hal.archives-ouvertes.fr/hal-00436361/document)
+* 2010: Bernard et al: [A Study of Strength and Correlation in Random Forests](https://hal.archives-ouvertes.fr/hal-00598466/document)
 * 2012: Oshiro et al: [How many trees in a random forest?](https://www.researchgate.net/profile/Jose_Baranauskas/publication/230766603_How_Many_Trees_in_a_Random_Forest/links/0912f5040fb35357a1000000/How-Many-Trees-in-a-Random-Forest.pdf)
 * 2016: Orlandi: [Random Forests Model Selection](https://www.elen.ucl.ac.be/Proceedings/esann/esannpdf/es2016-48.pdf)
 * 2017: Probst & Boulesteix: [To Tune or Not to Tune the Number of Trees in Random Forest](http://www.jmlr.org/papers/volume18/17-269/17-269.pdf)
 * 2019: Probst et al: [Hyperparameters and Tuning Strategies for Random Forest](https://arxiv.org/pdf/1804.03515.pdf)
+
+
+
+## Reduced Computational Burden (Tiny Forest Techniques)
+* 2009: Zhang & Wang:  [Search for the smallest random forest](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2822360/)
+* 2010: Bernard et al: [A Study of Strength and Correlation in Random Forests](https://hal.archives-ouvertes.fr/hal-00598466/document)
+* 2015: Fawagreh et al:  [On Extreme Pruning of Random Forest Ensembles for Real-time Predictive Applications](https://arxiv.org/pdf/1503.04996.pdf)
+* 2019: Khan & Lausen: [Ensemble of optimal trees, random forest and random projection ensemble classification](https://link.springer.com/article/10.1007/s11634-019-00364-9)
 
 
 ---------------------------
@@ -119,20 +138,17 @@ Ruling: I'll get back to this stuff at a later date (not super HP to know all de
 
 * 2005: Diaz-Uriarte & Alvarez de Andres: [Variable selection from random forests: application to gene expression data]
 
-
-
-2007: Ishwaran: [Variable importance in binary regression trees and forests](https://projecteuclid.org/download/pdfview_1/euclid.ejs/1195157166)
-
-* "Averaging over trees [in a random forest], in combination with the randomization used in growing a tree, 
+* 2007: Ishwaran: [Variable importance in binary regression trees and forests](https://projecteuclid.org/download/pdfview_1/euclid.ejs/1195157166)
+  - "Averaging over trees [in a random forest], in combination with the randomization used in growing a tree, 
   enables random forests to approximate a rich class of functions while maintaining low generalization error. This 
   enables random forests to adapt to the data, automatically fitting higher order interactions and non-linear 
   effects, while at the same time keeping overfitting in check."
-* PImp:  Historically, in "regression trees, node impurity is measured by mean squared error, whereas in classification 
+  - PImp:  Historically, in "regression trees, node impurity is measured by mean squared error, whereas in classification 
   problems, the Gini index is used. The most popular VIMP method to date, however, adopts a prediction error 
   approach involving 'noising-up' a variable. In random forests, for example, VIMP for a variable x\[v\] is the 
   difference between prediction error when x\[v\] is noised up by permuting its value randomly, compared to prediction 
   error under the original predictor."
-* Basically, these guys do not use PImp b/c its too hard to tract theoretically.  They instead use something they
+  - Basically, these guys do not use PImp b/c its too hard to tract theoretically.  They instead use something they
   think is similar enough to PImp that their theoretical results are insightful.  The VImp they use goes like
   this: for a given variable x[v], travel down the tree branches until you reach the first split on x[v] or
   a terminal node; if a split on x[v] is reached, then use random left-right assignment on that split and for
@@ -143,15 +159,15 @@ Ruling: I'll get back to this stuff at a later date (not super HP to know all de
   one cares about this VImp score at all.  They said a potential remedy would be to only do the left-right
   randomization at x[v] splits in the tree, but for some reason this makes theoretical analysis much more
   intractable.  
-* Paper gets pretty heavy with theorems and proofs going forward.  Shows that for VImp to have certain
+  - Paper gets pretty heavy with theorems and proofs going forward.  Shows that for VImp to have certain
   important properties, certain conditions have to be met (e.g., trees should be rich enough to 
   approximate f(X) and trees should be orthogonal), and that these are same conditions for RFs to
   achieve low generalization errors...
   
   
-2007: Strobl et al: [Bias in random forest variable importance measures: Illustrations, sources and a solution](https://link.springer.com/article/10.1186%2F1471-2105-8-25)
+* 2007: Strobl et al: [Bias in random forest variable importance measures: Illustrations, sources and a solution](https://link.springer.com/article/10.1186%2F1471-2105-8-25)
 
-2008: Strobl et al: [Conditional variable importance for random forests](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2491635/)
+* 2008: Strobl et al: [Conditional variable importance for random forests](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2491635/)
 
 * 2009: Grömping: [Variable Importance Assessment in Regression: Linear Regression versus Random Forest](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C31&q=Variable+Importance+Assessment+in+Regression%3A+Linear+Regression+versus+Random+Forest&btnG=)
   - "Variable importance in regression is an important topic in applied statistics that keeps coming up in 
@@ -219,7 +235,7 @@ Ruling: I'll get back to this stuff at a later date (not super HP to know all de
     best suits your goals?  (Heck, you can use more than one, as long as you clearly know what each measure
     means and what are its pros and cons.)
   - For an intuition concerning what constitutes an explanatory measure of importance versus a predictive 
-    measure of importance, the authors provide two causal chains: (i) X2 -> X1 -> Y;  (ii) X2 <- X1 -> Y.  Assuming
+    measure of importance, the authors provide two chains: (i) X2 -> X1 -> Y;  (ii) X2 <- X1 -> Y.  Assuming
     all relationships are linear, the authors discuss that two variable importances often used with linear models
     (e.g., squares of standardized coefficients) would zero out the importance of X2 for both causal chains since,
     conditional on X1, X2 does not contribute any additional information to the prediction.  Given this, do you
@@ -264,6 +280,8 @@ Ruling: I'll get back to this stuff at a later date (not super HP to know all de
   
 * 2013: Janitza, Strobl, & Boulesteix : [An AUC-based permutation variable importance measure for random forests](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-14-119)
 
+* 2015: Painsky & Rosset:  [Cross-Validated Variable Selection in Tree-Based Methods Improves Predictive Performance](https://arxiv.org/pdf/1512.03444.pdf)
+
 * 2017: Gregorutti et al: [Correlation and variable importance in random forests](https://arxiv.org/pdf/1310.5726.pdf)
   
 * 2017: Epifanio: Intervention in prediction measure: a new approach to assessing variable importance for random forests
@@ -298,7 +316,7 @@ Stable Variable Importance Values](https://ieeexplore.ieee.org/stamp/stamp.jsp?a
     differ from one model run to another, especially when if only a small ntree are generated."
       
 
-
+* 2017: Mentch & Hooker: [Formal Hypothesis Tests for Additive Structure in Random Forests](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6428414/)
 
 * 2018: Nembrini et al: [The revival of the Gini importance?](https://academic.oup.com/bioinformatics/article/34/21/3711/4994791)
 * 2018: Parr et al: [Beware Default Random Forest Importances](https://explained.ai/rf-importance/)
@@ -495,6 +513,19 @@ this type of work.
 * 2018: SalesForce: [Back to the Future: Demystifying Hindsight Bias](https://www.infoq.com/articles/data-leakage-hindsight-bias-machine-learning/)
 
 
+# Causal Inference & Significance
+* 2016:  Athey & Imbens:  [Recursive partitioning for heterogeneous causal effects](https://www.pnas.org/content/pnas/113/27/7353.full.pdf)
+* 2016:  Athey & Tibshirani:  [Solving Heterogeneous Estimating Equations with Gradient Forests](https://www.gsb.stanford.edu/sites/gsb/files/rp3475.pdf)
+* 2016:  Chernozhukov et al:  [Double machine learning for treatment and causal parameters](https://www.econstor.eu/bitstream/10419/149795/1/869216953.pdf)
+* 2016:  Mentch & Hooker:  [Quantifying Uncertainty in Random Forests via Confidence Intervals and Hypothesis Tests](http://www.jmlr.org/papers/volume17/14-168/14-168.pdf)
+* 2017: Hahn et al:  [Bayesian regression tree models for causal inference: regularization, confounding, and heterogeneous effects](https://arxiv.org/abs/1706.09523)
+* 2017:  Wager & Athey:  [Estimation and Inference of Heterogeneous Treatment Effects using Random Forests](https://www.tandfonline.com/doi/full/10.1080/01621459.2017.1319839)
+* 2018:  Chernozhukov et al:  [Double/debiased machine learning for treatment and structural parameters](https://academic.oup.com/ectj/article/21/1/C1/5056401)
+* 2019:  Athey & Imbens:  [Machine Learning Methods Economists Should Know About](https://arxiv.org/abs/1903.10075)
+* 2019:  Athey & Wager:  [Efficient Policy Learning](https://arxiv.org/pdf/1702.02896.pdf)
+* 2019:  Athey et al:  [Generalized random forests](https://arxiv.org/abs/1610.01271)
+* 2019:  Kunzel et al:  [Metalearners for estimating heterogeneous treatment effects using machine learning](https://www.pnas.org/content/pnas/116/10/4156.full.pdf)
+
 -------------------------------------------------
 
 # Comparison with other classifiers
@@ -519,6 +550,15 @@ https://www.quora.com/When-should-random-forest-be-used-over-logistic-regression
 
 ### Alternating Decision Forests
 * 2013: Schulter1 et al: [Alternating Decision Forests](http://openaccess.thecvf.com/content_cvpr_2013/papers/Schulter_Alternating_Decision_Forests_2013_CVPR_paper.pdf)
+
+### Causal Forests
+Note that some of these forests  differ in implementation.  However, since they are developed to be capable
+for causal inference, I keep them together here.  (Also, "causal forest" is in most of their names.)
+
+* 2016:  Athey & Tibshirani:  [Solving Heterogeneous Estimating Equations with Gradient Forests](https://www.gsb.stanford.edu/sites/gsb/files/rp3475.pdf)
+* 2017: Hahn et al:  [Bayesian regression tree models for causal inference: regularization, confounding, and heterogeneous effects](https://arxiv.org/abs/1706.09523)
+* 2017:  Wager & Athey:  [Estimation and Inference of Heterogeneous Treatment Effects using Random Forests](https://www.tandfonline.com/doi/full/10.1080/01621459.2017.1319839)
+
 
 ### Deep and Neural Forests
 * [Deep Forest](https://arxiv.org/pdf/1702.08835.pdf)
@@ -549,6 +589,9 @@ https://www.quora.com/When-should-random-forest-be-used-over-logistic-regression
 ### Isolation Forest
 2008: Liu et al: [Isolation Forest](https://cs.nju.edu.cn/zhouzh/zhouzh.files/publication/icdm08b.pdf?q=isolation-forest)
 
+### Local Linear Forests
+* 2019: Friedberg et al: [Local Linear Forests](https://arxiv.org/pdf/1807.11408.pdf)
+
 ### Meta Random Forests
 * 2008: Boinee et al: [Meta Random Forests](https://pdfs.semanticscholar.org/c173/cbe5a681324575742a62fd01b04529582039.pdf)
 
@@ -564,6 +607,9 @@ https://www.quora.com/When-should-random-forest-be-used-over-logistic-regression
 ### Quantile Regression Forests
 2006: Meinshausen: [Quantile Regression Forests](http://www.jmlr.org/papers/volume7/meinshausen06a/meinshausen06a.pdf)
 Undated: [Scikit Garden: Quantile Regression Forests](https://scikit-garden.github.io/examples/QuantileRegressionForests/)
+
+### Random Forests for Spatial Prediction (RFsp)
+* 2017:  Hengl et al:  [Random forest as a generic framework for predictive modeling of spatial and spatio-temporal variables](https://peerj.com/articles/5518/)
 
 ### Random Rotation Ensembles
 * 2016: Blaser & Fryzlewicz: [Random Rotation Ensembles](http://www.jmlr.org/papers/volume17/blaser16a/blaser16a.pdf)
@@ -603,6 +649,7 @@ Undated: [Scikit Garden: Quantile Regression Forests](https://scikit-garden.gith
 2015: Lo et al: [Why significant variables aren’t automatically good predictors](https://www.pnas.org/content/112/45/13892.long)
 * 2017: Yarkoni & Westfall: [Choosing Prediction Over Explanation in Psychology: Lessons From Machine Learning](https://journals.sagepub.com/doi/abs/10.1177/1745691617693393)
 * 2017: Mullainathan & Spiess: [Machine Learning: An Applied Econometric Approach](https://pubs.aeaweb.org/doi/pdf/10.1257/jep.31.2.87)
+* 2019:  Athey & Imbens:  [Machine Learning Methods Economists Should Know About](https://arxiv.org/abs/1903.10075)
 
 
 ----------------------------------------------
@@ -741,6 +788,7 @@ https://towardsdatascience.com/end-to-end-python-framework-for-predictive-modeli
 * 2013:  Millard & Richardson: [Wetland mapping with LiDAR derivatives, SAR polarimetric decompositions, and LiDAR–SAR fusion using a random forest classifier](https://www.tandfonline.com/doi/abs/10.5589/m13-038)
   - no pdf
 * 2014: Beijma et al: [Random forest classification of salt marsh vegetation habitats using quad-polarimetric airborne SAR, elevation and optical RS data](https://www.researchgate.net/profile/Sybrand_Van_Beijma2/publication/262019604_Random_forest_classification_of_salt_marsh_vegetation_habitats_using_quad-polarimetric_airborne_SAR_elevation_and_optical_RS_data/links/5b8fd51992851c6b7ec0981d/Random-forest-classification-of-salt-marsh-vegetation-habitats-using-quad-polarimetric-airborne-SAR-elevation-and-optical-RS-data.pdf)
+* 2015:  Millard & Richardson:  [On the Importance of Training Data Sample Selection in Random Forest Image Classification: A Case Study in Peatland Ecosystem Mapping](https://www.researchgate.net/profile/Koreen_Millard/publication/279852440_On_the_Importance_of_Training_Data_Sample_Selection_in_Random_Forest_Image_Classification_A_Case_Study_in_Peatland_Ecosystem_Mapping/links/559c15e508ae0035df23856a/On-the-Importance-of-Training-Data-Sample-Selection-in-Random-Forest-Image-Classification-A-Case-Study-in-Peatland-Ecosystem-Mapping.pdf)
 
 --------------------------------------
 
