@@ -163,6 +163,52 @@ think about how they can form a symbiotic relationship with that so they can pro
 
 
 # 11:05, Hub2: Deep Neural Networks Improve Radiologists' Performance in Breast Cancer Screening
+Looking at screening mammography for breast cancer, the goal is "no cancer", "benign, "malignant."
+
+Challenge: not a lot of data just laying around!
+Comparing public data set for screening mammography to ImageNet:  14M images vs 10k images.  So the
+folks at NYU created their own data set (speaker spent at least half of year preparing and cleaning
+the data set) -- 1M images.
+* His technical report:  The NYU Breast Cancer Screening Data Set
+
+1M images
+* each image is at least 2290x1890 pixels
+* 220k examps of over 140k patients
+* ~96% of exams are negative w/o pathology
+  - 0.5% exams contain malignancy
+
+
+Challenge:  image resolution.  Think of ImageNet again -- 256x256 pixel images, whereas the
+screening mammography images are ~2kx2k.  
+
+* End-to-End Solution:  Custom ResNet to rapidly downscale the resolutions.  
+* Some manual points:  cut out relevant parts of image...
+
+Not a lot of events (0.5%).  So they use transfer learning by training on a task with more events,
+then re-purposing for the task of interest.  Here, every mammogram is accompanies by an initial screening assesmment of BI-RADS...which are they were able to train on before transfer.
+
+Challenge: multi-modal output.  How to integrate information between views?  
+
+For each image, resnet22 generates a 256d vector.. How to combine?
+* combine all images for both breasts
+* combine same image types from each breast
+* use each image separately...
+* etc
+
+Some stuff:
+* BI-RADS: 15 days on 4 Nvidia v100 GPUs
+* Generating heatmaps:  1k hours on single v100
+* breast cancer classification: 1 day
+
+Comparison to Human Performance
+* 360 exams w/ biopsy, 360 negative exams
+* 14 readers
+* radiologist asked for a prediction of probability of malignancy
+* Model AUC 0.876;  individual reader AUC 0.778;  avg of ensemble of radiologist 0.895;  model + 1 radiologist 0.891; model + ensemble of radiologist 0.909
+
+
+
+
 
 # 12:05, Hub2: Explainable AI for Training with Weakly Annotated Data
 
