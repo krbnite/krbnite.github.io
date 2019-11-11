@@ -286,10 +286,62 @@ a mistake, only one is harmed...  He said it more eloquently.
 
 
 
-# 2:10, Hub2:  Best Practices in Applied Deep Learning for Digital Pathology Multiplex Image Analysis
+# 2:10, Hub2:  Best Practices in Applied Deep Learning for Digital Pathology Multiplex Image Analysis (Moshe Safran, RSIP Vision)
+Mutliplex Image Analysis Tasks:
+* Nuclear detection and segmentation
+* Tumor segmentaton
+* Key marker segmentation
+* Cellular Colocalization (cell classification)
+* COnfiguration and merging of all results into single cohesive output
+  - Output: image that has nuclei segmentation, cell classification, tumor segmentation, and key marker segmentation
+  - Very cool
 
+### Nuclear Detection using DL
+Segmentation challenges for nuclear morphology
+* variation in shape, size, intensity
+* merging and overlapping nuclei
 
+Classical tehcniques requires works
+* thresholding (local, adaptive)
+* gen purp seg - e.g., meanshift, watershed, etc
+* feature engineering
+* etc...
 
+Approach: detect, propose region, instance segmentation.  
+
+Input image -> Cell center detection -> Nuclie instance segmentation -> Integration
+
+Mask-RCNN like instance segmentation using U-Net Encoder-Decoder architeecture 
+w/ skip connections at four compression and procesing levels.
+
+Detection to Instance Segmentation: Image -> cell center probability map -> regional proposal -> instance segmentation.
+* annotation - cell centers
+* represenation - guassian around cell center
+* loss fcn - mse
+* spatial weighting is rec'd to improve separation
+* ...
+
+Every step of development was human-in-the-loop development.  Speaker kind of laughed at all
+the "auto ML" stuff going on...  
+
+This project was insanely good
+* Recall (sensitiivty): 0.91
+* precision (PPV): 0.97
+* F1: 0.94
+* NOTE: this wasn't just a simple Chest X-ray thing; this guy was detecting and annotating 
+  100's of cells per image
+* Error on an image:  classical (18%) vs RSIP DL Sol'n (4%)
+* NOTE: this is just ONE component of the full pipeline (there is also tumor seg, key marker seg, 
+  and cell classification components)
+  
+  
+ ### Other components
+ Similar approaches for tumor seg and key marker seg.  (Key marker seg used data from
+ tumor seg, I think, which is cool.)
+ 
+ ### Problem Mitigation
+ He talked a lot about looking at what the model is getting wrong and using that to better 
+ inform how to build the model (data aug strategy, class balance strategy, etc).
 
 
 
