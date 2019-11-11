@@ -263,7 +263,27 @@ and can even exted to multi-class cases.
 evan.schwab@philips.com
 
 
-# 1:35, Hub2:  What AI Will Bring to Medicine, and Why Human Experts are Here to Stay
+# 1:35, Hub2:  What AI Will Bring to Medicine, and Why Human Experts are Here to Stay (Hakima Ibaroudene, Southwest Research Institute)
+
+Lots of potential for AI in supporting doctors and ERs, not nececssarily replacing them.
+
+SwRI basically had a lot of experience in computer vision appications related to autonomous
+vehicles.  They decided to make a pivot: can we use this same machinery for medical imaging
+applications?
+
+BreastPathQ Challenge: a case study for AI and human experitise. SwRI & UT Health San Antonio place
+1st among 100 submissions.
+* 2400 images
+
+
+The machine is good at never getting board and getting things mostly right (millions of parameters),
+however doctors are better at the edge cases.  Developing a better model was a cyclic process, 
+involving experts routinely... 
+
+Questioner:  A problem w/ an algorithm is that a mistake can hurt many, whereas if a clinician makes
+a mistake, only one is harmed...  He said it more eloquently.  
+
+
 
 
 # 2:10, Hub2:  Best Practices in Applied Deep Learning for Digital Pathology Multiplex Image Analysis
