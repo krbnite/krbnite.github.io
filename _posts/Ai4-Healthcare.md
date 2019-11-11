@@ -211,6 +211,56 @@ Comparison to Human Performance
 
 
 # 12:05, Hub2: Explainable AI for Training with Weakly Annotated Data
+Image-to-caption for medical images ("An irregular, non-homogeneous mass with indinstct margins").
+
+Differences between cats and chest x-rays:
+
+| Cats | Chest X-Rays |
+|-------|-------------|
+| any orientation, pose, location, bg, occlusion, etc | consistent orientation, pose, location, bg, anatomy, etc |
+| Google images - a near-infiite supply | Need consent, de-id, privacy, limited availability |
+| Lots of annotion - crowdsourcing, CAPTCHA, etc | Limited annoation - med experts, time consuming, subtle findings, inter-rater disagreement |
+| lower stakes for accuracy | life or death stakes - need for explainability, FP, TN, high acc |
+
+Ground truth annotations for iamges:  
+* ground truth bounding box vs predicted bounding box (e.g., draw box around stop sign)
+  - usually good enough for low stakes purposes
+  - not fine enough for some medical purposes (though ok for some)
+
+50% of medical images are chest X-rays.  These can be re-purposed to do all kinds of things, e.g.,
+someone might come in for a fractured rib and leave knowing unexpected critical findings about something
+unrelated.
+
+Data:  MIT published 350k chest x-rays to help develop AI models.  Downside: no labels for all things
+of interest.  The images do come w/ radiology reports.  (Ref: TieNet: Text-Image Embedding Network for
+Commoon Thorax Disease Classification and Reporting in Chest x-rays.") . Can extract text and associate
+with image...  This can lead to a global labeling of the image, which the speaker considers
+"weak annotation" -- stronger annotation would be localizing in the image the label's associated region...
+
+Ref: tCheXNet: Detecting Pneumothorax on Chest X-Ray Images using Deep Transfer Learning
+
+Develop nets that classify and localize simultaneously.  For example, vanilla convnets will just classify,
+but adding saliency maps allows one to localize as well.
+
+Ref: diagnose likea radiologist: attention guidenedd conv nueral networks for thorax disease classifcaition...
+
+Sometimes the saliency maps are too coarse-grained though...this is b/c original images are often hugely
+downsampled during classification process, and saliency map usually generated from that then upsampled...
+
+Multi-instance learning.  Weakly-labeled key example:  3 sets of keys, only 2 of the sets have the key to get 
+in the secret room; audience able to identify that it's the green key.  Now generalize this to chest
+X-rays: train w/ 3 images at once -- 1 healthy individual, 2 unhealthy...  This helps localize where
+the label is coming from in an image.
+
+Ultimately, they looked at CNN (just label prediction; 0.96 AUC), U-Net (label prediction + segmentation; 0.92), and MIL network (label prediction + bounding box; 0.93 AUC).
+
+Applied network to other data sets as well (e.g., Pneumonia data set from Kaggle competition).
+
+Summary: use methods that jointly classify and localize, which does not require local annontations; this
+can provide an interpretable end-to-end deep net... these techniques are transferrable to many problems,
+and can even exted to multi-class cases.
+
+evan.schwab@philips.com
 
 
 # 1:35, Hub2:  What AI Will Bring to Medicine, and Why Human Experts are Here to Stay
