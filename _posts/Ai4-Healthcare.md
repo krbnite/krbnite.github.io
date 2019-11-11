@@ -1,5 +1,5 @@
 ---
-title: Ai4 Healthcare - Day 1
+title: Ai4 Healthcare
 layout: post
 tags: healthcare machine-learning deep-learning easi
 ---
@@ -70,9 +70,97 @@ Challenges to Federated Learning:
 
 
 
-# Building an AI Future that Benefits Patients and Doctors
+# 9:50: Building an AI Future that Benefits Patients and Doctors (Christopher Khoury, AMA)
+People are most worried about healthcare-related issues (e.g., unexpected medical bills and health
+insurances costs rank in the top 2).
 
-# Business of AI: What Healthcare Could Look Like in 10 Years
+
+Paper reference: The healthcare claims adjudication process in the United States - a picture 
+is owrht a thousand words.... This
+paper has a figure that shows the trajector of a patient in the healthcare system (hint: it's friggn' 
+crazy).
+
+Burnout is 2x more common in physicians (48%) than the general population (24%)
+
+For digital health:  Can is make something better, quicker, or smoother, so that the
+patient or doctor can benefit?
+
+Augmented Intelligence: an alternative conceptuatlization that focuses on AI's assistive role, 
+emphasizing the fact that its design enhance HI ranther than rpelaces it.
+
+
+Paper reference: Current state and near-term priorities for ai-enable diagnostic support software in healthcare
+
+Paper reference: how to develop ml models for healthcare
+  - this is literally the type of paper I was hoping to write for the dropout stuff I was doing
+
+Showed a slide about ~30 different definitions of accuracy, which showed words like accuracy, PPV,
+precision, recall, F1 score, AUC, etc.  My question: Haven't people always dealt with these terms,
+even for basic studies?  That said, point is:  clinicians and decision makers do not always know these 
+terms, and the speaker is wondering how to simplify the terminology for better discussion between
+AI stakeholders...
+
+Some uh-ohs
+* IBM's Watson supercomputer recommended 'unsafe and incorrect' cancer treatments
+* Automating Inequality (some algorithm was unfarily rejecting black people from care)
+
+Black box intepretability: Important!
+
+
+# 10:15 Business of AI: What Healthcare Could Look Like in 10 Years (Deepa Varadharajan, CB Insights)
+Healthcare industry has consistently seen the most demand for AI, especially over the past 5 years (finance
+is a close second).  
+
+So many players in the game:  oldies (GE, Philips, Siemans) and newbs/tech (Google, Apple, etc) and
+unusuals (Epic, Cerner, Roche).
+
+Unmanned health clinics.
+
+Google, Amazon, and Apple are jumping in deep for both healthcare and AI.
+
+Google:  Verily Calicao CapitalG DeepMind
+
+Holdbacks
+* data silos & outdated infra
+* feat of regulartory risk and untested tech
+* slow to react
+* companies don't knwo where to start
+
+Motivations
+* if you don't, someone else will
+* appear to a change demography and customer base
+* improve margins and generate additional revenue streams
+
+Trends to watch in healthcare
+* bigger companies are partnering w/ (or acquiring) smaller startups
+* bull case for OEMs:  manufacturer will become an end-to-end service provider
+* Will Google takeover the hospital?
+  - they usually have a smart approch
+    * Android: did not try to creat a new phone, just a new OS (ecosystem approach)
+    * Waymo: did not try to reinvent the wheel, just acquired
+  - they have tech and capabilities that no competitor has
+    * data access and expertise
+    * global reach
+    * disposable cash for research, experimentation, failing
+  - Focused on many diseases right now
+    * diabetic retino....
+    * more exmples
+    * vitual diabetes clinic
+    * Verily is building a hihg-tech campus to treat opioid addiction
+  - one of the 3 major cloud services providers (Google Cloud Platform)
+    * contributes to modern healthcare IT needs
+  - purhcased Fitbit
+  - Verily in general
+    * patent fo smart syring
+    * patent for verb surgical, a robotics startup 
+    * patent grant for digital atery blood pressure monitor
+  - Citiblock health
+  - Smart City project w/ Smart Healthcare initiatives
+
+Basically, Google will likely be a major player in all areas of healthcare and smaller business should
+think about how they can form a symbiotic relationship with that so they can provide a value-added service, etc.
+    
+
 
 # 11:05, Hub2: Deep Neural Networks Improve Radiologists' Performance in Breast Cancer Screening
 
