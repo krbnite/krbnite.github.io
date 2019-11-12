@@ -531,13 +531,301 @@ Future of Surgery:
   
 
 
-## 11:05, Hub2: Preventing Readmissions Due to Sepsis With Wearable Monitoring and Deep Learning (Wei-Jien Tan, Patchd Medical)
+## 11:05, Hub2: Preventing Readmissions Due to Sepsis With Wearable Monitoring and Deep Learning (Wei-Jien Tan, CTO & Co-Founder of Patchd Medical)
+
+Other co-founder of Patchd had a liver transplant and 19 episodes of sepsis.  In one of his
+episodes, he showed up and they told him to go home -- vitals seemed normal.  But several hours
+later, he was almost on his way out, saying his goodbyes to his family.
+
+Goal:  automate the early detection of sepsis in at-home patients.  
+
+### Part 1:  What problem are we trying to solve?
+Sepsis kills -- last year, it kills more Americans than breast, lung, and prostate cancer 
+combined.  
+
+Sepsis is a little tricky to define, but we can say it's a "life trheating organ dysfunction caused
+by a dysregulated host response to infection."  (Varous definitions have proliferated and evolved over
+the years.)
+
+Fact: 80% of sepsis cases are already present when a patient arrives at an ER for treatment.  This 
+is an obvious gap in healthcare:  can we help detect sepsis in at-risk patients earlier?  We can
+prevent an expensive hospital admission (up to $40k).
+
+
+```
+
+[Mobile App] --> [Analtyics Platform] --> [External Telephone API]
+   |
+   V
+[something... I missed it ] . -------<>---otherarrows----
+```
+
+
+### Part 2:  Building PoC w/ EMR data
+
+They first looked into the literature:  how have people been identifying sepsis with 
+machine learning techniques?  They found relevant papers going back to 2002, but 
+it was in 2015-2016 where prediction of septic shock really came into play.  
+
+General Approach
+* Use readily available EMR data as a starting point
+* Treat the problem as a time series classifcation problem
+* Use only physilogical measurements that could be collected in at-home setting
+* Label the data according to the latest Sepsis-3 defintion
+* Split the data in training, dev, test...
+
+Looking at the data
+* found slight decrease in blood pressure (population level)
+* slight increase in HR and resp rate (pop level)
+* slight increased temperatur variability (pop level)
+
+Inclusion/Exclusion Criteria
+* Adults only
+* Excluded if microbiology cultures were underreported
+* A stay was excluded if it had too few vital sign observations
+* Patients who were labeld w/ the ICD code for severe sepsis but
+did not meet Sepsis3 were considered ambiguous and discarded
+* Total paitents 47,847
+  - Sepsis patients:  13,703 (28.6%)
+
+Labelling the Data
+1. Defin suspicion of infection
+2. Look for organ dysfunction
+
+Building the training set
+* Split into sepsis-positive and sepsis-negative
+* Discarded data after sepsis onset in sep-pos patients
+* augmented sepsis-pos patients to balance 
+  - NOTE: why? they had like 30% sep pos... 
+* Sampled seqs randomly from a sepsis-neg stay...to account for sep-pos being cut short (as a rule)
+* something else.....
+* A signle sep-pos stay was matched to 4 sep-neg stays; from each sep-neg patient, a sequence equal in length to assoc'd sep-pos stay was selected
+
+Building the Model
+* used LSTM network on TensorFlow
+* dockerized the system to run multiple experiments at once
+* trained model using GPU p2 instances on AWS
+
+```
+Output.... 
+  ^
+  |
+Dense Layers...
+  ^
+  |
+LSTMss
+  ^
+  |
+Normalized Input Vector [HR, Systolic BP, Diastolic BP, reps rate, temp, spo2, age, gender]
+```
+
+NOTE: I can probably improve their model w/ a few tricks :-p
+
+Optimizing the Model
+* Coarse Grid Search to establish a starting set of hyper params
+* Then a random search of the starting set of hyper params
+* Mult perf metrics (AUROC, AUPRC) for more recent and previous hyperparams looked at to 
+  figure out what to discard...
+
+Paper Refs
+* Septic shock diagnosis by nn and rule baesd sysstms
+* prediction of sepsis in the ICU w/ minimal EHR data: a ml approach
+* a targeted real-time early warning score (TREWScore) for septic shock
+* an interptable machine learning....spetic, something something....
+
+
+## Part3 : Transitioning model to Outside the Hospital
+The aforementioned model was done on all EMR data...  What can we do with patients
+out in the wild?
+
+Out in the Wild 
+* lower incidence rates of sepsis
+* paitent compliance results in missingnes
+* motion artefacts
+
+General Approach
+* ICU PoC (complete)
+* Ward Validation Study
+* Prospective Post-Discharge Study
+
+Wearable Devices
+* Consumer grade:  Apple Watch, Fitbit, Samsung Smart-Watch
+* Medical grade devices
+  - FDA cleared medical devices that are validated to performance standards (e.g., ISO 81060-2)
+* They went w/ several FDA-cleared devices (validated for accuracy and safety)
+  - combined, they measure SBP, DBP, resp rate, HR, skin temp, spO2
+
 
 
 ## 12:05, Hub2:  Supporting Patient’s Use of Bioelectronic Medicines with AI (Jai Yu, Cala Health)
+Jai was a post-doc at UCSF, where he identified memory coding mechanisms using neural recordins.  Prior
+to that, he mapped the biological neural networks in a fruit fly's brain.
+
+Focus: novel wearable bioelectronic therapies modulating the nervous system.
+
+Product:  Cala Trio
+* wrist-worn device
+* FDA cleared
+* first presciprtion, on-demand, wearable bioelectronic therapy for Essential Tremor
+* stimulated perfpheral nerves, targeting the central tremor network
+
+
+Wants to: leverage digital technology to imporove patient therapeutic experience.
+
+The device has an accelerometer, which measures tremor among other things.  Other types
+of data they can collect and monintor are device usage metrics (when is the device being used,
+for how long, etc).  One thing we can use this data for is device support: 
+* Which customers/patients are seeming to have trouble using their device?  
+* When do they need the help?
+* What kind of support is needed?
+
+Strategy: detect unusual usage patterns -> classify usage patterns -> recommend action
+
+PoC Study Using Clinical Trial Data
+* Cala Health held a clinical trial (n=263) for Essential Tremor
+* patients used the device at home for up to 90 days
+
+Patient/Device Interaction
+```
+  [Tremor Measurement (20 min)] 
+               | 
+               V
+ [Therapeutic Stimulation (40min)] 
+               | 
+               V
+      [Tremor measurement] 
+               | 
+               V
+        [Patient Rating]
+```
+
+Uses a continuous time Markov model of device interaction... Think of cube, where the axes are
+current event, next event, and time elapsed, and transition probabilities stored in each cell.  This
+way, anomalies can be defined (low transition probabilities).  Developed a "daily anomaly index" for
+each patient.  Showed a heat map (y: patient, x: days into therapy, col: daily anomaly index).  It
+was found that almost all patients start out with up to a 2-3 days of higher daily anomaly index, but
+that they settle into normal levels...  However, there exist patients that remain highly anomalous
+throughout entire course of therapy, or others that suddenly become anomalous at some point.  To
+group the patients by anomalous activity type, Jai used self-organizing maps (SOMs).  This outputs
+a topographic map of traing event sequences...  Basically, another heat map (x: Neuron ID, y: Neuron ID, 
+col: distance to neighbors).  For a given (neuron x, neuron y) pair, he then superimposes the average anomaly score 
+for each associated sequence.......  Alternatively, look at patient-specific heat map thresholded to some
+high anomaly score...  Then identifies which (neuron, neuron) regions commonly crop up....  He found 2 major
+regions, then identified that the two regions stem from two distinct causes in general:  device-driven anomaly 
+(therapy terminated by device) vs patient-driven anomly (therapy terminated by patient).
+
+
+
+
 
 
 ## 1:35, Hub1:  Implementing Clinical Analytics Predictive Engine (CAPE): From Concept to Workflows (Daniel Chertok, Northshore)
+
+Northshore is a system of hosptials/clinics in the Chicago area.
+* 45k admissions
+* 126k ED visits
+
+Key Initiatives
+* Care model redesign
+  - advances in clincal outcomes, patient exp, and provider engagemnetn
+* Smart growth and access
+* Payment model effectiveness
+* Efficiency and productivity
+
+CAPE: The Journey
+* descriptive analytics -> predictive analytics -> prescriptive analytics
+
+How do we get from A (the dream) to B (something tangible)
+```
+The Dream: improve patient care, reduce expenses, increases patient loyalty
+```
+
+Define outcomes.  Not so simple.  For example, a death occurs in the hospital.  Who records
+this?  When is it registered?  He shared a funny anecdote: oftentimes people die in the hospital,
+but still have appointments to show up to, which they dutifully do (according to the data 
+sometimes).  What is demographic data?  Can we augment it with socioeconomic data?  What about
+patients that have 7 different birth dates listed?  
+
+Clinical history: do we have all of it?  Is it accurate?  Is it available in real time?
+
+He talked about wonky predictive models that were used in practice:  when certain data
+wasn't available, it was imputed as 0, leaving other factors to strongly influence
+the prediction in unnatural ways -- thus, e.g., a 52yo entered the hospital and
+was flagged for at-risk of dying in hospital...  
+
+Not all data available in historical records is available at time of real-time
+prediction.  This is what I usually refer to as unavailability leakage/illegitimacy.  For 
+example, billing data is not available at admission, and lab data isn't available right
+away.  
+
+Why did they impute it as 0?  The physicians wanted them to.  There were many arguments
+about this... Ultimately, it was not a great imputation.
+
+EHR Flow Sheets --> Model:
+```
+Install EHR's cognitive computing platform
+
+Export data from R to PMML
+
+Map EHR flowchart vars in to PMML vars
+
+Decide how to store the resulting scores
+
+Enjoy you freshly computed CAPE score -- responsibily!!!
+```
+PMML:  predictive model mark-up language
+* https://www.kdnuggets.com/faq/pmml.html
+
+He said PMML was hard to use for NNs...looks like they have worked on it though:
+* http://dmg.org/pmml/v4-0-1/NeuralNetwork.html
+
+<<look at slides for model dev/deployment cyclic flow chart>>
+
+
+Talks about precision-vs-recall tradeoff.  You can only get perfect recall if you
+accept really low (costly!) precision.  
+
+Victim of Success
+* team had successful model
+* suddenly everyone wanted to know if it could bbe used for "off label" purposes
+* expectations were overly optimistic about new domains and projects
+* pressure to expand into all these new domains
+* analysis overload / team burnout / etc
+
+Retrospective vs Prospective Validation
+
+"Quite often when you try to build an airplane that is also a boat, you get neither!"  Great quote :-p
+
+No more scope creep! 
+* Define and freeze outcomes
+* analytics-related requests need to be vetted by the anlytics team
+* ... more points
+* "Otherwise you stay in grad school forever working on your thesis." (Lol, I can relate.)
+
+Deployment
+* ED physician workflow based on an EHR alert firing if CAPE score threshodl is met
+* scores are stored no less frequenty than every hour for further analysis
+* ...more points
+
+Ongoing Deployment
+* always a work in progress
+* need to analyze performance as we go along and after any tweaks
+* need to see how interventions affect outcomes
+* capacity and workflow adjustments as track record is acquired
+* mointor operational efficiency and make suggestions
+* keep stakeholders happy
+  - regularly analyze and report on model performance
+  - implement updates quickly
+  - fast turnaround on analytical requests
+  - set clear expectations, explain limitations of analysis
+  - data quality: develop ratings on the data used (bronze - use at own risk, silver - we can
+    get some trust and mileage, gold - great!)
+
+Always remember: data science is a luxury -- you're doing the cool stuff, but you'll go first
+in any economic downturn...so you need to stay relevant.  Find the pain points.  An ok model
+is better than no model at all...  
+
+<<good graphic on data sci project lifecycle, from inception to deployment>>
 
 
 ## 2:10, Forum A:  Callisto - Machine Learning Targeting in Johns Hopkins' Care Management Programs
@@ -549,3 +837,6 @@ Future of Surgery:
 
 # Connections / Folks I met
 * Emma Wypkema
+* Iryna Skrypnyk (Pfizer)
+* George (Dessa)
+* Siddharth Dani (Medtronic)
