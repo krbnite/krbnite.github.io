@@ -896,6 +896,24 @@ the data and the graph are congruent, etc.
 
 ## Augmented Reality Guidance for Structural Heart Disease Interventions Using Deep Learning-Based Catheter Segmentation (Sun-Joo Jang, Weill Cornell Medicine & NY Presbyterian)
 
+* Augmented Reality: digital sep from phys
+* Mixed Reality: digital integrates w/ phys
+* Virtual Reality: digital replaces phys
+
+Unmet need for real-time image guidance w/ 3d viz
+* no need of trans-esophagel echocardiography
+* no need of general anestheisa
+* reducing life-trheaing complications
+
+DL cathetr segmentation
+* U-NET: modified from fully conv net in a way where seg of medical imaging is more accurate
+* U-Net essentially doubles the ftr channels during each conv...
+
+U-Net worked great on some of his problems, but not so well on others (e.g., segmenting a 
+spine from an image).  
+
+I honestly was a bit burnt out by this talk and didn't give it the attention it might have 
+deserved...  
 
 
 ---------------------------------
