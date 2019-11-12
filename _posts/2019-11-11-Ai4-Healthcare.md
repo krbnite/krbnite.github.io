@@ -15,15 +15,15 @@ audio filled the room.  A video of ambulances and ERs played on screens from all
 was to be delivered, a transplant to be made.  
 
 It was a pretty exciting opening, despite the rest of the talk having the vibe of
-an insurance agent giving a Ted Talk.  The overall vibe was basically a sales pitch for JAIC initiatives
+an insurance agent giving a Ted Talk.  The overall jist was basically a sales pitch for JAIC initiatives
 and maybe a beacon for building partnerships.
 
 What is the JAIC?  JAIC is the [Joint Artificial Intelligence Center](https://dodcio.defense.gov/About-DoD-CIO/Organization/JAIC/) -- it is an "AI center of excellence" for the DoD.
 
 The speaker, Hassan Tetteh, promoted a vision of comprehensive care.  One that personalizes to each 
 individual, idiosyncratically advancing a person's total health in body, mind, and 
-spirit that.  Importantly, this patient-centered vision is in contrast to 
-the forces driving the current healthcare system, which culminates in a incoherent patient
+spirit.  Importantly, this patient-centered vision is in contrast to 
+the forces driving the current healthcare system, which culminates in an incoherent patient
 experience that is fragmented, inefficient, unnecessarily expensive.  
 
 To push this patient focus forward, the JAIC has 5 major product lines:
@@ -43,6 +43,9 @@ He ended with an interesting quote from Grace Hopper:  "A ship in port is safe, 
 
 
 # 9:25: Solving Genomic Data Privacy in the Age of AI (Kyle Knack, Pure Storage)
+Kyle wore a bright orange shirt, like the cones and caution signs you might find on
+a construction site.  His demeanor fit the look: 
+
 DNA Data Deluge: The amount of genomic data is increasing exponentially, keeping pace with the exponential decreases
 in sequencing costs.
 
