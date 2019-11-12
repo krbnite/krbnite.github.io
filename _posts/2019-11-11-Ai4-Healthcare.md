@@ -4,34 +4,42 @@ layout: post
 tags: healthcare machine-learning deep-learning easi
 ---
 
+Some notes and anecdotes about my experience at the Ai4 Healthcare conference in NYC, Nov 11-12.
 
 # 9:00: AI and The Art of Human Care (Hassan Tetteh, DoD Joint Artificial Intelligence Center)
-Heart transplants.  
 
-Human care theory: a theory of comprehensive care that advance each person's total health in body, mind, and 
-spirit that challenges
-the current healthcare system.  HCT consideres the current healthcare systemto be not patient focusesed -- but 
-instead provides fragmented, inefficient, unnecessarily expensive healthcare.  
+The opening session started off with sirens.  
 
-What is the JAIC?  The center of AI excellence for the DoD.
+The first speaker was announced and suddenly this booming
+audio filled the room.  A video of ambulances and ERs played on screens from all sides.  A heart
+was to be delivered, a transplant to be made.  
 
-This talk is basically a sales pitch for JAIC initiatives... Building partnerships.
+It was a pretty exciting opening, despite the rest of the talk having the vibe of
+an insurance agent giving a Ted Talk.  The overall vibe was basically a sales pitch for JAIC initiatives
+and maybe a beacon for building partnerships.
 
-He did have the insight to know that really getting any ML/AI pipelines to be useful, you 
-need a huge team of related skill sets (security, DevOps, software engineering).  
+What is the JAIC?  JAIC is the [Joint Artificial Intelligence Center](https://dodcio.defense.gov/About-DoD-CIO/Organization/JAIC/) -- it is an "AI center of excellence" for the DoD.
 
-5 Product Lines at jAIC
+The speaker, Hassan Tetteh, promoted a vision of comprehensive care.  One that personalizes to each 
+individual, idiosyncratically advancing a person's total health in body, mind, and 
+spirit that.  Importantly, this patient-centered vision is in contrast to 
+the forces driving the current healthcare system, which culminates in a incoherent patient
+experience that is fragmented, inefficient, unnecessarily expensive.  
+
+To push this patient focus forward, the JAIC has 5 major product lines:
 * Health Records Analysis
 * Medical Imagery Classification
 * Automated Medical Logistics
-  - Successful implementation of Unmanned Aircraft Use for Delivery of a Human Organ for Transplantation
 * Suicide Prevention
 * Point-of-Injury Treatment Support
 
-His major advice: you really, really need to develop partnerships to be successful.  Basically, you
-can't know everything!
+One insight the speaker had that I can certainly relate to is this:  to really extract practical value out ML/AI and develop
+products that extend beyond proof-of-concept, one needs more than a few data scientists or machine learning engineers; to
+be successful, one requires a strong, diverse team of skill sets spanning the tech spectrum (security, DevOps, 
+software engineering).  His major advice concerning this is that developing partnerships is essential for success:
+basically, you can't know and do everything yourself!
 
-"A ship in port is safe, but this is not what ships are built for. Sail out to the sea and do new things."
+He ended with an interesting quote from Grace Hopper:  "A ship in port is safe, but that is not what ships are built for. Sail out to sea and do new things."
 
 
 # 9:25: Solving Genomic Data Privacy in the Age of AI (Kyle Knack, Pure Storage)
