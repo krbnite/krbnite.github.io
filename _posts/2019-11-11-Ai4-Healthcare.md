@@ -43,8 +43,8 @@ He ended with an interesting quote from Grace Hopper:  "A ship in port is safe, 
 
 
 # 9:25: Solving Genomic Data Privacy in the Age of AI (Kyle Knack, Pure Storage)
-Kyle wore a bright orange shirt, like the cones and caution signs you might find on
-a construction site.  His demeanor fit the look: 
+Kyle wore a bright, blazing orange shirt, like the cones and caution signs you might find on
+a construction site.  His demeanor fit the look: a rugged, Jersey-like aura.
 
 DNA Data Deluge: The amount of genomic data is increasing exponentially, keeping pace with the exponential decreases
 in sequencing costs.
