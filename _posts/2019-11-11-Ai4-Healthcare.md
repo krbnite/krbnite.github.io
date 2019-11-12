@@ -828,15 +828,81 @@ is better than no model at all...
 <<good graphic on data sci project lifecycle, from inception to deployment>>
 
 
-## 2:10, Forum A:  Callisto - Machine Learning Targeting in Johns Hopkins' Care Management Programs
-
 
 ## 2:45, Hub2:  Multi-Modal Data Aggregation for AI and Causal Inference: Applications to Cancer (Ganapati Srinivasa, Omics Data Automation)
 
+### Intro: Tech Holy Grail, Health Industry Needs, and Timing
 
+AI
+* 1st wave: handcrafted knowledge (rigidly pre-programmed)
+* 2nd wave: statistical learning (this is where we're at, e.g., DL)
+  - engineers create stat models for specific problem domains and train them on lots of data
+  - difficult-to-interpret predictors...
+  - inconsistency in resulting models (e.g., due to tons of multi-collinearity and focus on prediction)
+* 3rd wave: contextual adaptation 
+  - system is able reason, understand, and take context into account such that 
+    it appears to be human
+
+Think there's a lot of data now, wait until you see the future!  He shows a slide that
+covers how various medical testing procedures have become routine, and which ones will
+become routine, e.g., DNA and RNA sequencing will become more routine, various types
+of brain scans will become more routine....
+
+Ganapati went over the processing speeds CPUs had over the decades, which people often show,
+but interestingly, he spent most of his career at Intel architecting and developing these chips
+(Chief Architect for Xeon Processors- Gallatin, Potomac, Paxville, Tulsa, Quadcores - Clovertown-Harpertown, 
+Dunnington, Jaketown/Ivytown).
+
+
+
+### Causal Inference
+"Data has something to say, but if you strictly stick with the data, we are toast!"  You 
+need to have a storyline for the data, something that ties it together in meaningful ways.
+
+He shows a plot of cholesterol vs age... Then a causal diagram:
+
+```
+AGE __
+|     \___
+|         \___
+V             V
+Exercise --> Cholesoterol
+```
+
+Simpson's paradox...<<Fill it in>>
+  
+Shows causal diagram that resolves Simpson's paradox.
+
+Compute the average causal effect (ACE): `P(Y=1|do(X=1)) - P(Y=1|do(X=0))`
+
+Shows how he can do "surgery" on the graph causal model (i.e., use do calculus) to
+turn observational data into something strongly resembling a RCT.
+
+He said to get in touch w/ him for a great 40-page technical report by Pearl.
+
+Deep learning is so weak because there is no mechanistic model at all.  This is what's next
+on the horizon.  He then shows the 1/2/3 wave AI is DARPA terminology, and that they
+were the huge funders of DL, which is 2nd wave... Now they're putting tons of money into
+the 3rd wave.
+
+"The future is bright for data scientist, but it won't be lazy AI.  There will be more 
+mathematics." Yay!
+
+Start with a graph model.  It can be wrong, but just make sure it includes all the kinds of
+data that can be affecting the model.  Then you can use various techniques to figure out if
+the data and the graph are congruent, etc.
+
+
+
+## Augmented Reality Guidance for Structural Heart Disease Interventions Using Deep Learning-Based Catheter Segmentation (Sun-Joo Jang, Weill Cornell Medicine & NY Presbyterian)
+
+
+
+---------------------------------
 
 # Connections / Folks I met
 * Emma Wypkema
 * Iryna Skrypnyk (Pfizer)
 * George (Dessa)
 * Siddharth Dani (Medtronic)
+* Daniel Chertok (engaged his during Q&A)
