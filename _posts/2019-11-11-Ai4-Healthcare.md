@@ -55,32 +55,43 @@ sequenced genome?  How do you de-identify a sequenced genome?
 The de-identification of DNA is an issue:  supervised methods require lots of data, and so
 for genomic models -- lots of genomes!  And these days, the data is there, damn-nigh
 ready to share:  the amount of genomic data is increasing exponentially every year, keeping pace with 
-the exponential decreases in sequencing costs.  Somehow, some way: we need to be able to share 
-DNA/genomic data, while respecting patient privacy.  
+the exponential decreases in sequencing costs.  
 
-Paper reference:  "Better medicine through machine learning: What's real and what's artificial?"
-
-Irrational Extrapolation:  Can we reasonably assume that an algorithm trained on 
+The parochial point of view is: "Oh well, let's just deal with what we've got."  So say you've
+obtained the research rights to 10 genomes, or 100 genomes...  But is that enough?  Can you
+develop a great machine learning model from so little?  This apathetic attitude can land
+one in the precarious position of "irrational extrapolation."  Can we reasonably assume that an algorithm trained on 
 an easy-to-obtain patient set will lead to accurate models that act in the best interests
 of patients inside and out of that patient set?  How do we correct for such biases and reason
 about disease/symptoms severity and trajectory?
 
-How doe we share highly confidential data?  Enter federated learning:  
-* models are DL'd locally and trained w/ local data
+
+Somehow, some way: we need to move beyond this apathetic approach; we need be able to share 
+DNA/genomic data, while respecting patient privacy.  
+
+**How doe we share highly confidential data?**
+
+Enter federated learning:  
+* models are downloaded locally and trained w/ local data
 * the updated trained model is then shared and other cloud-connected models
   are updated 
 * this process does not require that private data is shared offsite or exposed
 
-Example of this:  Google Gboard.  
-
-Example:  TensorFlow Federated Framework ("...train across data from multiple sources, all 
-while keeping each of those sources separate and local...").
+Examples of this:  
+* [Google Gboard](https://en.wikipedia.org/wiki/Gboard)
+* [TensorFlow Federated](https://www.tensorflow.org/federated)  
+  - "...train across data from multiple sources, all while keeping each of those sources separate and local..."
 
 Challenges to Federated Learning: 
 * combining separate models risk creating a master model that's worse than each of its parts
 * for hosptial use cases, it requires every interested hospital to have the necessary tech infrastructure
   and personnel in place (e.g., folks who can train the local model)
   
+  
+### References in Talk
+* 2018: Saria et al: [Better medicine through machine learning: What's real and what's artificial?](https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1002721)
+* [Google Gboard](https://en.wikipedia.org/wiki/Gboard)
+* [TensorFlow Federated](https://www.tensorflow.org/federated)
 
 
 
