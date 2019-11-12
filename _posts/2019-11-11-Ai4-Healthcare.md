@@ -6,7 +6,9 @@ tags: healthcare machine-learning deep-learning easi
 
 Some notes and anecdotes about my experience at the Ai4 Healthcare conference in NYC, Nov 11-12.
 
-# 9:00: AI and The Art of Human Care (Hassan Tetteh, DoD Joint Artificial Intelligence Center)
+# Day 1
+
+## 9:00: AI and The Art of Human Care (Hassan Tetteh, DoD Joint Artificial Intelligence Center)
 
 The opening session started off with sirens.  
 
@@ -42,7 +44,7 @@ basically, you can't know and do everything yourself!
 He ended with an interesting quote from Grace Hopper:  "A ship in port is safe, but that is not what ships are built for. Sail out to sea and do new things."
 
 
-# 9:25: Solving Genomic Data Privacy in the Age of AI (Kyle Knack, Pure Storage)
+## 9:25: Solving Genomic Data Privacy in the Age of AI (Kyle Knack, Pure Storage)
 Kyle wore a bright, blazing orange shirt, like the cones and caution signs you might find on
 a construction site.  His demeanor fit the look: a rugged, Jersey-like aura.
 
@@ -95,7 +97,7 @@ Challenges to Federated Learning:
 
 
 
-# 9:50: Building an AI Future that Benefits Patients and Doctors (Christopher Khoury, AMA)
+## 9:50: Building an AI Future that Benefits Patients and Doctors (Christopher Khoury, AMA)
 People are most worried about healthcare-related issues (e.g., unexpected medical bills and health
 insurances costs rank in the top 2).
 
@@ -132,7 +134,7 @@ Some uh-ohs
 Black box intepretability: Important!
 
 
-# 10:15 Business of AI: What Healthcare Could Look Like in 10 Years (Deepa Varadharajan, CB Insights)
+## 10:15 Business of AI: What Healthcare Could Look Like in 10 Years (Deepa Varadharajan, CB Insights)
 Healthcare industry has consistently seen the most demand for AI, especially over the past 5 years (finance
 is a close second).  
 
@@ -187,7 +189,7 @@ think about how they can form a symbiotic relationship with that so they can pro
     
 
 
-# 11:05, Hub2: Deep Neural Networks Improve Radiologists' Performance in Breast Cancer Screening
+## 11:05, Hub2: Deep Neural Networks Improve Radiologists' Performance in Breast Cancer Screening
 Looking at screening mammography for breast cancer, the goal is "no cancer", "benign, "malignant."
 
 Challenge: not a lot of data just laying around!
@@ -235,7 +237,7 @@ Comparison to Human Performance
 
 
 
-# 12:05, Hub2: Explainable AI for Training with Weakly Annotated Data
+## 12:05, Hub2: Explainable AI for Training with Weakly Annotated Data
 Image-to-caption for medical images ("An irregular, non-homogeneous mass with indinstct margins").
 
 Differences between cats and chest x-rays:
@@ -288,7 +290,7 @@ and can even exted to multi-class cases.
 evan.schwab@philips.com
 
 
-# 1:35, Hub2:  What AI Will Bring to Medicine, and Why Human Experts are Here to Stay (Hakima Ibaroudene, Southwest Research Institute)
+## 1:35, Hub2:  What AI Will Bring to Medicine, and Why Human Experts are Here to Stay (Hakima Ibaroudene, Southwest Research Institute)
 
 Lots of potential for AI in supporting doctors and ERs, not nececssarily replacing them.
 
@@ -311,7 +313,7 @@ a mistake, only one is harmed...  He said it more eloquently.
 
 
 
-# 2:10, Hub2:  Best Practices in Applied Deep Learning for Digital Pathology Multiplex Image Analysis (Moshe Safran, RSIP Vision)
+## 2:10, Hub2:  Best Practices in Applied Deep Learning for Digital Pathology Multiplex Image Analysis (Moshe Safran, RSIP Vision)
 Mutliplex Image Analysis Tasks:
 * Nuclear detection and segmentation
 * Tumor segmentaton
@@ -369,11 +371,115 @@ This project was insanely good
  inform how to build the model (data aug strategy, class balance strategy, etc).
 
 
+# Day 2
+
+## The Puzzling Tango between Life Sciences and Algorithms (Dennis Shasha, NYU)
+
+Adrian Stoica had a problem: how to get circuits to work in space?!  The cosmic 
+rays were destroying electronics on spacecraft in space -- something had to be done!
+
+This brings us to genetic algorithms: design the spacecraft with GAs.  <<Description of genetic algorithms>>
+  
+Another example of GAs, this time in finance.  <<Look at slides>>.  They unleashed the
+  algorithm at 9am on a MOnday and w/in a few mins, the system bought and sold $10M of assets.
+  
+Can we design a biological virus that grows slowly?  Strategy: use unpopular codons: make
+the 3 nucleotide seqs that code for each amino acid the least popular ones for that species.  Ex: for alanine, maybe
+GCC encodes faster than GCA, so use GCA in the virus seq.  This is a biological engineering
+problem, but it's also an algorithmic one!
+
+Another example:  a plant biologist wants to use less fertilizer (less product, less run-off, less materials, etc).  For
+this, we can use a discipline sampling technique called [combinatorial design]()...  
+
+Combinatorial design example:  Say you ave 10 switches w/ 3 settings each (over 59k possible configs).  This
+would be a hard brute force way to do things...but using a combinatorial design, you could figure this out in
+15 tries...
+
+CD def: for each set of input factors and combo of values from those factors, some experiment
+has that combo...  (Note2self:  this stuff is very similar to latin square and random block design
+stuff I've done.)
+
+This guy then goes on to show RFs being awesome (NOTE: look @ slides; I had to book an AirBnB and didn't hear all)...
+
+As a computer scientist, he joked that "you have to look at the data!"  The data is noisy and hard
+to understand, but the good new is, often only qualitative information is required (e.g., Ibuprofen helps
+fight inflammation).
+
+
+## Beyond AutoML:  Does AutoML replace your data scientist?  (Ryohei Fujimaki, dotData)
+Basic concept:  
+Feature Processing --> Machine Learning
+
+Motivation:  most companies and data scientists say that most of their time and
+effort goes to making data ready for machine learning projects (cleaning, processing,
+feature engineering, feature selection, etc).  
+
+He shows a nice graph showing what he means by feature engineering:  a bunch of
+complexly connected tables in a relational database --> a single, tabular grid.  This
+is a fairly mechanical, beginner-level version of feature engineering...but he probably
+doesn't mean it's only this...
+
+Overall, this is a salespitch talk that covers basics and provides the same motivations
+you hear again and again (data is difficult to deal with and messy, so let us do it for you!).
+
+I personally distrust these AutoML services... There is something skeevy about going through
+every possible data combo and ML model to get the best results.  I've seen grid searches go bad,
+even when hedging against overfitting using CV mechanisms while doing it...  I don't know... It 
+could be a useful experimentation tool though.  Like, it might point you to a model you
+might not have considered, or to a particular data product that leads to new insights...
+
+But, still, you have to have some concerns in your mind, like violating multiple testing, and
+stuff... Well, then again, that's why having a holdout set is so important and useful.  So,
+I don't know, what this might add for me would be a grid search of feature combinations and 
+transformations... But then again, I could do that myself...  
 
 
 
 
+## Convergent AI in Reducing Overdiagnosis, Overtreatment and Misdiagnosis (Stephen Wong, Houston Methodist)
+We live in exciting times for investigating our health and bodies: we have access to multi-scale, multi-dimensional, 
+multi-modal data.  
 
+Healthcare in the U.S. has a problem:  high costs and low quality.  A lot of the cost is wasteful:  it 
+is estimated to be ~700-900B annually. Some estimates
+* Admin complexity: $256M
+* pricing failure $235M
+* failure of care: $135M
+* I missed the other ones...
+
+iBRISK
+Uses mammography images, ultrasound images, and EMR data...  
+
+Data set advertisement:
+* > 14k BI-RADS 4 patient case data
+* they use ~11.5k for training, ~2.25k for validation
+
+For their model, they report a 100% sensitivity (recall) and 79% specificity, resulting in
+an AUC of 93%.  (These are great results.)
+
+Also working on misdiagnosis of acute ischemic stroke...  Diffusion MRI can detect stroke early on and
+is the gold standard...but expensive.  They use CT-to-MRI image mapping using cross-modality deep learning...  If
+I understand correctly, this is one of those cool projects where you basically figure out how to use
+a cheaper instrument to estimate what the more expensive instrument would have shown...  How do you transform
+a CT image into a MRI image?
+
+Another stroke project:  facial recognition and voice interpretation via deep learning.  Currently
+doing a clinical trial.  
+
+Speaker diatribed a bit at the end about disliking how many of his colleagues waste time on 
+useless, easy problems...that they should focus on more important, impactful problems.
+
+
+
+## AI and The Intersection of Robotics and Surgery (Prakash Gatta, MultiCare Health System)
+
+
+## 11:05, Hub2: Preventing Readmissions Due to Sepsis With Wearable Monitoring and Deep Learning (Wei-Jien Tan, Patchd Medical)
+
+## 12:05, Hub2:  Supporting Patient’s Use of Bioelectronic Medicines with AI (Jai Yu, Cala Health)
+
+
+## 1:35, Hub1:  Implementing Clinical Analytics Predictive Engine (CAPE): From Concept to Workflows (Daniel Chertok, Northshore)
 
 
 # Connections / Folks I met
