@@ -46,19 +46,22 @@ He ended with an interesting quote from Grace Hopper:  "A ship in port is safe, 
 Kyle wore a bright, blazing orange shirt, like the cones and caution signs you might find on
 a construction site.  His demeanor fit the look: a rugged, Jersey-like aura.
 
-DNA Data Deluge: The amount of genomic data is increasing exponentially, keeping pace with the exponential decreases
-in sequencing costs.
+The talk jumped right into the intricacies of DNA as data: How do you respect patient
+privacy and HIPAA when the data under discussion and distribution is genetic?  In healthcare,
+data de-identification is basically a given.  For example, given medical imaging data, one
+can at least conceive that the patient data can be anonymized.  But DNA data?  A patient's
+sequenced genome?  How do you de-identify a sequenced genome?
 
-How do you keep genomic data private?  
-
-How do you anonymyze DNA data since it is inherently personalized?  In other realms, like medical imaging,
-one can hope to anonymize patient data...but this is not necessarily true for DNA data.  But current
-supervised methods require lots of data, and we likely need to share DNA/genomic data.  
+The de-identification of DNA is an issue:  supervised methods require lots of data, and so
+for genomic models -- lots of genomes!  And these days, the data is there, damn-nigh
+ready to share:  the amount of genomic data is increasing exponentially every year, keeping pace with 
+the exponential decreases in sequencing costs.  Somehow, some way: we need to be able to share 
+DNA/genomic data, while respecting patient privacy.  
 
 Paper reference:  "Better medicine through machine learning: What's real and what's artificial?"
 
-Irration Extrapolation:  Can we reasonably assume that an algorithm trained on 
-an eas-to-obtain patient set will lead to accurate models that act in the best interests
+Irrational Extrapolation:  Can we reasonably assume that an algorithm trained on 
+an easy-to-obtain patient set will lead to accurate models that act in the best interests
 of patients inside and out of that patient set?  How do we correct for such biases and reason
 about disease/symptoms severity and trajectory?
 
