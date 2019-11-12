@@ -473,13 +473,78 @@ useless, easy problems...that they should focus on more important, impactful pro
 
 ## AI and The Intersection of Robotics and Surgery (Prakash Gatta, MultiCare Health System)
 
+Surgery: "the treatment of injuries or disorders of the body by incision or manipulation," or "basically,
+it's legal trauma," the speaker joked.
+
+Robotics in Surgery: "the surgery is done w/ precision, miniaturization, smaller incisions; decreased blood 
+loss, less pain, and quicker healing time."  But, generally NOT autonomous.
+
+He shows an amazing video of him doing surgery w/ some robotic enhancements...sewing together some
+organ...
+
+In surgical robotics today, the biggest players are 
+* [Intuitive](https://www.intuitive.com/en-us), which came about after a DARPA project, 
+* [VERB Surgical](https://www.verbsurgical.com/), which arose from JHU and Google
+
+However, newer fledglings have come about that are making their mark:
+* Medtronic
+* CMR
+* Titan
+* Senhance
+
+
+What is the need of robotics in surgery today?  Speaker's personal prefs
+* precision
+* supererior viz
+* magnification
+* stability
+* tremor eliination
+* reduced cost (early discharge, reduce operative time)
+* reduced opioid use 
+* reduction in complications
+
+Does surgery need AI?
+* surgery is highly complex
+* also highly litigineous
+* avoiding complications saves money (and is better for the patient!)
+* despite years of training, mistakes can still be made
+* ageing population --> shortage of surgeons
+
+What can AI offer?
+* predictive analytics / decision support, e.g., predict complications
+* integration of imaging into live anatomy, e.g., prevents injury
+* anticipation of surgeon's next move, e.g., improve efficiency
+* prevent the surgeon from making a mistake
+* surgical (partial) automation
+
+
+Can we generate value from intraoperative data?
+The "robot" generates data with each movement.  Can this data be used for predictive
+analytics?  Or even for training new students?  
+
+Democratization of surgery:  universal availability of surgical know-how;  surgical delivery on
+a standard platform;  ....
+
+Future of Surgery:  
+* image integration & VR/AR --> intraoperative "telemetry" --> superior interactivity/vision ("feel tissue") --> protective measures 
+  - am I squeezing to tight?
+  
+
 
 ## 11:05, Hub2: Preventing Readmissions Due to Sepsis With Wearable Monitoring and Deep Learning (Wei-Jien Tan, Patchd Medical)
+
 
 ## 12:05, Hub2:  Supporting Patient’s Use of Bioelectronic Medicines with AI (Jai Yu, Cala Health)
 
 
 ## 1:35, Hub1:  Implementing Clinical Analytics Predictive Engine (CAPE): From Concept to Workflows (Daniel Chertok, Northshore)
+
+
+## 2:10, Forum A:  Callisto - Machine Learning Targeting in Johns Hopkins' Care Management Programs
+
+
+## 2:45, Hub2:  Multi-Modal Data Aggregation for AI and Causal Inference: Applications to Cancer (Ganapati Srinivasa, Omics Data Automation)
+
 
 
 # Connections / Folks I met
