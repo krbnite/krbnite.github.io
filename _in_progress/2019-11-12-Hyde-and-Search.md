@@ -34,6 +34,19 @@ still doesn't work... Tried install `rbenv` too... nothing...
 
 Come back to this later...
 
+...later...
+
+It was Anaconda-related stuff (like clang) at the beginning of my PATH that was screwing things up... I 
+temporarily removed it from front of PATH and followed instructions...
+
+https://jekyllrb.com/docs/installation/macos/
+
+```
+rubyv=`ruby -v | cut -d' ' -f 2 | cut -d'.' -f 1,2`
+export PATH=$HOME/.gem/ruby/${rubyv}.0/bin:$PATH
+```
+
+
 # References
 * Long Qian: [Jekyll Tags on Github Pages](http://longqian.me/2017/02/09/github-jekyll-tag/)
 * https://blog.webjeda.com/instant-jekyll-search/
