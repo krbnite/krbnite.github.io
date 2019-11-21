@@ -109,6 +109,30 @@ Microsoft: [AI Institute “Geometry of Deep Learning” 2019](https://www.youtu
 * 2015: [Introduction to Machine Learning](https://filebox.ece.vt.edu/~s15ece5984/)
 * 2015: [Deep Learning for Perception](https://computing.ece.vt.edu/~f15ece6504/)
 
+# Udacity
+* UD120: [Intro to ML](https://www.udacity.com/course/intro-to-machine-learning--ud120)
+* UD262 (G-Tech): [ML](https://www.udacity.com/course/machine-learning--ud262)
+* UD501 (G-Tech): [ML for Trading](https://www.udacity.com/course/machine-learning-for-trading--ud501)
+* UD741 (G-Tech): [Unsupervised ML](https://www.udacity.com/course/machine-learning-unsupervised-learning--ud741)
+* UD1001: [ML Interview Preparation](https://www.udacity.com/course/machine-learning-interview-prep--ud1001)
+* UD944: [DS Interview Preparation](https://www.udacity.com/course/data-science-interview-prep--ud944)
+* UD954: [Artificial Intelligence](https://www.udacity.com/course/artificial-intelligence--ud954)
+* UD185 (FB): [Secure and Private AI](https://www.udacity.com/course/secure-and-private-ai--ud185)
+  - uses PyTorch
+  - federated learning, differential privacy, etc
+* UD187 (TF): [Intro to TensorFlow for Deep Learning](https://www.udacity.com/course/intro-to-tensorflow-for-deep-learning--ud187)
+* UD188 (FB): [Intro to Deep Learning with PyTorch](https://www.udacity.com/course/deep-learning-pytorch--ud188)
+* UD190 (TF): [Introduction to TensorFlow Lite](https://www.udacity.com/course/intro-to-tensorflow-lite--ud190)
+* UD600: [Reinforcement Learning](https://www.udacity.com/course/reinforcement-learning--ud600)
+* UD758: [Big Data Analytics in Healthcare](https://www.udacity.com/course/big-data-analytics-in-healthcare--ud758)
+* UD1038: [Core ML: Machine Learning for iOS](https://www.udacity.com/course/core-ml--ud1038)
+* CS271: [Intro to Artificial Intelligence](https://www.udacity.com/course/intro-to-artificial-intelligence--cs271)
+* UD810: [Introduction to Computer Vision](https://www.udacity.com/course/introduction-to-computer-vision--ud810)
+* UD919: [Model Building and Validation](https://www.udacity.com/course/model-building-and-validation--ud919)
+* CS373: [Artificial Intelligence for Robotics](https://www.udacity.com/course/artificial-intelligence-for-robotics--cs373)
+* UD409: [Knowledge-Based AI: Cognitive Systems](https://www.udacity.com/course/knowledge-based-ai-cognitive-systems--ud409)
+
+
 # Kaggle
 Most of these are circa 2018/2019.
 * [Intro to ML](https://www.kaggle.com/learn/intro-to-machine-learning)
