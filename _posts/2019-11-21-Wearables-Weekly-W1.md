@@ -69,7 +69,7 @@ Some reads of the week:
 * https://www.medicaldevice-network.com/comment/top-tech-healthcare-wearables/
 * https://www.forbes.com/sites/forbestechcouncil/2019/11/20/wearables-and-hearables-increasingly-have-a-role-in-patient-treatment-plans/#31b9e79110b0
 * https://interestingengineering.com/smart-clothing-is-the-future-of-the-wearables-industry
-
+* https://blogs.nvidia.com/blog/2019/10/17/proprio-quadro-rtx/
 
 
 
