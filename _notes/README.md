@@ -109,6 +109,16 @@ Microsoft: [AI Institute “Geometry of Deep Learning” 2019](https://www.youtu
 * 2015: [Introduction to Machine Learning](https://filebox.ece.vt.edu/~s15ece5984/)
 * 2015: [Deep Learning for Perception](https://computing.ece.vt.edu/~f15ece6504/)
 
+# Kaggle
+Most of these are circa 2018/2019.
+* [Intro to ML](https://www.kaggle.com/learn/intro-to-machine-learning)
+* [Intermediate ML](https://www.kaggle.com/learn/intermediate-machine-learning)
+* [Pandas](https://www.kaggle.com/learn/pandas)
+* [Feature Engineering](https://www.kaggle.com/learn/feature-engineering)
+* [Deep Learning](https://www.kaggle.com/learn/deep-learning)
+* [ML Explainability](https://www.kaggle.com/learn/machine-learning-explainability)
+
+
 # Misc Source
 * 2012:  IPAM:  [Deep Learning & Feature Learning](https://www.youtube.com/playlist?list=PLHyI3Fbmv0SdzMHAy0aN59oYnLy5vyyTA)
 * 2013: Max Planck Institute:  [Machine Learning Summer School](https://www.youtube.com/playlist?list=PLqJm7Rc5-EXFv6RXaPZzzlzo93Hl0v91E)
@@ -139,6 +149,8 @@ Microsoft: [AI Institute “Geometry of Deep Learning” 2019](https://www.youtu
 * [Anomaly Detection](https://software.intel.com/en-us/ai/courses/anomaly-detection)
 * [Deep Learning with BigDL](https://software.intel.com/en-us/ai/courses/bigdl)
 * [Distributed AI with the Ray Framework](https://software.intel.com/en-us/ai/courses/distributed-AI-ray)
+
+
 
 # Weights and Biases
 * 2019 (Fall):  Josh Tobin:  [Applied Deep Learning](https://www.youtube.com/playlist?list=PLD80i8An1OEEe2X5KA_uSvMaEMl0lo4jP)
