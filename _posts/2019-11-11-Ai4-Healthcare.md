@@ -136,7 +136,7 @@ support their decision-making processes, help them arrive at the correct diagnos
 treatments otherwise resulting from misdiagnosis, and reduce pain and suffering by starting treatments earlier." (Reference:
 [Current State and Near-Term Priorities for AI-Enabled Diagnostic Support Software in Health Care](https://healthpolicy.duke.edu/publications/current-state-and-near-term-priorities-ai-enabled-diagnostic-support-software-health))
 
-Another problem with adoption and/or utilization is communication: the speaker 
+Another problem with adoption and/or utilization of AI and digital health trends is communication: the speaker 
 showed a slide about ~30 different definitions of accuracy, which showed words like accuracy, PPV,
 precision, recall, F1 score, AUC, etc.  The point was that there should be some agreed upon
 standards...  I found myself wondering, "Haven't people always dealt with these terms,
@@ -145,44 +145,45 @@ the point is that clinicians and decision makers do not always know these
 terms, and the speaker is advocating simplifying the terminology for better, more fruitful discussion between
 AI stakeholders.
 
-Some uh-ohs
+Other things to look out for that will erode trust in AI:
 * IBM's Watson supercomputer recommended 'unsafe and incorrect' cancer treatments
 * Automating Inequality (some algorithm was unfarily rejecting black people from care)
-
-Black box intepretability: Important!
+* Black box intepretability: Important!
 
 
 ## 10:15 Business of AI: What Healthcare Could Look Like in 10 Years (Deepa Varadharajan, CB Insights)
-Healthcare industry has consistently seen the most demand for AI, especially over the past 5 years (finance
-is a close second).  
+Good news for AI practictioners in healthcare:  the healthcare industry has consistently seen the 
+most demand for AI, especially over the past 5 years.  You might think it would be finance, but finance
+is a close second.  This ample demand stems from so many players competing in the game:  there are
+the oldies (GE, Philips, Siemans), the tech giants (Google, Apple, etc), and more (Epic, Cerner, 
+Roche).  Google, Amazon, and Apple are jumping in deep for both healthcare and AI.
 
-So many players in the game:  oldies (GE, Philips, Siemans) and newbs/tech (Google, Apple, etc) and
-unusuals (Epic, Cerner, Roche).
+So there is no better time between now and later than right now for your company to get
+involved in modernizing your healthcare approaches with AI.  Despite this, many companies
+still hold back out of fear:
+* dread of dealing with so many data silos the company has accrued over time
+* uneasiness of updating outdated infrastructure
+* worries of regulatory risk and untested tech
+* fear of moving fast; slow to react
+* confusion and concern about where to start
 
-Unmanned health clinics.
+But here's some motivation for you: if you don't, someone else will.  At minimum, 
+investing in AI solutions can help improve margins and generate additional revenue 
+streams.  That's a great minimum -- far better than not doing anything, which might
+land you in a tar pit with the dinosaurs!
 
-Google, Amazon, and Apple are jumping in deep for both healthcare and AI.
-
-Google:  Verily Calicao CapitalG DeepMind
-
-Holdbacks
-* data silos & outdated infra
-* feat of regulartory risk and untested tech
-* slow to react
-* companies don't knwo where to start
-
-Motivations
-* if you don't, someone else will
-* appear to a change demography and customer base
-* improve margins and generate additional revenue streams
+This became a talk about Google pretty quickly hereafter.
 
 Trends to watch in healthcare
 * bigger companies are partnering w/ (or acquiring) smaller startups
 * bull case for OEMs:  manufacturer will become an end-to-end service provider
-* Will Google takeover the hospital?
+* Google is taking over many areas
+
+Will Google takeover the hospital?
   - they usually have a smart approch
-    * Android: did not try to creat a new phone, just a new OS (ecosystem approach)
-    * Waymo: did not try to reinvent the wheel, just acquired
+    * Android: Google did not win mobile phone market share with a new phone, just a new OS (ecosystem approach)
+    * Waymo: Google did not try to reinvent the wheel or start from scratch, but instead just acquired a start-up 
+      already developing autonomous vehicles
   - they have tech and capabilities that no competitor has
     * data access and expertise
     * global reach
@@ -196,11 +197,13 @@ Trends to watch in healthcare
     * contributes to modern healthcare IT needs
   - purhcased Fitbit
   - Verily in general
-    * patent fo smart syring
+    * patent fo smart syringe
     * patent for verb surgical, a robotics startup 
     * patent grant for digital atery blood pressure monitor
   - Citiblock health
   - Smart City project w/ Smart Healthcare initiatives
+
+Google:  Verily Calicao CapitalG DeepMind
 
 Basically, Google will likely be a major player in all areas of healthcare and smaller business should
 think about how they can form a symbiotic relationship with that so they can provide a value-added service, etc.
