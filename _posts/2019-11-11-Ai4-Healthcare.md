@@ -98,34 +98,52 @@ Challenges to Federated Learning:
 
 
 ## 9:50: Building an AI Future that Benefits Patients and Doctors (Christopher Khoury, AMA)
-People are most worried about healthcare-related issues (e.g., unexpected medical bills and health
-insurances costs rank in the top 2).
+This talk opened up with a list of things that people are most worred about.  At the top of
+that list, healthcare-related issues dominate, e.g., unexpected medical bills and health
+insurances costs rank in the top 2. Sometimes an unexpected medical bill refers to freak accidents 
+in one's life, but in the U.S. healthcare system, it more frequently can mean medical bills that seem 
+to arise from nowhere and everywhere all at once after a trip to the ER.  
 
+But healthcare in the U.S. is not just worrisome: it's downright difficult!  Chistopher referenced an 
+article called, "[The healthcare claims adjudication process in the United States - a picture 
+is worth a thousand words](https://www.researchgate.net/publication/332960120_The_healthcare_claims_adjudication_process_in_the_United_States-A_picture_is_worth_a_thousand_words)", showing a [figure](https://www.researchgate.net/figure/US-Healthcare-Claims-System-Infrastructure_fig3_332960120) 
+that traces out the intricate trajectory of a patient in the U.S. healthcare system's claim payment infrastructure; it
+is considered the most complex claims adjudication process in existence!
 
-Paper reference: The healthcare claims adjudication process in the United States - a picture 
-is owrht a thousand words.... This
-paper has a figure that shows the trajector of a patient in the healthcare system (hint: it's friggn' 
-crazy).
+Already, we have a few areas in need of improvement: 
+* help ensure more deterministic healthcare costs
+* help simplify healthcare system and improve efficiency 
 
-Burnout is 2x more common in physicians (48%) than the general population (24%)
+The talk continued, bringing up other burdens on the system.  For example, burnout is 2x more common
+in physicians (48%) than the general population (24%)
 
-For digital health:  Can is make something better, quicker, or smoother, so that the
-patient or doctor can benefit?
+He brought up AI and digital health initiatives, presenting them as having potential 
+to simplify healthcare, but also having potential to further complexity and burden the healthcare
+system.  For example, many digital health initiatives aim to track some biometric or 
+symptom, but do they actually add any value?  From the physician or clinician perspective,
+only one thing really matters:  Can it make something better, quicker, or smoother, so that the
+patient or doctor can benefit?  (Reference: [How to Develop Machine Learning Models for Healthcare](https://ai.google/research/pubs/pub48039).  Side Note:  this paper is the type of paper I was 
+writing for the dropout stuff I was doing this past year.)
 
-Augmented Intelligence: an alternative conceptuatlization that focuses on AI's assistive role, 
-emphasizing the fact that its design enhance HI ranther than rpelaces it.
+An area that shows much promise is in augmented intelligence: an alternative conceptualization 
+of how artificial intelligence can meaningfully and usefully fit into healthcare, 
+emphasizing how it is best used to enhance human intelligence (HI) rather than replace it. Used
+correctly, "Artificial intelligence (AI) systems and applications is now poised to disrupt healthcare, 
+with the potential to improve 
+patient outcomes, reduce costs, and enhance work-life balance for healthcare providers through integration with clinical
+decision support (CDS) software. AI-enabled diagnostic support software shows promise to augment clinicians' intelligence,
+support their decision-making processes, help them arrive at the correct diagnosis faster, reduce unnecessary testing and 
+treatments otherwise resulting from misdiagnosis, and reduce pain and suffering by starting treatments earlier." (Reference:
+[Current State and Near-Term Priorities for AI-Enabled Diagnostic Support Software in Health Care](https://healthpolicy.duke.edu/publications/current-state-and-near-term-priorities-ai-enabled-diagnostic-support-software-health))
 
-
-Paper reference: Current state and near-term priorities for ai-enable diagnostic support software in healthcare
-
-Paper reference: how to develop ml models for healthcare
-  - this is literally the type of paper I was hoping to write for the dropout stuff I was doing
-
-Showed a slide about ~30 different definitions of accuracy, which showed words like accuracy, PPV,
-precision, recall, F1 score, AUC, etc.  My question: Haven't people always dealt with these terms,
-even for basic studies?  That said, point is:  clinicians and decision makers do not always know these 
-terms, and the speaker is wondering how to simplify the terminology for better discussion between
-AI stakeholders...
+Another problem with adoption and/or utilization is communication: the speaker 
+showed a slide about ~30 different definitions of accuracy, which showed words like accuracy, PPV,
+precision, recall, F1 score, AUC, etc.  The point was that there should be some agreed upon
+standards...  I found myself wondering, "Haven't people always dealt with these terms,
+if not for complex machine learning models, then for simple risk models and basic statistical studies?"  That said,
+the point is that clinicians and decision makers do not always know these 
+terms, and the speaker is advocating simplifying the terminology for better, more fruitful discussion between
+AI stakeholders.
 
 Some uh-ohs
 * IBM's Watson supercomputer recommended 'unsafe and incorrect' cancer treatments
