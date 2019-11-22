@@ -70,6 +70,32 @@ Android OS for smart phones -- an OS for wearables, mentioned above, called Wear
 [watchOS](https://en.wikipedia.org/wiki/WatchOS), but that parallels iOS: Apple for Apple's sake.  As with 
 Android, its Google's Wear OS that is being adopted by 3rd party manufacturers.
 
+## Microsoft
+* https://www.microsoft.com/en-us/legal/intellectualproperty/mtl/wearables.aspx
+* https://www.wareable.com/wearable-tech/microsoft-wearable-health-sensor-patent-details-7438
+* https://en.wikipedia.org/wiki/Microsoft_Band
+* https://www.microsoft.com/en-us/hololens
+* https://www.digitaltrends.com/computing/microsoft-surface-smart-fabric-patent/
+* https://www.neowin.net/news/microsoft-patents-advanced-multi-dimensional-sensor-device-for-wearables/
+
+
+## IBM
+* https://www.research.ibm.com/haifa/dept/services/wearable.shtml
+* https://www.ibm.com/downloads/cas/O50QV9NK
+* https://www.wearable-technologies.com/2019/03/ibm-watson-wants-to-use-wearable-devices-to-improve-worker-safety/
+* https://www.ibm.com/blogs/client-voices/bragi-watson-iot-computing-ears/
+* https://researcher.watson.ibm.com/researcher/view_group.php?id=10003
+
+## Siemens
+* https://constructionmaguk.co.uk/siemens-the-dark-side-of-wearables-and-wellbeing/
+* https://www.siemens-healthineers.com/press-room/press-releases/pr-20180306009hc.html
+* https://www.signiausa.com/blog/signia-primax-smart-hearing-aids/
+* https://www.siemens-healthineers.com/en-us/
+
+## Roche
+* https://www.smartbrief.com/s/2017/02/roche-use-wearable-sensors-monitor-infants-clinical-trial
+* https://www.swissinfo.ch/eng/drugs-and-data_inside-roche--taking-on-the-tech-sector/45345154
+
 # Extra Credit:  Robotics Companies
 * Intuitive, which came about after a DARPA project,
 * VERB Surgical, which arose from JHU and Google
@@ -114,5 +140,7 @@ Some reads of the week:
 * https://interestingengineering.com/smart-clothing-is-the-future-of-the-wearables-industry
 * https://blogs.nvidia.com/blog/2019/10/17/proprio-quadro-rtx/
 
+Some older reads worth putting in this first installment:
+* https://www.wareable.com/health-and-wellbeing/health-tech-startups-to-look-out-for-2019-7362
 
 
