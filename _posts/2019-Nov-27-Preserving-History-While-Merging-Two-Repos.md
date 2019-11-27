@@ -87,14 +87,21 @@ mkdir proj_v1
 for item in `ls | grep  -Ev "proj_v1$|README.md.new"`; do mv $item proj_v1/; done
 
 # Commit the move
+git add .
 git commit -m “Move proj_v1 contents into proj_v1/ subdir”
 
 # Repeat above steps for proj_v2
 git remote add -f proj_v2 <proj_v2 repo URL>
-git merge proj_v2/master
+git merge --allow-unrelated-histories proj_v2/master
 mkdir proj_v2
-for item in `ls | grep  -Ev "proj_v1$|proj_v2$|README.md.new"`; do mv $item proj_v1/; done
+for item in `ls | grep  -Ev "proj_v1$|proj_v2$|README.md.new"`; do mv $item proj_v2/; done
+git add .
 git commit -m “Move proj_v2 contents into proj_v2/ subdir”
+
+# Properly rename the original README file
+mv README.md.new README.md
+git add README.md
+git commit -m "Update README file name..."
 ```
 
 The original code includes a bit more about branches, if you're interested in it.  This particular
