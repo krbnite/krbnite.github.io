@@ -9,21 +9,21 @@ starting and stopping over time, and different individuals taking it on after ot
 had moved on to other things.  
 
 During the first iteration, a data processing and machine learning pipeline was 
-developed.  For <<reasons>>, the project developer discontinued work on it and
+developed.  For \<\<reasons\>\>, the project developer discontinued work on it and
 someone else took over.  The new developer liked certain parts of the project, but
-disliked others (due in part to some those <<reasons>>).  Not wanting to delete 
+disliked others (due in part to some those \<\<reasons\>\>).  Not wanting to delete 
 a bunch of files or destroy what value might be stored in the pieces of the pipeline
 he was going to discard, the new developer decided that starting a new repo would be 
 best.  And it was so: the first several pieces of the pipeline were ported into the
 new project repo and the project took flight in a new direction.
 
-Then <<new reasons>> occurred, the new developer was gone, and the project was in limbo once again.
+Then \<\<new reasons\>\> occurred, the new developer was gone, and the project was in limbo once again.
 
 At this point, to my mind, the project was a nightmare that no new time or talent 
 should be spared on...but nonetheless, time and talent was requested once again.  This
 time I was one of two thrown into the mix.
 
-Part of my mission was to explore <<reasons>> and <<new reasons>> to get into the
+Part of my mission was to explore \<\<reasons\>\> and \<\<new reasons\>\> to get into the
 thinking process of my predecessors -- to understand what the constraints were, why
 certain decisions might have been made, where bugs may reside in the code.  As I did this, I
 began populating the more recent repo with a bunch of exploratory Jupyter notebooks, detailing
