@@ -37,4 +37,4 @@ health, where I'm doing even more interesting things.
 [kevin.ddu@gmail.com](mailto:kevin.ddu@gmail.com)
 
 
-![](../aboutme_cvb2018.jpg)
+![](./images/aboutme_cvb2018.jpg)
