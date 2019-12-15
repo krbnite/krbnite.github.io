@@ -88,6 +88,18 @@ Think of needs:
 * does you DB just need to find info on a document to quickly write to or read from, where the document might not easily relate to other documents, but also -- the use case doesn't call for it
 * or, maybe your DB needs to relate data across many different entities and business verticals, very quickly:  how quick do you need joining, searching, and pattern matching to be?
 * does it need to retrieve and sort (order by) quickly
+* Do relationship really matter?  Would visualizing relationships quickly uncover insights
+  without the need for long, tediuos, and/or complex analytical queries?
+  - e.g., an example use-case for graph databases from AWS Database Week (Oct 2018) is fraud detection.  Consider
+    Uber: how many times in NYC would you expect Driver X and Customer Y to interact? Once, maybe twice.  What if there 
+    are 25 edges between them?  Might be fraud!
+  
+  
+
+
+
+# A Little History
+
 
 Notes on the "Non-Relational Revolution" from AWS Database Week: NoSQL & Graph Databases (Oct 17, 2018):
 * Werner Vogels' web blog (CTO of Amz) on building scalable and robust distributed systems
@@ -110,24 +122,6 @@ Notes on the "Non-Relational Revolution" from AWS Database Week: NoSQL & Graph D
 * All these changes made people question the "one tool" approach to databases (wouldn't use a hammer for sawing a board)
   - e.g., what if each record does not care about any other record?  (no need to scan a whole table, maybe use KV)
   - e.g., what if each instance of a full entity doesn't care about other entities?  (no need to scan and join tables, maybe use a docStore)
-* Graph DB
-  - Fraud detection: think about Uber: how many times in NYC would you expect Driver X and Customer Y to interact?  Once, maybe twice.  What if there are 25 edges between them?  Might be fraud!
-* Search DB
-  - Note: second time I've seen "Search DBs" listed as a NoSQL class (first time on MS webpage)
-  - this is how a search bar is predicting your word(s) as you type
-  - uses inverted index...
-  - e.g., Amz Elasticsearch
-  - seems like the "trie" data structure I learned in bioinformatics course
-* In-Memory
-  - I see this listed as a NoSQL class every so often, but to me it seems like a DB feature more than a DB class (e.g., Redis is an in-memory DB, but isn't it also a KV DB?)
-* Also went over Relational, KV, Document
-  - interestingly, Redshift is listed as relational ... other times, I've seen it listed as column-oriented
-* this really gets into how you categorize:  by feel (obviously Redshift "feels" relational), by storage model, by query language, etc
-  - even AWS sells Redshift as "relational", so it's interesting: we've come to a point in time where we are no longer strictly delineating databases by how they work under the hood
-* Resource
-  - AWS has a cool webpage called "This Is My Architecture" -- lots of videos 
-  - Andy Jassy's re:Invent 2017 keynote
-  - re:Invent 2017: Which Database to Use When? (DAT310)
 
 
 
@@ -248,6 +242,14 @@ From [Microsoft's Data Store Overview](https://docs.microsoft.com/en-us/azure/ar
 
 # In-Memory (or Cache) Databases
 
+I see "In-Memory" listed as a NoSQL class every so often.  Maybe it is!  Though to me it seems more like a 
+database/datastore feature feature than its own category.  For example, Redis is considered to be an in-memory 
+database, but you will also see it referred to as a KV store.  In fact, it's both!  One adjective ("in-memory")
+refers to how the technology is operationalized (where it lives), while the other adjective ("key-value") refers
+to its data structure.  (Elsewhere in these notes, I cover a similar classification issue with Redshift: 
+is it column-oriented or relational?  Both!)
+
+
 Notes on "Amazon ElastiCache" from AWS Database Week: NoSQL & Graph Databases (Oct 17, 2018):
 * internet-scale (global) apps need low latency (milli- to micro-seconds) and high concurrency (1M+ users)
 - can require high volume storage (TB, PB, EB), high request rate (M/s), access from various sources (mobile, IoT, devices), etc, etc
@@ -286,7 +288,18 @@ to be inconsistently described... Pointing out that almost everyone incorrectly 
 * [Why many refer to Cassandra as a Column oriented database?](https://stackoverflow.com/questions/13010225/why-many-refer-to-cassandra-as-a-column-oriented-database)
 * [Distinguishing Two Major Types of Column-Stores](http://dbmsmusings.blogspot.com/2010/03/distinguishing-two-major-types-of_29.html)
 
-One of the questions that led me to this was wondering, "What is Redshift?"
+One of the questions that led me to this was wondering, "What is Redshift?"  I've often read that it's some kind
+of columnar or column-oriented database.  However, at AWS Database Week (Oct 2018), one of the speakers from 
+AWS referred to it as relational!  Fact is, it's both!  One adjective (columnar) refers to how the technology
+is optimized, while the other (relational) refers to its data structure and query language.  How you refer to
+Redshift (or any datastore) stems from what parameter or attribute you are categorizing at the moment.  (By the
+way, this is also part of the reason why terms like "NoSQL" and "non-relational" only have fuzzy meaning out
+of specific contexts.  Like, Postgres is a dyed-in-the-wool relational database, right?  Yet it supports 
+key-value and document-store data structures, making it also non-relational and NoSQL.  Etc.)
+
+- even AWS sells Redshift as "relational", so it's interesting: we've come to a point in time where we are no longer strictly delineating databases by how they work under the hood
+
+
 * https://docs.aws.amazon.com/redshift/latest/dg/c_columnar_storage_disk_mem_mgmnt.html
   - Redshift is considered a RDBMS, but is a column-oriented database, which make it read-optimized for large analytical 
     jobs (also great for writing very large batches), and so which makes it OLAP ("data warehouse") instead of OLTP (which 
@@ -376,6 +389,11 @@ From [Microsoft's Data Store Overview](https://docs.microsoft.com/en-us/azure/ar
 
 
 Notes on Amazon's Neptune graph database from AWS Database Week: NoSQL & Graph Databases (Oct 17, 2018):
+* Do relationship really matter?  Would visualizing relationships quickly uncover insights
+  without the need for long, tediuos, and/or complex analytical queries?
+  - e.g., an example use-case for graph databases from AWS Database Week (Oct 2018) is fraud detection.  Consider
+    Uber: how many times in NYC would you expect Driver X and Customer Y to interact? Once, maybe twice.  What if there 
+    are 25 edges between them?  Might be fraud!
 * graph DBs are for highly-connected data sets: social networks, medicine, recommendation engines, knowledge graphs, network operations
   - Knowledge graphs:  e.g., travel data
   - Life sciences:  track epidemics across globe; finding cures for new diseases (w/ protein maps)
@@ -407,4 +425,123 @@ Notes on Amazon's Neptune graph database from AWS Database Week: NoSQL & Graph D
 * [Graph Modeling Do's and Don't's](http://www.durusau.net/localcopy/Graph-Modeling-Do.s-and-Don.ts.pdf)
 * [Property Graphs: Swiss Army Knife Data Modeling](http://www.dataversity.net/property-graphs-swiss-army-knife-data-modeling/)
 * [Relational vs Graph Data Modeling](https://dzone.com/articles/relational-vs-graph-data-modeling)
+
+
+# Search Databases
+These are sometimes mentioned, though not as frequently as KV, document, and column stores.
+
+For example, they are listed as a NoSQL/nonrelations class on the [Microsft]() page.  Also, when I attended
+AWS's Database Week in mid-October, 2018, one of the speakers mentioned it there too.
+
+Notes on "Search DBs" from AWS Database Week:
+* this is how a search bar is predicting your word(s) as you type
+*  uses inverted index...
+* e.g., Amz Elasticsearch
+* seems like the "trie" data structure I learned in bioinformatics course
+
+# Some Closing Remarks & Stuff
+
+From [Parse.ly](https://blog.parse.ly/post/4516/cloud-sql-bigquery-redshift/): "The only reason SQL has not been the obvious first choice for analytics in the last few years is due to machine and data limitations of most common single-node SQL engines, specifically the typical Postgres and MySQL database setups you find powering the lion’s share of modern applications.  For example, if you install Postgres on a server, you will be limited by CPU, memory, disk, or all three. ... NoSQL stores solve disk limitations with horizontal data sharding strategies, such as the consistent sharding strategy famously used in Cassandra."
+
+The above [Parse.ly](https://blog.parse.ly/post/4516/cloud-sql-bigquery-redshift/) article
+discusses how "SQL of old" was on single-node hardware that you had to think a lot about: 
+* how much memory should this single server have for worst case scenarios?  
+* how fast do we need the CPU?  
+* how much storage do we need? 
+* etc, etc.  
+
+Due to the scaling up nature of single-node "SQL of old" engines, one would need to be judicious, but not overly 
+cautious:  we will definitely use more than X, but never anywhere near Z; if we go with Y, we can probably sustain growth for years to come.   
+
+A shift from "SQL of Old" occurred when business began moving to the cloud, e.g., Amazon RDS or Google Cloud SQL.  In 
+both cases, you are still very much in a "SQL of Old" territory, but you need not be as judicious and cautious when 
+deciding on hardware -- start small, and scale up when the need arises.  That said, scaling up gets more and more 
+expensive, and at one point you can scale no more (e.g., Amazon has caps on single-server memory, storage, etc).  Also, 
+for certain weaknesses, scaling up doesn't help (e.g., database will still be slow for COUNT(DISTINCT x)).  
+
+In comes Amazon Redshift and Google BigQuery.  
+
+Amazon Redshift is basically as close as you can get to "SQL of Old" in terms of query language and user-end feel, 
+but breaks from it in the back end, where it is column-oriented and highly optimized for OLAP needs.  You can scale 
+up a single node, but also scale out to more nodes --- and so you conceptually have very few limits on things like 
+memory, processing, and storage needs.  You still have to be smart about though: it can get expensive very fast, and 
+Amazon will allow you to have as many nodes as you want, even if you don't need them.  BigQuery goes a step further: it 
+is serverless.  That is, you just put in the data, and query it -- Google takes care of the rest.  On BQ, all the 
+cluster work is done behind the scenes: if your needs require many nodes, they will be there... Also seems like 
+BQ is cheaper than RS:  there is a small monthly price, a small per-TB price, and a small per-TB-queried cost.  On 
+the other hand, RS starts at something like $180/month for a single-node, low-need cluster.  
+
+Btw, now that traditionally relations DBs like PostgreSQL support many nonrelational/NoSQL features (e.g.,
+KV / document store capacity), one might be tempted to think that a focused nonrelational/NoSQL solution is no 
+longer necessary.  For many businesses that are not Google, Facebook, Twitter, etc, that is probably true, or 
+truthy.  But if you do need to scale out, for example, a standard Postgres solution (e.g., RDS Postgres) is 
+still limited...
+
+# STILL NEED TO INTEGRATE
+SOURCE:  https://www.devbridge.com/articles/benefits-of-nosql/
+
+"It seems NoSQL is characterized more by what it is not as there is no strict technical definition of what it is and how to implement it. Still, there are some shared features present in most NoSQL database solutions: 
+* Non-relational and schema-less data model 
+* Low latency and high performance 
+* Highly scalable"
+
+"Arguably the biggest problem for developers using relational databases is the object-relational impedance mismatch. SQL queries are not well suited for the object oriented data structures that are used in most applications now."
+
+"Another closely related issue is storing or retrieving an object with all relevant data. Some application operations require multiple and/or very complex queries. In that case, data mapping and query generation complexity raises too much and becomes difficult to maintain on the application side."
+-- this is a document store use case:  symmetric data storage and query pattern
+
+"Trying to cope with such a large amount of data by scaling RDBMS servers leads to configuration and maintainability issues."
+
+KV:
+"K-V store is the simplest data model. Technically it is just a distributed persistent associative array. The key is a unique identifier for a value, which can be any data application needs stored. This model is also the fastest way to get data by known key, but without the flexibility of more advanced querying."
+
+DS:
+"Document store is a data model for storing semi-structured document object data and metadata. The JSON format is normally used to represent such objects. ... Documents can be queried by their properties in a similar manner to relational databases but aren’t required to adhere to the strict structure of a database table. ... Generally speaking, document stores are used for aggregate objects that have no shared complex data between them and to quickly search or filter by some object properties."
+
+C-O:
+"A more advanced K-V store data model is a column family. These are used for organizing data based on individual columns where actual data is used as a key to refer to whole data collections. It is similar to a relational database index, however a column family may be an arbitrary collection of columns. There are more complex aggregation structures like super columns and super column families to allow access to the data by several keys. This particular approach is used for very large scalable databases to greatly reduce time for searching data. It is rarely used outside of enterprise level applications."
+
+Graph:
+"Graph databases map more directly to object oriented programming models and are faster for highly associative data sets and graph queries. Furthermore they typically support ACID transaction properties in the same way as most RDBMS."
+
+"Many NoSQL solutions compromise consistency (in the sense of the CAP theorem) in favor of availability, scalability and partition tolerance. On the other hand, some NoSQL solutions may allow you to specify what level of consistency should be applied for particular operation and some even fully support ACID transactions. However in the case of key-value or document store data models, transaction consistency is rarely needed as most operations are by definition atomic."
+
+-------------------------
+
+SOURCE:  https://readwrite.com/2013/03/25/when-nosql-databases-are-good-for-you/
+
+"NoSQL databases are designed to excel in speed and volume. To pull this off, NoSQL software will use techniques that can scare the crap out of relational database users — such as not promising that all data is consistent within a system all of the time."
+
+"Beyond the scaling advantages, the very architecture of NoSQL tools aids performance. If a relational database had tens or even hundreds of thousands of tables, data processing would generate far more locks on that data, and greatly degrade the performance of the database. Because NoSQL databases have weaker data consistency models, they can trade off consistency for efficiency."
+
+
+NOTE2SELF:  I find that when people discuss "NoSQL" databases, even though they formally include "column" and "graph," they almost exclusively write about and give examples of KV/DS in the bulk of their articles. "Column" is ambiguous b/c it refers to two separate technologies, which I think a lot of writers have not full wrapped their own heads around; also, "column-oriented" DBs/warehouses like RedShift may not be like "SQL of old" on the backend, but feel very much like "SQL of Old on the Front End," so I think many writers feel like it's less sexy to discuss in more detail.  As for "graph," it's sexy, but most writers don't seem to really understand it or use it, so just leave it as a "oh yea, there is this too."  It is known to be more relationship-oriented than relational databases and used for data that is not relational -- confuse you much?  I think that's the normal case:  "relational" data sounds like its talking about data with relationships, and graph data is highly "related" , but in truth, "relational data" here is referring to "tabular data", which is good for simple many-to-one relationships, but becomes inadequate for many-to-many, any-to-any, and recursive relationships.... Anyway, b/c of the ambiguity in terminology and general non-understanding of use cases, it is usually a side note in an article just like the "columnar" types.  POINT: "NoSQL" often is synonymous w/ "KV/DS".  
+
+
+Case in Point:  "When applications developers have to work with data in relational databases, it can at times be troublesome due to data mapping and impedance issues. In NoSQL databases, this is not usually a problem, because data is not stored in the same manner. With document-oriented NoSQL databases, for instance, data is stored in just that format: documents. And since documents are objects, after all, then programmers who tend to think in object-oriented terms are going to be much more familiar with manipulating such data. That weaker consistency model helps programmers, tool, since their apps don’t have to rigidly conform to data consistency requirements. That makes coding much simpler and (by extension) much faster."
+-- here, they explicitly call out "document-oriented NoSQL databases", but often I find writers do not 
+
+Here is another "case in point" that clearly excludes Graph DBs, but does not specifically refer to a NoSQL type:  No down time is "something that non-relational databases weren’t specifically designed to do, but at which they’ve nonetheless turned out to be proficient. Because of their distributed nature ... NoSQL databases can be pretty much always on. This is a huge advantage for web- and mobile-based businesses that can’t afford to be down for a single moment. With some advanced planning, software updates and hardware upgrades can be performed while the database is still running hot. Try doing that with a relational database without taking it down, and you’re in for a world of trouble."
+
+DO NOT SWITCH TO NoSQL IF:  "If your company has a data set that will remain relatively constant in size, or that only grows slowly, you’ll have little need to migrate to a non-relational system."
+
+---------------------------------------------------------------
+
+NOTE2SELF:  Basically, "NoSQL" databases arose for several reasons, and they can be categorized in various ways... Sometimes it's not very meaningful to even call a "NoSQL" database "NoSQL" -- for example, some use SQL as their query language, while others go a step further and are even relational (think Redshift).  For reasons like this, some writers talk about "relational" and "nonrelational" databases -- that is, "tabular" vs "nontabular" databases.  This distinction focuses less on query language and more on data shape.  Again, sometimes it's not a very meaningful distinction, especially as time goes on and many traditionally relational databases also offer nonrelational features (e.g., things like JSON columns in MySQL or PostgreSQL giving them some KV/DS capacity).  This brings to light other distinctions, like the ability to scale out versus up: despite having nonrelational functionality, a Postgres database might still be hard to scale out.  
+
+---------------------------------
+
+SOURCE:  https://blog.timescale.com/why-sql-beating-nosql-what-this-means-for-future-of-data-time-series-database-348b777b847a
+
+"And boy did the software developer community eat up NoSQL, embracing it arguably much more broadly than the original Google/Amazon authors intended. It’s easy to understand why: NoSQL was new and shiny; it promised scale and power; it seemed like the fast path to engineering success. But then the problems started appearing."
+
+-----------------------------------
+
+# Resources & References
+* AWS has a cool webpage called "This Is My Architecture" -- lots of videos 
+* Andy Jassy's re:Invent 2017 keynote
+* re:Invent 2017: Which Database to Use When? (DAT310)
+
+
+
 
