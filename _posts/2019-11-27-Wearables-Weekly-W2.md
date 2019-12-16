@@ -6,6 +6,14 @@ tags: wearables easi
 
 And we're back!
 
+**NOTE FROM FUTURE**: But not for long!  I've decided I don't like this format of writing.  It
+feels too unnatural, trying to find if anything new or interesting happened in the past week.  So much
+so that I never even really finished this second installment.  Hell, even the first installment
+was tough to get through.  So, sayōnara Wearables Weeekly!  Without futher ado, the unfinished
+brainstew and finger vomit that was the beginnings of the WW W2.
+
+--------------------------------------------------------------
+
 Now remember, this series is called "Wearables Weekly," but primarily because the 
 alliteration works out so wonderfully.  Wearables is a huge component to this 
 series, but also related health and medical tech trends, e.g.,
