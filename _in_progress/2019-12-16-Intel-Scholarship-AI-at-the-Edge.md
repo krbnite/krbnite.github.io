@@ -138,13 +138,30 @@ Do I have the other requirements?
 * (Optional) Apple XCode IDE (maybe, but haven't used it much)
 * MacOS 10.14.4: Yes.
 
-Ok, to be continued...  [Intel's OpenVINO MacOS Installation Guide](https://docs.openvinotoolkit.org/latest/_docs_install_guides_installing_openvino_macos.html)
-
+Ok, to be continued...  
+* [Intel's OpenVINO MacOS Installation Guide](https://docs.openvinotoolkit.org/latest/_docs_install_guides_installing_openvino_macos.html)
+* [Getting started with the NCS2](https://software.intel.com/en-us/articles/get-started-with-neural-compute-stick)
 
 -----------------------------------------
 
 # References & Further Reading
 
-* [Install OpenVINO Toolkit on Mac](https://docs.openvinotoolkit.org/latest/_docs_install_guides_installing_openvino_macos.html)
+### Some Online Courses
+* [OpenVINO Toolkit YouTube Course](https://www.youtube.com/playlist?list=PLDKCjIU5YH6jMzcTV5_cxX9aPHsborbXQ)
+* [Intel's own Edge AI Course](https://software.seek.intel.com/DataCenter_to_Edge_REG)
+
+### Some Intel Installation/Developer Guides
+*[Install OpenVINO Toolkit on Mac](https://docs.openvinotoolkit.org/latest/_docs_install_guides_installing_openvino_macos.html)
 * [Intel's OpenVINO Model Optimizer Developer Guide](https://docs.openvinotoolkit.org/latest/_docs_MO_DG_Deep_Learning_Model_Optimizer_DevGuide.html)
 * [Intel's OpenVINO Inference Engine Developer Guide](https://docs.openvinotoolkit.org/latest/_docs_IE_DG_inference_engine_intro.html)
+* [Getting started with the NCS2](https://software.intel.com/en-us/articles/get-started-with-neural-compute-stick)
+
+### Some Blogs
+* Towards Data Science: [Introduction to OpenVINO](https://towardsdatascience.com/introduction-to-openvino-897e705a1f0a)
+
+### Some Demos on GitHub
+* [OpenVINO Face Detection in Python](https://github.com/BenedictusAryo/OpenVino_face-detection_python)
+* 
+
+### Some Rasberry Pi Stuff
+* [OpenVINO and Movidius NCS on the Rasberry Pi](https://www.pyimagesearch.com/2019/04/08/openvino-opencv-and-movidius-ncs-on-the-raspberry-pi/)
