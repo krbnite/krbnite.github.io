@@ -55,3 +55,96 @@ decision on the fly -- even out in the middle of nowhere, where there is no clou
 You get the idea!  For low-resource devices, the
 cloud is often the only option -- but things are changing.  
 
+# Intel's OpenVINO
+OpenVINO stands for Open Visual Inference and Neural Network Optimization.  It is an acceleration library, optimized
+for deep learning-oriented computer vision applications running Intel hardware, such as their CPUs, GPUs,
+FPGAs (field-programmable gate array), and VPUs (visual processing units).  You can power up
+Rasberry Pi's with Intel's Neural Compute Stick 2 (NCS2).
+
+What is great is that OpenVINO isn't some alternative or replacement with a deep learning library
+that you're already familiar with, like Tensorflow.  Instead, it is a 
+[model optimizer](https://docs.openvinotoolkit.org/latest/_docs_MO_DG_Deep_Learning_Model_Optimizer_DevGuide.html) for 
+optimizing the models
+outputted by your favorite deep learning library (TF, Caffe, MXNet, and more).  For example, though
+dropout layers are important during training, they are not used during inference.  When deploying the
+model on a low-resource device, any optimization helps -- so in this case, OpenVINO will strip away
+the dropout layers for the deployed model.  It will also figure out ways to combine layers or discard
+layers that are unnecessary.  The optimized model is returned as an Intermediate Representation (IR),
+which is a standardized 2-file representation of your trained model: a model.xml file that describes
+the network topology, and a model.bin file that contains the weights and biases.  The IR 
+can then be read by the [Inference Engine](https://docs.openvinotoolkit.org/latest/_docs_IE_DG_inference_engine_intro.html),
+which is a C++ library used for inference (e.g., image classification, bounding box inference, etc); this
+can be deployed on your edge device.
+
+Note that, at least as far as its marketing is concerned, OpenVINO is for computer vision devices, e.g.,
+smartphone camera applications, security camera applications, autonomous driving / robotic vision, etc (it basically
+expands the OpenCV universe).  However,
+at every step I'm going to be thinking about how to use what I'm learning for sensors typically onboard
+wearable devices, which sometimes include a camera, but more often includes sensors like accelerometers,
+gyroscopes, magnetometers, photoplethysmographs (PPGs), and Galvanic Skin Response (GSR) sensors (aka
+electrodermal activitiy, or EDA, sensors).  
+
+
+# Installing OpenVINO on MacOS
+In the Udacity course, we are provided with a notebook environment that houses all the software
+we will need.  That is great for playing around the first few times, but I would feel remiss if I 
+didn't directly download Intel's OpenVINO software directly to my laptop for a more realistic, intimate
+learning setting.
+
+These notes follow along with Intel's on [installation guide](https://docs.openvinotoolkit.org/latest/_docs_install_guides_installing_openvino_macos.html).
+
+One of the first things to do is check what kind of CPU you have. 
+* Click on the Apple Icon at top left of you screen
+* Click on About this Mac
+
+Hint: if it isn't Intel,
+you're temporarily f^&#3d!  On the website, the following Intel CPUs are listed:
+* 6th-10th Generation Intel® Core™
+* Intel® Xeon® v5 family
+* Intel® Xeon® v6 family
+
+If you do not have one of these Intel CPUs, at the least you can buy
+a [Neural Compute Stick 2 (NCS2)](https://software.intel.com/en-us/neural-compute-stick).  
+
+
+Turns out I have the 2.8 GHz Intel Core i7.
+
+But how does this map to the 5ht-10th generation requirement?  When I googled this question,
+I came to the following [Intel page listing and an outstanding amount of Core i7 models], where 
+it show i7 Cores going from 10th generation down to 5th generation, so I might be in luck.  At any rate, 
+it looks like I have to dig a little deeper to figure out exactly what processer I have.
+
+I looked a little more into the hardware specs on "About this Mac," but couldn't find further 
+specification easily, so I googled again and found this helpful page on 
+[everymac.com](https://everymac.com/systems/by_processor/intel-core-i7-macs.html)
+that lists the Core i7 CPUs used on my Macbook model.  Looks like it's this one:
+* MacBook Pro 15-Inch "Core i7" 2.8 Mid-2015 (IG)2.8 GHz Core i7 (I7-4980HQ)
+
+Bad news: it wasn't on the page that went down to 5th generation processors, which I
+suspected would happen when I saw the model number "4980HQ", so I google this processor... Yep!
+It's 4th generation.  
+
+**I officially need the NCS2.**
+* And it's bought! (Yay impulsivity.)
+
+Do I have the other requirements?
+* CMake 3.4+:  No, I had CMake 3.13
+ - just ran `brew upgrade cmake`, but it only upgraded it to 3.16
+ - wow, I just realized that `13 > 4`
+ - I guess I was reading `3.13` as `3.1.3` in my head
+ - anyway, problem solved! :-p
+* Python 3.5+:  Yes.
+* Apple XCode Command Line Tools: Yes.
+* (Optional) Apple XCode IDE (maybe, but haven't used it much)
+* MacOS 10.14.4: Yes.
+
+Ok, to be continued...  [Intel's OpenVINO MacOS Installation Guide](https://docs.openvinotoolkit.org/latest/_docs_install_guides_installing_openvino_macos.html)
+
+
+-----------------------------------------
+
+# References & Further Reading
+
+* [Install OpenVINO Toolkit on Mac](https://docs.openvinotoolkit.org/latest/_docs_install_guides_installing_openvino_macos.html)
+* [Intel's OpenVINO Model Optimizer Developer Guide](https://docs.openvinotoolkit.org/latest/_docs_MO_DG_Deep_Learning_Model_Optimizer_DevGuide.html)
+* [Intel's OpenVINO Inference Engine Developer Guide](https://docs.openvinotoolkit.org/latest/_docs_IE_DG_inference_engine_intro.html)
