@@ -161,7 +161,9 @@ Ok, to be continued...
 
 ### Some Demos on GitHub
 * [OpenVINO Face Detection in Python](https://github.com/BenedictusAryo/OpenVino_face-detection_python)
-* 
+* [OpenVINO Driver Behavior](https://github.com/incluit/OpenVino-Driver-Behaviour)
+* [OpenVINO for SmartCity](https://github.com/incluit/OpenVino-For-SmartCity)
+
 
 ### Some Rasberry Pi Stuff
 * [OpenVINO and Movidius NCS on the Rasberry Pi](https://www.pyimagesearch.com/2019/04/08/openvino-opencv-and-movidius-ncs-on-the-raspberry-pi/)
