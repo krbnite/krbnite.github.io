@@ -19,8 +19,15 @@ notebook... The questions all come from that notebook, which also has solutions.
 to brush up on my own skills and test my wits, so I just used the notebook for its
 data and questions.
 
+The data set has 74200 rows and 6 cols, which amounts to ~3.6MB (`74200*6*8/1e6`) for
+64-bit numbers.  This can easily fit into memory, so no worries -- we'll just pretend 
+it can't sometimes for instruction.
+
+
 Make sure to MAKE A COPY of that notebook before you use it.  I began playing around with it,
 thinking my changes wouldn't be saved...but I was wrong.  (Sorry original author.)
+
+
 
 
 ```python
@@ -54,7 +61,8 @@ df = qry("SELECT * FROM spotify_daily_rankings_2017_us", conn)
 df.columns
   Index(['position', 'trackname', 'artist', 'streams', 'url', 'date'], dtype='object')
 result = df.groupby('artist')[['artist','streams']].sum().sort_values(by='streams', ascending=False)
-result.streams[:10].sum()/result.streams.sum()
+round(100 * result.streams[:10].sum()/result.streams.sum(), 1)
+  29.1
 ```
 
 ### Assumption: I cannot pull entire table into memory (in-db query)
@@ -100,6 +108,7 @@ streams_by_artist_track = df.groupby(['artist','trackname'])[['artist','tracknam
 
 # Answer
 round(100 * streams_by_artist_track.streams[:10].sum()/streams_by_artist_track.streams.sum(), 1)
+  10.0
 ```
 
 ### Assumption:  I cannot pull entire table into memory (in-db query)
@@ -122,6 +131,7 @@ qry("""
   SELECT ROUND(SUM(pc_streams), 1)
   FROM B
 """, conn)
+  9.9
 ```
 
 I get `10.0` for first answer and `9.9` for second... This *might* mean something
@@ -171,6 +181,19 @@ qry(f"""
   LIMIT 10
 """, conn)
 ```
+
+| | artist |streams|
+|--|--------|-----|
+|0 | Drake| 1243212918|
+|1 | Kendrick Lamar| 1142667504|
+|2| Post Malone| 949111981|
+|3| Lil Uzi Vert| 756277795|
+|4| Ed Sheeran| 711107331|
+|5| Migos| 676582502|
+|6| Future| 565462534|
+|7| The Chainsmokers| 552246036|
+|8| 21 Savage| 470721805|
+|9| Khalid| 459771711|
 
 # List the artists by the number of track names in the top 200 in descending order
 
@@ -231,8 +254,6 @@ I guess we can check both... But if the answers come up different, then I don't 
 tell you (without looking much more deeply into where these tables come from, etc).
 
 
-### With Original Table
-
 My first inclination was to issue a `WHERE` statement to make sure we only
 count tracks that made it in the top 200...but then I thought to look at what the max
 position actually is -- and it's 200.
@@ -246,19 +267,22 @@ qry(f"""
 ```
 
 That said, in a general rankings list, the rankings might go up into the 1000's, so 
-let's assume we have to use a `WHERE` statement anyway.
+I'll show how to do that below anyway.
 
 Remember, we want to know how many tracks an artist has that made it into the top 200.
 
+
+### Assumption:  I can pull entire table into memory
+This query is actually so simple, it's probably just worth doing the SQL before
+bringing anything into Python... But for consistency, here is the Pandas version
+of the query.
+
 ```python
-qry(f"""
-  SELECT artist,
-    COUNT(DISTINCT trackname) as track_count
-  FROM {tbl}
-  GROUP BY artist
-  ORDER BY track_count DESC
-  LIMIT 10
-""", conn)
+df = qry(f"SELECT artist, trackname FROM {tbl};", conn)
+df.groupby('artist').\
+  nunique('trackname').\
+  sort_values(by='trackname', ascending=False)[:10].\
+  drop('artist',axis=1)
 ```
 
 | | artist | track_count |
@@ -273,6 +297,247 @@ qry(f"""
 |7|	21 Savage|	24|
 |8|	Bryson Tiller|	23|
 |9|	Eminem|	21|
+
+
+In a general rankings list, the rankings might go up into the 1000's.  This is not the case
+here, so I didn't explicitly reference the `position` variable...but that almost feels like cheating,
+so here is the more general query where we want to see the artist who appeared in the Top 10
+the most often.
+
+```python
+df = qry(f"SELECT artist, trackname, position FROM {tbl};", conn)
+df.query('position <= 10').\
+  groupby('artist').\
+  nunique('trackname').\
+  sort_values(by='trackname', ascending=False)[:10].\
+   drop(['artist', 'position'],axis=1)
+```
+
+| | artist | track_count |
+|--|------|--------|
+|0|	Drake|	14|
+|1|	Kendrick Lamar|	12|
+|2|	Huncho Jack|	5|
+|3|	Lil Uzi Vert|	5|
+|4|	Post Malone|	4|
+|5|	Big Sean|	4|
+|6|	Ed Sheeran|	4|
+|7|	Eminem|	3|
+|8|	The Chainsmokers|	3|
+|9|	Migos|	3|
+
+
+### Assumption:  I cannot pull entire table into memory (in-db query)
+
+```python
+qry(f"""
+  SELECT artist,
+    COUNT(DISTINCT trackname) as track_count
+  FROM {tbl}
+  GROUP BY artist
+  ORDER BY track_count DESC
+  LIMIT 10
+""", conn)
+```
+
+And here is the more general form of the query for when the ranking variable is actually 
+necessary to consider.
+
+```python
+qry(f"""
+  SELECT artist,
+    COUNT(DISTINCT trackname) as track_count
+  FROM {tbl}
+    WHERE position <= 10
+  GROUP BY artist
+  ORDER BY track_count DESC
+  LIMIT 10
+""", conn)
+```
+
+You might find that both these SQL queries result in slightly different tables than shown 
+above.  This is because we only order by track_count, so when the artists tie, the
+artist ordering is somewhat arbitrary.  To ensure a consistent return, we must also
+order by `artist`.  You will notice however that this means some folks who tied for
+the last few spots won't make it into the table... So depending on your business use case,
+you might have to get more technical, e.g., Top 10 including all ties for the 10th spot (making
+the list a bit longer than 10).
+
+---------------------------------------
+
+# How do the number of streams in the top 10 differ than the number of streams in the top 50? top 100? top 200? Find the average number of streams in the top 10, 50, 100, 200.
+
+In Python, this is easy, right?  You can just use a for loop and get some numbers really quick.
+
+But what if you had to do everything in SQL?  This is just for extra credit.  Let's assume
+we use someone SQL workbench GUI and don't know Python.  How could we return an answer?
+
+Here's one way using a bunch of CTEs and JOINs:
+
+```python
+qry(f"""
+  WITH top10 as (
+    select 1 as joinvar, 
+      avg(streams) as top10avg
+    from {tbl}
+      where position <= 10
+  ), top50 as (
+    select 1 as joinvar, 
+      avg(streams) as top50avg
+    from {tbl}
+      where position <= 50
+  ), top100 as (
+    select 1 as joinvar, 
+      avg(streams) as top100avg
+    from {tbl}
+      where position <= 100
+  ), top200 as (
+    select 1 as joinvar, 
+      avg(streams) as top200avg
+    from {tbl}
+      where position <= 200
+  )
+  SELECT top10avg, 
+    top50avg,
+    top100avg,
+    top200avg
+  FROM top10 
+    JOIN top50 on top10.joinvar = top50.joinvar
+    JOIN top100 on top100.joinvar = top50.joinvar
+    JOIN top200 on top200.joinvar = top100.joinvar
+""",conn)
+```
+
+|	|top10avg| top50avg| top100avg| top200avg|
+|--|------|--------|----------|---------|
+|0| 1.152252e+06| 695913.378329| 506541.295795 | 355588.68128
+
+Another way could be with a bunch of CTEs (again) and a bunch of UNION operations.
+
+```python
+qry(f"""
+  WITH top10 AS (
+    SELECT 'top10'::text AS top_x,
+      avg(streams) AS avg_streams
+    FROM {tbl}
+      WHERE position <= 10
+  ), top50 AS (
+    SELECT 'top50'::text AS top_x,
+      avg(streams) AS avg_streams
+    FROM {tbl}
+      WHERE position <= 50
+  ), top100 AS (
+    SELECT 'top100'::text AS top_x,
+    avg(streams) AS avg_streams
+    FROM {tbl}
+      WHERE position <= 100
+  ), top200 AS (
+    SELECT 'top200'::text AS top_x,
+      avg(streams) AS avg_streams
+    FROM {tbl}
+      WHERE position <= 200
+  )
+  SELECT * FROM top10
+     UNION SELECT * FROM top50
+     UNION SELECT * FROM top100
+     UNION SELECT * FROM top200
+  ORDER BY avg_streams DESC
+""",conn)
+```
+
+|	|top_x| avg_streams|
+|--|----|--------|
+|0| top10| 1.152252e+06|
+|1| top50| 6.959134e+05|
+|2| top100| 5.065413e+05|
+|3| top200| 3.555887e+05|
+
+
+In Python, this all simplifies to a loop.  This can be a more SQL-esque loop, or 
+more Pandas-esque.
+
+### SQL-esque Loop
+
+```python
+avg_streams = dict()
+for num in [10, 50, 100, 200]:
+  avg = qry(f"""
+    SELECT avg(streams) AS avg_streams
+    FROM {tbl}
+      WHERE position <= {num}
+  """, conn)
+  avg_streams[num] = avg.avg_streams
+```
+
+### Pandas-esque Loop
+Sometimes Pandas feels more efficient and useful... Other times, it feels
+like overkill.  To my mind, this is one of those cases.  But whatever
+works!
+
+```python
+df = qry(f"SELECT * FROM {tbl}", conn)
+avg_streams = dict()
+for num in [10, 50, 100, 200]:
+  avg_streams[num] = df.query(f'position <= {num}').streams.mean()
+```
+
+# How many different artists are there in the top 100 vs top 101-200? Compare the number of artists in the top 100 vs the top 101-200.
+
+
+### Assumption:  I can pull entire table into memory 
+```python
+df = qry(f"SELECT * FROM {tbl}", conn)
+
+data = {
+  'position <= 100': None, 
+  'position > 100 & position <= 200': None,
+}
+
+for condition in data.keys(): 
+  data[condition] = df.query(condition).artist.nunique()
+data
+  {'position <= 100': 291, 'position > 100 & position <= 200': 478}
+```
+
+### Assumption:  I cannot pull entire table into memory (in-db query)
+```python
+qry(f"""
+  WITH A AS (
+    SELECT 'Rank < 100'::text AS category,
+      COUNT(DISTINCT artist) AS distinct_artists
+    FROM {tbl}
+      WHERE position <= 100
+  ), B AS (
+    SELECT '100 < Rank <= 200'::text AS category,
+      COUNT(DISTINCT artist) AS distinct_artists
+    FROM {tbl}
+      WHERE position BETWEEN 101 and 200
+  )
+  SELECT * FROM A
+    UNION SELECT * FROM B
+""",conn)
+
+  	category	          distinct_artists
+  0	100 < Rank <= 200	  478
+  1	Rank < 100	        291
+```
+
+The author in the notebook just shows the number of distinct artists in the top 100 
+and top 200, which doesn't quite answer the question... But as a sanity check, let's
+just see if we get the same number for the top 200:
+
+```python
+df.query('position <= 200').artist.nunique()
+  487
+```
+
+Ok, yes we do.  Great!
+
+-------------------------------
+
+# Which artists should the marketing team invest in? Why? Support your answer with your analytical research.
+
+
 
 
 # References
