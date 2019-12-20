@@ -1,5 +1,5 @@
 ---
-title: AI at the Edge (Intel Scholarship)
+title: Intel at the Edge (Getting Started)
 layout: post
 tags: ai edge easi
 ---
@@ -81,10 +81,14 @@ or one that comes stock).
 
 # Work Environment
 The course actually provides notebook environments hooked up with all the hardware and software
-you need.  There is also an option to install things locally (below, I find out that my 
-Macbook Pro has a 4th generation i7 Core, which is not sufficient for Intel's OpenVINO; however,
-I ordered a neural compute stick 2).  Finally, we can sign up for the Intel DevCloud....
+you need.  There is also an option to 
+[install things locally](https://docs.openvinotoolkit.org/latest/index.html).  Finally, we can sign 
+up for the [Intel DevCloud](https://software.intel.com/en-us/devcloud/edge), though for this you
+need to use your work email and justify why you should gain access in an application. 
 
+I think, first and foremost, to get shit done I should do things in the provided notebook
+environment.  Then, given I'm caught up in the course, I should explore the local and DevCloud
+environments to increase my familiarity.
 
 
 # Intel's OpenVINO
@@ -170,7 +174,7 @@ Do I have the other requirements?
 * (Optional) Apple XCode IDE (maybe, but haven't used it much)
 * MacOS 10.14.4: Yes.
 
-Ok, to be continued...  
+Ok, I think I have to wait for the NCS2 to be delivered, so... To be continued...  
 * [Intel's OpenVINO MacOS Installation Guide](https://docs.openvinotoolkit.org/latest/_docs_install_guides_installing_openvino_macos.html)
 * [Getting started with the NCS2](https://software.intel.com/en-us/articles/get-started-with-neural-compute-stick)
 
