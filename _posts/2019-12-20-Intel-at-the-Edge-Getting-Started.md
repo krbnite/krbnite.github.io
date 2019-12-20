@@ -20,7 +20,8 @@ or speaker next to your bed, that question gets catapulted
 into the cloud and the answer hurdles back down to your device.  That's not at the edge!  It's
 cloud computing.  
 
-The gist of edge computing is that many of these "smart" devices (i) didn't exist before the cloud and (ii) relied
+The novelty of edge computing is that many of these smart/edge devices (i) didn't exist before the 
+cloud, and (ii) relied
 on cloud computing resources when they came into existence.  The cloud is great, but
 it might not always be available (network issues) or the back-and-forth between the
 device and the cloud might too laggy (latency issues).  
