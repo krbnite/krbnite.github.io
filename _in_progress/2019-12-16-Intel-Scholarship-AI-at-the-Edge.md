@@ -55,6 +55,38 @@ decision on the fly -- even out in the middle of nowhere, where there is no clou
 You get the idea!  For low-resource devices, the
 cloud is often the only option -- but things are changing.  
 
+# Topics Covered
+In this course, we focus primarily on Intel's distribution of OpenVINO (described below).  
+
+We will
+first explore the Open Model Zoo, which hosts a bunch of [pre-trained models](https://software.intel.com/en-us/openvino-toolkit/documentation/pretrained-models) optimized for Intel processors (these models include
+things like age and gender detection, facial landmarks detection, human pose estimation, license plate
+detection, and so on).  These various models can be chained together to form highly optimized
+computer vision pipelines (e.g., a face detector followed by an age and gender estimator).  Moreover,
+since they are pre-trained, you do not need a ton of data to train your model for these activities.
+
+Next, we go over the Model Optimizer, which takes in models you've trained in some popular
+deep learning framework, such as TensorFlow or PyTorch, and optimizes these models for 
+inference on Intel processors; the optimized models are saved in what's called the Intermediate
+Representation (IR).  More on all this below.
+
+We will then cover the Inference Engine, which uses the IR and model input to efficiently perform inference.
+
+Finally, we cover various edge deployment topics, e.g., something called the MQTT architecture, which
+is used to publish data from an edge model to the web.
+
+A major takeaway is that Intel's OpenVINO is not for training models: it's for deploying pre-trained
+models as efficiently as possible on Intel processors (whether it's one of your own pre-trained models,
+or one that comes stock).
+
+# Work Environment
+The course actually provides notebook environments hooked up with all the hardware and software
+you need.  There is also an option to install things locally (below, I find out that my 
+Macbook Pro has a 4th generation i7 Core, which is not sufficient for Intel's OpenVINO; however,
+I ordered a neural compute stick 2).  Finally, we can sign up for the Intel DevCloud....
+
+
+
 # Intel's OpenVINO
 OpenVINO stands for Open Visual Inference and Neural Network Optimization.  It is an acceleration library, optimized
 for deep learning-oriented computer vision applications running Intel hardware, such as their CPUs, GPUs,
