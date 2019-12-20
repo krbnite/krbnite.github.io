@@ -45,7 +45,8 @@ tbl = 'spotify_daily_rankings_2017_us'
 
 # What percentage of total streams come from the top 10 artists?
 
-### Assumption:  I can pull entire table into memory
+### Assumption: I can pull entire table into memory
+
 
 ```python
 df = qry("SELECT * FROM spotify_daily_rankings_2017_us", conn)
@@ -56,7 +57,7 @@ result = df.groupby('artist')[['artist','streams']].sum().sort_values(by='stre
 result.streams[:10].sum()/result.streams.sum()
 ```
 
-### Assumption:  I cannot pull entire table into memory (in-db query)
+### Assumption: I cannot pull entire table into memory (in-db query)
 
 ```python
 # List table columns
@@ -77,7 +78,7 @@ qry("""  
   SELECT SUM(perc) 
   FROM B
 """,conn)
-
+```
 
 ----------------------------------------------------
 
@@ -86,7 +87,7 @@ qry("""  
 Note something important here: when aggregating, it's important to group by artist
 AND trackname (not just trackname) -- songs often have the same name!
 
-### Assumption:  I can pull entire table into memory
+### Assumption:  I can pull entire table into memory
 ```python
 df = qry("select * from spotify_daily_rankings_2017_us", conn)
 # Reminder of what columns there are...
@@ -101,7 +102,7 @@ streams_by_artist_track = df.groupby(['artist','trackname'])[['artist','tracknam
 round(100 * streams_by_artist_track.streams[:10].sum()/streams_by_artist_track.streams.sum(), 1)
 ```
 
-### Assumption:  I cannot pull entire table into memory (in-db query)
+### Assumption:  I cannot pull entire table into memory (in-db query)
 ```python
 qry("""
   WITH A AS (
