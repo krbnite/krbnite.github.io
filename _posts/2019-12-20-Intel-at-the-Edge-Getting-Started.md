@@ -17,14 +17,15 @@ limited energy, lack of a screen, etc).
 
 For example, whenever you ask Siri or Alexa a question on your smartphone, TV remote, 
 or speaker next to your bed, that question gets catapulted
-into the cloud and the answer hurdles back down to your device.  
+into the cloud and the answer hurdles back down to your device.  That's not at the edge!  It's
+cloud computing.  
 
-The gist is that a lot of these things (i) didn't exist before the cloud and (ii) relied
+The gist of edge computing is that many of these "smart" devices (i) didn't exist before the cloud and (ii) relied
 on cloud computing resources when they came into existence.  The cloud is great, but
 it might not always be available (network issues) or the back-and-forth between the
 device and the cloud might too laggy (latency issues).  
 
-For example, let's say
+Let's say
 you put a video camera on the top of Mount Everest that can only hold up to 24 hours
 of video.  The objective is to identify and store the footage of a bar-headed 
 goose whenever one flies within the camera's field of view.  However, the video camera is not
