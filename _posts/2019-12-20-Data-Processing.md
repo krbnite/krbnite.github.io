@@ -4,28 +4,34 @@ https://www.spotifyjobs.com/job/senior-data-scientist-ads-analytics-machine-lear
 
 Oftentimes when working with a database, it is convenient to simply connect to it
 via Python's Pandas interface (`read_sql_query`) and a connection established
-through SQLAlchemy's `create_engine`.  For small enough data sets, I often just query
-the data right into a DataFrame, then fudge around using Pandas lingo from there (e.g.,
-`df.groupby('var1')['var2'].sum()`).  However, as I've covered in the past, for large
-data sets, it's often not possible to bring it fully onto your laptop -- you must do
+through SQLAlchemy's `create_engine`.  For small enough data sets, it's often convenient to just query
+all the relevant data right into a DataFrame, then fudge around using Pandas lingo from there (e.g.,
+`df.groupby('var1')['var2'].sum()`).  However, as I've covered in the past (e.g., in [Running with Redshift](https://krbnite.github.io/Running-with-Redshift/) and [Conditional Aggregation in {dplyr} and Redshift](https://krbnite.github.io/Conditional-Aggregation-in-dplyr-and-Redshift/)), 
+it's often not possible to bring very large data sets  onto your laptop -- you must do
 as much in-database aggregation and manipulation as possible.  It's generally good
 to know how to do both, though obviously since straight-up SQL skills covers both 
 scenarios, that's the more important one to master in general.
 
 
-In this tutorial, I look at a Spotify database, which can be queried in various ways...
-It is available online (code to access it below).  In fact, you can use the Google CoLab
-notebook... The questions all come from that notebook, which also has solutions.  I wanted 
-to brush up on my own skills and test my wits, so I just used the notebook for its
-data and questions.
+In this tutorial, I look at a Spotify database, which 
+is available online (code to access it below) via a [shared Google CoLab
+notebook](https://colab.research.google.com/drive/1XG-TZbwU2oIZfZOIuX82cAqneK7-1ZSZ)... But!  Make sure to **MAKE A COPY** of that notebook before you use it.   (I 
+began playing around with the original notebook,
+thinking my changes wouldn't be saved...but I was wrong.  Sorry to its original author!)
 
-The data set has 74200 rows and 6 cols, which amounts to ~3.6MB (`74200*6*8/1e6`) for
-64-bit numbers.  This can easily fit into memory, so no worries -- we'll just pretend 
-it can't sometimes for instruction.
+The questions below all come from the shared notebook.  Just like my solutions below,
+the original notebook has its own solutions: if you want some practice, ignore them and try developing the queries 
+yourself.  (That's what I did.)
+
+**NOTE**: The data set has 74,200 rows and 6 columns, which amounts to ~3.6MB (`74200*6*8/1e6`) for
+64-bit numbers.  This can easily fit into memory, so we can technically do all of our
+aggregations and transformations out of the database.  For fun and instructional purposes, 
+we'll also look at how we would do the same aggregations and transformations in SQL.
 
 
-Make sure to MAKE A COPY of that notebook before you use it.  I began playing around with it,
-thinking my changes wouldn't be saved...but I was wrong.  (Sorry original author.)
+
+# Connect to the Database
+
 
 
 
