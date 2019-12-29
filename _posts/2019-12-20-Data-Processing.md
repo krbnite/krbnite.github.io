@@ -1,6 +1,8 @@
-https://www.spotifyjobs.com/job/senior-data-scientist-ads-analytics-machine-learning/
-
-
+---
+title: A Refresher: Pitting Pandas vs SQL
+layout: post
+tags: sql python database postgres pandas easi
+---
 
 Oftentimes when working with a database, it is convenient to simply connect to it
 via Python's Pandas interface (`read_sql_query`) and a connection established
