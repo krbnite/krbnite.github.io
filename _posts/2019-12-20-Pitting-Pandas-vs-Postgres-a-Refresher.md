@@ -1,5 +1,5 @@
 ---
-title: A Refresher: Pitting Pandas vs SQL
+title: Pitting Pandas vs Postgres (a Refresher)
 layout: post
 tags: sql python database postgres pandas easi
 ---
