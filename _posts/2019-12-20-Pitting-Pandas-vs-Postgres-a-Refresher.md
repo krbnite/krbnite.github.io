@@ -6,8 +6,8 @@ tags: sql python database postgres pandas easi
 
 Oftentimes when working with a database, it is convenient to simply connect to it
 via Python's Pandas interface (`read_sql_query`) and a connection established
-through SQLAlchemy's `create_engine`.  For small enough data sets, it's often convenient to just query
-all the relevant data right into a DataFrame, then fudge around using Pandas lingo from there (e.g.,
+through SQLAlchemy's `create_engine` -- then, for small enough data sets, just query
+all the relevant data right into a DataFrame and fudge around using Pandas lingo from there (e.g.,
 `df.groupby('var1')['var2'].sum()`).  However, as I've covered in the past (e.g., in [Running with Redshift](https://krbnite.github.io/Running-with-Redshift/) and [Conditional Aggregation in {dplyr} and Redshift](https://krbnite.github.io/Conditional-Aggregation-in-dplyr-and-Redshift/)), 
 it's often not possible to bring very large data sets  onto your laptop -- you must do
 as much in-database aggregation and manipulation as possible.  It's generally good
