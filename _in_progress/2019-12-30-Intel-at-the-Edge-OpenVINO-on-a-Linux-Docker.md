@@ -450,6 +450,96 @@ remain the same), and further by googline "VSC Loopback Device".
 # LIBUSB
 
 
+------------------------------------------------------
+
+Got some warnings/errors at Step 13/17 (`RUN cd $INSTALL_DIR/deployment_tools/model_optimizer/install_prerequisites &&     ./install_prerequisites.sh`), but this Dockerfile works...   (Note: this is basically
+Guzman's Docker w/ very minor tweaks.)
+
+Warnings/Errors:
+```
+ERROR: tensorboard 1.15.0 has requirement setuptools>=41.0.0, but you'll have setuptools 39.0.1 which is incompatible.
+ERROR: mxnet 1.3.1 has requirement numpy<1.15.0,>=1.8.2, but you'll have numpy 1.18.0 which is incompatible.
+```
+
+Dockerfile:
+```docker
+FROM ubuntu:18.04
+
+ADD . /openvino/
+
+ARG INSTALL_DIR=/opt/intel/openvino 
+
+# Decompress OpenVINO 
+RUN cd /openvino && \
+    tar -xvzf l_openvino_toolkit* 
+RUN rm /openvino/*tgz
+
+# apt-get stuff
+RUN apt-get update && apt-get -y upgrade && apt-get autoremove -y
+
+#Install needed dependences
+RUN apt-get install -y --no-install-recommends \
+        build-essential \
+        cpio \
+        curl \
+        git \
+        lsb-release \
+        pciutils \
+        python3 \
+        python3-dev \
+        python3-pip \
+        python3-setuptools \
+        sudo
+
+# installing OpenVINO dependencies
+RUN cd /openvino/l_openvino_toolkit* && \
+    ./install_openvino_dependencies.sh
+
+RUN pip3 install numpy
+RUN pip3 install --upgrade pip
+RUN pip install --upgrade pip
+
+# installing OpenVINO itself
+RUN cd /openvino/l_openvino_toolkit* && \
+    sed -i 's/decline/accept/g' silent.cfg && \
+    ./install.sh --silent silent.cfg
+
+# Model Optimizer
+RUN cd $INSTALL_DIR/deployment_tools/model_optimizer/install_prerequisites && \
+    ./install_prerequisites.sh
+
+# clean up 
+RUN apt autoremove -y && \
+    rm -rf /openvino /var/lib/apt/lists/*
+
+RUN /bin/bash -c "source $INSTALL_DIR/bin/setupvars.sh"
+
+RUN echo "source $INSTALL_DIR/bin/setupvars.sh" >> /root/.bashrc
+
+CMD ["/bin/bash"]
+```
+
+I can run squeezenet demo by simply starting an interactive session:
+```
+docker run -it openvino
+```
+
+However, the security demo requires access to a display...  If you remember, Intel's
+U-Net docker recommended spinning it up like so:
+```
+docker run --net=host -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp.X11-unix --privileged -v /dev:/dev -it openvino
+```
+
+But even this results in an error (last few lines of security output):
+```
+[ INFO ] Resizable input with support of ROI crop and auto resize is disabled
+Unable to init server: Could not connect: Connection refused
+
+(Detection results:3388): Gtk-WARNING **: 23:32:41.904: cannot open display: /private/tmp/com.apple.launchd.qmVw5QAfGM/org.macosforge.xquartz:0
+Error on or near line 198; exiting with status 1
+```
+
+
 ----------------------------------------------------------
 
 # References and Further Reading
