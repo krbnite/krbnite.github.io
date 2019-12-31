@@ -528,6 +528,7 @@ felt like a win! :-)
 ----------------------------------------------------------
 
 # References and Further Reading
+* [OpenVINO Linux Installation Guide](https://docs.openvinotoolkit.org/2019_R3.1/_docs_install_guides_installing_openvino_linux.html)
 * [Intel's OpenVINO/NCS2 U-Net Docker](https://github.com/IntelAI/unet/tree/master/2D/docker)
 * [Mateo Guzman's OpenVINO Docker](https://github.com/mateoguzman/openvino-docker/blob/master/Dockerfile)
 * [Intel's Open Model Server Docker](https://github.com/IntelAI/OpenVINO-model-server/blob/master/docs/docker_container.md)
