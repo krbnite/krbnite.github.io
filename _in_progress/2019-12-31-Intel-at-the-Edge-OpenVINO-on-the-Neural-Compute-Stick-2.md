@@ -97,3 +97,21 @@ RUN rm -f ${APP_DIR}/97-myriad-usbboot.rules
 According to the official installation guide though, these rules are included
 in the installation directory -- just have to run another bash script.
 
+
+----------------------
+
+# References & Further Reading
+* [OpenVINO MacOS Installation Guide](https://docs.openvinotoolkit.org/latest/_docs_install_guides_installing_openvino_macos.html)
+  - at the time of this writing, this page refers to using NCS2 w/ MacOS at the bottom
+    of the page, but provides almost no details other than noting that you need to `brew install libusb`
+* [NCS2 Getting Started Guide](https://software.intel.com/en-us/articles/get-started-with-neural-compute-stick)
+  - at the time of writing, this is another Intel page that implicitly refers to MacOS as having 
+    the capability of working with NCS2 (listed as a supported OS), but with not a further mention of it
+    anywhere else (there are only guides for Linux, Windows, and Rasberry Pi); my assumption is that
+    they intend for a MacOS user to use something like VirtualBox or Docker (which is why I spent so
+    much time finagling with Linux Dockers in my previous post)
+* JWRR blog: Good posts on trials and errors of getting NCS2 to work
+  - http://www.jwrr.com/ncs2-1/
+  - http://www.jwrr.com/ncs2-2/
+  
+  
