@@ -53,6 +53,15 @@ instructions that follow it in the Dockerfile. If the WORKDIR doesn’t exist, i
 it’s not used in any subsequent Dockerfile instruction."
 
 
+[StackOverflow: Privileged containers and capabilities](https://stackoverflow.com/questions/36425230/privileged-containers-and-capabilities):  "The --privileged flag gives all capabilities to the container, and it also lifts all the limitations enforced by the device cgroup controller. In other words, the container can then do almost everything that the host can do. This flag exists to allow special use-cases, like running Docker within Docker."
+
+[Docker Docs](https://docs.docker.com/engine/reference/run/):  
+* network=host: "With the network set to host, a container will share the host's network stack and all interfaces from the host will be available to the container. The container’s hostname will match the hostname on the host system... It is recommended to run containers in this [host] mode when their networking performance is critical, for example, a production Load Balancer or a High Performance Web Server... NOTE: --network="host" gives the container full access to local system services such as D-bus and is therefore considered insecure."
+* Detached Mode: "To start a container in detached mode, you use -d=true or just -d option. By design, containers started in detached mode exit when the root process used to run the container exits, unless you also specify the --rm option. If you use -d with --rm, the container is removed when it exits or when the daemon exits, whichever happens first."
+
+
+------------------------------
+
 
 # Docker Clean-Up
 My builds didn't work for this reason or that.  Sometimes when a build was successful, the OpenVINO
