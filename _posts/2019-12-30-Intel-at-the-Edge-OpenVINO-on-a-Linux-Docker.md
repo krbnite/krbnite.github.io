@@ -4,6 +4,41 @@ layout: post
 tags: edge ai easi
 ---
 
+
+My ultimate goal is to get OpenVINO working with my Neural Compute Stick 2 (NCS2).  This is
+a little trickier than getting OpenVINO working on my MacOS, primarily because you need Windows,
+Linux, or Rasbian to use with the NCS2.  This is despite the [OpenVINO Installation Guide for MacOS](https://docs.openvinotoolkit.org/latest/_docs_install_guides_installing_openvino_macos.html) ending
+with a small note on hooking up the Mac with NCS2.  At the time of writing, that note basically just
+says, "You'll need to `brew install libusb`."  Nothing more.  
+
+After some tinkering, my next assumption
+was that maybe `libusb` is needed on the MacOS in general, but one then still needs to run OpenVINO
+off of some Linux virtualization (e.g., VirtualBox) or containerization (e.g., Docker).  
+
+I first stumbled upon Intel's own [Dockerfile](https://github.com/IntelAI/unet/tree/master/2D/docker) associated with its [OpenVINO medical imaging demo](https://www.intel.ai/intel-neural-compute-stick-2-for-medical-imaging/#gs.ovt117),
+which employs a U-Net architecture for tumor segmentation.  This project promised to:
+> * Show you how to train a deep learning healthcare model on an Intel® processor-based platform.
+> * Explain how the [Intel® Distribution of OpenVINO™ Toolkit](https://software.intel.com/en-us/openvino-toolkit) enables you to efficiently deploy a trained model for deep learning inference at the edge.
+> * Show you a Docker container that will run your trained model on an [Intel® Neural Compute Stick 2](https://software.intel.com/en-us/neural-compute-stick).
+
+After getting a build error when attempting to build the Docker using the Dockerfile as-is, I realized
+I might have to learn a thing or two about creating and editing Dockerfiles.  
+
+This is about when I found [Mateo Guzman's OpenVINO Docker](https://github.com/mateoguzman/openvino-docker/blob/master/Dockerfile), which didn't promise to get NCS2 up and running, but did vow 
+a Linux Docker with OpenVINO.  There were some obvious differences between the two Dockerfiles,
+and I started thinking maybe I can create a "Frankenstein Dockerfile" that would basically fix Intel's
+U-Net Dockerfile with lessons learned from Guzman's Dockerfile.  
+
+No matter what though, the U-Net Dockerfile would crash at the same point.  At this point, I descoped
+my mission: How about I just get a damn Linux Docker working with OpenVINO first, then worry about
+getting the NCS2 to work with it?
+
+Below, I capture some of my adventures, starting with understanding some basic Dockerfile commands
+found in the Guzman and U-Net Dockerfiles.
+
+# Some Dockerfile Commands
+
+### ARG
 https://docs.docker.com/engine/reference/builder/
 
 ```
@@ -14,7 +49,7 @@ ARG <name>[=<default value>]
 command using the --build-arg <varname>=<value> flag. If a user specifies a build argument that was not defined 
 in the Dockerfile, the build outputs a warning."
 
-
+### ENV
 ```
 # Set a Single Environment Var 
 ENV <key> <value>
@@ -27,6 +62,7 @@ ENV <key1>=<value1> <key2>=<value2> ...
 for all subsequent instructions in the build stage and can be replaced inline in many as well."
 
 
+### ADD
 ```
 ADD [--chown=<user>:<group>] <src>... <dest>
 ADD [--chown=<user>:<group>] ["<src>",... "<dest>"] # this form is required for paths containing whitespace
@@ -43,7 +79,7 @@ ADD test relativeDir/          # adds "test" to `WORKDIR`/relativeDir/
 ADD test /absoluteDir/         # adds "test" to /absoluteDir/
 ```
 
-
+### WORKDIR
 ```
 WORKDIR /path/to/workdir
 ```
@@ -52,15 +88,17 @@ WORKDIR /path/to/workdir
 instructions that follow it in the Dockerfile. If the WORKDIR doesn’t exist, it will be created even if 
 it’s not used in any subsequent Dockerfile instruction."
 
-
+### DOCKER RUN: PRIVILEGED FLAG
 [StackOverflow: Privileged containers and capabilities](https://stackoverflow.com/questions/36425230/privileged-containers-and-capabilities):  "The --privileged flag gives all capabilities to the container, and it also lifts all the limitations enforced by the device cgroup controller. In other words, the container can then do almost everything that the host can do. This flag exists to allow special use-cases, like running Docker within Docker."
 
+### DOCKER RUN: NETWORK & DETACHED FLAGS
 [Docker Docs](https://docs.docker.com/engine/reference/run/):  
 * network=host: "With the network set to host, a container will share the host's network stack and all interfaces from the host will be available to the container. The container’s hostname will match the hostname on the host system... It is recommended to run containers in this [host] mode when their networking performance is critical, for example, a production Load Balancer or a High Performance Web Server... NOTE: --network="host" gives the container full access to local system services such as D-bus and is therefore considered insecure."
 * Detached Mode: "To start a container in detached mode, you use -d=true or just -d option. By design, containers started in detached mode exit when the root process used to run the container exits, unless you also specify the --rm option. If you use -d with --rm, the container is removed when it exits or when the daemon exits, whichever happens first."
 
 -----------------
 
+# The Guzman/U-Net Frankenstein Dockerfile
 Here is the Guzman/U-Net mish-mash I was originally trying to get to work:
 
 ```docker
