@@ -539,6 +539,35 @@ Unable to init server: Could not connect: Connection refused
 Error on or near line 198; exiting with status 1
 ```
 
+Fortunately, people have solved this problem -- e.g.:
+* [Docker for Mac and GUI applications](https://fredrikaverpil.github.io/2016/07/31/docker-for-mac-and-gui-applications/)
+* [Running GUI applications using Docker for Mac](https://sourabhbajaj.com/blog/2017/02/07/gui-applications-docker-mac/)
+
+The gist from both those sources is this:
+* Make sure you have XQuartz installed (e.g., `brew cask install XQuartz`)
+* Open XQuartz:  `open -a XQuartz`
+* Ensure that connections can be made to XQuartz
+  - XQuartz > Preferences... > Security
+  - Check off "Allow connections from network clients"
+* Get your machine's IP:  `IP=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')`
+* Add you machine's IP to the xhost list: `xhost + $IP`
+* Now you can run a GUI from a docker -- in our case, the openvino docker: 
+  - here is the way recommended by Intel's U-Net docker (slightly modified: DISPLAY=$DISPLAY --> DISPLAY=${IP}:0): `docker run --net=host -e DISPLAY=${IP}:0 -v /tmp/.X11-unix:/tmp.X11-unix --privileged -v /dev:/dev -it openvino`
+  - you can cut that down though: `docker run -e DISPLAY=${IP}:0 -v /tmp/.X11-unix:/tmp.X11-unix -it openvino`
+  - finally, run the security demo: `cd /opt/intel/openvino/deployment_tools/demo && ./demo_security_barrier_camera.sh`
+
+**Some Troubleshooting**: This actually didn't work for me at first.  I already had XQuartz installed, so
+I didn't bother brew installing it.  This was frustrating, but source after source gave the same 
+general guidelines...so I finally figured I'd try `brew cask reinstall xquartz`.  Things still weren't
+working, though I'm not sure if this is because I was all wound up in a brain tornado.  Finally, I
+just uninstalled, then reinstalled (`brew cask uninstall xquartz; brew cask install xquartz`), and
+everthing worked thereafter.
+
+**Instability**: one thing I did notice is that the XQuartz display from the security demo was highly
+unstable.  Touching almost any key seemed to make it vanish.  But, hey, a win's a win -- and this here
+felt like a win! :-)
+
+
 
 ----------------------------------------------------------
 
