@@ -115,3 +115,35 @@ in the installation directory -- just have to run another bash script.
   - http://www.jwrr.com/ncs2-2/
   
   
+-----------
+
+
+```
+# find loc of ncs2
+lsusb -v  # no..
+lsusb -t  # no...
+diskutil list  # yes... /dev/disk4
+```
+
+Try to map it:
+```
+docker run -it --privileged -v /dev/disk4:/dev/disk4 ncs2
+  docker: Error response from daemon: Mounts denied: 
+  The path /dev/disk4
+  is not shared from OS X and is not known to Docker.
+  You can configure shared paths from Docker -> Preferences... -> File Sharing.
+  See https://docs.docker.com/docker-for-mac/osxfs/#namespaces for more info.
+```
+
+Go to Docker > Preferences > File Sharing...
+
+Tried to add /dev... Can't.  Must add /dev subdir.
+
+Added /dev/disk4.
+
+```
+ docker run -it --privileged -v /dev/disk4:/dev/disk4 ncs2
+docker: Error response from daemon: lstat /dev/disk4: input/output error.
+```
+
+dang...
