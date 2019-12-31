@@ -101,7 +101,11 @@ it’s not used in any subsequent Dockerfile instruction."
 -----------------
 
 # The Guzman/U-Net Frankenstein Dockerfile
-Here is the Guzman/U-Net mish-mash I was originally trying to get to work:
+Here is the Guzman/U-Net mish-mash I was originally trying to get to work.  WARNING: this Dockerfile
+crashes.  Just leaving it here for historical value (if there is any!).  Basically, no matter
+what edits I made (referred to in some comments in the Dockerfile), the Dockerfile crashed at the
+same point -- where it says "Build the samples so that we have libraries" corresponding to
+the command `RUN /bin/bash -c "${OPENVINO_DIR}/inference_engine/samples/build_samples.sh`.
 
 ```docker
 ## TO BUILD CONTAINER:
