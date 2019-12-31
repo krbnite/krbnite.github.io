@@ -59,70 +59,9 @@ it’s not used in any subsequent Dockerfile instruction."
 * network=host: "With the network set to host, a container will share the host's network stack and all interfaces from the host will be available to the container. The container’s hostname will match the hostname on the host system... It is recommended to run containers in this [host] mode when their networking performance is critical, for example, a production Load Balancer or a High Performance Web Server... NOTE: --network="host" gives the container full access to local system services such as D-bus and is therefore considered insecure."
 * Detached Mode: "To start a container in detached mode, you use -d=true or just -d option. By design, containers started in detached mode exit when the root process used to run the container exits, unless you also specify the --rm option. If you use -d with --rm, the container is removed when it exits or when the daemon exits, whichever happens first."
 
+-----------------
 
-------------------------------
-
-
-# Docker Clean-Up
-My builds didn't work for this reason or that.  Sometimes when a build was successful, the OpenVINO
-demos wouldn't work...  At one point, I couldn't build at all:  I began receiving error messages, like:
-
-```
-W: Failed to fetch http://archive.ubuntu.com/ubuntu/dists/bionic/InRelease  
-Error writing to output file - write (28: No space left on device) [IP: 91.189.88.24 80]
-
-W: Some index files failed to download. They have been ignored, or old ones used instead.
-```
-
-I realized that a lot of my failed builds are probably somehow taking up space that Docker
-has allotted for its images...  Maybe as storage.  Maybe as processes that have continued
-running in the background...  So I looked at running processes.
-
-```
-docker ps -a
-CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                       PORTS               NAMES
-dac12cb791e3        32b98b59a557        "/bin/sh -c 'apt-get…"   3 minutes ago       Exited (100) 3 minutes ago                       competent_chebyshev
-e362989ff5ff        32b98b59a557        "/bin/sh -c 'apt-get…"   9 minutes ago       Exited (100) 9 minutes ago                       ecstatic_shockley
-3e90feca5a5f        97b93b623da2        "/bin/sh -c 'conda i…"   45 minutes ago      Exited (0) 29 minutes ago                        stoic_varahamihira
-213700fd87a2        08c1d8e8b2c7        "/bin/bash"              55 minutes ago      Exited (0) 54 minutes ago                        naughty_antonelli
-cc04076ab812        ubuntu              "/bin/bash"              58 minutes ago      Exited (1) 55 minutes ago                        adoring_rhodes
-3ff69f2508c4        ubuntu              "/bin/bash"              58 minutes ago      Exited (0) 58 minutes ago                        wizardly_jang
-32b943a47f72        08c1d8e8b2c7        "/bin/bash"              About an hour ago   Exited (0) 59 minutes ago                        exciting_torvalds
-```
-
-The list actually went on quite a bit...  So I removed all recent stuff, e.g.:
-
-```
-docker image rm 32b98 -f
-```
-
-I also looked at the images on disk and removed some stuff:
-
-```
-docker image ls
-  REPOSITORY                                                                                    TAG                 IMAGE ID            CREATED             SIZE
-  <none>                                                                                        <none>              827f55570a00        2 hours ago         571MB
-  <none>                                                                                        <none>              b4a1dc58e528        14 hours ago        7.23GB
-  <none>                                                                                        <none>              f6683efde4d1        14 hours ago        1.49GB
-  <none>                                                                                        <none>              4049958496ec        15 hours ago        7.22GB
-  <none>                                                                                        <none>              2ccad03d503c        21 hours ago 
-```
-
-I removed a bunch of that stuff manually...but got another error when I went to build:
-
-```
-
-```
-
-So, [Docker - no space left on device MacOS](https://stackoverflow.com/questions/48668660/docker-no-space-left-on-device-macos_
-
-This helped!
-
-```
-docker rmi -f $(docker images | grep "<none>" | awk "{print \$3}")
-docker rm -f $(docker ps -aq)  # this removes all containers...so you've been warned
-```
-
+Here is the Guzman/U-Net mish-mash I was originally trying to get to work:
 
 ```docker
 ## TO BUILD CONTAINER:
@@ -290,23 +229,94 @@ CMD ["/bin/bash"]
 ```
 
 
-For NCS2, we add the following....
+------------------------------
 
-```docker
-# USB rules for Myriad
-RUN cp ${APP_DIR}/97-myriad-usbboot.rules /etc/udev/rules.d/
-RUN echo "udevadm control --reload-rules" >> ~/.bashrc
-RUN echo "udevadm trigger" >> ~/.bashrc
 
-# Cleanup
-RUN rm -f ${APP_DIR}/97-myriad-usbboot.rules
+# Docker Diskspace Overload: the Need to Clean Up!
+So many of my builds didn't work for this reason or that.  Other times, when a build was successful, the OpenVINO
+demos wouldn't work...  Then, at one point, I couldn't build at all!
+
+I began receiving error messages, like:
+
 ```
+W: Failed to fetch http://archive.ubuntu.com/ubuntu/dists/bionic/InRelease  
+Error writing to output file - write (28: No space left on device) [IP: 91.189.88.24 80]
+
+W: Some index files failed to download. They have been ignored, or old ones used instead.
+```
+
+I realized that a lot of my failed builds are probably somehow taking up space that Docker
+has allotted for its images...  Maybe as storage.  Maybe as processes that have continued
+running in the background...  So I looked at running processes.
+
+```
+docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                       PORTS               NAMES
+dac12cb791e3        32b98b59a557        "/bin/sh -c 'apt-get…"   3 minutes ago       Exited (100) 3 minutes ago                       competent_chebyshev
+e362989ff5ff        32b98b59a557        "/bin/sh -c 'apt-get…"   9 minutes ago       Exited (100) 9 minutes ago                       ecstatic_shockley
+3e90feca5a5f        97b93b623da2        "/bin/sh -c 'conda i…"   45 minutes ago      Exited (0) 29 minutes ago                        stoic_varahamihira
+213700fd87a2        08c1d8e8b2c7        "/bin/bash"              55 minutes ago      Exited (0) 54 minutes ago                        naughty_antonelli
+cc04076ab812        ubuntu              "/bin/bash"              58 minutes ago      Exited (1) 55 minutes ago                        adoring_rhodes
+3ff69f2508c4        ubuntu              "/bin/bash"              58 minutes ago      Exited (0) 58 minutes ago                        wizardly_jang
+32b943a47f72        08c1d8e8b2c7        "/bin/bash"              About an hour ago   Exited (0) 59 minutes ago                        exciting_torvalds
+```
+
+The list actually went on quite a bit...  So I removed all recent stuff, e.g.:
+
+```
+docker image rm 32b98 -f
+```
+
+I also looked at the images on disk and removed some stuff:
+
+```
+docker image ls
+  REPOSITORY                                                                                    TAG                 IMAGE ID            CREATED             SIZE
+  <none>                                                                                        <none>              827f55570a00        2 hours ago         571MB
+  <none>                                                                                        <none>              b4a1dc58e528        14 hours ago        7.23GB
+  <none>                                                                                        <none>              f6683efde4d1        14 hours ago        1.49GB
+  <none>                                                                                        <none>              4049958496ec        15 hours ago        7.22GB
+  <none>                                                                                        <none>              2ccad03d503c        21 hours ago 
+```
+
+I removed a bunch of that stuff manually...but got another error when I went to build.
+
+A quick google search brought me some relief: [Docker - no space left on device MacOS](https://stackoverflow.com/questions/48668660/docker-no-space-left-on-device-macos_)
+
+This helped!
+
+```
+docker rmi -f $(docker images | grep "<none>" | awk "{print \$3}")
+docker rm -f $(docker ps -aq)  # this removes all containers...so you've been warned
+```
+
+
 
 -----------------------------------------------------------
 
 # Docker's Automatic Unzipping
-Something that got me tripped up for a bit is Docker's automatic unzipping
-of zipped/tarred files.  Over and over again, I'd get the same error message:
+At one point, I gave up on trying to combine the "best" of the Guzman and U-Net dockers... You
+might wonder why I was trying to do that anyway... Partially, it was because the U-Net docker failed to 
+build by itself.  Combine that with the observation that the U-Net Dockerfile didn't include some of the steps
+that the Guzman Docker did, and it got me thinking that I could fix the U-Net Dockerfile.  I initially wasn't 
+interested in trying to run the Guzman Docker because it didn't include the Miniconda version of Python;
+from my understanding, Anaconda provides Intel-optimized version of TensorFlow by default (see:
+[Intel Optimization for TensorFlow Installation Guide](https://software.intel.com/en-us/articles/intel-optimization-for-tensorflow-installation-guide)).
+
+Anyway, after a lot of twists, turns, and winding roads to failure, I decided to try out
+Guzman's Dockerfile...but, again, with a few tweaks that cost me more time.  The major tweak
+was wanting to untar/unzip the OpenVINO tgz file within the Dockerfile, like done in
+the U-Net Dockerfile, whereas the Guzman Dockerfile assumed it was already uncompressed in
+the Dockerfile's directory.
+
+This got me tripped up for a bit!  
+
+Basically, Docker has some slightly weird behaviors around automatic unzipping
+of zipped/tarred files: 
+* sometimes a tgz file is automatically uncompressed, which means trying to uncompress it again will throw an error
+* other times a tgz file is not automatically uncompressed, requiring it to be explicitly uncompressed in the Dockerfile
+
+Over and over again, I'd get the same error message:
 
 ```docker
 Step 5/17 : RUN tar -xvzf /openvino/l_openvino_toolkit*
@@ -392,74 +402,8 @@ ADD . /openvino/
 
 ----------------------------------------------------------
 
-# LSUSB
-To get things working on MacOS, all the installation guide for MacOS says is that you
-will need to install `libusb`.  This didn't seem to do anything for me...  Then I accidentally
-brew installed `lsusb` when I was tinkering around.  This at least provided a sanity check:
-the NCS2 was indeed being recognized by my Mac.
+# A Working Dockerfile!
 
-```
-brew install lsusb
-```
-
-You can then see if you NCS2 is recognized:
-```
-lsusb | grep Movidius
-  Bus 020 Device 010: ID xxxx:xxxx xxxx Movidius MyriadX  Serial: xxxxxxxx
-```
-
-I then tried to run a demo to see what happens:
-```
-cd /opt/intel/openvino/deployment_tools/demos/
-sudo ./demo_squeezenet_download_convert_run.sh -d MYRIAD
-```
-
-However, as expected, this crashes... Here's the last few lines of output:
-```
-Run ./classification_sample_async \
-  -d MYRIAD \
-  -i /opt/intel/openvino_2019.3.376/deployment_tools/demo/car.png \
-  -m /Users/kevinurban/openvino_models/ir/public/squeezenet1.1/FP16/squeezenet1.1.xml
-
-[ INFO ] InferenceEngine: 
-	API version ............ 2.1
-	Build .................. 32974
-	Description ....... API
-[ INFO ] Parsing input parameters
-[ INFO ] Parsing input parameters
-[ INFO ] Files were added: 1
-[ INFO ]     /opt/intel/openvino_2019.3.376/deployment_tools/demo/car.png
-[ INFO ] Creating Inference Engine
-	MYRIAD
-	myriadPlugin version ......... 2.1
-	Build ........... 32974
-
-[ INFO ] Loading network files
-[ INFO ] Preparing input blobs
-[ WARNING ] Image is resized from (787, 259) to (227, 227)
-[ INFO ] Batch size is 1
-[ INFO ] Loading model to the device
-E: [ncAPI] [    950632] [] ncDeviceOpen:859	Device doesn't appear after boot
-[ ERROR ] Can not init Myriad device: NC_ERROR
-Error on or near line 217; exiting with status 1
-```
-
-Oddly, once you do this, the NCS2 info changes in the `lsusb` output:
-
-```
-Bus 020 Device 011: ID zzz:zzzz zzzz VSC Loopback Device  Serial: zzzzzzzzzzzzzzzz
-```
-
-You can guess that this is true by the process of elimination (the other USB devices listed
-remain the same), and further by googline "VSC Loopback Device".  
-
-
-----------------------------------------
-
-# LIBUSB
-
-
-------------------------------------------------------
 
 Got some warnings/errors at Step 13/17 (`RUN cd $INSTALL_DIR/deployment_tools/model_optimizer/install_prerequisites &&     ./install_prerequisites.sh`), but this Dockerfile works...   (Note: this is basically
 Guzman's Docker w/ very minor tweaks.)
@@ -528,11 +472,13 @@ RUN echo "source $INSTALL_DIR/bin/setupvars.sh" >> /root/.bashrc
 CMD ["/bin/bash"]
 ```
 
+### Squeezenet Demo: Success!
 I can run squeezenet demo by simply starting an interactive session:
 ```
 docker run -it openvino
 ```
 
+### Security Demo: Fail!
 However, the security demo requires access to a display...  If you remember, Intel's
 U-Net docker recommended spinning it up like so:
 ```
@@ -548,6 +494,7 @@ Unable to init server: Could not connect: Connection refused
 Error on or near line 198; exiting with status 1
 ```
 
+### Security Demo:  GUI Success!  
 Fortunately, people have solved this problem -- e.g.:
 * [Docker for Mac and GUI applications](https://fredrikaverpil.github.io/2016/07/31/docker-for-mac-and-gui-applications/)
 * [Running GUI applications using Docker for Mac](https://sourabhbajaj.com/blog/2017/02/07/gui-applications-docker-mac/)
@@ -584,7 +531,11 @@ felt like a win! :-)
 * [Intel's OpenVINO/NCS2 U-Net Docker](https://github.com/IntelAI/unet/tree/master/2D/docker)
 * [Mateo Guzman's OpenVINO Docker](https://github.com/mateoguzman/openvino-docker/blob/master/Dockerfile)
 * [Intel's Open Model Server Docker](https://github.com/IntelAI/OpenVINO-model-server/blob/master/docs/docker_container.md)
-* JWRR blog: Good posts on trials and errors of getting NCS2 to work
-  - http://www.jwrr.com/ncs2-1/
-  - http://www.jwrr.com/ncs2-2/
-  
+* [Docker - no space left on device MacOS](https://stackoverflow.com/questions/48668660/docker-no-space-left-on-device-macos_)
+* [Dockerfile ADD should support ZIP archives as well](https://github.com/moby/moby/issues/15036)
+* [Intel Optimization for TensorFlow Installation Guide](https://software.intel.com/en-us/articles/intel-optimization-for-tensorflow-installation-guide)
+* [Docker for Mac and GUI applications](https://fredrikaverpil.github.io/2016/07/31/docker-for-mac-and-gui-applications/)
+* [Running GUI applications using Docker for Mac](https://sourabhbajaj.com/blog/2017/02/07/gui-applications-docker-mac/)
+* [StackOverflow: Privileged containers and capabilities](https://stackoverflow.com/questions/36425230/privileged-containers-and-capabilities)
+* [Docker Docs: Builder](https://docs.docker.com/engine/reference/builder/)
+* [Docker Docs: Run](https://docs.docker.com/engine/reference/run/)
