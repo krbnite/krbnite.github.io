@@ -27,7 +27,9 @@ I might have to learn a thing or two about creating and editing Dockerfiles.
 This is about when I found [Mateo Guzman's OpenVINO Docker](https://github.com/mateoguzman/openvino-docker/blob/master/Dockerfile), which didn't promise to get NCS2 up and running, but did vow 
 a Linux Docker with OpenVINO.  There were some obvious differences between the two Dockerfiles,
 and I started thinking maybe I can create a "Frankenstein Dockerfile" that would basically fix Intel's
-U-Net Dockerfile with lessons learned from Guzman's Dockerfile.  
+U-Net Dockerfile with lessons learned from Guzman's Dockerfile.  This would allow me to get
+the NCS2 working.  Also, Guzman's Dockerfile doesn't use Anaconda or Miniconda, which means 
+no Intel-optimized TensorFlow ([Intel Optimization for TensorFlow Installation Guide](https://software.intel.com/en-us/articles/intel-optimization-for-tensorflow-installation-guide)).  So this Frankenstein idea made a lot of sense to me!
 
 No matter what though, the U-Net Dockerfile would crash at the same point.  At this point, I descoped
 my mission: How about I just get a damn Linux Docker working with OpenVINO first, then worry about
