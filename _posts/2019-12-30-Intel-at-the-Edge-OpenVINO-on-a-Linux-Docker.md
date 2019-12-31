@@ -71,7 +71,7 @@ ADD [--chown=<user>:<group>] ["<src>",... "<dest>"] # this form is required for 
 "The ADD instruction copies new files, directories or remote file URLs from <src> and adds them to the 
 filesystem of the image at the path <dest>.  Multiple <src> resources may be specified but if they are files or
 directories, their paths are interpreted as relative to the source of the context of the build. ...  The 
-<dest> is an absolute path, or a path relative to WORKDIR, into which the source will be copied inside the 
+\<dest\> is an absolute path, or a path relative to WORKDIR, into which the source will be copied inside the 
 destination container."
 
 ```
