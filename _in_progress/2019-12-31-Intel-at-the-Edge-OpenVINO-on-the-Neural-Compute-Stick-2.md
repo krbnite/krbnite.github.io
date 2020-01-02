@@ -147,3 +147,15 @@ docker: Error response from daemon: lstat /dev/disk4: input/output error.
 ```
 
 dang...
+
+On Docker...
+```
+apt-get update
+apt-get install input-utils
+apt-get install usbutils
+```
+
+
+
+* https://askubuntu.com/questions/166420/how-to-detect-an-usb-device
+* https://discourse.osmc.tv/t/lsusb-command-not-found-solved/7731/5
