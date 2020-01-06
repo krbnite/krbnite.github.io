@@ -159,3 +159,16 @@ apt-get install usbutils
 
 * https://askubuntu.com/questions/166420/how-to-detect-an-usb-device
 * https://discourse.osmc.tv/t/lsusb-command-not-found-solved/7731/5
+
+
+---------------------------------------
+
+# Random...
+Put this info in some other post...
+
+The openvino Python module is located in /opt/intel/openvino/python/pythonX.Y/, where X.Y is the version of Python you are using (e.g., Python3.6).  To import the openvino module, do this (assuming Python3.6 here):
+```python
+import sys
+sys.path.append('/opt/intel/openvino/python/python3.6/')
+import openvino
+```
