@@ -319,20 +319,10 @@ def perform_inference(args):
     Performs inference on an input image, given a model.
     '''
     # ...A BUNCH OF READY-MADE CODE...
+    # ...h & w come from up here...
     
     ### TODO: Preprocess the input image
-    if args.t == 'POSE':
-        height = 256
-        width = 456
-    elif args.t == 'TEXT':
-        height = 768
-        width = 1280
-    elif args.t == 'CAR_META':
-        height = 72
-        width = 72
-    else:
-        return 'ERROR: -t: POSE, TEXT, or CAR_META'
-    preprocessed_image = preprocessing(image, height, width)
+    preprocessed_image = preprocessing(image, h, w)
 
     # Perform synchronous inference on the image
     inference_network.sync_inference(preprocessed_image)
