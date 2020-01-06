@@ -295,3 +295,154 @@ def car_meta(input_image):
     return preprocessed_image
 ```
 
+----------------
+
+# Ugh
+I wrote a bunch of notes here...but never committed changes and my computer died. 
+
+There were some links to "further reading."  Maybe I'll come back to this one day and fill
+it in.
+
+-----------------
+
+# Exercise: Handling Network Outputs
+
+This exercise is a little trickier, not because it's technically hard but because
+there is some reverse engineering going on.  Basically, we are told something like: "With
+output from Model X, do Y."  But what does the output from Model X look like?  Well, we
+can read a description from the model's description page on Intel.  But this is not
+quite enough to go on... 
+
+For example, the pose estimation model.  Here is the function we are given to fill out:
+
+```python
+import cv2
+import numpy as np
+
+def handle_pose(output, input_shape):
+    '''
+    Handles the output of the Pose Estimation model.
+    Returns ONLY the keypoint heatmaps, and not the Part Affinity Fields.
+    '''
+    # TODO 1: Extract only the second blob output (keypoint heatmaps)
+    
+    # TODO 2: Resize the heatmap back to the size of the input
+
+    return None
+```
+
+From the model's description page, we know the following:
+* Outputs:  "The net outputs two blobs with shapes: [1, 38, 32, 57] and [1, 19, 32, 57]. The first blob contains keypoint pairwise relations (part affinity fields), the second one contains keypoint heatmaps."
+
+So we do know we want to keep only the second blob...but how do we access it?  Is the blob held in
+a list or a dictionary?  Great question, we can find this out by returning its
+type.
+
+```python
+def handle_pose(output, input_shape):
+    '''
+    Handles the output of the Pose Estimation model.
+    Returns ONLY the keypoint heatmaps, and not the Part Affinity Fields.
+    '''
+    # TODO 1: Extract only the second blob output (keypoint heatmaps)
+    
+    # TODO 2: Resize the heatmap back to the size of the input
+    
+    print('\n-------------------------------------')
+    print('TYPE:',type(output))
+    print('-------------------------------------\n')
+
+    return None
+```
+Then at the command line:
+```
+python app.py -i "images/sitting-on-car.jpg" -t "POSE" -m "/home/workspace/models/human-pose-estimation-0001.xml"
+
+-------------------------------------
+TYPE: <class 'dict'>
+-------------------------------------
+
+# ...followed by a bunch of error messages...
+```
+
+Ok, let's look at the keys:
+
+```python
+def handle_pose(output, input_shape):
+  
+    print('\n-------------------------------------')
+    print(output.keys())
+    print('-------------------------------------\n')
+
+    return None
+```
+Then at the command line:
+```
+python app.py -i "images/sitting-on-car.jpg" -t "POSE" -m "/home/workspace/models/human-pose-estimation-0001.xml"
+
+-------------------------------------
+dict_keys(['Mconv7_stage2_L1', 'Mconv7_stage2_L2'])
+-------------------------------------
+
+# ...followed by a bunch of error messages...
+```
+
+Great! It looks like the blob we want is from a dictionary with key 'Mconv7_stage2_L2'.
+
+We can confirm by looking at its shape:
+
+```python
+def handle_pose(output, input_shape):
+  
+    # TODO 1: Extract only the second blob output (keypoint heatmaps)
+    heatmap = output['Mconv7_stage2_L2']
+    
+    print('\n----------------------------')
+    print(heatmaps.shape)
+    print('----------------------------\n')
+    
+    return None
+```
+Then at the command line:
+```
+python app.py -i "images/sitting-on-car.jpg" -t "POSE" -m "/home/workspace/models/human-pose-estimation-0001.xml"
+
+----------------------------
+(1, 19, 32, 57)
+----------------------------
+
+# ...followed by a bunch of error messages...
+```
+
+Ok, yes -- it is the blob we seek!
+
+This array represents a single batch, 19 "channel" 32x57 image.  We need to resize each of
+the 19 channels.  We want to return a CxHxW image, where `C=19`, `H=input_H`, and `W=input_W`.  The
+pseudocode looks something like:
+
+```
+for each channel in heatmap
+    resize channel shape to input shape
+```
+
+The python code will look something like this:
+
+```python
+def handle_pose(output, input_shape):
+    '''
+    Handles the output of the Pose Estimation model.
+    Returns ONLY the keypoint heatmaps, and not the Part Affinity Fields.
+    
+    NOTE: Input Shape is HxWxC = 750x1000x3
+    '''
+    # TODO 1: Extract only the second blob output (keypoint heatmaps)
+    heatmap = output['Mconv7_stage2_L2'] # BxCxHxW=1x19x32x57 array
+    heatmap = heatmap[0] # CxHxW=19x32x57 array
+
+    # TODO 2: Resize the heatmap back to the size of the input
+    resized_heatmap = np.zeros([heatmap.shape[0], input_shape[0], input_shape[1]])    
+    for channel in range(heatmap.shape[0]):
+        resized_heatmap[channel] = cv2.resize(heatmap[channel], input_shape[:2][::-1])
+
+    return resized_heatmap
+```
