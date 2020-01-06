@@ -308,7 +308,59 @@ it in.
 # Exercise: Handling Network Outputs
 
 This exercise is a little trickier, not because it's technically hard but because
-there is some reverse engineering going on.  Basically, we are told something like: "With
+there is some reverse engineering going on.  Also, there are TODO's littered around
+to Python scripts.
+
+The simplest part is setting out input and output handling in `app.py`.  In the
+`perform_inference` function, you basically just have to fill in something like:
+```python
+def perform_inference(args):
+    '''
+    Performs inference on an input image, given a model.
+    '''
+    # ...A BUNCH OF READY-MADE CODE...
+    
+    ### TODO: Preprocess the input image
+    if args.t == 'POSE':
+        height = 256
+        width = 456
+    elif args.t == 'TEXT':
+        height = 768
+        width = 1280
+    elif args.t == 'CAR_META':
+        height = 72
+        width = 72
+    else:
+        return 'ERROR: -t: POSE, TEXT, or CAR_META'
+    preprocessed_image = preprocessing(image, height, width)
+
+    # Perform synchronous inference on the image
+    inference_network.sync_inference(preprocessed_image)
+    
+    # Obtain the output of the inference request
+    output = inference_network.extract_output()
+
+    ### TODO: Handle the output of the network, based on args.t
+    ### Note: This will require using `handle_output` to get the correct
+    ###       function, and then feeding the output to that function.
+    processed_output = handle_output(args.t)(output, image.shape)
+    
+    # ...MORE READY-MADE CODE...
+
+```
+
+The preprocessing code in the first `TODO` is basically what we built in the last exercise.  Here, we just
+have to make it work in their app code; we know what arguments it takes because it is given to us in the
+other script file, `handle_models.py`.  In the second `TODO`, the `handle_output` function is
+basically a "factory function" -- it outputs the right output handler based on the args.t parameter (which
+can be "POSE", "TEXT", or "CAR_META").  This function is also given in `handle_models.py`, so
+our only job here is to make it work in `app.py`.  Once `handle_output` is evaluated, it acts as
+one of the model handlers we must build in `handle_models.py`, which all take in the arguments `output` and
+`input_shape`.  Honestly, writing all this out makes it seem more complex than it is.  
+
+The trickier part is building out the model handlers.  This takes some experimentation!  
+
+We are told something like: "With
 output from Model X, do Y."  But what does the output from Model X look like?  Well, we
 can read a description from the model's description page on Intel.  But this is not
 quite enough to go on... 
@@ -445,4 +497,85 @@ def handle_pose(output, input_shape):
         resized_heatmap[channel] = cv2.resize(heatmap[channel], input_shape[:2][::-1])
 
     return resized_heatmap
+```
+
+Figuring out the TEXT model handler is the same basic process, and the function itself
+is nearly identical:
+
+```python
+def handle_text(output, input_shape):
+    '''
+    Handles the output of the Text Detection model.
+    Returns ONLY the text/no text classification of each pixel,
+        and not the linkage between pixels and their neighbors.
+    '''
+    # TODO 1: Extract only the first blob output (text/no text classification)
+    textflag = output['model/segm_logits/add'] # BxCxHxW=1x19x32x57 array
+    textflag = textflag[0] # CxHxW=19x32x57 array
+    
+    # TODO 2: Resize this output back to the size of the input
+    resized_textflag = np.zeros([textflag.shape[0], input_shape[0], input_shape[1]])    
+    for channel in range(textflag.shape[0]):
+        resized_textflag[channel] = cv2.resize(textflag[channel], input_shape[:2][::-1])
+    return resized_textflag
+```
+
+The CAR_META model handler was actually very simple -- no experimentation needed really.
+
+```python
+def handle_car(output, input_shape):
+    '''
+    Handles the output of the Car Metadata model.
+    Returns two integers: the argmax of each softmax output.
+    The first is for color, and the second for type.
+    '''
+    # TODO 1: Get the argmax of the "color" output
+    argmax_c = np.argmax(output['color'])
+    
+    # TODO 2: Get the argmax of the "type" output
+    argmax_t = np.argmax(output['type'])
+    return argmax_c, argmax_t
+```
+
+In case you were interested, here is what the model handler "factory function" looks like:
+
+```python
+def handle_output(model_type):
+    '''
+    Returns the related function to handle an output,
+        based on the model_type being used.
+    '''
+    if model_type == "POSE":
+        return handle_pose
+    elif model_type == "TEXT":
+        return handle_text
+    elif model_type == "CAR_META":
+        return handle_car
+    else:
+        return None
+```
+
+This could basically just be a dictionary, if you wanted.
+
+If you want to see your images, open a Jupyter Notebook.  Note that I'm using
+cv2 here to read in BGR images, but plotting using MatPlotLib's `imshow`, which
+assumes an image is in RGB format.  To handle this, we use cv2' color conversion
+function, `cv2.cvtColor`.
+
+```python
+import cv2
+import numpy as np
+from matplotlib import pyplot as plt
+from handle_models import handle_output, preprocessing
+%matplotlib inline
+
+car_ = cv2.imread('outputs/CAR_META-output.png')
+pose_ = cv2.imread('outputs/POSE-output.png')
+text_ = cv2.imread('outputs/TEXT-output.png')
+
+plt.imshow(cv2.cvtColor(pose_, cv2.COLOR_BGR2RGB))
+
+plt.imshow(cv2.cvtColor(text_, cv2.COLOR_BGR2RGB))
+
+plt.imshow(cv2.cvtColor(car_, cv2.COLOR_BGR2RGB))
 ```
