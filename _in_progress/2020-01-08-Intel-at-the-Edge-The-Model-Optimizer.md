@@ -243,6 +243,155 @@ Model Optimizer version:        2019.3.0-408-gac8584cb7
 Btw, out of curiosity, I tried running this command without the config commands set:  the model
 optimizer crashes.
 
+# Exercise: Convert a Caffe Model to the OpenVINO Intermediate Representation
+Converting Caffe models turns out to be much more straightforward than converting
+TensorFlow models.  You just need:
+* the Caffe model (in this case, `squeezenet_v1.1.caffemodel`)
+* the deployment prototxt file (in this case, `deploy.prototxt`)
+  - I specify the deployment prototxt file because you might see multiple prototxt files
+  - e.g., for SqueezeNetV1.1, there is also `solver.prototxt` and `train_val.prototxt`, which we
+    don't care about here
+
+We are told to clone the [SqueezeNet repo](https://github.com/DeepScale/SqueezeNet) from [DeepScale](http://deepscale.ai/):
+```
+git clone https://github.com/DeepScale/SqueezeNet
+```
+
+Then it is basically as simple as following the first few paragraphs of [OpenVINO's
+dedicated Caffe model conversion page](https://docs.openvinotoolkit.org/latest/_docs_MO_DG_prepare_model_convert_model_Convert_Model_From_Caffe.html):
+```
+mo=/opt/intel/openvino/deployment_tools/model_optimizer
+python3 $mo/mo.py --input_model <INPUT_MODEL>.caffemodel --input_proto <INPUT_PROTO>
+```
+
+There is a note on the docs page that says, for models trained on ImageNet, you will likely
+have to use the framework-agnostic command line flags `--mean_values` and `--scale`, like so:
+```
+python3 $mo/mo.py \
+  --input_model <INPUT_MODEL_TRAINED_ON_IMAGENET>.caffemodel \ 
+  --input_proto <INPUT_PROTO> \
+  --mean_values [123.68,116.779,103.939] \
+  --scale 127.5
+```
+
+Hell, there is even a tip in the classroom notebook that says to be aware that
+models trained on ImageNet should have these flags set... And yet, in the instructor's
+solution, he doesn't use these flags... Oh well!  I did.  See below:
+
+```
+squeeze=/home/workspace/SqueezeNet/SqueezeNet_v1.1
+mo=/opt/intel/openvino/deployment_tools/model_optimizer
+python $mo/mo.py --input_model $squeeze/squeezenet_v1.1.caffemodel --input_proto $squeeze/deploy.prototxt --mean_values [123.68,116.779,103.939] --scale 127.5
+Model Optimizer arguments:
+Common parameters:
+        - Path to the Input Model:      /home/workspace/SqueezeNet/SqueezeNet_v1.1/squeezenet_v1.1.caffemodel
+        - Path for generated IR:        /home/workspace/.
+        - IR output name:       squeezenet_v1.1
+        - Log level:    ERROR
+        - Batch:        Not specified, inherited from the model
+        - Input layers:         Not specified, inherited from the model
+        - Output layers:        Not specified, inherited from the model
+        - Input shapes:         Not specified, inherited from the model
+        - Mean values:  [123.68,116.779,103.939]
+        - Scale values:         Not specified
+        - Scale factor:         127.5
+        - Precision of IR:      FP32
+        - Enable fusing:        True
+        - Enable grouped convolutions fusing:   True
+        - Move mean values to preprocess section:       False
+        - Reverse input channels:       False
+Caffe specific parameters:
+        - Path to Python Caffe* parser generated from caffe.proto:      /opt/intel/openvino/deployment_tools/model_optimizer/mo/front/caffe/proto
+        - Enable resnet optimization:   True
+        - Path to the Input prototxt:   /home/workspace/SqueezeNet/SqueezeNet_v1.1/deploy.prototxt
+        - Path to CustomLayersMapping.xml:      Default
+        - Path to a mean file:  Not specified
+        - Offsets for a mean file:      Not specified
+Model Optimizer version:        2019.3.0-408-gac8584cb7
+
+[ SUCCESS ] Generated IR model.
+[ SUCCESS ] XML file: /home/workspace/./squeezenet_v1.1.xml
+[ SUCCESS ] BIN file: /home/workspace/./squeezenet_v1.1.bin
+[ SUCCESS ] Total execution time: 5.90 seconds. 
+```
+
+# Exercise: Convert a ONNX Model to the OpenVINO Intermediate Representation
+If you thought converting a Caffe model to IR is simpler than converting TensorFlow model,
+then wait until you convert an ONNX model, which has no framework-agnostic command line
+flags.  That said, in practice, there is some hidden complexity that is not specific to
+OpenVINO at all:  often, you'll have to convert a model to ONNX format, specifically
+if you are using PyTorch or AppleML, which OpenVINO does not support a direct
+conversion for. (Example: [PyTorch to ONNX Conversion](https://michhar.github.io/convert-pytorch-onnx/).)
+
+Personally, I've not used PyToch, AppleML, or ONNX models, so I was pleasantly surprised
+to learn that ONNX is a representation format for deep learning models that aspires to
+be a universal format that other frameworks can convert to and from (Caffe, MXNet, PyTorch,
+Microsoft Cognitive Toolkit).  That is cool, right?  (Funny and damn nigh expected to
+not see TensorFlow on that list, which seems to be the norm for TensorFlow.  TFGTOW?) That said,
+isn't universal representation a hallmark of OpenVINO's IR as well?  Maybe that's why ONNX
+models have no framework-agnostic flags:  OpenVINO's IR is probably partially derivative of ONNX, right?
+
+Anyway, assuming you've installed the right MO dependencies, optimizing an ONNX model is 
+as simple as (see the [docs](https://docs.openvinotoolkit.org/latest/_docs_MO_DG_prepare_model_convert_model_Convert_Model_From_ONNX.html):
+```
+python3 mo.py --input_model <INPUT_MODEL>.onnx
+```
+
+You can find a bunch of pre-trained ONNX models at the [ONNX Model Zoo](https://github.com/onnx/models).
+
+We are asked to download a version of AlexNet, which is in ONNX format, and to convert it
+to IR format.
+
+```
+wget https://s3.amazonaws.com/download.onnx/models/opset_8/bvlc_alexnet.tar.gz
+tar -xvf bvlc_alexnet.tar.gz
+ls bvlc_alexnet/
+  model.onnx       test_data_2.npz  test_data_set_2  test_data_set_5
+  test_data_0.npz  test_data_set_0  test_data_set_3
+  test_data_1.npz  test_data_set_1  test_data_set_4
+```
+
+From here, it's easy:
+```
+mo='/opt/intel/openvino/deployment_tools/model_optimizer'
+python $mo/mo.py --input_model bvlc_alexnet/model.onnx
+
+  Model Optimizer arguments:
+  Common parameters:
+        - Path to the Input Model:      /home/workspace/bvlc_alexnet/model.onnx
+        - Path for generated IR:        /home/workspace/.
+        - IR output name:       model
+        - Log level:    ERROR
+        - Batch:        Not specified, inherited from the model
+        - Input layers:         Not specified, inherited from the model
+        - Output layers:        Not specified, inherited from the model
+        - Input shapes:         Not specified, inherited from the model
+        - Mean values:  Not specified
+        - Scale values:         Not specified
+        - Scale factor:         Not specified
+        - Precision of IR:      FP32
+        - Enable fusing:        True
+        - Enable grouped convolutions fusing:   True
+        - Move mean values to preprocess section:       False
+        - Reverse input channels:       False
+  ONNX specific parameters:
+  Model Optimizer version:        2019.3.0-408-gac8584cb7
+
+  [ SUCCESS ] Generated IR model.
+  [ SUCCESS ] XML file: /home/workspace/./model.xml
+  [ SUCCESS ] BIN file: /home/workspace/./model.bin
+  [ SUCCESS ] Total execution time: 4.59 seconds. 
+```
+
+Bam!  That's it for an ONNX model.  Easy.
+
+
+
+-------------------
+
+Left off at 15.
+
+
 -----------------------------------------
 
 # Framework-Agnostic Command Line Flags for the Model Optimizer
@@ -434,7 +583,8 @@ TensorFlow*-specific parameters:
 * [Converting a Model Using General Conversion Parameters](https://docs.openvinotoolkit.org/latest/_docs_MO_DG_prepare_model_convert_model_Converting_Model_General.html)
 * [Converting a TensorFlow Model](https://docs.openvinotoolkit.org/latest/_docs_MO_DG_prepare_model_convert_model_Convert_Model_From_TensorFlow.html)
 * [Offloading Sub-Graph Inference to TensorFlow](https://docs.openvinotoolkit.org/latest/_docs_MO_DG_prepare_model_customize_model_optimizer_Offloading_Sub_Graph_Inference.html)
-* [OpenVINO: Converting a TensorFlow* Model](https://docs.openvinotoolkit.org/latest/_docs_MO_DG_prepare_model_convert_model_Convert_Model_From_TensorFlow.html)
+* [Converting a TensorFlow* Model to OpenVINO Intermediate Representation](https://docs.openvinotoolkit.org/latest/_docs_MO_DG_prepare_model_convert_model_Convert_Model_From_TensorFlow.html)
 * [TensorFlow Detect Model Zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md)
-
+* [Converting a ONNX* Model to OpenVINO Intermediate Representation](https://docs.openvinotoolkit.org/latest/_docs_MO_DG_prepare_model_convert_model_Convert_Model_From_ONNX.html)
+* [PyTorch to ONNX Conversion](https://michhar.github.io/convert-pytorch-onnx/)
 
