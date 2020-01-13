@@ -389,8 +389,33 @@ Bam!  That's it for an ONNX model.  Easy.
 
 -------------------
 
-Left off at 15.
+# Cutting Off Parts of a Model
+The last few segments in this section rapidly go over cutting layers, supported layer, and
+custom layers.
 
+For the most part, TensorFlow models are the only ones that at times need to
+have parts cut off, but the technique is apparently helpful in general, e.g., for
+debugging.  From the [docs page](https://docs.openvinotoolkit.org/latest/_docs_MO_DG_prepare_model_convert_model_Cutting_Model.html),
+the following examples are given as reasons you would want to cut:
+> * model has pre- or post-processing parts that cannot be translated to existing Inference Engine layers.
+> * model has a training part that is convenient to be kept in the model, but not used during inference.
+> * model is too complex (contains lots of unsupported operations that cannot be easily implemented as custom layers), so 
+>   the complete model cannot be converted in one shot.
+> * model is one of the supported SSD models. In this case, you need to cut a post-processing part off.
+> * problem with model conversion in the Model Optimizer or inference in the Inference Engine occurred. To localize the 
+>   issue, limit the scope for conversion by iteratively searching for problematic places in the model.
+> * problem with model conversion in the Model Optimizer or inference in the Inference Engine occurred. To localize the 
+>   issue, limit the scope for conversion by iteratively searching for problematic places in the model.
+> * single custom layer or a combination of custom layers is isolated for debugging purposes.
+
+As for supported and custom layers, basically if a layer is supported, then you must make a supported
+layer (or offload the computation).  See the references below for more info.
+
+
+* [Cutting Parts Off a Model](https://docs.openvinotoolkit.org/latest/_docs_MO_DG_prepare_model_convert_model_Cutting_Model.html)
+* [Supported Framework Layers](https://docs.openvinotoolkit.org/latest/_docs_MO_DG_prepare_model_Supported_Frameworks_Layers.html)
+* [Custom Layers in the Model Optimizer](https://docs.openvinotoolkit.org/latest/_docs_MO_DG_prepare_model_customize_model_optimizer_Customize_Model_Optimizer.html)
+* [Offloading Sub-Graph Inference to TensorFlow](https://docs.openvinotoolkit.org/latest/_docs_MO_DG_prepare_model_customize_model_optimizer_Offloading_Sub_Graph_Inference.html)
 
 -----------------------------------------
 
@@ -587,4 +612,7 @@ TensorFlow*-specific parameters:
 * [TensorFlow Detect Model Zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md)
 * [Converting a ONNX* Model to OpenVINO Intermediate Representation](https://docs.openvinotoolkit.org/latest/_docs_MO_DG_prepare_model_convert_model_Convert_Model_From_ONNX.html)
 * [PyTorch to ONNX Conversion](https://michhar.github.io/convert-pytorch-onnx/)
-
+* [Cutting Parts Off a Model](https://docs.openvinotoolkit.org/latest/_docs_MO_DG_prepare_model_convert_model_Cutting_Model.html)
+* [Supported Framework Layers](https://docs.openvinotoolkit.org/latest/_docs_MO_DG_prepare_model_Supported_Frameworks_Layers.html)
+* [Custom Layers in the Model Optimizer](https://docs.openvinotoolkit.org/latest/_docs_MO_DG_prepare_model_customize_model_optimizer_Customize_Model_Optimizer.html)
+* [Offloading Sub-Graph Inference to TensorFlow](https://docs.openvinotoolkit.org/latest/_docs_MO_DG_prepare_model_customize_model_optimizer_Offloading_Sub_Graph_Inference.html)
