@@ -292,6 +292,132 @@ if __name__ == "__main__":
     main()
 ```
 
+# Inference Requests
+In the previous code, we ensured the model was fully supported by the Inference Engine.  The 
+last thing we did was load the network into the IE core (`core.load_network(network, 'CPU')`): this
+has the effect of creating an [`ExecutableNetwork`](https://docs.openvinotoolkit.org/latest/classie__api_1_1ExecutableNetwork.html)
+, which is the OpenVINO runtime representation
+of your model.   This is what you will employ for inference requests.
+
+An `ExecutableNetwork` can handle both synchronous (`ExecutableNetwork.infer`) and asynchronous 
+(`ExecutableNetwork.async_infer`) inference requests, where these terms take on their usual meanings:
+* synchronous requests block the main thread until a response is returned
+* asynchrounous requests do not block the main thread, and generally allow your app to do other
+  things while a response is being delivered
+  - Check out: [Object Detection SSD C++ Demo, Async API Performance Showcase](https://github.com/opencv/open_model_zoo/blob/master/demos/object_detection_demo_ssd_async/README.md)
+
+Inference requests become 
+[`InferenceRequest`](https://docs.openvinotoolkit.org/latest/classie__api_1_1InferRequest.html)
+objects, which handle and hold both the input request and its output.  For a further look into
+sync and async function calls, and how to integrate the Inference Engine into your app, check
+out:  [Integrate the Inference Engine with Your Application](https://docs.openvinotoolkit.org/latest/_docs_IE_DG_Integrate_with_customer_application_new_API.html)
+
+
+# Exercise:
+
+Basically, here we just had to fill out a function that would handle sync requests and
+another that would handle async requests.  It was as easy as copying and pasting from the 
+[`ExecutableNetwork Class Reference`](https://docs.openvinotoolkit.org/latest/classie__api_1_1ExecutableNetwork.html).
+
+In the code below, you'll see us loading `load_to_IE` and `preprocessing` from a module
+called `helpers`.  These are essentially the functions we've built in earlier sections of
+this course.  From a bird's eye perspective, we are learning to piece together an entire app,
+slowly but surely.
+
+
+```python
+import argparse
+import cv2
+from helpers import load_to_IE, preprocessing
+
+CPU_EXTENSION = "/opt/intel/openvino/deployment_tools/inference_engine/lib/intel64/libcpu_extension_sse4.so"
+
+def get_args():
+    '''
+    Gets the arguments from the command line.
+    '''
+    parser = argparse.ArgumentParser("Load an IR into the Inference Engine")
+    # -- Create the descriptions for the commands
+    m_desc = "The location of the model XML file"
+    i_desc = "The location of the image input"
+    r_desc = "The type of inference request: Async ('A') or Sync ('S')"
+
+    # -- Create the arguments
+    parser.add_argument("-m", help=m_desc)
+    parser.add_argument("-i", help=i_desc)
+    parser.add_argument("-r", help=i_desc)
+    args = parser.parse_args()
+
+    return args
+
+
+def async_inference(exec_net, input_blob, image):
+    ### TODO: Add code to perform asynchronous inference
+    ### Note: Return the exec_net
+    infer_request_handle = exec_net.start_async(
+        request_id=0, 
+        inputs={input_blob: image}
+    )
+    infer_request_handle.wait()
+
+    return exec_net
+
+
+def sync_inference(exec_net, input_blob, image):
+    ### TODO: Add code to perform synchronous inference
+    ### Note: Return the result of inference
+    res = exec_net.infer({input_blob: image})
+    return res
+
+
+def perform_inference(exec_net, request_type, input_image, input_shape):
+    '''
+    Performs inference on an input image, given an ExecutableNetwork
+    '''
+    # Get input image
+    image = cv2.imread(input_image)
+    # Extract the input shape
+    n, c, h, w = input_shape
+    # Preprocess it (applies for the IRs from the Pre-Trained Models lesson)
+    preprocessed_image = preprocessing(image, h, w)
+
+    # Get the input blob for the inference request
+    input_blob = next(iter(exec_net.inputs))
+
+    # Perform either synchronous or asynchronous inference
+    request_type = request_type.lower()
+    if request_type == 'a':
+        output = async_inference(exec_net, input_blob, preprocessed_image)
+    elif request_type == 's':
+        output = sync_inference(exec_net, input_blob, preprocessed_image)
+    else:
+        print("Unknown inference request type, should be 'A' or 'S'.")
+        exit(1)
+
+    # Return the exec_net for testing purposes
+    return output
+
+
+def main():
+    args = get_args()
+    exec_net, input_shape = load_to_IE(args.m, CPU_EXTENSION)
+    perform_inference(exec_net, args.r, args.i, input_shape)
+
+
+if __name__ == "__main__":
+    main()
+```
+
+The instructor wrapped the `.wait` section of the async code in a `while True` loop, where
+he called on `.wait(-1)` then checked the return status, where he would then cause the
+execution loop to pause for a second and try again if the response wasn't ready.  This is
+over-engineering!  At least as far as my understanding of the docs go:
+* the default of `.wait()` is `.wait(-1)`, so `.wait(-1)` wasn't explicitly necessary
+* the meaning of `.wait(-1)` is to wait indefinitely until a response is returned, so the
+  `while True` loop is unnecessary
+
+# 
+
 
 ------------------------
 
@@ -302,3 +428,7 @@ if __name__ == "__main__":
 * [IECore](https://docs.openvinotoolkit.org/latest/classie__api_1_1IECore.html)
 * [IENetwork](https://docs.openvinotoolkit.org/latest/classie__api_1_1IENetwork.html)
 * [Full Python API](https://docs.openvinotoolkit.org/latest/ie_python_api.html))
+* [ie_api.ExecutableNetwork Class Reference](https://docs.openvinotoolkit.org/latest/classie__api_1_1ExecutableNetwork.html)
+* [ie_api.InferRequest Class Reference](https://docs.openvinotoolkit.org/latest/classie__api_1_1InferRequest.html)
+* [Integrate the Inference Engine with Your Application](https://docs.openvinotoolkit.org/latest/_docs_IE_DG_Integrate_with_customer_application_new_API.html)
+* [Object Detection SSD C++ Demo, Async API Performance Showcase](https://github.com/opencv/open_model_zoo/blob/master/demos/object_detection_demo_ssd_async/README.md)
