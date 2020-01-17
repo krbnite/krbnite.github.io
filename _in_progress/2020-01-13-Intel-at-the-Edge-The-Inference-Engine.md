@@ -416,8 +416,19 @@ over-engineering!  At least as far as my understanding of the docs go:
 * the meaning of `.wait(-1)` is to wait indefinitely until a response is returned, so the
   `while True` loop is unnecessary
 
-# 
+# Exercise:  Putting Together an App
 
+
+Found this bounding box model: https://docs.openvinotoolkit.org/2019_R1/_vehicle_detection_adas_0002_description_vehicle_detection_adas_0002.html
+
+```
+DL="/opt/intel/openvino/deployment_tools/open_model_zoo/tools/downloader"
+$DL/downloader.py --name vehicle-detection-adas-0002 --precisions FP16 -o /home/workspace
+```
+
+```
+bbox="intel/vehicle-detection-adas-0002/FP16/vehicle-detection-adas-0002.xml"
+```
 
 ------------------------
 
