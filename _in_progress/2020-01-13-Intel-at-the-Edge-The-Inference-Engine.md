@@ -430,6 +430,286 @@ $DL/downloader.py --name vehicle-detection-adas-0002 --precisions FP16 -o /home/
 bbox="intel/vehicle-detection-adas-0002/FP16/vehicle-detection-adas-0002.xml"
 ```
 
+The output for this network is like:
+* [1, 1, N, 7], where N is the number of detected bounding boxes
+* for each detection, the 7 features are: [image_id, label, conf, x_min, y_min, x_max, y_max]
+  - image_id - ID of the image in the batch
+  - label - predicted class ID
+  - conf - confidence for the predicted class
+  - (x_min, y_min) - coordinates of the top left bounding box corner
+  - (x_max, y_max) - coordinates of the bottom right bounding box corner
+ 
+
+Here is my final code.  I added a few additional command line arguments than
+required.
+
+First, the `inference.py` helper module we create:
+```python
+'''
+Contains code for working with the Inference Engine.
+You'll learn how to implement this code and more in
+the related lesson on the topic.
+'''
+
+import os
+import sys
+import logging as log
+from openvino.inference_engine import IENetwork, IECore
+
+class Network:
+    '''
+    Load and store information for working with the Inference Engine,
+    and any loaded models.
+    '''
+
+    def __init__(self):
+        self.plugin = None
+        self.network = None
+        self.input_blob = None
+        self.output_blob = None
+        self.exec_network = None
+        self.infer_request = None
+
+
+    def load_model(self, model, device="CPU", cpu_extension=None):
+        '''
+        Load the model given IR files.
+        Defaults to CPU as device for use in the workspace.
+        Synchronous requests made within.
+        '''
+        model_xml = model
+        model_bin = os.path.splitext(model_xml)[0] + ".bin"
+
+        # Initialize the plugin
+        self.plugin = IECore()
+
+        # Add a CPU extension, if applicable
+        if cpu_extension and "CPU" in device:
+            self.plugin.add_extension(cpu_extension, device)
+
+        # Read the IR as a IENetwork
+        self.network = IENetwork(model=model_xml, weights=model_bin)
+
+        # Load the IENetwork into the plugin
+        self.exec_network = self.plugin.load_network(self.network, device)
+
+        # Get the input layer
+        self.input_blob = next(iter(self.network.inputs))
+        self.output_blob = next(iter(self.network.outputs))
+
+        return
+
+
+    def get_input_shape(self):
+        '''
+        Gets the input shape of the network
+        '''
+        return self.network.inputs[self.input_blob].shape
+
+
+    def async_inference(self, image):
+        '''
+        Makes an asynchronous inference request, given an input image.
+        '''
+        ### TODO: Start asynchronous inference
+        self.infer_request = self.exec_network.start_async(
+            request_id = 0,
+            inputs = {self.input_blob: image},
+        )
+        return
+
+
+    def wait(self):
+        '''
+        Checks the status of the inference request.
+        '''
+        ### TODO: Wait for the async request to be complete
+        return self.infer_request.wait()
+
+
+    def extract_output(self):
+        '''
+        Returns a list of the results for the output layer of the network.
+        '''
+        ### TODO: Return the outputs of the network from the output_blob
+        return self.exec_network.requests[0].outputs[self.output_blob]
+```
+
+Then, the main `app.py`:
+```python
+import argparse
+import cv2
+import os
+import numpy as np
+from inference import Network
+
+INPUT_STREAM = "test_video.mp4"
+CPU_EXTENSION = "/opt/intel/openvino/deployment_tools/inference_engine/lib/intel64/libcpu_extension_sse4.so"
+
+def get_args():
+    '''
+    Gets the arguments from the command line.
+    '''
+    parser = argparse.ArgumentParser("Run inference on an input video")
+    # -- Create the descriptions for the commands
+    m_desc = "The location of the model XML file"
+    i_desc = "The location of the input file"
+    d_desc = "The device name, if not 'CPU'"
+    ### TODO: Add additional arguments and descriptions for:
+    ###       1) Different confidence thresholds used to draw bounding boxes
+    ###       2) The user choosing the color of the bounding boxes
+    conf_desc = "Confidence threshold"
+    color_desc = "Color of bounding box (B,G,R)"
+    ### Extracurricular:  Add an argument to turn cpu_extension
+    # -- not sure why they don't have this since it's a parameter
+    #    for one of the functions from the Network class
+    cpu_ext_desc = "Use CPU extension (only if device is CPU)"
+    o_desc = "Path/Name of output file (e.g., video.mp4)"
+
+
+    # -- Add required and optional groups
+    parser._action_groups.pop()
+    required = parser.add_argument_group('required arguments')
+    optional = parser.add_argument_group('optional arguments')
+
+    # -- Create the arguments
+    required.add_argument("-m", help=m_desc, required=True)
+    optional.add_argument("-i", help=i_desc, default=INPUT_STREAM)
+    optional.add_argument("-d", help=d_desc, default='CPU')
+    ### TODO: Add the additional arguments from above
+    optional.add_argument("--conf", help=conf_desc, type=float, default=0.7)
+    optional.add_argument("--color", help=color_desc, type=int, nargs=3, default=(0,0,255))
+    ### Extracurricular from above:  add cpu ext
+    optional.add_argument("--cpu_ext", help=cpu_ext_desc, default=CPU_EXTENSION)
+    optional.add_argument("-o", help=o_desc, default='out.mp4')
+    args = parser.parse_args()
+
+    return args
+
+
+def infer_on_video(args):
+    ### TODO: Initialize the Inference Engine
+    network = Network()
+
+    ### TODO: Load the network model into the IE
+    network.load_model(
+        model = args.m,
+        device = args.d,
+        cpu_extension = args.cpu_ext,
+    )
+
+    # Get and open video capture
+    cap = cv2.VideoCapture(args.i)
+    cap.open(args.i)
+
+    # Grab the shape of the input 
+    width = int(cap.get(3))
+    height = int(cap.get(4))
+
+    # Create a video writer for the output video
+    # The second argument should be `cv2.VideoWriter_fourcc('M','J','P','G')`
+    # on Mac, and `0x00000021` on Linux
+    #-------------------------
+    # Extracurricular Add-in
+    #--------------------------
+    # Seemed like this belonged here given the above notes
+    # about Mac vs Linux
+    opsys = os.uname().sysname.lower()
+    if opsys == 'linux':
+        vw_arg2 = 0x00000021
+    elif opsys == 'darwin':
+        vw_arg2 = cv2.VideoWriter_fourcc('M','J','P','G')
+    else:
+        raise OSError("Not sure what OS this is.")
+    #----------------------------
+    out = cv2.VideoWriter(args.o, vw_arg2, 30, (width,height))
+    
+    # Process frames until the video ends, or process is exited
+    while cap.isOpened():
+        # Read the next frame
+        flag, frame = cap.read()
+        if not flag:
+            break
+        key_pressed = cv2.waitKey(60)
+
+        ### TODO: Pre-process the frame
+        b, c, h, w = network.get_input_shape()
+        input_image = cv2.resize(
+            np.copy(frame),
+            (w,h)
+        ).transpose((2,0,1)).\
+        reshape(1,3,h,w) 
+
+        ### TODO: Perform inference on the frame
+        network.async_inference(input_image)
+        network.wait()
+
+        ### TODO: Get the output of inference
+        # Output is a 1x1xNx7 Numpy array, where N is
+        #   the number of potential bounding boxes and
+        #   7 is the number of features associated with each
+        #   (img_id, label, confidence, xmin, ymin, xmax, ymax)
+        # For first frame, via print statement we find that
+        #   output is 1x1x200x7, which means there are 200
+        #   potential bounding boxes to draw on frame (depending
+        #   on what confidence we choose)
+        # Output[0][0] is the 200x7 frame we need
+        output = network.extract_output()  
+        
+        
+        ### TODO: Update the frame to include detected bounding boxes
+        for box in output[0][0]:
+            confidence = box[2]
+            xmin, ymin = int(box[3] * width), int(box[4] * height)
+            xmax, ymax = int(box[5] * width), int(box[6] * height)
+            if confidence >= args.conf:
+                cv2.rectangle(
+                    frame,
+                    (xmin, ymin),
+                    (xmax, ymax),
+                    args.color,
+                    1
+                )
+
+        # Write out the frame
+        out.write(frame)
+        # Break if escape key pressed
+        if key_pressed == 27:
+            break
+
+    # Release the out writer, capture, and destroy any OpenCV windows
+    out.release()
+    cap.release()
+    cv2.destroyAllWindows()
+
+
+def main():
+    args = get_args()
+    infer_on_video(args)
+
+
+if __name__ == "__main__":
+    main()
+```
+
+Finally, here's how to run it.
+
+Defaut:
+```
+python app.py -m intel/vehicle-detection-adas-0002/FP16/vehicle-detection-adas-0002.xml
+```
+
+Since I only use the one model, I probably should have made that `-m` flag default to it. Anyway...
+
+Some customization:
+```
+python app.py -m intel/vehicle-detection-adas-0002/FP16/vehicle-detection-adas-0002.xml -o out_conf60_col0-255-0.mp4 --conf "0.6" --color 0 255 0
+```
+
+
+
+
+
 ------------------------
 
 # References & Further Reading
