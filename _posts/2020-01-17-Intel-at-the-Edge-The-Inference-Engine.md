@@ -37,6 +37,10 @@ though there is an optional parameter, `xml_config_file`, which accepts an absol
 `IENetwork` directly represents the model, read in from the model's two IR files (e.g., `model.xml` and
 `model.bin`), which are mandatory parameters. 
 
+By the end of the lesson, we use everything we've learned about pre-trained models, the Model
+Optimizer, and the Inference Engine, as well as some bacis of OpenCV, to develop an app that
+can be used on a video stream to detect cars and overlay bounding boxes.
+
 # Some Example Code
 
 
