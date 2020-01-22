@@ -32,6 +32,9 @@ Some useful functions for Edge apps include:
 
 
 # Exercise
+* https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_gui/py_video_display/py_video_display.html#display-video
+* https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_canny/py_canny.html#canny
+* https://www.learnopencv.com/read-write-and-display-a-video-using-opencv-cpp-python/
 
 ```python
 import argparse
