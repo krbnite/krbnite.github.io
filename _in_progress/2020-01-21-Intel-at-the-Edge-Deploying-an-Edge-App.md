@@ -31,6 +31,94 @@ Some useful functions for Edge apps include:
 * `cv2.imwrite`
 
 
+# Exercise
+
+```python
+import argparse
+import cv2
+import numpy as np
+import os
+
+def get_args():
+    '''
+    Gets the arguments from the command line.
+    '''
+    parser = argparse.ArgumentParser("Handle an input stream")
+    # -- Create the descriptions for the commands
+    i_desc = "The location of the input file"
+
+    # -- Create the arguments
+    parser.add_argument("-i", help=i_desc)
+    args = parser.parse_args()
+
+    return args
+
+
+def capture_stream(args):
+    ### TODO: Handle image, video or webcam
+    if args.i[-3:] in ['jpg','bmp','png']:
+        this_is_a_video=False
+    elif args.i[-3:] in ['avi','mp4']:
+        this_is_a_video=True
+    else:
+        raise ValueError('Must be image (ext: jpg, bmp, pn) or video (ext: avi, mp4).')
+
+    ### TODO: Get and open video capture
+    cap = cv2.VideoCapture(args.i)
+    # I don't think cap.open is actually necessary...
+    
+    if this_is_a_video:
+        # Create a video writer for the output video
+        # The second argument should be cv2.VideoWriter_fourcc('M','J','P','G')`
+        # on Mac, and `0x00000021` on Linux
+        opsys = os.uname().sysname.lower()
+        if opsys == 'linux':
+            vw_arg2 = 0x00000021
+        elif opsys == 'darwin':
+            vw_arg2 = cv2.VideoWriter_fourcc('M','J','P','G')
+        else:
+            raise OSError("Not sure what OS this is.")
+        out = cv2.VideoWriter('processed_'+args.i, vw_arg2, 30, (100,100))
+
+
+    while cap.isOpened():
+        still_processing, frame = cap.read()
+        if not still_processing:
+            break
+        if cv2.waitKey(10) == ord('q'):
+            print('User requests termination...')
+            break
+        
+        ### TODO: Re-size the frame to 100x100
+        frame = cv2.resize(frame,(100,100))
+
+        ### TODO: Add Canny Edge Detection to the frame, 
+        ###       with min & max values of 100 and 200
+        ###       Make sure to use np.dstack after to make a 3-channel image
+        frame = cv2.Canny(frame,100,200)
+        frame = np.dstack((frame, frame, frame))
+
+        ### TODO: Write out the frame, depending on image or video
+        if this_is_a_video:
+            out.write(frame)
+        else:
+            cv2.imwrite('processed_'+args.i, frame)
+
+    ### TODO: Close the stream and any windows at the end of the application
+    if this_is_a_video:
+        out.release()
+    cap.release()
+    cv2.destroyAllWindows()
+
+    
+def main():
+    args = get_args()
+    capture_stream(args)
+
+
+if __name__ == "__main__":
+    main()
+```
 
 * [Official OpenCV-Python Tutorials](https://docs.opencv.org/master/d6/d00/tutorial_py_root.html)
 * [Video Streaming in the Jupyter Notebook](https://towardsdatascience.com/video-streaming-in-the-jupyter-notebook-635bc5809e85)
