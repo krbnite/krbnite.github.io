@@ -123,6 +123,138 @@ if __name__ == "__main__":
     main()
 ```
 
+
+# Getting Creative
+Training a neural network is usually all about improving things like accuracy, precision, and
+recall.  Great!  But what do you do with the information thereafter?  We have all these great
+pre-trained models ready to go: how can we creatively repurpose them?
+
+For example, let's assume we have a detection model that draws bounding boxes like
+Leonardo Davinci -- what now?  
+
+Well, for a car detection model deployed in a self-driving car, it's easy to 
+think up of some use cases:
+* count the number of car in front of you, to the side, and behind
+* estimate the distances to the other cars on the road
+* track car trajectories (e.g., predict relative location several seconds out to
+  help guide its own trajectory)
+* for the police: for each car detected, further run a license plate detector, followed
+  by a license plate reader -- and do an automatic background check
+* following: track a specific car to follow
+
+For a model that detects signs on the road, you might then want to feed each detected
+sign to a sign classifier that can then be interpreted and implemented by the self-driving car.
+
+You get the point: creativity doesn't just stop at designing a good neural network architecture.  In
+fact, in this course it's not about that at all: it's all about the application!  
+
+
+
+# Exercise:  Keeping the Dog and Cat Separated
+```python
+import argparse
+import cv2
+import numpy as np
+from inference import Network
+
+INPUT_STREAM = "pets.mp4"
+CPU_EXTENSION = "/opt/intel/openvino/deployment_tools/inference_engine/lib/intel64/libcpu_extension_sse4.so"
+
+def get_args():
+    '''
+    Gets the arguments from the command line.
+    '''
+    parser = argparse.ArgumentParser("Run inference on an input video")
+    # -- Create the descriptions for the commands
+    m_desc = "The location of the model XML file"
+    i_desc = "The location of the input file"
+    d_desc = "The device name, if not 'CPU'"
+
+    # -- Add required and optional groups
+    parser._action_groups.pop()
+    required = parser.add_argument_group('required arguments')
+    optional = parser.add_argument_group('optional arguments')
+
+    # -- Create the arguments
+    required.add_argument("-m", help=m_desc, required=True)
+    optional.add_argument("-i", help=i_desc, default=INPUT_STREAM)
+    optional.add_argument("-d", help=d_desc, default='CPU')
+    args = parser.parse_args()
+
+    return args
+
+
+def infer_on_video(args):
+    # Initialize the Inference Engine
+    plugin = Network()
+
+    # Load the network model into the IE
+    plugin.load_model(args.m, args.d, CPU_EXTENSION)
+    net_input_shape = plugin.get_input_shape()
+
+    # Get and open video capture
+    cap = cv2.VideoCapture(args.i)
+    cap.open(args.i)
+
+    # Process frames until the video ends, or process is exited
+    frame_number = 0
+    alert_frame = 0
+    bad_cat_bad_dog_shame_on_you = 1
+    while cap.isOpened():
+        frame_number+=1
+        # Read the next frame
+        flag, frame = cap.read()
+        if not flag:
+            break
+        key_pressed = cv2.waitKey(60)
+
+        # Pre-process the frame
+        p_frame = cv2.resize(frame, (net_input_shape[3], net_input_shape[2]))
+        p_frame = p_frame.transpose((2,0,1))
+        p_frame = p_frame.reshape(1, *p_frame.shape)
+
+        # Perform inference on the frame
+        plugin.async_inference(p_frame)
+
+        # Get the output of inference
+        if plugin.wait() == 0:
+            result = plugin.extract_output()
+            ### TODO: Process the output
+            # Check for alert:
+            #     Check if an alert has been made within 30 frames:
+            #         Make alert
+            #         Record alert frame
+            if np.argmax(result) == bad_cat_bad_dog_shame_on_you:
+                if frame_number - alert_frame >= 30:
+                    print('frame_number:',frame_number)
+                    print('Hissssss! Hissss!! Hey! Go lay down!')
+                    alert_frame = frame_number
+            
+            
+
+        # Break if escape key pressed
+        if key_pressed == 27:
+            break
+
+    # Release the capture and destroy any OpenCV windows
+    cap.release()
+    cv2.destroyAllWindows()
+
+
+def main():
+    args = get_args()
+    infer_on_video(args)
+
+
+if __name__ == "__main__":
+    main()
+```
+
+
+
+
+
+# References & Further Reading
 * [Official OpenCV-Python Tutorials](https://docs.opencv.org/master/d6/d00/tutorial_py_root.html)
 * [Video Streaming in the Jupyter Notebook](https://towardsdatascience.com/video-streaming-in-the-jupyter-notebook-635bc5809e85)
 * Maarten Breddels: [ipywebrtc examples](https://hub.gke.mybinder.org/user/maartenbreddels-ipywebrtc-pv0g5riu/tree/docs/source)
