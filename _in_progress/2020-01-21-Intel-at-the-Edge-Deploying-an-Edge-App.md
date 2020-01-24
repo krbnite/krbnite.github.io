@@ -251,9 +251,55 @@ if __name__ == "__main__":
 ```
 
 
+# MQTT
 
 
+* YouTube: [What is MQTT and How It Works](https://www.youtube.com/watch?v=EIxdz-2rhLs)
+* YouTube: [How to Get Started with MQTT](https://www.youtube.com/watch?v=tQmXWNd1pNk)
+* YouTube: [What is an MQTT Broker Clearly Explained](https://www.youtube.com/watch?v=WmKAWOVnwjE)
+* YouTube: [Understanding MQTT: How Smart Home Devices Communicate](https://www.youtube.com/watch?v=NjKK5ab0-Kk)
+* YouTube: [Raspberry Pi - Getting started with MQTT](https://www.youtube.com/watch?v=Pb3FLznsdwI)
 
+
+This [video](https://www.youtube.com/watch?v=Pb3FLznsdwI) has really good `paho-mqtt` starter code:
+```
+# MQTT Client Demo
+# Continuously monitor two different MQTT topics for data.
+# Check if the received data matches two predefined 'commands'.
+
+import paho.mqtt.client as mqtt
+
+# The callback for when the client receives a CONNACK response from the server
+def on_connect(client, userdata, flags, rc):
+    print("Connected with result code "+str(rc))
+    # Subscribing in on_connect() - If we lose connection and 
+    # reconnect, then subscriptions will be renewed.
+    client.subscribe("CoreElectronics/test")
+    client.subscribe("CoreElectronics/topic")
+
+# The callback for when a PUBLISH message is received from the server/broker.
+def on_message(client, userdata, msg):
+    print(msg.topic+' '+str(msg.payload))
+    if msg.payload == "Hello":
+        print("Received 'Hello' message: Do something.")
+        # Do something.
+    elif msg.payload == "World!":
+        print("Received "World!" message: Do something else.")
+        # Do something else.
+        
+# Create an MQTT client and attach our callbacks
+client = mqtt.Client()
+client.on_connect = on_connect
+client.on_message = on_message
+
+# Connect Client to Broker
+client.connect("test.mosquitto.org", 1883, 60)
+
+# Process network traffic and dispatch callbacks. This will also handle
+# reconnecting.  There are other loop*() functions made available; check
+# the documentation @ https://github.com/eclipse/paho.mqtt.python
+client.loop_forever()
+```
 # References & Further Reading
 * [Official OpenCV-Python Tutorials](https://docs.opencv.org/master/d6/d00/tutorial_py_root.html)
 * [Video Streaming in the Jupyter Notebook](https://towardsdatascience.com/video-streaming-in-the-jupyter-notebook-635bc5809e85)
