@@ -172,3 +172,11 @@ import sys
 sys.path.append('/opt/intel/openvino/python/python3.6/')
 import openvino
 ```
+
+
+-----------------------
+
+Things to get back to:
+* https://software.intel.com/en-us/articles/get-started-with-neural-compute-stick
+* http://www.jwrr.com/ncs2-2/
+* https://docs.openvinotoolkit.org/2019_R3.1/_docs_install_guides_installing_openvino_docker_linux.html
