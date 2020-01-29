@@ -403,6 +403,9 @@ Hopefully this gap is fleshed out in detail in the upcoming Phase 2 of the schol
 
 
 # References & Further Reading
+
+* [Paho-MQTT Docs on PyPi](https://pypi.org/project/paho-mqtt)
+* [Paho-MQTT Examples on GitHub](https://github.com/eclipse/paho.mqtt.python)
 * [Official OpenCV-Python Tutorials](https://docs.opencv.org/master/d6/d00/tutorial_py_root.html)
 * [Video Streaming in the Jupyter Notebook](https://towardsdatascience.com/video-streaming-in-the-jupyter-notebook-635bc5809e85)
 * Maarten Breddels: [ipywebrtc examples](https://hub.gke.mybinder.org/user/maartenbreddels-ipywebrtc-pv0g5riu/tree/docs/source)
