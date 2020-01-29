@@ -254,14 +254,8 @@ if __name__ == "__main__":
 # MQTT
 
 
-* YouTube: [What is MQTT and How It Works](https://www.youtube.com/watch?v=EIxdz-2rhLs)
-* YouTube: [How to Get Started with MQTT](https://www.youtube.com/watch?v=tQmXWNd1pNk)
-* YouTube: [What is an MQTT Broker Clearly Explained](https://www.youtube.com/watch?v=WmKAWOVnwjE)
-* YouTube: [Understanding MQTT: How Smart Home Devices Communicate](https://www.youtube.com/watch?v=NjKK5ab0-Kk)
-* YouTube: [Raspberry Pi - Getting started with MQTT](https://www.youtube.com/watch?v=Pb3FLznsdwI)
-
-
-This [video](https://www.youtube.com/watch?v=Pb3FLznsdwI) has really good `paho-mqtt` starter code:
+This [video](https://www.youtube.com/watch?v=Pb3FLznsdwI) has really good `paho-mqtt` starter code
+(for more info, see the [`paho-mqtt` docs](https://pypi.org/project/paho-mqtt/)):
 ```
 # MQTT Client Demo
 # Continuously monitor two different MQTT topics for data.
@@ -300,15 +294,117 @@ client.connect("test.mosquitto.org", 1883, 60)
 # the documentation @ https://github.com/eclipse/paho.mqtt.python
 client.loop_forever()
 ```
+
+More on MQTT:
+* YouTube: [What is MQTT and How It Works](https://www.youtube.com/watch?v=EIxdz-2rhLs)
+* YouTube: [How to Get Started with MQTT](https://www.youtube.com/watch?v=tQmXWNd1pNk)
+* YouTube: [What is an MQTT Broker Clearly Explained](https://www.youtube.com/watch?v=WmKAWOVnwjE)
+* YouTube: [Understanding MQTT: How Smart Home Devices Communicate](https://www.youtube.com/watch?v=NjKK5ab0-Kk)
+* YouTube: [Raspberry Pi - Getting started with MQTT](https://www.youtube.com/watch?v=Pb3FLznsdwI)
+* [`paho-mqtt` docs](https://pypi.org/project/paho-mqtt/)
+
+# FFMPEG's FFSERVER
+Maybe MQTT sends an alert that an intruder has been detected, or that a rare
+species of bird has been sighted!  Is it good enough to simply know this happened,
+or would you be interested in some evidence?  Fact is, sometimes you 
+may want to want to stream video feeds to a server, despite 
+video streaming being so resource intensive and MQTT not being able to handle it.
+
+What do you do?
+
+You can use the [ffmpeg](https://www.ffmpeg.org/) library to help, which has a server
+(called `ffserver`) that video frames can be sent to for further distribution.  
+
+To use `ffserver` you need a config file, which specifies settings such as ports and IP.  The
+port that receives video frames listens to the system's `stdout` buffer, which is how we will
+access it from Python:
+```python
+import sys
+...
+sys.stdout.buffer.write(frame)
+sys.stdout.flush()
+```
+
+To launch the `ffserver`:
+```
+sudo ffserver -f ./ffmpeg/server.conf
+```
+
+To have `ffserver` work harmoniuosly with your Python script, you must
+pipe your script's output into it:
+```
+python app.py {appArgs} | ffmpeg {ffmpegArgs}
+```
+
+Some `ffmpeg` arguments related to our use of `ffserver`:
+* -f: format (we will use "rawvideo")
+* -pixel_format (we will use "bgr24")
+* -video_size (we will use "1280x720")
+* -framerate (we will use "24")
+* -v (we will set to "warning")
+* -i (where is it coming from; if you are piping into ffmpeg, use "-")
+
+So, `ffserver` helps to serve video frames...but serve to what?  Well,
+another server somewhere else.  In this course, we
+will use a Node server to host a webpage; this Node server will acquire video
+frames from our FFServer.  
+
+* https://www.ffmpeg.org/ffmpeg.html
+
+
+## Odd Choice of Software
+On the [FFMPEG website itself](https://trac.ffmpeg.org/wiki/ffserver), it says:
+> "Warning: ffserver has been removed on 2018-01-06. If you still need it checkout commit 2ca65fc or use the 3.4 release branch."
+
+I looked into this because, though I have `ffmpeg` installed on my computer already, I couldn't
+seem to find any trace of `ffserver`.  Turns out I have FFMPEG version 4.0 and the last time 
+`ffserver` was included was in version 3.4.  
+
+Technically, I can [`brew install` an older version of FFMPEG onto my MacBook](https://discourse.brew.sh/t/how-to-install-the-old-version-of-ffmpeg/2286), but ... why?  There exist alternatives that are still
+supported (`ffserver` has not been supported in just over 2 years now).  FFMPEG's page on removing
+`ffserver` even recommends trying [mkvserver_mk2](https://github.com/klaxa/mkvserver_mk2).
+
+I'm curious why Udacity would choose something that 
+has been abandoned...?  Oddly, at the time of this writing, Udacity does not even indicate
+on their tutorial page that `ffserver` does not came with the latest install of FFMPEG.  For
+example, they just say to download FFMPEG, then go on to discuss how to use `ffserver`:
+> "You can download FFmpeg from ffmpeg.org. Using ffserver in particular requires a configuration file that 
+>  we will provide for you. This config file sets the port and IP address of the server, as well as settings 
+>  like the ports to receive video from, and the framerate of the video. These settings can also allow it to
+>  listen to the system stdout buffer, which is how you can send video frames to it in Python."
+
+The closest they come to even giving suspicion that you should look at something comes at
+the end of that particular tutorial:
+> We covered FFMPEG and ffserver, but as you may guess, there are also other ways to stream video to a browser. Here are a couple other options you can investigate for your own use:
+> * [Set up Your Own Server on Linux](https://opensource.com/article/19/1/basic-live-video-streaming-server)
+> * [Use Flask and Python](https://www.pyimagesearch.com/2019/09/02/opencv-stream-video-to-web-browser-html-page/)
+
+The last link about using a Flask server interests me too: why in a class where we are
+using Python do we even use FFSERVER or Node?  Why not just keep it simple and use Flask?
+
+(My thought for Node is that it seems very common in the IoT space, so it's good to introduce... But
+still not sure about using FFSERVER.)
+
+# Exercise: OpenVINO + MQTT + FFSERVER + Node
+It's not clear that it's worth putting the Python code here since there is so much
+going on in this example.  After developing the Python code, we had to `cd` into various
+folders and run `npm install`, then another folder to run `npm run dev`, and another
+to start up FFSERVER.  We had 4 terminals open to do all this.  And really, to do
+all this, we were told exactly what to do:  I have no true understanding of why
+I ran the various `npm` (node package manager) commands.
+
+My 2 cents is to learn more about setting up servers via the links they provided:
+* [Set up Your Own Server on Linux](https://opensource.com/article/19/1/basic-live-video-streaming-server)
+* [Use Flask and Python](https://www.pyimagesearch.com/2019/09/02/opencv-stream-video-to-web-browser-html-page/)
+
+
+Hopefully this gap is fleshed out in detail in the upcoming Phase 2 of the scholarship.
+
+
+
 # References & Further Reading
 * [Official OpenCV-Python Tutorials](https://docs.opencv.org/master/d6/d00/tutorial_py_root.html)
 * [Video Streaming in the Jupyter Notebook](https://towardsdatascience.com/video-streaming-in-the-jupyter-notebook-635bc5809e85)
 * Maarten Breddels: [ipywebrtc examples](https://hub.gke.mybinder.org/user/maartenbreddels-ipywebrtc-pv0g5riu/tree/docs/source)
   - e.g., [CameraStream](https://hub.gke.mybinder.org/user/maartenbreddels-ipywebrtc-pv0g5riu/notebooks/docs/source/CameraStream.ipynb)
   
-
-
-Things to get back to:
-* https://software.intel.com/en-us/articles/get-started-with-neural-compute-stick
-* http://www.jwrr.com/ncs2-2/
-* https://docs.openvinotoolkit.org/2019_R3.1/_docs_install_guides_installing_openvino_docker_linux.html
