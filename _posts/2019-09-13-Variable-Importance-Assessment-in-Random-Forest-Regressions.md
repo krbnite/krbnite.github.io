@@ -11,10 +11,47 @@ Today, I'm reading through 2009's
 In what follows are quotes and notes.
 
 
+# On Variable Importance (Philosophy)
+
 "Variable importance in regression is an important topic in applied statistics that keeps coming up in 
 spite of critics who basically claim that the question should not have been asked in the first place."
 
+"Variable importance is not very well defined as a concept. Even in the well-developed linear model and 
+the standard n>>p situation, there is no theoretically defined variable importance metric in the sense 
+of a parametric quantity that a variable importance estimator should try to estimate."
 
+"In the absence of a clearly agreed true value, ad hoc proposals for empirical assessment of variable 
+importance have been made, and desirability criteria for these have been formulated, for example, 'decomposition' 
+of R2 into 'nonnegative contributions attributable to each regressor' has been postulated. Popular approaches 
+for empirically assessing a variable’s importance include squared correlations (a completely marginal approach) 
+and squared standardized coefficients (an approach conditional on all other variables in the model)."
+
+Given no clear definition of variable importance, and the plethora of choices available to define such a thing,
+one must be prudent.  "Depending on the research question at hand, the focus of the variable importance
+assessment in regression can be explanatory or predictive importance or a mixture of both."  What definition
+best suits your goals?  (Heck, you can use more than one, as long as you clearly know what each measure
+means and what are its pros and cons.)
+
+For an intuition concerning what constitutes an explanatory measure of importance versus a predictive 
+measure of importance, the authors provide two chains: 
+1. `X2 -> X1 -> Y`
+2. `X2 <- X1 -> Y`   
+
+Assuming
+all relationships are linear, the authors discuss that two variable importances often used with linear models
+(e.g., squares of standardized coefficients) would zero out the importance of X2 for both causal chains since,
+conditional on X1, X2 does not contribute any additional information to the prediction.  Given this, do you
+consider this type of importance explanatory or predictive?  It is neither, at least not purely.  It makes
+sense for predictive purposes, but doesn't tell the whole story (e.g., if one removes X1, then a prediction is
+still possible as X2 will take X1's place).  For explanatory purposes, it makes sense for causal chain (ii), since
+we see in that chain that X2 is only correlated with Y since both are driven by X1; thus, X2 should not be considered
+an important explanatory/causal variable for Y.  However, for causal chain (i), this measure of variable importance
+is not explanatory: X2 very clearly drives Y, thus should not be considered to have zero explanatory importance!  In
+practice, a linear model does not actually differentiate which of the two causal chains are at play.  So the variable 
+importance might be accidentally explanatory in the second causal chain, but not generally explanatory.  It more
+generally a measure of predictive power, though as mentioned, just one story of predictive power among many.
+
+# Linear Regression vs Random Forest
 "Linear regression is a classical parametric method which requires explicit modeling of nonlinearities and 
 interactions, if necessary. It is known to be reasonably robust, if the number of observations n is distinctly 
 larger than the number of variables p (n>p). With more variables than observations (p>n or even p>>n), linear regression 
@@ -24,7 +61,17 @@ combination of both."
 "Random forests, on the other hand, are nonparametric and allow nonlinearities and interactions to be learned 
 from the data without any need to explicitly model them. Also, they have been reported to work well not only 
 for the n>>p setting but also for data mining inthe p>>n setting."
+
+## What is a Random Forest anyway?
+"A random forest is random in two ways: (i) each tree is based on a random subset of the observations, and 
+(ii) each split within each tree is created based on a random subset of mtry candidate variables. Trees are 
+quite unstable, so that this randomness creates differences in individual trees’ predictions. The overall 
+prediction of the forest is the average of predictions from the individual trees—because individual trees 
+produce multidimensional step functions, their average is again a multidimensional step function that can 
+nevertheless predict smooth functions because it aggregates a large number of different trees."
  
+
+# Improving Upon the Original Random Forest
 "The splitting approach in CART trees has been known for a long time to be unfair in the presence of regressor 
 variables of different types, categorical variables with different numbers of categories, or differing numbers 
 of missing values  (cf., e.g.,Breiman 1984; 
@@ -49,12 +96,7 @@ says, "variable selection based on standard impurity measures as the Gini Index 
 that, e.g., splitting variables with a high amount of missing values —- even if missing completely at random 
 (MCAR) —- are artificially preferred.")
 
-"A random forest is random in two ways: (i) each tree is based on a random subset of the observations, and 
-(ii) each split within each tree is created based on a random subset of mtry candidate variables. Trees are 
-quite unstable, so that this randomness creates differences in individual trees’ predictions. The overall 
-prediction of the forest is the average of predictions from the individual trees—because individual trees 
-produce multidimensional step functions, their average is again a multidimensional step function that can 
-nevertheless predict smooth functions because it aggregates a large number of different trees."
+
 
 An important difference between CART-like RFs and CI-RFs is that the first builds new n-sample data sets
 for each tree by sampling with replacement, while the CI-RFs provide each tree with about 63% of the 
@@ -69,40 +111,22 @@ use conditional permuation importance as the measure of variable importance; thi
 possible to apply to CART-like RFs.
 * GIST: Know that CI-RFs exist, but do not worry about 'em too much.
 
-"Variable importance is not very well defined as a concept. Even in the well-developed linear model and 
-the standard n>>p situation, there is no theoretically defined variable importance metric in the sense 
-of a parametric quantity that a variable importance estimator should try to estimate."
 
-"In the absence of a clearly agreed true value, ad hoc proposals for empirical assessment of variable 
-importance have been made, and desirability criteria for these have been formulated, for example, 'decomposition' 
-of R2 into 'nonnegative contributions attributable to each regressor' has been postulated. Popular approaches 
-for empirically assessing a variable’s importance include squared correlations (a completely marginal approach) 
-and squared standardized coefficients (an approach conditional on all other variables in the model)."
+# Thoughts on VIMPs in a RF
+This leads us into variable importances associated with random forests.  
 
-Given no clear definition of variable importance, and the plethora of choices available to define such a thing,
-one must be prudent.  "Depending on the research question at hand, the focus of the variable importance
-assessment in regression can be explanatory or predictive importance or a mixture of both."  What definition
-best suits your goals?  (Heck, you can use more than one, as long as you clearly know what each measure
-means and what are its pros and cons.)
+For example, the conditional permutation
+importance advocated by Strobl2008: Is it really "better" than regular permutation importance?  
 
-For an intuition concerning what constitutes an explanatory measure of importance versus a predictive 
-measure of importance, the authors provide two chains: (i) X2 -> X1 -> Y;  (ii) X2 <- X1 -> Y.  Assuming
-all relationships are linear, the authors discuss that two variable importances often used with linear models
-(e.g., squares of standardized coefficients) would zero out the importance of X2 for both causal chains since,
-conditional on X1, X2 does not contribute any additional information to the prediction.  Given this, do you
-consider this type of importance explanatory or predictive?  It is neither, at least not purely.  It makes
-sense for predictive purposes, but doesn't tell the whole story (e.g., if one removes X1, then a prediction is
-still possible as X2 will take X1's place).  For explanatory purposes, it makes sense for causal chain (ii), since
-we see in that chain that X2 is only correlated with Y since both are driven by X1; thus, X2 should not be considered
-an important explanatory/causal variable for Y.  However, for causal chain (i), this measure of variable importance
-is not explanatory: X2 very clearly drives Y, thus should not be considered to have zero explanatory importance!  In
-practice, a linear model does not actually differentiate which of the two causal chains are at play.  So the variable 
-importance might be accidentally explanatory in the second causal chain, but not generally explanatory.  It more
-generally a measure of predictive power, though as mentioned, just one story of predictive power among many.
+Before reading
+this paper, I thought the answer was probably "yes," but now I'm not so sure.  
 
-This leads us into variable importances associated with random forests.  For example, the conditional permutation
-importance advocated by Strobl2008: Is it really "better" than regular permutation importance?  Before reading
-this paper, I thought the answer was probably "yes," but now I'm not so sure.  Basically, CPImp acts like
+Recall the two causal chains from before:
+1. `X2 -> X1 -> Y`
+2. `X2 <- X1 -> Y`
+
+
+Basically, CPImp acts like
 the conditional importance described above, associated with a linear model:  there is an assumption about the
 type of causal chain implicit in the method.  We may reduce how many variables we look at and look only
 at direct relationships, but we have lost the true causal story of chain (i).  We are telling a partial 
