@@ -28,3 +28,5 @@ Stable Variable Importance Values](https://ieeexplore.ieee.org/stamp/stamp.jsp?a
   - Importantly, independent of what VImp measure one uses, "because of the random way in which training data 
     and variables are selected to determine the split at each node in Random Forests, importance rankings 
     differ from one model run to another, especially when if only a small ntree are generated."
+
+Jupyter Notebook: https://github.com/krbnite/krbnite.github.io/blob/master/_notebooks/2019-09-22-Stabilizing-Variable-Importance-Fluctuations-in-a-Random-Forest.ipynb
