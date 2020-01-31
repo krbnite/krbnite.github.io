@@ -101,5 +101,40 @@ the device itself (i.e., from the cloud).
 
 RFID tags: improvement over barcodes.
 
+An IoT device is a computer, but that's not its main point or main function: the computer
+plays a supporting role.  Computers are general purpose, while IoT devices are very
+purpose specific (both software and hardware).  A car does computation -- but only for
+car-related tasks.  
 
- 
+IoT
+* convergence of trends
+  - cost of hardware (e.g., a computer in 1945 might have cost $0.5M, but a more capable
+    laptop today might only run you $500; better, since IoT devices do not need the full
+    general purpose power of a laptop, you'll pay much less;  this makes it easier today
+    to say, "Hey, let's put a computer in this thing.")
+  - size of hardware (again, the computer in 1945 might be the size of a room; now, it can
+    be the size of a postage stamp)
+  - computational throughput and speed (1945: 5k/s; now 18B/s)
+  - internet access (1945: didn't exist; now: can access it almost anywhere)
+  - wireless networking --> wireless internet access
+  - data cost --> cheap, wireless internet access
+
+Networking allows remote devices to have access to powerful servers, databases, and analytics.
+
+What kind of IoT or smart devices are in your life:
+* fridge
+* microwave
+* dvr
+* tv
+* game machine
+* phone
+* watch
+* home automation systems
+* motion sensors
+* health trackers (Fitbit)
+* medical devices (pace maker, insulin pump)
+* RFID tags
+* traffic lights
+* security cameras
+
+
