@@ -53,7 +53,103 @@ not need a quadcore CPU running at a few GHz to do a PowerPoint presentation.  T
 b/c the GP computer has to be ready for anything -- later on, you may be watching a movie,
 while streaming on Google Hangouts and surfing the internet (with 23 tabs open).
 
+Another aspect of embedded systems:  software and hardware co-design (GP systems usually
+use hardware and software developed by different companies). So design is much harder: you
+have to be both a SW and HW designer!
+
+The embedded system diagram:
+```
+                     ___________________
+[Sensors]-->[ADC]-->| [microcontroller] |-->[DAC]-->[Actuators]
+        |__________>|   ^         ^     |______________|
+                    |   v         v     |
+                    | [IP] <--> [FPGA]  |
+                     -------------------
+```
+
+* Sensors: Receive data from outside world
+  - a microphone is a sensor
+  - a webcam is a a sensor
+  - a car's brake pedal is a sensor
+* Actuators: Portray results or effects to outside world
+  - a speaker is an actuator
+  - a computer screen is an actuator
+  - a car's brake lights are actuators
+* IP: Intellectural Property Core
+  - designed for very specific purpose
+  - a reusable unit of logic or functionality 
+  - expensive to make if you only need one, but cheap to mass produce
+  - we won't design IP cores in this class, but what we will go over is buying ready-made ("off the shelf") IP cores
+* FPGA: Field Programmable Gate Array
+  - can be reconfigured for different purposes
+  - complex; won't be used in this class
+
+# Microcontrollers
+A "microcontroller" can be thought of as a smaller, weaker "microprocessor".  The microcontroller
+is used for specific purpose devices (embedded systems, IoT), so doesn't need to be as powerful:
+usually it's slower than a microprocessor, has less memory, etc.  
+
+Microcontrollers need to be programmed (usually in C); such programs are written on a regular 
+computer (called the host, e.g., your MacBook Pro), then transferred from the host to 
+the microcontroller (placed in `mctrlr` memory).
 
 
+Some Components of Embedded Systems work
+* development board - 
+  - https://en.wikipedia.org/wiki/Microprocessor_development_board
+* processors
+  - GP: overdesigned; can do a little of everything; tends to be expensive
+  - DSP: supports DSP functions; speed vector instructions (GPs usually have scalar instructions); cheaper, but limited https://en.wikipedia.org/wiki/Digital_signal_processor
+* simple sensors
+  - thermistor: reports temp
+  - photoresistor: reports light intensity
+  - potentiometer
+* complex sensors
+  - CMOS camera: captures images (special purpose light sensor)
+  - ethernet controller: enables network communication (listens)
+* simple actuators
+  - LEDs, LCD displays
+* complex actuators
+  - servo motor (moves things)
+  - ethernet controller:  enables network communication (output)
+* ADC - Analog-to-Digital Converter
+  - example: sound is an anolog quantity; when going into microphone, the pressure
+    waves are converted to voltage waves, whose value are then digitized into discrete voltage 
+    levels (this process is also happening with time too:  continuous time --> discrete time steps)
+* DAC - Digital-to-Analog Converter
+  - example: after a microphone's input has been digitized and processed (e.g., some reverb is added),
+    then it must be "continuized" before blasting out of speaker
+    
+Things we'll be using in class:
+* development board (has microcontroller w/ some code running on it)
+  - Arduino
+  - Rasberry Pi
+  - might be interested in boards with cool things, like compasses, accelerometers,
+    magnetometers, touch sensor screens, etc (though none of this is required)
+* cables
+  - USB cable
+  - jumper wires
+* inputs
+  - potentiometer
+  - photoresistor
+  - keypad
+  - buttons
+* breadboard 
+  - used for quick, impermanent wiring 
+  - holes fit 24-gauge wiring
+  - see diagram below
+  
+Breadboard
+https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard/all
 
-
+* all holes in leftside column are connected (this is your power supply and ground)
+* all holes in a row are connected (this is how you connect components)
+```
+* *   * - * - * - * - *
+| |
+* *   * - * - * - * - *
+| |
+* *   * - * - * - * - *
+| |
+* *   * - * - * - * - *
+```
