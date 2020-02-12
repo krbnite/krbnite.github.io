@@ -155,8 +155,16 @@ https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard/all
 ```
 
 
+------------------------
 
+# HW
+The Apple Watch has a screen that senses both touch and force, distinguishing between a light tap and a more firm press.  These sensing features provide context-dependent capabilities, from tapping in a security code to unlock the watch, to navigating through various screens, to tracing out alphanumeric characters and punctuation that are transcribed into digital text.  For additional control over screen navigation, the Apple Watch also has (i) a physical oblong button that serves different functions depending on how it's pressed (e.g., 1 press vs 2 quick presses) and (ii) a knob (called the "Digital Crown") that can be used to scroll and/or zoom, and which can also be pressed as a button for additional functionality (e.g, 1 press takes you to home screen).  The Apple Watch has a microphone that allows the user to issue voice commands (activated by hold down the digital crown), dictate text messages (an option provided by an on-screen button on the associated text messaging app screen), or take phone calls.  When issuing voice commands, a voice assistant (named "Siri") will provide cues and response outputs via the onboard speaker.  Both the text messaging and phone call functionality (as well as additional features and extensions) are enabled by pairing the Apple Watch with the user's iPhone via Bluetooth or WiFi.  The Apple Watch also supports Near Field Communication (NFC), which gives the device additional functionality, e.g., to be used in place of a credit card (via Apple Pay) or as a plane boarding ticket (via an airline's app).  A haptic feedback engine along with the speaker provide context-dependent tactile and auditory cues and feedback (e.g., for an incoming phone call, a notification, and so on). Onboard sensors (specifically, an accelerometer, gyroscope, and photoplethymograph) and built-in GPS track the user's activity throughout the day, which is summarized and presented on screen as 3 rings surrounding the clock face of the watch (further details can be accessed by pressing on the rings to bring up the associated app).  Due to the overwhelming amount of functionality, the Apple Watch has a relatively short battery life as far as fitness trackers go, often requiring daily instead of weekly charging.  Depending on the version of the Apple Watch one has, many more interface features provided (e.g., from Series 4 on, one may use the Apple Watch as an electrocardiogram (ECG) to monitor heart health; e.g., from Series 5 on, there is onboard compass functionality).  
 
+The inputs to the Apple Watch include:
+* touches and taps on the screen
+* microphone inputs
+* physical button
+* physical knob
 
 -------------------
 
@@ -179,3 +187,7 @@ Some Smart Devices (& Related Stuff):
 * [Magic Hue (RGBCW) Multicolor, Dimmable Smart Light (LED)](https://www.amazon.com/dp/B07VJL4MDH/)
 
 
+
+* [How the Apple Watch Works](https://electronics.howstuffworks.com/gadgets/high-tech-gadgets/apple-watch2.htm)
+* Quora: [What are the most popular embedded systems?](https://www.quora.com/What-are-the-most-popular-embedded-systems)
+* [Understanding of Embedded Systems](https://www.edgefxkits.com/blog/embedded-systems-with-applications/)
