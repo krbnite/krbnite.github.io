@@ -153,3 +153,29 @@ https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard/all
 | |
 * *   * - * - * - * - *
 ```
+
+
+
+
+
+-------------------
+
+Some Smart Devices (& Related Stuff):
+* [Home Assistant](https://www.home-assistant.io)
+  - [Getting Started](https://www.home-assistant.io/getting-started/)
+  - YouTube (TheHookUp): [Home Assistant Beginners Guide](https://www.youtube.com/watch?v=sVqyDtEjudk)
+  - YouTube (DrZzs): [Intro to Home Assistant & Smart Home hubs: Hassio vs Alexa vs Google Home](https://www.youtube.com/watch?v=pVxoSXeC2Jw)
+* [IFTTT (If This Then That)](https://ifttt.com/)
+* [Arlo Security Cameras](https://www.arlo.com/en-us/default.aspx)
+* [Philips Hue (Smart Lighting)](https://www2.meethue.com/en-us)
+  - [Philips Hue White & Color Ambiance A19 LED Smart Bulb (Bluetooth & Zigbee Compatible)](https://www.amazon.com/dp/B07QWB3H1Q)
+* [GE Enbrighten Z-Wave Plus Smart Dimmer](https://www.amazon.com/GE-Enbrighten-Repeater-SmartThings-14294/dp/B01MUCZA1C)
+* [GE Enbrighten Z-Wave Plus Smart Switch](https://www.amazon.com/GE-Enbrighten-SimpleWire-SmartThings-46201/dp/B07RRBT6W5/)
+* [Wyze Bulb](https://wyze.com/wyze-bulb.html)
+* [Wyze Smart Home Plug](https://www.amazon.com/Wyze-Labs-WLPP1-Smart-Two-Pack/dp/B07XZT24B8)
+* [Wyze Indoor Smart Home Camera](https://www.amazon.com/Wyze-1080p-Indoor-Camera-Vision/dp/B07DGR98VQ/)
+* [Best smart bulbs for your connected home](https://www.techhive.com/article/3129887/best-smart-bulbs.html)
+* [LampUX Smart LED WiFi Color Changing Light Bulbs](https://www.amazon.com/dp/B07PY5ZFM7/)
+* [Magic Hue (RGBCW) Multicolor, Dimmable Smart Light (LED)](https://www.amazon.com/dp/B07VJL4MDH/)
+
+
