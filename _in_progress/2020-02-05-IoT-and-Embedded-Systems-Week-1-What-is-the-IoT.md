@@ -1,5 +1,5 @@
 ---
-title: IoT and Embedded Systems (What is the IoT?)
+title: IoT and Embedded Systems (Week 1: What is the IoT?)
 layout: post
 tags: edge iot easi
 ---
