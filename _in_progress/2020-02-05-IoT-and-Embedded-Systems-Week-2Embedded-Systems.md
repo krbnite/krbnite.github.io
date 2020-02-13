@@ -1,5 +1,5 @@
 ---
-title: IoT (Embedded Systems)
+title: IoT (Week 2: Embedded Systems)
 layout: post
 tags: iot edge easi
 ---
