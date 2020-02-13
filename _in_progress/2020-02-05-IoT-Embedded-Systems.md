@@ -158,15 +158,85 @@ https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard/all
 ------------------------
 
 # HW
-The Apple Watch has a screen that senses both touch and force, distinguishing between a light tap and a more firm press.  These sensing features provide context-dependent capabilities, from tapping in a security code to unlock the watch, to navigating through various screens, to tracing out alphanumeric characters and punctuation that are transcribed into digital text.  For additional control over screen navigation, the Apple Watch also has (i) a physical oblong button that serves different functions depending on how it's pressed (e.g., 1 press vs 2 quick presses) and (ii) a knob (called the "Digital Crown") that can be used to scroll and/or zoom, and which can also be pressed as a button for additional functionality (e.g, 1 press takes you to home screen).  The Apple Watch has a microphone that allows the user to issue voice commands (activated by hold down the digital crown), dictate text messages (an option provided by an on-screen button on the associated text messaging app screen), or take phone calls.  When issuing voice commands, a voice assistant (named "Siri") will provide cues and response outputs via the onboard speaker.  Both the text messaging and phone call functionality (as well as additional features and extensions) are enabled by pairing the Apple Watch with the user's iPhone via Bluetooth or WiFi.  The Apple Watch also supports Near Field Communication (NFC), which gives the device additional functionality, e.g., to be used in place of a credit card (via Apple Pay) or as a plane boarding ticket (via an airline's app).  A haptic feedback engine along with the speaker provide context-dependent tactile and auditory cues and feedback (e.g., for an incoming phone call, a notification, and so on). Onboard sensors (specifically, an accelerometer, gyroscope, and photoplethymograph) and built-in GPS track the user's activity throughout the day, which is summarized and presented on screen as 3 rings surrounding the clock face of the watch (further details can be accessed by pressing on the rings to bring up the associated app).  Due to the overwhelming amount of functionality, the Apple Watch has a relatively short battery life as far as fitness trackers go, often requiring daily instead of weekly charging.  Depending on the version of the Apple Watch one has, many more interface features provided (e.g., from Series 4 on, one may use the Apple Watch as an electrocardiogram (ECG) to monitor heart health; e.g., from Series 5 on, there is onboard compass functionality).  
 
-The inputs to the Apple Watch include:
-* touches and taps on the screen
-* microphone inputs
-* physical button
-* physical knob
+The Apple Watch (Series 4)
+To a first approximation, the interface of an Apple Watch is fairly simple and familiar feeling: like a more traditional watch, it straps on the wrist and it has a screen that displays the time (and other information).  However, the similarities with a classical watch end rapidly after this superficial consideration of appearance.  
+
+The Apple Watch has a screen that senses both touch and force, distinguishing between a light tap and a more firm press.  These sensing features provide context-dependent capabilities, from tapping in a security code to unlock the watch, to navigating through various screens, to tracing out alphanumeric characters and punctuation that are transcribed into digital text.  For additional control over screen navigation, the Apple Watch also has (i) a physical oblong button that serves different functions depending on how it's pressed (e.g., 1 press vs 2 quick presses) and (ii) a knob (called the "Digital Crown") that can be used to scroll through and/or zoom in and out of on-screen content, and which can also be pressed as a button for additional functionality (e.g, 1 press takes you to home screen).  The Apple Watch has a microphone that allows the user to issue voice commands (activated by holding down the digital crown), dictate text messages (an option provided by an on-screen button on the associated text messaging app screen), or take phone calls.  When issuing voice commands, a voice assistant (named "Siri") will provide cues and response outputs via the onboard speaker.  Both the text messaging and phone call functionality (as well as additional features and extensions) are enabled by pairing the Apple Watch with the user's iPhone via Bluetooth or WiFi.  The Apple Watch also supports Near Field Communication (NFC), which gives the device additional functionality, e.g., to be used in place of a credit card (via Apple Pay) or as a plane boarding ticket (via an airline's app).  A haptic feedback engine along with the speaker provide context-dependent tactile and auditory cues and feedback (e.g., for an incoming phone call, a notification, and so on). Onboard sensors (specifically, an accelerometer, gyroscope, and photoplethymograph) and built-in GPS track the user's activity and heart rate throughout the day, which is summarized and presented on screen as 3 rings surrounding the clock face of the watch (further details can be accessed by pressing on the rings to bring up the associated app).  The built-in GPS allows one to navigate their surroundings, especially when paired with the user's iPhone.  Due to the overwhelming amount of functionality, the Apple Watch has a relatively short battery life as far as fitness trackers go, often requiring daily instead of weekly (or better) charging.  Depending on the version of the Apple Watch one has, many more interface features may be provided (e.g., from Series 4 on, one may use the Apple Watch as an electrocardiogram (ECG) to monitor heart health; e.g., from Series 5 on, there is onboard compass functionality).  
+
+iLife A4 Robot Vacuum Cleaner
+For my second embedded system, I've went with something much simpler than an Apple Watch: the iLife A4 Vacuum Cleaner.  This smart vacuum is just a notch above a traditional "dumb" vacuum: like a traditional vacuum, it has a power button to turn it on and off.  However, once on, it finds its way around a room on its own -- and when it's running low on battery, it automatically navigates back to its charging station. Furthermore, the suction mechanism automatically adjusts depending on surface (e.g., carpet, tile, hardwood, and laminate).  Multiple smart sensors serve to help the robot avoid bumping too hard into walls or falling down stairs.  The user may manually control the vacuum wirelessly with a standard (infrared) remote control using forward, right, and left buttons (there is no "back" button).  The remote control is also used to: (i) change the cleaning mode using the various mode button (spot cleaning, edge cleaning, small room);  (ii) program in a cleaning schedule using the "plan" and "clock" buttons;  (iii) start a cleaning session using the "clean" button;  and (iv) initiate a deep cleaning session for carpets using the "max" button.  This particular model does not connect to the internet (no WiFi connectivity), nor does it learn its environment like smarter robot vacuums do.
+
+
+The visual inputs/outputs to the Apple Watch include:
+* ambient light (input)
+* light variations indicative of changes in blood flow (inward facing optical sensor (photoplethysmography)) (input)
+* information on screen (output)
+
+The audio inputs/outputs to the Apple Watch include:
+* microphone inputs (input)
+* sounds from speaker (output)
+
+The tactile inputs/outputs to the Apple Watch include:
+* touches, taps, and swipes on the screen (input)
+* physical button (input)
+* physical knob turning signal (input)
+* haptic feedback (vibrations) (output)
+
+The electronic (and other sensory) inputs/outputs to the Apple Watch include:
+* near field communication signals (radio frequency) (input/output)
+* Bluetooth signal (communication with iPhone) (input/output)
+* WiFi signal (input/output)
+* GPS signal (input)
+* accelerations (accelerometer) (input)
+* rotations (gyroscope) (input)
+* variations in electrical current associated with the heart (measured by resting a finger from the opposing hand on the knob ("digital crown"), which completes the arm-to-arm circuit with a sensor on the bottom of the watch face) (input)
+
+-------------------------------------------------------------------------------
+
+iLife A4 Robot Vacuum Cleaner
+The visual inputs/outputs (including infrared sensors for environment understanding) to the iLife A4 Robot Vacuum Cleaner include:
+* the front bumper houses infrared sensors for detecting walls (input)
+* drop sensors are on the underside to help detect stairs, etc (input)
+* on/off light indicator (output)
+* battery charge state indicator (fully charged (green), middle range charge (orange), needs charging (red)) (output)
+* the remote control itself is a separate embedded system, which has a screen for visual feedback (e.g., when programming in a cleaning schedule)
+
+The audio inputs/outputs to the iLife A4 Robot Vacuum Cleaner include:
+* beeps from speaker (for turning on/off, indicating it needs charging, and arriving at the charging station) (output)
+
+The tactile inputs/outputs to the iLife A4 Robot Vacuum Cleaner include:
+* has "auto clean" button to start a cleaning session (input)
+* has power button to turn robot vacuum on/off (input)
+* the remote control itself is a separate embedded system, which includes physical buttons to input commands (input)
+* motion (transportation, spinning brushes) (output)
+
+The electronic (and electromagnetic signal) inputs/outputs to the iLife A4 Robot Vacuum Cleaner include:
+* receives infrared signal from IR remote control (input)
+* state change (on/off) (output)
+* the remote control itself is a separate embedded system, which outputs infrared signals to the robot cleaner (output)
+
+https://www.pcmag.com/reviews/ilife-a4s-robot-vacuum-cleaner
 
 ----------------------
+
+Gaming Console
+
+Visual (for gaming console):  the content on the screen might be considered a visual output, but that's only if you consider the TV screen as a component of the video game console, which is true for handheld devices, like Game Boy.  However, for devices like X Box, the video game console itself does not visually output the content on the screen, but outputs an electronic signal that is received by the TV, which it then visually outputs, etc.  Visual outputs of a console that do exist for most consoles include things like lights to indicate if the console is on or off.
+
+Audio (for gaming console):  similar to visual in that the gaming music and sound effects are often outputs of a TV speaker, though the speaker on handheld devices is responsible for this type of output.  That said, some audio outputs stemming from the console itself include beeps (e.g., errors on start up, etc).  
+
+Tactile (gaming console):  if you consider the controller as a part of the console (and not itself a separate embedded system), then the physical buttons on the controller are tactile inputs to the system.
+
+Electronic (gaming console):  this would include WiFi signals (connection to router), Bluetooth (connection to controller), etc.
+
+* optical variations read off the DVD by an optical sensor
+
+DVD Player
+
+For example, take the DVD Player.  Audio outputs include beeps (e.g., due to an error on start up) and visual outputs include the on/off indicator light.  Tactile inputs include the various buttons to play, pause, rewind, etc.  Electronic inputs include infrared signals received from the remote control; you might also classify the optical variations read off the DVD as electronic inputs (though one could argue these are visual inputs).  The list goes on.
+
+------------------
 
 
 LG Smart Washing Machine + ThinQ app
