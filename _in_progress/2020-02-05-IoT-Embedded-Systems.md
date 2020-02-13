@@ -166,6 +166,23 @@ The inputs to the Apple Watch include:
 * physical button
 * physical knob
 
+----------------------
+
+
+LG Smart Washing Machine + ThinQ app
+
+* https://lgcommunity.us.com/discussion/3933/how-to-connect-wt7300cw-washer-to-your-wifi
+  - I didn't have to check "front load" instead of "topload", but I did have to pull the plug out of the wall
+
+I now have this washing machine connected to my iPhone.  Cool, but anti-climactic.  It's not like
+the clothes are going to load themselves in, then from the comfort of my bed I click "go!"
+
+The major use case for this that I can think of is when you've left the clothes in for a day or two,
+and they've probably gotten that stank -- maybe I could tap a wash cycle on that (assuming the stank
+vanishes without having to go put more soap in the machine).
+
+
+
 -------------------
 
 Some Smart Devices (& Related Stuff):
