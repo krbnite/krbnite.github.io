@@ -104,7 +104,9 @@ Terms
 
 
 
+-------------
 
+Watched through Wk3 L2&L3 videos... Go back and take some notes.
 
 
 
