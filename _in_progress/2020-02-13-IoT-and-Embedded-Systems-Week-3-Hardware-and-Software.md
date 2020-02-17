@@ -106,11 +106,73 @@ Terms
 
 -------------
 
-Watched through Wk3 L2&L3 videos... Go back and take some notes.
+
+Storing data inside and outside a microcontroller.
+
+We look at an example microcontroller data sheet: AVR ATmega2560
+* 8-bit microcontroller
+* Up to 16 MHz
+* 256kB of flash memory
+  - a type of non-volatile memory (i.e., you can turn off power to the device and the memory
+    remains intact)
+  - technically, a type of EEPROM, though distinguished from typical EEPROM since flash is
+    optimized for high speed and high density at the
+    cost of large erase blocks (~ 512 bytes or more) and relatively short lifetime (~10k 
+    write cycles), whereas what is referred to as "EEPROM" typically has much smaller
+    erase blocks and much longer write-cycle lifetime
+  - typically used in a microcontroller's firmware
+* 4kB EEPROM
+  - electrically erasable programmable read-only memory
+  - a type of non-volatile memory
+  - used to store relatively small amounts of data
+  - individual bytes can be erased and reprogrammed
+  - flash memory is technically a type of EEPROM, though in practice "EEPROM" is reserved for
+    non-volatile memory with small erase blocks (down to 1 byte) and a long lifetime (on the 
+    order of 1M cycles)
+  - typically used for storing parameters and history (whereas flash is used in firmware)
+* 8kB SRAM
+  - static random access memory (as opposed to dynamic RAM - DRAM)
+  - used with moderately slow processing speeds, SRAM draws very little power and can have
+    a nearly negligible power draw when idle
+* Pin Diagram
+  - shows map of the microcontroller's pins (where they are located) and what each one is for
+
+Here is a datasheet for a similar device: [AVRmega640](https://ww1.microchip.com/downloads/en/devicedoc/atmel-2549-8-bit-avr-microcontroller-atmega640-1280-1281-2560-2561_datasheet.pdf)
+
+Storage elements: you often have a speed/cost tradeoff and a power tradeoff with storage types.  For
+example, you can have very fast access to memory, but it will be expensive and take up a lot of space
+on the chip, whereas slower access to memory will take up very little room.  
+
+The fastest (most expensive) storage is in a register, which stores only a single value, e.g.,
+a 32-bit register stores a single 32-bit number.  A chip usually has a set of specific purpose
+registers and a set of general purpose registers.  A [register file](https://en.wikipedia.org/wiki/Register_file) is a set of registers (e.g., 32 registers), which acts like memory.  
+
+https://en.wikibooks.org/wiki/Microprocessor_Design/Register_File
+
+Memories are meant to be much bigger than register files -- for storing a lot more, but with slower
+access. 
+
+Cache memory
+* slower and cheaper than a register file
+* but is still relatively fast and expensive as far as memories go in general 
+* Cache memory stores like 10^5 more data than a register file, so it's relatively huge, but that 
+  only amounts to about 1 Mbit of data, so not exactly "huge" in terms of other types of memory
+* cache is usually on-chip memory (part of the integrated circuit)
+  - in the [Harvard architecture](https://en.wikipedia.org/wiki/Harvard_architecture) we are using class, there is a data cache and an instruction cache
+  - https://stackoverflow.com/questions/22394750/what-is-meant-by-data-cache-and-instruction-cache
+* caches are generally used to avoid the von Neumann bottleneck 
+  - system throughput is limited due to the relative ability of processors compared to top rates of data transfer
+  - the limited throughput (data transfer rate) between the central processing unit (CPU) and memory compared to the amount of memory
+
+Main memory
+* very big (GBs)
+* no in the CPU (not in-chip memory)
+* connected to CPU via system bus
+* relative to the cache and register file, memory access is slow (e.g., the difference between
+  1 and 100 clock cycles for a task)
 
 
-
-
+NEXT TIME:  Lec 2.2
 
 ----------------------
 
