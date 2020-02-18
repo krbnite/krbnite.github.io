@@ -172,9 +172,72 @@ Main memory
   1 and 100 clock cycles for a task)
 
 
-NEXT TIME:  Lec 2.2
+Machine Language: Processors understand machine language, e.g., x86 (Intel) processors understand x86 language.  At 
+this level, the CPU instructions are in binary (or if looking at them in a text editor, you will see
+them in hex). 
+
+Assembly Language: This is a "human readable" version of machine language that employs simple mnemonics
+to represent the CPU instructions (literally a one-to-one mapping between assembly and machine language). These 
+are very simple instructions -- they do not include things like for loops that you may be used to from higher 
+level languages (e.g., C, Python).
+
+High Level Language:  these are the highly human readable, easy-to-use languages most of us are familiar with.
+  - Compile language: code is translated once before running the code (e.g., C, C++); since code is compiled
+    before runtime, everything is known at runtime and the code can run very fast; we'll be using C/C++ with
+    the Arduino
+  - Interpreted language: translate instructions while code is executed (e.g., Python); this translation occurs
+    every time the code is run; often easier to use, but generally slower than a compiled script;  a lot is
+    taken care of for you (e.g., memory management); we'll be using Python with the Rasberry Pi
+
+
+Operating Systems
+
+IoT devices do not always have an OS, e.g., the Rasberry Pi does have one, but the Arduino does not.
+
+On a device without an OS, the code that you write (the "application") interacts directly with
+the hardware; if you have multiple applications, you have to explicitly write how the hardware manages
+its interactions with these applications -- but this is what an OS is for!  When a device has an OS,
+the user can have many applications running, and the OS will orchestrate it.  Though it seems like
+all the applications are running at the same time, this is not strictly true, e.g., the OS quickly
+cycles through each running application in sequence, updating instructions, at a speed so fast it
+seems like things are running simultaneously to the user.  An OS requires processing power and 
+memory, and ultimately slows down the system a bit -- but it makes development way easier.
+
+```
+[ User ]
+^    |
+|    v
+[ Application ]
+^    |
+|    v
+[ OS ]
+^    |
+|    v
+[ Hardware ]
+```
+
+The OS makes development much easier and more modular.  Instead of having to worry about how
+different applications must work concurrently, the OS does this for you.  This means you can
+develop applications independently of each other.  The main job of an OS is to support process
+abstraction, where a process is an instance of a program (i.e., you can have one program that
+is running for 10 users, thus have 10 processes).  Processes must have access to the CPU,
+memory, and other resources (I/O, ADC, timers, network, etc).  There can be many processes running
+on a system, so it's the job of the OS to manage resources fairly.
 
 ----------------------
+
+
+Arduino OSs
+* https://www.infoq.com/news/2016/04/arduino-101-fw-open-source/
+* Arduino real time OS (ChibiOS): https://www.youtube.com/watch?v=JXy86GrjVso
+* https://create.arduino.cc/projecthub/feilipu/using-freertos-multi-tasking-in-arduino-ebc3cc
+* RTuinOS: https://forum.arduino.cc/index.php?topic=138643.0
+* https://microcontrollerslab.com/use-freertos-arduino/
+* https://www.mepits.com/tutorial/576/arduino/using-free-rtos-multi-tasking-in-arduino
+* http://antipastohw.blogspot.com/2009/11/4-operating-systems-for-arduino.html
+
+
+------------------------------
 
 
 # Misc
