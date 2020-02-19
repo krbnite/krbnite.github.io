@@ -237,6 +237,15 @@ Arduino OSs
 * http://antipastohw.blogspot.com/2009/11/4-operating-systems-for-arduino.html
 
 
+Rasberry Pi OSs
+* YouTube: [Top 8 Rasberry Pi Distros](Top 8 Raspberry Pi Distros)
+* [The 20 Best Raspberry Pi OS Available to Use in 2020](https://www.ubuntupit.com/best-raspberry-pi-os-available/)
+* [The Best Operating Systems for Your Raspberry Pi Projects](https://lifehacker.com/the-best-operating-systems-for-your-raspberry-pi-projec-1774669829)
+* [Raspberry PI Operating Systems (OS) – Which one to use in 2020?](https://www.seeedstudio.com/blog/2019/10/29/raspberry-pi-operating-systems-os-which-one-to-use/)
+
+Misc
+* [What is an ARM Processor](https://whatis.techtarget.com/definition/ARM-processor)
+
 ------------------------------
 
 
