@@ -246,6 +246,24 @@ Rasberry Pi OSs
 Misc
 * [What is an ARM Processor](https://whatis.techtarget.com/definition/ARM-processor)
 
+
+### Microcontrollers
+
+What do the specs look like from one of the cheapest microcontrollers you can buy, and how do they compare to the specs from one of the most expensive microcontrollers you can buy?  To help answer this question, I specifically looked into AVR microcontrollers (originally developed by Atmel, now owned by Microchip as of 2016).  
+
+There are 3 major families of AVR microcontrollers: tinyAVR, megaAVR, and AVR XMEGA.
+
+
+https://www.microchip.com/design-centers/8-bit/avr-mcus
+https://www.microchip.com/wwwproducts/en/ATTINY202
+https://www.microchip.com/wwwproducts/en/ATmega2561
+
+
+AVR XMEGA: http://ww1.microchip.com/downloads/en/DeviceDoc/doc7925.pdf
+https://www.kanda.com/blog/microcontrollers/avr-xmega-microcontroller-family/
+
+Beetle: https://www.dfrobot.com/product-1075.html
+
 ------------------------------
 
 
