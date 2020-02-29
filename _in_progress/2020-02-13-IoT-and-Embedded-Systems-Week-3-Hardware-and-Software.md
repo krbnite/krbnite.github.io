@@ -249,6 +249,8 @@ Misc
 
 ### Microcontrollers
 
+
+## HW Q1
 What do the specs look like from one of the cheapest microcontrollers you can buy, and how do they compare to the specs from one of the most expensive microcontrollers you can buy?  To help answer this question, I specifically looked into AVR microcontrollers (originally developed by Atmel, now owned by Microchip as of 2016) and identified the cheapest and most expensive on the page: the ATtiny202 ($0.29/unit for 5000+ units; $0.40 for a single unit) vs the ATmega2561 ($8.51/unit for 5000+ units; $11.72 for a single uit).  
 
 
@@ -291,6 +293,26 @@ Comparing these 5 properties certainly gives some motivation for the price diffe
 
 ------------------------------
 
+## HW Q2
+
+Both the Arduino and Rasberry Pi have multiple operating systems (OSs) available for use.
+
+The use of an OS in an Arduino Uno appears to be fairly controversial since many Arduino developers consider an OS to be overkill within the typical Arduino Uno use cases.  However, controversial or not, OSs have been created for and used on the Arduino Uno.
+
+ChibiOS (open source under GPL3/Apache2.0)
+Website:  http://www.chibios.org/
+Licensing:  http://www.chibios.org/dokuwiki/doku.php?id=chibios:licensing:start
+Arduino port of ChibiOS:  https://github.com/greiman/ChibiOS-Arduino
+Semi-recent article about ChibiOS:  https://hackaday.com/2016/09/22/arduino-sketch-the-next-generation/
+YouTube Tutorial:  Arduino Real Time OS (ChibiOS):  https://www.youtube.com/watch?v=JXy86GrjVso&list=PL-VRW4ibM-f20B-dXzf6ogiwSzexkAPxY
+Code to follow along with YouTube tutorial:  https://github.com/ItKindaWorks/sketches/tree/master/ChibiOS
+
+If one considers Arduino platforms beyond the Uno, then there exist more OSs:
+* the Arduino 101 has the Intel Arduino 101 RTOS (https://www.infoq.com/news/2016/04/arduino-101-fw-open-source/)
+
+
+
+-----------------------------
 
 # Misc
 
