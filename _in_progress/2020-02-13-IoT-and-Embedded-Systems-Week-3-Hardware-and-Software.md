@@ -249,20 +249,45 @@ Misc
 
 ### Microcontrollers
 
-What do the specs look like from one of the cheapest microcontrollers you can buy, and how do they compare to the specs from one of the most expensive microcontrollers you can buy?  To help answer this question, I specifically looked into AVR microcontrollers (originally developed by Atmel, now owned by Microchip as of 2016).  
-
-There are 3 major families of AVR microcontrollers: tinyAVR, megaAVR, and AVR XMEGA.
+What do the specs look like from one of the cheapest microcontrollers you can buy, and how do they compare to the specs from one of the most expensive microcontrollers you can buy?  To help answer this question, I specifically looked into AVR microcontrollers (originally developed by Atmel, now owned by Microchip as of 2016) and identified the cheapest and most expensive on the page: the ATtiny202 ($0.29/unit for 5000+ units; $0.40 for a single unit) vs the ATmega2561 ($8.51/unit for 5000+ units; $11.72 for a single uit).  
 
 
-https://www.microchip.com/design-centers/8-bit/avr-mcus
-https://www.microchip.com/wwwproducts/en/ATTINY202
-https://www.microchip.com/wwwproducts/en/ATmega2561
+Clock Frequency
+* ATtiny202: 20 MHz
+* ATmega2561:  16 MHz
 
+Bitwidth of the Datapath
+* ATtiny202: 8 bit
+* ATmega2561:  8 bit
 
-AVR XMEGA: http://ww1.microchip.com/downloads/en/DeviceDoc/doc7925.pdf
-https://www.kanda.com/blog/microcontrollers/avr-xmega-microcontroller-family/
+Size of Flash Memory
+* ATtiny202:  2KB
+* ATmega2561:  256KB
 
-Beetle: https://www.dfrobot.com/product-1075.html
+Number of Pins
+* ATtiny202:  8
+* ATmega2561:  64
+
+Analog-to-Digital Converter
+* ATtiny202: Yes, 12-Channel 10-bit ADC
+* ATmega2561:  Yes, 8-Channel 16-bit ADC
+
+Comparing these 5 properties certainly gives some motivation for the price differential (e.g., the ATmega2561 has over 100x the Flash memory, and 8x more pins).  Other specs of interest might include:
+* EEPROM: 64B (ATtiny202) vs 4KB (ATmega2561)
+* SRAM: 128B (ATtiny202) vs 8KB (ATmega2561)
+* Timers:  2x16-bit (ATtiny202) vs 2x8-bit + 4x16-bit (ATmega2561)
+
+### General References 
+* Definition of "bitwidth datapath" given by Professor Harris in Lecture 1.3 (Microcontroller Properties @ 3:22):  "Okay. Datapath bitwidth. Bitwidth, what that means is, it's a number of bits in each register. A register storage element to store as a number. So, the bitwidth basically tells you the size of most numbers in your system."
+* AVR Microcontrollers:  https://www.microchip.com/design-centers/8-bit/avr-mcus
+
+### ATtiny202 References
+* https://www.microchip.com/wwwproducts/en/ATTINY202
+* http://ww1.microchip.com/downloads/en/DeviceDoc/ATtiny202-402-AVR-MCU-with-Core-Independent-Peripherals_and-picoPower-40001969A.pdf
+
+### ATmega2561 References
+* https://www.microchip.com/wwwproducts/en/ATmega2561
+* https://ww1.microchip.com/downloads/en/devicedoc/atmel-2549-8-bit-avr-microcontroller-atmega640-1280-1281-2560-2561_datasheet.pdf
 
 ------------------------------
 
@@ -281,4 +306,11 @@ More Playlists from Eli the Computer Guy:
 * [Arduino Vehicle](https://www.youtube.com/watch?v=l2WCKQoVdcU&list=PLJcaPjxegjBU9LLgF9dGiIhVTPHrh82N5)
 * There a bunch of playlists...
 
+----------------------------
+
+
+AVR XMEGA: http://ww1.microchip.com/downloads/en/DeviceDoc/doc7925.pdf
+https://www.kanda.com/blog/microcontrollers/avr-xmega-microcontroller-family/
+
+Beetle: https://www.dfrobot.com/product-1075.html
 
