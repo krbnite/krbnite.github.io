@@ -227,14 +227,16 @@ on a system, so it's the job of the OS to manage resources fairly.
 ----------------------
 
 
-Arduino OSs
-* https://www.infoq.com/news/2016/04/arduino-101-fw-open-source/
-* Arduino real time OS (ChibiOS): https://www.youtube.com/watch?v=JXy86GrjVso
-* https://create.arduino.cc/projecthub/feilipu/using-freertos-multi-tasking-in-arduino-ebc3cc
-* RTuinOS: https://forum.arduino.cc/index.php?topic=138643.0
-* https://microcontrollerslab.com/use-freertos-arduino/
-* https://www.mepits.com/tutorial/576/arduino/using-free-rtos-multi-tasking-in-arduino
+Arduino OSs (not covered in HW)
+* RTuinOS: 
+  - [RTuinOS: A Real Time Operating System (RTOS) for Arduino 1.0.1](https://forum.arduino.cc/index.php?topic=138643.0)
+  - [RTuinOS 1.0: Second Release of the Real Time Operating System (RTOS) for Arduino](https://forum.arduino.cc/index.php?topic=184593.0)
+  - GitHub: https://github.com/PeterVranken/RTuinOS
 * http://antipastohw.blogspot.com/2009/11/4-operating-systems-for-arduino.html
+  - DuinOS
+  - Pyxis OS
+  - ArduinoMacOS
+  - TaOS
 
 
 Rasberry Pi OSs
