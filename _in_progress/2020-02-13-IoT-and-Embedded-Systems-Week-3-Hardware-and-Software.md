@@ -309,6 +309,15 @@ Semi-recent article about ChibiOS:  https://hackaday.com/2016/09/22/arduino-sket
 YouTube Tutorial:  Arduino Real Time OS (ChibiOS):  https://www.youtube.com/watch?v=JXy86GrjVso&list=PL-VRW4ibM-f20B-dXzf6ogiwSzexkAPxY
 Code to follow along with YouTube tutorial:  https://github.com/ItKindaWorks/sketches/tree/master/ChibiOS
 
+
+FreeRTOS (open source under MIT open source license)
+Website:  https://www.freertos.org
+Licensing:  https://www.freertos.org/a00114.html
+Feilipu's Arduino port of FreeRTOS (https://github.com/feilipu/Arduino_FreeRTOS_Library) and overview (https://feilipu.me/2015/11/24/arduino_freertos/) 
+Several examples using Feilipu's Arduino port:  (i) https://create.arduino.cc/projecthub/feilipu/using-freertos-multi-tasking-in-arduino-ebc3cc;  (ii) https://www.mepits.com/tutorial/576/arduino/using-free-rtos-multi-tasking-in-arduino
+Greiman's Arduino port of FreeRTOS:  https://github.com/greiman/FreeRTOS-Arduino
+
+
 If one considers Arduino platforms beyond the Uno, then there exist more OSs:
 * the Arduino 101 has the Intel Arduino 101 RTOS (https://www.infoq.com/news/2016/04/arduino-101-fw-open-source/)
 
