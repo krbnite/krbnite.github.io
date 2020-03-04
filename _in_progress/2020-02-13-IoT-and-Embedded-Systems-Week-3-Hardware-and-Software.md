@@ -318,8 +318,24 @@ Several examples using Feilipu's Arduino port:  (i) https://create.arduino.cc/pr
 Greiman's Arduino port of FreeRTOS:  https://github.com/greiman/FreeRTOS-Arduino
 
 
-If one considers Arduino platforms beyond the Uno, then there exist more OSs:
-* the Arduino 101 has the Intel Arduino 101 RTOS (https://www.infoq.com/news/2016/04/arduino-101-fw-open-source/)
+DuinOS (open source under a modified GNU General Public License (GPL))
+Based on FreeRTOS
+Most recent version:  https://github.com/DuinOS/DuinOS
+Older versions:  https://code.google.com/archive/p/duinos/
+
+If one considers Arduino platforms beyond the Uno, then there exist more OSs.  For example, the Arduino 101 has the Intel Arduino 101 RTOS (might be open source under LGPL, but I cannot find an exact statement on this):
+Article about this: https://www.infoq.com/news/2016/04/arduino-101-fw-open-source/
+Intel's blog about it: https://blog.arduino.cc/2016/04/21/intel-releases-the-arduino-101-firmware-source-code/
+Source code for the Arduino 101 (referred to as ArduinoCore-arc32 in the repo), which Intel's Arduino 101 RTOS runs on: https://github.com/arduino/ArduinoCore-arc32
+Licensing (LGPL) for the Arduino 101: https://github.com/arduino/ArduinoCore-arc32/blob/master/LICENSE
+
+There exist other OS efforts on the Arduino I saw mentioned on webpages published 9+ years ago (e.g., 2009-2011), but no longer have much of a digital presence (e.g., several listed on one webpage I visited include Pyxis OS, ArduinoMacOS, and TaOS;  http://antipastohw.blogspot.com/2009/11/4-operating-systems-for-arduino.html).
+
+
+Raspberry Pi Operating Systems
+
+There are countless OS options on the Raspberry Pi -- so many, that articles dedicate themselves to the "top 10", "top 15", and even "top 20" operating systems.
+
 
 
 
