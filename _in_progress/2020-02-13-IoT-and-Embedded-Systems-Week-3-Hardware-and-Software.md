@@ -334,9 +334,64 @@ There exist other OS efforts on the Arduino I saw mentioned on webpages publishe
 
 Raspberry Pi Operating Systems
 
-There are countless OS options on the Raspberry Pi -- so many, that articles dedicate themselves to the "top 10", "top 15", and even "top 20" operating systems.
+There are countless OS options on the Raspberry Pi -- so many, that articles dedicate themselves to the "top 10", "top 15", and even "top 20" operating systems (e.g., https://www.ubuntupit.com/best-raspberry-pi-os-available/).  This is not surprising: unlike the Arduino, the Rasberry Pi was intended to have an OS -- which OS to use depends strongly on the use case (and, of course, user preference).
 
+Raspian (open source under GPL)
+* The "official OS" of Raspberry Pi, based on Debian
+* Website: https://www.raspbian.org/
+* Download:  https://www.raspberrypi.org/downloads/
 
+DietPi (open source under GPL 2.0)
+* Very lightweight Debian
+* Website: https://dietpi.com/
+* Source Code: https://github.com/MichaIng/DietPi
+
+LibreELEC (open source under GPL 2.0)
+* This is a fork of OpenELEC, another (now defunct) open source OS available for Raspberry Pi 
+* Basically, LibreELEC (and OpenELEC before it) turns Raspberry Pi into a Kodi media center 
+* Website: https://libreelec.tv/
+* What is Kodi (hint: formerly known as XBox Media Center):  https://www.tomsguide.com/us/what-is-kodi,review-4160.html
+
+OSMC (open source under GPL 2.0)
+* Like LibreELEC, OSMC turns Raspberry Pi into a Kodi media center
+* However, unlike LibreELEC, OSMC is a fully featured OS (not ONLY a Kodi media center)
+* Based on Debian
+* Website: https://osmc.tv/
+
+RISC OS (open source under Apache 2.0)
+* A very idiosyncratic OS (not based on Linux or Windows) that has been used on ARM processors since 1987
+* Poking around the internet, it seems like the user base is biased towards older engineers that learned this OS as a kid, or used it professionally early in their career
+* Website: https://www.riscosopen.org/content
+* Formerly closed, now open source:  https://itsfoss.com/risc-os-is-now-open-source/
+* Who uses RISC OS (1):  https://www.raspberrypi.org/forums/viewtopic.php?t=162004
+* Who uses RISC OS (2): https://www.riscosopen.org/forum/forums/5/topics/3008
+
+Windows IoT Core (not open source)
+* Very Windows-oriented; you need a Windows computer for this
+* ARM compatible
+* Does not appear to be open source (basically a stripped down version of Windows 10)
+* About:  https://docs.microsoft.com/en-us/windows/iot-core/windows-iot-core
+* Hooking up a Raspberry Pi with Windows IoT Core:  https://docs.microsoft.com/en-us/windows/iot-core/tutorials/rpi
+
+Lakka (open source)
+* Retro gaming-oriented lightweight Linux OS 
+* Website: https://www.lakka.tv/
+
+RaspBSD (open source under FreeBSD)
+* Customized build of FreeBSD for single-board computers like Raspberry Pi
+* Possible reason to use:  MacOS and PS4 are based off FreeBSD, so you can tinker with something similar
+
+RetroPie (open source under GPL)
+* Retro gaming-oriented OS that can be installed on top of other OSs
+* Website: https://retropie.org.uk/
+
+Ubuntu Core
+* Download:  https://ubuntu.com/download/raspberry-pi
+
+Kali Linux
+* Security- and forensics-oriented OS (ethical hacking)
+
+SO MANY MORE operating systems are available for Raspberry Pi.  This list can go on and on.  
 
 
 -----------------------------
