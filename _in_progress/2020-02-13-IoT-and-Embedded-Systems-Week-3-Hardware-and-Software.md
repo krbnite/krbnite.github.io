@@ -391,8 +391,35 @@ Ubuntu Core
 Kali Linux
 * Security- and forensics-oriented OS (ethical hacking)
 
-SO MANY MORE operating systems are available for Raspberry Pi.  This list can go on and on.  
+Kano (open source under GPLv2)
+* This is an educationally-oriented OS designed specifically for teaching children how a computer works, how to write code, and how to put together some basic projects
+* What is Kano OS: https://help.kano.me/hc/en-us/articles/360001546340-What-is-Kano-OS-
 
+Chromium OS (open source)
+* If all you plan on doing is browsing the web, this will basically turn your Rasberry Pi into something like a Chromebook 
+
+HassOS (open source)
+* Stripped down Linux OS for Raspberry Pi intended to run Home Assistant (i.e., this is SmartHome-focused OS)
+* Home Assistant Website:  https://www.home-assistant.io/
+
+Mozilla WebThings (open source)
+* This OS also has a SmartHome focus
+* https://iot.mozilla.org/
+
+
+SO MANY MORE operating systems are available for Raspberry Pi:
+* Ubuntu Mate (open source)
+* Ubuntu Server (open source)
+* PiNet (open source)
+* Linutop (open source)
+* OpenMediaVault (open source)
+* Gentoo (open source)
+* Rokos (open source, MIT)
+* Minibian (open source, GPLv2)
+* Chromium OS (open source)
+* Alpine Linux (open source)
+
+And this list can go technically go on and on (e.g., many more on this page alone:  https://elinux.org/RPi_Distributions).  However, it should also be noted that it seems many of the OSs you can learn and read about, including a few listed above, have become "dead projects" (no further updates or support).
 
 -----------------------------
 
@@ -409,6 +436,14 @@ More Playlists from Eli the Computer Guy:
 * [Arduino Sensors](https://www.youtube.com/watch?v=KjJFf_DnKeA&list=PLJcaPjxegjBWG6w_2uccJpXHQa3N6W-P2)
 * [Arduino Vehicle](https://www.youtube.com/watch?v=l2WCKQoVdcU&list=PLJcaPjxegjBU9LLgF9dGiIhVTPHrh82N5)
 * There a bunch of playlists...
+
+* RPi Projects:  https://www.ubuntupit.com/20-best-raspberry-pi-projects-that-you-can-start-right-now/
+
+## Some Home Assistant Stuff
+* https://github.com/home-assistant/operating-system
+* https://www.reddit.com/r/homeassistant/comments/9z3nrr/whats_the_difference_between_hassio_hassbian/
+* https://community.home-assistant.io/t/hass-vs-hass-io-vs-hassos/130174
+* https://community.home-assistant.io/t/homeassistant-for-newcomers-what-it-is-what-is-hassio-hassos-hassbian-101-and-cookies/123004
 
 ----------------------------
 
