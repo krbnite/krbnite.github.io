@@ -4,7 +4,15 @@ layout: post
 tags: easi cvb data-science aws cloud
 ---
 
-Just some thoughts on a DS-enabled environment.
+Just some thoughts on what a DS-enabled environment should look like, 
+at least from the perspective of needs I've had and projects I've worked on. The
+needs are staged in orders of approximation of what my ideal would be:
+* 1st Order: have access to a higher-powered machine than a laptop
+* 2nd Order: having access to multiple higher-powered machines that fit different needs
+* 3rd Order: having access to multiple machines from the same central location
+
+I'm no expert on architecting these things on the backend, but I do know
+some frustrations of practicing data science with limited resources.
  
 ----
 
