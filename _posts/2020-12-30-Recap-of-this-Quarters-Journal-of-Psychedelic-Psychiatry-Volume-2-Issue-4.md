@@ -47,7 +47,15 @@ Err, well no. Just getting excited. Sorry! Let's get back to the paper.
 "Ok, cool."
 
 In the paper, they reviewed published EEG data from several studies that mostly looked
-at the populations of interest separately. The author wanted to profile 
+at the populations of interest separately. The author wanted to profile...
+
+------------------------
+
+EDIT: Never finished writing this!  Need to get back to it.
+
+------------------------
+
+SOME UNFINISHED WRITING:
 
 Specifically, they were interested
 in 5 bands of brain wave: delta, theta, alpha, beta, and gamma.
