@@ -1,4 +1,9 @@
-# Segment Anything
+---
+title: Segment Anything (Fast)
+layout: post
+tags: computer-vision image-segmentation deep-learning
+---
+
 Are you a purist at heart? 
 
 If so, you might want to create your own image segmentation model from scratch - have fun!
