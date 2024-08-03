@@ -7,11 +7,58 @@ tags: computer-vision image-segmentation deep-learning
 Are you a purist at heart? 
 
 If so, you might want to create your own image segmentation model from scratch - have fun!
-But let's say you're on the job, then you might be wasting your time. 
+
+But let's say you're on the job, then you might be wasting your time reinventing the
+wheel. 
 
 In this notebook, I explore using the "FastSAM" model from Ultralytics.
 
-https://docs.ultralytics.com/models/fast-sam/#overview
+# SAM (Segment Anything Model)
+
+The Segment Anything Model (SAM) is a promptable segmentation model -- that is, the segmentation is suggestible. Give it an
+image coordinate or text description and it will attempt to identify the object. 
+SAM works right out of the box -- no fine-tuning necessary for many purposes. Importantly, it
+is license under Apache 2.0, which is an extremely permissive license.
+
+SAM was originally developed at Meta and open-sourced
+on [GitHub](https://github.com/facebookresearch/segment-anything), which provides 
+an aggressively concise description:
+
+> The [Segment Anything Model (SAM)](https://arxiv.org/abs/2304.02643) produces high quality object masks from input prompts such as points or boxes, and it can be used to generate masks for all objects in an image. It has been trained on a dataset of 11 million images and 1.1 billion masks, and has strong zero-shot performance on a variety of segmentation tasks.
+
+A more full-bodied description from the [Ultralytics website](https://docs.ultralytics.com/models/sam/):
+
+> The Segment Anything Model, or SAM, is a cutting-edge image segmentation model that allows for promptable segmentation, providing unparalleled versatility in image analysis tasks. SAM forms the heart of the Segment Anything initiative, a groundbreaking project that introduces a novel model, task, and dataset for image segmentation.
+> 
+> SAM's advanced design allows it to adapt to new image distributions and tasks without prior knowledge, a feature known as zero-shot transfer. Trained on the expansive SA-1B dataset, which contains more than 1 billion masks spread over 11 million carefully curated images, SAM has displayed impressive zero-shot performance, surpassing previous fully supervised results in many cases.
+
+The most robust explanation and details, without actually reading the [paper](https://arxiv.org/abs/2304.02643),
+can be found on [Meta's AI blog](https://ai.meta.com/blog/segment-anything-foundation-model-image-segmentation/).
+
+There is also a [website](https://segment-anything.com) dedicated to SAM, which has a nice, 
+straight-to-the-point FAQs section.
+
+Play around with the model using the online [demo](https://segment-anything.com/demo).
+
+Learn more about it perusing some Jupyter notebooks:
+* Facebook Research: [Automatically generating object masks with SAM](https://github.com/facebookresearch/segment-anything/blob/main/notebooks/automatic_mask_generator_example.ipynb)
+* [Roboflow](https://colab.research.google.com/github/roboflow-ai/notebooks/blob/main/notebooks/how-to-segment-anything-with-sam.ipynb)
+
+**NOTE**: SAM2 ([link1](https://ai.meta.com/sam2/), [link2](https://ai.meta.com/blog/segment-anything-2/))
+is available now too; it works out-of-the-box on video.
+
+# FastSAM
+FastSAM is basically SAM with a small tradeoff between size and accuracy.
+
+From [HuggingFace](https://huggingface.co):
+> The Fast Segment Anything Model(FastSAM) is a CNN Segment Anything Model trained by only 2% of the SA-1B dataset published by SAM authors. The FastSAM achieve a comparable performance with the SAM method at 50× higher run-time speed.
+
+The Chinese Academy of Sciences Image and Video Analysis (CASIA IVA) group is responsible for the development of [FastSAM](https://arxiv.org/abs/2306.12156) -- a fast, accurate implementation of SAM.  FastSAM provides high-performance image segmentation while optimizing for speed and ease of use.  One can `pip install` the FastSAM model directly from their [GitHub](https://github.com/CASIA-IVA-Lab/FastSAM). [HuggingFace](https://huggingface.co) provides an [overview](https://huggingface.co/An-619/FastSAM) on FastSAM using this repository. [Roboflow](https://roboflow.com) provides a much more in-depth [notebook tutorial](https://github.com/roboflow/notebooks/blob/main/notebooks/how-to-segment-anything-with-fast-sam.ipynb).
+
+[Ultralytics](https://www.ultralytics.com/) is a company that specializes in developing cutting-edge, easy-to-use, and high-performance deep learning models, particularly for computer vision tasks. They are well-known for their contributions to the YOLO (You Only Look Once) series of models. They also provide access to FastSAM through their `ultralytics`
+package (which I use below), and provide the following [tutorial](https://docs.ultralytics.com/models/fast-sam/).
+
+**NOTE**: There is also a "faster SAM" called [MobileSAM](https://github.com/ChaoningZhang/MobileSAM).
 
 
 # Environment
@@ -24,6 +71,9 @@ conda install pytorch::pytorch torchvision torchaudio -c pytorch
 conda install pandas seaborn jupyter
 pip install ultralytics
 ```
+
+More Info
+* Ultralytics: [Install Ultralytics](https://huggingface.co/An-619/FastSAM)
 
 # Resize the Image to 1024x1024
 This is necessary to use with the FastSAM model.
