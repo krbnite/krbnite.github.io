@@ -840,7 +840,7 @@ axs = axs.flatten()  # Flatten in case of multi-row subplots
 plt.sca(axs[0])  # Set the current axes to the subplot
 plt.imshow(get_prompt_result(dog_prompter_fs,'cap')[0])
 plt.sca(axs[1])  # Set the current axes to the subplot
-plt.imshow(get_prompt_result(dog_prompter_fs,'building')[0])
+plt.imshow(get_prompt_result(dog_prompter_fs,'building')[0]);
 ```
 
     
@@ -871,7 +871,7 @@ axs = axs.flatten()  # Flatten in case of multi-row subplots
 plt.sca(axs[0])  # Set the current axes to the subplot
 plt.imshow(get_prompt_result(dog_prompter_fx,'cap')[0])
 plt.sca(axs[1])  # Set the current axes to the subplot
-plt.imshow(get_prompt_result(dog_prompter_fx,'building')[0])
+plt.imshow(get_prompt_result(dog_prompter_fx,'building')[0]);
 ```
 
     
@@ -934,8 +934,8 @@ axs[1].set_title("Button");
 ```
 
     
-    0: 1024x768 27 objects, 213.3ms
-    Speed: 5.4ms preprocess, 213.3ms inference, 14.6ms postprocess per image at shape (1, 3, 1024, 1024)
+    0: 1024x768 27 objects, 224.7ms
+    Speed: 9.3ms preprocess, 224.7ms inference, 31.3ms postprocess per image at shape (1, 3, 1024, 1024)
 
 
 
