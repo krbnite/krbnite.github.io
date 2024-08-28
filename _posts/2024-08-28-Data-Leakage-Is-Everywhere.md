@@ -36,17 +36,23 @@ select an incorrect answer for to get it right:
 
 ![data leakage pipelilne](../images/2024-08-28-data-leakage-pipeline.png)
 
-Remember this always: **Anything that needs to be learned must be learned on the training set only.**
+Remember this always: \
+**Anything that needs to be learned must be learned on the training set only.**
 
-**Here is a more proper ML workflow**:
-1. **Split the Dataset First**: Split the dataset into training, validation, and test sets before any data preprocessing.
-2. **Develop Preprocessing Pipeline on the Training Data Only**: Fit any preprocessing steps (e.g., scaling, dimensionality reduction) on the training set only.
+**Here is a more proper ML workflow**:\
+1. **Split the Dataset First**
+  * Split the dataset into training, validation, and test sets before any data preprocessing.
+3. **Develop a Preprocessing Pipeline on the Training Data Only**
   * e.g., for standardizing, compute the mean and standard deviation on the training set alone.
   * e.g., for dimensionality reduction (like PCA), fit the transformation only on the training data
-3. **Apply the Preprocessing Pipeline to Validation and Test Sets**: The learned transformations are applied to
-    the validation and test sets without refitting. (These represent unseen datasets -- 
-4. **Fit the Model on the Training Data**: Train the model using only the preprocessed training data.
-5. **Evaluate on Validation and Test Sets**: Use the preprocessed validation set for tuning hyperparameters and the test set for final evaluation.
+3. **Apply the Preprocessing Pipeline to Validation and Test Sets**
+  * The validation and test sets represent unseen data, thus we apply the learned transformations 
+    to the validation and test sets without refitting.
+4. **Fit the Model on the Training Data**
+  * Train the model using only the preprocessed training data.
+5. **Evaluate on Validation and Test Sets**
+  * Use the preprocessed validation set for tuning hyperparameters.
+  * Use the preprocessed test set for final evaluation.
 
 The idea is that during training your validation set is simulating unseen data and after grid searching
 the training and validation sets to death, then your test set steps in as the stand-in for unseen data.
@@ -65,7 +71,7 @@ A good way to think is that you're not just buidling a "machine learning model" 
 building a "machine learning pipeline" -- and that entire pipeline must respect the dangers of
 data leakage!
 
-Thus, I think the most ideal ML workflow goes something like this:
+Thus, I think **the most ideal ML workflow** goes something like this:
 1. **Split the Dataset First**
 2. **Compose a Complete Machine Learning Pipeline**
   * Such a pipeline includes both a preprocessing and modeling components.
