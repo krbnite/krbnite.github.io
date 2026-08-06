@@ -6,7 +6,7 @@
 name: Kevin Urban
 
 # Short bio or description (displayed in the header)
-description: Don't quote me on this, but... &lt;beginBlog>
+description: Historical project archive moved to kitchensink.
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
 avatar: https://raw.githubusercontent.com/krbnite/krbnite.github.io/master/images/krbn.gif
@@ -87,5 +87,22 @@ exclude:
   - LICENSE
   - README.md
   - CNAME
+  - 2017-10-27-A-2nd-Foray-into-the-Facebook-API.md
+  - 2020-02-12-Machine-Learning-Work-Flows.md
+  - about.md
+  - book-like-site-index.md
+  - images
+  - js
+  - nnlinks.html
+  - search.json
+  - style.scss
+  - _sass
+  - _experinaut
+  - _in_progress
+  - _notebooks
+  - _notes
+  - _posts
+  - misc
+  - tag
 
 theme: jekyll-theme-cayman

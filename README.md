@@ -1,18 +1,10 @@
----
-layout: default
----
+# krbnite.github.io
 
-<div class="posts">
-  {% for post in site.posts %}
-    <article class="post">
+This GitHub Pages site has been retired as a blog.
 
-      <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
+The useful historical articles, notebooks, project notes, and research archives
+have been moved into:
 
-      <div class="entry">
-        {{ post.excerpt }}
-      </div>
+- https://github.com/krbnite/kitchensink
 
-      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
-    </article>
-  {% endfor %}
-</div>
+The public landing page now points visitors there.
